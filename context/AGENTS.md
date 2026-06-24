@@ -11,6 +11,8 @@ All durable project context Markdown lives under `context/`. Root Markdown shoul
 - Maintains `context/PROJECT.md`, `context/SCOPE.md`, and `context/TASKS.md`.
 - Splits work into task blocks with file ownership and acceptance criteria.
 - Does not silently change scientific criteria or project scope.
+- Runs independent tasks in parallel when file ownership and dependencies allow it.
+- Reviews and approves parallel agent outputs before merging them into the main task flow.
 
 ### Builder
 
@@ -64,3 +66,7 @@ feat(data): TASK-003 build adaptation gap index
 feat(app): TASK-006 add map layer controls
 docs(handover): TASK-007 finalize competition handoff
 ```
+
+Never add `Co-authored-by` trailers or assistant/agent authorship credit to commits.
+
+Commit task-by-task when a task has passed its relevant QA gate. Avoid batching unrelated task work into one commit.

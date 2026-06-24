@@ -28,3 +28,11 @@ python scripts/check_required_artifacts.py
 python scripts/validate_task_statuses.py
 python scripts/check_secrets.py
 ```
+
+## Parallel Work
+
+Use parallel agents or parallel tool calls whenever tasks are independent, have non-overlapping file ownership, and do not depend on each other's outputs. The orchestrator must review parallel outputs before accepting them.
+
+## Commits
+
+Commit one completed task at a time after QA evidence is recorded. Do not include `Co-authored-by` trailers or assistant/agent credit in any commit.

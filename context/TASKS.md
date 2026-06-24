@@ -185,3 +185,26 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log:
 - Status: pending
+
+## TASK-008
+- Phase: workflow
+- Title: Record collaboration, parallelization, and commit authorship rules
+- Depends on: TASK-000
+- Assigned agent: Codex
+- Contract refs: context/AGENTS.md, context/development_rules.md, context/CURSOR_RULES.md
+- Data refs: none
+- Scientific refs: none
+- User value / decision value: Preserves user workflow preferences for future sessions and agents.
+- Functional notes: Document that independent work should be parallelized, orchestrator review remains required, commits happen task-by-task, and commit trailers must not include assistant co-authorship.
+- Statistical notes: No data or model work.
+- Edge cases: Do not alter copied workflow-kit reference files because they are ignored local context.
+- Files to create/modify: context/AGENTS.md, context/development_rules.md, context/CURSOR_RULES.md, context/DECISIONS.md, context/TASKS.md
+- Artifacts to produce: durable workflow rule update
+- Acceptance criteria: Rules are visible in the agent-facing context files; validation scripts pass; commit has no co-author trailer.
+- Verification commands: `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`
+- Manual QA: Inspect latest commit body after commit.
+- QA notes: Passed task-status validation and secret scan before commit.
+- Attempts: 1
+- Max attempts: 1
+- Attempt log: Recorded user baseline workflow rules in context files.
+- Status: done

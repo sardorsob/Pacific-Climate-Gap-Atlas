@@ -23,3 +23,11 @@ Reason: there is unlikely to be enough target-labeled data for a defensible supe
 Reference workflow kits are copied under `context/agentic-workflow-kit/` and `context/data-science-agentic-workflow-kit/`, but ignored by Git.
 
 Reason: they are useful local context but should not be pushed with this project.
+
+## 2026-06-24: Parallelize Independent Work And Commit Task-By-Task
+
+Independent tasks should run in parallel when dependencies and file ownership allow it. The orchestrator reviews parallel outputs before accepting them.
+
+Commits should be task-oriented and must not include `Co-authored-by` trailers or assistant/agent authorship credit.
+
+Reason: the user wants fast agentic execution without losing review discipline or clean authorship.

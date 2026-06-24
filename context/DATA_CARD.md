@@ -70,6 +70,22 @@ python scripts/make_dataset.py --config configs/datasets.yml
 
 The pipeline uses local files in `data/raw/official/` first. If they are missing, it fetches from the official SDMX CSV API and writes the ignored raw cache.
 
+## TASK-003 Index Artifacts
+
+The baseline index pipeline now writes:
+
+- `artifacts/tables/adaptation_gap_index.csv`: 22 geography-level adaptation-gap scores and missingness fields.
+- `artifacts/tables/adaptation_gap_indicator_trace.csv`: 182 latest-observation indicator trace rows behind the score.
+- `artifacts/provenance/gap_index_summary.json`: method summary, top/bottom ranked geographies, and caveats.
+
+Run command:
+
+```powershell
+python scripts/build_gap_index.py --config configs/gap_index.yml
+```
+
+The score is comparative within the available Pacific geographies. It uses latest observations, percentile ranks, absolute anomaly magnitudes for anomaly datasets, equal weights, and no missing-value imputation.
+
 ## Raw Data Policy
 
 - `data/raw/` is immutable and ignored by Git except for documentation.

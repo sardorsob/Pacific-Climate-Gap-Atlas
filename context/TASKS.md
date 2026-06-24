@@ -75,7 +75,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: methodology
 - Title: Implement Adaptation Gap Index baseline
 - Depends on: TASK-002
-- Assigned agent: unassigned
+- Assigned agent: Codex
 - Contract refs: configs/gap_index.yml, context/ASSUMPTIONS.md
 - Data refs: data/processed
 - Scientific refs: context/DATA_CARD.md
@@ -88,11 +88,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Each published score traces back to included indicators and missingness flags.
 - Verification commands: `python scripts/build_gap_index.py --config configs/gap_index.yml`
 - Manual QA: Review top and bottom ranked geographies for obvious data artifacts.
-- QA notes:
-- Attempts: 0
+- QA notes: Added tested baseline scoring helpers, implemented `scripts/build_gap_index.py`, generated `artifacts/tables/adaptation_gap_index.csv`, generated `artifacts/tables/adaptation_gap_indicator_trace.csv`, and wrote `artifacts/provenance/gap_index_summary.json`. Output includes 22 geographies, 22 scored geographies, 0 insufficient-data geographies, and 182 indicator trace rows. Manual QA reviewed top and bottom ranked geographies; PN, NR, AS, WF, and TV currently rank highest, while PF, FJ, NC, GU, and PG rank lowest under the draft method.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Built latest-observation percentile-rank baseline with anomaly magnitude scoring, no imputation, required climate/adaptation pillars, and trace rows for score auditability.
+- Status: done
 
 ## TASK-004
 - Phase: modeling

@@ -1,0 +1,23 @@
+geo_code,score_status,adaptation_gap_score,climate_pressure_score,capacity_score,raw_gap_difference,available_pillars,missing_pillars,included_indicator_count,missingness_flag
+AS,scored,84.9656,49.675324675324674,18.181818181818183,31.49350649350649,adaptation_capacity climate_signal observed_stress responsibility_context,,7,False
+CK,scored,28.9709,30.167748917748916,42.676767676767675,-12.509018759018758,adaptation_capacity climate_signal observed_stress,,8,False
+FJ,scored,10.4878,59.07738095238095,86.11111111111113,-27.03373015873018,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+FM,scored,58.355,76.4069264069264,65.82491582491582,10.582010582010582,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+GU,scored,19.8699,38.41991341991342,58.080808080808076,-19.660894660894655,adaptation_capacity climate_signal observed_stress responsibility_context,,8,False
+KI,scored,31.0979,47.916666666666664,58.754208754208754,-10.83754208754209,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+MH,scored,65.9545,67.05898268398269,50.5050505050505,16.553932178932193,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+MP,scored,51.1209,45.80627705627706,40.909090909090914,4.897186147186147,adaptation_capacity climate_signal observed_stress responsibility_context,,7,False
+NC,scored,12.7219,47.28084415584416,72.55892255892256,-25.278078403078403,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+NR,scored,88.9403,61.5530303030303,26.936026936026934,34.61700336700336,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+NU,scored,63.2479,32.44047619047619,18.013468013468014,14.427008177008176,adaptation_capacity climate_signal observed_stress,,8,False
+PF,scored,0.0,29.70779220779221,64.98316498316498,-35.27537277537277,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+PG,scored,23.5272,76.73160173160173,93.51851851851852,-16.78691678691679,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+PN,scored,100.0,53.40909090909091,10.1010101010101,43.3080808080808,adaptation_capacity climate_signal,,4,False
+PW,scored,62.6435,64.96212121212122,51.01010101010101,13.952020202020208,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+SB,scored,58.0643,81.06060606060606,70.70707070707071,10.35353535353535,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+TK,scored,55.7364,23.254870129870127,14.73063973063973,8.524230399230397,adaptation_capacity climate_signal observed_stress,,8,False
+TO,scored,26.249,52.69209956709956,67.34006734006734,-14.647967772967775,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+TV,scored,77.7085,66.53138528138527,40.74074074074074,25.79064454064453,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+VU,scored,38.3856,65.25974025974025,70.37037037037037,-5.110630110630112,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False
+WF,scored,82.5555,34.14502164502164,4.545454545454546,29.599567099567096,adaptation_capacity climate_signal observed_stress,,6,False
+WS,scored,36.974,48.99891774891775,55.21885521885522,-6.21993746993747,adaptation_capacity climate_signal observed_stress responsibility_context,,9,False

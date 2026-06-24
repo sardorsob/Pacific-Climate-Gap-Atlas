@@ -43,3 +43,11 @@ Reason: the early repo does not have Python dependencies installed, and the offi
 The processed data pipeline checks `data/raw/official/*.csv` before calling live SDMX URLs. The raw cache is ignored by Git, and manual download filenames are documented in `data/raw/README.md`.
 
 Reason: direct CSV downloads are a practical sprint backup when the official API is slow or client-sensitive, while the pipeline remains reproducible from either raw cache or live source URLs.
+
+## 2026-06-24: Use Latest-Observation Percentile Ranks For Baseline Index
+
+The first Adaptation Gap Index keeps the latest non-missing observation per geography and dataset, ranks each indicator within available Pacific geographies, averages climate/observed-stress ranks into pressure, averages adaptation-capacity ranks into capacity, and rescales pressure minus capacity to 0-100.
+
+Anomaly datasets use absolute anomaly magnitude for scoring while preserving raw values in the trace table.
+
+Reason: this gives us a transparent, auditable baseline quickly without imputation or opaque weighting, while leaving room for sensitivity analysis later.

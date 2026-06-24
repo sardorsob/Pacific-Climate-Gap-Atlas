@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "pipeline_task": "TASK-003",
+  "method": "latest-observation percentile ranks, anomaly magnitudes for anomaly datasets, pressure minus capacity rescaled 0-100",
+  "config": "configs/gap_index.yml",
+  "inputs": {
+    "observations": "data/processed/official_observations.csv"
+  },
+  "outputs": {
+    "index": "artifacts/tables/adaptation_gap_index.csv",
+    "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv"
+  },
+  "geography_count": 22,
+  "scored_geography_count": 22,
+  "insufficient_data_count": 0,
+  "indicator_trace_rows": 182,
+  "top_gap_geographies": [
+    {
+      "geo_code": "PN",
+      "adaptation_gap_score": 100.0,
+      "climate_pressure_score": 53.40909090909091,
+      "capacity_score": 10.1010101010101
+    },
+    {
+      "geo_code": "NR",
+      "adaptation_gap_score": 88.9403,
+      "climate_pressure_score": 61.5530303030303,
+      "capacity_score": 26.936026936026934
+    },
+    {
+      "geo_code": "AS",
+      "adaptation_gap_score": 84.9656,
+      "climate_pressure_score": 49.675324675324674,
+      "capacity_score": 18.181818181818183
+    },
+    {
+      "geo_code": "WF",
+      "adaptation_gap_score": 82.5555,
+      "climate_pressure_score": 34.14502164502164,
+      "capacity_score": 4.545454545454546
+    },
+    {
+      "geo_code": "TV",
+      "adaptation_gap_score": 77.7085,
+      "climate_pressure_score": 66.53138528138527,
+      "capacity_score": 40.74074074074074
+    }
+  ],
+  "lowest_gap_geographies": [
+    {
+      "geo_code": "PF",
+      "adaptation_gap_score": 0.0,
+      "climate_pressure_score": 29.70779220779221,
+      "capacity_score": 64.98316498316498
+    },
+    {
+      "geo_code": "FJ",
+      "adaptation_gap_score": 10.4878,
+      "climate_pressure_score": 59.07738095238095,
+      "capacity_score": 86.11111111111113
+    },
+    {
+      "geo_code": "NC",
+      "adaptation_gap_score": 12.7219,
+      "climate_pressure_score": 47.28084415584416,
+      "capacity_score": 72.55892255892256
+    },
+    {
+      "geo_code": "GU",
+      "adaptation_gap_score": 19.8699,
+      "climate_pressure_score": 38.41991341991342,
+      "capacity_score": 58.080808080808076
+    },
+    {
+      "geo_code": "PG",
+      "adaptation_gap_score": 23.5272,
+      "climate_pressure_score": 76.73160173160173,
+      "capacity_score": 93.51851851851852
+    }
+  ],
+  "caveats": [
+    "Scores are comparative percentile ranks within the available Pacific geographies.",
+    "The baseline uses latest available observations and equal weights within available pillars.",
+    "Anomaly datasets are scored by absolute anomaly magnitude while raw values remain in the trace.",
+    "Directly affected persons are raw counts, not population-normalized exposure.",
+    "Missing values are not imputed; geographies lacking required pillars are not scored.",
+    "Capacity indicators are proxies, not a complete measure of adaptation readiness."
+  ]
+}

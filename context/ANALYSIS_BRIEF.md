@@ -21,6 +21,8 @@ The runner writes:
 - `artifacts/tables/eda_indicator_outliers.csv`
 - `artifacts/tables/eda_country_drivers.csv`
 - `artifacts/tables/eda_country_story_labels.csv`
+- `artifacts/tables/eda_spatial_typologies.csv`
+- `artifacts/tables/eda_subregion_comparisons.csv`
 - `artifacts/tables/index_sensitivity.csv`
 - `artifacts/tables/eda_rank_volatility.csv`
 - `artifacts/tables/eda_trend_profiles.csv`
@@ -32,6 +34,7 @@ The runner writes:
 - The coverage deep dive includes 22 geographies and 9 datasets. PN is the only data-desert geography under the current stricter flag; the more important issue is partial geography coverage by dataset, especially GHG per capita, power generation, monitoring network, directly affected persons, sea-level anomalies, and sea-surface temperature anomalies.
 - Indicator forensics preserve all 182 trace rows: 165 score-input rows and 17 context-only responsibility rows. The first outlier pass flags 11 within-dataset scoring-value outliers, including context-only GHG outliers for NC and PW that should not be described as score drivers.
 - Country driver labels are now joined to trace-level pressure/capacity signals, coverage caveats, and rank-volatility caveats. The story-label table keeps 22 scored geographies: 5 primary, 8 secondary, and 9 context rows. Current primary high-gap geographies are PN, NR, AS, WF, and TV.
+- Spatial typologies are rule-based, not statistical clusters. Polynesia currently has the highest mean adaptation-gap score and the most high-gap/low-capacity cases; Melanesia reads more as high-pressure with higher visible capacity; Micronesia is mostly mixed-gap context with fragile ranks.
 - Rank robustness is a major story risk. The first weight-sensitivity table labeled 12 of 22 geographies fragile, 7 sensitive, and only 3 stable. The deeper leave-one-indicator volatility table labels 19 geographies fragile and 3 sensitive, with a maximum rank range of 15. The atlas should avoid presenting rank order as definitive.
 - The monitoring-gap table now ranks GIS story priorities and flags 4 high-gap plus low-monitoring candidates: PN, NR, AS, and WF. PN and NR have latest monitoring rows reporting 0; AS and WF have no monitoring rows in processed observations, so they should be described as reporting gaps unless independently verified.
 - Trend profiles classify some geographies as stronger and many as mixed. Outlook layers should remain secondary and visibly caveated unless later trend review raises confidence.
@@ -45,13 +48,14 @@ The runner writes:
 - Coverage tables describe official-data availability, not climate or adaptation outcomes. High row counts can reflect long time series rather than stronger spatial coverage.
 - Indicator outliers use 1.5x IQR fences within each dataset on `scoring_value`; raw `latest_value` is preserved separately. Units and denominators differ, so compare within indicators only.
 - Country story labels are descriptive screens for app copy and story selection. They summarize available indicators and should not be read as causal explanations.
+- Spatial typologies are descriptive rule groups. They do not use centroid-distance or land-adjacency inference.
 - Sensitivity scenarios are simple stress tests. Weight shifts and leave-one-indicator tests frame uncertainty; they are not a replacement ranking or a claim about true risk order.
 - Driver labels are useful for exploration and app copy drafts, not final scientific claims.
 
 ## Next Analysis Priorities
 
-1. Add GIS context enrichment so regional claims have a reviewed geography table.
-2. Use coverage findings to decide where missing-data caveats belong in the atlas flow.
+1. Use spatial typologies to decide whether subregion filters should appear as a major atlas interaction.
+2. Complete trend/outlook interpretation before deciding whether future-facing layers deserve app space.
 3. Review primary and secondary country story labels against indicator forensics before choosing atlas exemplar geographies.
 4. Use the rank-volatility table to decide how rankings should appear, if at all, in the visual story.
 5. Decide whether the monitoring-gap lane should be the main atlas story or one diagnostic layer inside a broader adaptation-gap narrative.

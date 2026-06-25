@@ -8,11 +8,13 @@
     "TASK-012",
     "TASK-013",
     "TASK-014",
+    "TASK-015",
     "TASK-017"
   ],
   "config": "configs/eda.yml",
   "inputs": {
     "dataset_profile": "artifacts/tables/dataset_profile.csv",
+    "geography_context": "data/external/geography_context.csv",
     "geography_lookup": "data/processed/geography_lookup.csv",
     "observations": "data/processed/official_observations.csv",
     "gap_index": "artifacts/tables/adaptation_gap_index.csv",
@@ -30,6 +32,8 @@
     "eda_indicator_outliers.csv": "artifacts/tables/eda_indicator_outliers.csv",
     "eda_monitoring_gap.csv": "artifacts/tables/eda_monitoring_gap.csv",
     "eda_rank_volatility.csv": "artifacts/tables/eda_rank_volatility.csv",
+    "eda_spatial_typologies.csv": "artifacts/tables/eda_spatial_typologies.csv",
+    "eda_subregion_comparisons.csv": "artifacts/tables/eda_subregion_comparisons.csv",
     "eda_trend_profiles.csv": "artifacts/tables/eda_trend_profiles.csv",
     "index_sensitivity.csv": "artifacts/tables/index_sensitivity.csv",
     "summary": "artifacts/provenance/eda_summary.json"
@@ -44,6 +48,8 @@
     "eda_indicator_outliers.csv": 11,
     "eda_monitoring_gap.csv": 22,
     "eda_rank_volatility.csv": 22,
+    "eda_spatial_typologies.csv": 22,
+    "eda_subregion_comparisons.csv": 3,
     "eda_trend_profiles.csv": 22,
     "index_sensitivity.csv": 22
   },
@@ -93,6 +99,19 @@
     "reported_zero_count": 3
   },
   "monitoring_story_count": 4,
+  "spatial_typologies": {
+    "row_count": 22,
+    "subregion_count": 3,
+    "typology_counts": {
+      "high gap / high climate pressure": 1,
+      "high gap / low visible capacity": 4,
+      "high pressure / higher visible capacity": 2,
+      "low capacity / monitoring watch": 2,
+      "lower gap / context benchmark": 7,
+      "mixed gap / regional context": 6
+    },
+    "top_mean_gap_subregion": "Polynesia"
+  },
   "rank_fragility": {
     "fragile": 12,
     "sensitive": 7,
@@ -112,6 +131,8 @@
     "Coverage diagnostics are about official data availability, not outcomes.",
     "Indicator outliers are comparable only within the same dataset and unit.",
     "Country story labels are descriptive screens, not causal explanations.",
+    "Spatial typologies are rule-based descriptors, not statistical clusters.",
+    "No centroid-distance or land-adjacency inference is used.",
     "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence."
   ]
 }

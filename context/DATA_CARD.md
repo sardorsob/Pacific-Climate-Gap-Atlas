@@ -143,6 +143,8 @@ The script-first EDA foundation now writes:
 - `artifacts/tables/eda_indicator_outliers.csv`: within-dataset scoring-value outliers using 1.5x IQR fences.
 - `artifacts/tables/eda_country_drivers.csv`: descriptive country driver labels, score ranks, evidence-density labels, pressure/capacity signal counts, and caveat fields.
 - `artifacts/tables/eda_country_story_labels.csv`: compact app-ready story labels, priorities, exemplar flags, and non-causal caveats for scored geographies.
+- `artifacts/tables/eda_spatial_typologies.csv`: rule-based geography typologies joined to GIS context, story labels, coverage flags, and rank caveats.
+- `artifacts/tables/eda_subregion_comparisons.csv`: small-sample subregion summaries with dominant typologies, high-gap counts, coverage/monitoring counts, and caveats.
 - `artifacts/tables/index_sensitivity.csv`: baseline, pressure-heavy, and capacity-heavy rank comparisons.
 - `artifacts/tables/eda_rank_volatility.csv`: weight-shift and leave-one-indicator rank-volatility summary for uncertainty framing.
 - `artifacts/tables/eda_trend_profiles.csv`: trend diagnostic summaries by geography.
@@ -155,7 +157,7 @@ Run command:
 python scripts/run_eda.py --config configs/eda.yml
 ```
 
-This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels are descriptive screens, not causal explanations. Missing monitoring rows are reporting gaps, not confirmed infrastructure absence. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
+This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels and spatial typologies are descriptive screens, not causal explanations. Missing monitoring rows are reporting gaps, not confirmed infrastructure absence. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
 
 ## Raw Data Policy
 

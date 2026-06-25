@@ -21,11 +21,13 @@ from analysis.eda.coverage import (  # noqa: E402
 from analysis.eda.drivers import build_country_drivers, build_country_story_labels  # noqa: E402
 from analysis.eda.indicator_forensics import build_indicator_forensics_tables  # noqa: E402
 from analysis.eda.sensitivity import build_rank_volatility, build_weight_sensitivity  # noqa: E402
+from analysis.eda.spatial_patterns import build_spatial_pattern_tables  # noqa: E402
 from analysis.eda.trends import build_trend_profiles  # noqa: E402
 
 
 DEFAULT_CONFIG = ROOT / "configs" / "eda.yml"
 DEFAULT_DATASET_PROFILE = ROOT / "artifacts" / "tables" / "dataset_profile.csv"
+DEFAULT_GEOGRAPHY_CONTEXT = ROOT / "data" / "external" / "geography_context.csv"
 DEFAULT_LOOKUP = ROOT / "data" / "processed" / "geography_lookup.csv"
 DEFAULT_OBSERVATIONS = ROOT / "data" / "processed" / "official_observations.csv"
 DEFAULT_INDEX = ROOT / "artifacts" / "tables" / "adaptation_gap_index.csv"
@@ -40,6 +42,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--dataset-profile", type=Path, default=DEFAULT_DATASET_PROFILE)
+    parser.add_argument("--geography-context", type=Path, default=DEFAULT_GEOGRAPHY_CONTEXT)
     parser.add_argument("--geography-lookup", type=Path, default=DEFAULT_LOOKUP)
     parser.add_argument("--observations", type=Path, default=DEFAULT_OBSERVATIONS)
     parser.add_argument("--index", type=Path, default=DEFAULT_INDEX)
@@ -55,6 +58,7 @@ def run_eda(
     *,
     config_path: Path,
     dataset_profile_path: Path,
+    geography_context_path: Path,
     lookup_path: Path,
     observations_path: Path,
     index_path: Path,
@@ -68,6 +72,7 @@ def run_eda(
         raise FileNotFoundError(f"EDA config not found: {config_path}")
 
     dataset_profile = pd.read_csv(dataset_profile_path)
+    geography_context = pd.read_csv(geography_context_path)
     lookup = pd.read_csv(lookup_path)
     observations = pd.read_csv(observations_path)
     index = pd.read_csv(index_path)
@@ -102,6 +107,7 @@ def run_eda(
     }
     tables.update(coverage_tables)
     tables.update(build_indicator_forensics_tables(indicator_trace))
+    tables.update(build_spatial_pattern_tables(country_drivers, geography_context))
 
     table_dir.mkdir(parents=True, exist_ok=True)
     for file_name, table in tables.items():
@@ -110,6 +116,7 @@ def run_eda(
     summary = build_summary(
         config_path=config_path,
         dataset_profile_path=dataset_profile_path,
+        geography_context_path=geography_context_path,
         lookup_path=lookup_path,
         observations_path=observations_path,
         index_path=index_path,
@@ -132,6 +139,7 @@ def build_summary(
     *,
     config_path: Path,
     dataset_profile_path: Path,
+    geography_context_path: Path,
     lookup_path: Path,
     observations_path: Path,
     index_path: Path,
@@ -151,6 +159,8 @@ def build_summary(
     indicator_outliers = tables["eda_indicator_outliers.csv"]
     monitoring = tables["eda_monitoring_gap.csv"]
     sensitivity = tables["index_sensitivity.csv"]
+    spatial_typologies = tables["eda_spatial_typologies.csv"]
+    subregion_comparisons = tables["eda_subregion_comparisons.csv"]
     rank_volatility = tables["eda_rank_volatility.csv"]
 
     return {
@@ -163,11 +173,13 @@ def build_summary(
             "TASK-012",
             "TASK-013",
             "TASK-014",
+            "TASK-015",
             "TASK-017",
         ],
         "config": relative_path(config_path),
         "inputs": {
             "dataset_profile": relative_path(dataset_profile_path),
+            "geography_context": relative_path(geography_context_path),
             "geography_lookup": relative_path(lookup_path),
             "observations": relative_path(observations_path),
             "gap_index": relative_path(index_path),
@@ -235,6 +247,23 @@ def build_summary(
             ),
         },
         "monitoring_story_count": int(monitoring["monitoring_story_flag"].sum()),
+        "spatial_typologies": {
+            "row_count": int(len(spatial_typologies)),
+            "subregion_count": int(subregion_comparisons["subregion"].nunique()),
+            "typology_counts": (
+                spatial_typologies["spatial_typology"]
+                .value_counts()
+                .sort_index()
+                .to_dict()
+            ),
+            "top_mean_gap_subregion": str(
+                subregion_comparisons.sort_values(
+                    ["mean_adaptation_gap_score", "subregion"],
+                    ascending=[False, True],
+                    kind="mergesort",
+                ).iloc[0]["subregion"]
+            ),
+        },
         "rank_fragility": sensitivity["robustness_label"].value_counts().sort_index().to_dict(),
         "rank_volatility": (
             rank_volatility["robustness_label"].value_counts().sort_index().to_dict()
@@ -252,6 +281,8 @@ def build_summary(
             "Coverage diagnostics are about official data availability, not outcomes.",
             "Indicator outliers are comparable only within the same dataset and unit.",
             "Country story labels are descriptive screens, not causal explanations.",
+            "Spatial typologies are rule-based descriptors, not statistical clusters.",
+            "No centroid-distance or land-adjacency inference is used.",
             "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.",
         ],
     }
@@ -273,6 +304,7 @@ def main() -> int:
     summary = run_eda(
         config_path=resolve_path(args.config),
         dataset_profile_path=resolve_path(args.dataset_profile),
+        geography_context_path=resolve_path(args.geography_context),
         lookup_path=resolve_path(args.geography_lookup),
         observations_path=resolve_path(args.observations),
         index_path=resolve_path(args.index),

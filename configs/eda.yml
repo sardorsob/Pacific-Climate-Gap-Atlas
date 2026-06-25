@@ -2,6 +2,7 @@ task: TASK-009
 description: Script-first exploratory analysis sprint foundation.
 inputs:
   dataset_profile: artifacts/tables/dataset_profile.csv
+  geography_context: data/external/geography_context.csv
   geography_lookup: data/processed/geography_lookup.csv
   observations: data/processed/official_observations.csv
   gap_index: artifacts/tables/adaptation_gap_index.csv
@@ -16,6 +17,8 @@ outputs:
   indicator_outliers: artifacts/tables/eda_indicator_outliers.csv
   country_drivers: artifacts/tables/eda_country_drivers.csv
   country_story_labels: artifacts/tables/eda_country_story_labels.csv
+  spatial_typologies: artifacts/tables/eda_spatial_typologies.csv
+  subregion_comparisons: artifacts/tables/eda_subregion_comparisons.csv
   index_sensitivity: artifacts/tables/index_sensitivity.csv
   rank_volatility: artifacts/tables/eda_rank_volatility.csv
   trend_profiles: artifacts/tables/eda_trend_profiles.csv
@@ -29,4 +32,6 @@ caveats:
   - Coverage diagnostics describe official-data availability, not outcomes.
   - Indicator outliers are comparable only within the same dataset and unit.
   - Country story labels are descriptive screens, not causal explanations.
+  - Spatial typologies are rule-based descriptors, not statistical clusters.
+  - No centroid-distance or land-adjacency inference is used.
   - Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.

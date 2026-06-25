@@ -364,11 +364,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Typologies are interpretable and documented with caveats.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`
 - Manual QA: Check whether typology labels align with country driver labels.
-- QA notes:
-- Attempts: 0
+- QA notes: Added rule-based `eda_spatial_typologies.csv` and `eda_subregion_comparisons.csv`. Typologies are descriptive, not statistical clusters, and do not use centroid-distance or land-adjacency inference. Current regional read: Polynesia has the highest mean gap and most high-gap/low-capacity cases; Micronesia is mostly mixed-gap context with fragile ranks; Melanesia reads more as high pressure with higher visible capacity.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Implemented in parallel with trend/outlook interpretation, then integrated into the EDA runner and committed separately.
+- Status: done
 
 ## TASK-016
 - Phase: analysis

@@ -2,12 +2,21 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
 
 MONITORING_DATASET_SLUG = "meteorological-monitoring-network"
+HIGH_GAP_THRESHOLD = 66.0
+HIGH_PRESSURE_THRESHOLD = 66.0
+LOW_CAPACITY_THRESHOLD = 33.0
+MONITORING_PROXY_CAVEAT = (
+    "Monitoring count is proxy coverage from latest official monitoring-network rows; "
+    "it is not normalized by population, land area, coastline, station quality, or "
+    "reporting completeness."
+)
 COVERAGE_PILLARS = (
     "adaptation_capacity",
     "climate_signal",
@@ -285,6 +294,9 @@ def build_monitoring_gap(index: pd.DataFrame, observations: pd.DataFrame) -> pd.
     """Compare adaptation-gap scores with latest monitoring-network coverage."""
 
     scored = index.copy()
+    if "geo_code" not in scored.columns:
+        scored["geo_code"] = pd.NA
+    scored["geo_code"] = scored["geo_code"].fillna("").astype(str).str.strip()
     scored["adaptation_gap_score"] = pd.to_numeric(
         scored["adaptation_gap_score"], errors="coerce"
     )
@@ -293,40 +305,187 @@ def build_monitoring_gap(index: pd.DataFrame, observations: pd.DataFrame) -> pd.
     )
     scored["capacity_score"] = pd.to_numeric(scored["capacity_score"], errors="coerce")
 
-    monitoring = observations[observations["dataset_slug"] == MONITORING_DATASET_SLUG].copy()
-    if monitoring.empty:
-        latest = pd.DataFrame(columns=["geo_code", "latest_monitoring_year", "monitoring_count"])
-    else:
-        monitoring["year"] = pd.to_numeric(monitoring["year"], errors="coerce")
-        monitoring["value"] = pd.to_numeric(monitoring["value"], errors="coerce")
-        latest = (
-            monitoring.dropna(subset=["year"])
-            .sort_values(["geo_code", "year"], ascending=[True, False], kind="mergesort")
-            .drop_duplicates("geo_code", keep="first")
-            .rename(columns={"year": "latest_monitoring_year", "value": "monitoring_count"})
-        )[["geo_code", "latest_monitoring_year", "monitoring_count"]]
+    latest = _latest_monitoring_by_geography(observations)
 
     merged = scored.merge(latest, on="geo_code", how="left")
-    merged["monitoring_count"] = merged["monitoring_count"].fillna(0)
-    monitoring_median = merged["monitoring_count"].median()
+    merged = _merge_geography_context(merged)
+    merged["monitoring_observation_count"] = (
+        pd.to_numeric(merged["monitoring_observation_count"], errors="coerce")
+        .fillna(0)
+        .astype(int)
+    )
+    merged["monitoring_count"] = pd.to_numeric(
+        merged["monitoring_count"], errors="coerce"
+    ).fillna(0)
+    monitoring_median = _float_value(merged["monitoring_count"].median())
+    merged["adaptation_gap_rank"] = _rank_scores(
+        merged["adaptation_gap_score"], ascending=False
+    )
+    merged["climate_pressure_rank"] = _rank_scores(
+        merged["climate_pressure_score"], ascending=False
+    )
+    merged["low_capacity_rank"] = _rank_scores(merged["capacity_score"], ascending=True)
+    merged["monitoring_count_rank"] = _rank_scores(merged["monitoring_count"], ascending=True)
+    merged["monitoring_reporting_status"] = merged.apply(
+        _monitoring_reporting_status, axis=1
+    )
+    merged["monitoring_coverage_tier"] = merged.apply(
+        lambda row: _monitoring_coverage_tier(row, monitoring_median), axis=1
+    )
+    merged["adaptation_gap_tier"] = merged["adaptation_gap_score"].apply(
+        _adaptation_gap_tier
+    )
+    merged["climate_pressure_tier"] = merged["climate_pressure_score"].apply(
+        _climate_pressure_tier
+    )
+    merged["capacity_tier"] = merged["capacity_score"].apply(_capacity_tier)
+    merged["monitoring_quadrant"] = merged.apply(
+        lambda row: _monitoring_quadrant(row, monitoring_median), axis=1
+    )
+    merged["pressure_monitoring_quadrant"] = merged.apply(
+        lambda row: _pressure_monitoring_quadrant(row, monitoring_median), axis=1
+    )
+    merged["capacity_monitoring_quadrant"] = merged.apply(
+        lambda row: _capacity_monitoring_quadrant(row, monitoring_median), axis=1
+    )
+    priority = merged.apply(lambda row: _story_priority(row, monitoring_median), axis=1)
+    merged["story_priority_rank"] = priority.apply(lambda value: value[0]).astype(int)
+    merged["story_priority"] = priority.apply(lambda value: value[1])
     merged["monitoring_gap_label"] = merged.apply(
         lambda row: _monitoring_gap_label(row, monitoring_median), axis=1
     )
     merged["monitoring_story_flag"] = (
         merged["monitoring_gap_label"] == "high gap + low monitoring"
     )
+    merged["proxy_caveat"] = MONITORING_PROXY_CAVEAT
+    merged["missing_reporting_caveat"] = merged.apply(
+        _missing_reporting_caveat, axis=1
+    )
 
     columns = [
         "geo_code",
+        "geography_name",
+        "subregion",
         "adaptation_gap_score",
         "climate_pressure_score",
         "capacity_score",
+        "adaptation_gap_rank",
+        "climate_pressure_rank",
+        "low_capacity_rank",
+        "monitoring_count_rank",
+        "first_monitoring_year",
         "latest_monitoring_year",
         "monitoring_count",
+        "monitoring_observation_count",
+        "monitoring_reporting_status",
+        "monitoring_coverage_tier",
+        "adaptation_gap_tier",
+        "climate_pressure_tier",
+        "capacity_tier",
+        "monitoring_quadrant",
+        "pressure_monitoring_quadrant",
+        "capacity_monitoring_quadrant",
+        "story_priority_rank",
+        "story_priority",
         "monitoring_gap_label",
         "monitoring_story_flag",
+        "proxy_caveat",
+        "missing_reporting_caveat",
     ]
-    return merged[columns].sort_values("geo_code", kind="mergesort").reset_index(drop=True)
+    return (
+        merged[columns]
+        .sort_values(
+            [
+                "story_priority_rank",
+                "adaptation_gap_score",
+                "climate_pressure_score",
+                "monitoring_count",
+                "geo_code",
+            ],
+            ascending=[True, False, False, True, True],
+            kind="mergesort",
+        )
+        .reset_index(drop=True)
+    )
+
+
+def _latest_monitoring_by_geography(observations: pd.DataFrame) -> pd.DataFrame:
+    normalized = _normalize_observations(observations)
+    monitoring = normalized[
+        normalized["dataset_slug"] == MONITORING_DATASET_SLUG
+    ].copy()
+    columns = [
+        "geo_code",
+        "first_monitoring_year",
+        "latest_monitoring_year",
+        "monitoring_count",
+        "monitoring_observation_count",
+    ]
+    if monitoring.empty:
+        return pd.DataFrame(columns=columns)
+
+    monitoring["value"] = pd.to_numeric(monitoring["value"], errors="coerce")
+    summary = (
+        monitoring.groupby("geo_code", as_index=False)
+        .agg(
+            first_monitoring_year=("year", "min"),
+            monitoring_observation_count=("geo_code", "size"),
+        )
+        .reset_index(drop=True)
+    )
+    latest = (
+        monitoring.dropna(subset=["year"])
+        .sort_values(["geo_code", "year"], ascending=[True, False], kind="mergesort")
+        .drop_duplicates("geo_code", keep="first")
+        .rename(columns={"year": "latest_monitoring_year", "value": "monitoring_count"})
+    )[["geo_code", "latest_monitoring_year", "monitoring_count"]]
+    return summary.merge(latest, on="geo_code", how="left")[columns]
+
+
+def _merge_geography_context(scored: pd.DataFrame) -> pd.DataFrame:
+    context = _safe_geography_context(_default_geography_context())
+    if context.empty:
+        enriched = scored.copy()
+        enriched["geography_name"] = ""
+        enriched["subregion"] = ""
+        return enriched
+    return scored.merge(context, on="geo_code", how="left").assign(
+        geography_name=lambda frame: frame["geography_name"].fillna(""),
+        subregion=lambda frame: frame["subregion"].fillna(""),
+    )
+
+
+def _default_geography_context() -> pd.DataFrame:
+    context_path = (
+        Path(__file__).resolve().parents[2]
+        / "data"
+        / "external"
+        / "geography_context.csv"
+    )
+    try:
+        return pd.read_csv(context_path)
+    except (FileNotFoundError, OSError, pd.errors.ParserError):
+        return pd.DataFrame()
+
+
+def _safe_geography_context(context: pd.DataFrame) -> pd.DataFrame:
+    columns = ["geo_code", "geography_name", "subregion"]
+    if context.empty or "geo_code" not in context.columns:
+        return pd.DataFrame(columns=columns)
+    normalized = context.copy()
+    normalized["geo_code"] = normalized["geo_code"].fillna("").astype(str).str.strip()
+    if "geography_name" not in normalized.columns:
+        normalized["geography_name"] = ""
+    if "pacific_subregion" in normalized.columns:
+        normalized = normalized.rename(columns={"pacific_subregion": "subregion"})
+    elif "subregion" not in normalized.columns:
+        normalized["subregion"] = ""
+
+    safe = normalized[~normalized["geo_code"].duplicated(keep=False)].copy()
+    safe = safe[safe["geo_code"] != ""]
+    for column in columns:
+        safe[column] = safe[column].fillna("").astype(str).str.strip()
+    return safe[columns].reset_index(drop=True)
 
 
 def _normalize_observations(observations: pd.DataFrame) -> pd.DataFrame:
@@ -543,9 +702,88 @@ def _data_desert_flag(row: pd.Series) -> bool:
     return dataset_count < 5 or row_count < 100
 
 
+def _rank_scores(values: pd.Series, *, ascending: bool) -> pd.Series:
+    return values.rank(method="min", ascending=ascending).astype("Int64")
+
+
+def _monitoring_reporting_status(row: pd.Series) -> str:
+    observation_count = int(_float_value(row.get("monitoring_observation_count")))
+    if observation_count == 0:
+        return "missing_monitoring_dataset_row"
+    if _float_value(row.get("monitoring_count")) == 0:
+        return "reported_zero_latest_count"
+    return "reported_positive_latest_count"
+
+
+def _monitoring_coverage_tier(row: pd.Series, monitoring_median: float) -> str:
+    status = _monitoring_reporting_status(row)
+    if status == "missing_monitoring_dataset_row":
+        return "missing_reporting"
+    if status == "reported_zero_latest_count":
+        return "reported_zero_proxy_coverage"
+    if _low_monitoring(row, monitoring_median):
+        return "low_proxy_coverage"
+    return "visible_proxy_coverage"
+
+
+def _adaptation_gap_tier(value: Any) -> str:
+    if _float_value(value) >= HIGH_GAP_THRESHOLD:
+        return "high_gap"
+    return "lower_gap"
+
+
+def _climate_pressure_tier(value: Any) -> str:
+    if _float_value(value) >= HIGH_PRESSURE_THRESHOLD:
+        return "high_pressure"
+    return "lower_pressure"
+
+
+def _capacity_tier(value: Any) -> str:
+    if _float_value(value) <= LOW_CAPACITY_THRESHOLD:
+        return "low_capacity"
+    return "higher_capacity"
+
+
+def _monitoring_quadrant(row: pd.Series, monitoring_median: float) -> str:
+    gap_label = "high gap" if _high_gap(row) else "lower gap"
+    monitoring_label = "low monitoring" if _low_monitoring(row, monitoring_median) else (
+        "visible monitoring"
+    )
+    return f"{gap_label} / {monitoring_label}"
+
+
+def _pressure_monitoring_quadrant(row: pd.Series, monitoring_median: float) -> str:
+    pressure_label = "high pressure" if _high_pressure(row) else "lower pressure"
+    monitoring_label = "low monitoring" if _low_monitoring(row, monitoring_median) else (
+        "visible monitoring"
+    )
+    return f"{pressure_label} / {monitoring_label}"
+
+
+def _capacity_monitoring_quadrant(row: pd.Series, monitoring_median: float) -> str:
+    capacity_label = "low capacity" if _low_capacity(row) else "higher capacity"
+    monitoring_label = "low monitoring" if _low_monitoring(row, monitoring_median) else (
+        "visible monitoring"
+    )
+    return f"{capacity_label} / {monitoring_label}"
+
+
+def _story_priority(row: pd.Series, monitoring_median: float) -> tuple[int, str]:
+    low_monitoring = _low_monitoring(row, monitoring_median)
+    if _high_gap(row) and low_monitoring:
+        return 1, "priority_1_high_gap_low_monitoring"
+    if (_high_pressure(row) or _low_capacity(row)) and low_monitoring:
+        return 2, "priority_2_pressure_or_capacity_monitoring_gap"
+    if _high_gap(row):
+        return 3, "priority_3_high_gap_visible_monitoring"
+    if low_monitoring:
+        return 4, "priority_4_monitoring_gap_context"
+    return 5, "priority_5_monitoring_context"
+
+
 def _monitoring_gap_label(row: pd.Series, monitoring_median: float) -> str:
-    high_gap = _float_value(row.get("adaptation_gap_score")) >= 66
-    low_monitoring = _float_value(row.get("monitoring_count")) <= monitoring_median
+    high_gap = _high_gap(row)
+    low_monitoring = _low_monitoring(row, monitoring_median)
     if high_gap and low_monitoring:
         return "high gap + low monitoring"
     if high_gap:
@@ -553,6 +791,41 @@ def _monitoring_gap_label(row: pd.Series, monitoring_median: float) -> str:
     if low_monitoring:
         return "low monitoring"
     return "monitoring less urgent"
+
+
+def _missing_reporting_caveat(row: pd.Series) -> str:
+    status = row.get("monitoring_reporting_status")
+    if status == "missing_monitoring_dataset_row":
+        return (
+            "No meteorological-monitoring-network rows in processed observations; "
+            "treat the zero proxy count as a reporting gap, not confirmed absence "
+            "of infrastructure."
+        )
+    if status == "reported_zero_latest_count":
+        return (
+            "Latest meteorological-monitoring-network row reports 0; verify source "
+            "semantics before interpreting this as no monitoring infrastructure."
+        )
+    return (
+        "Latest meteorological-monitoring-network row is present; count may still "
+        "omit station quality, continuity, siting, and reporting completeness."
+    )
+
+
+def _high_gap(row: pd.Series) -> bool:
+    return _float_value(row.get("adaptation_gap_score")) >= HIGH_GAP_THRESHOLD
+
+
+def _high_pressure(row: pd.Series) -> bool:
+    return _float_value(row.get("climate_pressure_score")) >= HIGH_PRESSURE_THRESHOLD
+
+
+def _low_capacity(row: pd.Series) -> bool:
+    return _float_value(row.get("capacity_score")) <= LOW_CAPACITY_THRESHOLD
+
+
+def _low_monitoring(row: pd.Series, monitoring_median: float) -> bool:
+    return _float_value(row.get("monitoring_count")) <= monitoring_median
 
 
 def _float_value(value: Any) -> float:

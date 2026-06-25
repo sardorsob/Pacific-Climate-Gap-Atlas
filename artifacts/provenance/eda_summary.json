@@ -7,7 +7,8 @@
     "TASK-011",
     "TASK-012",
     "TASK-013",
-    "TASK-014"
+    "TASK-014",
+    "TASK-017"
   ],
   "config": "configs/eda.yml",
   "inputs": {
@@ -78,6 +79,19 @@
     "context_only_count": 17,
     "outlier_count": 11
   },
+  "monitoring_gap": {
+    "row_count": 22,
+    "story_count": 4,
+    "priority_counts": {
+      "priority_1_high_gap_low_monitoring": 4,
+      "priority_2_pressure_or_capacity_monitoring_gap": 3,
+      "priority_3_high_gap_visible_monitoring": 1,
+      "priority_4_monitoring_gap_context": 5,
+      "priority_5_monitoring_context": 9
+    },
+    "missing_reporting_count": 4,
+    "reported_zero_count": 3
+  },
   "monitoring_story_count": 4,
   "rank_fragility": {
     "fragile": 12,
@@ -97,6 +111,7 @@
     "Leave-one-indicator rank volatility frames uncertainty, not a new ranking.",
     "Coverage diagnostics are about official data availability, not outcomes.",
     "Indicator outliers are comparable only within the same dataset and unit.",
-    "Country story labels are descriptive screens, not causal explanations."
+    "Country story labels are descriptive screens, not causal explanations.",
+    "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence."
   ]
 }

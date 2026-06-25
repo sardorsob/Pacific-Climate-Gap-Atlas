@@ -19,5 +19,6 @@
 - Completed `TASK-011` with geography-level and dataset-level data coverage tables, identifying PN as the current data-desert outlier and several partial-coverage datasets.
 - Completed `TASK-012` with indicator forensics preserving all trace rows and flagging within-dataset outliers for careful story evidence.
 - Completed `TASK-013` with country story labels that join pressure/capacity signals, coverage caveats, rank-volatility caveats, and non-causal interpretation notes.
+- Completed `TASK-017` with monitoring-gap GIS story priorities and caveats distinguishing missing rows from reported-zero monitoring counts.
 
 AI tools used: Codex.

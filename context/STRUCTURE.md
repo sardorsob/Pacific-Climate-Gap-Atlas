@@ -78,7 +78,7 @@
 - `artifacts/tables/index_sensitivity.csv`: simple pressure-heavy/capacity-heavy rank sensitivity table.
 - `artifacts/tables/eda_rank_volatility.csv`: rank-volatility table combining weight shifts and leave-one-indicator stress tests.
 - `artifacts/tables/eda_trend_profiles.csv`: trend diagnostic summaries by geography.
-- `artifacts/tables/eda_monitoring_gap.csv`: monitoring coverage compared with adaptation-gap scores.
+- `artifacts/tables/eda_monitoring_gap.csv`: monitoring proxy coverage compared with adaptation-gap scores, pressure/capacity ranks, GIS story quadrants, and reporting caveats.
 - `artifacts/provenance/dataset_pipeline_summary.json`: processed pipeline provenance, row counts, and source hashes.
 - `artifacts/provenance/gap_index_summary.json`: index method summary, score counts, and top/bottom geography review set.
 - `artifacts/provenance/outlook_summary.json`: outlook metrics, caveats, inputs, and outputs.

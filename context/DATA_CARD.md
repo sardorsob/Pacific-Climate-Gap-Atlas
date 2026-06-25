@@ -146,7 +146,7 @@ The script-first EDA foundation now writes:
 - `artifacts/tables/index_sensitivity.csv`: baseline, pressure-heavy, and capacity-heavy rank comparisons.
 - `artifacts/tables/eda_rank_volatility.csv`: weight-shift and leave-one-indicator rank-volatility summary for uncertainty framing.
 - `artifacts/tables/eda_trend_profiles.csv`: trend diagnostic summaries by geography.
-- `artifacts/tables/eda_monitoring_gap.csv`: monitoring coverage compared with adaptation-gap and pressure/capacity scores.
+- `artifacts/tables/eda_monitoring_gap.csv`: monitoring proxy coverage compared with adaptation-gap and pressure/capacity scores, including GIS story quadrants, reporting status, and missing-reporting caveats.
 - `artifacts/provenance/eda_summary.json`: input/output paths, row counts, early signal counts, and caveats.
 
 Run command:
@@ -155,7 +155,7 @@ Run command:
 python scripts/run_eda.py --config configs/eda.yml
 ```
 
-This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels are descriptive screens, not causal explanations. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
+This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels are descriptive screens, not causal explanations. Missing monitoring rows are reporting gaps, not confirmed infrastructure absence. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
 
 ## Raw Data Policy
 

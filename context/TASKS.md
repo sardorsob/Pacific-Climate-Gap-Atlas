@@ -410,11 +410,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: High-gap low-monitoring geographies are identified with caveats.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`
 - Manual QA: Review monitoring values against `meteorological-monitoring-network` rows.
-- QA notes:
-- Attempts: 0
+- QA notes: Expanded `eda_monitoring_gap.csv` with geography names, subregions, ranks, monitoring reporting status, coverage tiers, GIS story quadrants, story priorities, and explicit proxy/reporting caveats. Priority high-gap low-monitoring candidates are PN, NR, AS, and WF. PN and NR have latest monitoring rows reporting 0; AS and WF have no monitoring rows, so describe them as reporting gaps unless externally verified.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Implemented in parallel with indicator forensics and country story labels, then regenerated through the EDA runner and committed separately.
+- Status: done
 
 ## TASK-018
 - Phase: analysis

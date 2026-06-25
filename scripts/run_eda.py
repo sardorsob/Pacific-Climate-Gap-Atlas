@@ -157,7 +157,14 @@ def build_summary(
         "schema_version": 1,
         "pipeline_task": "TASK-009",
         "status": "eda_foundation_ready",
-        "pipeline_tasks": ["TASK-009", "TASK-011", "TASK-012", "TASK-013", "TASK-014"],
+        "pipeline_tasks": [
+            "TASK-009",
+            "TASK-011",
+            "TASK-012",
+            "TASK-013",
+            "TASK-014",
+            "TASK-017",
+        ],
         "config": relative_path(config_path),
         "inputs": {
             "dataset_profile": relative_path(dataset_profile_path),
@@ -208,6 +215,25 @@ def build_summary(
             ),
             "outlier_count": int(len(indicator_outliers)),
         },
+        "monitoring_gap": {
+            "row_count": int(len(monitoring)),
+            "story_count": int(monitoring["monitoring_story_flag"].sum()),
+            "priority_counts": (
+                monitoring["story_priority"].value_counts().sort_index().to_dict()
+            ),
+            "missing_reporting_count": int(
+                (
+                    monitoring["monitoring_reporting_status"]
+                    == "missing_monitoring_dataset_row"
+                ).sum()
+            ),
+            "reported_zero_count": int(
+                (
+                    monitoring["monitoring_reporting_status"]
+                    == "reported_zero_latest_count"
+                ).sum()
+            ),
+        },
         "monitoring_story_count": int(monitoring["monitoring_story_flag"].sum()),
         "rank_fragility": sensitivity["robustness_label"].value_counts().sort_index().to_dict(),
         "rank_volatility": (
@@ -226,6 +252,7 @@ def build_summary(
             "Coverage diagnostics are about official data availability, not outcomes.",
             "Indicator outliers are comparable only within the same dataset and unit.",
             "Country story labels are descriptive screens, not causal explanations.",
+            "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.",
         ],
     }
 

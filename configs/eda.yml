@@ -29,3 +29,4 @@ caveats:
   - Coverage diagnostics describe official-data availability, not outcomes.
   - Indicator outliers are comparable only within the same dataset and unit.
   - Country story labels are descriptive screens, not causal explanations.
+  - Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.

@@ -18,7 +18,7 @@ from analysis.eda.coverage import (  # noqa: E402
     build_monitoring_gap,
     build_task011_coverage_tables,
 )
-from analysis.eda.drivers import build_country_drivers  # noqa: E402
+from analysis.eda.drivers import build_country_drivers, build_country_story_labels  # noqa: E402
 from analysis.eda.indicator_forensics import build_indicator_forensics_tables  # noqa: E402
 from analysis.eda.sensitivity import build_rank_volatility, build_weight_sensitivity  # noqa: E402
 from analysis.eda.trends import build_trend_profiles  # noqa: E402
@@ -75,15 +75,32 @@ def run_eda(
     trend_diagnostics = pd.read_csv(trend_diagnostics_path)
     outlook = pd.read_csv(outlook_path)
 
+    coverage_tables = build_task011_coverage_tables(observations, lookup, dataset_profile)
+    coverage_by_geography = coverage_tables["eda_coverage_by_geography.csv"]
+    rank_volatility = build_rank_volatility(index, indicator_trace)
+    country_drivers = build_country_drivers(
+        index,
+        indicator_trace=indicator_trace,
+        coverage_by_geography=coverage_by_geography,
+        rank_volatility=rank_volatility,
+    )
+    country_story_labels = build_country_story_labels(
+        index,
+        indicator_trace=indicator_trace,
+        coverage_by_geography=coverage_by_geography,
+        rank_volatility=rank_volatility,
+    )
+
     tables = {
         "eda_data_coverage.csv": build_data_coverage(lookup),
-        "eda_country_drivers.csv": build_country_drivers(index),
+        "eda_country_drivers.csv": country_drivers,
+        "eda_country_story_labels.csv": country_story_labels,
         "index_sensitivity.csv": build_weight_sensitivity(index),
-        "eda_rank_volatility.csv": build_rank_volatility(index, indicator_trace),
+        "eda_rank_volatility.csv": rank_volatility,
         "eda_trend_profiles.csv": build_trend_profiles(trend_diagnostics, outlook),
         "eda_monitoring_gap.csv": build_monitoring_gap(index, observations),
     }
-    tables.update(build_task011_coverage_tables(observations, lookup, dataset_profile))
+    tables.update(coverage_tables)
     tables.update(build_indicator_forensics_tables(indicator_trace))
 
     table_dir.mkdir(parents=True, exist_ok=True)
@@ -129,6 +146,7 @@ def build_summary(
     coverage_by_geography = tables["eda_coverage_by_geography.csv"]
     coverage_by_dataset = tables["eda_coverage_by_dataset.csv"]
     drivers = tables["eda_country_drivers.csv"]
+    story_labels = tables["eda_country_story_labels.csv"]
     indicator_forensics = tables["eda_indicator_forensics.csv"]
     indicator_outliers = tables["eda_indicator_outliers.csv"]
     monitoring = tables["eda_monitoring_gap.csv"]
@@ -139,7 +157,7 @@ def build_summary(
         "schema_version": 1,
         "pipeline_task": "TASK-009",
         "status": "eda_foundation_ready",
-        "pipeline_tasks": ["TASK-009", "TASK-011", "TASK-012", "TASK-014"],
+        "pipeline_tasks": ["TASK-009", "TASK-011", "TASK-012", "TASK-013", "TASK-014"],
         "config": relative_path(config_path),
         "inputs": {
             "dataset_profile": relative_path(dataset_profile_path),
@@ -172,6 +190,14 @@ def build_summary(
             ),
         },
         "driver_labels": drivers["driver_label"].value_counts().sort_index().to_dict(),
+        "country_story_labels": {
+            "row_count": int(len(story_labels)),
+            "primary_count": int((story_labels["story_priority"] == "primary").sum()),
+            "secondary_count": int((story_labels["story_priority"] == "secondary").sum()),
+            "context_count": int((story_labels["story_priority"] == "context").sum()),
+            "monitoring_missing_count": int(story_labels["monitoring_missing"].sum()),
+            "data_desert_count": int(story_labels["data_desert_flag"].sum()),
+        },
         "indicator_forensics": {
             "trace_row_count": int(len(indicator_forensics)),
             "score_input_count": int(
@@ -199,6 +225,7 @@ def build_summary(
             "Leave-one-indicator rank volatility frames uncertainty, not a new ranking.",
             "Coverage diagnostics are about official data availability, not outcomes.",
             "Indicator outliers are comparable only within the same dataset and unit.",
+            "Country story labels are descriptive screens, not causal explanations.",
         ],
     }
 

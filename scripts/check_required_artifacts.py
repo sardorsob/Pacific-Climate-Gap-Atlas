@@ -44,6 +44,7 @@ REQUIRED_PATHS = [
     "artifacts/tables/eda_coverage_by_dataset.csv",
     "artifacts/tables/eda_indicator_forensics.csv",
     "artifacts/tables/eda_indicator_outliers.csv",
+    "artifacts/tables/eda_country_story_labels.csv",
 ]
 
 

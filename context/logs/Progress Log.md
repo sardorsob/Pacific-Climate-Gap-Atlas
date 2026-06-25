@@ -18,5 +18,6 @@
 - Completed `TASK-010` with descriptive GIS context for all scored geographies, source provenance, and boundary-neutral caveats.
 - Completed `TASK-011` with geography-level and dataset-level data coverage tables, identifying PN as the current data-desert outlier and several partial-coverage datasets.
 - Completed `TASK-012` with indicator forensics preserving all trace rows and flagging within-dataset outliers for careful story evidence.
+- Completed `TASK-013` with country story labels that join pressure/capacity signals, coverage caveats, rank-volatility caveats, and non-causal interpretation notes.
 
 AI tools used: Codex.

@@ -74,6 +74,7 @@
 - `artifacts/tables/eda_indicator_forensics.csv`: indicator trace rows with score roles, rank context, and outlier fields.
 - `artifacts/tables/eda_indicator_outliers.csv`: subset of indicator forensics rows flagged by within-dataset outlier checks.
 - `artifacts/tables/eda_country_drivers.csv`: country-level descriptive driver labels and evidence density.
+- `artifacts/tables/eda_country_story_labels.csv`: app-ready country story labels, priority classes, exemplar flags, and caveat fields.
 - `artifacts/tables/index_sensitivity.csv`: simple pressure-heavy/capacity-heavy rank sensitivity table.
 - `artifacts/tables/eda_rank_volatility.csv`: rank-volatility table combining weight shifts and leave-one-indicator stress tests.
 - `artifacts/tables/eda_trend_profiles.csv`: trend diagnostic summaries by geography.

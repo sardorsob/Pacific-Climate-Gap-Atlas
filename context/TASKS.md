@@ -318,11 +318,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Every scored geography has a reason label, pressure/capacity summary, and evidence-count fields.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`
 - Manual QA: Review highest and lowest five geographies for plausible labels.
-- QA notes:
-- Attempts: 0
+- QA notes: Added enriched country drivers and `eda_country_story_labels.csv` for all 22 scored geographies. The table currently splits into 5 primary, 8 secondary, and 9 context rows; primary high-gap geographies are PN, NR, AS, WF, and TV. Labels include pressure/capacity summaries, trace signal counts, coverage flags, rank-volatility caveats, and explicit non-causal caveats.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Implemented in parallel with indicator forensics and monitoring-gap analysis, then integrated into the EDA runner and committed separately.
+- Status: done
 
 ## TASK-014
 - Phase: analysis

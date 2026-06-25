@@ -15,6 +15,7 @@ outputs:
   indicator_forensics: artifacts/tables/eda_indicator_forensics.csv
   indicator_outliers: artifacts/tables/eda_indicator_outliers.csv
   country_drivers: artifacts/tables/eda_country_drivers.csv
+  country_story_labels: artifacts/tables/eda_country_story_labels.csv
   index_sensitivity: artifacts/tables/index_sensitivity.csv
   rank_volatility: artifacts/tables/eda_rank_volatility.csv
   trend_profiles: artifacts/tables/eda_trend_profiles.csv
@@ -27,3 +28,4 @@ caveats:
   - Rank volatility is uncertainty framing, not a replacement ranking.
   - Coverage diagnostics describe official-data availability, not outcomes.
   - Indicator outliers are comparable only within the same dataset and unit.
+  - Country story labels are descriptive screens, not causal explanations.

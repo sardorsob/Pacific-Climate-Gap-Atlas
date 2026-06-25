@@ -6,6 +6,7 @@
     "TASK-009",
     "TASK-011",
     "TASK-012",
+    "TASK-013",
     "TASK-014"
   ],
   "config": "configs/eda.yml",
@@ -20,6 +21,7 @@
   },
   "outputs": {
     "eda_country_drivers.csv": "artifacts/tables/eda_country_drivers.csv",
+    "eda_country_story_labels.csv": "artifacts/tables/eda_country_story_labels.csv",
     "eda_coverage_by_dataset.csv": "artifacts/tables/eda_coverage_by_dataset.csv",
     "eda_coverage_by_geography.csv": "artifacts/tables/eda_coverage_by_geography.csv",
     "eda_data_coverage.csv": "artifacts/tables/eda_data_coverage.csv",
@@ -33,6 +35,7 @@
   },
   "row_counts": {
     "eda_country_drivers.csv": 22,
+    "eda_country_story_labels.csv": 22,
     "eda_coverage_by_dataset.csv": 9,
     "eda_coverage_by_geography.csv": 22,
     "eda_data_coverage.csv": 22,
@@ -61,6 +64,14 @@
     "lower relative gap": 7,
     "mixed signals": 4
   },
+  "country_story_labels": {
+    "row_count": 22,
+    "primary_count": 5,
+    "secondary_count": 8,
+    "context_count": 9,
+    "monitoring_missing_count": 4,
+    "data_desert_count": 1
+  },
   "indicator_forensics": {
     "trace_row_count": 182,
     "score_input_count": 165,
@@ -85,6 +96,7 @@
     "Sensitivity scenarios are simple stress tests for narrative confidence.",
     "Leave-one-indicator rank volatility frames uncertainty, not a new ranking.",
     "Coverage diagnostics are about official data availability, not outcomes.",
-    "Indicator outliers are comparable only within the same dataset and unit."
+    "Indicator outliers are comparable only within the same dataset and unit.",
+    "Country story labels are descriptive screens, not causal explanations."
   ]
 }

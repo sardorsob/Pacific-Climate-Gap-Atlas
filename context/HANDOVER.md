@@ -88,7 +88,12 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-017 monitoring-gap outputs identify PN, NR, AS, and WF as high-gap low-monitoring candidates. AS and WF have missing monitoring rows, so describe them as reporting gaps unless externally verified.
 - TASK-019 is planned only. JSD/KL outputs do not exist yet; do not design the similarity layer as shipped until real artifacts and caveats are generated.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.
-- TASK-022 belongs to Claude, but Claude must not stage, commit, push, change data methodology, or alter generated artifacts.
-- TASK-024 is required before accepting any Claude visual revision.
+- TASK-022 belonged to Claude, but Claude did not stage, commit, push, change data methodology, or alter generated artifacts.
+- TASK-024 QA is complete for the accepted TASK-022 revision. Future Claude visual changes should go through the same Codex QA gate before commit.
 - TASK-021 found a concrete first-fix issue: the desktop legend is hidden inside a closed `<details>` disclosure whose summary is hidden.
 - The copied reference workflow kits are intentionally ignored under `context/`.
+- TASK-022 (Claude visual revision) is accepted after Codex `TASK-024` QA. Only scoped app mockup files changed: `App.tsx`, `components/map/AtlasMap.tsx`, `components/panels/CountryPanel.tsx`, `mock/mockAtlasData.ts`, and `styles/base.css`, plus context status notes. No package files, context methodology, generated artifacts, raw data, or git history were touched by Claude.
+- After TASK-022, the desktop default no longer shows a detail panel; the panel is a right-side overlay (bottom sheet on mobile) that opens on selection or the data-quiet view, and the thesis lives in the map header. The desktop legend is now visible by default (the closed-`<details>` P0 bug is fixed).
+- Codex QA fixes applied before commit: render the detail panel only when selection or data-quiet mode is active, open the data-quiet sheet when that overlay is toggled, encode graticule degree labels with ASCII source escapes, and normalize CSS letter spacing to `0`.
+- Remaining owner-review notes: the mobile top toolbar is horizontally scrollable by design; confirm visual taste and discoverability in the next browser review. Codex did not capture fresh screenshots during QA because local Playwright import was blocked by filesystem permissions, so the acceptance is based on source review, app build, validation checks, and Claude's reported viewport review. The "vs Tuvalu" comparator is a label-only suggestion, not a shipped JSD layer.
+- The mockup still relies on the static `app/src/mock/` fixture; it is not wired to `app/public/data/*` yet (TASK-023).

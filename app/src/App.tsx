@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BookOpen, ChevronUp, Compass } from "lucide-react";
+import { BookOpen, ChevronUp, Compass, Layers } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
 import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
@@ -10,12 +10,7 @@ import { TourStepper, type TourStep } from "./components/TourStepper";
 import { atlasLayers } from "./lib/layers";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
-import {
-  ATLAS_GEOS,
-  COMPARE_SUGGESTION,
-  DEFAULT_SELECTED,
-  getGeo,
-} from "./mock/mockAtlasData";
+import { ATLAS_GEOS, COMPARE_SUGGESTION, getGeo } from "./mock/mockAtlasData";
 
 type StepState = {
   score?: ScoreKey;
@@ -75,6 +70,8 @@ const TOUR: (TourStep & { state: StepState })[] = [
   },
 ];
 
+const PRIORITY_COUNT = ATLAS_GEOS.filter((g) => g.storyPriority === 1).length;
+
 export function App() {
   const [activeScore, setActiveScore] = useState<ScoreKey>("gap");
   const [viewMode, setViewMode] = useState<ViewMode>("default");
@@ -84,9 +81,11 @@ export function App() {
   const [tourOpen, setTourOpen] = useState(false);
   const [tourIndex, setTourIndex] = useState(0);
   const [sheetExpanded, setSheetExpanded] = useState(false);
+  const [legendOpen, setLegendOpen] = useState(false);
 
   const activeLayer = atlasLayers.find((l) => l.id === activeScore) ?? atlasLayers[0];
   const selectedGeo = selectedCode ? getGeo(selectedCode) ?? null : null;
+  const panelOpen = selectedGeo !== null || viewMode === "coverage";
 
   const meta = outlookOn
     ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
@@ -96,7 +95,6 @@ export function App() {
         ? { title: "Rank uncertainty", caveat: "Shown so the gap map cannot be read as a fixed scoreboard." }
         : { title: activeLayer.label, caveat: activeLayer.caveat };
 
-  // Apply a tour step's intended state.
   useEffect(() => {
     if (!tourOpen) return;
     const s = TOUR[tourIndex].state;
@@ -105,7 +103,7 @@ export function App() {
     if (s.outlook !== undefined) setOutlookOn(s.outlook);
     if (s.selected !== undefined) {
       setSelectedCode(s.selected);
-      if (s.selected) setSheetExpanded(true);
+      setSheetExpanded(Boolean(s.selected) || s.view === "coverage");
     }
   }, [tourOpen, tourIndex]);
 
@@ -123,7 +121,12 @@ export function App() {
   const handleViewMode = (mode: ViewMode) => {
     setViewMode(mode);
     if (mode !== "default") setOutlookOn(false);
-    if (mode === "coverage") setSelectedCode(null);
+    if (mode === "coverage") {
+      setSelectedCode(null);
+      setSheetExpanded(true);
+    } else if (viewMode === "coverage") {
+      setSheetExpanded(false);
+    }
   };
 
   const handleToggleOutlook = () => {
@@ -134,6 +137,12 @@ export function App() {
     });
   };
 
+  const closePanel = () => {
+    setSelectedCode(null);
+    setSheetExpanded(false);
+    if (viewMode === "coverage") setViewMode("default");
+  };
+
   const panelContent =
     viewMode === "coverage" && !selectedGeo ? (
       <DataQuietCallout onPick={handleSelect} />
@@ -141,17 +150,14 @@ export function App() {
       <CountryPanel
         geo={selectedGeo}
         compareCode={COMPARE_SUGGESTION}
-        onClose={() => {
-          setSelectedCode(null);
-          setSheetExpanded(false);
-        }}
+        onClose={closePanel}
         onCompare={handleSelect}
         onOpenMethod={() => setDrawerOpen(true)}
       />
     );
 
   return (
-    <div className="atlas-shell">
+    <div className={`atlas-shell${panelOpen ? " atlas-shell--panel" : ""}`}>
       <div className="atlas-map-region">
         <AtlasMap
           geos={ATLAS_GEOS}
@@ -159,22 +165,36 @@ export function App() {
           viewMode={viewMode}
           outlookOn={outlookOn}
           selectedCode={selectedCode}
+          compareCode={COMPARE_SUGGESTION}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}
         />
 
         <header className="map-header">
           <p className="map-header__wordmark">
-            <Compass aria-hidden="true" size={16} /> Pacific Adaptation Gap Atlas
-          </p>
-          <p className="map-header__thesis">
-            Where climate pressure and visible capacity are unevenly matched - and so is the official
-            data behind the comparison.
+            <Compass aria-hidden="true" size={15} /> Pacific Adaptation Gap Atlas
           </p>
           <p className="map-header__layer">
             {meta.title}
             <span className="map-header__caveat">{meta.caveat}</span>
           </p>
+          <div className="map-header__actions">
+            {!tourOpen && (
+              <button
+                type="button"
+                className="ghost-btn"
+                onClick={() => {
+                  setTourOpen(true);
+                  setTourIndex(0);
+                }}
+              >
+                <Compass aria-hidden="true" size={14} /> Tour
+              </button>
+            )}
+            <button type="button" className="ghost-btn" onClick={() => setDrawerOpen(true)}>
+              <BookOpen aria-hidden="true" size={14} /> Methods &amp; sources
+            </button>
+          </div>
           <p className="map-header__concept">Concept for review - not final or approved.</p>
         </header>
 
@@ -190,29 +210,28 @@ export function App() {
           />
         </div>
 
-        <div className="dock dock--legend">
-          <details className="legend-disclosure">
-            <summary>Legend &amp; encoding key</summary>
-            <MapLegend activeScore={activeScore} viewMode={viewMode} outlookOn={outlookOn} />
-          </details>
+        <div className="dock dock--metrics" role="status">
+          <span className="metric">
+            <b>{ATLAS_GEOS.length}</b> geographies
+          </span>
+          <span className="metric metric--flag">
+            <b>{PRIORITY_COUNT}</b> high-gap / low-monitoring
+          </span>
+          {!panelOpen && <span className="metric metric--hint">Select a point to inspect</span>}
         </div>
 
-        <div className="dock dock--actions">
-          {!tourOpen && (
-            <button
-              type="button"
-              className="action-btn"
-              onClick={() => {
-                setTourOpen(true);
-                setTourIndex(0);
-              }}
-            >
-              <Compass aria-hidden="true" size={16} /> Take the tour
-            </button>
-          )}
-          <button type="button" className="action-btn" onClick={() => setDrawerOpen(true)}>
-            <BookOpen aria-hidden="true" size={16} /> Methodology &amp; sources
+        <div className="dock dock--legend">
+          <button
+            type="button"
+            className="legend-toggle"
+            aria-expanded={legendOpen}
+            onClick={() => setLegendOpen((v) => !v)}
+          >
+            <Layers aria-hidden="true" size={14} /> Legend
           </button>
+          <div className="legend-body" data-open={legendOpen ? "true" : "false"}>
+            <MapLegend activeScore={activeScore} viewMode={viewMode} outlookOn={outlookOn} />
+          </div>
         </div>
 
         {tourOpen && (
@@ -229,18 +248,23 @@ export function App() {
         )}
       </div>
 
-      <section className={`panel-dock${sheetExpanded ? " panel-dock--open" : ""}`} aria-label="Detail">
-        <button
-          type="button"
-          className="panel-dock__handle"
-          aria-expanded={sheetExpanded}
-          onClick={() => setSheetExpanded((v) => !v)}
+      {panelOpen && (
+        <section
+          className={`panel-dock${sheetExpanded ? " panel-dock--open" : ""}`}
+          aria-label="Detail"
         >
-          <ChevronUp aria-hidden="true" size={16} />
-          {selectedGeo ? selectedGeo.name : viewMode === "coverage" ? "Where the data goes quiet" : "Details"}
-        </button>
-        <div className="panel-dock__body">{panelContent}</div>
-      </section>
+          <button
+            type="button"
+            className="panel-dock__handle"
+            aria-expanded={sheetExpanded}
+            onClick={() => setSheetExpanded((v) => !v)}
+          >
+            <ChevronUp aria-hidden="true" size={16} />
+            {selectedGeo ? selectedGeo.name : "Where the data goes quiet"}
+          </button>
+          <div className="panel-dock__body">{panelContent}</div>
+        </section>
+      )}
 
       <MethodDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </div>

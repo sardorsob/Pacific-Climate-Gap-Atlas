@@ -278,6 +278,28 @@ export const COMPARE_SUGGESTION = "TV";
 // The high-gap / low-monitoring priority group surfaced by the signature view.
 export const PRIORITY_ONE = ["PN", "NR", "AS", "WF"];
 
+// Story exemplars labelled directly on the default map so the first read is
+// map-anchored, not panel-anchored (Pudding-style direct labels).
+export const STORY_EXEMPLARS = ["PN", "NR", "AS", "WF", "TV"];
+
+// Per-code label nudges (SVG units) to keep direct labels from colliding in the
+// dense western cluster. Positive dy pushes the label below the point.
+export const LABEL_OFFSETS: Record<string, { dx: number; dy: number }> = {
+  PN: { dx: 0, dy: -22 },
+  NR: { dx: 0, dy: -22 },
+  TV: { dx: 14, dy: -20 },
+  WF: { dx: -10, dy: -22 },
+  AS: { dx: 6, dy: 26 },
+  MH: { dx: 0, dy: -22 },
+};
+
+// Faint orientation labels. Descriptive UN M49 groupings, not boundaries.
+export const SUBREGION_ANCHORS = [
+  { name: "MICRONESIA", lon: 150, lat: 12 },
+  { name: "MELANESIA", lon: 156, lat: -15 },
+  { name: "POLYNESIA", lon: -160, lat: -22 },
+];
+
 export function getGeo(code: string): Geo | undefined {
   return ATLAS_GEOS.find((g) => g.code === code);
 }

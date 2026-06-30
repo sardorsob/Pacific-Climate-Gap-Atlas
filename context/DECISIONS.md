@@ -115,3 +115,23 @@ The Dataviz Inspiration audit should guide interaction principles, not visual im
 Reference lessons to avoid include long pre-map intros, inaccessible custom selectors, hover-only explanation, hidden caveats, copied climate-stripe treatments, copied publication identity, and decorative motion.
 
 Reason: the competition entry needs to learn from strong interactive map and climate work while remaining original, evidence-backed, and tightly aligned with the Pacific Adaptation Gap Atlas story.
+
+## 2026-06-30: TASK-022 Claude Visual Revision Decisions (accepted after TASK-024 QA)
+
+These are Claude's mockup decisions from the visual revision pass, accepted after Codex QA with small follow-up fixes for panel lifecycle, source text encoding, and typography rule compliance.
+
+The default first screen hides the detail panel. The panel is now a right-side slide-in overlay (bottom sheet on mobile) that opens only on selection or the data-quiet view. The thesis lives in the map header instead of a large editorial panel, so the first read is an atlas rather than a map surrounded by dashboard cards.
+
+The legend is a visible compact panel on desktop and a collapsible chip on mobile. The previous closed `<details>` disclosure that hid the desktop legend on first load is removed.
+
+The default map carries direct labels with leader lines for the story exemplars (PN, NR, AS, WF, TV), faint UN M49 subregion orientation text, and lon/lat graticule ticks. Labels are limited to exemplars to avoid clutter; subregion text is descriptive orientation, not a boundary.
+
+Selected geography is treated as an anchor. The map shows the selected name and a "vs Tuvalu" suggested-comparator label, and the panel keeps the compare action. The comparator is a labeled suggestion only. It is not an Evidence Fingerprint Divergence / JSD layer, which remains unbuilt until TASK-019 artifacts exist.
+
+The data-quiet view is map-led. The PN/NR/AS/WF group is labeled directly with in-map "reports 0" versus "no rows" tags so reported-zero and missing-row monitoring states are distinguishable without reading the panel.
+
+The country panel gains a compact at-a-glance evidence strip (pressure, capacity, rank movement, evidence density, monitoring status) above the detailed sections, so the panel can be scanned before it is read.
+
+Mobile controls moved to a top toolbar so they no longer fight the bottom sheet for the same screen edge. Card radii were reduced from 12px to 8px with cartographic linework and typography polish and no decorative atmosphere.
+
+Reason: the TASK-021 critique asked for a stronger map-first hierarchy, a visible legend, a selected-anchor workflow, a map-led data-quiet state, compact evidence strips, and a cleaner mobile layout, while preserving the evidence contract (caveats beside claims, centroid-fallback note, reported-zero versus missing distinction, rank fragility, no leaderboard, no polygon choropleth, no shipped JSD layer).

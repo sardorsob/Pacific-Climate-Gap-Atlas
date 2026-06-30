@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-Delegated visual mockup revision sprint before data-wired app implementation. Competition deadline: August 31, 2026.
+Accepted visual mockup revision; preparing app-data wiring and next analysis lanes before production implementation. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, static app-ready JSON/GeoJSON, script-first EDA outputs, story/design briefs, a Dataviz Inspiration audit, a reviewable React/Vite mockup, and a delegated next-task plan for improving the mockup before final data wiring.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, static app-ready JSON/GeoJSON, script-first EDA outputs, story/design briefs, a Dataviz Inspiration audit, and an accepted React/Vite atlas mockup revision. Final public-data wiring and owner visual approval remain open.
 
 ## Working Title
 
@@ -30,8 +30,8 @@ Pacific island countries face climate burdens they did little to create, but the
 | Static app data | done | `scripts/build_app_data.py` produces public JSON/GeoJSON layer inputs |
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
-| GIS atlas app | in-progress mockup | Reviewable React/Vite concept includes centroid map composition, story tour, layer controls, source drawer, and responsive detail panel; still needs visual approval and final public-data wiring |
-| Mockup revision sprint | in-progress | `TASK-021` critique is complete; `TASK-022` Claude visual revision, `TASK-023` app-data wiring inventory, and `TASK-024` Codex QA remain next |
+| GIS atlas app | accepted mockup revision | React/Vite concept includes centroid map composition, visible desktop legend, direct story labels, selected-anchor comparison cue, data-quiet map tags, story tour, source drawer, and responsive detail panel; still needs owner visual approval and final public-data wiring |
+| Mockup revision sprint | mostly done | `TASK-021`, `TASK-022`, and `TASK-024` are complete; `TASK-023` app-data wiring inventory remains next |
 
 ## Last Session Notes
 
@@ -58,3 +58,4 @@ Pacific island countries face climate burdens they did little to create, but the
 - Completed `TASK-020` Dataviz Inspiration audit with live browser review of map/climate/environment references and updated the story, design, Claude mockup, decision, backlog, and memory context around full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns.
 - Organized the next delegated sprint: Codex owns mockup critique and QA, Claude owns the visual revision pass, a Codex data agent owns `TASK-019`, and a Codex app-data agent owns mock-to-public-data wiring inventory.
 - Completed `TASK-021` mockup critique with a Claude-facing checklist in `context/plans/task-021-mockup-critique.md`; first priority is fixing the hidden desktop legend before visual polish.
+- Completed and accepted `TASK-022` / `TASK-024`: Claude revised the visual mockup, Codex reviewed the code and context, applied small QA fixes, and prepared the accepted mockup revision for commit. Next app step is `TASK-023` mock-to-public-data wiring inventory.

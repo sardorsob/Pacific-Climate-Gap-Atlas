@@ -12,6 +12,39 @@ type CountryPanelProps = {
   onOpenMethod: () => void;
 };
 
+function EvidenceStrip({ geo, tone }: { geo: Geo; tone: string }) {
+  const monShort =
+    geo.reportingStatus === "reported_positive_latest_count"
+      ? "Reported"
+      : geo.reportingStatus === "reported_zero_latest_count"
+        ? "Reports 0"
+        : "No rows";
+  return (
+    <div className="profile-strip" aria-label="At a glance">
+      <div className="profile-cell">
+        <span className="profile-cell__k">Pressure</span>
+        <span className="profile-cell__v">{geo.pressure.toFixed(0)}</span>
+      </div>
+      <div className="profile-cell">
+        <span className="profile-cell__k">Capacity</span>
+        <span className="profile-cell__v">{geo.capacity.toFixed(0)}</span>
+      </div>
+      <div className="profile-cell">
+        <span className="profile-cell__k">Rank move</span>
+        <span className="profile-cell__v">{geo.rankMin}-{geo.rankMax}</span>
+      </div>
+      <div className="profile-cell">
+        <span className="profile-cell__k">Evidence</span>
+        <span className="profile-cell__v">{geo.indicators}/9</span>
+      </div>
+      <div className={`profile-cell profile-cell--${tone}`}>
+        <span className="profile-cell__k">Monitoring</span>
+        <span className="profile-cell__v profile-cell__v--sm">{monShort}</span>
+      </div>
+    </div>
+  );
+}
+
 function PillarBar({ label, value, kind, caveat }: { label: string; value: number; kind: string; caveat?: string }) {
   return (
     <div className="pillar">
@@ -79,6 +112,9 @@ export function CountryPanel({ geo, compareCode, onClose, onCompare, onOpenMetho
           Comparative screen, not a ranking of need. Rank movement frames uncertainty and should not be read as definitive.
         </p>
       </div>
+
+      {/* at-a-glance evidence strip (scan before reading detail) */}
+      <EvidenceStrip geo={geo} tone={reportingTone} />
 
       {/* 4. pressure vs capacity */}
       <section className="panel__section">

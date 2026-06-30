@@ -525,11 +525,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Desktop default, selected-country, data-quiet, and mobile portrait states are visibly improved and buildable.
 - Verification commands: `npm --prefix app run build`
 - Manual QA: Claude reports changed files, viewports checked, static/fake states, risks, and owner critique items.
-- QA notes:
-- Attempts: 0
+- QA notes: Accepted after Codex QA. The visual revision fixes the hidden desktop legend, makes the first view map-first by removing the default open detail panel, adds direct story labels and graticule/subregion orientation, strengthens selected-geography anchoring with a Tuvalu comparator cue, makes the data-quiet layer map-led with reported-zero versus no-row tags, adds a compact evidence strip in the country panel, and moves mobile controls away from the bottom sheet. Codex applied small QA fixes before acceptance: panel renders only when active, data-quiet opens its sheet when toggled, degree labels use ASCII source escapes, and CSS letter spacing is normalized to `0`. The mockup still uses `app/src/mock/` fixture data; final public-data wiring is `TASK-023`.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Claude implemented the visual revision under the approved app scope; Codex reviewed and patched small QA issues before commit.
+- Status: done
 
 ## TASK-023
 - Phase: app-data
@@ -571,8 +571,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Build passes, desktop/mobile review passes, and user-visible claims match the story/design contracts.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`
 - Manual QA: Browser screenshot review at desktop and mobile widths before acceptance.
-- QA notes:
-- Attempts: 0
+- QA notes: Reviewed the changed app and context files for scope, evidence discipline, caveat placement, mock-data honesty, accessibility regressions, and frontend rules. Accepted the revision after applying small QA fixes for inactive panel rendering, data-quiet sheet behavior, ASCII-safe graticule labels, and letter-spacing normalization. Fresh Codex screenshots were not captured because local Playwright import was blocked by filesystem permissions; rely on build/source QA plus Claude's reported desktop/mobile viewport review until the owner visual review. No data methodology, generated artifacts, package files, or raw data were changed.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Codex QA pass over Claude's TASK-022 revision, plus focused cleanup and validation before commit.
+- Status: done

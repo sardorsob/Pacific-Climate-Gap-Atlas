@@ -64,11 +64,12 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 ## Next Recommended Work
 
 1. Decide whether to approve the scroll-led hybrid direction from `context/WINNER_SCROLL_TOUR_AUDIT.md`.
-2. If approved, hand a new scroll-tour mockup task to Claude using `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/DESIGN_BRIEF.md`, `context/STORY_BRIEF.md`, and the winner audit.
-3. Keep the current atlas shell as the reusable map/control core; do not ask for a full visual rebuild unless the owner rejects the hybrid.
-4. Decide whether TASK-019 Evidence Fingerprint Divergence ships in V1; if yes, export app-ready similarity data and keep it selected-geography anchored.
-5. Use the completed `TASK-023` mock-data-to-public-data wiring inventory before replacing mock fixtures.
-6. Keep Codex QA as the gate for any Claude visual/app changes before committing.
+2. Review `context/plans/scroll-led-hybrid-mockup-plan.md`, which records Claude's scroll-led hybrid brainstorm and Codex's QA recommendation. The two open calls are the Evidence Fingerprint Divergence preview and whether the guided spine stays at seven beats.
+3. If approved, hand a new scroll-tour mockup implementation task to Claude using `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/DESIGN_BRIEF.md`, `context/STORY_BRIEF.md`, the winner audit, and `context/plans/scroll-led-hybrid-mockup-plan.md`.
+4. Keep the current atlas shell as the reusable map/control core; do not ask for a full visual rebuild unless the owner rejects the hybrid.
+5. Decide whether TASK-019 Evidence Fingerprint Divergence ships in V1; if yes, export app-ready similarity data and keep it selected-geography anchored.
+6. Use the completed `TASK-023` mock-data-to-public-data wiring inventory before replacing mock fixtures.
+7. Keep Codex QA as the gate for any Claude visual/app changes before committing.
 
 ## Known Caveats
 

@@ -34,7 +34,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: implementation and delegation plans for multi-step work, including EDA, divergence analysis, app-data wiring inventory, and the mockup revision sprint.
+- `context/plans/`: implementation and delegation plans for multi-step work, including EDA, divergence analysis, app-data wiring inventory, the mockup revision sprint, and the pending scroll-led hybrid mockup plan.
 
 ## Analysis
 

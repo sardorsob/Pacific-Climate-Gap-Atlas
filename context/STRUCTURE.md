@@ -27,13 +27,13 @@
 - `context/STORY_BRIEF.md`: final TASK-018 narrative contract, storyboard beats, exemplars, and caveats.
 - `context/DESIGN_BRIEF.md`: final TASK-018 map-first visual and interaction contract for design/build.
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`: live reference audit for map, climate, environmental, selected-geography, evidence-strip, and guided-tour interaction patterns.
-- `context/INFORMATION_DIVERGENCE_PLAN.md`: planned JSD/KL evidence-fingerprint layer scope and interface notes.
+- `context/INFORMATION_DIVERGENCE_PLAN.md`: analysis-ready JSD evidence-fingerprint layer scope and interface notes.
 - `context/DATA_CARD.md`: dataset provenance, coverage, and caveats.
 - `context/MODEL_CARD.md`: outlook model purpose and limits.
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: implementation and delegation plans for multi-step work, including EDA, planned divergence analysis, and the mockup revision sprint.
+- `context/plans/`: implementation and delegation plans for multi-step work, including EDA, divergence analysis, app-data wiring inventory, and the mockup revision sprint.
 
 ## Analysis
 

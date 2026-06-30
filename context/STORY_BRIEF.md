@@ -55,7 +55,7 @@ Supporting evidence layers:
 - indicator trace rows
 - monitoring reporting status
 - rank volatility
-- evidence fingerprint divergence, pending `TASK-019`
+- evidence fingerprint divergence from `TASK-019`
 - spatial typologies and subregion comparisons
 - optional outlook interpretation
 - responsibility-context indicators in panel text only
@@ -70,7 +70,7 @@ What is known directly:
 What is estimated or modeled:
 
 - The Adaptation Gap Index is a comparative screen using percentile scoring and pressure-minus-capacity logic.
-- Evidence-profile similarity/divergence will be an information-theory diagnostic if `TASK-019` passes QA, not a new ground-truth grouping.
+- Evidence-profile similarity/divergence is an information-theory diagnostic from `TASK-019`, not a new ground-truth grouping.
 - The outlook is a transparent stress test based on simple trend and capacity scenarios.
 - Spatial typologies are rule-based descriptors, not statistical clusters.
 
@@ -100,7 +100,7 @@ The Dataviz Inspiration audit reinforces the story direction:
 
 - Default mode stays map-first. The first screen should resemble a working atlas surface, not a hero page or prelude.
 - Guided mode should use a Pudding-style map-anchored claim: direct labels, a few exemplar geographies, and evidence beside the marks.
-- Selected-place comparison should follow the Dataista pattern: choose one geography as an anchor, then reveal a second comparator or nearest-profile list. This is the preferred shape for Evidence Fingerprint Divergence if `TASK-019` ships.
+- Selected-place comparison should follow the Dataista pattern: choose one geography as an anchor, then reveal a second comparator or nearest-profile list. This is the preferred shape for Evidence Fingerprint Divergence if it ships in the app.
 - Country panels can borrow the compact-supporting-visual idea from climate stripes and Bussed Out: small rank, pressure/capacity, or evidence-density strips that help the map claim without becoming the main visual identity.
 - Human stakes can be introduced through guided questions, but the analytical map must appear immediately.
 
@@ -118,7 +118,7 @@ Medium confidence:
 - The project can use spatial typologies and subregion filters as descriptive exploration aids.
 - The project can use selected country exemplars to teach the score, missingness, and uncertainty logic.
 - The project can show responsibility context in country panels without turning it into blame scoring.
-- The project can likely use JSD-based evidence fingerprints to explain similarity and difference between official-data profiles, pending real `TASK-019` artifacts.
+- The project can use JSD-based evidence fingerprints to explain similarity and difference between official-data profiles, pending app-data wiring and visual QA.
 
 Low confidence or optional:
 
@@ -199,9 +199,9 @@ Supporting context:
 ### Beat 6: Compare Evidence Fingerprints
 
 - User action: selects a geography and opens "similar evidence profiles."
-- Layer: other points re-encode by JSD distance from the selected geography, if `TASK-019` artifacts pass QA.
+- Layer: other points re-encode by JSD distance from the selected geography, if the TASK-019 layer is accepted for V1.
 - Panel state: nearest evidence-profile neighbors and a compact fingerprint summary.
-- Evidence: planned `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`.
+- Evidence: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`.
 - Caveat placement: inside the comparison panel and method drawer.
 - Required copy: "Similarity means official-data profiles look alike under this method; it does not mean the places face the same risks or need the same actions."
 - Takeaway: the atlas can compare what kind of gap a place has, not just how high the score is.
@@ -244,7 +244,7 @@ Signature diagnostic layer:
 Secondary diagnostic layers:
 
 - Rank fragility / uncertainty.
-- Evidence fingerprint divergence, pending `TASK-019`; compare profiles from a selected geography, not a global leaderboard.
+- Evidence fingerprint divergence from `TASK-019`; compare profiles from a selected geography, not a global leaderboard.
 - Subregion / spatial typology.
 - Indicator trace inside the side panel.
 
@@ -317,7 +317,7 @@ The design brief should preserve this story hierarchy:
 1. Gap map first.
 2. Missingness/monitoring as the signature interaction.
 3. Rank uncertainty always visible where ranks appear.
-4. Evidence-profile divergence only as selected-geography comparison, pending real `TASK-019` artifacts.
+4. Evidence-profile divergence only as selected-geography comparison; app wiring and V1 inclusion are still pending.
 5. Caveats beside the claims they qualify.
 6. Outlook optional and gated.
 

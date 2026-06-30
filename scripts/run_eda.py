@@ -18,6 +18,10 @@ from analysis.eda.coverage import (  # noqa: E402
     build_monitoring_gap,
     build_task011_coverage_tables,
 )
+from analysis.eda.divergence import (  # noqa: E402
+    build_divergence_artifacts,
+    build_divergence_summary,
+)
 from analysis.eda.drivers import build_country_drivers, build_country_story_labels  # noqa: E402
 from analysis.eda.indicator_forensics import build_indicator_forensics_tables  # noqa: E402
 from analysis.eda.sensitivity import build_rank_volatility, build_weight_sensitivity  # noqa: E402
@@ -36,6 +40,7 @@ DEFAULT_TREND_DIAGNOSTICS = ROOT / "artifacts" / "tables" / "climate_trend_diagn
 DEFAULT_OUTLOOK = ROOT / "artifacts" / "tables" / "adaptation_gap_outlook.csv"
 DEFAULT_TABLE_DIR = ROOT / "artifacts" / "tables"
 DEFAULT_SUMMARY = ROOT / "artifacts" / "provenance" / "eda_summary.json"
+DEFAULT_DIVERGENCE_SUMMARY = ROOT / "artifacts" / "provenance" / "divergence_summary.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -51,6 +56,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--outlook", type=Path, default=DEFAULT_OUTLOOK)
     parser.add_argument("--table-dir", type=Path, default=DEFAULT_TABLE_DIR)
     parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY)
+    parser.add_argument("--divergence-summary-output", type=Path, default=DEFAULT_DIVERGENCE_SUMMARY)
     return parser.parse_args()
 
 
@@ -67,6 +73,7 @@ def run_eda(
     outlook_path: Path,
     table_dir: Path,
     summary_output: Path,
+    divergence_summary_output: Path,
 ) -> dict[str, object]:
     if not config_path.exists():
         raise FileNotFoundError(f"EDA config not found: {config_path}")
@@ -96,6 +103,7 @@ def run_eda(
         rank_volatility=rank_volatility,
     )
 
+    monitoring_gap = build_monitoring_gap(index, observations)
     tables = {
         "eda_data_coverage.csv": build_data_coverage(lookup),
         "eda_country_drivers.csv": country_drivers,
@@ -108,14 +116,21 @@ def run_eda(
             outlook,
             index,
         ),
-        "eda_monitoring_gap.csv": build_monitoring_gap(index, observations),
+        "eda_monitoring_gap.csv": monitoring_gap,
     }
     tables.update(coverage_tables)
     tables.update(build_indicator_forensics_tables(indicator_trace))
     tables.update(build_spatial_pattern_tables(country_drivers, geography_context))
+    divergence_tables = build_divergence_artifacts(
+        country_drivers=country_drivers,
+        indicator_trace=indicator_trace,
+        rank_volatility=rank_volatility,
+        monitoring_gap=monitoring_gap,
+    )
+    output_tables = tables | divergence_tables
 
     table_dir.mkdir(parents=True, exist_ok=True)
-    for file_name, table in tables.items():
+    for file_name, table in output_tables.items():
         table.to_csv(table_dir / file_name, index=False)
 
     summary = build_summary(
@@ -129,12 +144,36 @@ def run_eda(
         trend_diagnostics_path=trend_diagnostics_path,
         outlook_path=outlook_path,
         table_dir=table_dir,
-        tables=tables,
+        tables=output_tables,
         summary_output=summary_output,
+        divergence_summary_output=divergence_summary_output,
     )
     summary_output.parent.mkdir(parents=True, exist_ok=True)
     summary_output.write_text(
         json.dumps(summary, indent=2, ensure_ascii=True) + "\n",
+        encoding="utf-8",
+    )
+    divergence_summary = build_divergence_summary(
+        fingerprints=divergence_tables["eda_evidence_fingerprints.csv"],
+        pairwise_jsd=divergence_tables["eda_pairwise_jsd.csv"],
+        similarity_neighbors=divergence_tables["eda_similarity_neighbors.csv"],
+        input_paths={
+            "country_drivers": table_dir / "eda_country_drivers.csv",
+            "indicator_trace": indicator_trace_path,
+            "rank_volatility": table_dir / "eda_rank_volatility.csv",
+            "monitoring_gap": table_dir / "eda_monitoring_gap.csv",
+        },
+        output_paths={
+            "evidence_fingerprints": table_dir / "eda_evidence_fingerprints.csv",
+            "pairwise_jsd": table_dir / "eda_pairwise_jsd.csv",
+            "similarity_neighbors": table_dir / "eda_similarity_neighbors.csv",
+            "summary": divergence_summary_output,
+        },
+        root=ROOT,
+    )
+    divergence_summary_output.parent.mkdir(parents=True, exist_ok=True)
+    divergence_summary_output.write_text(
+        json.dumps(divergence_summary, indent=2, ensure_ascii=True) + "\n",
         encoding="utf-8",
     )
     return summary
@@ -154,6 +193,7 @@ def build_summary(
     table_dir: Path,
     tables: dict[str, pd.DataFrame],
     summary_output: Path,
+    divergence_summary_output: Path,
 ) -> dict[str, object]:
     coverage = tables["eda_data_coverage.csv"]
     coverage_by_geography = tables["eda_coverage_by_geography.csv"]
@@ -168,6 +208,32 @@ def build_summary(
     spatial_typologies = tables["eda_spatial_typologies.csv"]
     subregion_comparisons = tables["eda_subregion_comparisons.csv"]
     rank_volatility = tables["eda_rank_volatility.csv"]
+    divergence_fingerprints = tables.get("eda_evidence_fingerprints.csv")
+    pairwise_jsd = tables.get("eda_pairwise_jsd.csv")
+    similarity_neighbors = tables.get("eda_similarity_neighbors.csv")
+    divergence_section: dict[str, object] | None = None
+    if (
+        divergence_fingerprints is not None
+        and pairwise_jsd is not None
+        and similarity_neighbors is not None
+    ):
+        divergence_section = {
+            "fingerprint_count": int(len(divergence_fingerprints)),
+            "pairwise_count": int(len(pairwise_jsd)),
+            "nearest_neighbor_count": int(len(similarity_neighbors)),
+            "jsd_min": float(pairwise_jsd["jsd_distance"].min()),
+            "jsd_max": float(pairwise_jsd["jsd_distance"].max()),
+            "jsd_mean": float(pairwise_jsd["jsd_distance"].mean()),
+            "similarity_band_counts": (
+                pairwise_jsd["similarity_band"].value_counts().sort_index().to_dict()
+            ),
+            "missingness_status_counts": (
+                divergence_fingerprints["missingness_status"]
+                .value_counts()
+                .sort_index()
+                .to_dict()
+            ),
+        }
 
     return {
         "schema_version": 1,
@@ -182,6 +248,7 @@ def build_summary(
             "TASK-015",
             "TASK-016",
             "TASK-017",
+            "TASK-019",
         ],
         "config": relative_path(config_path),
         "inputs": {
@@ -197,7 +264,10 @@ def build_summary(
         "outputs": {
             file_name: relative_path(table_dir / file_name) for file_name in sorted(tables)
         }
-        | {"summary": relative_path(summary_output)},
+        | {
+            "summary": relative_path(summary_output),
+            "divergence_summary": relative_path(divergence_summary_output),
+        },
         "row_counts": {file_name: int(len(table)) for file_name, table in sorted(tables.items())},
         "coverage": {
             "geography_count": int(coverage["geo_code"].nunique()),
@@ -294,6 +364,7 @@ def build_summary(
             rank_volatility["robustness_label"].value_counts().sort_index().to_dict()
         ),
         "rank_volatility_max_range": int(rank_volatility["rank_range"].max()),
+        "evidence_fingerprint_divergence": divergence_section,
         "caveats": [
             "This is descriptive EDA, not causal inference.",
             "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -310,6 +381,11 @@ def build_summary(
             "No centroid-distance or land-adjacency inference is used.",
             "Outlook interpretation is stress-test display guidance, not forecasting.",
             "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.",
+            (
+                "Evidence fingerprint divergence compares normalized official-data profiles, "
+                "not lived vulnerability, policy need, or causal similarity."
+            ),
+            "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks.",
         ],
     }
 
@@ -339,6 +415,7 @@ def main() -> int:
         outlook_path=resolve_path(args.outlook),
         table_dir=resolve_path(args.table_dir),
         summary_output=resolve_path(args.summary_output),
+        divergence_summary_output=resolve_path(args.divergence_summary_output),
     )
     print(
         f"Built EDA tables: outputs={len(summary['row_counts'])}, "
@@ -346,6 +423,10 @@ def main() -> int:
         f"monitoring_story_count={summary['monitoring_story_count']}"
     )
     print(f"Wrote summary: {relative_path(resolve_path(args.summary_output))}")
+    print(
+        "Wrote divergence summary: "
+        f"{relative_path(resolve_path(args.divergence_summary_output))}"
+    )
     return 0
 
 

@@ -87,7 +87,7 @@ Fields that can remain UI constants:
 
 ## Fields Not To Wire As Claims Yet
 
-- Evidence Fingerprint Divergence / similarity neighbors: do not enable or claim until TASK-019 creates `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`, and those outputs pass QA. No mock JSD distances or profile families should appear as real data.
+- Evidence Fingerprint Divergence / similarity neighbors: TASK-019 has created `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`, but the app still needs a compact public-data contract and visual QA before enabling the layer. No mock JSD distances or profile families should appear as real data.
 - Boundary choropleth: `geometry_status` is `centroid_fallback`; do not render polygons, imply territorial boundaries, or describe area coverage.
 - Monitoring absence: missing monitoring features and `reported_zero_latest_count` are reporting states, not proof that infrastructure is absent.
 - Rank order: baseline rank can be shown only with rank range/uncertainty and caveat. Avoid leaderboard language.
@@ -124,7 +124,7 @@ Fields that can remain UI constants:
    - Use existing `outlook_2030_flat_gap_score` only after `display_recommendation` is exported.
    - Withhold `display_recommendation = withhold` as current mockup does. Show `show_with_strong_caveat` with visible caveat, not normal styling.
 
-7. Add future TASK-019 divergence only after artifacts exist and QA passes.
+7. Add TASK-019 divergence only after app-ready export and QA.
    - Introduce a separate data contract for similarity/fingerprint fields.
    - Keep it disabled by default until caveats, anchor geography, and QA are complete.
 
@@ -170,6 +170,6 @@ Fields that can remain UI constants:
 - Every rank display includes `scenario_rank_min`, `scenario_rank_max`, `rank_range`, `robustness_label`, and rank caveat.
 - Outlook layer withholds records marked `withhold` and visibly caveats `show_with_strong_caveat`.
 - Source/method access can trace scores to `source_refs` and indicator rows to `source_row_hash`.
-- Evidence Fingerprint Divergence remains absent or disabled until TASK-019 artifacts exist and pass QA.
+- Evidence Fingerprint Divergence remains absent or disabled until the TASK-019 artifacts are exported to app-ready data and pass UI QA.
 - NR, TV, PN, AS, WF, and MH match the spot-check interpretations above after wiring.
 - Build and data-contract validation pass, and visual QA confirms the mockup's caveat placement and mobile/desktop states survive the real-data adapter.

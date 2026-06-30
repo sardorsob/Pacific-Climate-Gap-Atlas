@@ -456,11 +456,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Pairwise JSD is symmetric and bounded; vector components are documented and traceable; missingness treatment is explicit; nearest-neighbor outputs include caveat fields; no public-facing output requires interpreting KL.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`; `python -m unittest tests.analysis.test_divergence -v`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`
 - Manual QA: Inspect nearest-neighbor pairs for primary exemplars such as NR, TV, PN, AS, WF, and MH; verify the layer explains "similar score, different profile" without creating a leaderboard.
-- QA notes:
-- Attempts: 0
+- QA notes: Implemented `analysis/eda/divergence.py`, integrated the EDA runner, generated 22 evidence fingerprints, 231 unordered pairwise JSD rows, 66 nearest-neighbor rows, and `artifacts/provenance/divergence_summary.json`. Public metric is base-2 Jensen-Shannon divergence over normalized official-data-derived profiles; KL is not required for public interpretation. Exemplar neighbors for NR, TV, PN, AS, WF, and MH are recorded in provenance. The layer is analysis-ready but not app-wired, and must stay selected-geography anchored if it ships.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Codex data-agent implementation, Codex review, context cleanup, and validation.
+- Status: done
 
 ## TASK-020
 - Phase: design-research

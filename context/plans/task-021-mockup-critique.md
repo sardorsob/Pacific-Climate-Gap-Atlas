@@ -125,7 +125,7 @@ Required fix for Claude:
 - Make selected geography feel like an anchor state, not just a selected marker.
 - Keep a compact selected-place badge on the map.
 - Make "Compare with Tuvalu" visually meaningful: either show Tuvalu as a labeled suggested comparator or add a small comparison affordance in the map/panel.
-- If Evidence Fingerprint Divergence is shown before `TASK-019`, label it planned/pending and do not imply it is shipped.
+- If Evidence Fingerprint Divergence is shown before app-ready TASK-019 export, label it analysis-ready but not app-wired and do not imply it is shipped.
 
 Acceptance:
 
@@ -241,7 +241,7 @@ Preserve:
 - method/source access,
 - no global leaderboard,
 - no polygon choropleth,
-- no unsupported JSD layer until `TASK-019` artifacts exist.
+- no unsupported JSD layer until TASK-019 artifacts are exported to app-ready data and visually QA'd.
 
 Do not touch:
 

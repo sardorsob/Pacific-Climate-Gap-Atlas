@@ -22,7 +22,7 @@ The atlas should become more visual, more polished, and more exploratory without
 | --- | --- | --- | --- |
 | Orchestrator / QA | Codex | Task planning, context updates, code review, validation, staging, committing, final acceptance | Yes |
 | Visual mockup builder | Claude | Desktop/mobile visual revision, interaction states, styling, mockup implementation under approved scope | No |
-| Data analysis agent | Codex or delegated data agent | Evidence Fingerprint Divergence artifacts for `TASK-019` | No direct commit without Codex review |
+| Data analysis agent | Codex or delegated data agent | Completed Evidence Fingerprint Divergence artifacts for `TASK-019`; future work is app export if accepted | No direct commit without Codex review |
 | App-data agent | Codex or delegated app agent | Inventory mock data versus public app data and define wiring gaps | No direct commit without Codex review |
 | Project owner | User | Visual taste, story approval, scope decisions, final critique | No repo automation required |
 
@@ -165,7 +165,7 @@ Codex app-data agent owns:
 2. Claude completes `TASK-022` and leaves changes unstaged.
 3. Codex reviews and either requests fixes or accepts the visual revision.
 4. Codex commits accepted `TASK-022` changes separately.
-5. Codex reviews and commits `TASK-019` artifacts separately if implemented.
+5. Codex reviews and commits `TASK-019` artifacts separately.
 6. Codex reviews and commits `TASK-023` inventory separately.
 7. Codex runs `TASK-024` QA after visual revision and records the outcome.
 

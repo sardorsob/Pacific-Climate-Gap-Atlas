@@ -160,11 +160,11 @@ python scripts/run_eda.py --config configs/eda.yml
 
 This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels and spatial typologies are descriptive screens, not causal explanations. Outlook interpretation is stress-test display guidance, not forecasting. Missing monitoring rows are reporting gaps, not confirmed infrastructure absence. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
 
-## Planned TASK-019 Divergence Artifacts
+## TASK-019 Divergence Artifacts
 
-The Evidence Fingerprint Divergence lane is planned but not implemented. It should derive new analysis tables from official-data-derived trace and EDA fields rather than introducing an outside data source.
+The Evidence Fingerprint Divergence lane derives analysis tables from official-data-derived trace and EDA fields rather than introducing an outside data source. These artifacts are analysis-ready but not yet exported to app-ready JSON.
 
-Expected outputs:
+Produced outputs:
 
 - `artifacts/tables/eda_evidence_fingerprints.csv`
 - `artifacts/tables/eda_pairwise_jsd.csv`

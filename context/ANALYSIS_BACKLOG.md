@@ -6,7 +6,7 @@ The project is pausing visual design work until the atlas has a stronger evidenc
 
 ## Current Status
 
-Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, and the Dataviz Inspiration audit. A planned lane, `TASK-019`, will test evidence-profile divergence with Jensen-Shannon divergence before it earns app space. The next step is visual concept review, app build planning, and deciding whether the divergence layer ships in V1 or stays as an analytical enhancement.
+Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. The next step is visual concept review, app build planning, and deciding whether the divergence layer ships in V1 or stays as an analytical enhancement.
 
 ## Principles
 
@@ -184,6 +184,8 @@ Outputs:
 
 Question: Which geographies have similar or different official-data evidence profiles behind their adaptation-gap scores?
 
+Status: implemented as an analysis artifact; app data export and UI are pending.
+
 Analyses:
 - build pressure, capacity, data-visibility, and combined evidence vectors from official-data-derived trace fields
 - normalize each vector family with explicit missingness treatment
@@ -223,6 +225,6 @@ Outputs:
 - Coverage/data desert and GIS enrichment can run in parallel.
 - Indicator forensics and driver decomposition can run in parallel after the current score artifacts are available.
 - Sensitivity analysis can run independently from trend/outlook interpretation.
-- Evidence fingerprint divergence can run after indicator forensics, country drivers, and rank volatility are available. It should not block visual mockup critique, but it should be decided before final app-data wiring if the layer ships in V1.
+- Evidence fingerprint divergence has run after indicator forensics, country drivers, rank volatility, and monitoring-gap tables became available. It should not block visual mockup critique, but it should be decided before final app-data wiring if the layer ships in V1.
 - The Dataviz Inspiration audit is complete and should inform visual critique immediately. It does not require new data artifacts.
-- Story synthesis should wait until the other analysis lanes are reviewed. The completed TASK-018 brief remains the current story source of truth until TASK-019 produces real artifacts.
+- Story synthesis should use the completed TASK-018 brief as the story source of truth, with TASK-019 now available as an optional selected-geography comparison layer rather than the primary narrative spine.

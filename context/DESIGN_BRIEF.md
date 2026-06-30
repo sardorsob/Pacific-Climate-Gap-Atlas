@@ -32,7 +32,7 @@ Use the Dataviz Inspiration audit as a principle study, not a moodboard to copy.
 Patterns to preserve:
 
 - Shipmap: full-bleed map as the primary surface, compact edge controls, layer/filter menus that match the domain, and motion only when it encodes evidence over time.
-- Dataista internal migration: selected geography becomes the anchor; a second comparison target appears only after selection. This is the right interaction pattern for future Evidence Fingerprint Divergence.
+- Dataista internal migration: selected geography becomes the anchor; a second comparison target appears only after selection. This is the right interaction pattern for app-wired Evidence Fingerprint Divergence.
 - Show Your Stripes and Bussed Out: compact evidence strips, timelines, counters, or distributions can support the country panel without replacing the map.
 - The Pudding airports story: open guided explanation with a map-anchored claim, direct labels, and leader lines rather than a detached dashboard grid.
 - Bruxelles Malade: human stakes and guided questions can help, but the atlas must not delay the first evidence read behind a long cinematic intro.
@@ -61,7 +61,7 @@ Primary analytical job:
 Secondary analytical jobs:
 
 - Uncertainty: show rank fragility and evidence density.
-- Similarity: show which official-data evidence profiles resemble a selected geography, pending `TASK-019`.
+- Similarity: show which official-data evidence profiles resemble a selected geography, using `TASK-019` artifacts.
 - Missingness: distinguish visible monitoring, reported zero, and missing monitoring rows.
 - Decomposition: show why a selected geography scores the way it does.
 - Guided explanation: walk users through the story without hiding exploration.
@@ -71,7 +71,7 @@ Data shape:
 - Geospatial point features with tabular properties.
 - Country/detail JSON records.
 - EDA CSV tables for monitoring, rank volatility, spatial typology, and outlook interpretation.
-- Planned divergence tables for evidence fingerprints and pairwise JSD if `TASK-019` is implemented.
+- Divergence tables for evidence fingerprints, pairwise JSD, and nearest neighbors from `TASK-019`.
 - Optional time-scenario fields for outlook.
 
 Artifact family:
@@ -97,7 +97,7 @@ Every visible score, label, and caveat should trace to one of these sources:
 | Indicator detail | `data/processed/app/country_details.json` | measured/latest official rows plus derived scores |
 | Monitoring status | `artifacts/tables/eda_monitoring_gap.csv` | measured reporting status / proxy count |
 | Rank uncertainty | `artifacts/tables/eda_rank_volatility.csv` | sensitivity stress test |
-| Evidence fingerprint divergence | planned `artifacts/tables/eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv` | information-theory diagnostic over official-data-derived profiles |
+| Evidence fingerprint divergence | `artifacts/tables/eda_evidence_fingerprints.csv`, `artifacts/tables/eda_pairwise_jsd.csv`, `artifacts/tables/eda_similarity_neighbors.csv`, `artifacts/provenance/divergence_summary.json` | information-theory diagnostic over official-data-derived profiles |
 | Spatial typology | `artifacts/tables/eda_spatial_typologies.csv` | rule-based descriptor |
 | Subregion caption | `artifacts/tables/eda_subregion_comparisons.csv` | small-sample descriptive summary |
 | Outlook | `artifacts/tables/eda_outlook_interpretation.csv`, `adaptation_gap_outlook.csv` | stress-test display guidance |
@@ -242,12 +242,14 @@ Subregion / spatial typology:
 
 Evidence fingerprint divergence:
 
-- Source: planned `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`.
+- Source: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`.
 - Default: off until a geography is selected.
-- Primary metric: Jensen-Shannon divergence.
+- Primary metric: base-2 Jensen-Shannon divergence, bounded from 0 to 1.
 - Purpose: show which geographies have similar official-data evidence profiles and where similar gap scores hide different profiles.
 - Interaction rule: anchor the view on a selected geography; do not show a global similarity leaderboard.
-- Caveat: evidence-profile similarity is not shared vulnerability, lived experience, or policy need.
+- Required caveat: "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+- Component families: pressure, visible capacity, data visibility, rank fragility, missing data, and monitoring reporting gap. Missingness/status components are visible evidence, not smoothing residue.
+- KL divergence is not required for public UI interpretation.
 
 ### Optional Layer
 
@@ -289,7 +291,7 @@ Field order:
 5. Compact evidence strips for pressure/capacity balance and rank fragility.
 6. Evidence density: included indicators, dataset count, row count.
 7. Monitoring/reporting status with caveat.
-8. Evidence fingerprint summary and nearest neighbors, if `TASK-019` ships.
+8. Evidence fingerprint summary and nearest neighbors, if the similarity mode ships in the app.
 9. Top pressure signals and capacity signals.
 10. Indicator trace drawer.
 11. Responsibility context, if relevant, labeled context-only.
@@ -315,7 +317,7 @@ Recommended tour steps:
 4. Inspect TV as a high-gap case with visible monitoring so high gap is not conflated with data silence.
 5. Open "Where the Data Goes Quiet" and surface PN, NR, AS, WF.
 6. Show rank fragility with MH or another high-movement example.
-7. Compare evidence fingerprints, if `TASK-019` artifacts exist: similar score, different profile.
+7. Compare evidence fingerprints: similar score, different official-data profile.
 8. Show regional texture.
 9. Optional: turn on outlook and immediately show the stress-test caveat.
 
@@ -507,7 +509,7 @@ The drawer is not allowed to be the only place where load-bearing caveats appear
 | Layer manifest | `app/public/data/layers.json` | layer ids, labels, fields, caveats |
 | Monitoring overlay | `artifacts/tables/eda_monitoring_gap.csv` or derived app JSON | `monitoring_reporting_status`, `monitoring_quadrant`, `story_priority`, caveats |
 | Rank chip | `artifacts/tables/eda_rank_volatility.csv` or derived app JSON | `rank_range`, `scenario_rank_min`, `scenario_rank_max`, `robustness_label` |
-| Evidence fingerprint similarity | planned `eda_similarity_neighbors.csv`, `eda_pairwise_jsd.csv` or derived app JSON | selected `geo_code`, neighbor `geo_code`, `jsd_distance`, profile family, caveat |
+| Evidence fingerprint similarity | `eda_similarity_neighbors.csv`, `eda_pairwise_jsd.csv`, `eda_evidence_fingerprints.csv` or derived app JSON | selected `geo_code`, neighbor `geo_code`, `jsd_distance`, `similarity_band`, profile family, caveat |
 | Subregion filter | `eda_spatial_typologies.csv`, `eda_subregion_comparisons.csv` | `subregion`, typology, counts, caveats |
 | Outlook | `eda_outlook_interpretation.csv`, nested `outlook` in app data | `display_recommendation`, `target_year`, `scenario`, projected scores, caveats |
 
@@ -633,7 +635,7 @@ Before claiming the app design is implemented:
 - Boundary polygon choropleth.
 - Expanded non-official overlays.
 - New index methodology.
-- Unreviewed JSD/KL implementation as a primary story layer.
+- JSD/KL similarity as a primary story layer.
 - Live data fetching.
 - Bilingual interface unless explicitly requested.
 - Automated funding, readiness, or vulnerability recommendations.

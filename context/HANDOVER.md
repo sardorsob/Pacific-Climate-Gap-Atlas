@@ -59,15 +59,15 @@ This writes app data under `data/processed/app/`, mirrors the website-facing fil
 python scripts/run_eda.py --config configs/eda.yml
 ```
 
-This writes the script-first EDA tables under `artifacts/tables/` and records `artifacts/provenance/eda_summary.json`. It now includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, and monitoring-gap GIS story priorities. Planned `TASK-019` will add evidence fingerprint divergence outputs if implemented. Read `context/ANALYSIS_BRIEF.md`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/DATAVIZ_INSPIRATION_AUDIT.md`, and `context/INFORMATION_DIVERGENCE_PLAN.md` before resuming app or design work around the similarity layer.
+This writes the script-first EDA tables under `artifacts/tables/` and records `artifacts/provenance/eda_summary.json`. It now includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, monitoring-gap GIS story priorities, and TASK-019 Evidence Fingerprint Divergence outputs. Read `context/ANALYSIS_BRIEF.md`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/DATAVIZ_INSPIRATION_AUDIT.md`, and `context/INFORMATION_DIVERGENCE_PLAN.md` before resuming app or design work around the similarity layer.
 
 ## Next Recommended Work
 
 1. Hand `TASK-022` to Claude using `context/CLAUDE_MOCKUP_INSTRUCTIONS.md` and `context/plans/task-021-mockup-critique.md`.
 2. Ask Claude to fix the hidden desktop legend first, then strengthen map-first hierarchy, selected-anchor comparison, data-quiet map callouts, compact evidence strips, and mobile states.
-3. Run `TASK-019` in parallel through a Codex data agent if the team wants real Evidence Fingerprint Divergence before final app wiring.
-4. Run `TASK-023` in parallel as a mock-data-to-public-data wiring inventory.
-5. Run `TASK-024` after Claude finishes: Codex QA reviews visuals, build, caveats, accessibility basics, and changed files before any commit.
+3. Decide whether TASK-019 Evidence Fingerprint Divergence ships in V1; if yes, export app-ready similarity data and keep it selected-geography anchored.
+4. Use the completed `TASK-023` mock-data-to-public-data wiring inventory before replacing mock fixtures.
+5. Keep Codex QA as the gate for any Claude visual/app changes before committing.
 
 ## Known Caveats
 
@@ -86,7 +86,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-014 leave-one-indicator sensitivity shows rank volatility is widespread. Avoid definitive rank-order language; use rankings as exploratory context with visible uncertainty.
 - TASK-016 outlook interpretation is stress-test display guidance, not forecasting. Weak or sparse diagnostics should be withheld from outlook layers.
 - TASK-017 monitoring-gap outputs identify PN, NR, AS, and WF as high-gap low-monitoring candidates. AS and WF have missing monitoring rows, so describe them as reporting gaps unless externally verified.
-- TASK-019 is planned only. JSD/KL outputs do not exist yet; do not design the similarity layer as shipped until real artifacts and caveats are generated.
+- TASK-019 outputs exist as analysis artifacts: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`. They are not app-wired; do not present similarity as shipped until app-ready export, caveats, and visual QA are complete.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.
 - TASK-022 belonged to Claude, but Claude did not stage, commit, push, change data methodology, or alter generated artifacts.
 - TASK-024 QA is complete for the accepted TASK-022 revision. Future Claude visual changes should go through the same Codex QA gate before commit.
@@ -95,6 +95,6 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-022 (Claude visual revision) is accepted after Codex `TASK-024` QA. Only scoped app mockup files changed: `App.tsx`, `components/map/AtlasMap.tsx`, `components/panels/CountryPanel.tsx`, `mock/mockAtlasData.ts`, and `styles/base.css`, plus context status notes. No package files, context methodology, generated artifacts, raw data, or git history were touched by Claude.
 - After TASK-022, the desktop default no longer shows a detail panel; the panel is a right-side overlay (bottom sheet on mobile) that opens on selection or the data-quiet view, and the thesis lives in the map header. The desktop legend is now visible by default (the closed-`<details>` P0 bug is fixed).
 - Codex QA fixes applied before commit: render the detail panel only when selection or data-quiet mode is active, open the data-quiet sheet when that overlay is toggled, encode graticule degree labels with ASCII source escapes, and normalize CSS letter spacing to `0`.
-- Remaining owner-review notes: the mobile top toolbar is horizontally scrollable by design; confirm visual taste and discoverability in the next browser review. Codex did not capture fresh screenshots during QA because local Playwright import was blocked by filesystem permissions, so the acceptance is based on source review, app build, validation checks, and Claude's reported viewport review. The "vs Tuvalu" comparator is a label-only suggestion, not a shipped JSD layer.
+- Remaining owner-review notes: the mobile top toolbar is horizontally scrollable by design; confirm visual taste and discoverability in the next browser review. Codex did not capture fresh screenshots during QA because local Playwright import was blocked by filesystem permissions, so the acceptance is based on source review, app build, validation checks, and Claude's reported viewport review. The "vs Tuvalu" comparator is a label-only suggestion, not the TASK-019 JSD layer.
 - The mockup still relies on the static `app/src/mock/` fixture; it is not wired to `app/public/data/*` yet. Future wiring should follow the TASK-023 inventory.
 - TASK-023 is complete. Use `context/plans/app-data-wiring-inventory.md` before wiring the app to public data. The immediate warning is that a naive GeoJSON swap would drop monitoring status, rank uncertainty, story labels, top signals, status/subregion context, and outlook display gating.

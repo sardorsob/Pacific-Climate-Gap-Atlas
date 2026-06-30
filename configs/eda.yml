@@ -24,7 +24,11 @@ outputs:
   trend_profiles: artifacts/tables/eda_trend_profiles.csv
   outlook_interpretation: artifacts/tables/eda_outlook_interpretation.csv
   monitoring_gap: artifacts/tables/eda_monitoring_gap.csv
+  evidence_fingerprints: artifacts/tables/eda_evidence_fingerprints.csv
+  pairwise_jsd: artifacts/tables/eda_pairwise_jsd.csv
+  similarity_neighbors: artifacts/tables/eda_similarity_neighbors.csv
   summary: artifacts/provenance/eda_summary.json
+  divergence_summary: artifacts/provenance/divergence_summary.json
 caveats:
   - Descriptive EDA only; no causal claims.
   - Current geometry is centroid fallback, not polygon boundaries.
@@ -37,3 +41,5 @@ caveats:
   - No centroid-distance or land-adjacency inference is used.
   - Outlook interpretation is stress-test display guidance, not forecasting.
   - Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.
+  - Evidence fingerprint divergence compares official-data profiles, not lived vulnerability or policy need.
+  - JSD similarity is a selected-geography diagnostic, not a cluster model or new ranking.

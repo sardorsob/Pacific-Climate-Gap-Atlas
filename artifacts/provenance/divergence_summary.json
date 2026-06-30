@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "pipeline_task": "TASK-019",
+  "status": "evidence_fingerprint_divergence_ready",
+  "method": {
+    "public_metric": "Jensen-Shannon divergence",
+    "jsd_log_base": 2,
+    "jsd_bounds": [
+      0,
+      1
+    ],
+    "pairwise_convention": "unordered_geo_code_pairs",
+    "smoothing": "none for public JSD artifacts; zero components remain visible",
+    "kl_public_status": "not_required"
+  },
+  "components": [
+    {
+      "component": "pressure",
+      "definition": "Climate-pressure evidence from climate-signal and observed-stress scores."
+    },
+    {
+      "component": "capacity",
+      "definition": "Visible adaptation-capacity evidence from scored capacity indicators."
+    },
+    {
+      "component": "data_visibility",
+      "definition": "Relative amount of included official indicator evidence."
+    },
+    {
+      "component": "rank_fragility",
+      "definition": "Rank movement under sensitivity checks, retained as uncertainty evidence."
+    },
+    {
+      "component": "missing_data",
+      "definition": "Explicit missingness, data-desert, and partial-coverage status."
+    },
+    {
+      "component": "monitoring_reporting_gap",
+      "definition": "Explicit reported-zero or missing monitoring-data status."
+    }
+  ],
+  "inputs": {
+    "country_drivers": "artifacts/tables/eda_country_drivers.csv",
+    "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
+    "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
+    "monitoring_gap": "artifacts/tables/eda_monitoring_gap.csv"
+  },
+  "outputs": {
+    "evidence_fingerprints": "artifacts/tables/eda_evidence_fingerprints.csv",
+    "pairwise_jsd": "artifacts/tables/eda_pairwise_jsd.csv",
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+    "summary": "artifacts/provenance/divergence_summary.json"
+  },
+  "row_counts": {
+    "eda_evidence_fingerprints.csv": 22,
+    "eda_pairwise_jsd.csv": 231,
+    "eda_similarity_neighbors.csv": 66
+  },
+  "geography_count": 22,
+  "pairwise_distance": {
+    "min": 0.0003147306,
+    "max": 0.4426796681,
+    "mean": 0.1463309048
+  },
+  "similarity_band_counts": {
+    "different_profile": 80,
+    "highly_different_profile": 29,
+    "similar_profile": 35,
+    "very_similar_profile": 87
+  },
+  "missingness_status_counts": {
+    "data_desert_or_missing_pillars": 1,
+    "partial_or_thin_profile": 7,
+    "profile_components_present": 14
+  },
+  "exemplar_neighbors": {
+    "NR": [
+      {
+        "neighbor_geo_code": "MP",
+        "similarity_rank": 1,
+        "jsd_distance": 0.0797402573,
+        "similarity_band": "similar_profile",
+        "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap."
+      },
+      {
+        "neighbor_geo_code": "GU",
+        "similarity_rank": 2,
+        "jsd_distance": 0.0808998196,
+        "similarity_band": "similar_profile",
+        "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap."
+      },
+      {
+        "neighbor_geo_code": "NU",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0894959537,
+        "similarity_band": "similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      }
+    ],
+    "TV": [
+      {
+        "neighbor_geo_code": "PW",
+        "similarity_rank": 1,
+        "jsd_distance": 0.001592758,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      },
+      {
+        "neighbor_geo_code": "FM",
+        "similarity_rank": 2,
+        "jsd_distance": 0.006332299,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      },
+      {
+        "neighbor_geo_code": "TO",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0063647955,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      }
+    ],
+    "PN": [
+      {
+        "neighbor_geo_code": "AS",
+        "similarity_rank": 1,
+        "jsd_distance": 0.0522628461,
+        "similarity_band": "similar_profile",
+        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+      },
+      {
+        "neighbor_geo_code": "MP",
+        "similarity_rank": 2,
+        "jsd_distance": 0.0753911652,
+        "similarity_band": "similar_profile",
+        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+      },
+      {
+        "neighbor_geo_code": "WF",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0774182271,
+        "similarity_band": "similar_profile",
+        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+      }
+    ],
+    "AS": [
+      {
+        "neighbor_geo_code": "MP",
+        "similarity_rank": 1,
+        "jsd_distance": 0.0103861112,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+      },
+      {
+        "neighbor_geo_code": "NU",
+        "similarity_rank": 2,
+        "jsd_distance": 0.0116418039,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility."
+      },
+      {
+        "neighbor_geo_code": "WF",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0180096637,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+      }
+    ],
+    "WF": [
+      {
+        "neighbor_geo_code": "AS",
+        "similarity_rank": 1,
+        "jsd_distance": 0.0180096637,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+      },
+      {
+        "neighbor_geo_code": "NU",
+        "similarity_rank": 2,
+        "jsd_distance": 0.0191938425,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility."
+      },
+      {
+        "neighbor_geo_code": "MP",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0339408025,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+      }
+    ],
+    "MH": [
+      {
+        "neighbor_geo_code": "KI",
+        "similarity_rank": 1,
+        "jsd_distance": 0.0032916333,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      },
+      {
+        "neighbor_geo_code": "SB",
+        "similarity_rank": 2,
+        "jsd_distance": 0.0092866979,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      },
+      {
+        "neighbor_geo_code": "PG",
+        "similarity_rank": 3,
+        "jsd_distance": 0.0203630934,
+        "similarity_band": "very_similar_profile",
+        "reason_label": "Both profiles lean most toward data_visibility evidence."
+      }
+    ]
+  },
+  "caveats": [
+    "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need.",
+    "JSD compares normalized evidence patterns; it does not explain causality.",
+    "Sparse or missing data can make profiles look similar for the wrong reason.",
+    "Do not read nearest neighbors as clusters of identical needs.",
+    "KL divergence is not required for public UI interpretation."
+  ]
+}

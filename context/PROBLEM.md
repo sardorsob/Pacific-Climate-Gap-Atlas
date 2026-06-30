@@ -23,7 +23,7 @@ A public, map-first interactive atlas that lets a user select a Pacific geograph
 - observed stress
 - adaptation capacity
 - source coverage and missingness
-- evidence-profile similarity, if the planned JSD layer passes QA
+- evidence-profile similarity, if the TASK-019 JSD layer is accepted for app wiring
 
 ## Success Evidence
 

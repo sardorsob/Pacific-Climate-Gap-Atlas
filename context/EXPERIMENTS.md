@@ -38,15 +38,15 @@ Do not delete failed or rejected runs. Mark them as rejected and explain why.
 - Decision: Accept as methodology-ready and app-optional.
 - Reason: Aggregate linear MAE beats naive MAE, but only 39 of 86 individual series beat naive; use only with visible caveats.
 
-## Planned: task-019-evidence-fingerprint-divergence
+## 2026-06-30__task-019-evidence-fingerprint-divergence
 - Task: TASK-019
 - Purpose: Test whether Jensen-Shannon divergence over official-data-derived evidence profiles adds useful explanatory comparison without becoming a new ranking.
-- Config: `configs/eda.yml` plus any future divergence-specific settings.
+- Config: `configs/eda.yml`.
 - Data version: `artifacts/tables/adaptation_gap_indicator_trace.csv`, `artifacts/tables/eda_country_drivers.csv`, `artifacts/tables/eda_monitoring_gap.csv`, and related EDA tables.
 - Split: Not applicable; descriptive similarity analysis, not prediction.
-- Method/model: Normalize evidence vectors by geography; compute pairwise JSD; optionally compute KL as internal diagnostics after smoothing review.
+- Method/model: Normalize combined evidence vectors by geography; compute unordered pairwise base-2 JSD; retain missingness and monitoring-reporting status as explicit fingerprint components. KL was not used for public artifacts.
 - Primary metric: Interpretability and stability of nearest-neighbor evidence profiles.
-- Secondary metrics: vector coverage, missingness sensitivity, pairwise JSD range, exemplar QA notes.
-- Artifacts: planned `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, `divergence_summary.json`.
-- Decision: Pending.
-- Reason: Needs implementation and manual QA before it can become an app layer.
+- Secondary metrics: vector coverage, missingness status counts, pairwise JSD range, similarity-band counts, exemplar QA notes.
+- Artifacts: `artifacts/tables/eda_evidence_fingerprints.csv`, `artifacts/tables/eda_pairwise_jsd.csv`, `artifacts/tables/eda_similarity_neighbors.csv`, `artifacts/provenance/divergence_summary.json`.
+- Decision: Accept as analysis-ready; app layer decision pending.
+- Reason: Outputs are bounded, traceable, and caveated enough for selected-geography comparison, but they should not become a leaderboard or shipped UI until app-data wiring and visual QA are done.

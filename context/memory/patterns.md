@@ -33,6 +33,6 @@ Use `context/plans/mockup-revision-delegation-plan.md` to coordinate the next sp
 
 - Codex owns critique, QA, staging, commits, and push decisions.
 - Claude owns the visual mockup revision only.
-- Codex data work owns `TASK-019` Evidence Fingerprint Divergence.
+- Codex data work completed `TASK-019` Evidence Fingerprint Divergence; app export remains future work.
 - Codex app-data work owns `TASK-023` mock-to-public-data wiring inventory.
 - Keep Claude app edits separate from data-analysis and app-data wiring edits until Codex integrates them.

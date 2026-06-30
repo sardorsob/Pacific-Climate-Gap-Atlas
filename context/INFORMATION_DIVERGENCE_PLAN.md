@@ -2,25 +2,25 @@
 
 ## Status
 
-Planned analytical layer. This is not implemented yet.
+Implemented analysis layer. The generated tables and provenance summary exist, but app-ready JSON and interface wiring are still pending.
 
 Working layer name: **Evidence Fingerprint Divergence**.
 
 Primary public metric: Jensen-Shannon divergence (JSD).
 
-Internal diagnostic only: Kullback-Leibler divergence (KL), if useful after smoothing and QA.
+Internal diagnostic only: Kullback-Leibler divergence (KL). It was not needed for the public TASK-019 artifacts.
 
 ## Purpose
 
-The current atlas answers where climate pressure and visible adaptation capacity appear out of balance. The divergence layer would answer a different but related question:
+The current atlas answers where climate pressure and visible adaptation capacity appear out of balance. The divergence layer answers a different but related question:
 
 > Which Pacific geographies have similar or different evidence profiles behind their adaptation-gap scores?
 
-This keeps the project away from a simple leaderboard. Two geographies can have similar adaptation-gap scores for different reasons, or different scores with surprisingly similar evidence profiles. A JSD-based layer can make those patterns inspectable.
+This keeps the project away from a simple leaderboard. Two geographies can have similar adaptation-gap scores for different reasons, or different scores with surprisingly similar evidence profiles. A JSD-based layer makes those patterns inspectable without replacing the adaptation-gap score.
 
 ## Why This Is In Scope
 
-The challenge requires at least one official dataset and allows analytical transformations of open data when sources are cited. This layer would not add a new source dataset. It would transform the same official indicator trace already used by the atlas.
+The challenge requires at least one official dataset and allows analytical transformations of open data when sources are cited. This layer does not add a new source dataset. It transforms the same official indicator trace and EDA tables already used by the atlas.
 
 The layer supports the existing story contract:
 
@@ -51,26 +51,26 @@ Candidate vector families:
 4. Combined evidence fingerprint:
    - pressure, capacity, and visibility values in one documented vector
 
-Recommended V1:
+Implemented TASK-019 choice:
 
 - Start with a combined evidence fingerprint built from already-scored indicator values and explicit missingness/status fields.
 - Normalize each geography vector so it behaves like a distribution.
-- Use small smoothing only where required to avoid zero-related artifacts.
+- Use no public smoothing; zero components remain visible and are tested.
 - Compute pairwise JSD between all 22 geographies.
-- Record nearest neighbors, most divergent pairings, and per-indicator contribution notes where interpretable.
+- Record nearest neighbors, similarity bands, dominant-component reason labels, and caveats.
 
 KL should stay internal unless there is a very clear explanatory need. It is asymmetric, sensitive to zeros, and harder to explain responsibly.
 
-## Planned Artifacts
+## Produced Artifacts
 
-Proposed outputs:
+Produced outputs:
 
 - `artifacts/tables/eda_evidence_fingerprints.csv`
 - `artifacts/tables/eda_pairwise_jsd.csv`
 - `artifacts/tables/eda_similarity_neighbors.csv`
 - `artifacts/provenance/divergence_summary.json`
 
-Potential app-ready outputs:
+Potential future app-ready outputs:
 
 - `data/processed/app/evidence_fingerprints.json`
 - `app/public/data/evidence_fingerprints.json`
@@ -152,7 +152,7 @@ Do not claim:
 
 ## Open Questions
 
-1. Should V1 compute one combined fingerprint, or separate pressure/capacity/visibility fingerprints?
+1. Should later iterations add separate pressure/capacity/visibility fingerprints, or is the combined fingerprint enough for V1?
 2. Should the public UI show exact JSD values, or just "more similar / less similar" bands?
 3. Should the layer ship in the competition V1, or remain a post-mockup analytical enhancement?
-4. Should Claude design a dedicated fingerprint panel, or should Codex first generate real divergence artifacts?
+4. Should Claude design a dedicated fingerprint panel from the TASK-019 artifacts, or should app wiring wait until the core public-data adapter is finished?

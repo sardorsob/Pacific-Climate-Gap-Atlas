@@ -10,7 +10,8 @@
     "TASK-014",
     "TASK-015",
     "TASK-016",
-    "TASK-017"
+    "TASK-017",
+    "TASK-019"
   ],
   "config": "configs/eda.yml",
   "inputs": {
@@ -29,16 +30,20 @@
     "eda_coverage_by_dataset.csv": "artifacts/tables/eda_coverage_by_dataset.csv",
     "eda_coverage_by_geography.csv": "artifacts/tables/eda_coverage_by_geography.csv",
     "eda_data_coverage.csv": "artifacts/tables/eda_data_coverage.csv",
+    "eda_evidence_fingerprints.csv": "artifacts/tables/eda_evidence_fingerprints.csv",
     "eda_indicator_forensics.csv": "artifacts/tables/eda_indicator_forensics.csv",
     "eda_indicator_outliers.csv": "artifacts/tables/eda_indicator_outliers.csv",
     "eda_monitoring_gap.csv": "artifacts/tables/eda_monitoring_gap.csv",
     "eda_outlook_interpretation.csv": "artifacts/tables/eda_outlook_interpretation.csv",
+    "eda_pairwise_jsd.csv": "artifacts/tables/eda_pairwise_jsd.csv",
     "eda_rank_volatility.csv": "artifacts/tables/eda_rank_volatility.csv",
+    "eda_similarity_neighbors.csv": "artifacts/tables/eda_similarity_neighbors.csv",
     "eda_spatial_typologies.csv": "artifacts/tables/eda_spatial_typologies.csv",
     "eda_subregion_comparisons.csv": "artifacts/tables/eda_subregion_comparisons.csv",
     "eda_trend_profiles.csv": "artifacts/tables/eda_trend_profiles.csv",
     "index_sensitivity.csv": "artifacts/tables/index_sensitivity.csv",
-    "summary": "artifacts/provenance/eda_summary.json"
+    "summary": "artifacts/provenance/eda_summary.json",
+    "divergence_summary": "artifacts/provenance/divergence_summary.json"
   },
   "row_counts": {
     "eda_country_drivers.csv": 22,
@@ -46,11 +51,14 @@
     "eda_coverage_by_dataset.csv": 9,
     "eda_coverage_by_geography.csv": 22,
     "eda_data_coverage.csv": 22,
+    "eda_evidence_fingerprints.csv": 22,
     "eda_indicator_forensics.csv": 182,
     "eda_indicator_outliers.csv": 11,
     "eda_monitoring_gap.csv": 22,
     "eda_outlook_interpretation.csv": 88,
+    "eda_pairwise_jsd.csv": 231,
     "eda_rank_volatility.csv": 22,
+    "eda_similarity_neighbors.csv": 66,
     "eda_spatial_typologies.csv": 22,
     "eda_subregion_comparisons.csv": 3,
     "eda_trend_profiles.csv": 22,
@@ -139,6 +147,25 @@
     "sensitive": 3
   },
   "rank_volatility_max_range": 15,
+  "evidence_fingerprint_divergence": {
+    "fingerprint_count": 22,
+    "pairwise_count": 231,
+    "nearest_neighbor_count": 66,
+    "jsd_min": 0.0003147306,
+    "jsd_max": 0.4426796681,
+    "jsd_mean": 0.1463309048056277,
+    "similarity_band_counts": {
+      "different_profile": 80,
+      "highly_different_profile": 29,
+      "similar_profile": 35,
+      "very_similar_profile": 87
+    },
+    "missingness_status_counts": {
+      "data_desert_or_missing_pillars": 1,
+      "partial_or_thin_profile": 7,
+      "profile_components_present": 14
+    }
+  },
   "caveats": [
     "This is descriptive EDA, not causal inference.",
     "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -151,6 +178,8 @@
     "Spatial typologies are rule-based descriptors, not statistical clusters.",
     "No centroid-distance or land-adjacency inference is used.",
     "Outlook interpretation is stress-test display guidance, not forecasting.",
-    "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence."
+    "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.",
+    "Evidence fingerprint divergence compares normalized official-data profiles, not lived vulnerability, policy need, or causal similarity.",
+    "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks."
   ]
 }

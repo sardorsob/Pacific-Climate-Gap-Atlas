@@ -108,6 +108,16 @@ The layer must be anchored on a selected geography and must not become a global 
 
 Reason: the idea strengthens the atlas by moving beyond "who ranks high" toward "what kind of gap profile is this," while staying inside the official-data evidence base and avoiding overclaimed modeling.
 
+## 2026-06-30: Treat Evidence Fingerprint Divergence As Analysis-Ready, Not App-Shipped
+
+TASK-019 generated the evidence fingerprint table, unordered pairwise JSD table, nearest-neighbor table, and divergence provenance summary.
+
+The layer can be considered for selected-geography comparison, but it is not app-shipped until a compact public-data contract, interface copy, caveat placement, and mobile/desktop QA exist.
+
+Exact JSD values may remain behind the method layer or appear as secondary detail; the primary reader-facing language should emphasize similarity bands and evidence-profile reasons.
+
+Reason: the analysis passed the first traceability and caveat bar, but a public similarity layer is easy to overread as clustering, shared vulnerability, or policy need. The product gate should happen during app-data wiring and visual QA.
+
 ## 2026-06-29: Use Inspiration References As Principle Studies, Not Visual Copies
 
 The Dataviz Inspiration audit should guide interaction principles, not visual imitation. Reference lessons to preserve include full-bleed map surfaces, compact domain controls, selected-geography anchors, direct map labels, compact evidence strips, and motion only when it encodes evidence.
@@ -126,7 +136,7 @@ The legend is a visible compact panel on desktop and a collapsible chip on mobil
 
 The default map carries direct labels with leader lines for the story exemplars (PN, NR, AS, WF, TV), faint UN M49 subregion orientation text, and lon/lat graticule ticks. Labels are limited to exemplars to avoid clutter; subregion text is descriptive orientation, not a boundary.
 
-Selected geography is treated as an anchor. The map shows the selected name and a "vs Tuvalu" suggested-comparator label, and the panel keeps the compare action. The comparator is a labeled suggestion only. It is not an Evidence Fingerprint Divergence / JSD layer, which remains unbuilt until TASK-019 artifacts exist.
+Selected geography is treated as an anchor. The map shows the selected name and a "vs Tuvalu" suggested-comparator label, and the panel keeps the compare action. The comparator is a labeled suggestion only. It is not the TASK-019 Evidence Fingerprint Divergence / JSD layer, which remains unshipped until app-ready export and QA exist.
 
 The data-quiet view is map-led. The PN/NR/AS/WF group is labeled directly with in-map "reports 0" versus "no rows" tags so reported-zero and missing-row monitoring states are distinguishable without reading the panel.
 

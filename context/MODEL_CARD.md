@@ -70,8 +70,8 @@ Before the outlook appears in the app:
 
 The outlook is a communication layer for data exploration, not a predictive climate model. It can appear as a secondary exploratory layer only if the app makes caveats visible by default.
 
-## Adjacent Planned Diagnostic
+## Adjacent Diagnostic
 
-`TASK-019` may add Evidence Fingerprint Divergence using Jensen-Shannon divergence over official-data-derived profiles. This is not part of the Adaptation Gap Outlook model and should not be evaluated as a forecast.
+`TASK-019` adds Evidence Fingerprint Divergence using Jensen-Shannon divergence over official-data-derived profiles. This is not part of the Adaptation Gap Outlook model and should not be evaluated as a forecast.
 
-If implemented, it belongs in the EDA/methodology layer as an exploratory similarity diagnostic. KL divergence, if used, should remain internal unless the caveats and smoothing choices are simple enough to explain publicly.
+It belongs in the EDA/methodology layer as an exploratory similarity diagnostic. KL divergence was not used for public artifacts and should remain internal unless the caveats and smoothing choices are simple enough to explain publicly.

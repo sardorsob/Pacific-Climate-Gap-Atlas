@@ -6,7 +6,7 @@ Accepted visual mockup revision; preparing app-data wiring and next analysis lan
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, static app-ready JSON/GeoJSON, script-first EDA outputs, story/design briefs, a Dataviz Inspiration audit, and an accepted React/Vite atlas mockup revision. Final public-data wiring and owner visual approval remain open.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, static app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, and an accepted React/Vite atlas mockup revision. Final public-data wiring and owner visual approval remain open.
 
 ## Working Title
 
@@ -26,7 +26,7 @@ Pacific island countries face climate burdens they did little to create, but the
 | Data science pipeline | done | `scripts/make_dataset.py` produces normalized observations, geography lookup, app summary, and provenance |
 | Adaptation Gap Index | done | `scripts/build_gap_index.py` produces geography scores plus indicator trace |
 | Outlook model | done | trend stress-test baseline is methodology-ready and app-optional |
-| Evidence fingerprint divergence | planned | `TASK-019`; assigned to Codex data agent as a parallel analysis track |
+| Evidence fingerprint divergence | analysis-ready | `TASK-019` produced fingerprints, pairwise JSD rows, nearest-neighbor rows, and provenance; app wiring is pending |
 | Static app data | done | `scripts/build_app_data.py` produces public JSON/GeoJSON layer inputs |
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
@@ -54,9 +54,10 @@ Pacific island countries face climate burdens they did little to create, but the
 - Completed `TASK-017` monitoring-gap GIS story analysis with priority quadrants and reporting-gap caveats.
 - Completed `TASK-018` story and design synthesis with `STORY_BRIEF.md` and `DESIGN_BRIEF.md`.
 - Started `TASK-006` visual mockup pass with a buildable React/Vite atlas concept for owner review; final app wiring remains open.
-- Added `TASK-019` as a planned Evidence Fingerprint Divergence lane so JSD/KL ideas fit the official-data story without becoming a new leaderboard or overclaimed model.
+- Added and completed `TASK-019` as an Evidence Fingerprint Divergence analysis lane so JSD ideas fit the official-data story without becoming a new leaderboard or overclaimed model.
 - Completed `TASK-020` Dataviz Inspiration audit with live browser review of map/climate/environment references and updated the story, design, Claude mockup, decision, backlog, and memory context around full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns.
-- Organized the next delegated sprint: Codex owns mockup critique and QA, Claude owns the visual revision pass, a Codex data agent owns `TASK-019`, and a Codex app-data agent owns mock-to-public-data wiring inventory.
+- Organized the delegated sprint: Codex owned mockup critique and QA, Claude owned the visual revision pass, a Codex data agent completed `TASK-019`, and a Codex app-data agent completed the mock-to-public-data wiring inventory.
 - Completed `TASK-021` mockup critique with a Claude-facing checklist in `context/plans/task-021-mockup-critique.md`; first priority is fixing the hidden desktop legend before visual polish.
 - Completed and accepted `TASK-022` / `TASK-024`: Claude revised the visual mockup, Codex reviewed the code and context, applied small QA fixes, and prepared the accepted mockup revision for commit. Next app step is `TASK-023` mock-to-public-data wiring inventory.
 - Completed `TASK-023` app-data wiring inventory in `context/plans/app-data-wiring-inventory.md`. The app can wire base scores and centroids from current public data, but monitoring reporting status, rank uncertainty, story labels, top-signal arrays, political/status context, and outlook display gating need app-ready export/derivation before replacing the mock fixture.
+- Completed `TASK-019` Evidence Fingerprint Divergence with 22 geography fingerprints, 231 unordered pairwise JSD rows, 66 nearest-neighbor rows, and caveated provenance. Treat it as analysis-ready but not app-wired.

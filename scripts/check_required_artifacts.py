@@ -34,6 +34,7 @@ REQUIRED_PATHS = [
     "configs/gap_index.yml",
     "configs/outlook.yml",
     "analysis/__init__.py",
+    "analysis/eda/divergence.py",
     "app/package.json",
     "scripts/validate_task_statuses.py",
     "scripts/check_secrets.py",
@@ -49,6 +50,12 @@ REQUIRED_PATHS = [
     "artifacts/tables/eda_subregion_comparisons.csv",
     "artifacts/tables/eda_outlook_interpretation.csv",
     "artifacts/tables/eda_monitoring_gap.csv",
+    "artifacts/tables/eda_evidence_fingerprints.csv",
+    "artifacts/tables/eda_pairwise_jsd.csv",
+    "artifacts/tables/eda_similarity_neighbors.csv",
+    "artifacts/provenance/eda_summary.json",
+    "artifacts/provenance/divergence_summary.json",
+    "tests/analysis/test_divergence.py",
 ]
 
 

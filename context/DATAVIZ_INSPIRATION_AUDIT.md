@@ -301,5 +301,5 @@ Mobile lessons:
 
 - Use this audit during the next visual critique of the current mockup.
 - Feed the "selected anchor" and "micro evidence strip" patterns into the next Claude prompt.
-- If `TASK-019` is implemented, explicitly design it around the Dataista selected-commune workflow.
+- If `TASK-019` ships in the app, explicitly design it around the Dataista selected-commune workflow.
 - Do not add a new app dependency from these examples without a separate technical design note.

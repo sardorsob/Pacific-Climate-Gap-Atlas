@@ -31,7 +31,7 @@ Pacific island countries face climate burdens they did little to create, but the
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
 | GIS atlas app | accepted mockup revision | React/Vite concept includes centroid map composition, visible desktop legend, direct story labels, selected-anchor comparison cue, data-quiet map tags, story tour, source drawer, and responsive detail panel; still needs owner visual approval and final public-data wiring |
-| Mockup revision sprint | mostly done | `TASK-021`, `TASK-022`, and `TASK-024` are complete; `TASK-023` app-data wiring inventory remains next |
+| Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; next app implementation should use the wiring inventory before replacing mock data |
 
 ## Last Session Notes
 
@@ -59,3 +59,4 @@ Pacific island countries face climate burdens they did little to create, but the
 - Organized the next delegated sprint: Codex owns mockup critique and QA, Claude owns the visual revision pass, a Codex data agent owns `TASK-019`, and a Codex app-data agent owns mock-to-public-data wiring inventory.
 - Completed `TASK-021` mockup critique with a Claude-facing checklist in `context/plans/task-021-mockup-critique.md`; first priority is fixing the hidden desktop legend before visual polish.
 - Completed and accepted `TASK-022` / `TASK-024`: Claude revised the visual mockup, Codex reviewed the code and context, applied small QA fixes, and prepared the accepted mockup revision for commit. Next app step is `TASK-023` mock-to-public-data wiring inventory.
+- Completed `TASK-023` app-data wiring inventory in `context/plans/app-data-wiring-inventory.md`. The app can wire base scores and centroids from current public data, but monitoring reporting status, rank uncertainty, story labels, top-signal arrays, political/status context, and outlook display gating need app-ready export/derivation before replacing the mock fixture.

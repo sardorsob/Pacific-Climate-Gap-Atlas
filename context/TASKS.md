@@ -548,11 +548,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Codex can estimate the app-data wiring implementation from the inventory without rereading every data file.
 - Verification commands: `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`
 - Manual QA: Spot-check fixture fields against `app/public/data/*`.
-- QA notes:
-- Attempts: 0
+- QA notes: Created `context/plans/app-data-wiring-inventory.md` with a field-by-field mapping from `app/src/mock/mockAtlasData.ts` to current public app data. Confirmed base score, centroid, outlook score, indicator detail, and source-ref fields are present, while monitoring reporting status, rank volatility, story labels, top-signal arrays, subregion/status context, and outlook display gating still need app-ready export/derivation before real wiring. Spot checks for NR, TV, PN, AS, WF, and MH preserve the reported-zero versus missing-row distinction and rank/outlook caveats.
+- Attempts: 1
 - Max attempts: 2
-- Attempt log:
-- Status: pending
+- Attempt log: Documentation-only inventory; no app source, public data, generated artifacts, or analysis code changed.
+- Status: done
 
 ## TASK-024
 - Phase: design-qa

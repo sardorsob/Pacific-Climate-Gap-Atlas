@@ -497,16 +497,16 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Functional notes: Review current desktop and mobile states, identify gaps against the audit, and write precise Claude instructions for the revision pass.
 - Statistical notes: Do not alter scoring, data methodology, or generated artifacts.
 - Edge cases: Critique should preserve what already works; do not request visual changes that weaken caveat placement or evidence traceability.
-- Files to create/modify: `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/plans/mockup-revision-delegation-plan.md`, optional critique note under `context/plans/`
+- Files to create/modify: `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/plans/task-021-mockup-critique.md`, `context/plans/mockup-revision-delegation-plan.md`, `context/TASKS.md`, `context/PROJECT.md`, `context/HANDOVER.md`, `context/logs/Progress Log.md`
 - Artifacts to produce: mockup critique checklist and Claude revision brief
 - Acceptance criteria: Claude has clear prioritized instructions for desktop default, selected-country, data-quiet, and mobile states.
-- Verification commands: `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`
+- Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `python scripts/check_required_artifacts.py`; `git diff --check`
 - Manual QA: Read checklist against the current app and confirm it is actionable, not just aesthetic preference.
-- QA notes:
-- Attempts: 0
+- QA notes: Reviewed current app source and browser-rendered desktop default, selected Nauru, and data-quiet states. Build passed after rerunning outside the filesystem sandbox. Key finding: the desktop legend is hidden because it sits inside a closed `<details>` element with hidden summary, so Claude must fix first-load legend visibility. Checklist also directs Claude to strengthen map-first hierarchy, selected-anchor comparison, data-quiet map callouts, compact evidence strips, and mobile screenshot QA.
+- Attempts: 1
 - Max attempts: 2
-- Attempt log:
-- Status: pending
+- Attempt log: Created `context/plans/task-021-mockup-critique.md` and updated Claude instructions with the critique checklist path.
+- Status: done
 
 ## TASK-022
 - Phase: app-design

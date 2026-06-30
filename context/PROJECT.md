@@ -31,7 +31,7 @@ Pacific island countries face climate burdens they did little to create, but the
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
 | GIS atlas app | in-progress mockup | Reviewable React/Vite concept includes centroid map composition, story tour, layer controls, source drawer, and responsive detail panel; still needs visual approval and final public-data wiring |
-| Mockup revision sprint | planned | `TASK-021` Codex critique, `TASK-022` Claude visual revision, `TASK-023` app-data wiring inventory, and `TASK-024` Codex QA are organized in `context/plans/mockup-revision-delegation-plan.md` |
+| Mockup revision sprint | in-progress | `TASK-021` critique is complete; `TASK-022` Claude visual revision, `TASK-023` app-data wiring inventory, and `TASK-024` Codex QA remain next |
 
 ## Last Session Notes
 
@@ -57,3 +57,4 @@ Pacific island countries face climate burdens they did little to create, but the
 - Added `TASK-019` as a planned Evidence Fingerprint Divergence lane so JSD/KL ideas fit the official-data story without becoming a new leaderboard or overclaimed model.
 - Completed `TASK-020` Dataviz Inspiration audit with live browser review of map/climate/environment references and updated the story, design, Claude mockup, decision, backlog, and memory context around full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns.
 - Organized the next delegated sprint: Codex owns mockup critique and QA, Claude owns the visual revision pass, a Codex data agent owns `TASK-019`, and a Codex app-data agent owns mock-to-public-data wiring inventory.
+- Completed `TASK-021` mockup critique with a Claude-facing checklist in `context/plans/task-021-mockup-critique.md`; first priority is fixing the hidden desktop legend before visual polish.

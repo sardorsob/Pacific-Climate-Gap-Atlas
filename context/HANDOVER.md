@@ -63,8 +63,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Run `TASK-021`: Codex critiques the current mockup against the story, design brief, and Dataviz Inspiration audit.
-2. Hand `TASK-022` to Claude using `context/CLAUDE_MOCKUP_INSTRUCTIONS.md` and the `TASK-021` checklist.
+1. Hand `TASK-022` to Claude using `context/CLAUDE_MOCKUP_INSTRUCTIONS.md` and `context/plans/task-021-mockup-critique.md`.
+2. Ask Claude to fix the hidden desktop legend first, then strengthen map-first hierarchy, selected-anchor comparison, data-quiet map callouts, compact evidence strips, and mobile states.
 3. Run `TASK-019` in parallel through a Codex data agent if the team wants real Evidence Fingerprint Divergence before final app wiring.
 4. Run `TASK-023` in parallel as a mock-data-to-public-data wiring inventory.
 5. Run `TASK-024` after Claude finishes: Codex QA reviews visuals, build, caveats, accessibility basics, and changed files before any commit.
@@ -90,4 +90,5 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.
 - TASK-022 belongs to Claude, but Claude must not stage, commit, push, change data methodology, or alter generated artifacts.
 - TASK-024 is required before accepting any Claude visual revision.
+- TASK-021 found a concrete first-fix issue: the desktop legend is hidden inside a closed `<details>` disclosure whose summary is hidden.
 - The copied reference workflow kits are intentionally ignored under `context/`.

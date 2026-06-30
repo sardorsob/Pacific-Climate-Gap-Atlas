@@ -44,7 +44,7 @@ Do not use generic decorative atmosphere such as bokeh, glowing orbs, cinematic 
 
 You are working on `TASK-022: Claude visual revision pass for atlas mockup`.
 
-Before editing, read `context/plans/mockup-revision-delegation-plan.md` and the `TASK-021` critique checklist if Codex has created one. If the checklist does not exist yet, stop and ask Codex for it.
+Before editing, read `context/plans/mockup-revision-delegation-plan.md` and `context/plans/task-021-mockup-critique.md`.
 
 Your expected revision targets are:
 
@@ -82,7 +82,7 @@ Read these files in this order before designing:
 2. `context/DESIGN_BRIEF.md`
 3. `context/DATAVIZ_INSPIRATION_AUDIT.md`
 4. `context/plans/mockup-revision-delegation-plan.md`
-5. the `TASK-021` critique checklist, if Codex has created one
+5. `context/plans/task-021-mockup-critique.md`
 6. `context/storyboardbrainstorm.md`
 7. `context/ANALYSIS_BRIEF.md`
 8. `context/docs/design.md`

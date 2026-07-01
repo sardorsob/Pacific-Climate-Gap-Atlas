@@ -36,6 +36,6 @@ Avoid copying reference identities, palettes, layouts, or iconic stripe treatmen
 - Codex data work completed `TASK-019` Evidence Fingerprint Divergence; app export remains future work.
 - `TASK-025` real app-data wiring is complete; use `app/src/lib/atlasData.ts` and generated `/data/geographies.json` as the app data path.
 - `TASK-026` MapLibre map substrate and `TASK-029` Natural Earth land context are complete. Scored/selectable geographies are still centroid fallback, not reviewed polygon geometry.
-- Claude can draft `TASK-028` story/copy improvements and `TASK-027` final visual polish, but Codex must QA claims, caveats, and commits.
+- `TASK-028` story/copy rewrite is complete. Claude can draft `TASK-027` final visual polish, but Codex must QA claims, caveats, and commits.
 - Keep Claude app edits separate from data-analysis and app-data wiring edits until Codex integrates them.
 - Completed one-off critique/delegation plan files may be pruned after their outcomes are consolidated into living docs.

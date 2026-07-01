@@ -182,7 +182,7 @@ Current implementation order:
 1. `TASK-025` wire public/generated app data into the atlas view model. Done.
 2. `TASK-026` add MapLibre map substrate with centroid fallback. Done.
 3. `TASK-029` add Natural Earth Pacific land context and MapLibre graticule lines. Done.
-4. `TASK-028` rewrite the guided story, caveats, and interface copy.
+4. `TASK-028` rewrite the guided story, caveats, and interface copy. Done.
 5. `TASK-027` polish the production visuals after the MapLibre map and revised story exist.
 6. `TASK-007` finish methodology, accessibility, deployment, and submission readiness.
 

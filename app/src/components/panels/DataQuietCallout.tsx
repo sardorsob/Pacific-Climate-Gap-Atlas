@@ -21,16 +21,17 @@ export function DataQuietCallout({
       <p className="eyebrow">Signature view</p>
       <h1 className="panel__name">Where the data goes quiet</h1>
       <p className="panel__lede">
-        High apparent gap and a thin official record often overlap. The high-gap / low-monitoring
-        group here is <strong>{priority}</strong>. Two kinds of silence look different on the map.
+        Where the adaptation gap looks widest, the official monitoring record often thins out. This
+        high-gap / low-monitoring group - <strong>{priority}</strong> - goes quiet in two different
+        ways.
       </p>
 
       <section className="quiet-card quiet-card--zero">
         <h2 className="panel__h"><HelpCircle aria-hidden="true" size={16} /> What does zero mean?</h2>
         <p className="quiet-card__geos">{zero.map((g) => g.name).join(", ")}</p>
         <p className="quiet-card__caveat">
-          Latest official monitoring row reports 0; verify source semantics before interpreting this as
-          no monitoring infrastructure.
+          Their latest official monitoring row reports 0. Verify what that value means at the source
+          before reading it as no monitoring stations.
         </p>
         <div className="quiet-card__chips">
           {zero.map((g) => (
@@ -43,8 +44,8 @@ export function DataQuietCallout({
         <h2 className="panel__h"><HelpCircle aria-hidden="true" size={16} /> Why is this blank?</h2>
         <p className="quiet-card__geos">{missing.map((g) => g.name).join(", ")}</p>
         <p className="quiet-card__caveat">
-          No monitoring rows in processed official data; treat as a reporting gap, not confirmed
-          absence.
+          No monitoring rows reached the processed official data. Treat it as a reporting gap, not
+          confirmed absence.
         </p>
         <div className="quiet-card__chips">
           {missing.map((g) => (
@@ -54,8 +55,8 @@ export function DataQuietCallout({
       </section>
 
       <p className="quiet-card__footer">
-        A reporting gap is not proof that infrastructure is absent. Monitoring counts are unnormalized
-        proxy coverage.
+        A reporting gap is a gap in the record, not proof that stations are absent. Monitoring counts
+        are unnormalized proxy coverage.
       </p>
     </aside>
   );

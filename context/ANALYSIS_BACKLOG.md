@@ -6,7 +6,7 @@ The project is pausing visual design work until the atlas has a stronger evidenc
 
 ## Current Status
 
-Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. `TASK-025` wired the core app data contract, `TASK-026` added the MapLibre centroid map substrate, and `TASK-029` added Natural Earth visual land context plus first-render graticule lines. Next app steps are `TASK-028` story/copy rewrite and `TASK-027` final visual polish. Decide whether divergence ships in V1 before adding similarity fields to the app data contract.
+Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. `TASK-025` wired the core app data contract, `TASK-026` added the MapLibre centroid map substrate, `TASK-029` added Natural Earth visual land context plus first-render graticule lines, and `TASK-028` rewrote the guided story/copy. Next app step is `TASK-027` final visual polish. Decide whether divergence ships in V1 before adding similarity fields to the app data contract.
 
 ## Principles
 

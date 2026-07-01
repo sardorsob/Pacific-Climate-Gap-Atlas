@@ -43,7 +43,7 @@ Geography and time span:
 
 - Geography: 22 Pacific geographies in the current processed dataset.
 - Time basis: latest available official observations for the baseline Adaptation Gap Index; historical series for outlook diagnostics where eligible.
-- Geometry: centroid fallback only until a boundary source is selected and documented.
+- Geometry: Natural Earth land context for orientation; centroid fallback for scored/selectable geographies until a scored-boundary source is selected and documented.
 
 Primary evidence layer:
 
@@ -76,7 +76,7 @@ What is estimated or modeled:
 
 What is schematic or illustrative:
 
-- Centroid point placement stands in for geography until a boundary source is chosen.
+- Natural Earth land context is visual orientation only; centroid point placement stands in for scored/selectable geography until a boundary source is chosen.
 - Layer labels such as "high gap" and "low visible capacity" are story screens, not causal diagnoses.
 
 What the visual will deliberately not imply:
@@ -299,7 +299,7 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 | Spatial typology | Rule-based descriptor, not statistical cluster or causal explanation. |
 | Outlook | Stress-test interpretation, not forecast. |
 | Responsibility context | Context only, not a score driver or blame ranking. |
-| Centroid map | Point/centroid fallback, not official boundary geometry. |
+| Map geometry | Natural Earth land context is visual only; scores and selections use centroid fallback, not official boundary geometry. |
 
 ## Claims We Will Not Make
 

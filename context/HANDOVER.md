@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026` and `TASK-029` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, and accessible geography hit targets. The remaining `TASK-006` app work is split into `TASK-028` story/copy rewrite and `TASK-027` post-map visual polish before `TASK-007` final readiness.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, and `TASK-028` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, accessible geography hit targets, and revised evidence-backed story copy. The remaining `TASK-006` app work is `TASK-027` post-map visual polish before `TASK-007` final readiness.
 
 ## How To Validate The Scaffold
 
@@ -71,10 +71,9 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Run `TASK-028` story/copy rewrite before the final visual polish so Claude is polishing real claims, not placeholder text.
-2. Run `TASK-027` only after the MapLibre/Natural Earth map substrate and revised story copy exist.
-3. Keep Codex QA as the gate for any Claude visual/app changes before committing, and keep owner visual review as the taste/approval gate.
-4. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026` MapLibre substrate.
+1. Run `TASK-027` final visual polish over the MapLibre/Natural Earth map and revised story copy.
+2. Keep Codex QA as the gate for any Claude visual/app changes before committing, and keep owner visual review as the taste/approval gate.
+3. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026`/`TASK-029` map substrate.
 
 ## Known Caveats
 
@@ -104,5 +103,5 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - Codex QA fixes applied before commit: render the detail panel only when selection or data-quiet mode is active, open the data-quiet sheet when that overlay is toggled, encode graticule degree labels with ASCII source escapes, and normalize CSS letter spacing to `0`.
 - Remaining owner-review notes: the mobile top toolbar is horizontally scrollable by design; confirm visual taste and discoverability in the next browser review. Codex did not capture fresh screenshots during QA because local Playwright import was blocked by filesystem permissions, so the acceptance is based on source review, app build, validation checks, and Claude's reported viewport review. The "vs Tuvalu" comparator is a label-only suggestion, not the TASK-019 JSD layer.
 - TASK-025 is complete. The app loads generated `/data/geographies.json` through `app/src/lib/atlasData.ts`; the obsolete `app/src/mock/mockAtlasData.ts` fixture was deleted. The generated app contract now carries monitoring status, rank uncertainty, story labels, top signals, status/subregion context, and outlook display gating.
-- TASK-026 is complete as a MapLibre centroid substrate. TASK-029 is complete as a Natural Earth visual land-context layer plus MapLibre graticule fix. TASK-028 and TASK-027 remain pending child tasks under the open TASK-006 app shell, followed by TASK-007 submission readiness.
+- TASK-026 is complete as a MapLibre centroid substrate. TASK-029 is complete as a Natural Earth visual land-context layer plus MapLibre graticule fix. TASK-028 is complete as the guided story/copy rewrite. TASK-027 remains pending under the open TASK-006 app shell, followed by TASK-007 submission readiness.
 - Completed transient mockup plan/checklist files were pruned from `context/plans/`; their durable outcomes now live in `TASKS.md`, `PROJECT.md`, `HANDOVER.md`, `DESIGN_BRIEF.md`, and the progress log.

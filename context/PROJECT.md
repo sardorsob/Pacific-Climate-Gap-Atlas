@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-029 Natural Earth Pacific land context is complete; next build gate is TASK-028 story/copy rewrite before final visual polish. Competition deadline: August 31, 2026.
+TASK-028 guided story/copy rewrite is complete; next build gate is TASK-027 final visual polish. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. Remaining app work is organized as `TASK-028` story/copy rewrite, `TASK-027` post-map visual polish, and then `TASK-007` final methodology/accessibility/submission readiness.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The guided story/copy rewrite is complete; remaining app work is organized as `TASK-027` post-map visual polish and then `TASK-007` final methodology/accessibility/submission readiness.
 
 ## Working Title
 
@@ -14,7 +14,7 @@ The Pacific Adaptation Gap Atlas
 
 ## Current Thesis
 
-Pacific island countries face climate burdens they did little to create, but the size and shape of the adaptation gap varies by geography. The project should help readers explore where climate signals, observed stress, monitoring coverage, and response-capacity proxies appear most out of balance.
+Pacific geographies face uneven climate pressure, visible capacity, and official-data coverage. The project should help readers explore where climate signals, observed stress, monitoring coverage, and response-capacity proxies appear most out of balance.
 
 ## Feature Table
 
@@ -35,7 +35,7 @@ Pacific island countries face climate burdens they did little to create, but the
 | App-data wiring implementation | done | `TASK-025` replaced fixture-backed evidence with public/generated app data while preserving monitoring, rank, story, outlook, and caveat fields |
 | MapLibre substrate | done | `TASK-026` adds a MapLibre-backed map canvas and centroid point layer |
 | Pacific land context | done | `TASK-029` adds Natural Earth visual land context and MapLibre graticule lines; scored geographies remain centroid points, not polygon boundaries |
-| Story/copy rewrite | pending | `TASK-028` sharpens the seven guided beats, map callouts, caveats, CTAs, and method/source text before final polish |
+| Story/copy rewrite | done | `TASK-028` sharpened the seven guided beats, map callouts, caveats, CTAs, geometry caveats, and method/source text before final polish |
 | Post-map visual polish | pending | `TASK-027` is a Claude-built, Codex-QA visual pass after real data, story copy, and MapLibre geometry exist |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
@@ -73,3 +73,4 @@ Pacific island countries face climate burdens they did little to create, but the
 - Completed `TASK-025` real app-data wiring: app data exports now include monitoring, rank, story, context, and outlook-display objects; the React app loads `/data/geographies.json` through `app/src/lib/atlasData.ts`; the obsolete mock fixture was deleted.
 - Completed `TASK-026` MapLibre map substrate: `AtlasMap` now renders a no-network MapLibre Pacific canvas with generated centroid point features, React overlay labels, accessible geography hit targets, monitoring hatching/dashed cues, selected/priority state, and explicit boundary-not-joined caveats. It does not ship polygon boundaries.
 - Completed `TASK-029` Pacific land context: `scripts/build_land_context.py` builds and mirrors Natural Earth 10m land into the app, writes provenance, renders land under centroid points, and moves graticule lines into MapLibre so the grid appears on initial render.
+- Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.

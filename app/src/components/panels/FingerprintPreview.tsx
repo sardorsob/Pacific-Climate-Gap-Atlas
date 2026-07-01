@@ -14,8 +14,8 @@ export function FingerprintPreview({ geos }: { geos: Geo[] }) {
         <FlaskConical aria-hidden="true" size={13} /> Analysis-ready, not app-wired
       </p>
       <p className="fingerprint__lede">
-        Nauru's evidence profile leans toward <strong>{FINGERPRINT_PREVIEW.anchorLeans}</strong>.
-        Its nearest official-data profiles:
+        Under this method, Nauru's evidence profile leans toward{" "}
+        <strong>{FINGERPRINT_PREVIEW.anchorLeans}</strong>. Its most similar official-data profiles are:
       </p>
       <ul className="fingerprint__list">
         {FINGERPRINT_PREVIEW.neighbors.map((n) => (

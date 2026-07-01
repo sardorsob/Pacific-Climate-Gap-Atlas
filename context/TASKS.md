@@ -158,7 +158,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: `npm --prefix app run build` succeeds after dependencies are installed.
 - Verification commands: `npm --prefix app run build`
 - Manual QA: Desktop and mobile viewport smoke checks.
-- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. `TASK-025` removed the evidence-bearing mock fixture and wired the app to generated public data. `TASK-026` replaced the SVG-only map surface with a MapLibre-backed centroid canvas, and `TASK-029` added Natural Earth visual land context plus MapLibre graticule linework while retaining centroid score geometry caveats. `TASK-028` story/copy polish and `TASK-027` final visual polish remain before this parent task can close.
+- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. `TASK-025` removed the evidence-bearing mock fixture and wired the app to generated public data. `TASK-026` replaced the SVG-only map surface with a MapLibre-backed centroid canvas, `TASK-029` added Natural Earth visual land context plus MapLibre graticule linework, and `TASK-028` rewrote the guided story/interface copy while retaining caveats. `TASK-027` final visual polish remains before this parent task can close.
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: Created map-first React mockup with layer controls, data-quiet overlay, rank-uncertainty overlay, optional outlook stress-test state, source/method drawer, guided tour, responsive detail panel, then upgraded it to a scroll-led guided atlas with a free-explore handoff.
@@ -664,11 +664,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Guided story reads as a clear argument, each beat has one claim and one nearby caveat, and no UI text makes unsupported claims.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
 - Manual QA: Read every guided beat, mobile sheet, source/method note, and country-panel text against `STORY_BRIEF.md` and current EDA artifacts.
-- QA notes:
-- Attempts: 0
+- QA notes: Reviewed Cursor/Claude-drafted copy against the story brief, EDA artifacts, and TASK-028 guardrails. Tightened the seven tour beats, data-quiet copy, method drawer, country-panel trace note, fingerprint preview, and geometry caveats. Removed an over-broad responsibility-framing phrase, kept monitoring zero/missing distinctions, kept rank fragility tied to `eda_rank_volatility.csv`, and kept Evidence Fingerprint Divergence labelled analysis-ready/not app-wired.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: Codex QA pass over the story/copy files plus small claim/caveat fixes before build and validation.
+- Status: done
 
 ## TASK-029
 - Phase: app-map

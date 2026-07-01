@@ -162,8 +162,8 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
       <details className="trace">
         <summary>Indicator trace ({geo.indicators} rows)</summary>
         <p className="trace__note">
-          Each score traces to latest official rows with values, units, scoring values, and a
-          source-row hash. Full trace is wired from <code>country_details.json</code> in the build.
+          Every score traces back to the latest official rows behind it - values, units, scoring
+          values, and a source-row hash - so nothing here is a black box.
         </p>
       </details>
 

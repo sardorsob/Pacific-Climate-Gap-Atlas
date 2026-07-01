@@ -51,8 +51,8 @@ Current sequencing:
 - `TASK-025` real app-data wiring is complete.
 - `TASK-026` MapLibre map substrate is complete as centroid fallback.
 - `TASK-029` Natural Earth land context is complete as visual orientation, not scored/selectable polygon boundaries.
-- `TASK-028` guided story/copy rewrite can be Claude-drafted, but Codex must QA every claim and caveat against the evidence.
-- `TASK-027` final visual polish should wait until `TASK-028` is ready.
+- `TASK-028` guided story/copy rewrite is complete and Codex-QA'd.
+- `TASK-027` final visual polish can use the revised story copy as the text baseline.
 
 Your expected revision targets, when assigned to story or polish work, are:
 

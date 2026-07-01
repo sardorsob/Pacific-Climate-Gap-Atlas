@@ -61,7 +61,7 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
         </ul>
       </div>
 
-      <p className="legend__note">Centroid fallback, not boundary geometry.</p>
+      <p className="legend__note">Natural Earth land context; scores use centroid points, not boundaries.</p>
     </section>
   );
 }

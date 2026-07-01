@@ -59,14 +59,17 @@ export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => 
 
         <section className="drawer__section">
           <h3>Geometry policy</h3>
-          <p>Centroid fallback only. No boundary polygons until a source is selected and licensed.</p>
+          <p>
+            Natural Earth land context helps orient the map, but scores and selections use centroid
+            points. No official scored-boundary polygons are joined yet.
+          </p>
         </section>
 
         <section className="drawer__section">
           <h3>Monitoring proxy &amp; missingness</h3>
           <p>
             Monitoring counts are unnormalized proxy coverage. Reported-zero and missing rows are
-            reporting gaps, not confirmed absence of infrastructure.
+            reporting gaps in the record, not confirmed absence of monitoring stations.
           </p>
         </section>
 
@@ -80,7 +83,19 @@ export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => 
 
         <section className="drawer__section">
           <h3>Outlook</h3>
-          <p>Stress-test interpretation, not a forecast. Off by default; weak rows are withheld.</p>
+          <p>
+            A stress test, not a forecast: it asks what recent trends imply, not what will happen. Off
+            by default, and weak or sparse rows are withheld rather than shown.
+          </p>
+        </section>
+
+        <section className="drawer__section">
+          <h3>Evidence fingerprints (analysis-ready)</h3>
+          <p>
+            Jensen-Shannon divergence measures how alike two geographies' official-data profiles are.
+            It is a likeness of evidence patterns, not of risk, need, or lived experience, and it is
+            not yet wired into the live map.
+          </p>
         </section>
 
         <section className="drawer__section">

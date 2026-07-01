@@ -150,6 +150,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Scientific refs: context/docs/methodology.md
 - User value / decision value: Gives users a map-first experience instead of a generic dashboard.
 - Functional notes: Implement map canvas, layer controls, side panel, source drawer, and responsive layout.
+- Implementation split: Close this parent task only after TASK-025 app-data wiring, TASK-026 MapLibre/geometry, TASK-028 narrative copy/story polish, and TASK-027 post-map visual polish are reviewed.
 - Statistical notes: The UI must show missingness and source caveats near score displays.
 - Edge cases: Offline or missing app data should show a clear stale/unavailable state.
 - Files to create/modify: `app/src/*`, `app/public/data/*`, `app/package.json`
@@ -157,7 +158,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: `npm --prefix app run build` succeeds after dependencies are installed.
 - Verification commands: `npm --prefix app run build`
 - Manual QA: Desktop and mobile viewport smoke checks.
-- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. It uses mock fixture data derived from current EDA/app artifacts and centroid fallback composition; final public-data wiring and visual approval are still required.
+- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. It uses mock fixture data derived from current EDA/app artifacts and centroid fallback composition; `TASK-025` real-data wiring, `TASK-026` MapLibre/geometry, `TASK-028` story/copy polish, and `TASK-027` final visual polish remain before this parent task can close.
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: Created map-first React mockup with layer controls, data-quiet overlay, rank-uncertainty overlay, optional outlook stress-test state, source/method drawer, guided tour, responsive detail panel, then upgraded it to a scroll-led guided atlas with a free-explore handoff.
@@ -525,7 +526,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Desktop default, selected-country, data-quiet, and mobile portrait states are visibly improved and buildable.
 - Verification commands: `npm --prefix app run build`
 - Manual QA: Claude reports changed files, viewports checked, static/fake states, risks, and owner critique items.
-- QA notes: Accepted after Codex QA. The visual revision fixes the hidden desktop legend, makes the first view map-first by removing the default open detail panel, adds direct story labels and graticule/subregion orientation, strengthens selected-geography anchoring with a Tuvalu comparator cue, makes the data-quiet layer map-led with reported-zero versus no-row tags, adds a compact evidence strip in the country panel, and moves mobile controls away from the bottom sheet. Codex applied small QA fixes before acceptance: panel renders only when active, data-quiet opens its sheet when toggled, degree labels use ASCII source escapes, and CSS letter spacing is normalized to `0`. The mockup still uses `app/src/mock/` fixture data; final public-data wiring is `TASK-023`.
+- QA notes: Accepted after Codex QA. The visual revision fixes the hidden desktop legend, makes the first view map-first by removing the default open detail panel, adds direct story labels and graticule/subregion orientation, strengthens selected-geography anchoring with a Tuvalu comparator cue, makes the data-quiet layer map-led with reported-zero versus no-row tags, adds a compact evidence strip in the country panel, and moves mobile controls away from the bottom sheet. Codex applied small QA fixes before acceptance: panel renders only when active, data-quiet opens its sheet when toggled, degree labels use ASCII source escapes, and CSS letter spacing is normalized to `0`. The mockup still uses `app/src/mock/` fixture data; `TASK-023` completed the wiring inventory, and `TASK-025` owns implementation.
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: Claude implemented the visual revision under the approved app scope; Codex reviewed and patched small QA issues before commit.
@@ -576,3 +577,95 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Codex QA pass over Claude's TASK-022 revision, plus focused cleanup and validation before commit.
 - Status: done
+
+## TASK-025
+- Phase: app-data
+- Title: Wire real app data into atlas view model
+- Depends on: TASK-005, TASK-006, TASK-023
+- Assigned agent: Codex
+- Contract refs: context/plans/app-data-wiring-inventory.md, configs/app_layers.yml, context/DESIGN_BRIEF.md
+- Data refs: app/public/data/*, data/processed/app/*, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv, artifacts/tables/eda_country_story_labels.csv, artifacts/tables/eda_outlook_interpretation.csv
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
+- User value / decision value: Converts the accepted mockup from a fixture-driven concept into a real evidence-backed atlas without losing caveats.
+- Functional notes: Add a loader/adapter from public app data into the current UI view model, export or derive missing app-ready fields, and remove evidence-bearing dependence on `app/src/mock/mockAtlasData.ts` where real data exists.
+- Statistical notes: Preserve reported-zero versus missing monitoring rows, rank uncertainty, source traceability, outlook display gating, and non-causal story caveats.
+- Edge cases: Do not treat absent monitoring features as zero; do not show weak outlook diagnostics as ordinary projections; keep TASK-019 divergence disabled unless a separate app-ready contract is added.
+- Files to create/modify: `analysis/preprocessing/app_data.py`, `scripts/build_app_data.py`, `tests/analysis/*`, `app/src/lib/*`, `app/src/App.tsx`, `app/src/components/**`, `app/public/data/*`, `data/processed/app/*`, `artifacts/provenance/*`
+- Artifacts to produce: generated app-ready enrichment fields, React data adapter, updated public data files, app-data provenance summary
+- Acceptance criteria: Base map, layer controls, detail panel, data-quiet view, rank chip, and guarded outlook state render from public/generated app data while preserving current mockup behavior and caveats.
+- Verification commands: `python scripts/build_app_data.py --config configs/app_layers.yml`; `python scripts/validate_data_contracts.py`; `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`
+- Manual QA: Spot-check NR, TV, PN, AS, WF, and MH against the TASK-023 inventory and confirm the UI distinguishes reported zero, missing monitoring rows, fragile ranks, and withheld outlook records.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-026
+- Phase: app-map
+- Title: Add MapLibre island geometry layer
+- Depends on: TASK-025
+- Assigned agent: Codex primary, Claude visual support after data contract
+- Contract refs: context/SCOPE.md, context/DESIGN_BRIEF.md, context/plans/app-data-wiring-inventory.md
+- Data refs: app/public/data/atlas_geographies.geojson, app/public/data/geographies.json, external reviewed island boundary source if added
+- Scientific refs: context/DATA_CARD.md, context/DECISIONS.md, context/docs/methodology.md
+- User value / decision value: Moves the atlas from abstract centroid dots toward a real GIS-feeling island map while keeping honest fallback states.
+- Functional notes: Add MapLibre to the app, render island/boundary geometry where reviewed data exists, keep centroid markers for missing or tiny geometries, and preserve guided-scroll beat state, selected geography, labels, legend, and explore handoff.
+- Statistical notes: Boundary geometry is a visual/geographic layer, not a score input. Centroid fallback and boundary source caveats must remain visible.
+- Edge cases: Do not imply territorial precision if the boundary source is coarse or politically sensitive; do not break mobile map readability; do not let basemap labels obscure story callouts.
+- Files to create/modify: `app/package.json`, `app/src/components/map/*`, `app/src/lib/*`, `app/src/styles/base.css`, `app/public/data/*`, `context/DECISIONS.md`, `context/docs/methodology.md`
+- Artifacts to produce: MapLibre-backed map component, geometry-source provenance note, centroid fallback handling, desktop/mobile smoke evidence
+- Acceptance criteria: Guided and explore modes use the MapLibre map without losing story controls, selected-state continuity, missingness encodings, or build stability.
+- Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
+- Manual QA: Desktop and mobile browser review of guided beats, selection, layer toggles, legend, and fallback geometries.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-027
+- Phase: app-design
+- Title: Polish guided atlas visuals after real map exists
+- Depends on: TASK-026, TASK-028
+- Assigned agent: Claude builder, Codex QA
+- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
+- Data refs: app/public/data/*, app/src/lib/*
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Makes the production atlas feel polished enough for the competition after the real data/map substrate is in place.
+- Functional notes: Refine spacing, map/copy hierarchy, beat transitions, labels, evidence cards, mobile beat sheet, legends, and handoff from guided mode to explore mode without changing analysis logic.
+- Statistical notes: Preserve caveat visibility, source adjacency, uncertainty language, and selected-geography anchored comparisons.
+- Edge cases: Do not add decorative atmosphere that weakens evidence reading; do not copy audited reference-project identities; do not hide map caveats to improve aesthetics.
+- Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- Artifacts to produce: visually polished production mockup over real data and MapLibre map, Claude change report, Codex QA notes
+- Acceptance criteria: Owner approves desktop and mobile visual direction; build passes; guided and explore modes remain usable and evidence-disciplined.
+- Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
+- Manual QA: Owner visual review, keyboard smoke check, mobile portrait review, and Codex diff review before commit.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-028
+- Phase: narrative
+- Title: Rewrite guided atlas story copy and interface text
+- Depends on: TASK-018, TASK-020, TASK-024
+- Assigned agent: Claude draft, Codex evidence QA
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/WINNER_SCROLL_TOUR_AUDIT.md, context/DATAVIZ_INSPIRATION_AUDIT.md
+- Data refs: artifacts/tables/eda_country_story_labels.csv, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv, artifacts/tables/eda_similarity_neighbors.csv
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/MODEL_CARD.md
+- User value / decision value: Replaces placeholder-grade guided-tour copy with a sharper, evidence-backed narrative that can carry a competition entry.
+- Functional notes: Rewrite the seven guided beats, map callouts, panel microcopy, caveats, CTA labels, and method/source summaries while keeping the existing story spine and data limitations.
+- Statistical notes: Avoid causal claims, definitive rank language, responsibility framing, and overclaiming divergence, outlook, monitoring absence, or boundary precision.
+- Edge cases: Copy must fit desktop cards and mobile sheets without overflow; claims must remain tied to available data fields; optional TASK-019 similarity text must stay labelled as analysis-ready unless wired.
+- Files to create/modify: `app/src/lib/tour.ts`, `app/src/components/story/*`, `app/src/components/panels/*`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- Artifacts to produce: revised story-copy pass, claim/caveat QA notes, owner-reviewable guided text
+- Acceptance criteria: Guided story reads as a clear argument, each beat has one claim and one nearby caveat, and no UI text makes unsupported claims.
+- Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
+- Manual QA: Read every guided beat, mobile sheet, source/method note, and country-panel text against `STORY_BRIEF.md` and current EDA artifacts.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending

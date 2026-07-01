@@ -72,7 +72,7 @@ scripts/       Reproducible command-line entry points
 configs/       Dataset, index, outlook, EDA, and app-layer configuration
 data/          Raw cache, processed data, contracts, and app-ready exports
 artifacts/     Tables, provenance, figures, and run outputs
-app/           Vite/React/TypeScript atlas mockup
+app/           Vite/React/TypeScript atlas app and current mockup shell
 tests/         Python tests for analysis helpers
 ```
 
@@ -170,6 +170,14 @@ npm run app:build
 ```
 
 The current app is still a mockup and not the final competition submission.
+
+Current implementation order:
+
+1. `TASK-025` wire public/generated app data into the atlas view model.
+2. `TASK-026` add MapLibre and reviewed island geometry with centroid fallback.
+3. `TASK-028` rewrite the guided story, caveats, and interface copy.
+4. `TASK-027` polish the production visuals after the real map exists.
+5. `TASK-007` finish methodology, accessibility, deployment, and submission readiness.
 
 ## Current Frame
 

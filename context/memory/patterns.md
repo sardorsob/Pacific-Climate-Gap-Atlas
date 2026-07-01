@@ -34,6 +34,8 @@ Avoid copying reference identities, palettes, layouts, or iconic stripe treatmen
 - Codex owns critique, QA, staging, commits, and push decisions.
 - Claude owns the visual mockup revision only.
 - Codex data work completed `TASK-019` Evidence Fingerprint Divergence; app export remains future work.
-- Codex app-data work owns `TASK-023` mock-to-public-data wiring inventory.
+- Codex owns `TASK-025` real app-data wiring and should use the completed `TASK-023` inventory before replacing mock fixtures.
+- `TASK-026` MapLibre/island geometry should be Codex-led, with Claude helping visual refinement only after the map/data contract is stable.
+- Claude can draft `TASK-028` story/copy improvements and `TASK-027` final visual polish, but Codex must QA claims, caveats, and commits.
 - Keep Claude app edits separate from data-analysis and app-data wiring edits until Codex integrates them.
 - Completed one-off critique/delegation plan files may be pruned after their outcomes are consolidated into living docs.

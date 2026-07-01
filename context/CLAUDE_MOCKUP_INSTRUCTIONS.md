@@ -44,9 +44,16 @@ Do not use generic decorative atmosphere such as bokeh, glowing orbs, cinematic 
 
 ## Current Assignment
 
-The current accepted mockup direction is a scroll-led hybrid atlas. Future Claude passes should refine that implementation unless the project owner explicitly asks for a different direction.
+The current accepted mockup direction is a scroll-led hybrid atlas. Future Claude passes should refine that implementation unless the project owner explicitly asks for a different direction. Do not treat the broad `TASK-006` app shell as one assignment; it is now split into focused child tasks.
 
-Your expected revision targets are:
+Current sequencing:
+
+- `TASK-025` real app-data wiring is Codex-led.
+- `TASK-026` MapLibre/island geometry is Codex-led; Claude can help visual refinement only after Codex stabilizes the data/map contract.
+- `TASK-028` guided story/copy rewrite can be Claude-drafted, but Codex must QA every claim and caveat against the evidence.
+- `TASK-027` final visual polish should wait until `TASK-025`, `TASK-026`, and `TASK-028` are ready.
+
+Your expected revision targets, when assigned to story or polish work, are:
 
 - preserve the first viewport as a working atlas, not a dashboard or landing page;
 - keep the full-bleed Pacific map as the evidence surface;
@@ -88,7 +95,7 @@ Read these files in this order before designing:
 7. `context/DATA_CARD.md`
 8. `context/MODEL_CARD.md`
 9. `context/INFORMATION_DIVERGENCE_PLAN.md`
-10. `context/TASKS.md`, especially `TASK-006`, `TASK-018`, `TASK-019`, `TASK-020`, `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024`
+10. `context/TASKS.md`, especially `TASK-006`, `TASK-018`, `TASK-019`, `TASK-020`, `TASK-021`, `TASK-022`, `TASK-023`, `TASK-024`, `TASK-025`, `TASK-026`, `TASK-027`, and `TASK-028`
 11. `README.md`
 
 Then inspect the current app scaffold:
@@ -179,7 +186,7 @@ Optional if time permits:
 7. Outlook off/default plus optional gated-on state.
 8. A second visual direction if you think the first direction is too conservative.
 
-The mockups can be built as React/CSS screens inside the current app. They do not need full MapLibre functionality yet. A static or semi-static map composition is acceptable if it is honest about being a mockup.
+For `TASK-028`, focus on React-visible text, claim hierarchy, caveats, and source/method copy. For `TASK-027`, assume the real data and MapLibre map should already exist. Do not install MapLibre or replace the map engine unless Codex explicitly assigns `TASK-026` support work.
 
 ## Recommended Implementation Approach
 

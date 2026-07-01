@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app mockup implements the scroll-led hybrid as a reviewable concept, but final public-data wiring and owner visual approval remain open.
+Status: semantic design brief plus accepted mockup direction. The current app mockup implements the scroll-led hybrid as a reviewable concept; remaining production work is split into `TASK-025` app-data wiring, `TASK-026` MapLibre/island geometry, `TASK-028` story/copy rewrite, and `TASK-027` final visual polish.
 
 Design skill basis:
 
@@ -19,10 +19,11 @@ Design skill basis:
 
 Concept approval status:
 
-- Text contract: accepted as working design context.
+- Text contract: accepted as working design context, not final public-facing copy.
 - Large-screen mockup concept: implemented for review.
 - Mobile portrait mockup concept: implemented for review.
 - Mobile landscape concept: optional, recommended if map controls become wide or gesture-heavy.
+- Production gates: real app-data wiring, MapLibre/geometry, improved story copy, and final polish remain open before `TASK-006` can close.
 
 Future visual changes should preserve the accepted scroll-led mockup unless the project owner explicitly rejects that direction.
 
@@ -82,7 +83,7 @@ Artifact family:
 
 Primary route:
 
-- MapLibre point map plus React/TypeScript UI.
+- MapLibre map plus React/TypeScript UI, using reviewed island/boundary geometry where available and centroid fallback where needed.
 
 Fallback route:
 
@@ -541,7 +542,7 @@ Likely React components:
 
 Renderer ownership:
 
-- The current mockup uses a React/SVG schematic centroid map. Future production may move to MapLibre only after boundary/source choices are made.
+- The current mockup uses a React/SVG schematic centroid map. `TASK-026` owns the production move to MapLibre after data wiring and boundary/source choices are reviewed.
 - React owns controls, panel, legend, drawer, story rail, beat state, and source/caveat copy.
 - Labels and caveats should remain editable HTML/SVG overlays, not raster text.
 

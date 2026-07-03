@@ -568,7 +568,7 @@ export function AtlasMap({
         </g>
       </svg>
 
-      <div className="map-a11y-layer" aria-label={`Selectable Pacific geographies. Active layer: ${activeLayerLabel}.`}>
+      <div className="map-a11y-layer" role="group" aria-label={`Selectable Pacific geographies. Active layer: ${activeLayerLabel}.`}>
         {geos.map((geo) => {
           const point = overlay.points[geo.code];
           if (!point) return null;
@@ -585,8 +585,8 @@ export function AtlasMap({
               style={{
                 left: point.x,
                 top: point.y,
-                width: Math.max(30, r * 2),
-                height: Math.max(30, r * 2),
+                width: Math.max(44, r * 2),
+                height: Math.max(44, r * 2),
               }}
               aria-label={`${geo.name}. ${geo.storyLabel}. Rank moves ${geo.rankMin} to ${geo.rankMax}.`}
               aria-pressed={geo.code === selectedCode}

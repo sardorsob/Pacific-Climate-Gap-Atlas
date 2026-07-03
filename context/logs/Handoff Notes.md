@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Use the completed `TASK-018` story/design briefs, the `TASK-020` Dataviz Inspiration audit, `context/plans/app-data-wiring-inventory.md`, and the TASK-019 divergence artifacts. The analysis lanes through TASK-019 are complete, `TASK-025` app-data wiring is complete, `TASK-026` MapLibre map substrate is complete with centroid fallback, `TASK-029` Natural Earth visual land context is complete, `TASK-028` story/copy rewrite is complete, and `TASK-027` final visual/interactions polish is complete. The next build gate is `TASK-007` final readiness.
+Use the completed `TASK-018` story/design briefs, the `TASK-020` Dataviz Inspiration audit, `context/plans/app-data-wiring-inventory.md`, and the TASK-019 divergence artifacts. The analysis lanes through TASK-019 are complete, `TASK-025` app-data wiring is complete, `TASK-026` MapLibre map substrate is complete with centroid fallback, `TASK-029` Natural Earth visual land context is complete, `TASK-028` story/copy rewrite is complete, `TASK-027` final visual/interactions polish is complete, and `TASK-030`/`TASK-031` readiness/accessibility QA are complete.
 
 ## Next Build Step
 
-Follow the remaining project order: `TASK-007` readiness next. If the Evidence Fingerprint Divergence layer ships in V1, export compact app-ready similarity data from the TASK-019 artifacts and keep the interface selected-geography anchored. If official scored-geography polygon boundaries are pursued, treat them as a separate reviewed-source task rather than part of the completed MapLibre/Natural Earth visual substrate.
+Follow the remaining project order: hand Fable only the final UI/front-end polish if owner review wants another visual pass, then Codex QA/commit any accepted visual edits. If the Evidence Fingerprint Divergence layer ships in V1, export compact app-ready similarity data from the TASK-019 artifacts and keep the interface selected-geography anchored. If official scored-geography polygon boundaries are pursued, treat them as a separate reviewed-source task rather than part of the completed MapLibre/Natural Earth visual substrate.
 
 ## Current Evidence Snapshot
 

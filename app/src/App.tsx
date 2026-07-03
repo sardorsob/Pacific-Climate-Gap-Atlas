@@ -358,11 +358,12 @@ export function App() {
             type="button"
             className="legend-toggle"
             aria-expanded={legendOpen}
+            aria-controls="map-legend-body"
             onClick={() => setLegendOpen((v) => !v)}
           >
             <Layers aria-hidden="true" size={14} /> Legend
           </button>
-          <div className="legend-body" data-open={legendOpen ? "true" : "false"}>
+          <div id="map-legend-body" className="legend-body" data-open={legendOpen ? "true" : "false"}>
             <MapLegend activeScore={activeScore} viewMode={viewMode} outlookOn={outlookOn} />
           </div>
         </div>

@@ -26,15 +26,14 @@ export function LayerControls({
 
   return (
     <div className="controls">
-      <div className="controls__group" role="radiogroup" aria-label="Score layer">
+      <div className="controls__group" role="group" aria-label="Score layer">
         <span className="controls__heading">Score layer</span>
         <div className="controls__segment">
           {layers.map((layer) => (
             <button
               key={layer.id}
               type="button"
-              role="radio"
-              aria-checked={layer.id === activeScore && viewMode === "default" && !outlookOn}
+              aria-pressed={layer.id === activeScore && viewMode === "default" && !outlookOn}
               className="controls__seg-btn"
               onClick={() => onScore(layer.id)}
               title={layer.description}

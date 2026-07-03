@@ -175,6 +175,14 @@ Build the app:
 npm run app:build
 ```
 
+Preview the production build:
+
+```powershell
+npm run app:preview
+```
+
+Deploy the static contents of `app/dist/` to the final host. Record the public URL in `context/docs/submission-notes.md` and keep it available through August 31, 2029.
+
 The current app is a production-oriented mockup with post-map interaction polish complete. It is not yet the final competition submission.
 
 Current implementation order:
@@ -184,7 +192,8 @@ Current implementation order:
 3. `TASK-029` add Natural Earth Pacific land context and MapLibre graticule lines. Done.
 4. `TASK-028` rewrite the guided story, caveats, and interface copy. Done.
 5. `TASK-027` polish the production visuals after the MapLibre map and revised story exist. Done.
-6. `TASK-007` finish methodology, accessibility, deployment, and submission readiness. Next.
+6. `TASK-030` audit final methodology, provenance, deployment, and submission readiness. Done.
+7. `TASK-031` audit keyboard, contrast, focus, and mobile accessibility. Done.
 
 ## Current Frame
 

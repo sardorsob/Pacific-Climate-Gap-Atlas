@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, and `TASK-027` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, accessible geography hit targets, revised evidence-backed story copy, and the post-map interaction polish needed before final readiness. The next build gate is `TASK-007` final methodology/accessibility/deployment/submission readiness.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, and `TASK-031` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, accessible geography hit targets, revised evidence-backed story copy, post-map interaction polish, readiness packaging notes, and Codex accessibility QA.
 
 ## How To Validate The Scaffold
 
@@ -71,9 +71,10 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Run `TASK-007` final readiness: methodology/source review, accessibility pass, deployment path, final browser QA, and submission packaging.
-2. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
-3. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026`/`TASK-029` map substrate.
+1. Give Fable only final UI/front-end polish if the owner wants another visual pass; keep data/method/source/deploy work with Codex.
+2. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
+3. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
+4. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026`/`TASK-029` map substrate.
 
 ## Known Caveats
 
@@ -101,8 +102,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-022/TASK-024 visual revisions are accepted after Codex QA. The accepted app shell includes the scroll-led guided mode, story components, map/panel components, and CSS changes. No data methodology, generated artifacts, raw data, or git history were delegated to Claude.
 - After TASK-022, the desktop default no longer shows a detail panel; the panel is a right-side overlay (bottom sheet on mobile) that opens on selection or the data-quiet view, and the thesis lives in the map header. The desktop legend is now visible by default (the closed-`<details>` P0 bug is fixed).
 - Codex QA fixes applied before commit: render the detail panel only when selection or data-quiet mode is active, open the data-quiet sheet when that overlay is toggled, encode graticule degree labels with ASCII source escapes, and normalize CSS letter spacing to `0`.
-- Remaining owner-review notes: confirm visual taste and mobile discoverability during `TASK-007` readiness. TASK-027 added browser smoke over mobile and desktop entry points, but final acceptance should include a deliberate human visual/a11y review.
+- Remaining owner-review notes: confirm visual taste and mobile discoverability after Codex QA. TASK-027 added browser smoke over mobile and desktop entry points, and TASK-031 added semantic/touch-target accessibility fixes, but final acceptance should include a deliberate human visual/a11y review.
 - TASK-025 is complete. The app loads generated `/data/geographies.json` through `app/src/lib/atlasData.ts`; the obsolete `app/src/mock/mockAtlasData.ts` fixture was deleted. The generated app contract now carries monitoring status, rank uncertainty, story labels, top signals, status/subregion context, and outlook display gating.
-- TASK-026 is complete as a MapLibre centroid substrate. TASK-029 is complete as a Natural Earth visual land-context layer plus MapLibre graticule fix. TASK-028 is complete as the guided story/copy rewrite. TASK-027 is complete as the post-map visual/interactions polish. TASK-007 submission readiness is next.
+- TASK-026 is complete as a MapLibre centroid substrate. TASK-029 is complete as a Natural Earth visual land-context layer plus MapLibre graticule fix. TASK-028 is complete as the guided story/copy rewrite. TASK-027 is complete as the post-map visual/interactions polish. TASK-030/TASK-031 are complete as readiness packaging and accessibility QA.
 - TASK-027 fixed the pre-polish interactive blockers: mobile first-load map fit, guided beat scroll/state sync, empty indicator-trace drawer, missing beat-4 selected-place explanation, selection loss on overlay switch, missing rank-uncertainty explainer, false compare CTA, method-drawer focus/Escape gaps, mobile explore hierarchy, exemplar label offsets, and small swatch/microcopy states. Final readiness should still include a deliberate owner visual review and accessibility pass.
 - Completed transient mockup plan/checklist files were pruned from `context/plans/`; their durable outcomes now live in `TASKS.md`, `PROJECT.md`, `HANDOVER.md`, `DESIGN_BRIEF.md`, and the progress log.

@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-027 post-map visual polish is complete; next build gate is TASK-007 final methodology/accessibility/deployment readiness. Competition deadline: August 31, 2026.
+TASK-030 readiness packaging and TASK-031 accessibility QA are complete. Next best handoff is Fable final UI/front-end polish if the owner wants another visual pass. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish is complete; remaining work is `TASK-007` final methodology/accessibility/deployment/submission readiness.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete.
 
 ## Working Title
 
@@ -31,12 +31,14 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
 | Winner scroll-tour audit | done | `context/WINNER_SCROLL_TOUR_AUDIT.md` recommends a scroll-led hybrid: default guided scroll atlas, secondary free explorer, current map/control shell preserved |
-| GIS atlas app | in-progress parent task | React/Vite concept opens as a 7-beat guided scroll atlas with a sticky centroid map, visible legend, direct story labels, selected-anchor comparison cue, data-quiet map tags, static labelled fingerprint preview, source drawer, mobile beat sheet, and free-explore handoff; `TASK-006` closes after the focused subtasks below |
+| GIS atlas app | done | React/Vite concept opens as a 7-beat guided scroll atlas with a sticky centroid map, visible legend, direct story labels, selected-anchor comparison cue, data-quiet map tags, static labelled fingerprint preview, source drawer, mobile beat sheet, and free-explore handoff; `TASK-006` closed after its focused child tasks |
 | App-data wiring implementation | done | `TASK-025` replaced fixture-backed evidence with public/generated app data while preserving monitoring, rank, story, outlook, and caveat fields |
 | MapLibre substrate | done | `TASK-026` adds a MapLibre-backed map canvas and centroid point layer |
 | Pacific land context | done | `TASK-029` adds Natural Earth visual land context and MapLibre graticule lines; scored geographies remain centroid points, not polygon boundaries |
 | Story/copy rewrite | done | `TASK-028` sharpened the seven guided beats, map callouts, caveats, CTAs, geometry caveats, and method/source text before final polish |
 | Post-map visual polish | done | `TASK-027` resolved the pre-polish interaction blockers, evidence-trace drawer, mobile camera/hierarchy, method-drawer keyboard handling, overlay-selection persistence, and uncertainty/quiet-state explainers |
+| Readiness packaging | done | `TASK-030` audits source/provenance/submission/deploy notes and stale readiness pointers |
+| Accessibility QA | done | `TASK-031` audits keyboard semantics, focus, touch targets, dialog behavior, and mobile accessibility |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -69,9 +71,10 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-019` Evidence Fingerprint Divergence with 22 geography fingerprints, 231 unordered pairwise JSD rows, 66 nearest-neighbor rows, and caveated provenance. Treat it as analysis-ready but not app-wired.
 - Completed a Pacific Dataviz winner scroll-tour audit. Recommendation: pivot the next visual direction to a scroll-led hybrid that keeps the atlas map as the sticky evidence surface and preserves free exploration after the guided path.
 - Accepted Claude's scroll-led hybrid implementation after Codex cleanup. The app now starts in a 7-beat guided atlas mode, uses the map as the sticky evidence surface, preserves "Explore freely" as the full-control handoff, and treats Evidence Fingerprint Divergence as a labelled static preview only.
-- Reorganized the remaining `TASK-006` app work into `TASK-025` app-data wiring, `TASK-026` MapLibre substrate, `TASK-029` Pacific land context, `TASK-028` guided story/copy rewrite, and `TASK-027` post-map visual polish before `TASK-007` final readiness.
+- Reorganized the remaining `TASK-006` app work into `TASK-025` app-data wiring, `TASK-026` MapLibre substrate, `TASK-029` Pacific land context, `TASK-028` guided story/copy rewrite, and `TASK-027` post-map visual polish before the final readiness split into `TASK-030` and `TASK-031`.
 - Completed `TASK-025` real app-data wiring: app data exports now include monitoring, rank, story, context, and outlook-display objects; the React app loads `/data/geographies.json` through `app/src/lib/atlasData.ts`; the obsolete mock fixture was deleted.
 - Completed `TASK-026` MapLibre map substrate: `AtlasMap` now renders a no-network MapLibre Pacific canvas with generated centroid point features, React overlay labels, accessible geography hit targets, monitoring hatching/dashed cues, selected/priority state, and explicit boundary-not-joined caveats. It does not ship polygon boundaries.
 - Completed `TASK-029` Pacific land context: `scripts/build_land_context.py` builds and mirrors Natural Earth 10m land into the app, writes provenance, renders land under centroid points, and moves graticule lines into MapLibre so the grid appears on initial render.
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
-- Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy. `TASK-007` is now the next readiness gate.
+- Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
+- Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.

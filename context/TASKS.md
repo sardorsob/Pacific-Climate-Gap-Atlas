@@ -181,7 +181,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: App is publicly deployable and sources/methods are visible.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`
 - Manual QA: Mobile, keyboard, source links, and submission-form dry run.
-- QA notes: Added TDD coverage for app-data enrichment and contract validation; exported monitoring, rank, story, context, and guarded outlook-display fields into `geographies.json`; regenerated processed/public app data; added `app/src/lib/atlasData.ts` runtime adapter; repointed React components from `app/src/mock/mockAtlasData.ts` to generated `/data/geographies.json`; deleted the obsolete mock fixture. Spot checks preserve NR/PN reported-zero monitoring, AS missing-row nulls, TV reported monitoring, MH rank fragility, and PN withheld outlook.
+- QA notes: Historical umbrella task. The recorded implementation notes below describe app-data wiring work later tracked more precisely in `TASK-025`; final readiness work is now split into `TASK-030` readiness packaging and `TASK-031` accessibility QA. Added TDD coverage for app-data enrichment and contract validation; exported monitoring, rank, story, context, and guarded outlook-display fields into `geographies.json`; regenerated processed/public app data; added `app/src/lib/atlasData.ts` runtime adapter; repointed React components from `app/src/mock/mockAtlasData.ts` to generated `/data/geographies.json`; deleted the obsolete mock fixture. Spot checks preserve NR/PN reported-zero monitoring, AS missing-row nulls, TV reported monitoring, MH rank fragility, and PN withheld outlook.
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: Implemented real app-data wiring and adapter after TASK-023 inventory; build and contract validation passed.
@@ -691,4 +691,50 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: Implemented after the owner noted the map still looked like dots and that the grid only appeared after moving the map. Kept raw global Natural Earth data ignored and kept score/selection geometry on generated centroids.
+- Status: done
+
+## TASK-030
+- Phase: readiness
+- Title: Audit final methodology, provenance, deployment, and submission readiness
+- Depends on: TASK-006, TASK-027
+- Assigned agent: Codex Builder, Codex QA
+- Contract refs: context/HANDOVER.md, context/docs/submission-notes.md, context/DATA_CARD.md, context/MODEL_CARD.md, context/docs/methodology.md
+- Data refs: artifacts/provenance/*, app/public/data/*
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/STORY_BRIEF.md, context/DESIGN_BRIEF.md
+- User value / decision value: Turns the polished atlas into a credible competition-ready package with sources, caveats, and run/deploy instructions aligned.
+- Functional notes: Audit source/method visibility, submission notes, README run/build/deploy path, provenance references, stale task pointers, and final readiness gaps. Make only small documentation or app-copy fixes needed to remove concrete readiness blockers.
+- Statistical notes: Keep the index framed as exploratory; keep outlook and divergence caveats visible; do not add new data claims or methodology changes.
+- Edge cases: Do not invent deployment URLs, source licenses, or final submission approvals. If a requirement needs owner action, record it as remaining readiness work.
+- Files to create/modify: `README.md`, `context/HANDOVER.md`, `context/PROJECT.md`, `context/docs/submission-notes.md`, `context/TASKS.md`, `context/logs/Progress Log.md`, `context/memory/*`, and minimal app source only if a readiness blocker is visible in the UI.
+- Artifacts to produce: readiness audit notes folded into durable context, updated submission notes, verified final-readiness checklist.
+- Acceptance criteria: Readme/handoff/submission notes identify how to build, validate, deploy, cite sources, and continue; stale next-task pointers are corrected; remaining owner/deployment actions are explicit; verification passes.
+- Verification commands: `npm --prefix app run build`; `python scripts/check_required_artifacts.py`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Read source/method/submission docs against DATA_CARD, MODEL_CARD, methodology, and handoff.
+- QA notes: Checker approved. Builder pass added TASK-030/TASK-031 task records, corrected stale readiness pointers from historical TASK-007 to active TASK-030/TASK-031, marked the app shell feature table as done, added README production preview/deploy instructions, and expanded `context/docs/submission-notes.md` into a status/evidence/owner-action checklist with source evidence bundle and pending public URL. Checker re-ran and passed: `npm --prefix app run test`, `npm --prefix app run build`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Readiness explorer audit also passed required-artifact, task-status, secret, and diff whitespace checks in read-only mode. Remaining owner actions are explicit in submission notes: final host/URL, submission-form source copy, AI disclosure wording, sensitive wording review, and human visual/accessibility review.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-03: Started Codex Builder pass in parallel with TASK-031. Scope is readiness/docs/provenance/deployment audit plus smallest fixes only. Patched stale readiness docs and submission/deploy notes, handed to Checker, then Checker approved with automated verification and explicit owner-action leftovers.
+- Status: done
+
+## TASK-031
+- Phase: accessibility
+- Title: Audit keyboard, contrast, focus, and mobile accessibility
+- Depends on: TASK-006, TASK-027
+- Assigned agent: Codex Builder, Codex QA
+- Contract refs: context/HANDOVER.md, context/DESIGN_BRIEF.md, context/docs/submission-notes.md
+- Data refs: app/public/data/*
+- Scientific refs: context/STORY_BRIEF.md
+- User value / decision value: Ensures the competition atlas can be operated and understood across keyboard, mobile, and assistive-technology basics before final visual polish.
+- Functional notes: Audit tab order, focus visibility, button labels, dialog behavior, map fallback controls, contrast-sensitive text, reduced-motion behavior, mobile touch targets, loading/error states, and source/method access. Make only small front-end fixes that directly resolve confirmed accessibility blockers.
+- Statistical notes: Accessibility fixes must preserve visible caveats, source adjacency, rank uncertainty language, and centroid-boundary caveats.
+- Edge cases: Do not add a new accessibility framework or dependency; use native HTML/CSS/React patterns already in the app.
+- Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/styles/base.css`, `context/TASKS.md`, `context/logs/Progress Log.md`, `context/HANDOVER.md`, `context/memory/*`
+- Artifacts to produce: accessibility QA notes, minimal UI fixes, updated durable context.
+- Acceptance criteria: Keyboard users can reach guided controls, map geography buttons, panels, legend, and methods drawer; focus is visible; method drawer closes/restores focus; mobile controls remain usable; contrast and reduced-motion risks are either fixed or recorded for Fable/final review; verification passes.
+- Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Keyboard smoke through guided mode, explore controls, selected panel, legend, and method drawer; mobile viewport smoke.
+- QA notes: Checker approved. Builder pass applied the four smallest accessibility fixes from the parallel Codex accessibility audit: changed score-layer buttons from incomplete radio semantics to native buttons with `aria-pressed`, linked the mobile legend toggle to `#map-legend-body` with `aria-controls`, exposed the map fallback button layer as `role="group"`, and raised map fallback hit targets to at least 44px. Existing focus-visible styling, method drawer Escape/focus trap/restore, loading/error roles, and reduced-motion handling were confirmed from source. Browser smoke at `http://127.0.0.1:5173/` confirmed `.map-a11y-layer role="group"`, 22 `.map-a11y-point` buttons, 44px minimum hit targets, and legend `aria-controls="map-legend-body"`. Checker re-ran and passed: `npm --prefix app run test`, `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Final color/visual crowding judgment remains for Fable/owner visual review.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-03: Started Codex Builder pass in parallel with TASK-030. Scope is accessibility audit plus smallest confirmed front-end fixes only. Patched semantic/touch-target issues from the parallel audit, handed to Checker, then Checker approved with automated verification and browser smoke evidence.
 - Status: done

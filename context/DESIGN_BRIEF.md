@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, and has completed `TASK-027` post-map visual/interactions polish. Remaining production work is `TASK-007` final readiness.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, and `TASK-031` accessibility QA.
 
 Design skill basis:
 

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, {
   type GeoJSONSource,
-  type LngLatBoundsLike,
   type Map as MapLibreMap,
   type StyleSpecification,
 } from "maplibre-gl";
@@ -96,8 +95,15 @@ function asGeoJson(collection: unknown): GeoJSON.FeatureCollection {
   return collection as unknown as GeoJSON.FeatureCollection;
 }
 
-function atlasBounds(): LngLatBoundsLike {
-  return fitBoundsForPacific() as LngLatBoundsLike;
+function cameraForViewport(width: number): { center: [number, number]; zoom: number } {
+  if (width < 520) return { center: [186, -7], zoom: 1.55 };
+  if (width < 900) return { center: [185, -7], zoom: 2.05 };
+  return { center: [185, -6], zoom: 3.15 };
+}
+
+function fitPacificCamera(map: MapLibreMap, duration = 0) {
+  const width = map.getContainer().clientWidth;
+  map.easeTo({ ...cameraForViewport(width), duration });
 }
 
 function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
@@ -357,10 +363,10 @@ export function AtlasMap({
       style: PACIFIC_STYLE,
       center: [185, -7],
       zoom: 3.15,
-      minZoom: 2.15,
+      minZoom: 1.25,
       maxZoom: 7,
       attributionControl: false,
-      renderWorldCopies: true,
+      renderWorldCopies: false,
       dragRotate: false,
       pitchWithRotate: false,
     });
@@ -368,10 +374,7 @@ export function AtlasMap({
 
     map.touchZoomRotate.disableRotation();
     map.keyboard.disableRotation();
-    map.fitBounds(atlasBounds(), {
-      padding: { top: 86, right: 78, bottom: 78, left: 86 },
-      duration: 0,
-    });
+    fitPacificCamera(map);
 
     const handlePointClick = (event: maplibregl.MapLayerMouseEvent) => {
       const code = event.features?.[0]?.properties?.code;
@@ -387,6 +390,11 @@ export function AtlasMap({
       map.resize();
       setOverlay(buildOverlayState(map, geosRef.current));
     };
+    const refitOnResize = () => {
+      map.resize();
+      fitPacificCamera(map);
+      setOverlay(buildOverlayState(map, geosRef.current));
+    };
     const handleLoad = () => {
       addGraticuleLayers(map);
       syncLandContext(map, landContextRef.current);
@@ -399,11 +407,13 @@ export function AtlasMap({
       requestAnimationFrame(refreshOverlay);
     };
     map.on("load", handleLoad);
+    window.addEventListener("resize", refitOnResize);
 
     return () => {
       setMapReady(false);
       setOverlay(EMPTY_OVERLAY);
       map.off("load", handleLoad);
+      window.removeEventListener("resize", refitOnResize);
       if (map.getLayer(POINT_LAYER_ID)) {
         map.off("click", POINT_LAYER_ID, handlePointClick);
         map.off("mouseenter", POINT_LAYER_ID, handlePointEnter);

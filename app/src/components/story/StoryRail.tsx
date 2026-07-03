@@ -45,6 +45,15 @@ export function StoryRail({ beats, index, onBeat, onExplore, onOpenMethod, rende
     return () => observer.disconnect();
   }, [total, onBeat]);
 
+  useEffect(() => {
+    const syncScroll = () => {
+      sectionRefs.current[index]?.scrollIntoView({ behavior: "auto", block: "start" });
+    };
+    syncScroll();
+    window.addEventListener("resize", syncScroll);
+    return () => window.removeEventListener("resize", syncScroll);
+  }, [index]);
+
   const goTo = (i: number) => {
     const next = Math.max(0, Math.min(total - 1, i));
     onBeat(next);

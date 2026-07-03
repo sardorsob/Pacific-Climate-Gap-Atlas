@@ -2,9 +2,9 @@
 
 ## Purpose
 
-You are Claude, joining the Pacific Adaptation Gap Atlas project after the first reviewable mockup, `TASK-025` real app-data wiring, `TASK-026` MapLibre map substrate, and `TASK-029` Natural Earth visual land context.
+You are Claude, joining the Pacific Adaptation Gap Atlas project after the first reviewable mockup, `TASK-025` real app-data wiring, `TASK-026` MapLibre map substrate, `TASK-029` Natural Earth visual land context, `TASK-028` guided story/copy rewrite, and `TASK-027` post-map visual/interactions polish.
 
-Your role depends on the assigned task: draft story/interface copy for `TASK-028`, polish visuals for `TASK-027`, or support a later source-reviewed boundary task only if Codex explicitly assigns it. Codex is the orchestrator and QA reviewer. Codex is also the only agent that will stage, commit, or push accepted work. The project owner will review visual/copy changes and give approval or critique before final submission readiness.
+Your role depends on the assigned task: support later owner-directed visual/copy refinements, final readiness fixes, or a source-reviewed boundary task only if Codex explicitly assigns it. Codex is the orchestrator and QA reviewer. Codex is also the only agent that will stage, commit, or push accepted work. The project owner will review visual/copy changes and give approval or critique before final submission readiness.
 
 Your goal is to refine the existing React/Vite guided atlas without breaking the generated public-data wiring. The app now loads `/data/geographies.json` through `app/src/lib/atlasData.ts`; do not reintroduce static evidence fixtures.
 
@@ -52,7 +52,8 @@ Current sequencing:
 - `TASK-026` MapLibre map substrate is complete as centroid fallback.
 - `TASK-029` Natural Earth land context is complete as visual orientation, not scored/selectable polygon boundaries.
 - `TASK-028` guided story/copy rewrite is complete and Codex-QA'd.
-- `TASK-027` final visual polish can use the revised story copy as the text baseline.
+- `TASK-027` final visual/interactions polish is complete and Codex-QA'd.
+- `TASK-007` final readiness is the next build gate.
 
 Your expected revision targets, when assigned to story or polish work, are:
 
@@ -188,7 +189,7 @@ Optional if time permits:
 7. Outlook off/default plus optional gated-on state.
 8. A second visual direction if you think the first direction is too conservative.
 
-For `TASK-028`, focus on React-visible text, claim hierarchy, caveats, and source/method copy. For `TASK-027`, assume the real data, MapLibre map, and Natural Earth visual land context already exist. Do not install MapLibre, replace the map engine, or add scored-geography polygon boundaries unless Codex explicitly assigns a separate reviewed geometry-source task.
+For future visual/copy refinements, assume the real data, MapLibre map, Natural Earth visual land context, guided story copy, and post-map polish already exist. Do not install MapLibre, replace the map engine, or add scored-geography polygon boundaries unless Codex explicitly assigns a separate reviewed geometry-source task.
 
 ## Recommended Implementation Approach
 

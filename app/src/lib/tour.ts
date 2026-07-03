@@ -94,6 +94,6 @@ export const BEATS: Beat[] = [
     caveat: "The legend, sources, and caveats stay one tap away.",
     source: "",
     action: "Open the full atlas controls.",
-    state: {},
+    state: { score: "gap", view: "default", outlook: false, selected: null },
   },
 ];

@@ -150,7 +150,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Scientific refs: context/docs/methodology.md
 - User value / decision value: Gives users a map-first experience instead of a generic dashboard.
 - Functional notes: Implement map canvas, layer controls, side panel, source drawer, and responsive layout.
-- Implementation split: Close this parent task only after TASK-025 app-data wiring, TASK-026 MapLibre substrate, TASK-029 Pacific land context, TASK-028 narrative copy/story polish, and TASK-027 post-map visual polish are reviewed.
+- Implementation split: Closed after TASK-025 app-data wiring, TASK-026 MapLibre substrate, TASK-029 Pacific land context, TASK-028 narrative copy/story polish, and TASK-027 post-map visual polish were reviewed.
 - Statistical notes: The UI must show missingness and source caveats near score displays.
 - Edge cases: Offline or missing app data should show a clear stale/unavailable state.
 - Files to create/modify: `app/src/*`, `app/public/data/*`, `app/package.json`
@@ -158,11 +158,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: `npm --prefix app run build` succeeds after dependencies are installed.
 - Verification commands: `npm --prefix app run build`
 - Manual QA: Desktop and mobile viewport smoke checks.
-- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. `TASK-025` removed the evidence-bearing mock fixture and wired the app to generated public data. `TASK-026` replaced the SVG-only map surface with a MapLibre-backed centroid canvas, `TASK-029` added Natural Earth visual land context plus MapLibre graticule linework, and `TASK-028` rewrote the guided story/interface copy while retaining caveats. `TASK-027` final visual polish remains before this parent task can close.
+- QA notes: Reviewable mockup shell builds with `npm --prefix app run build`. It now opens as a seven-beat guided scroll atlas over the same explorer state model, with a static labelled fingerprint preview and free-explore handoff. `TASK-025` removed the evidence-bearing mock fixture and wired the app to generated public data. `TASK-026` replaced the SVG-only map surface with a MapLibre-backed centroid canvas, `TASK-029` added Natural Earth visual land context plus MapLibre graticule linework, `TASK-028` rewrote the guided story/interface copy while retaining caveats, and `TASK-027` completed the post-map interaction polish.
 - Attempts: 1
 - Max attempts: 3
-- Attempt log: Created map-first React mockup with layer controls, data-quiet overlay, rank-uncertainty overlay, optional outlook stress-test state, source/method drawer, guided tour, responsive detail panel, then upgraded it to a scroll-led guided atlas with a free-explore handoff.
-- Status: in-progress
+- Attempt log: Created map-first React mockup with layer controls, data-quiet overlay, rank-uncertainty overlay, optional outlook stress-test state, source/method drawer, guided tour, responsive detail panel, then upgraded it to a scroll-led guided atlas with a free-explore handoff. Closed after the focused child tasks completed app-data wiring, MapLibre substrate, Pacific land context, guided copy, and post-map polish.
+- Status: done
 
 ## TASK-007
 - Phase: polish
@@ -637,15 +637,15 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Statistical notes: Preserve caveat visibility, source adjacency, uncertainty language, and selected-geography anchored comparisons.
 - Edge cases: Do not add decorative atmosphere that weakens evidence reading; do not copy audited reference-project identities; do not hide map caveats to improve aesthetics.
 - Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
-- Artifacts to produce: visually polished production mockup over real data and MapLibre map, Claude change report, Codex QA notes
-- Acceptance criteria: Owner approves desktop and mobile visual direction; build passes; guided and explore modes remain usable and evidence-disciplined; pre-polish QA blockers below are resolved or explicitly deferred with owner approval.
+- Artifacts to produce: visually polished production mockup over real data and MapLibre map, Codex QA notes
+- Acceptance criteria: Build passes; guided and explore modes remain usable and evidence-disciplined; pre-polish QA blockers below are resolved or explicitly deferred with owner approval; owner visual taste review remains the final approval gate before submission readiness.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
 - Manual QA: Owner visual review, keyboard smoke check, mobile portrait review, and Codex diff review before commit.
-- QA notes: Pre-`TASK-027` interactive QA on 2026-07-02 found two blockers to fix before visual-polish screenshots: mobile first load can fit the Pacific map to an empty ocean with all 22 centroid points off-viewport, and guided beat state can desync from story-rail scroll after resize or rapid Next clicks. Also fix or explicitly defer: empty indicator-trace drawer despite "9 rows" copy, beat-4 selection without a zero/missing explanation panel, selection clearing when overlays switch, missing rank-uncertainty explainer, "Compare with Tuvalu" behaving as navigation, method drawer focus/Escape handling, mobile explore layout hierarchy, WF/AS/Samoa point occlusion, and small microcopy/state hygiene issues. Preserve what already works: desktop atlas-first viewport, visible caveats, data-quiet signature cards, evidence-bearing layer transitions, local static data loads, and keyboard-accessible geography buttons.
-- Attempts: 0
+- QA notes: Completed Codex Builder/Checker pass on 2026-07-03. Fixed the mobile first-load camera by using viewport-specific Pacific camera settings and refitting on resize. Resynced guided beat copy/state by scrolling the active story section into view on state changes and resetting the final explore beat state. Loaded `country_details.json` alongside geographies so the indicator-trace drawer renders row-level evidence, with Vitest coverage for the join. Added beat-4 zero/missing explanation copy, preserved selection across overlay switches, added a rank-uncertainty explainer in the fragility/uncertainty path, relabeled the false comparator CTA as navigation, trapped focus/Escape in the method drawer, improved mobile explore hierarchy, adjusted WF/AS label offsets, and cleaned small swatch/microcopy states. Verification passed: `npm --prefix app run test`, `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Browser smoke loaded the dev app at mobile and desktop entry points and confirmed key selectors/data endpoints; owner visual taste review still belongs to the final readiness pass.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: 2026-07-03: Started Codex Builder pass for TASK-027 from the pre-polish QA blockers and existing scroll-led MapLibre app. Implemented interaction, evidence-trace, accessibility, mobile hierarchy, and documentation updates, then ran a Codex Checker pass with app tests/build, context validators, secret scan, diff whitespace check, and browser smoke.
+- Status: done
 
 ## TASK-028
 - Phase: narrative

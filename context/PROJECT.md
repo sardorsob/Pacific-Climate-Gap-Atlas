@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-028 guided story/copy rewrite is complete; next build gate is TASK-027 final visual polish. Competition deadline: August 31, 2026.
+TASK-027 post-map visual polish is complete; next build gate is TASK-007 final methodology/accessibility/deployment readiness. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The guided story/copy rewrite is complete; remaining app work is organized as `TASK-027` post-map visual polish and then `TASK-007` final methodology/accessibility/submission readiness.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish is complete; remaining work is `TASK-007` final methodology/accessibility/deployment/submission readiness.
 
 ## Working Title
 
@@ -36,7 +36,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | MapLibre substrate | done | `TASK-026` adds a MapLibre-backed map canvas and centroid point layer |
 | Pacific land context | done | `TASK-029` adds Natural Earth visual land context and MapLibre graticule lines; scored geographies remain centroid points, not polygon boundaries |
 | Story/copy rewrite | done | `TASK-028` sharpened the seven guided beats, map callouts, caveats, CTAs, geometry caveats, and method/source text before final polish |
-| Post-map visual polish | pending | `TASK-027` is a Claude-built, Codex-QA visual pass after real data, story copy, and MapLibre geometry exist |
+| Post-map visual polish | done | `TASK-027` resolved the pre-polish interaction blockers, evidence-trace drawer, mobile camera/hierarchy, method-drawer keyboard handling, overlay-selection persistence, and uncertainty/quiet-state explainers |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -59,7 +59,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-016` trend/outlook interpretation with display/withhold recommendations for stress-test layers.
 - Completed `TASK-017` monitoring-gap GIS story analysis with priority quadrants and reporting-gap caveats.
 - Completed `TASK-018` story and design synthesis with `STORY_BRIEF.md` and `DESIGN_BRIEF.md`.
-- Started `TASK-006` visual mockup pass with a buildable React/Vite atlas concept for owner review; final app wiring remains open.
+- Started `TASK-006` visual mockup pass with a buildable React/Vite atlas concept for owner review; later child tasks completed public-data wiring, MapLibre/Natural Earth map context, guided copy, and final interaction polish.
 - Added and completed `TASK-019` as an Evidence Fingerprint Divergence analysis lane so JSD ideas fit the official-data story without becoming a new leaderboard or overclaimed model.
 - Completed `TASK-020` Dataviz Inspiration audit with live browser review of map/climate/environment references and updated the story, design, Claude mockup, decision, backlog, and memory context around full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns.
 - Organized the delegated sprint: Codex owned mockup critique and QA, Claude owned the visual revision pass, a Codex data agent completed `TASK-019`, and a Codex app-data agent completed the mock-to-public-data wiring inventory.
@@ -74,3 +74,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-026` MapLibre map substrate: `AtlasMap` now renders a no-network MapLibre Pacific canvas with generated centroid point features, React overlay labels, accessible geography hit targets, monitoring hatching/dashed cues, selected/priority state, and explicit boundary-not-joined caveats. It does not ship polygon boundaries.
 - Completed `TASK-029` Pacific land context: `scripts/build_land_context.py` builds and mirrors Natural Earth 10m land into the app, writes provenance, renders land under centroid points, and moves graticule lines into MapLibre so the grid appears on initial render.
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
+- Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy. `TASK-007` is now the next readiness gate.

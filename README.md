@@ -175,7 +175,7 @@ Build the app:
 npm run app:build
 ```
 
-The current app is still a production-oriented mockup and not the final competition submission.
+The current app is a production-oriented mockup with post-map interaction polish complete. It is not yet the final competition submission.
 
 Current implementation order:
 
@@ -183,8 +183,8 @@ Current implementation order:
 2. `TASK-026` add MapLibre map substrate with centroid fallback. Done.
 3. `TASK-029` add Natural Earth Pacific land context and MapLibre graticule lines. Done.
 4. `TASK-028` rewrite the guided story, caveats, and interface copy. Done.
-5. `TASK-027` polish the production visuals after the MapLibre map and revised story exist.
-6. `TASK-007` finish methodology, accessibility, deployment, and submission readiness.
+5. `TASK-027` polish the production visuals after the MapLibre map and revised story exist. Done.
+6. `TASK-007` finish methodology, accessibility, deployment, and submission readiness. Next.
 
 ## Current Frame
 

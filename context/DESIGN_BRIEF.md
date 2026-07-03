@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, and has completed the `TASK-028` guided story/copy rewrite. Remaining production work is `TASK-027` final visual polish.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, and has completed `TASK-027` post-map visual/interactions polish. Remaining production work is `TASK-007` final readiness.
 
 Design skill basis:
 
@@ -23,7 +23,7 @@ Concept approval status:
 - Large-screen mockup concept: implemented for review.
 - Mobile portrait mockup concept: implemented for review.
 - Mobile landscape concept: optional, recommended if map controls become wide or gesture-heavy.
-- Production gate: final visual polish remains open before `TASK-006` can close. Official scored-geography polygon boundaries remain a future source gate outside the completed MapLibre/Natural Earth visual substrate.
+- Production gate: final methodology, accessibility, deployment, source/provenance, and owner visual review remain before submission readiness. Official scored-geography polygon boundaries remain a future source gate outside the completed MapLibre/Natural Earth visual substrate.
 
 Future visual changes should preserve the accepted scroll-led mockup unless the project owner explicitly rejects that direction.
 

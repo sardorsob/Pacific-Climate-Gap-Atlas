@@ -1,4 +1,4 @@
-import { ArrowLeftRight, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import type { Geo } from "../../lib/atlasData";
 import { reportingCaveat, reportingLabel } from "../../lib/encoding";
 import { RankChip } from "../RankChip";
@@ -160,11 +160,25 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
 
       {/* 8. indicator trace teaser */}
       <details className="trace">
-        <summary>Indicator trace ({geo.indicators} rows)</summary>
+        <summary>Indicator trace ({geo.indicatorRows.length || geo.indicators} rows)</summary>
         <p className="trace__note">
           Every score traces back to the latest official rows behind it - values, units, scoring
           values, and a source-row hash - so nothing here is a black box.
         </p>
+        {geo.indicatorRows.length > 0 && (
+          <ul className="trace__list">
+            {geo.indicatorRows.map((row) => (
+              <li key={`${row.datasetName}-${row.sourceRowHash || row.latestYear}`}>
+                <b>{row.datasetName}</b>
+                <span>
+                  {row.latestYear ?? "n/a"} · {row.latestValue ?? "n/a"} {row.unit}
+                  {row.indicatorScore !== null ? ` · score ${row.indicatorScore.toFixed(1)}` : ""}
+                </span>
+                <code>{row.sourceRowHash ? row.sourceRowHash.slice(0, 10) : "no hash"}</code>
+              </li>
+            ))}
+          </ul>
+        )}
       </details>
 
       {/* 9. sources / compare */}
@@ -174,8 +188,8 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
         </button>
         {compare && compare.code !== geo.code && (
           <button type="button" className="link-btn link-btn--ghost" onClick={() => onCompare(compare.code)}>
-            <ArrowLeftRight aria-hidden="true" size={15} />
-            Compare with {compare.name}
+            <ArrowRight aria-hidden="true" size={15} />
+            Open {compare.name}
           </button>
         )}
       </div>

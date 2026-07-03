@@ -29,6 +29,7 @@ const baseGeo: Geo = {
   storyLabel: "High gap with a reporting caveat",
   topPressure: ["Sea level"],
   topCapacity: ["Protected area"],
+  indicatorRows: [],
   outlook2030Flat: 69,
   outlookDisplay: "show_with_strong_caveat",
 };

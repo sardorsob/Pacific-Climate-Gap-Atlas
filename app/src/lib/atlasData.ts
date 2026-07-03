@@ -27,8 +27,20 @@ export type Geo = {
   storyLabel: string;
   topPressure: string[];
   topCapacity: string[];
+  indicatorRows: IndicatorRow[];
   outlook2030Flat: number;
   outlookDisplay: OutlookDisplay;
+};
+
+export type IndicatorRow = {
+  datasetName: string;
+  pillar: string;
+  latestYear: number | null;
+  latestValue: number | null;
+  scoringValue: number | null;
+  unit: string;
+  indicatorScore: number | null;
+  sourceRowHash: string;
 };
 
 type AppSignal = {
@@ -74,6 +86,25 @@ type GeographiesPayload = {
   geographies: AppGeography[];
 };
 
+type DetailIndicator = {
+  dataset_name?: string;
+  pillar?: string;
+  latest_year?: number | null;
+  latest_value?: number | null;
+  scoring_value?: number | null;
+  unit?: string;
+  indicator_score?: number | null;
+  source_row_hash?: string;
+};
+
+type DetailRecord = {
+  indicators?: DetailIndicator[];
+};
+
+type CountryDetailsPayload = {
+  details?: Record<string, DetailRecord>;
+};
+
 export const DEFAULT_SELECTED = "NR";
 export const COMPARE_SUGGESTION = "TV";
 export const STORY_EXEMPLARS = ["PN", "NR", "AS", "WF", "TV"];
@@ -82,8 +113,8 @@ export const LABEL_OFFSETS: Record<string, { dx: number; dy: number }> = {
   PN: { dx: 0, dy: -22 },
   NR: { dx: 0, dy: -22 },
   TV: { dx: 14, dy: -20 },
-  WF: { dx: -10, dy: -22 },
-  AS: { dx: 6, dy: 26 },
+  WF: { dx: -34, dy: -28 },
+  AS: { dx: 34, dy: 30 },
   MH: { dx: 0, dy: -22 },
 };
 
@@ -95,16 +126,28 @@ export const SUBREGION_ANCHORS = [
 ];
 
 export async function loadAtlasData(): Promise<Geo[]> {
-  const response = await fetch("/data/geographies.json");
-  if (!response.ok) {
-    throw new Error(`Failed to load atlas data: ${response.status}`);
+  const [geographiesResponse, detailsResponse] = await Promise.all([
+    fetch("/data/geographies.json"),
+    fetch("/data/country_details.json"),
+  ]);
+  if (!geographiesResponse.ok) {
+    throw new Error(`Failed to load atlas data: ${geographiesResponse.status}`);
   }
-  return adaptGeographiesPayload((await response.json()) as GeographiesPayload);
+  if (!detailsResponse.ok) {
+    throw new Error(`Failed to load country details: ${detailsResponse.status}`);
+  }
+  return adaptGeographiesPayload(
+    (await geographiesResponse.json()) as GeographiesPayload,
+    (await detailsResponse.json()) as CountryDetailsPayload,
+  );
 }
 
-export function adaptGeographiesPayload(payload: GeographiesPayload): Geo[] {
+export function adaptGeographiesPayload(
+  payload: GeographiesPayload,
+  detailsPayload?: CountryDetailsPayload,
+): Geo[] {
   return payload.geographies
-    .map(adaptGeography)
+    .map((record) => adaptGeography(record, detailsPayload?.details?.[record.geo_code]))
     .sort((a, b) => b.gap - a.gap || a.code.localeCompare(b.code));
 }
 
@@ -116,7 +159,7 @@ export function priorityOneCodes(geos: Geo[]): string[] {
   return geos.filter((geo) => geo.storyPriority === 1).map((geo) => geo.code);
 }
 
-function adaptGeography(record: AppGeography): Geo {
+function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
   const reportingStatus = asReportingStatus(record.monitoring?.reporting_status);
   const outlookDisplay = asOutlookDisplay(
     record.outlook_display?.["2030"]?.capacity_flat?.display_recommendation,
@@ -147,9 +190,23 @@ function adaptGeography(record: AppGeography): Geo {
     storyLabel: record.story?.story_label || "Evidence profile available",
     topPressure: formatSignals(record.story?.top_pressure_signals),
     topCapacity: formatSignals(record.story?.top_capacity_signals),
+    indicatorRows: formatIndicators(details?.indicators),
     outlook2030Flat: asNumber(record.outlook_2030_flat_gap_score),
     outlookDisplay,
   };
+}
+
+function formatIndicators(indicators: DetailIndicator[] | undefined): IndicatorRow[] {
+  return (indicators ?? []).map((indicator) => ({
+    datasetName: indicator.dataset_name ?? "Official dataset",
+    pillar: indicator.pillar ?? "unknown",
+    latestYear: asNullableNumber(indicator.latest_year),
+    latestValue: asNullableNumber(indicator.latest_value),
+    scoringValue: asNullableNumber(indicator.scoring_value),
+    unit: indicator.unit ?? "",
+    indicatorScore: asNullableNumber(indicator.indicator_score),
+    sourceRowHash: indicator.source_row_hash ?? "",
+  }));
 }
 
 function formatSignals(signals: AppSignal[] | undefined): string[] {

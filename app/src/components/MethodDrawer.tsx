@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 
 const DATASETS = [
@@ -22,19 +23,54 @@ const WONT = [
 ];
 
 export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const drawerRef = useRef<HTMLElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    restoreFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeButtonRef.current?.focus();
+    return () => {
+      restoreFocusRef.current?.focus();
+    };
+  }, [open]);
+
   if (!open) return null;
   return (
     <div className="drawer-scrim" role="presentation" onClick={onClose}>
       <aside
+        ref={drawerRef}
         className="drawer"
         role="dialog"
         aria-modal="true"
         aria-label="Methodology and sources"
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            onClose();
+            return;
+          }
+          if (e.key !== "Tab") return;
+          const focusable = drawerRef.current?.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          );
+          if (!focusable || focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }}
       >
         <div className="drawer__head">
           <h2>Methodology &amp; sources</h2>
-          <button type="button" className="icon-btn" aria-label="Close drawer" onClick={onClose}>
+          <button ref={closeButtonRef} type="button" className="icon-btn" aria-label="Close drawer" onClick={onClose}>
             <X aria-hidden="true" size={18} />
           </button>
         </div>

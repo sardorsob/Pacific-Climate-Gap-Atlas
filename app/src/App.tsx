@@ -44,6 +44,31 @@ function MiniProfile({ geo }: { geo: Geo }) {
   );
 }
 
+function RankUncertaintyCallout({ geos, onPick }: { geos: Geo[]; onPick: (code: string) => void }) {
+  const examples = ["MH", "FJ", "AS"]
+    .map((code) => getGeo(geos, code))
+    .filter((geo): geo is Geo => Boolean(geo));
+  return (
+    <aside className="panel panel--intro" aria-label="Rank uncertainty explanation">
+      <p className="eyebrow">Rank uncertainty</p>
+      <h1 className="panel__thesis">Bands, not a fixed scoreboard.</h1>
+      <p className="panel__lede">
+        Leave-one-indicator checks move most ranks. This view exists so the gap map cannot be read
+        as a definitive order.
+      </p>
+      <div className="rank-examples">
+        {examples.map((geo) => (
+          <button key={geo.code} type="button" className="rank-example" onClick={() => onPick(geo.code)}>
+            <span>{geo.code}</span>
+            <b>{geo.rankMin}-{geo.rankMax}</b>
+            <small>{geo.robustness}</small>
+          </button>
+        ))}
+      </div>
+    </aside>
+  );
+}
+
 export function App() {
   const [geos, setGeos] = useState<Geo[]>([]);
   const [dataError, setDataError] = useState<string | null>(null);
@@ -77,7 +102,7 @@ export function App() {
   const compareGeo = getGeo(geos, COMPARE_SUGGESTION) ?? null;
   const priorityCodes = priorityOneCodes(geos);
   const priorityCount = priorityCodes.length;
-  const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage");
+  const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
 
   const meta = outlookOn
@@ -133,9 +158,10 @@ export function App() {
     setViewMode(m);
     if (m !== "default") setOutlookOn(false);
     if (m === "coverage") {
-      setSelectedCode(null);
       setSheetExpanded(true);
-    } else if (viewMode === "coverage") {
+    } else if (m === "uncertainty") {
+      setSheetExpanded(true);
+    } else if (viewMode === "coverage" || viewMode === "uncertainty") {
       setSheetExpanded(false);
     }
   };
@@ -185,14 +211,15 @@ export function App() {
       );
     }
     if (beat.id === "quiet") {
+      const picked = selectedGeo && priorityCodes.includes(selectedGeo.code) ? selectedGeo : null;
       return (
         <div className="quiet-mini">
           <div className="quiet-mini__keys">
-            <span className="qk qk--zero" aria-label="dashed circle means reports zero">
-              <span aria-hidden="true">o</span> reports 0
+            <span className="qk qk--zero">
+              <span className="qk__ring qk__ring--zero" aria-hidden="true" /> reports 0
             </span>
-            <span className="qk qk--missing" aria-label="hatched square means no rows">
-              <span aria-hidden="true">#</span> no rows
+            <span className="qk qk--missing">
+              <span className="qk__ring qk__ring--missing" aria-hidden="true" /> no rows
             </span>
           </div>
           <div className="quiet-mini__chips">
@@ -213,8 +240,22 @@ export function App() {
               );
             })}
           </div>
+          {picked && (
+            <div className="quiet-mini__explain">
+              <b>{picked.name}</b>
+              <span>{monShort(picked)}</span>
+              <p>
+                {picked.reportingStatus === "reported_zero_latest_count"
+                  ? "The latest official monitoring row reports zero. Keep it as a reported-zero value, not a missing row."
+                  : "No processed monitoring-network row is present. Treat this as a reporting gap, not proof of absent infrastructure."}
+              </p>
+            </div>
+          )}
         </div>
       );
+    }
+    if (beat.id === "fragility") {
+      return <RankUncertaintyCallout geos={geos} onPick={setSelectedCode} />;
     }
     if (beat.id === "fingerprint") {
       return <FingerprintPreview geos={geos} />;
@@ -232,6 +273,8 @@ export function App() {
   const panelContent =
     viewMode === "coverage" && !selectedGeo ? (
       <DataQuietCallout geos={geos} priorityCodes={priorityCodes} onPick={handleSelect} />
+    ) : viewMode === "uncertainty" && !selectedGeo ? (
+      <RankUncertaintyCallout geos={geos} onPick={handleSelect} />
     ) : (
       <CountryPanel
         geo={selectedGeo}

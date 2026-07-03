@@ -638,10 +638,10 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Edge cases: Do not add decorative atmosphere that weakens evidence reading; do not copy audited reference-project identities; do not hide map caveats to improve aesthetics.
 - Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
 - Artifacts to produce: visually polished production mockup over real data and MapLibre map, Claude change report, Codex QA notes
-- Acceptance criteria: Owner approves desktop and mobile visual direction; build passes; guided and explore modes remain usable and evidence-disciplined.
+- Acceptance criteria: Owner approves desktop and mobile visual direction; build passes; guided and explore modes remain usable and evidence-disciplined; pre-polish QA blockers below are resolved or explicitly deferred with owner approval.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
 - Manual QA: Owner visual review, keyboard smoke check, mobile portrait review, and Codex diff review before commit.
-- QA notes:
+- QA notes: Pre-`TASK-027` interactive QA on 2026-07-02 found two blockers to fix before visual-polish screenshots: mobile first load can fit the Pacific map to an empty ocean with all 22 centroid points off-viewport, and guided beat state can desync from story-rail scroll after resize or rapid Next clicks. Also fix or explicitly defer: empty indicator-trace drawer despite "9 rows" copy, beat-4 selection without a zero/missing explanation panel, selection clearing when overlays switch, missing rank-uncertainty explainer, "Compare with Tuvalu" behaving as navigation, method drawer focus/Escape handling, mobile explore layout hierarchy, WF/AS/Samoa point occlusion, and small microcopy/state hygiene issues. Preserve what already works: desktop atlas-first viewport, visible caveats, data-quiet signature cards, evidence-bearing layer transitions, local static data loads, and keyboard-accessible geography buttons.
 - Attempts: 0
 - Max attempts: 3
 - Attempt log:

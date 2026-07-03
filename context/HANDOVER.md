@@ -71,7 +71,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Run `TASK-027` final visual polish over the MapLibre/Natural Earth map and revised story copy.
+1. Run `TASK-027` final visual polish over the MapLibre/Natural Earth map and revised story copy, starting with the 2026-07-02 pre-polish QA blockers now recorded in `context/TASKS.md`.
 2. Keep Codex QA as the gate for any Claude visual/app changes before committing, and keep owner visual review as the taste/approval gate.
 3. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026`/`TASK-029` map substrate.
 
@@ -104,4 +104,5 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - Remaining owner-review notes: the mobile top toolbar is horizontally scrollable by design; confirm visual taste and discoverability in the next browser review. Codex did not capture fresh screenshots during QA because local Playwright import was blocked by filesystem permissions, so the acceptance is based on source review, app build, validation checks, and Claude's reported viewport review. The "vs Tuvalu" comparator is a label-only suggestion, not the TASK-019 JSD layer.
 - TASK-025 is complete. The app loads generated `/data/geographies.json` through `app/src/lib/atlasData.ts`; the obsolete `app/src/mock/mockAtlasData.ts` fixture was deleted. The generated app contract now carries monitoring status, rank uncertainty, story labels, top signals, status/subregion context, and outlook display gating.
 - TASK-026 is complete as a MapLibre centroid substrate. TASK-029 is complete as a Natural Earth visual land-context layer plus MapLibre graticule fix. TASK-028 is complete as the guided story/copy rewrite. TASK-027 remains pending under the open TASK-006 app shell, followed by TASK-007 submission readiness.
+- Pre-TASK-027 interactive QA found two functional blockers before visual screenshots: mobile first-load map fit can show no scored points, and guided beat state can desync from the visible story rail. The same pass also flagged the empty indicator-trace drawer, missing beat-4 selected-place explanation, selection loss on overlay switch, method-drawer focus/Escape gaps, mobile explore hierarchy, exemplar point occlusion, and microcopy cleanup.
 - Completed transient mockup plan/checklist files were pruned from `context/plans/`; their durable outcomes now live in `TASKS.md`, `PROJECT.md`, `HANDOVER.md`, `DESIGN_BRIEF.md`, and the progress log.

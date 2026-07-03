@@ -42,3 +42,7 @@
 - Completed `TASK-028` guided story/copy rewrite after Codex QA. Tightened the seven-beat guided tour, method drawer, data-quiet copy, country-panel trace note, fingerprint preview, and geometry caveats. Removed an over-broad responsibility-framing phrase, kept Evidence Fingerprint Divergence labelled analysis-ready/not app-wired, and aligned visible geometry copy with the Natural Earth land-context layer plus centroid score geometry.
 
 AI tools used: Codex, Chrome extension.
+
+## 2026-07-02
+
+- Completed a pre-`TASK-027` interactive QA pass over the running app and folded the findings into `context/TASKS.md` and `context/HANDOVER.md`. Exercised all seven guided beats, both modes, all score layers and overlays, the method drawer, the country panel, and mobile portrait. Two blockers found: mobile first-load map fit leaves all 22 centroid points off-viewport (world-copy/fitBounds issue), and guided beat state can desync from the story-rail scroll (resize or rapid Next clicks leave copy on beat 1 while the map advances). Key honesty gap: the indicator-trace drawer promises 9 rows but renders none because `country_details.json` is never fetched. Also logged selection-drop on overlay switch, missing beat-4 inspection panel, method-drawer focus/Escape gaps, mobile explore layout hierarchy, exemplar point occlusion, and microcopy details. Positive: caveat adjacency, data-quiet signature view, evidence-bearing layer transitions, and accessibility bones all hold up. No app code changed. (AI tools used: Claude via Claude Code, preview MCP.)

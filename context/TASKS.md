@@ -738,3 +738,26 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: 2026-07-03: Started Codex Builder pass in parallel with TASK-030. Scope is accessibility audit plus smallest confirmed front-end fixes only. Patched semantic/touch-target issues from the parallel audit, handed to Checker, then Checker approved with automated verification and browser smoke evidence.
 - Status: done
+
+## TASK-032
+- Phase: app-design
+- Title: Final Fable front-end visual pass
+- Depends on: TASK-027, TASK-030, TASK-031
+- Assigned agent: Fable Builder, Codex QA
+- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
+- Data refs: app/public/data/*
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Final owner-facing visual quality pass so the atlas reads as competition-worthy on first screenshot, desktop and mobile.
+- Functional notes: Polish only the front-end experience: desktop/mobile visual hierarchy, spacing, typography, controls, evidence cards, story beat rhythm, map/panel balance, and discoverability. No data, scoring, generated files, methods, or commits.
+- Statistical notes: Preserve caveat adjacency, missingness/reporting-status distinctions, rank uncertainty language, centroid-geometry caveats, and outlook stress-test framing exactly as QA'd in TASK-028/030/031.
+- Edge cases: No decorative atmosphere; no reference-project identity copying; no dependency additions; no landing page; no leaderboard framing; do not hide caveats to improve aesthetics.
+- Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/TASKS.md`, `context/logs/Progress Log.md`
+- Artifacts to produce: polished front-end pass over the accepted scroll-led atlas, Fable Builder notes, changed-file list for Codex QA.
+- Acceptance criteria: Build and app tests pass; guided and explore modes keep all evidence discipline; desktop 1366-1440 and mobile 375-430 both read cleanly; no non-front-end files change; Codex QA and owner visual review remain the final gates.
+- Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Fable visual smoke at desktop and mobile portrait via dev server; Codex diff review; owner taste review before commit.
+- QA notes:
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-03: Fable Builder pass started; moved pending -> in-progress. Scope is front-end visual polish only per owner instruction; commit rights stay with Codex QA. Builder notes: found the desktop map camera regression from `renderWorldCopies: false` (antimeridian clamp pushed the cluster off-viewport at 1440px); restored `renderWorldCopies: true` with a wrap-aware overlay `project()` that snaps labels/hit-targets to the visible world copy. Recomposed the mobile camera (center [182.5, -29], zoom 1.38) so all 22 points sit above the bottom sheet; clamped middle-anchored map labels inside the viewport so edge exemplars (Pitcairn) stay readable. Typography pass: 0.05em tracking on uppercase micro-labels, 0.14em on subregion map caps with fill lifted to 0.34 alpha, monospace evidence/source lines, beat title/claim/caveat leading loosened, body-wide tabular numerals per the design brief. Added missing `app/src/vite-env.d.ts` for `import.meta.env` typing and a DEV-only `window.__atlasMap` QA handle. Evidence: `npm --prefix app run test` 6/6 passed; `npm --prefix app run build` passed; `python scripts/check_secrets.py`, `python scripts/validate_task_statuses.py`, `git diff --check` all passed. Browser smoke on dev server: desktop 1440x900 rendered all 22 MapLibre circles with overlay hit-targets spanning x=56-1288; mobile 375x812 screenshot confirmed the full cluster with labels above the sheet. Caveat: late in the session the preview harness accumulated stale WebGL tabs and stopped painting map tiles on fresh instances; identical code painted fully on earlier instances, so Codex QA should re-run browser smoke in a clean browser. Working tree intentionally left uncommitted for Codex QA.
+- Status: in-review

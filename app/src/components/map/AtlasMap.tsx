@@ -96,7 +96,9 @@ function asGeoJson(collection: unknown): GeoJSON.FeatureCollection {
 }
 
 function cameraForViewport(width: number): { center: [number, number]; zoom: number } {
-  if (width < 520) return { center: [186, -7], zoom: 1.55 };
+  // Mobile: bias the camera south so the point cluster sits in the map window
+  // above the bottom sheet instead of behind it.
+  if (width < 520) return { center: [182.5, -29], zoom: 1.38 };
   if (width < 900) return { center: [185, -7], zoom: 2.05 };
   return { center: [185, -6], zoom: 3.15 };
 }
@@ -241,8 +243,18 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
 }
 
 function project(map: MapLibreMap, lon: number, lat: number): ScreenPoint {
-  const point = map.project([shiftPacificLon(lon), lat]);
-  return { x: point.x, y: point.y };
+  // Shifted Pacific longitudes can project onto a far antimeridian world copy;
+  // snap x to the copy nearest the viewport so overlays track the visible map.
+  const shifted = shiftPacificLon(lon);
+  const point = map.project([shifted, lat]);
+  const world = map.project([shifted + 360, lat]).x - point.x;
+  const mid = map.getContainer().clientWidth / 2;
+  let x = point.x;
+  if (world > 0) {
+    while (x - mid > world / 2) x -= world;
+    while (mid - x > world / 2) x += world;
+  }
+  return { x, y: point.y };
 }
 
 function buildOverlayState(map: MapLibreMap, geos: Geo[]): OverlayState {
@@ -366,11 +378,15 @@ export function AtlasMap({
       minZoom: 1.25,
       maxZoom: 7,
       attributionControl: false,
-      renderWorldCopies: false,
+      renderWorldCopies: true,
       dragRotate: false,
       pitchWithRotate: false,
     });
     mapRef.current = map;
+    if (import.meta.env.DEV) {
+      // Dev-only handle for browser-smoke QA (camera, layers, queryRenderedFeatures).
+      (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
+    }
 
     map.touchZoomRotate.disableRotation();
     map.keyboard.disableRotation();
@@ -534,7 +550,11 @@ export function AtlasMap({
             if (!point) return null;
             const r = radiusFor(geo.indicators);
             const off = LABEL_OFFSETS[geo.code] ?? { dx: 0, dy: -22 };
-            const lx = point.x + off.dx;
+            // Clamp middle-anchored labels inside the map so edge exemplars stay readable.
+            const mapWidth = mapRef.current?.getContainer().clientWidth ?? 0;
+            const halfLabel = geo.name.length * 3.4 + 4;
+            const rawLx = point.x + off.dx;
+            const lx = mapWidth > 0 ? Math.min(Math.max(rawLx, halfLabel), mapWidth - halfLabel) : rawLx;
             const ly = point.y + off.dy;
             const isSelected = geo.code === selectedCode;
             const isCompare = geo.code === compareCode && geo.code !== selectedCode && hasSelection;

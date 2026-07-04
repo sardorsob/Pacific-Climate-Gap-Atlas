@@ -191,6 +191,7 @@ Selection state:
 
 - Do not use another data-like ring for selection because rings already encode reporting status.
 - Use a bracket, halo offset, label callout, or short leader line for selection.
+- TASK-035 accepted treatment: a viewfinder frame of four achromatic corner brackets around a fixed geographic window (about 1.6 degrees, pixel-clamped), never fitted to land, with a dotted tick from the circle edge to the nearest visual island and an on-surface note "map area, not territory". Land never takes the score ramp. The nearest-island tick is guarded by a unit test against attributing a neighbor's islands (American Samoa resolves to Tutuila, not Samoa). A true territorial-extent highlight still requires a future reviewed boundary-source task.
 
 Hover/focus state:
 

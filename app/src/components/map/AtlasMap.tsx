@@ -14,6 +14,8 @@ import {
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
   fitBoundsForPacific,
+  nearestLandCenter,
+  viewfinderGeometry,
   type AtlasFeatureCollection,
 } from "./atlasMapModel";
 
@@ -36,9 +38,16 @@ type OverlayState = {
   subregions: Record<string, ScreenPoint>;
   lonLines: GraticuleLine[];
   latLines: GraticuleLine[];
+  pxPerDeg: { x: number; y: number };
 };
 
-const EMPTY_OVERLAY: OverlayState = { points: {}, subregions: {}, lonLines: [], latLines: [] };
+const EMPTY_OVERLAY: OverlayState = {
+  points: {},
+  subregions: {},
+  lonLines: [],
+  latLines: [],
+  pxPerDeg: { x: 0, y: 0 },
+};
 const MAP_SOURCE_ID = "atlas-points";
 const LAND_SOURCE_ID = "pacific-land-context";
 const LAND_FILL_LAYER_ID = "pacific-land-context-fill";
@@ -288,7 +297,13 @@ function buildOverlayState(map: MapLibreMap, geos: Geo[]): OverlayState {
     };
   });
 
-  return { points, subregions, lonLines, latLines };
+  const origin = map.project([180, 0]);
+  const pxPerDeg = {
+    x: map.project([181, 0]).x - origin.x,
+    y: origin.y - map.project([180, 1]).y,
+  };
+
+  return { points, subregions, lonLines, latLines, pxPerDeg };
 }
 
 export function AtlasMap({
@@ -512,7 +527,6 @@ export function AtlasMap({
             if (!point) return null;
             const r = radiusFor(geo.indicators);
             const variant = ringVariant(geo.reportingStatus);
-            const isSelected = geo.code === selectedCode;
             const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
 
             return (
@@ -524,24 +538,48 @@ export function AtlasMap({
                 {variant === "dashed" && (
                   <circle cx={point.x} cy={point.y} r={r + 1} className="atlas-point__dash" />
                 )}
-                {isSelected && (
-                  <g className="atlas-point__select">
-                    {[[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy], i) => {
-                      const d = r + 8;
-                      const len = 7;
-                      return (
-                        <path
-                          key={i}
-                          d={`M ${point.x + sx * d} ${point.y + sy * d - sy * len} L ${point.x + sx * d} ${point.y + sy * d} L ${point.x + sx * d - sx * len} ${point.y + sy * d}`}
-                        />
-                      );
-                    })}
-                  </g>
-                )}
               </g>
             );
           })}
         </g>
+
+        {/* Selection viewfinder: a fixed map window around the scored point,
+            never fitted to land, so it frames attention without claiming
+            territory. Tick points to the nearest visual island. */}
+        {selectedCode && overlay.points[selectedCode] && overlay.pxPerDeg.x > 0 && (() => {
+          const geo = geos.find((g) => g.code === selectedCode);
+          const point = overlay.points[selectedCode];
+          if (!geo) return null;
+          const container = mapRef.current?.getContainer();
+          const vf = viewfinderGeometry({
+            point,
+            pxPerDeg: overlay.pxPerDeg,
+            minViewportSide: Math.min(container?.clientWidth ?? 900, container?.clientHeight ?? 900),
+            geoLon: geo.lon,
+            geoLat: geo.lat,
+            pointRadius: radiusFor(geo.indicators),
+            landCenter: landContext ? nearestLandCenter(geo.lon, geo.lat, landContext) : null,
+          });
+          return (
+            <g className="viewfinder">
+              {[
+                [vf.x0, vf.y0, 1, 1],
+                [vf.x1, vf.y0, -1, 1],
+                [vf.x0, vf.y1, 1, -1],
+                [vf.x1, vf.y1, -1, -1],
+              ].map(([cx, cy, sx, sy], i) => (
+                <path
+                  key={i}
+                  d={`M ${cx} ${cy + sy * vf.cornerLen} L ${cx} ${cy} L ${cx + sx * vf.cornerLen} ${cy}`}
+                />
+              ))}
+              {vf.tick && <line className="viewfinder__tick" {...vf.tick} />}
+              <text className="viewfinder__note" x={vf.x0} y={vf.y1 + 14}>
+                map area, not territory
+              </text>
+            </g>
+          );
+        })()}
 
         <g className="map-labels">
           {geos.map((geo) => {

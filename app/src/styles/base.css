@@ -93,7 +93,14 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
 .atlas-point__priority { fill: none; stroke: #ffd58a; stroke-width: 2; opacity: 0.9; }
 .atlas-point__dash { fill: none; stroke: #d4dde2; stroke-width: 2.2; stroke-dasharray: 5 4; }
 .atlas-point__hatch { opacity: 0.5; stroke: #9fb4bf; stroke-width: 1.6; stroke-dasharray: 2 3; }
-.atlas-point__select path { fill: none; stroke: #ffffff; stroke-width: 2.4; }
+.viewfinder path { fill: none; stroke: rgba(255, 255, 255, 0.68); stroke-width: 1.6; }
+.viewfinder__tick { stroke: rgba(220, 232, 238, 0.55); stroke-width: 1.2; stroke-dasharray: 2 3; }
+.viewfinder__note { fill: rgba(225, 235, 240, 0.62); font: 500 10px Inter, sans-serif; }
+.viewfinder { animation: viewfinder-in 0.2s ease-out; }
+@keyframes viewfinder-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .viewfinder { animation: none; }
+}
 
 .map-a11y-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .map-a11y-point {

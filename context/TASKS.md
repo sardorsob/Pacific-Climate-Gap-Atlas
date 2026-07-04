@@ -825,11 +825,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The proposed treatment improves island anchoring without implying unsupported boundaries; owner can compare it against the current circle map; build and validation pass if app code changes.
 - Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Desktop and mobile screenshot review for island anchoring, label collisions, and boundary-honesty copy.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex quick QA accepted the treatment. Source review confirmed the viewfinder frames a fixed screen/geographic window around the selected centroid, does not color or score land, and labels the selection affordance "map area, not territory." `nearestLandCenter` is used only for an orientation tick and is guarded by tests against the American Samoa/Samoa neighbor misattribution case. No data pipeline, generated app data, DATA_CARD, methodology, score logic, package files, or boundary-source claims changed. Fresh verification passed: `npm --prefix app run test` (2 files, 8 tests), `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Screenshot comparison remains an owner/final visual review item because browser/WebGL capture was unavailable in the Fable session.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: 2026-07-04: Fable design pass started; moved pending -> in-progress. Ran land-vs-centroid data profiling first: all 22 centroids have Natural Earth land within 3 degrees (min Niue 1 feature at 0.2x0.2 deg, max PNG 23 features over ~6 deg), and close neighbors overlap (AS's 3-degree neighborhood contains WS islands), so radius-lit land would misattribute neighbors' islands. Design directions constrained accordingly; owner direction requested before prototyping. Owner chose the viewfinder-frame-plus-land-tick treatment from three options; design approved before code. Spec/plan recorded in context/plans/task-035-island-anchor-viewfinder-plan.md. Built TDD-first: `nearestLandCenter` and `viewfinderGeometry` are pure functions in atlasMapModel.ts with red-then-green Vitest coverage pinning the AS-resolves-to-Tutuila-not-Samoa misattribution case, the 45px/17%-viewport window clamps, and tick suppression when land sits under the point (Niue). AtlasMap renders the frame, tick, and "map area, not territory" note in the SVG overlay from the tested geometry; the old point-level selection bracket is replaced; priority halos and monitoring rings untouched; land never takes the score ramp. DESIGN_BRIEF selection-state section updated. Codex geometry decision: no boundary source required for this treatment; territorial-extent highlighting remains a future reviewed-source task; DATA_CARD/methodology untouched because geometry semantics did not change. Fable evidence passed, then Codex QA re-ran verification and accepted the task.
+- Status: done
 
 ## TASK-036
 - Phase: panel-design

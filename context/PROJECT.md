@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-TASK-032 visual QA and TASK-034 desktop navigation cleanup are complete. Owner review follow-ups remain: TASK-033 needs a second copy pass, and TASK-035 through TASK-037 track island-anchored map treatment, detail-panel redesign, and JSD score wiring. Competition deadline: August 31, 2026.
+TASK-032 visual QA, TASK-033 humanized storyboard copy, and TASK-034 desktop navigation cleanup are complete. Owner review follow-ups remain: TASK-035 through TASK-037 track island-anchored map treatment, detail-panel redesign, and JSD score wiring. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -39,8 +39,8 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Post-map visual polish | done | `TASK-027` resolved the pre-polish interaction blockers, evidence-trace drawer, mobile camera/hierarchy, method-drawer keyboard handling, overlay-selection persistence, and uncertainty/quiet-state explainers |
 | Readiness packaging | done | `TASK-030` audits source/provenance/submission/deploy notes and stale readiness pointers |
 | Accessibility QA | done | `TASK-031` audits keyboard semantics, focus, touch targets, dialog behavior, and mobile accessibility |
-| Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issues are split into `TASK-033` through `TASK-037` |
-| Humanized storyboard copy | needs-fix | `TASK-033` needs another pass after owner flagged AI-ish phrases |
+| Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issues are split into `TASK-035` through `TASK-037` |
+| Humanized storyboard copy | done | `TASK-033` removed the flagged headline register from the guided storyboard while preserving caveats |
 | Desktop story navigation | done | `TASK-034` removes the unreliable desktop Next/Back row; desktop keeps scroll/progress/keyboard navigation and mobile keeps the stepper |
 | Island-anchored map treatment | pending | `TASK-035` explores Fable-designed island anchoring while preserving centroid/boundary honesty |
 | Detail panel redesign | pending | `TASK-036` improves selected-place panel copy and hierarchy |
@@ -84,4 +84,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
-- Recorded owner review follow-ups: `TASK-033` needs another copy pass for human voice; new `TASK-034` through `TASK-037` cover desktop Next behavior, island-anchored map design, detail-panel redesign, and JSD score visibility.
+- Recorded owner review follow-ups: `TASK-033` and `TASK-034` are complete; `TASK-035` through `TASK-037` cover island-anchored map design, detail-panel redesign, and JSD score visibility.

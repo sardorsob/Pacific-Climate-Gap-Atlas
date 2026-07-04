@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-TASK-032 visual QA is complete. Owner review added a new Fable/Codex follow-up set: TASK-033 needs a second copy pass, and TASK-034 through TASK-037 track desktop story navigation, island-anchored map treatment, detail-panel redesign, and JSD score wiring. Competition deadline: August 31, 2026.
+TASK-032 visual QA and TASK-034 desktop navigation cleanup are complete. Owner review follow-ups remain: TASK-033 needs a second copy pass, and TASK-035 through TASK-037 track island-anchored map treatment, detail-panel redesign, and JSD score wiring. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -41,7 +41,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Accessibility QA | done | `TASK-031` audits keyboard semantics, focus, touch targets, dialog behavior, and mobile accessibility |
 | Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issues are split into `TASK-033` through `TASK-037` |
 | Humanized storyboard copy | needs-fix | `TASK-033` needs another pass after owner flagged AI-ish phrases |
-| Desktop story navigation | pending | `TASK-034` fixes or removes the unreliable desktop Next control |
+| Desktop story navigation | done | `TASK-034` removes the unreliable desktop Next/Back row; desktop keeps scroll/progress/keyboard navigation and mobile keeps the stepper |
 | Island-anchored map treatment | pending | `TASK-035` explores Fable-designed island anchoring while preserving centroid/boundary honesty |
 | Detail panel redesign | pending | `TASK-036` improves selected-place panel copy and hierarchy |
 | JSD app visibility | pending | `TASK-037` verifies whether Jensen-Shannon divergence scores should be shown or remain a preview |

@@ -802,11 +802,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Desktop users have no visible dead Next control; mobile users can still advance beats; keyboard users can still move through beats; build and validation pass.
 - Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Browser smoke on desktop and mobile widths for scroll, Next/back if present, progress dots, arrow/Page navigation, and Explore handoff.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex traced the desktop issue to two desktop navigation models fighting for the same state: the bottom Next/Back buttons call `scrollIntoView`, while the desktop rail's scroll observer also owns active-beat updates. Rather than add more JS around a desktop control that duplicates scroll/progress navigation, the fix removes the visible bottom button row on desktop and keeps it visible on mobile, where sections are hidden and the stepper is the intended control. Desktop users still have scroll, progress-dot buttons, and Arrow/Page/Home/End keyboard handling through the story rail.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: 2026-07-04: Moved pending -> in-progress for Codex Builder pass, then in-review -> done after Checker verification. Implemented the smallest fix in `app/src/styles/base.css`: default `.story-rail__nav` is hidden, and the existing mobile media query restores it with `display: flex`. No JS, state, data, scoring, or copy changes were needed for this task.
+- Status: done
 
 ## TASK-035
 - Phase: map-design

@@ -773,14 +773,106 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - User value / decision value: The guided tour reads as a told story rather than methodology dressed as narration, without loosening any evidence guardrail.
 - Functional notes: Rewrite the seven beat titles, claims, caveats, and action hints in app/src/lib/tour.ts per the writing workflow kit: plain language, concrete nouns, bounded claims, no AI-trope phrase shapes, no stock drama, caveat register preserved.
 - Statistical notes: Keep comparative-screen framing, rank fragility numbers (19 of 22, Nauru 1-7, MH 15 places), reported-zero vs missing-row distinction, proxy-capacity limits, and analysis-ready-not-app-wired fingerprint status semantically intact.
-- Edge cases: Copy must fit desktop rail cards and mobile sheets; no new factual claims; no first-person overclaim; signature phrases already established across the app (Where the data goes quiet, Explore freely) stay.
+- Edge cases: Copy must fit desktop rail cards and mobile sheets; no new factual claims; no first-person overclaim; avoid AI-polished catchphrases even if they were already established across the app.
 - Files to create/modify: `app/src/lib/tour.ts`, `context/TASKS.md`, `context/logs/Progress Log.md`
 - Artifacts to produce: rewritten beat copy, editor notes for Codex claim/caveat review.
 - Acceptance criteria: Build and tests pass; every beat keeps one claim and one adjacent caveat with unchanged meaning; no banned phrase shapes from the writing hygiene checklist; Codex evidence QA and owner voice review remain the final gates.
 - Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Read each beat against STORY_BRIEF caveat register and the writing hygiene checklist; owner voice review before commit.
-- QA notes:
+- QA notes: Owner review found the rewritten text still reads too AI-polished in places. Specific examples to reconsider include "Where the data goes quiet" and "Start with the gap." Next pass should read copy aloud, prefer plain spoken phrasing, and improve panel/overlay copy without weakening caveats.
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: 2026-07-03: Fable Editor pass started; moved pending -> in-progress. Mode: rewrite-with-notes per the writing kit. Editor notes: rewrote all seven beat titles, claims, caveats, and one action hint in `app/src/lib/tour.ts`. Ran a claims audit first; every number and name traces to QA'd sources (22 places; pressure = temperature/rainfall/sea level/disaster tolls; capacity = monitoring/power/fisheries; Nauru rank 1-7; 19 of 22 fragile; MH 15 places; PN/NR reported zero; AS/WF no processed rows; NR neighbors MP/GU/NU). Voice moves: concrete nouns over method vocabulary (the seawall no dataset logs; two different kinds of quiet), through-line metaphors that carry the evidence rather than decorate it (records/paper, quiet, fingerprints), varied sentence shapes, one aphorism kept instead of one per beat, jargon caveat "analysis-ready, not app-wired" rendered as "a preview from the analysis files, not a live map layer yet". Removed the beat-7 action hint that duplicated the button label. Caveat register semantics preserved beat-for-beat. Evidence: `npm --prefix app run test` 6/6; `npm --prefix app run build` passed twice (after copy, after hint fix); secret scan, task-status validation, and `git diff --check` passed. Browser check on dev server: all 7 beats fit desktop rail sections (max 674/741px); mobile sheets scroll as before (card-driven heights, beats 1/7 fit fully); mobile screenshot confirmed beat-7 copy, clamped Pitcairn label, and full point cluster rendering. Working tree left uncommitted for Codex Reviewer.
-- Status: in-review
+- Status: needs-fix
+
+## TASK-034
+- Phase: interaction
+- Title: Fix or remove unreliable desktop guided-story Next control
+- Depends on: TASK-031
+- Assigned agent: Codex
+- Contract refs: context/DESIGN_BRIEF.md, context/HANDOVER.md
+- Data refs: none
+- Scientific refs: none
+- User value / decision value: Removes a broken-feeling desktop control from the guided story.
+- Functional notes: Reproduce the desktop issue where the guided-story Next button does not advance reliably. Either make the button work consistently on desktop and mobile, or hide/remove it on desktop if scroll/progress navigation is the intended desktop interaction. Keep keyboard navigation and mobile stepper behavior usable.
+- Statistical notes: No data or claim changes.
+- Edge cases: Do not break scroll-driven beat activation, progress-dot jumps, reduced-motion behavior, or mobile sheet navigation.
+- Files to create/modify: `app/src/components/story/StoryRail.tsx`, `app/src/components/story/BeatProgress.tsx`, `app/src/styles/base.css`, `context/TASKS.md`, `context/logs/Progress Log.md`
+- Artifacts to produce: interaction fix or documented removal decision with browser evidence.
+- Acceptance criteria: Desktop users have no visible dead Next control; mobile users can still advance beats; keyboard users can still move through beats; build and validation pass.
+- Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Browser smoke on desktop and mobile widths for scroll, Next/back if present, progress dots, arrow/Page navigation, and Explore handoff.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-035
+- Phase: map-design
+- Title: Design island-anchored highlight treatment instead of generic circles
+- Depends on: TASK-026, TASK-029, TASK-031
+- Assigned agent: Fable design, Codex source/geometry QA
+- Contract refs: context/DESIGN_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md, context/DECISIONS.md
+- Data refs: app/public/data/pacific_land_context.geojson, app/public/data/geographies.json
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Makes the map feel more connected to the visible islands while avoiding false boundary precision.
+- Functional notes: Explore a Fable-designed treatment that highlights, boxes, halos, labels, or callout-frames the visible island areas instead of relying only on centroid circles. Codex must decide what can be implemented with the current Natural Earth visual context and centroid score geometry, and what requires a future reviewed boundary-source task.
+- Statistical notes: Current scored geometry is centroid fallback. Natural Earth land is visual context only, not official scored geography geometry. Do not imply polygon scores, official boundaries, area, adjacency, territorial extent, or choropleth precision.
+- Edge cases: Small islands, multi-island geographies, territories with dispersed islands, and label collisions must not become misleading. If the design requires official boundaries, stop and create a separate source-review task instead of shipping it.
+- Files to create/modify: `app/src/components/map/*`, `app/src/styles/base.css`, `context/DESIGN_BRIEF.md`, `context/DATA_CARD.md`, `context/docs/methodology.md`, `context/TASKS.md`
+- Artifacts to produce: Fable visual proposal, Codex geometry-source decision, optional prototype if it can stay honest with existing data.
+- Acceptance criteria: The proposed treatment improves island anchoring without implying unsupported boundaries; owner can compare it against the current circle map; build and validation pass if app code changes.
+- Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Desktop and mobile screenshot review for island anchoring, label collisions, and boundary-honesty copy.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-036
+- Phase: panel-design
+- Title: Redesign selected-geography detail panel copy and hierarchy
+- Depends on: TASK-033
+- Assigned agent: Fable draft, Codex evidence QA
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/DATA_CARD.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/adaptation_gap_indicator_trace.csv
+- Scientific refs: context/docs/methodology.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Makes the selected-place side panel easier to read, more useful, and less like a raw data dump.
+- Functional notes: Improve the selected-geography panel's visual hierarchy, section labels, intro copy, evidence strip, trace drawer, method/source actions, and empty/default state. Keep it compact enough for desktop side panel and mobile bottom sheet.
+- Statistical notes: Preserve score caveats, rank fragility, indicator counts, trace rows, source-row hashes, monitoring reporting caveats, and non-causal interpretation.
+- Edge cases: Do not hide the indicator trace or caveats to make the panel prettier; do not add unsupported comparison claims; long geography names and small mobile screens must still fit.
+- Files to create/modify: `app/src/components/panels/CountryPanel.tsx`, `app/src/components/RankChip.tsx`, `app/src/styles/base.css`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/TASKS.md`
+- Artifacts to produce: Fable panel redesign, Codex claim/caveat QA notes, browser screenshots or smoke evidence.
+- Acceptance criteria: Selected-place panel reads naturally, surfaces the most important evidence first, keeps source/method access clear, preserves trace/caveat visibility, and passes build/validation.
+- Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Select at least NR, TV, AS, WF, MH, and FJ on desktop and mobile; verify panel layout and claims.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-037
+- Phase: app-data
+- Title: Verify and optionally wire Jensen-Shannon divergence scores into the app
+- Depends on: TASK-019, TASK-025, TASK-030
+- Assigned agent: Codex data/app, Fable optional UI polish
+- Contract refs: context/INFORMATION_DIVERGENCE_PLAN.md, context/DESIGN_BRIEF.md, context/HANDOVER.md
+- Data refs: artifacts/tables/eda_similarity_neighbors.csv, artifacts/tables/eda_pairwise_jsd.csv, artifacts/tables/eda_evidence_fingerprints.csv, artifacts/provenance/divergence_summary.json, app/src/components/panels/FingerprintPreview.tsx, app/src/lib/atlasData.ts
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Clarifies whether JSD is merely previewed or actually visible as scores in the atlas.
+- Functional notes: Confirm current app behavior: JSD values exist in `FINGERPRINT_PREVIEW` data but are not rendered as numeric scores and are not wired as selected-geography similarity data. Decide whether V1 should show numeric JSD values, hide them behind plain-language similarity bands, or export a selected-geography app-ready similarity contract.
+- Statistical notes: JSD is exploratory similarity over official-data profiles, not shared vulnerability, causal similarity, policy need, or a new leaderboard. Keep selected-geography anchoring and visible caveats.
+- Edge cases: Do not ship global similarity rankings. If numeric JSD is shown, explain directionality and scale in plain language. If data export is needed, add contract validation and app adapter tests.
+- Files to create/modify: `scripts/build_app_data.py`, `analysis/eda/divergence.py`, `app/src/lib/atlasData.ts`, `app/src/components/panels/FingerprintPreview.tsx`, `app/src/components/panels/CountryPanel.tsx`, `tests/**`, `context/TASKS.md`, `context/DESIGN_BRIEF.md`
+- Artifacts to produce: current-state audit, decision on numeric JSD display, optional app-ready similarity export and UI.
+- Acceptance criteria: The repo clearly states whether JSD scores ship in V1; if shipped, values are visible, selected-anchored, tested, caveated, and buildable; if not shipped, the app copy makes the preview status unmistakable.
+- Verification commands: `python scripts/run_eda.py --config configs/eda.yml`; `python -m unittest tests.analysis.test_divergence -v`; `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Inspect fingerprint preview/detail panel for selected NR and any wired similarity view; confirm no global leaderboard appears.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending

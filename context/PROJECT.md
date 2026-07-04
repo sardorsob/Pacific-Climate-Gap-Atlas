@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-030 readiness packaging and TASK-031 accessibility QA are complete. Next best handoff is Fable final UI/front-end polish if the owner wants another visual pass. Competition deadline: August 31, 2026.
+Owner review added a new Fable/Codex follow-up set: TASK-033 needs a second copy pass, and TASK-034 through TASK-037 track desktop story navigation, island-anchored map treatment, detail-panel redesign, and JSD score wiring. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete; owner review now requests another copy/UI/map interaction iteration.
 
 ## Working Title
 
@@ -39,6 +39,12 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Post-map visual polish | done | `TASK-027` resolved the pre-polish interaction blockers, evidence-trace drawer, mobile camera/hierarchy, method-drawer keyboard handling, overlay-selection persistence, and uncertainty/quiet-state explainers |
 | Readiness packaging | done | `TASK-030` audits source/provenance/submission/deploy notes and stale readiness pointers |
 | Accessibility QA | done | `TASK-031` audits keyboard semantics, focus, touch targets, dialog behavior, and mobile accessibility |
+| Final Fable visual pass | in-review | `TASK-032` needs Codex QA before any commit |
+| Humanized storyboard copy | needs-fix | `TASK-033` needs another pass after owner flagged AI-ish phrases |
+| Desktop story navigation | pending | `TASK-034` fixes or removes the unreliable desktop Next control |
+| Island-anchored map treatment | pending | `TASK-035` explores Fable-designed island anchoring while preserving centroid/boundary honesty |
+| Detail panel redesign | pending | `TASK-036` improves selected-place panel copy and hierarchy |
+| JSD app visibility | pending | `TASK-037` verifies whether Jensen-Shannon divergence scores should be shown or remain a preview |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -78,3 +84,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
+- Recorded owner review follow-ups: `TASK-033` needs another copy pass for human voice; new `TASK-034` through `TASK-037` cover desktop Next behavior, island-anchored map design, detail-panel redesign, and JSD score visibility.

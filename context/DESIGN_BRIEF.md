@@ -302,6 +302,8 @@ Field order:
 12. Outlook snippet, only when selected and allowed.
 13. Source links and method caveats.
 
+TASK-036 regroup: the thirteen fields above now render as three reading groups - the score (name, story label, score block with rank band, at-a-glance strip), "The two sides of the score" (pressure/capacity bars plus strongest signals with a percentile explainer), and "What the record shows" (monitoring status, indicator count with thin-evidence caution, trace drawer). No field was removed; headers use the guided tour's spoken register.
+
 Panel rules:
 
 - Caveats sit beside the number or label they qualify.

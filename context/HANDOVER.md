@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, `TASK-031`, `TASK-032`, `TASK-033`, `TASK-034`, and `TASK-035` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, accessible geography hit targets, revised evidence-backed story copy, post-map interaction polish, readiness packaging notes, Codex accessibility QA, accepted final Fable visual polish, humanized storyboard copy, desktop guided-story navigation cleanup, and island-anchored viewfinder selection. Owner review follow-ups remain: `TASK-036` detail-panel design and `TASK-037` JSD visibility.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, `TASK-031`, `TASK-032`, `TASK-033`, `TASK-034`, `TASK-035`, and `TASK-036` are complete: the map surface uses MapLibre with centroid fallback points, Natural Earth visual land context, first-render graticule lines, overlay labels, accessible geography hit targets, revised evidence-backed story copy, post-map interaction polish, readiness packaging notes, Codex accessibility QA, accepted final Fable visual polish, humanized storyboard copy, desktop guided-story navigation cleanup, island-anchored viewfinder selection, and regrouped selected-place detail panel. Owner review follow-up remains: `TASK-037` JSD visibility.
 
 ## How To Validate The Scaffold
 
@@ -72,7 +72,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 ## Next Recommended Work
 
 1. Codex should own `TASK-037` JSD app/data decision.
-2. Fable is a good fit for `TASK-036` detail-panel redesign.
+2. Keep Fable available only for optional UI polish after Codex decides the `TASK-037` JSD app/data shape.
 3. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
 4. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
 5. Treat reviewed polygon boundaries as a future data-source task, not as part of the completed `TASK-026`/`TASK-029` map substrate.

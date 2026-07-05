@@ -848,11 +848,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Selected-place panel reads naturally, surfaces the most important evidence first, keeps source/method access clear, preserves trace/caveat visibility, and passes build/validation.
 - Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Select at least NR, TV, AS, WF, MH, and FJ on desktop and mobile; verify panel layout and claims.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex quick QA accepted the regroup. Source review confirmed the panel still surfaces the rank band, pressure/capacity values, proxy-capacity caveat, monitoring caveat, indicator count, thin-evidence warning, trace row count, full trace rows, and source-row hashes. Copy uses spoken explanatory labels without adding causal claims; "strongest signals" remains descriptive and the new parenthetical-number note explains percentile positions rather than amounts. Fresh verification passed: `npm --prefix app run test` (2 files, 8 tests), `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Browser visual QA for AS/WF/MH/FJ remains for owner/final review in a clean browser.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log:
-- Status: pending
+- Attempt log: 2026-07-04: Fable draft pass started; moved pending -> in-progress. Diagnosis before redesign: panel structure is sound but five equal-weight uppercase section headers read as database fields, and panel copy predates the TASK-033 spoken voice; owner direction requested on regroup depth before editing. Owner chose the thematic regroup from three options; plan in context/plans/task-036-panel-regroup-plan.md. Rebuilt CountryPanel into three reading groups: the score (name, story label, score block with rank band and a rewritten caveat, at-a-glance strip with clearer Rank band/Indicators labels), "The two sides of the score" (pillars with the proxy caveat verbatim, strongest pressure/capacity signals, plus a new line explaining parenthetical numbers as 0-100 Pacific percentile positions per the score method), and "What the record shows" (monitoring block unchanged from encoding.ts, indicator count with the thin-evidence caution kept at surface level, trace drawer whose summary now carries the row count and a plainer note). Empty-state lede rewritten in the tour voice; no field removed; no causal language added; atlasData/encoding/generated data untouched; DESIGN_BRIEF Country Detail Panel section updated; STORY_BRIEF untouched because panel field order lives in the design brief. Fable evidence passed, then Codex QA re-ran verification and accepted the task.
+- Status: done
 
 ## TASK-037
 - Phase: app-data

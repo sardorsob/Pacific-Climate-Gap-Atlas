@@ -29,11 +29,11 @@ function EvidenceStrip({ geo, tone }: { geo: Geo; tone: string }) {
         <span className="profile-cell__v">{geo.capacity.toFixed(0)}</span>
       </div>
       <div className="profile-cell">
-        <span className="profile-cell__k">Rank move</span>
+        <span className="profile-cell__k">Rank band</span>
         <span className="profile-cell__v">{geo.rankMin}-{geo.rankMax}</span>
       </div>
       <div className="profile-cell">
-        <span className="profile-cell__k">Evidence</span>
+        <span className="profile-cell__k">Indicators</span>
         <span className="profile-cell__v">{geo.indicators}/9</span>
       </div>
       <div className={`profile-cell profile-cell--${tone}`}>
@@ -68,8 +68,8 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
           Where climate pressure and visible capacity are unevenly matched - and so is the official data behind the comparison.
         </h1>
         <p className="panel__lede">
-          Tap any point to inspect a geography: its gap score, how fragile the rank is, what the
-          monitoring record reports, and the indicators behind every number.
+          Tap any dot to open a place: its score, how far the rank slides, what the monitoring
+          record shows, and the official rows behind every number.
         </p>
         <p className="panel__hint">Concept for review - not final, not approved.</p>
         <button type="button" className="link-btn" onClick={onOpenMethod}>
@@ -85,9 +85,9 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
 
   return (
     <aside className="panel" aria-label={`${geo.name} detail`}>
+      {/* group 1: the score - name and story label lead, no header needed */}
       <div className="panel__head">
         <div>
-          {/* 1. name + context */}
           <p className="eyebrow">{geo.subregion}</p>
           <h1 className="panel__name">{geo.name}</h1>
           <p className="panel__status">{geo.status}</p>
@@ -97,10 +97,8 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
         </button>
       </div>
 
-      {/* 2. active story label */}
       <p className="panel__story">{geo.storyLabel}</p>
 
-      {/* 3. gap score + rank chip (never bare) */}
       <div className="score-block">
         <div className="score-block__num">
           <span className="score-block__value">{geo.gap.toFixed(0)}</span>
@@ -108,16 +106,16 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
         </div>
         <RankChip geo={geo} />
         <p className="score-block__caveat">
-          Comparative screen, not a ranking of need. Rank movement frames uncertainty and should not be read as definitive.
+          A comparison screen, not a ranking of need. The band above is the honest way to read
+          this position.
         </p>
       </div>
 
-      {/* at-a-glance evidence strip (scan before reading detail) */}
       <EvidenceStrip geo={geo} tone={reportingTone} />
 
-      {/* 4. pressure vs capacity */}
-      <section className="panel__section">
-        <h2 className="panel__h">Pressure vs visible capacity</h2>
+      {/* group 2: the two sides */}
+      <section className="panel__group">
+        <h2 className="panel__h">The two sides of the score</h2>
         <PillarBar label="Climate pressure" value={geo.pressure} kind="pressure" />
         <PillarBar
           label="Visible capacity"
@@ -125,63 +123,55 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
           kind="capacity"
           caveat="Capacity is measured through official proxies, not full readiness."
         />
-      </section>
-
-      {/* 5. evidence density */}
-      <section className="panel__section">
-        <h2 className="panel__h">Evidence density</h2>
-        <p className="panel__evidence">
-          <strong>{geo.indicators}</strong> of 9 indicators contribute to this score.
-          {geo.indicators <= 5 && " Thin evidence - read this score with extra caution."}
-        </p>
-      </section>
-
-      {/* 6. monitoring / reporting status + caveat */}
-      <section className={`panel__section reporting reporting--${reportingTone}`}>
-        <h2 className="panel__h">Monitoring / reporting status</h2>
-        <p className="reporting__state">{reportingLabel(geo.reportingStatus)}</p>
-        <p className="reporting__caveat">{reportingCaveat(geo.reportingStatus)}</p>
-      </section>
-
-      {/* 7. top signals */}
-      <section className="panel__section">
-        <h2 className="panel__h">Top signals</h2>
         <div className="signals">
           <div>
-            <span className="signals__cap">Pressure</span>
+            <span className="signals__cap">Strongest pressure signals</span>
             <ul>{geo.topPressure.map((s) => <li key={s}>{s}</li>)}</ul>
           </div>
           <div>
-            <span className="signals__cap">Capacity</span>
+            <span className="signals__cap">Strongest capacity signals</span>
             <ul>{geo.topCapacity.map((s) => <li key={s}>{s}</li>)}</ul>
           </div>
         </div>
+        <p className="signals__note">
+          Numbers in parentheses are 0-100 percentile positions within the Pacific, not amounts.
+        </p>
       </section>
 
-      {/* 8. indicator trace teaser */}
-      <details className="trace">
-        <summary>Indicator trace ({geo.indicatorRows.length || geo.indicators} rows)</summary>
-        <p className="trace__note">
-          Every score traces back to the latest official rows behind it - values, units, scoring
-          values, and a source-row hash - so nothing here is a black box.
+      {/* group 3: the record */}
+      <section className="panel__group">
+        <h2 className="panel__h">What the record shows</h2>
+        <div className={`reporting reporting--${reportingTone}`}>
+          <p className="reporting__state">{reportingLabel(geo.reportingStatus)}</p>
+          <p className="reporting__caveat">{reportingCaveat(geo.reportingStatus)}</p>
+        </div>
+        <p className="panel__evidence">
+          <strong>{geo.indicators}</strong> of 9 indicators feed this score.
+          {geo.indicators <= 5 && " Thin evidence - read this score with extra caution."}
         </p>
-        {geo.indicatorRows.length > 0 && (
-          <ul className="trace__list">
-            {geo.indicatorRows.map((row) => (
-              <li key={`${row.datasetName}-${row.sourceRowHash || row.latestYear}`}>
-                <b>{row.datasetName}</b>
-                <span>
-                  {row.latestYear ?? "n/a"} · {row.latestValue ?? "n/a"} {row.unit}
-                  {row.indicatorScore !== null ? ` · score ${row.indicatorScore.toFixed(1)}` : ""}
-                </span>
-                <code>{row.sourceRowHash ? row.sourceRowHash.slice(0, 10) : "no hash"}</code>
-              </li>
-            ))}
-          </ul>
-        )}
-      </details>
+        <details className="trace">
+          <summary>The official rows behind this score ({geo.indicatorRows.length || geo.indicators})</summary>
+          <p className="trace__note">
+            Each row is the latest official record behind one indicator: year, value, unit, its
+            0-100 score, and a short hash of the source row.
+          </p>
+          {geo.indicatorRows.length > 0 && (
+            <ul className="trace__list">
+              {geo.indicatorRows.map((row) => (
+                <li key={`${row.datasetName}-${row.sourceRowHash || row.latestYear}`}>
+                  <b>{row.datasetName}</b>
+                  <span>
+                    {row.latestYear ?? "n/a"} · {row.latestValue ?? "n/a"} {row.unit}
+                    {row.indicatorScore !== null ? ` · score ${row.indicatorScore.toFixed(1)}` : ""}
+                  </span>
+                  <code>{row.sourceRowHash ? row.sourceRowHash.slice(0, 10) : "no hash"}</code>
+                </li>
+              ))}
+            </ul>
+          )}
+        </details>
+      </section>
 
-      {/* 9. sources / compare */}
       <div className="panel__actions">
         <button type="button" className="link-btn" onClick={onOpenMethod}>
           Methodology &amp; sources

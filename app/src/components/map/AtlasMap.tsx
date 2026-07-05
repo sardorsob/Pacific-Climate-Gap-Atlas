@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, {
+  type FilterSpecification,
   type GeoJSONSource,
   type Map as MapLibreMap,
   type StyleSpecification,
@@ -11,6 +12,7 @@ import { radiusFor, ringVariant } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
 import { GRATICULE_LATS, GRATICULE_LONS } from "../../lib/projection";
 import {
+  assignLandAnchors,
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
   fitBoundsForPacific,
@@ -52,6 +54,13 @@ const MAP_SOURCE_ID = "atlas-points";
 const LAND_SOURCE_ID = "pacific-land-context";
 const LAND_FILL_LAYER_ID = "pacific-land-context-fill";
 const LAND_LINE_LAYER_ID = "pacific-land-context-line";
+const LAND_HALO_GLOW_LAYER_ID = "pacific-land-halo-glow";
+const LAND_HALO_LINE_LAYER_ID = "pacific-land-halo-line";
+const NO_ANCHOR_FILTER: FilterSpecification = ["==", ["get", "anchorCode"], "__none__"];
+
+function anchorFilterFor(code: string | null): FilterSpecification {
+  return code ? ["==", ["get", "anchorCode"], code] : NO_ANCHOR_FILTER;
+}
 const GRATICULE_SOURCE_ID = "atlas-graticule";
 const GRATICULE_LAYER_ID = "atlas-graticule-lines";
 const GRATICULE_EQUATOR_LAYER_ID = "atlas-graticule-equator";
@@ -154,6 +163,35 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       paint: {
         "line-color": "rgba(205, 226, 233, 0.18)",
         "line-width": 0.7,
+      },
+    }, beforeId);
+  }
+  // Selection island halo: outlines the land shapes grouped (by distance,
+  // not boundaries) with the selected geography. White selection language,
+  // never the score ramp. Filter matches nothing until a place is selected.
+  if (!map.getLayer(LAND_HALO_GLOW_LAYER_ID)) {
+    map.addLayer({
+      id: LAND_HALO_GLOW_LAYER_ID,
+      type: "line",
+      source: LAND_SOURCE_ID,
+      filter: NO_ANCHOR_FILTER,
+      paint: {
+        "line-color": "#ffffff",
+        "line-width": 5.5,
+        "line-blur": 4,
+        "line-opacity": 0.32,
+      },
+    }, beforeId);
+  }
+  if (!map.getLayer(LAND_HALO_LINE_LAYER_ID)) {
+    map.addLayer({
+      id: LAND_HALO_LINE_LAYER_ID,
+      type: "line",
+      source: LAND_SOURCE_ID,
+      filter: NO_ANCHOR_FILTER,
+      paint: {
+        "line-color": "rgba(255, 255, 255, 0.88)",
+        "line-width": 1.3,
       },
     }, beforeId);
   }
@@ -338,7 +376,13 @@ export function AtlasMap({
   );
   const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures), [atlasFeatures]);
   const mapLibreFeaturesRef = useRef(mapLibreFeatures);
-  const landContextRef = useRef<GeoJSON.FeatureCollection | null>(landContext);
+  // Land tagged with nearest-centroid anchor codes so selection can halo a
+  // place's island shapes. Distance grouping for highlighting, not boundaries.
+  const anchoredLand = useMemo(
+    () => (landContext && geos.length > 0 ? assignLandAnchors(landContext, geos) : landContext),
+    [landContext, geos],
+  );
+  const landContextRef = useRef<GeoJSON.FeatureCollection | null>(anchoredLand);
   const geosRef = useRef(geos);
 
   const labelCodes = useMemo(() => {
@@ -361,8 +405,8 @@ export function AtlasMap({
   }, [geos]);
 
   useEffect(() => {
-    landContextRef.current = landContext;
-  }, [landContext]);
+    landContextRef.current = anchoredLand;
+  }, [anchoredLand]);
 
   useEffect(() => {
     let cancelled = false;
@@ -464,8 +508,16 @@ export function AtlasMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!mapReady || !map) return;
-    syncLandContext(map, landContext);
-  }, [landContext, mapReady]);
+    syncLandContext(map, anchoredLand);
+  }, [anchoredLand, mapReady]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!mapReady || !map) return;
+    const filter = anchorFilterFor(selectedCode);
+    if (map.getLayer(LAND_HALO_GLOW_LAYER_ID)) map.setFilter(LAND_HALO_GLOW_LAYER_ID, filter);
+    if (map.getLayer(LAND_HALO_LINE_LAYER_ID)) map.setFilter(LAND_HALO_LINE_LAYER_ID, filter);
+  }, [selectedCode, mapReady, anchoredLand]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -575,7 +627,7 @@ export function AtlasMap({
               ))}
               {vf.tick && <line className="viewfinder__tick" {...vf.tick} />}
               <text className="viewfinder__note" x={vf.x0} y={vf.y1 + 14}>
-                map area, not territory
+                islands grouped by distance, not boundaries
               </text>
             </g>
           );

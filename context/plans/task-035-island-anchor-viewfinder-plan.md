@@ -49,3 +49,23 @@ by Fable.
 - Changes to generated data, scores, or methodology text (geometry semantics
   are unchanged, so `DATA_CARD.md`/`methodology.md` stay untouched; noted for
   Codex).
+
+## Attempt 2: Island Outline Halo (owner-directed, 2026-07-04)
+
+Owner review: the viewfinder alone is too quiet; the islands themselves should
+light up on selection. Approved addition:
+
+- `assignLandAnchors(land, geos, maxDeg = 3.5)`: pure, tested function that
+  tags each land polygon with the geo code of its nearest scored centroid,
+  or null beyond the cutoff. Nearest-centroid resolves the AS/WS adjacency
+  correctly; the 3.5-degree cutoff leaves far context land (Hawaii, NZ,
+  Australia) and the disputed Matthew & Hunter islands (≈5.6-7 degrees from
+  both NC and VU centroids) unassigned by construction. The assignment is a
+  visual grouping for highlighting, not a boundary or territorial source.
+- Two MapLibre line layers over the land fill (soft blurred glow + crisp
+  outline, white selection language, never the score ramp), filtered to the
+  selected geo code; filter updates on selection change.
+- Viewfinder whisper note reworded to cover the halo: grouping by distance,
+  not boundaries.
+- Tests first: own-territory anchoring, cutoff null, disputed-island null.
+- Codex geometry QA reviews the grouping rule and exclusion behavior.

@@ -286,3 +286,62 @@ export function viewfinderGeometry(options: {
     tick,
   };
 }
+
+// Tag each visual land feature with the geo code of its nearest scored
+// centroid so selection can halo a place's island shapes. This is a distance
+// grouping for highlighting only - not a boundary, territory, or area source.
+// Features beyond the cutoff stay unassigned, which by construction leaves
+// far context land (Hawaii, New Zealand, Australia) and the disputed
+// Matthew & Hunter islands without an anchor.
+export function assignLandAnchors(
+  land: GeoJSON.FeatureCollection,
+  geos: Pick<Geo, "code" | "lon" | "lat">[],
+  maxDeg = 3.5,
+): GeoJSON.FeatureCollection {
+  const centroids = geos.map((geo) => ({
+    code: geo.code,
+    lon: geo.lon < 0 ? geo.lon + 360 : geo.lon,
+    lat: geo.lat,
+  }));
+  const maxSq = maxDeg * maxDeg;
+
+  return {
+    ...land,
+    features: land.features.map((feature) => {
+      const geometry = feature.geometry;
+      let anchorCode: string | null = null;
+      if (geometry && (geometry.type === "Polygon" || geometry.type === "MultiPolygon")) {
+        const ring =
+          geometry.type === "Polygon" ? geometry.coordinates[0] : geometry.coordinates[0]?.[0];
+        if (ring && ring.length > 0) {
+          let minX = Infinity;
+          let minY = Infinity;
+          let maxX = -Infinity;
+          let maxY = -Infinity;
+          for (const [x, y] of ring) {
+            const sx = x < 0 ? x + 360 : x;
+            if (sx < minX) minX = sx;
+            if (sx > maxX) maxX = sx;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+          const cx = (minX + maxX) / 2;
+          const cy = (minY + maxY) / 2;
+          let bestSq = Infinity;
+          for (const c of centroids) {
+            const dSq = (c.lon - cx) ** 2 + (c.lat - cy) ** 2;
+            if (dSq < bestSq) {
+              bestSq = dSq;
+              anchorCode = c.code;
+            }
+          }
+          if (bestSq > maxSq) anchorCode = null;
+        }
+      }
+      return {
+        ...feature,
+        properties: { ...feature.properties, anchorCode },
+      };
+    }),
+  };
+}

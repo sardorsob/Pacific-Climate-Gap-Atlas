@@ -4,6 +4,7 @@ import {
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
   fitBoundsForPacific,
+  assignLandAnchors,
   markerPaintFor,
   nearestLandCenter,
   viewfinderGeometry,
@@ -150,6 +151,49 @@ describe("atlas map model", () => {
     expect(center!.lat).toBeCloseTo(-14.3, 1);
 
     expect(nearestLandCenter(-170.7, -14.3, { type: "FeatureCollection", features: [] })).toBeNull();
+  });
+
+  it("groups land by nearest scored centroid and leaves far or disputed land unassigned", () => {
+    const polygon = (lon: number, lat: number): GeoJSON.Feature => ({
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [lon - 0.1, lat - 0.1],
+            [lon + 0.1, lat - 0.1],
+            [lon + 0.1, lat + 0.1],
+            [lon - 0.1, lat + 0.1],
+            [lon - 0.1, lat - 0.1],
+          ],
+        ],
+      },
+    });
+    const land: GeoJSON.FeatureCollection = {
+      type: "FeatureCollection",
+      features: [
+        polygon(189.3, -14.3), // Tutuila: American Samoa's own island
+        polygon(187.6, -13.7), // Upolu-ish: Samoa's island, closer to WS
+        polygon(171.35, -22.3), // Matthew & Hunter: disputed, far from both NC and VU
+        polygon(155, -40), // far context land, beyond any cutoff
+      ],
+    };
+    const geos = [
+      { ...baseGeo, code: "AS", lon: -170.7, lat: -14.3 },
+      { ...baseGeo, code: "WS", lon: -172.1, lat: -13.75 },
+      { ...baseGeo, code: "NC", lon: 165.8, lat: -21.5 },
+      { ...baseGeo, code: "VU", lon: 167.7, lat: -16.2 },
+    ];
+
+    const tagged = assignLandAnchors(land, geos);
+    const anchors = tagged.features.map((f) => f.properties?.anchorCode ?? null);
+    expect(anchors[0]).toBe("AS");
+    expect(anchors[1]).toBe("WS");
+    expect(anchors[2]).toBeNull();
+    expect(anchors[3]).toBeNull();
+    // input collection must not be mutated
+    expect(land.features[0].properties).toEqual({});
   });
 
   it("clamps the viewfinder window and suppresses the tick for on-point land", () => {

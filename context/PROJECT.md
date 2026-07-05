@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-TASK-032 visual QA, TASK-033 humanized storyboard copy, TASK-034 desktop navigation cleanup, TASK-035 island-anchored map treatment, and TASK-036 detail-panel redesign are complete. Owner review follow-up remains: TASK-037 JSD score wiring. Competition deadline: August 31, 2026.
+TASK-032 visual QA, TASK-033 humanized storyboard copy, TASK-034 desktop navigation cleanup, TASK-035 island-anchored map treatment, TASK-036 detail-panel redesign, and TASK-038 selection island halo are complete. Owner review follow-up remains: TASK-037 JSD score wiring. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -42,7 +42,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issue is `TASK-037` |
 | Humanized storyboard copy | done | `TASK-033` removed the flagged headline register from the guided storyboard while preserving caveats |
 | Desktop story navigation | done | `TASK-034` removes the unreliable desktop Next/Back row; desktop keeps scroll/progress/keyboard navigation and mobile keeps the stepper |
-| Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick with "map area, not territory" caveat |
+| Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick; `TASK-038` adds a white selection halo over nearest-centroid land grouping with the "islands grouped by distance, not boundaries" caveat |
 | Detail panel redesign | done | `TASK-036` regroups the selected-place panel into score, score-sides, and record sections while preserving trace/caveats |
 | JSD app visibility | pending | `TASK-037` verifies whether Jensen-Shannon divergence scores should be shown or remain a preview |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
@@ -84,4 +84,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
-- Recorded owner review follow-ups: `TASK-033` through `TASK-036` are complete; `TASK-037` covers JSD score visibility.
+- Recorded owner review follow-ups: `TASK-033` through `TASK-036` and `TASK-038` are complete; `TASK-037` covers JSD score visibility.

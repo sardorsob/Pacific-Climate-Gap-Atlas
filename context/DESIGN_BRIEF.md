@@ -324,7 +324,7 @@ Accepted scroll-tour steps:
 3. Anchor NR and contrast TV so high gap is not conflated with data silence.
 4. Open "Where the Data Goes Quiet" and surface PN, NR, AS, WF.
 5. Show rank fragility with MH or another high-movement example.
-6. Preview evidence fingerprints as a static labelled analysis-ready idea, not a shipped app layer.
+6. Show evidence fingerprints only as selected-place nearest-neighbor detail, not as a shipped global map layer.
 7. Explore freely with current map state carried into the full controls.
 
 Tour controls:

@@ -176,6 +176,64 @@ class AppDataExportTests(unittest.TestCase):
             "show",
         )
 
+    def test_build_geography_records_joins_similarity_neighbors(self) -> None:
+        index = pd.DataFrame(
+            [
+                {
+                    "geo_code": "NR",
+                    "score_status": "scored",
+                    "adaptation_gap_score": 89.0,
+                    "climate_pressure_score": 61.5,
+                    "capacity_score": 26.9,
+                    "raw_gap_difference": 34.6,
+                    "available_pillars": "adaptation_capacity climate_signal",
+                    "missing_pillars": "",
+                    "included_indicator_count": 9,
+                    "missingness_flag": False,
+                }
+            ]
+        )
+        neighbors = pd.DataFrame(
+            [
+                {
+                    "geo_code": "NR",
+                    "neighbor_geo_code": "GU",
+                    "similarity_rank": 1,
+                    "jsd_distance": 0.081234,
+                    "similarity_band": "similar_profile",
+                    "reason_label": "Both profiles lean toward data visibility.",
+                    "neighbor_caveat": "Similarity is about official-data profiles only.",
+                }
+            ]
+        )
+
+        records = build_geography_records(
+            index=index,
+            lookup=pd.DataFrame([{"geo_code": "NR"}]),
+            outlook=pd.DataFrame([]),
+            monitoring=pd.DataFrame([]),
+            rank=pd.DataFrame([]),
+            story=pd.DataFrame([]),
+            spatial=pd.DataFrame([]),
+            outlook_display=pd.DataFrame([]),
+            similarity_neighbors=neighbors,
+        )
+
+        self.assertEqual(
+            records[0]["similarity_neighbors"],
+            [
+                {
+                    "neighbor_geo_code": "GU",
+                    "neighbor_name": "Guam",
+                    "similarity_rank": 1,
+                    "jsd_distance": 0.0812,
+                    "similarity_band": "similar_profile",
+                    "reason_label": "Both profiles lean toward data visibility.",
+                    "neighbor_caveat": "Similarity is about official-data profiles only.",
+                }
+            ],
+        )
+
     def test_build_geography_records_preserves_missing_monitoring_as_null_not_zero(self) -> None:
         index = pd.DataFrame(
             [

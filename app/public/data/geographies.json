@@ -139,6 +139,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0104,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0116,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "WF",
+          "neighbor_name": "Wallis and Futuna",
+          "similarity_rank": 3,
+          "jsd_distance": 0.018,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -148,7 +177,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -292,6 +322,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "TK",
+          "neighbor_name": "Tokelau",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0216,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "KI",
+          "neighbor_name": "Kiribati",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0947,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MH",
+          "neighbor_name": "Marshall Islands",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0962,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -301,7 +360,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -445,6 +505,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "NC",
+          "neighbor_name": "New Caledonia",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0021,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0045,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 3,
+          "jsd_distance": 0.006,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -454,7 +543,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -598,6 +688,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0003,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0015,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NC",
+          "neighbor_name": "New Caledonia",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0028,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -607,7 +726,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -751,6 +871,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0055,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0179,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "AS",
+          "neighbor_name": "American Samoa",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0242,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -760,7 +909,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -904,6 +1054,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "MH",
+          "neighbor_name": "Marshall Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0033,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "SB",
+          "neighbor_name": "Solomon Islands",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0065,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 3,
+          "jsd_distance": 0.011,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -913,7 +1092,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1057,6 +1237,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "KI",
+          "neighbor_name": "Kiribati",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0033,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "SB",
+          "neighbor_name": "Solomon Islands",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0093,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "PG",
+          "neighbor_name": "Papua New Guinea",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0204,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1066,7 +1275,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1206,6 +1416,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "GU",
+          "neighbor_name": "Guam",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0055,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "AS",
+          "neighbor_name": "American Samoa",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0104,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0144,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1215,7 +1454,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1359,6 +1599,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0011,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0013,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FJ",
+          "neighbor_name": "Fiji",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0021,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1368,7 +1637,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1512,6 +1782,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0797,
+          "similarity_band": "similar_profile",
+          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "GU",
+          "neighbor_name": "Guam",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0809,
+          "similarity_band": "similar_profile",
+          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0895,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1521,7 +1820,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1665,6 +1965,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "AS",
+          "neighbor_name": "American Samoa",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0116,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0144,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "GU",
+          "neighbor_name": "Guam",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0179,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1674,7 +2003,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1818,6 +2148,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "WS",
+          "neighbor_name": "Samoa",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0048,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FJ",
+          "neighbor_name": "Fiji",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0089,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NC",
+          "neighbor_name": "New Caledonia",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0138,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1827,7 +2186,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -1971,6 +2331,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "SB",
+          "neighbor_name": "Solomon Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0031,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0047,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0066,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1980,7 +2369,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2124,6 +2514,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "AS",
+          "neighbor_name": "American Samoa",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0523,
+          "similarity_band": "similar_profile",
+          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0754,
+          "similarity_band": "similar_profile",
+          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "WF",
+          "neighbor_name": "Wallis and Futuna",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0774,
+          "similarity_band": "similar_profile",
+          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2133,7 +2552,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2277,6 +2697,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "TV",
+          "neighbor_name": "Tuvalu",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0016,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FM",
+          "neighbor_name": "Federated States of Micronesia",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0029,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0035,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2286,7 +2735,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2430,6 +2880,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "PG",
+          "neighbor_name": "Papua New Guinea",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0031,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0064,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "KI",
+          "neighbor_name": "Kiribati",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0065,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2439,7 +2918,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2583,6 +3063,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "CK",
+          "neighbor_name": "Cook Islands",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0216,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MH",
+          "neighbor_name": "Marshall Islands",
+          "similarity_rank": 2,
+          "jsd_distance": 0.123,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 3,
+          "jsd_distance": 0.1241,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2592,7 +3101,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2736,6 +3246,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 1,
+          "jsd_distance": 0.001,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NC",
+          "neighbor_name": "New Caledonia",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0011,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FM",
+          "neighbor_name": "Federated States of Micronesia",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0015,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2745,7 +3284,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -2889,6 +3429,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "PW",
+          "neighbor_name": "Palau",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0016,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FM",
+          "neighbor_name": "Federated States of Micronesia",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0063,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0064,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2898,7 +3467,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -3042,6 +3612,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "FM",
+          "neighbor_name": "Federated States of Micronesia",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0003,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "TO",
+          "neighbor_name": "Tonga",
+          "similarity_rank": 2,
+          "jsd_distance": 0.001,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NC",
+          "neighbor_name": "New Caledonia",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0013,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3051,7 +3650,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -3191,6 +3791,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "AS",
+          "neighbor_name": "American Samoa",
+          "similarity_rank": 1,
+          "jsd_distance": 0.018,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "NU",
+          "neighbor_name": "Niue",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0192,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MP",
+          "neighbor_name": "Northern Mariana Islands",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0339,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3200,7 +3829,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     },
     {
@@ -3344,6 +3974,35 @@
           }
         }
       },
+      "similarity_neighbors": [
+        {
+          "neighbor_geo_code": "PF",
+          "neighbor_name": "French Polynesia",
+          "similarity_rank": 1,
+          "jsd_distance": 0.0048,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "FJ",
+          "neighbor_name": "Fiji",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0118,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "VU",
+          "neighbor_name": "Vanuatu",
+          "similarity_rank": 3,
+          "jsd_distance": 0.0122,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        }
+      ],
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3353,7 +4012,8 @@
         "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+        "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
       }
     }
   ],
@@ -3366,6 +4026,7 @@
     "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
     "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-    "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+    "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
   }
 }

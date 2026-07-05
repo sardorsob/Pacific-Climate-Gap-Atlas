@@ -172,6 +172,31 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
         </details>
       </section>
 
+      {geo.similarityNeighbors.length > 0 && (
+        <section className="panel__group">
+          <h2 className="panel__h">Records with a similar shape</h2>
+          <p className="panel__evidence">
+            Jensen-Shannon distance compares official-data profiles. Lower means more alike.
+          </p>
+          <ul className="similarity-list">
+            {geo.similarityNeighbors.map((neighbor) => (
+              <li key={neighbor.code}>
+                <span>
+                  <b>{neighbor.name}</b>
+                  <small>{neighbor.band}</small>
+                </span>
+                <span>JSD {neighbor.jsd.toFixed(3)}</span>
+                <em>{neighbor.reason}</em>
+              </li>
+            ))}
+          </ul>
+          <p className="panel__fineprint">
+            {geo.similarityNeighbors[0]?.caveat ||
+              "Similarity here is about official-data profiles only, not shared vulnerability or policy need."}
+          </p>
+        </section>
+      )}
+
       <div className="panel__actions">
         <button type="button" className="link-btn" onClick={onOpenMethod}>
           Methodology &amp; sources

@@ -42,6 +42,7 @@ SOURCE_REFS = {
     "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
     "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
 }
 
 
@@ -55,6 +56,7 @@ def build_geography_records(
     story: pd.DataFrame | None = None,
     spatial: pd.DataFrame | None = None,
     outlook_display: pd.DataFrame | None = None,
+    similarity_neighbors: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     """Join score, coverage, centroid, and outlook fields into app geography records."""
 
@@ -65,6 +67,7 @@ def build_geography_records(
     story_by_geo = _lookup_by_geo(story)
     spatial_by_geo = _lookup_by_geo(spatial)
     outlook_display_by_geo = _build_outlook_display_lookup(outlook_display)
+    similarity_by_geo = _build_similarity_lookup(similarity_neighbors)
     records: list[dict[str, Any]] = []
 
     for row in index.sort_values("geo_code", kind="mergesort").to_dict(orient="records"):
@@ -105,6 +108,7 @@ def build_geography_records(
             "story": _build_story_payload(story_by_geo.get(geo_code, {})),
             "context": _build_context_payload(spatial_by_geo.get(geo_code, {})),
             "outlook_display": outlook_display_by_geo.get(geo_code, {}),
+            "similarity_neighbors": similarity_by_geo.get(geo_code, []),
             "source_refs": SOURCE_REFS.copy(),
         }
         records.append(record)
@@ -353,6 +357,29 @@ def _build_outlook_display_lookup(
             "projection_fragility_label": _clean_text(row.get("projection_fragility_label")),
             "caveat": _clean_text(row.get("caveat")),
         }
+    return lookup
+
+
+def _build_similarity_lookup(similarity_neighbors: pd.DataFrame | None) -> dict[str, list[dict[str, Any]]]:
+    lookup: dict[str, list[dict[str, Any]]] = {}
+    if similarity_neighbors is None or similarity_neighbors.empty:
+        return lookup
+
+    for row in similarity_neighbors.sort_values(["geo_code", "similarity_rank"], kind="mergesort").to_dict(orient="records"):
+        geo_code = str(row["geo_code"])
+        lookup.setdefault(geo_code, []).append(
+            {
+                "neighbor_geo_code": _clean_text(row.get("neighbor_geo_code")),
+                "neighbor_name": _clean_text(
+                    GEOGRAPHY_REFERENCE.get(str(row.get("neighbor_geo_code")), {}).get("name")
+                ),
+                "similarity_rank": _nullable_int(row.get("similarity_rank")),
+                "jsd_distance": _nullable_float(row.get("jsd_distance")),
+                "similarity_band": _clean_text(row.get("similarity_band")),
+                "reason_label": _clean_text(row.get("reason_label")),
+                "neighbor_caveat": _clean_text(row.get("neighbor_caveat")),
+            }
+        )
     return lookup
 
 

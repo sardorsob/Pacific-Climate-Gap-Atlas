@@ -33,6 +33,7 @@ const baseGeo: Geo = {
   topPressure: ["Sea level"],
   topCapacity: ["Protected area"],
   indicatorRows: [],
+  similarityNeighbors: [],
   outlook2030Flat: 69,
   outlookDisplay: "show_with_strong_caveat",
 };

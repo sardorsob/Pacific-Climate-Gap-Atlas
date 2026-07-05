@@ -23,7 +23,7 @@ The Pacific Adaptation Gap Atlas is a map-first exploratory tool. It should feel
 - selected geography as an anchor for any future evidence-fingerprint comparison
 - direct labels and compact evidence strips for scroll-guided story moments
 - scroll-led hybrid default path, with free exploration preserved after the guided beats
-- static labelled fingerprint preview only; full similarity wiring remains a later data/app task
+- selected-place evidence-fingerprint neighbors only; full similarity map wiring remains out of scope
 
 ## Current Story Inputs
 

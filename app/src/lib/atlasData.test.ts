@@ -51,4 +51,44 @@ describe("atlas data adapter", () => {
       },
     ]);
   });
+
+  it("adapts selected-anchored JSD neighbors", () => {
+    const [geo] = adaptGeographiesPayload({
+      geographies: [
+        {
+          geo_code: "NR",
+          name: "Nauru",
+          centroid: { lon: 166.93, lat: -0.52 },
+          adaptation_gap_score: 89,
+          climate_pressure_score: 55,
+          capacity_score: 24,
+          included_indicator_count: 9,
+          outlook_2030_flat_gap_score: 69,
+          similarity_neighbors: [
+            {
+              neighbor_geo_code: "GU",
+              neighbor_name: "Guam",
+              similarity_rank: 1,
+              jsd_distance: 0.0812,
+              similarity_band: "similar_profile",
+              reason_label: "Both profiles lean toward data visibility.",
+              neighbor_caveat: "Similarity is about official-data profiles only.",
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(geo.similarityNeighbors).toEqual([
+      {
+        code: "GU",
+        name: "Guam",
+        rank: 1,
+        jsd: 0.0812,
+        band: "similar profile",
+        reason: "Both profiles lean toward data visibility.",
+        caveat: "Similarity is about official-data profiles only.",
+      },
+    ]);
+  });
 });

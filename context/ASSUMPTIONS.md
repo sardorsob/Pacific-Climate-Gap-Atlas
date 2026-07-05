@@ -42,7 +42,7 @@
 
 - The accepted scroll-led atlas now uses a MapLibre canvas with Natural Earth land context under centroid fallback points. It still does not have reviewed scored-geography boundary geometry, so copy must distinguish visual land context from official/selectable boundary polygons.
 - The app now loads generated public data from `/data/geographies.json` through `app/src/lib/atlasData.ts`. `TASK-025` deleted the obsolete static mock fixture after preserving monitoring, rank, story, context, and outlook-display caveats in the app data contract.
-- The selected-anchor view no longer shows the static "vs Tuvalu" comparator cue. No free pairwise comparison or evidence-fingerprint/JSD similarity layer should be treated as shipped until app-ready export and interface QA exist.
+- The selected-anchor view no longer shows the static "vs Tuvalu" comparator cue. TASK-037 ships evidence-fingerprint/JSD only as selected-place nearest-neighbor detail; no free pairwise comparison, global link network, map ramp, or leaderboard should be treated as shipped.
 - Direct map labels are limited to the story exemplars to avoid clutter. Subregion labels are descriptive UN M49 orientation, not cultural, political, or boundary claims.
 - Mobile uses a top control toolbar plus a bottom-sheet detail panel, with the legend collapsed to a chip. These are mockup interaction stand-ins, not a locked production interaction model.
 - The visual revision remains a concept for owner review. It does not change data methodology or scores. Codex accepted the scoped app changes after `TASK-024` QA; `TASK-028` story/copy rewrite and `TASK-027` final visual polish are now complete, leaving `TASK-007` final readiness as the next gate.

@@ -146,7 +146,7 @@ The legend is a visible compact panel on desktop and a collapsible chip on mobil
 
 The default map carries direct labels with leader lines for the story exemplars (PN, NR, AS, WF, TV), faint UN M49 subregion orientation text, and lon/lat graticule ticks. Labels are limited to exemplars to avoid clutter; subregion text is descriptive orientation, not a boundary.
 
-Selected geography is treated as an anchor. The earlier static "vs Tuvalu" suggested-comparator cue was later removed because it read like a real pairwise comparison. The app does not currently ship free pairwise comparison or the TASK-019 Evidence Fingerprint Divergence / JSD layer.
+Selected geography is treated as an anchor. The earlier static "vs Tuvalu" suggested-comparator cue was later removed because it read like a real pairwise comparison. TASK-037 ships JSD only as selected-place nearest-neighbor detail with exact distance, similarity band, reason, and caveat. The app still does not ship free pairwise comparison, a global link network, a map similarity ramp, or a leaderboard.
 
 The data-quiet view is map-led. The PN/NR/AS/WF group is labeled directly with in-map "reports 0" versus "no rows" tags so reported-zero and missing-row monitoring states are distinguishable without reading the panel.
 
@@ -154,7 +154,7 @@ The country panel gains a compact at-a-glance evidence strip (pressure, capacity
 
 Mobile controls moved to a top toolbar so they no longer fight the bottom sheet for the same screen edge. Card radii were reduced from 12px to 8px with cartographic linework and typography polish and no decorative atmosphere.
 
-Reason: the TASK-021 critique asked for a stronger map-first hierarchy, a visible legend, a selected-anchor workflow, a map-led data-quiet state, compact evidence strips, and a cleaner mobile layout, while preserving the evidence contract (caveats beside claims, centroid-fallback note, reported-zero versus missing distinction, rank fragility, no leaderboard, no polygon choropleth, no shipped JSD layer).
+Reason: the TASK-021 critique asked for a stronger map-first hierarchy, a visible legend, a selected-anchor workflow, a map-led data-quiet state, compact evidence strips, and a cleaner mobile layout, while preserving the evidence contract (caveats beside claims, centroid-fallback note, reported-zero versus missing distinction, rank fragility, no leaderboard, no polygon choropleth, no global JSD layer).
 
 ## 2026-06-30: Accept Scroll-Led Hybrid Mockup Direction
 
@@ -162,7 +162,7 @@ The next app mockup direction is accepted as a seven-beat guided atlas layered o
 
 The default experience is guided scroll with the map as the sticky evidence surface. Scroll, progress ticks, buttons, and keyboard controls all drive the same beat state. "Explore freely" hands off to the full atlas controls while preserving the current layer, view, and selected geography.
 
-Evidence Fingerprint Divergence appears only as a small static preview labelled "analysis-ready, not app-wired." It is not a shipped similarity layer, global ramp, cluster view, or leaderboard.
+Evidence Fingerprint Divergence now appears in selected-place detail as nearest official-data profile neighbors. It is not a global ramp, cluster view, or leaderboard.
 
 Reason: the winner audit showed that recent custom interactive winners use guided pacing to earn attention, while the project still needs the credibility of a GIS-style exploratory atlas. The hybrid path preserves both.
 

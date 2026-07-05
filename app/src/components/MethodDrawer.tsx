@@ -126,11 +126,11 @@ export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => 
         </section>
 
         <section className="drawer__section">
-          <h3>Evidence fingerprints (analysis-ready)</h3>
+          <h3>Evidence fingerprints</h3>
           <p>
             Jensen-Shannon divergence measures how alike two geographies' official-data profiles are.
             It is a likeness of evidence patterns, not of risk, need, or lived experience, and it is
-            not yet wired into the live map.
+            shown only as selected-place nearest neighbors, not as a global ranking or map layer.
           </p>
         </section>
 

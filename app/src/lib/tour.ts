@@ -81,7 +81,7 @@ export const BEATS: Beat[] = [
     short: "Fingerprint",
     title: "Some records look alike",
     claim: "You can also compare places by the shape of their evidence: how much of the story comes from pressure, how much from capacity, and how much from data that just isn't there. Measured that way, the records closest to Nauru's belong to Northern Mariana Islands, Guam, and Niue.",
-    caveat: "This one is still a preview from our analysis files; it isn't wired into the live map yet. And records that look alike don't mean the places face the same risks or need the same things.",
+    caveat: "The map itself does not turn into a similarity layer. The selected-place panel shows the nearest records and exact JSD values, with the caveat that records that look alike don't mean the places face the same risks or need the same things.",
     source: "eda_similarity_neighbors.csv",
     action: "See what similarity does and doesn't mean.",
     state: { score: "gap", view: "default", outlook: false, selected: "NR" },

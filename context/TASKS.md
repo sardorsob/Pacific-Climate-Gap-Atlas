@@ -871,11 +871,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The repo clearly states whether JSD scores ship in V1; if shipped, values are visible, selected-anchored, tested, caveated, and buildable; if not shipped, the app copy makes the preview status unmistakable.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`; `python -m unittest tests.analysis.test_divergence -v`; `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Inspect fingerprint preview/detail panel for selected NR and any wired similarity view; confirm no global leaderboard appears.
-- QA notes:
-- Attempts: 0
+- QA notes: Builder/Checker accepted the selected-anchored JSD implementation. The app now exports `similarity_neighbors` from `artifacts/tables/eda_similarity_neighbors.csv` into processed/public `geographies.json`, adapts them into `Geo.similarityNeighbors`, and shows them in the selected-place panel with neighbor name, similarity band, exact JSD distance, reason label, and caveat. The map does not become a similarity ramp, there is no global link web, and no global leaderboard/control was added. Stale "analysis-ready, not app-wired" UI copy was replaced with selected-detail wording. Browser smoke was attempted but not completed: local Playwright lacked a browser binary, Chrome was not installed at Playwright's expected path, and Scrapling localhost fetch was rejected by policy as a private-content risk. Source/data checks confirmed Nauru carries MP/GU/NU neighbors with JSD values from the generated public payload.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-04: Owner reiterated that JSD scores are not visible and asked whether pairwise island-to-island JSD distances/links would help. Keep as a pending Codex decision: selected-anchored evidence similarity may be useful if it explains official-data profile shape, but a global link network or ranking should be avoided unless it clearly improves the story.
-- Status: pending
+- Attempt log: 2026-07-04: Owner reiterated that JSD scores are not visible and asked whether pairwise island-to-island JSD distances/links would help. Keep as a pending Codex decision: selected-anchored evidence similarity may be useful if it explains official-data profile shape, but a global link network or ranking should be avoided unless it clearly improves the story. 2026-07-05: Builder started after rereading Sardor workflow core/profile, Ponytail, Superpowers TDD/verification, and Serena instructions. Scope: selected-anchored nearest-neighbor JSD only; no global link web or leaderboard. Added red tests for app-data export and TypeScript adapter, then implemented the smallest path: reuse existing TASK-019 neighbor artifacts inside `geographies.json` and selected panel. Builder verification passed and handed to Checker; Checker reviewed scope, stale copy, generated payload, and command output, then accepted.
+- Status: done
 
 ## TASK-038
 - Phase: map-design

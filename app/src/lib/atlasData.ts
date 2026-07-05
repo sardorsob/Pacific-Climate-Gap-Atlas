@@ -28,6 +28,7 @@ export type Geo = {
   topPressure: string[];
   topCapacity: string[];
   indicatorRows: IndicatorRow[];
+  similarityNeighbors: SimilarityNeighbor[];
   outlook2030Flat: number;
   outlookDisplay: OutlookDisplay;
 };
@@ -41,6 +42,16 @@ export type IndicatorRow = {
   unit: string;
   indicatorScore: number | null;
   sourceRowHash: string;
+};
+
+export type SimilarityNeighbor = {
+  code: string;
+  name: string;
+  rank: number;
+  jsd: number;
+  band: string;
+  reason: string;
+  caveat: string;
 };
 
 type AppSignal = {
@@ -79,7 +90,18 @@ type AppGeography = {
     political_status?: string;
     context_quality?: string;
   };
+  similarity_neighbors?: AppSimilarityNeighbor[];
   outlook_display?: Record<string, Record<string, { display_recommendation?: string }>>;
+};
+
+type AppSimilarityNeighbor = {
+  neighbor_geo_code?: string;
+  neighbor_name?: string;
+  similarity_rank?: number | null;
+  jsd_distance?: number | null;
+  similarity_band?: string;
+  reason_label?: string;
+  neighbor_caveat?: string;
 };
 
 type GeographiesPayload = {
@@ -190,9 +212,22 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     topPressure: formatSignals(record.story?.top_pressure_signals),
     topCapacity: formatSignals(record.story?.top_capacity_signals),
     indicatorRows: formatIndicators(details?.indicators),
+    similarityNeighbors: formatSimilarityNeighbors(record.similarity_neighbors),
     outlook2030Flat: asNumber(record.outlook_2030_flat_gap_score),
     outlookDisplay,
   };
+}
+
+function formatSimilarityNeighbors(neighbors: AppSimilarityNeighbor[] | undefined): SimilarityNeighbor[] {
+  return (neighbors ?? []).map((neighbor) => ({
+    code: neighbor.neighbor_geo_code ?? "",
+    name: neighbor.neighbor_name ?? neighbor.neighbor_geo_code ?? "",
+    rank: asNumber(neighbor.similarity_rank),
+    jsd: asNumber(neighbor.jsd_distance),
+    band: readableBand(neighbor.similarity_band),
+    reason: neighbor.reason_label ?? "",
+    caveat: neighbor.neighbor_caveat ?? "",
+  }));
 }
 
 function formatIndicators(indicators: DetailIndicator[] | undefined): IndicatorRow[] {
@@ -228,6 +263,10 @@ function titleCase(value: string): string {
     .split(" ")
     .map((part) => (part.length > 0 ? `${part[0].toUpperCase()}${part.slice(1)}` : part))
     .join(" ");
+}
+
+function readableBand(value: string | undefined): string {
+  return (value ?? "").replace(/_/g, " ");
 }
 
 function asNumber(value: number | null | undefined): number {
@@ -276,9 +315,9 @@ export const FINGERPRINT_PREVIEW: {
   anchor: "NR",
   anchorLeans: "data visibility",
   neighbors: [
-    { code: "MP", name: "Northern Mariana Is.", jsd: 0.08, band: "similar", reason: "leans toward a monitoring reporting gap" },
-    { code: "GU", name: "Guam", jsd: 0.081, band: "similar", reason: "leans toward a monitoring reporting gap" },
-    { code: "NU", name: "Niue", jsd: 0.089, band: "similar", reason: "also leans toward data visibility" },
+    { code: "MP", name: "Northern Mariana Islands", jsd: 0.0797, band: "similar profile", reason: "leans toward a monitoring reporting gap" },
+    { code: "GU", name: "Guam", jsd: 0.0809, band: "similar profile", reason: "leans toward a monitoring reporting gap" },
+    { code: "NU", name: "Niue", jsd: 0.0895, band: "similar profile", reason: "also leans toward data visibility" },
   ],
   caveat:
     "Similarity means the official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need.",

@@ -178,7 +178,7 @@ This is descriptive EDA only. It is designed to guide deeper analysis and story 
 
 ## TASK-019 Divergence Artifacts
 
-The Evidence Fingerprint Divergence lane derives analysis tables from official-data-derived trace and EDA fields rather than introducing an outside data source. These artifacts are analysis-ready but not yet exported to app-ready JSON.
+The Evidence Fingerprint Divergence lane derives analysis tables from official-data-derived trace and EDA fields rather than introducing an outside data source. TASK-037 exports nearest-neighbor rows into app-ready `geographies.json` for selected-place detail.
 
 Produced outputs:
 

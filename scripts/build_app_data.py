@@ -34,6 +34,7 @@ DEFAULT_RANK_VOLATILITY = ROOT / "artifacts" / "tables" / "eda_rank_volatility.c
 DEFAULT_COUNTRY_STORY = ROOT / "artifacts" / "tables" / "eda_country_story_labels.csv"
 DEFAULT_SPATIAL_TYPOLOGIES = ROOT / "artifacts" / "tables" / "eda_spatial_typologies.csv"
 DEFAULT_OUTLOOK_INTERPRETATION = ROOT / "artifacts" / "tables" / "eda_outlook_interpretation.csv"
+DEFAULT_SIMILARITY_NEIGHBORS = ROOT / "artifacts" / "tables" / "eda_similarity_neighbors.csv"
 DEFAULT_PROCESSED_APP_DIR = ROOT / "data" / "processed" / "app"
 DEFAULT_PUBLIC_DATA_DIR = ROOT / "app" / "public" / "data"
 DEFAULT_SUMMARY_OUTPUT = ROOT / "artifacts" / "provenance" / "app_data_summary.json"
@@ -52,6 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--country-story", type=Path, default=DEFAULT_COUNTRY_STORY)
     parser.add_argument("--spatial-typologies", type=Path, default=DEFAULT_SPATIAL_TYPOLOGIES)
     parser.add_argument("--outlook-interpretation", type=Path, default=DEFAULT_OUTLOOK_INTERPRETATION)
+    parser.add_argument("--similarity-neighbors", type=Path, default=DEFAULT_SIMILARITY_NEIGHBORS)
     parser.add_argument("--processed-app-dir", type=Path, default=DEFAULT_PROCESSED_APP_DIR)
     parser.add_argument("--public-data-dir", type=Path, default=DEFAULT_PUBLIC_DATA_DIR)
     parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY_OUTPUT)
@@ -70,6 +72,7 @@ def export_app_data(
     country_story_path: Path,
     spatial_typologies_path: Path,
     outlook_interpretation_path: Path,
+    similarity_neighbors_path: Path,
     config_path: Path,
     processed_app_dir: Path,
     public_data_dir: Path,
@@ -87,6 +90,7 @@ def export_app_data(
     country_story = pd.read_csv(country_story_path)
     spatial_typologies = pd.read_csv(spatial_typologies_path)
     outlook_interpretation = pd.read_csv(outlook_interpretation_path)
+    similarity_neighbors = pd.read_csv(similarity_neighbors_path)
 
     records = build_geography_records(
         index=index,
@@ -97,6 +101,7 @@ def export_app_data(
         story=country_story,
         spatial=spatial_typologies,
         outlook_display=outlook_interpretation,
+        similarity_neighbors=similarity_neighbors,
     )
     geographies_payload = build_geographies_payload(records)
     atlas_geojson = build_atlas_geojson(records)
@@ -143,6 +148,7 @@ def export_app_data(
             "country_story": country_story_path.relative_to(ROOT).as_posix(),
             "spatial_typologies": spatial_typologies_path.relative_to(ROOT).as_posix(),
             "outlook_interpretation": outlook_interpretation_path.relative_to(ROOT).as_posix(),
+            "similarity_neighbors": similarity_neighbors_path.relative_to(ROOT).as_posix(),
         },
         "geometry_policy": "centroid_fallback_until_boundary_join",
         "summary_output": summary_output.relative_to(ROOT).as_posix(),
@@ -234,6 +240,11 @@ def main() -> int:
         if not args.outlook_interpretation.is_absolute()
         else args.outlook_interpretation
     )
+    similarity_neighbors_path = (
+        ROOT / args.similarity_neighbors
+        if not args.similarity_neighbors.is_absolute()
+        else args.similarity_neighbors
+    )
     processed_app_dir = (
         ROOT / args.processed_app_dir
         if not args.processed_app_dir.is_absolute()
@@ -257,6 +268,7 @@ def main() -> int:
         country_story_path=country_story_path,
         spatial_typologies_path=spatial_typologies_path,
         outlook_interpretation_path=outlook_interpretation_path,
+        similarity_neighbors_path=similarity_neighbors_path,
         config_path=config_path,
         processed_app_dir=processed_app_dir,
         public_data_dir=public_data_dir,

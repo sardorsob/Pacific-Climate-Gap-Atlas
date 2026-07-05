@@ -120,7 +120,7 @@ Medium confidence:
 - The project can use spatial typologies and subregion filters as descriptive exploration aids.
 - The project can use selected country exemplars to teach the score, missingness, and uncertainty logic.
 - The project can show responsibility context in country panels without turning it into blame scoring.
-- The project can use JSD-based evidence fingerprints to explain similarity and difference between official-data profiles, pending app-data wiring and visual QA.
+- The project uses JSD-based evidence fingerprints to explain selected-place nearest official-data profile neighbors after app-data wiring and QA.
 
 Low confidence or optional:
 
@@ -315,7 +315,7 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 ## Remaining Product Decisions
 
 1. Should outlook ship in V1, or wait until the core map, missingness, and uncertainty layers are polished?
-2. Should Evidence Fingerprint Divergence ship in V1 beyond the current static preview, or wait until after core app data wiring and visual approval?
+2. Should Evidence Fingerprint Divergence get visual polish beyond selected-place detail, or stay as the compact V1 panel section?
 3. Should boundary source selection happen before launch, or is centroid-first acceptable for the competition entry?
 4. Who reviews political-status wording before publication?
 
@@ -326,6 +326,6 @@ The design brief should preserve this story hierarchy:
 1. Gap map first through a guided scroll path.
 2. Missingness/monitoring as the signature interaction.
 3. Rank uncertainty always visible where ranks appear.
-4. Evidence-profile divergence only as selected-geography comparison; the current app shows only a static labelled preview.
+4. Evidence-profile divergence only as selected-geography comparison; the current app shows nearest neighbors in the selected-place panel, not as a global map layer.
 5. Caveats beside the claims they qualify.
 6. Outlook optional and gated.

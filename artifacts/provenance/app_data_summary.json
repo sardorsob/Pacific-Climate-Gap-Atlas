@@ -28,7 +28,8 @@
     "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",
     "country_story": "artifacts/tables/eda_country_story_labels.csv",
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
-    "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv"
+    "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
   },
   "geometry_policy": "centroid_fallback_until_boundary_join",
   "summary_output": "artifacts/provenance/app_data_summary.json"

@@ -863,9 +863,9 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Data refs: artifacts/tables/eda_similarity_neighbors.csv, artifacts/tables/eda_pairwise_jsd.csv, artifacts/tables/eda_evidence_fingerprints.csv, artifacts/provenance/divergence_summary.json, app/src/components/panels/FingerprintPreview.tsx, app/src/lib/atlasData.ts
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Clarifies whether JSD is merely previewed or actually visible as scores in the atlas.
-- Functional notes: Confirm current app behavior: JSD values exist in `FINGERPRINT_PREVIEW` data but are not rendered as numeric scores and are not wired as selected-geography similarity data. Decide whether V1 should show numeric JSD values, hide them behind plain-language similarity bands, or export a selected-geography app-ready similarity contract.
+- Functional notes: Confirm current app behavior: JSD values exist in `FINGERPRINT_PREVIEW` data but are not rendered as numeric scores and are not wired as selected-geography similarity data. Decide whether V1 should show numeric JSD values, hide them behind plain-language similarity bands, export a selected-geography app-ready similarity contract, or skip the layer. Owner also raised pairwise island-to-island JSD links/distances; first decide whether that serves the story before building any link interaction.
 - Statistical notes: JSD is exploratory similarity over official-data profiles, not shared vulnerability, causal similarity, policy need, or a new leaderboard. Keep selected-geography anchoring and visible caveats.
-- Edge cases: Do not ship global similarity rankings. If numeric JSD is shown, explain directionality and scale in plain language. If data export is needed, add contract validation and app adapter tests.
+- Edge cases: Do not ship global similarity rankings, decorative link webs, or a comparison control that reads like a hidden leaderboard. If numeric JSD is shown, explain directionality and scale in plain language. If data export is needed, add contract validation and app adapter tests.
 - Files to create/modify: `scripts/build_app_data.py`, `analysis/eda/divergence.py`, `app/src/lib/atlasData.ts`, `app/src/components/panels/FingerprintPreview.tsx`, `app/src/components/panels/CountryPanel.tsx`, `tests/**`, `context/TASKS.md`, `context/DESIGN_BRIEF.md`
 - Artifacts to produce: current-state audit, decision on numeric JSD display, optional app-ready similarity export and UI.
 - Acceptance criteria: The repo clearly states whether JSD scores ship in V1; if shipped, values are visible, selected-anchored, tested, caveated, and buildable; if not shipped, the app copy makes the preview status unmistakable.
@@ -874,7 +874,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - QA notes:
 - Attempts: 0
 - Max attempts: 3
-- Attempt log:
+- Attempt log: 2026-07-04: Owner reiterated that JSD scores are not visible and asked whether pairwise island-to-island JSD distances/links would help. Keep as a pending Codex decision: selected-anchored evidence similarity may be useful if it explains official-data profile shape, but a global link network or ranking should be avoided unless it clearly improves the story.
 - Status: pending
 
 ## TASK-038
@@ -898,4 +898,27 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Attempts: 1
 - Max attempts: 3
 - Attempt log: 2026-07-04: Owner directed this addition during TASK-035 visual review (Codex accepted and closed TASK-035's viewfinder in parallel, so the halo lands as its own task). Built same-session, TDD-first: `assignLandAnchors(land, geos, maxDeg=3.5)` in atlasMapModel.ts with red-then-green tests pinning AS-not-WS anchoring, cutoff nulls, disputed Matthew & Hunter nulls by construction, and input immutability. AtlasMap memoizes the tagged land collection, feeds it to the existing land source, adds two line layers (blurred white glow plus crisp outline, never the score ramp) filtered to the selected geo code, and updates the filter on selection change; the viewfinder whisper note now reads "islands grouped by distance, not boundaries". DESIGN_BRIEF selection-state note extended; attempt-2 section appended to the TASK-035 plan file. Fable evidence passed, then Codex QA re-ran verification and accepted the task.
+- Status: done
+
+## TASK-039
+- Phase: map-design
+- Title: Replace circle marks with encoded island marks
+- Depends on: TASK-038
+- Assigned agent: Fable Builder, Codex QA
+- Contract refs: context/DESIGN_BRIEF.md, context/plans/task-035-island-anchor-viewfinder-plan.md
+- Data refs: app/public/data/geographies.json, app/public/data/pacific_land_context.geojson
+- Scientific refs: context/docs/methodology.md
+- User value / decision value: Owner clarified that the halo/island shape should replace the circle marks, not sit behind them; the island itself should carry the same visual meaning the circle used to carry.
+- Functional notes: Once Natural Earth land context is loaded, anchored island polygons grouped by `anchorCode` inherit the geography's score fill, island glow, reporting-status stroke, opacity, and dash treatment. Centroid circles are only fallback geometry before/without land context; the accessibility hit targets remain centroid-anchored.
+- Statistical notes: The selected island mark reuses the same existing point feature properties; it does not change score values, rank uncertainty, monitoring status, generated data, or the nearest-centroid land grouping caveat.
+- Edge cases: Missing/zero reporting status must remain visible through island outlines; keyboard/touch hit targets stay anchored to the centroid per TASK-031; unassigned/far/disputed land stays context-only.
+- Files to create/modify: `app/src/components/map/atlasMapModel.ts`, `app/src/components/map/atlasMapModel.test.ts`, `app/src/components/map/AtlasMap.tsx`, `context/TASKS.md`, `context/logs/Progress Log.md`
+- Artifacts to produce: island-shaped score/status marks, hidden geography point circles when land context is available, Codex QA review.
+- Acceptance criteria: The map no longer shows geography circles once island marks load; island styling comes from the existing point encoding; tests and build pass; owner confirms the replacement marks are legible in a local run.
+- Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
+- Manual QA: Owner local run selecting NR, NU, TV (small islands) and FJ, PG (large): geography circles gone, island shapes carry score color/status outline, labels/hit targets still work.
+- QA notes: Codex QA accepted the circle-replacement pass after live Chrome review and source review. Chrome selected Nauru and confirmed island-shaped colored marks render with no geography circles, no stale "dot" copy, and no MapLibre land-layer errors. Source review confirmed anchored Natural Earth land inherits the existing score/status encoding, unassigned/disputed/far land remains context-only through an empty `anchorCode`, centroid hit targets remain for accessibility, and no data/scoring/generated artifacts changed. The static "vs Tuvalu" comparator cue was removed from the map and panel so selections no longer imply a pairwise comparison mode. Fresh verification passed: `npm --prefix app run test` (2 files, 9 tests), `npm --prefix app run build`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-04: Fable Builder pass started from owner needs-fix feedback on the shipped TASK-038 halo; moved pending -> in-progress with a shrink-to-marker draft. Owner clarified the intended behavior: island marks replace the circle marks one-to-one. Codex first verified in Chrome that selected-circle hiding worked but non-selected circles remained, then converted anchored Natural Earth land into the score/status mark layer for every anchored geography. Runtime QA found and fixed two MapLibre issues: land sync was waiting on a missed style-load event after hot reload, and null `anchorCode` values were invalid in MapLibre filters, so unassigned land now uses an empty string. Chrome screenshot QA confirmed Nauru selected with island-shaped colored marks, no geography circles, no dot-copy, and no land-layer errors. The centroid accessibility hit targets remain for keyboard/touch access. Owner then asked to remove the static "vs Tuvalu" comparator entirely; Codex removed the hard-coded compare suggestion from the map and panel while leaving the Nauru/Tuvalu story beat intact.
 - Status: done

@@ -190,8 +190,8 @@ describe("atlas map model", () => {
     const anchors = tagged.features.map((f) => f.properties?.anchorCode ?? null);
     expect(anchors[0]).toBe("AS");
     expect(anchors[1]).toBe("WS");
-    expect(anchors[2]).toBeNull();
-    expect(anchors[3]).toBeNull();
+    expect(anchors[2]).toBe("");
+    expect(anchors[3]).toBe("");
     // input collection must not be mutated
     expect(land.features[0].properties).toEqual({});
   });

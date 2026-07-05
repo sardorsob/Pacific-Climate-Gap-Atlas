@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-032 visual QA, TASK-033 humanized storyboard copy, TASK-034 desktop navigation cleanup, TASK-035 island-anchored map treatment, TASK-036 detail-panel redesign, and TASK-038 selection island halo are complete. Owner review follow-up remains: TASK-037 JSD score wiring. Competition deadline: August 31, 2026.
+TASK-032 visual QA, TASK-033 humanized storyboard copy, TASK-034 desktop navigation cleanup, TASK-035 island-anchored map treatment, TASK-036 detail-panel redesign, TASK-038 selection island halo, and TASK-039 encoded island marks are complete. Owner review follow-up remains: TASK-037 JSD score wiring and usefulness decision. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, and React overlay labels/hit targets. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete; owner review now requests another copy/UI/map interaction iteration.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, React overlay labels/hit targets, and encoded island-shaped marks that replace geography circles once land context loads. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete; owner review follow-up now centers on whether and how the JSD similarity layer should appear.
 
 ## Working Title
 
@@ -31,7 +31,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | EDA sprint | done | GIS context, coverage/data-desert, indicator-forensics, country-story, spatial-typology, trend/outlook, monitoring-gap, and story/design synthesis are complete |
 | Dataviz inspiration audit | done | `context/DATAVIZ_INSPIRATION_AUDIT.md` records route sampling and original-project interaction lessons for map-first, climate, environmental, selected-geography, evidence-strip, and guided-tour patterns |
 | Winner scroll-tour audit | done | `context/WINNER_SCROLL_TOUR_AUDIT.md` recommends a scroll-led hybrid: default guided scroll atlas, secondary free explorer, current map/control shell preserved |
-| GIS atlas app | done | React/Vite concept opens as a 7-beat guided scroll atlas with a sticky centroid map, visible legend, direct story labels, selected-anchor comparison cue, data-quiet map tags, static labelled fingerprint preview, source drawer, mobile beat sheet, and free-explore handoff; `TASK-006` closed after its focused child tasks |
+| GIS atlas app | done | React/Vite concept opens as a 7-beat guided scroll atlas with a sticky MapLibre map, visible legend, direct story labels, data-quiet map tags, static labelled fingerprint preview, source drawer, mobile beat sheet, and free-explore handoff; `TASK-006` closed after its focused child tasks |
 | App-data wiring implementation | done | `TASK-025` replaced fixture-backed evidence with public/generated app data while preserving monitoring, rank, story, outlook, and caveat fields |
 | MapLibre substrate | done | `TASK-026` adds a MapLibre-backed map canvas and centroid point layer |
 | Pacific land context | done | `TASK-029` adds Natural Earth visual land context and MapLibre graticule lines; scored geographies remain centroid points, not polygon boundaries |
@@ -42,9 +42,9 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issue is `TASK-037` |
 | Humanized storyboard copy | done | `TASK-033` removed the flagged headline register from the guided storyboard while preserving caveats |
 | Desktop story navigation | done | `TASK-034` removes the unreliable desktop Next/Back row; desktop keeps scroll/progress/keyboard navigation and mobile keeps the stepper |
-| Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick; `TASK-038` adds a white selection halo over nearest-centroid land grouping with the "islands grouped by distance, not boundaries" caveat |
+| Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick; `TASK-038` adds nearest-centroid land grouping; `TASK-039` makes anchored Natural Earth land inherit the score/status mark encoding and hides point circles once land marks load |
 | Detail panel redesign | done | `TASK-036` regroups the selected-place panel into score, score-sides, and record sections while preserving trace/caveats |
-| JSD app visibility | pending | `TASK-037` verifies whether Jensen-Shannon divergence scores should be shown or remain a preview |
+| JSD app visibility | pending | `TASK-037` verifies whether Jensen-Shannon divergence scores should be shown, hidden behind similarity language, wired as selected-anchored pairwise evidence, or skipped for V1 |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -84,4 +84,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
-- Recorded owner review follow-ups: `TASK-033` through `TASK-036` and `TASK-038` are complete; `TASK-037` covers JSD score visibility.
+- Recorded owner review follow-ups: `TASK-033` through `TASK-036`, `TASK-038`, and `TASK-039` are complete; `TASK-037` covers JSD score visibility and the pairwise-usefulness decision.

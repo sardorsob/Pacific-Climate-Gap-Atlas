@@ -106,7 +106,6 @@ type CountryDetailsPayload = {
 };
 
 export const DEFAULT_SELECTED = "NR";
-export const COMPARE_SUGGESTION = "TV";
 export const STORY_EXEMPLARS = ["PN", "NR", "AS", "WF", "TV"];
 
 export const LABEL_OFFSETS: Record<string, { dx: number; dy: number }> = {

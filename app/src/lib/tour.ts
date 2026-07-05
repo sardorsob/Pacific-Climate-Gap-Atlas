@@ -30,7 +30,7 @@ export const BEATS: Beat[] = [
     id: "gap",
     short: "The gap",
     title: "What you're looking at",
-    claim: "Every dot is a Pacific place, 22 of them. Warmer color means a bigger mismatch between the climate pressure in that place's official records and the adaptation capacity those same records can show against it.",
+    claim: "Every island mark is a Pacific place, 22 of them. Warmer color means a bigger mismatch between the climate pressure in that place's official records and the adaptation capacity those same records can show against it.",
     caveat: "This is a comparison tool, not a ranking of who needs help most. Most positions move around under stress tests, so don't treat any of them as settled.",
     source: "adaptation_gap_index.csv",
     action: "Scroll on, or skip ahead and explore on your own.",
@@ -63,7 +63,7 @@ export const BEATS: Beat[] = [
     claim: "Four of the highest-scoring places are also the hardest to see. Pitcairn and Nauru have monitoring rows, but the latest number in them is zero. American Samoa and Wallis and Futuna have no processed monitoring rows at all. Those are two different situations, and the map marks them differently.",
     caveat: "Missing numbers mean the record is thin, not that nothing is out there. Stations can exist and never make it into the processed data.",
     source: "eda_monitoring_gap.csv",
-    action: "Tap one of the marked points, or pick one below.",
+    action: "Tap one of the marked places, or pick one below.",
     state: { view: "coverage", outlook: false, selected: null },
   },
   {

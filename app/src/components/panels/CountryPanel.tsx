@@ -68,7 +68,7 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
           Where climate pressure and visible capacity are unevenly matched - and so is the official data behind the comparison.
         </h1>
         <p className="panel__lede">
-          Tap any dot to open a place: its score, how far the rank slides, what the monitoring
+          Tap any island mark to open a place: its score, how far the rank slides, what the monitoring
           record shows, and the official rows behind every number.
         </p>
         <p className="panel__hint">Concept for review - not final, not approved.</p>

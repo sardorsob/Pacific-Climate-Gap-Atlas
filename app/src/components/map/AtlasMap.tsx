@@ -19,6 +19,7 @@ import {
   nearestLandCenter,
   viewfinderGeometry,
   type AtlasFeatureCollection,
+  type AtlasPointFeature,
 } from "./atlasMapModel";
 
 type AtlasMapProps = {
@@ -54,19 +55,26 @@ const MAP_SOURCE_ID = "atlas-points";
 const LAND_SOURCE_ID = "pacific-land-context";
 const LAND_FILL_LAYER_ID = "pacific-land-context-fill";
 const LAND_LINE_LAYER_ID = "pacific-land-context-line";
-const LAND_HALO_GLOW_LAYER_ID = "pacific-land-halo-glow";
-const LAND_HALO_LINE_LAYER_ID = "pacific-land-halo-line";
+const LAND_MARK_FILL_LAYER_ID = "pacific-land-selected-fill";
+const LAND_MARK_GLOW_LAYER_ID = "pacific-land-selected-glow";
+const LAND_MARK_SOLID_LAYER_ID = "pacific-land-selected-line-solid";
+const LAND_MARK_ZERO_LAYER_ID = "pacific-land-selected-line-zero";
+const LAND_MARK_MISSING_LAYER_ID = "pacific-land-selected-line-missing";
 const NO_ANCHOR_FILTER: FilterSpecification = ["==", ["get", "anchorCode"], "__none__"];
+const ANCHOR_FILTER: FilterSpecification = ["!=", "anchorCode", ""];
 
 function anchorFilterFor(code: string | null): FilterSpecification {
   return code ? ["==", ["get", "anchorCode"], code] : NO_ANCHOR_FILTER;
+}
+
+function anchorStatusFilter(status: string): FilterSpecification {
+  return ["all", ["!=", "anchorCode", ""], ["==", "reportingStatus", status]] as FilterSpecification;
 }
 const GRATICULE_SOURCE_ID = "atlas-graticule";
 const GRATICULE_LAYER_ID = "atlas-graticule-lines";
 const GRATICULE_EQUATOR_LAYER_ID = "atlas-graticule-equator";
 const PRIORITY_LAYER_ID = "atlas-priority-halos";
 const POINT_LAYER_ID = "atlas-centroid-points";
-const SELECTED_LAYER_ID = "atlas-selected-halos";
 
 const PACIFIC_STYLE: StyleSpecification = {
   version: 8,
@@ -93,24 +101,53 @@ function shiftPacificLon(lon: number): number {
   return lon < 0 ? lon + 360 : lon;
 }
 
-function toMapLibreCollection(collection: AtlasFeatureCollection): AtlasFeatureCollection {
+function toMapLibreCollection(collection: AtlasFeatureCollection, hiddenCodes = new Set<string>()): AtlasFeatureCollection {
   return {
     ...collection,
-    features: collection.features.map((feature) => ({
-      ...feature,
-      geometry: {
-        ...feature.geometry,
-        coordinates: [
-          shiftPacificLon(feature.geometry.coordinates[0]),
-          feature.geometry.coordinates[1],
-        ],
-      },
-    })),
+    features: collection.features
+      .filter((feature) => !hiddenCodes.has(feature.properties.code))
+      .map((feature) => ({
+        ...feature,
+        geometry: {
+          ...feature.geometry,
+          coordinates: [
+            shiftPacificLon(feature.geometry.coordinates[0]),
+            feature.geometry.coordinates[1],
+          ],
+        },
+      })),
   };
 }
 
 function asGeoJson(collection: unknown): GeoJSON.FeatureCollection {
   return collection as unknown as GeoJSON.FeatureCollection;
+}
+
+function styleAnchoredLand(
+  collection: GeoJSON.FeatureCollection | null,
+  features: AtlasPointFeature[],
+): GeoJSON.FeatureCollection | null {
+  if (!collection) return null;
+  const byCode = new Map(features.map((feature) => [feature.properties.code, feature.properties]));
+  return {
+    ...collection,
+    features: collection.features.map((feature) => {
+      const anchorCode = feature.properties?.anchorCode;
+      const props = typeof anchorCode === "string" && anchorCode !== "" ? byCode.get(anchorCode) : null;
+      return {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          fillColor: props?.fillColor ?? "transparent",
+          markOpacity: props ? Math.min(0.88, props.opacity) : 0,
+          glowOpacity: props ? Math.min(0.78, props.opacity) : 0,
+          strokeColor: props?.strokeColor ?? "transparent",
+          reportingStatus: props?.reportingStatus ?? null,
+          selected: props?.selected ?? false,
+        },
+      };
+    }),
+  };
 }
 
 function cameraForViewport(width: number): { center: [number, number]; zoom: number } {
@@ -133,6 +170,10 @@ function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
 
 function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection | null) {
   if (!collection) return;
+  if (!map.isStyleLoaded()) {
+    window.setTimeout(() => syncLandContext(map, collection), 50);
+    return;
+  }
   const source = map.getSource(LAND_SOURCE_ID) as GeoJSONSource | undefined;
   if (source) {
     source.setData(collection);
@@ -166,32 +207,72 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       },
     }, beforeId);
   }
-  // Selection island halo: outlines the land shapes grouped (by distance,
-  // not boundaries) with the selected geography. White selection language,
-  // never the score ramp. Filter matches nothing until a place is selected.
-  if (!map.getLayer(LAND_HALO_GLOW_LAYER_ID)) {
+  // Island marks replace point circles once land context is available. The
+  // grouped island shape carries the same score fill and reporting outline.
+  if (!map.getLayer(LAND_MARK_FILL_LAYER_ID)) {
     map.addLayer({
-      id: LAND_HALO_GLOW_LAYER_ID,
-      type: "line",
+      id: LAND_MARK_FILL_LAYER_ID,
+      type: "fill",
       source: LAND_SOURCE_ID,
-      filter: NO_ANCHOR_FILTER,
+      filter: ANCHOR_FILTER,
       paint: {
-        "line-color": "#ffffff",
-        "line-width": 5.5,
-        "line-blur": 4,
-        "line-opacity": 0.32,
+        "fill-color": ["get", "fillColor"],
+        "fill-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
       },
     }, beforeId);
   }
-  if (!map.getLayer(LAND_HALO_LINE_LAYER_ID)) {
+  if (!map.getLayer(LAND_MARK_GLOW_LAYER_ID)) {
     map.addLayer({
-      id: LAND_HALO_LINE_LAYER_ID,
+      id: LAND_MARK_GLOW_LAYER_ID,
       type: "line",
       source: LAND_SOURCE_ID,
-      filter: NO_ANCHOR_FILTER,
+      filter: ANCHOR_FILTER,
       paint: {
-        "line-color": "rgba(255, 255, 255, 0.88)",
-        "line-width": 1.3,
+        "line-color": ["get", "fillColor"],
+        "line-width": ["case", ["==", ["get", "selected"], true], 10, 6],
+        "line-blur": 1.4,
+        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "glowOpacity"]],
+      },
+    }, beforeId);
+  }
+  if (!map.getLayer(LAND_MARK_SOLID_LAYER_ID)) {
+    map.addLayer({
+      id: LAND_MARK_SOLID_LAYER_ID,
+      type: "line",
+      source: LAND_SOURCE_ID,
+      filter: anchorStatusFilter("reported_positive_latest_count"),
+      paint: {
+        "line-color": ["get", "strokeColor"],
+        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.8],
+        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+      },
+    }, beforeId);
+  }
+  if (!map.getLayer(LAND_MARK_ZERO_LAYER_ID)) {
+    map.addLayer({
+      id: LAND_MARK_ZERO_LAYER_ID,
+      type: "line",
+      source: LAND_SOURCE_ID,
+      filter: anchorStatusFilter("reported_zero_latest_count"),
+      paint: {
+        "line-color": ["get", "strokeColor"],
+        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.9],
+        "line-dasharray": [2, 2],
+        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+      },
+    }, beforeId);
+  }
+  if (!map.getLayer(LAND_MARK_MISSING_LAYER_ID)) {
+    map.addLayer({
+      id: LAND_MARK_MISSING_LAYER_ID,
+      type: "line",
+      source: LAND_SOURCE_ID,
+      filter: anchorStatusFilter("missing_monitoring_dataset_row"),
+      paint: {
+        "line-color": ["get", "strokeColor"],
+        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.9],
+        "line-dasharray": [1, 2],
+        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
       },
     }, beforeId);
   }
@@ -265,25 +346,16 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
       paint: {
         "circle-radius": ["get", "radius"],
         "circle-color": ["get", "fillColor"],
-        "circle-opacity": ["case", ["get", "withheld"], 0, ["get", "opacity"]],
+        "circle-opacity": [
+          "case",
+          ["==", ["get", "selected"], true],
+          0,
+          ["==", ["get", "withheld"], true],
+          0,
+          ["get", "opacity"],
+        ],
         "circle-stroke-color": ["get", "strokeColor"],
         "circle-stroke-width": ["case", ["get", "withheld"], 1.4, 1.2],
-      },
-    });
-  }
-
-  if (!map.getLayer(SELECTED_LAYER_ID)) {
-    map.addLayer({
-      id: SELECTED_LAYER_ID,
-      type: "circle",
-      source: MAP_SOURCE_ID,
-      filter: ["==", ["get", "selected"], true],
-      paint: {
-        "circle-radius": ["+", ["get", "radius"], 13],
-        "circle-color": "transparent",
-        "circle-stroke-color": "#ffffff",
-        "circle-stroke-width": 1.4,
-        "circle-opacity": 0.95,
       },
     });
   }
@@ -374,15 +446,24 @@ export function AtlasMap({
     }),
     [activeScore, compareCode, geos, outlookOn, priorityCodes, selectedCode, viewMode],
   );
-  const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures), [atlasFeatures]);
-  const mapLibreFeaturesRef = useRef(mapLibreFeatures);
   // Land tagged with nearest-centroid anchor codes so selection can halo a
   // place's island shapes. Distance grouping for highlighting, not boundaries.
   const anchoredLand = useMemo(
     () => (landContext && geos.length > 0 ? assignLandAnchors(landContext, geos) : landContext),
     [landContext, geos],
   );
-  const landContextRef = useRef<GeoJSON.FeatureCollection | null>(anchoredLand);
+  const anchoredCodes = useMemo(() => {
+    const codes = new Set<string>();
+    anchoredLand?.features.forEach((feature) => {
+      const code = feature.properties?.anchorCode;
+      if (typeof code === "string" && code !== "") codes.add(code);
+    });
+    return codes;
+  }, [anchoredLand]);
+  const styledLand = useMemo(() => styleAnchoredLand(anchoredLand, atlasFeatures.features), [anchoredLand, atlasFeatures]);
+  const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures, anchoredCodes), [atlasFeatures, anchoredCodes]);
+  const mapLibreFeaturesRef = useRef(mapLibreFeatures);
+  const landContextRef = useRef<GeoJSON.FeatureCollection | null>(styledLand);
   const geosRef = useRef(geos);
 
   const labelCodes = useMemo(() => {
@@ -405,8 +486,8 @@ export function AtlasMap({
   }, [geos]);
 
   useEffect(() => {
-    landContextRef.current = anchoredLand;
-  }, [anchoredLand]);
+    landContextRef.current = styledLand;
+  }, [styledLand]);
 
   useEffect(() => {
     let cancelled = false;
@@ -508,16 +589,55 @@ export function AtlasMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!mapReady || !map) return;
-    syncLandContext(map, anchoredLand);
-  }, [anchoredLand, mapReady]);
+    syncLandContext(map, styledLand);
+  }, [styledLand, mapReady]);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!mapReady || !map) return;
-    const filter = anchorFilterFor(selectedCode);
-    if (map.getLayer(LAND_HALO_GLOW_LAYER_ID)) map.setFilter(LAND_HALO_GLOW_LAYER_ID, filter);
-    if (map.getLayer(LAND_HALO_LINE_LAYER_ID)) map.setFilter(LAND_HALO_LINE_LAYER_ID, filter);
-  }, [selectedCode, mapReady, anchoredLand]);
+    if (!mapReady || !map || !map.getLayer(LAND_MARK_FILL_LAYER_ID)) return;
+    const handleLandClick = (event: maplibregl.MapLayerMouseEvent) => {
+      const code = event.features?.[0]?.properties?.anchorCode;
+      if (typeof code === "string") onSelectRef.current(code);
+    };
+    const handleLandEnter = () => {
+      map.getCanvas().style.cursor = "pointer";
+    };
+    const handleLandLeave = () => {
+      map.getCanvas().style.cursor = "";
+    };
+    map.on("click", LAND_MARK_FILL_LAYER_ID, handleLandClick);
+    map.on("click", LAND_MARK_GLOW_LAYER_ID, handleLandClick);
+    map.on("click", LAND_MARK_SOLID_LAYER_ID, handleLandClick);
+    map.on("click", LAND_MARK_ZERO_LAYER_ID, handleLandClick);
+    map.on("click", LAND_MARK_MISSING_LAYER_ID, handleLandClick);
+    map.on("mouseenter", LAND_MARK_FILL_LAYER_ID, handleLandEnter);
+    map.on("mouseenter", LAND_MARK_GLOW_LAYER_ID, handleLandEnter);
+    map.on("mouseenter", LAND_MARK_SOLID_LAYER_ID, handleLandEnter);
+    map.on("mouseenter", LAND_MARK_ZERO_LAYER_ID, handleLandEnter);
+    map.on("mouseenter", LAND_MARK_MISSING_LAYER_ID, handleLandEnter);
+    map.on("mouseleave", LAND_MARK_FILL_LAYER_ID, handleLandLeave);
+    map.on("mouseleave", LAND_MARK_GLOW_LAYER_ID, handleLandLeave);
+    map.on("mouseleave", LAND_MARK_SOLID_LAYER_ID, handleLandLeave);
+    map.on("mouseleave", LAND_MARK_ZERO_LAYER_ID, handleLandLeave);
+    map.on("mouseleave", LAND_MARK_MISSING_LAYER_ID, handleLandLeave);
+    return () => {
+      map.off("click", LAND_MARK_FILL_LAYER_ID, handleLandClick);
+      map.off("click", LAND_MARK_GLOW_LAYER_ID, handleLandClick);
+      map.off("click", LAND_MARK_SOLID_LAYER_ID, handleLandClick);
+      map.off("click", LAND_MARK_ZERO_LAYER_ID, handleLandClick);
+      map.off("click", LAND_MARK_MISSING_LAYER_ID, handleLandClick);
+      map.off("mouseenter", LAND_MARK_FILL_LAYER_ID, handleLandEnter);
+      map.off("mouseenter", LAND_MARK_GLOW_LAYER_ID, handleLandEnter);
+      map.off("mouseenter", LAND_MARK_SOLID_LAYER_ID, handleLandEnter);
+      map.off("mouseenter", LAND_MARK_ZERO_LAYER_ID, handleLandEnter);
+      map.off("mouseenter", LAND_MARK_MISSING_LAYER_ID, handleLandEnter);
+      map.off("mouseleave", LAND_MARK_FILL_LAYER_ID, handleLandLeave);
+      map.off("mouseleave", LAND_MARK_GLOW_LAYER_ID, handleLandLeave);
+      map.off("mouseleave", LAND_MARK_SOLID_LAYER_ID, handleLandLeave);
+      map.off("mouseleave", LAND_MARK_ZERO_LAYER_ID, handleLandLeave);
+      map.off("mouseleave", LAND_MARK_MISSING_LAYER_ID, handleLandLeave);
+    };
+  }, [styledLand, mapReady]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -537,7 +657,7 @@ export function AtlasMap({
     <div className="map-canvas">
       <div ref={containerRef} className="maplibre-canvas" aria-hidden="true" />
       <p className="sr-only">
-        Map of 22 Pacific geographies shown as centroid points over Natural Earth land context.
+        Map of 22 Pacific geographies shown as island-shaped marks over Natural Earth land context.
         Active layer: {activeLayerLabel}. The map is a comparative screen, not a definitive ranking.
       </p>
 
@@ -577,6 +697,8 @@ export function AtlasMap({
           {geos.map((geo) => {
             const point = overlay.points[geo.code];
             if (!point) return null;
+            if (anchoredCodes.has(geo.code)) return null;
+            if (geo.code === selectedCode) return null;
             const r = radiusFor(geo.indicators);
             const variant = ringVariant(geo.reportingStatus);
             const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
@@ -609,7 +731,7 @@ export function AtlasMap({
             minViewportSide: Math.min(container?.clientWidth ?? 900, container?.clientHeight ?? 900),
             geoLon: geo.lon,
             geoLat: geo.lat,
-            pointRadius: radiusFor(geo.indicators),
+            pointRadius: 0,
             landCenter: landContext ? nearestLandCenter(geo.lon, geo.lat, landContext) : null,
           });
           return (
@@ -638,7 +760,7 @@ export function AtlasMap({
             if (!labelCodes.has(geo.code)) return null;
             const point = overlay.points[geo.code];
             if (!point) return null;
-            const r = radiusFor(geo.indicators);
+            const r = geo.code === selectedCode ? 0 : radiusFor(geo.indicators);
             const off = LABEL_OFFSETS[geo.code] ?? { dx: 0, dy: -22 };
             // Clamp middle-anchored labels inside the map so edge exemplars stay readable.
             const mapWidth = mapRef.current?.getContainer().clientWidth ?? 0;
@@ -708,7 +830,7 @@ export function AtlasMap({
       </div>
 
       <p className="map-note">
-        Natural Earth land context under centroid points. Scored geographies are not boundary polygons.
+        Natural Earth island marks are grouped by nearest centroid. Scored geographies are not boundary polygons.
       </p>
     </div>
   );

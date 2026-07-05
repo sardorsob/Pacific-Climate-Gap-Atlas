@@ -13,7 +13,6 @@ import { atlasLayers } from "./lib/layers";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
 import {
-  COMPARE_SUGGESTION,
   getGeo,
   loadAtlasData,
   priorityOneCodes,
@@ -99,7 +98,6 @@ export function App() {
 
   const activeLayer = atlasLayers.find((l) => l.id === activeScore) ?? atlasLayers[0];
   const selectedGeo = selectedCode ? getGeo(geos, selectedCode) ?? null : null;
-  const compareGeo = getGeo(geos, COMPARE_SUGGESTION) ?? null;
   const priorityCodes = priorityOneCodes(geos);
   const priorityCount = priorityCodes.length;
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
@@ -278,7 +276,7 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
-        compareGeo={compareGeo}
+        compareGeo={null}
         onClose={closePanel}
         onCompare={handleSelect}
         onOpenMethod={() => setDrawerOpen(true)}
@@ -297,7 +295,7 @@ export function App() {
           viewMode={viewMode}
           outlookOn={outlookOn}
           selectedCode={selectedCode}
-          compareCode={COMPARE_SUGGESTION}
+          compareCode={null}
           priorityCodes={priorityCodes}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}

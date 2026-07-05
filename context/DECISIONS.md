@@ -146,7 +146,7 @@ The legend is a visible compact panel on desktop and a collapsible chip on mobil
 
 The default map carries direct labels with leader lines for the story exemplars (PN, NR, AS, WF, TV), faint UN M49 subregion orientation text, and lon/lat graticule ticks. Labels are limited to exemplars to avoid clutter; subregion text is descriptive orientation, not a boundary.
 
-Selected geography is treated as an anchor. The map shows the selected name and a "vs Tuvalu" suggested-comparator label, and the panel keeps the compare action. The comparator is a labeled suggestion only. It is not the TASK-019 Evidence Fingerprint Divergence / JSD layer, which remains unshipped until app-ready export and QA exist.
+Selected geography is treated as an anchor. The earlier static "vs Tuvalu" suggested-comparator cue was later removed because it read like a real pairwise comparison. The app does not currently ship free pairwise comparison or the TASK-019 Evidence Fingerprint Divergence / JSD layer.
 
 The data-quiet view is map-led. The PN/NR/AS/WF group is labeled directly with in-map "reports 0" versus "no rows" tags so reported-zero and missing-row monitoring states are distinguishable without reading the panel.
 

@@ -44,7 +44,7 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
       </div>
 
       <div className="legend__block">
-        <span className="legend__label">Point size - indicators behind the score (4 to 9)</span>
+        <span className="legend__label">Island glow - indicators behind the score (4 to 9)</span>
         <span className="legend__sizes" aria-hidden="true">
           <span className="legend__dot" style={{ width: 12, height: 12 }} />
           <span className="legend__dot" style={{ width: 20, height: 20 }} />
@@ -61,7 +61,7 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
         </ul>
       </div>
 
-      <p className="legend__note">Natural Earth land context; scores use centroid points, not boundaries.</p>
+      <p className="legend__note">Island marks are grouped by nearest centroid; they are not official boundaries.</p>
     </section>
   );
 }

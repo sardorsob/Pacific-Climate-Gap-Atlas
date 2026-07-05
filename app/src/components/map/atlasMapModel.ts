@@ -340,7 +340,7 @@ export function assignLandAnchors(
       }
       return {
         ...feature,
-        properties: { ...feature.properties, anchorCode },
+        properties: { ...feature.properties, anchorCode: anchorCode ?? "" },
       };
     }),
   };

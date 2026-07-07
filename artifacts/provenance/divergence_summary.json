@@ -80,21 +80,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.0797402573,
         "similarity_band": "similar_profile",
-        "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap."
+        "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap."
       },
       {
         "neighbor_geo_code": "GU",
         "similarity_rank": 2,
         "jsd_distance": 0.0808998196,
         "similarity_band": "similar_profile",
-        "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap."
+        "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap."
       },
       {
         "neighbor_geo_code": "NU",
         "similarity_rank": 3,
         "jsd_distance": 0.0894959537,
         "similarity_band": "similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       }
     ],
     "TV": [
@@ -103,21 +103,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.001592758,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       },
       {
         "neighbor_geo_code": "FM",
         "similarity_rank": 2,
         "jsd_distance": 0.006332299,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       },
       {
         "neighbor_geo_code": "TO",
         "similarity_rank": 3,
         "jsd_distance": 0.0063647955,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       }
     ],
     "PN": [
@@ -126,21 +126,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.0522628461,
         "similarity_band": "similar_profile",
-        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+        "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap."
       },
       {
         "neighbor_geo_code": "MP",
         "similarity_rank": 2,
         "jsd_distance": 0.0753911652,
         "similarity_band": "similar_profile",
-        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+        "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap."
       },
       {
         "neighbor_geo_code": "WF",
         "similarity_rank": 3,
         "jsd_distance": 0.0774182271,
         "similarity_band": "similar_profile",
-        "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap."
+        "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap."
       }
     ],
     "AS": [
@@ -149,21 +149,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.0103861112,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+        "reason_label": "Both profiles lean most toward monitoring reporting gap evidence."
       },
       {
         "neighbor_geo_code": "NU",
         "similarity_rank": 2,
         "jsd_distance": 0.0116418039,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility."
+        "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility."
       },
       {
         "neighbor_geo_code": "WF",
         "similarity_rank": 3,
         "jsd_distance": 0.0180096637,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+        "reason_label": "Both profiles lean most toward monitoring reporting gap evidence."
       }
     ],
     "WF": [
@@ -172,21 +172,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.0180096637,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+        "reason_label": "Both profiles lean most toward monitoring reporting gap evidence."
       },
       {
         "neighbor_geo_code": "NU",
         "similarity_rank": 2,
         "jsd_distance": 0.0191938425,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility."
+        "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility."
       },
       {
         "neighbor_geo_code": "MP",
         "similarity_rank": 3,
         "jsd_distance": 0.0339408025,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence."
+        "reason_label": "Both profiles lean most toward monitoring reporting gap evidence."
       }
     ],
     "MH": [
@@ -195,21 +195,21 @@
         "similarity_rank": 1,
         "jsd_distance": 0.0032916333,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       },
       {
         "neighbor_geo_code": "SB",
         "similarity_rank": 2,
         "jsd_distance": 0.0092866979,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       },
       {
         "neighbor_geo_code": "PG",
         "similarity_rank": 3,
         "jsd_distance": 0.0203630934,
         "similarity_band": "very_similar_profile",
-        "reason_label": "Both profiles lean most toward data_visibility evidence."
+        "reason_label": "Both profiles lean most toward data visibility evidence."
       }
     ]
   },

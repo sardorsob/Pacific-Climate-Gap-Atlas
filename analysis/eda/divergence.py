@@ -48,6 +48,14 @@ COMPONENTS: tuple[tuple[str, str], ...] = (
         "Explicit reported-zero or missing monitoring-data status.",
     ),
 )
+COMPONENT_LABELS = {
+    "pressure": "climate-pressure",
+    "capacity": "adaptation-capacity",
+    "data_visibility": "data visibility",
+    "rank_fragility": "rank fragility",
+    "missing_data": "missing data",
+    "monitoring_reporting_gap": "monitoring reporting gap",
+}
 FINGERPRINT_COMPONENT_COLUMNS = [f"fingerprint_{name}" for name, _ in COMPONENTS]
 RAW_COMPONENT_COLUMNS = [f"component_{name}" for name, _ in COMPONENTS]
 
@@ -617,11 +625,13 @@ def _primary_component(row: pd.Series) -> str:
 
 
 def _neighbor_reason(anchor_component: str, neighbor_component: str) -> str:
-    if anchor_component == neighbor_component:
-        return f"Both profiles lean most toward {anchor_component} evidence."
+    anchor_label = COMPONENT_LABELS.get(anchor_component, anchor_component.replace("_", " "))
+    neighbor_label = COMPONENT_LABELS.get(neighbor_component, neighbor_component.replace("_", " "))
+    if anchor_label == neighbor_label:
+        return f"Both profiles lean most toward {anchor_label} evidence."
     return (
-        f"Selected profile leans toward {anchor_component}; neighbor leans toward "
-        f"{neighbor_component}."
+        f"Selected profile leans toward {anchor_label}; neighbor leans toward "
+        f"{neighbor_label}."
     )
 
 

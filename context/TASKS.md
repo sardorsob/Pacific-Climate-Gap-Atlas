@@ -940,11 +940,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: From explore mode, selecting any geography and then opening coverage or uncertainty shows the matching explainer callout; closing the panel returns to default behavior; tests/build pass.
 - Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Select Fiji or Nauru, click coverage and uncertainty controls, and confirm the side panel changes to the matching explainer.
-- QA notes: Pending. Created from the post-TASK-039 app interaction audit.
-- Attempts: 0
+- QA notes: Checker accepted. Source review confirmed `handleViewMode` clears only coverage/uncertainty selections, so default selected-place behavior and the guided Nauru/Tuvalu story controls remain unchanged. Fresh verification passed: `npm --prefix app run test` (3 files, 11 tests), `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Manual click smoke was attempted through available browser tooling: Vite dev server required sandbox escalation to bind, Scrapling could fetch the live app text but cannot click controls, and Computer Use is blocked from controlling the Codex app; source-level branch review covers the original bug.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Audit found `App.tsx` gates `DataQuietCallout` and `RankUncertaintyCallout` on `!selectedGeo`, while `handleViewMode` does not clear `selectedCode`.
-- Status: pending
+- Attempt log: Audit found `App.tsx` gates `DataQuietCallout` and `RankUncertaintyCallout` on `!selectedGeo`, while `handleViewMode` does not clear `selectedCode`. 2026-07-07: Moved pending -> in-progress for Codex Builder lane; docs/log updates stay with the orchestrator to avoid parallel edit conflicts. Builder implemented the one-file state fix and moved the task to Checker review. Checker re-ran verification and accepted.
+- Status: done
 
 ## TASK-041
 - Phase: app-data
@@ -963,11 +963,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: User-facing JSD reason text contains no snake_case identifiers; beat 6 and the selected-place panel agree by reading the same generated data; validation/build pass.
 - Verification commands: `python scripts/run_eda.py --config configs/eda.yml`; `python scripts/build_app_data.py --config configs/app_layers.yml`; `python -m unittest tests.analysis.test_divergence tests.analysis.test_app_data_export -v`; `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_data_contracts.py`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Open Nauru's similarity rows in guided beat 6 and explore detail; confirm plain-language reason text and matching values.
-- QA notes: Pending. Created from the post-TASK-039 app interaction audit.
-- Attempts: 0
+- QA notes: Checker accepted. Source/data review confirmed `_neighbor_reason()` now uses public labels, generated `reason_label` values no longer expose snake_case identifiers, static `FINGERPRINT_PREVIEW` was removed, and beat 6 reads Nauru's live `similarityNeighbors`. Fresh verification passed: `python scripts/run_eda.py --config configs/eda.yml`, `python scripts/build_app_data.py --config configs/app_layers.yml`, `python -m unittest tests.analysis.test_divergence tests.analysis.test_app_data_export -v` (12 tests), `npm --prefix app run test` (3 files, 11 tests), `npm --prefix app run build`, `python scripts/validate_data_contracts.py`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Live Scrapling fetch of the dev app showed beat 6 using Northern Mariana Islands, Guam, and Niue from generated data with plain-language reasons.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Audit found `_neighbor_reason()` interpolates raw component ids such as `data_visibility` and `monitoring_reporting_gap`, and the guided preview duplicates Nauru similarity values in a static fixture.
-- Status: pending
+- Attempt log: Audit found `_neighbor_reason()` interpolates raw component ids such as `data_visibility` and `monitoring_reporting_gap`, and the guided preview duplicates Nauru similarity values in a static fixture. 2026-07-07: Moved pending -> in-progress for Codex Builder lane in parallel with TASK-040; docs/log updates stay with the orchestrator to avoid parallel edit conflicts. Builder added a focused divergence regression test plus a server-rendered fingerprint preview test, regenerated artifacts, and moved the task to Checker review. Checker re-ran data/app verification and accepted.
+- Status: done
 
 ## TASK-042
 - Phase: app-polish

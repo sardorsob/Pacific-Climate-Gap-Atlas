@@ -1,11 +1,12 @@
 import { FlaskConical } from "lucide-react";
-import { FINGERPRINT_PREVIEW, getGeo, type Geo } from "../../lib/atlasData";
+import { getGeo, type Geo } from "../../lib/atlasData";
 
 // Small guide to the Evidence Fingerprint Divergence layer. The live values sit
 // in each selected place's detail panel; the map itself is not a similarity ramp.
 export function FingerprintPreview({ geos }: { geos: Geo[] }) {
-  const anchor = getGeo(geos, FINGERPRINT_PREVIEW.anchor);
-  if (!anchor) return null;
+  const anchor = getGeo(geos, "NR");
+  if (!anchor || anchor.similarityNeighbors.length === 0) return null;
+  const caveat = anchor.similarityNeighbors[0]?.caveat;
 
   return (
     <section className="fingerprint" aria-label="Evidence fingerprint preview">
@@ -13,11 +14,10 @@ export function FingerprintPreview({ geos }: { geos: Geo[] }) {
         <FlaskConical aria-hidden="true" size={13} /> Selected-place detail
       </p>
       <p className="fingerprint__lede">
-        Under this method, Nauru's evidence profile leans toward{" "}
-        <strong>{FINGERPRINT_PREVIEW.anchorLeans}</strong>. Its most similar official-data profiles are:
+        Under this method, Nauru's most similar official-data profiles are:
       </p>
       <ul className="fingerprint__list">
-        {FINGERPRINT_PREVIEW.neighbors.map((n) => (
+        {anchor.similarityNeighbors.map((n) => (
           <li key={n.code} className="fingerprint__row">
             <span className="fingerprint__name">{n.name}</span>
             <span className="fingerprint__band">{n.band}</span>
@@ -25,7 +25,7 @@ export function FingerprintPreview({ geos }: { geos: Geo[] }) {
           </li>
         ))}
       </ul>
-      <p className="fingerprint__caveat">{FINGERPRINT_PREVIEW.caveat}</p>
+      {caveat && <p className="fingerprint__caveat">{caveat}</p>}
     </section>
   );
 }

@@ -146,7 +146,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0104,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -155,7 +155,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0116,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -164,7 +164,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.018,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -329,7 +329,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0216,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -338,7 +338,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0947,
           "similarity_band": "similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -347,7 +347,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0962,
           "similarity_band": "similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -512,7 +512,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0021,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -521,7 +521,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0045,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -530,7 +530,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.006,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -695,7 +695,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0003,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -704,7 +704,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0015,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -713,7 +713,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0028,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -878,7 +878,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0055,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -887,7 +887,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0179,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -896,7 +896,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0242,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1061,7 +1061,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0033,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1070,7 +1070,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0065,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1079,7 +1079,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.011,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1244,7 +1244,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0033,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1253,7 +1253,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0093,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1262,7 +1262,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0204,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1423,7 +1423,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0055,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1432,7 +1432,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0104,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1441,7 +1441,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0144,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1606,7 +1606,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0011,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1615,7 +1615,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0013,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1624,7 +1624,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0021,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1789,7 +1789,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0797,
           "similarity_band": "similar_profile",
-          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1798,7 +1798,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0809,
           "similarity_band": "similar_profile",
-          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1807,7 +1807,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0895,
           "similarity_band": "similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -1972,7 +1972,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0116,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1981,7 +1981,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0144,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -1990,7 +1990,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0179,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward data_visibility; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -2155,7 +2155,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0048,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2164,7 +2164,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0089,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2173,7 +2173,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0138,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -2338,7 +2338,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0031,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2347,7 +2347,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0047,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2356,7 +2356,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0066,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -2521,7 +2521,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0523,
           "similarity_band": "similar_profile",
-          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2530,7 +2530,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0754,
           "similarity_band": "similar_profile",
-          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2539,7 +2539,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0774,
           "similarity_band": "similar_profile",
-          "reason_label": "Selected profile leans toward missing_data; neighbor leans toward monitoring_reporting_gap.",
+          "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -2704,7 +2704,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0016,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2713,7 +2713,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0029,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2722,7 +2722,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0035,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -2887,7 +2887,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0031,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2896,7 +2896,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0064,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -2905,7 +2905,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0065,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3070,7 +3070,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0216,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3079,7 +3079,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.123,
           "similarity_band": "similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3088,7 +3088,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.1241,
           "similarity_band": "similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3253,7 +3253,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.001,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3262,7 +3262,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0011,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3271,7 +3271,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0015,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3436,7 +3436,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0016,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3445,7 +3445,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0063,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3454,7 +3454,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0064,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3619,7 +3619,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0003,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3628,7 +3628,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.001,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3637,7 +3637,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0013,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3798,7 +3798,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.018,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3807,7 +3807,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0192,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward monitoring_reporting_gap; neighbor leans toward data_visibility.",
+          "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3816,7 +3816,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0339,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward monitoring_reporting_gap evidence.",
+          "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
@@ -3981,7 +3981,7 @@
           "similarity_rank": 1,
           "jsd_distance": 0.0048,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3990,7 +3990,7 @@
           "similarity_rank": 2,
           "jsd_distance": 0.0118,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
@@ -3999,7 +3999,7 @@
           "similarity_rank": 3,
           "jsd_distance": 0.0122,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data_visibility evidence.",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],

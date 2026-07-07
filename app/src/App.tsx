@@ -156,8 +156,10 @@ export function App() {
     setViewMode(m);
     if (m !== "default") setOutlookOn(false);
     if (m === "coverage") {
+      setSelectedCode(null);
       setSheetExpanded(true);
     } else if (m === "uncertainty") {
+      setSelectedCode(null);
       setSheetExpanded(true);
     } else if (viewMode === "coverage" || viewMode === "uncertainty") {
       setSheetExpanded(false);

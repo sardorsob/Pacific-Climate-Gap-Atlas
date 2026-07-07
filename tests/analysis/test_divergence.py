@@ -101,6 +101,23 @@ class EvidenceFingerprintDivergenceTests(unittest.TestCase):
         self.assertTrue(aa_neighbors["neighbor_caveat"].str.contains("policy need").all())
         self.assertTrue((aa_neighbors["neighbor_caveat"] == DIVERGENCE_CAVEAT).all())
 
+    def test_similarity_neighbor_reasons_use_public_component_labels(self) -> None:
+        fingerprints = pd.DataFrame(
+            [
+                _fingerprint_row("AA", 0.0, 0.0, 1.0, 0.0),
+                _fingerprint_row("BB", 0.0, 0.0, 1.0, 0.0),
+            ]
+        )
+        pairwise = build_pairwise_jsd(fingerprints)
+
+        neighbors = build_similarity_neighbors(pairwise, fingerprints, neighbor_count=1)
+
+        self.assertEqual(
+            neighbors.loc[0, "reason_label"],
+            "Both profiles lean most toward data visibility evidence.",
+        )
+        self.assertNotIn("_", neighbors.loc[0, "reason_label"])
+
 
 def _fingerprint_row(
     geo_code: str,

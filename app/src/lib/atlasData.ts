@@ -297,28 +297,3 @@ function asRobustness(value: string | undefined): "stable" | "sensitive" | "frag
   if (value === "stable" || value === "sensitive" || value === "fragile") return value;
   return "fragile";
 }
-
-export type FingerprintNeighbor = {
-  code: string;
-  name: string;
-  jsd: number;
-  band: string;
-  reason: string;
-};
-
-export const FINGERPRINT_PREVIEW: {
-  anchor: string;
-  anchorLeans: string;
-  neighbors: FingerprintNeighbor[];
-  caveat: string;
-} = {
-  anchor: "NR",
-  anchorLeans: "data visibility",
-  neighbors: [
-    { code: "MP", name: "Northern Mariana Islands", jsd: 0.0797, band: "similar profile", reason: "leans toward a monitoring reporting gap" },
-    { code: "GU", name: "Guam", jsd: 0.0809, band: "similar profile", reason: "leans toward a monitoring reporting gap" },
-    { code: "NU", name: "Niue", jsd: 0.0895, band: "similar profile", reason: "also leans toward data visibility" },
-  ],
-  caveat:
-    "Similarity means the official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need.",
-};

@@ -15,7 +15,6 @@ export type AtlasMapState = {
   viewMode: ViewMode;
   outlookOn: boolean;
   selectedCode: string | null;
-  compareCode: string | null;
   priorityCodes: string[];
 };
 
@@ -29,7 +28,6 @@ export type AtlasPointProperties = {
   radius: number;
   opacity: number;
   selected: boolean;
-  compare: boolean;
   priority: boolean;
   dimmed: boolean;
   withheld: boolean;
@@ -130,11 +128,10 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
     type: "FeatureCollection",
     features: geos.map((geo) => {
       const isSelected = geo.code === state.selectedCode;
-      const isCompare = geo.code === state.compareCode && geo.code !== state.selectedCode;
       const isPriority = state.viewMode === "coverage" && state.priorityCodes.includes(geo.code);
       const withheld = state.outlookOn && geo.outlookDisplay === "withhold";
       const dimmed =
-        (hasSelection && !isSelected && geo.code !== state.compareCode) ||
+        (hasSelection && !isSelected) ||
         (state.viewMode === "coverage" && !isPriority && geo.storyPriority > 3);
       const scoreValue = scoreValueFor(geo, state, withheld);
       const paint = markerPaintFor(geo.reportingStatus);
@@ -155,7 +152,6 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
           radius: radiusFor(geo.indicators),
           opacity: dimmed ? 0.32 : 1,
           selected: isSelected,
-          compare: isCompare,
           priority: isPriority,
           dimmed,
           withheld,

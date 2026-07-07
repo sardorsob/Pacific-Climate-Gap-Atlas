@@ -1,13 +1,11 @@
-import { ArrowRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import type { Geo } from "../../lib/atlasData";
 import { reportingCaveat, reportingLabel } from "../../lib/encoding";
 import { RankChip } from "../RankChip";
 
 type CountryPanelProps = {
   geo: Geo | null;
-  compareGeo: Geo | null;
   onClose: () => void;
-  onCompare: (code: string) => void;
   onOpenMethod: () => void;
 };
 
@@ -59,7 +57,7 @@ function PillarBar({ label, value, kind, caveat }: { label: string; value: numbe
   );
 }
 
-export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod }: CountryPanelProps) {
+export function CountryPanel({ geo, onClose, onOpenMethod }: CountryPanelProps) {
   if (!geo) {
     return (
       <aside className="panel panel--intro" aria-label="Atlas detail panel">
@@ -79,7 +77,6 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
     );
   }
 
-  const compare = compareGeo;
   const reportingTone =
     geo.reportingStatus === "reported_positive_latest_count" ? "ok" : "warn";
 
@@ -201,12 +198,6 @@ export function CountryPanel({ geo, compareGeo, onClose, onCompare, onOpenMethod
         <button type="button" className="link-btn" onClick={onOpenMethod}>
           Methodology &amp; sources
         </button>
-        {compare && compare.code !== geo.code && (
-          <button type="button" className="link-btn link-btn--ghost" onClick={() => onCompare(compare.code)}>
-            <ArrowRight aria-hidden="true" size={15} />
-            Open {compare.name}
-          </button>
-        )}
       </div>
     </aside>
   );

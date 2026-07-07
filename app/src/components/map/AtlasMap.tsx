@@ -28,7 +28,6 @@ type AtlasMapProps = {
   viewMode: ViewMode;
   outlookOn: boolean;
   selectedCode: string | null;
-  compareCode: string | null;
   priorityCodes: string[];
   onSelect: (code: string) => void;
   activeLayerLabel: string;
@@ -348,8 +347,6 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
         "circle-color": ["get", "fillColor"],
         "circle-opacity": [
           "case",
-          ["==", ["get", "selected"], true],
-          0,
           ["==", ["get", "withheld"], true],
           0,
           ["get", "opacity"],
@@ -422,7 +419,6 @@ export function AtlasMap({
   viewMode,
   outlookOn,
   selectedCode,
-  compareCode,
   priorityCodes,
   onSelect,
   activeLayerLabel,
@@ -441,10 +437,9 @@ export function AtlasMap({
       viewMode,
       outlookOn,
       selectedCode,
-      compareCode,
       priorityCodes,
     }),
-    [activeScore, compareCode, geos, outlookOn, priorityCodes, selectedCode, viewMode],
+    [activeScore, geos, outlookOn, priorityCodes, selectedCode, viewMode],
   );
   // Land tagged with nearest-centroid anchor codes so selection can halo a
   // place's island shapes. Distance grouping for highlighting, not boundaries.
@@ -469,9 +464,8 @@ export function AtlasMap({
   const labelCodes = useMemo(() => {
     const codes = new Set<string>(viewMode === "coverage" ? priorityCodes : STORY_EXEMPLARS);
     if (selectedCode) codes.add(selectedCode);
-    if (selectedCode && compareCode && compareCode !== selectedCode) codes.add(compareCode);
     return codes;
-  }, [compareCode, priorityCodes, selectedCode, viewMode]);
+  }, [priorityCodes, selectedCode, viewMode]);
 
   useEffect(() => {
     onSelectRef.current = onSelect;
@@ -698,7 +692,6 @@ export function AtlasMap({
             const point = overlay.points[geo.code];
             if (!point) return null;
             if (anchoredCodes.has(geo.code)) return null;
-            if (geo.code === selectedCode) return null;
             const r = radiusFor(geo.indicators);
             const variant = ringVariant(geo.reportingStatus);
             const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
@@ -769,13 +762,9 @@ export function AtlasMap({
             const lx = mapWidth > 0 ? Math.min(Math.max(rawLx, halfLabel), mapWidth - halfLabel) : rawLx;
             const ly = point.y + off.dy;
             const isSelected = geo.code === selectedCode;
-            const isCompare = geo.code === compareCode && geo.code !== selectedCode && hasSelection;
             const below = off.dy > 0;
             const anchorY = below ? point.y + r : point.y - r;
-            const cls =
-              "map-label" +
-              (isSelected ? " map-label--selected" : "") +
-              (isCompare ? " map-label--compare" : "");
+            const cls = "map-label" + (isSelected ? " map-label--selected" : "");
 
             let tag = "";
             if (viewMode === "coverage") {
@@ -787,7 +776,7 @@ export function AtlasMap({
               <g key={`lbl-${geo.code}`} className={cls}>
                 <line className="map-label__lead" x1={point.x} y1={anchorY} x2={lx} y2={ly + (below ? -4 : 4)} />
                 <text x={lx} y={ly} textAnchor="middle" className="map-label__name">
-                  {isCompare ? `vs ${geo.name}` : geo.name}
+                  {geo.name}
                 </text>
                 {tag && (
                   <text x={lx} y={ly + 13} textAnchor="middle" className="map-label__tag">
@@ -806,7 +795,7 @@ export function AtlasMap({
           if (!point) return null;
           const r = radiusFor(geo.indicators) + 10;
           const dimmed =
-            (hasSelection && geo.code !== selectedCode && geo.code !== compareCode) ||
+            (hasSelection && geo.code !== selectedCode) ||
             (viewMode === "coverage" && !priorityCodes.includes(geo.code) && geo.storyPriority > 3);
 
           return (

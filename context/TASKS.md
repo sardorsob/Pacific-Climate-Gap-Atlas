@@ -986,8 +986,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Legend teaches island marks without circle/dot confusion; compare-only code paths are gone; selected fallback marks remain visible until land marks can replace them; tests/build pass.
 - Verification commands: `npm --prefix app run test`; `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `git diff --check`
 - Manual QA: Load the app before/after land context, select Nauru and Fiji, and inspect the legend for non-dot island-glow teaching.
-- QA notes: Pending. Created from the post-TASK-039 app interaction audit.
-- Attempts: 0
+- QA notes: Checker accepted. Removed dead compare props/branches from `App`, `AtlasMap`, `CountryPanel`, and the map model; removed compare-only CSS. Replaced legend dot swatches with small island-shaped glow swatches. Removed selected-point hiding from the MapLibre point layer and SVG status overlay so centroid fallback marks remain visible until anchored land marks replace them. Focused red/green test added in `atlasMapModel.test.ts`; red run failed on the stale `compare` property, then green run passed. Fresh verification passed: `npm --prefix app run test` (3 files, 12 tests), `npm --prefix app run build`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Live Scrapling fetch against the dev server rendered the app and confirmed `legend__island` swatches in the legend markup.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Audit found stale dot swatches, permanently-null comparator props, and a low-severity fallback timing risk in selected point opacity.
-- Status: pending
+- Attempt log: Audit found stale dot swatches, permanently-null comparator props, and a low-severity fallback timing risk in selected point opacity. 2026-07-07: Moved pending -> in-progress for Codex Builder/QA pass. Builder wrote a failing map-model test for removing compare state and preserving selected fallback opacity, implemented the cleanup, and moved the task to Checker review. Checker re-ran verification, live-smoked the legend markup, and accepted.
+- Status: done

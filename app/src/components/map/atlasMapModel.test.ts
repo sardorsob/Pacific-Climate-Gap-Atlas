@@ -45,7 +45,6 @@ describe("atlas map model", () => {
       viewMode: "default",
       outlookOn: false,
       selectedCode: "NR",
-      compareCode: "TV",
       priorityCodes: ["NR"],
     });
 
@@ -72,7 +71,6 @@ describe("atlas map model", () => {
         viewMode: "default",
         outlookOn: true,
         selectedCode: null,
-        compareCode: null,
         priorityCodes: [],
       },
     );
@@ -82,6 +80,22 @@ describe("atlas map model", () => {
       withheld: true,
       fillColor: "transparent",
     });
+  });
+
+  it("keeps selected fallback points visible until island marks replace them", () => {
+    const collection = buildAtlasFeatureCollection([baseGeo], {
+      activeScore: "gap",
+      viewMode: "default",
+      outlookOn: false,
+      selectedCode: "NR",
+      priorityCodes: [],
+    });
+
+    expect(collection.features[0].properties).toMatchObject({
+      selected: true,
+      opacity: 1,
+    });
+    expect(collection.features[0].properties).not.toHaveProperty("compare");
   });
 
   it("returns dashed and hatch paint cues for monitoring reporting states", () => {

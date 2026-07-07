@@ -14,7 +14,6 @@
   --caveat-bg: #fff4e2;
   --ok-bg: #eef6f1;
   --ok-ink: #1f6b46;
-  --compare: #b8801f;
 
   --r-card: 8px;
   --r-chip: 6px;
@@ -130,7 +129,6 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
   paint-order: stroke; stroke: rgba(6, 16, 24, 0.72); stroke-width: 3px;
 }
 .map-label--selected .map-label__name { fill: #ffffff; font-weight: 800; font-size: 14px; }
-.map-label--compare .map-label__name { fill: #ffd58a; }
 
 .map-note { position: absolute; left: 22px; bottom: 12px; margin: 0; font-size: 11px; color: rgba(225, 235, 240, 0.72); }
 
@@ -199,7 +197,16 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
 .legend__label { display: block; font-size: 11px; color: var(--ink-soft); margin-bottom: 5px; }
 .legend__ramp { display: block; height: 11px; border-radius: 5px; border: 1px solid var(--line); }
 .legend__sizes { display: flex; align-items: center; gap: 10px; }
-.legend__dot { display: inline-block; border-radius: 50%; background: #64777f; border: 1px solid rgba(8, 18, 26, 0.4); }
+.legend__island {
+  display: inline-block;
+  border-radius: 56% 44% 62% 38%;
+  background: #64777f;
+  border: 1px solid rgba(8, 18, 26, 0.45);
+  box-shadow: 0 0 0 3px rgba(100, 119, 127, 0.14);
+}
+.legend__island--sm { width: 14px; height: 9px; }
+.legend__island--md { width: 22px; height: 14px; }
+.legend__island--lg { width: 31px; height: 18px; }
 .legend__rings { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 11.5px; }
 .legend__rings li { display: flex; align-items: center; gap: 8px; }
 .ring-key { width: 17px; height: 17px; border-radius: 50%; flex: none; }
@@ -312,8 +319,6 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
 
 .panel__actions { display: flex; flex-wrap: wrap; gap: 9px; }
 .link-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: var(--r-chip); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer; }
-.link-btn--ghost { background: transparent; color: var(--accent); border-color: var(--compare); }
-.link-btn--ghost:hover { background: #fbf3e3; }
 .icon-btn { border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-chip); padding: 6px; cursor: pointer; color: var(--ink); display: inline-flex; }
 
 /* ---------- data-quiet callout ---------- */

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-TASK-032 visual QA through TASK-041 JSD copy/data cleanup are complete. The next app iteration is `TASK-042`: clean up island-mark polish, dead compare branches, and the fallback mark timing risk. Competition deadline: August 31, 2026.
+TASK-032 visual QA through TASK-042 post-audit cleanup are complete. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -45,7 +45,7 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick; `TASK-038` adds nearest-centroid land grouping; `TASK-039` makes anchored Natural Earth land inherit the score/status mark encoding and hides point circles once land marks load |
 | Detail panel redesign | done | `TASK-036` regroups the selected-place panel into score, score-sides, and record sections while preserving trace/caveats |
 | JSD app visibility | done | `TASK-037` shows selected-place nearest neighbors with exact JSD distance, band, reason, and caveat; no global link web, map ramp, or leaderboard ships |
-| Post-TASK-039 iteration audit | in progress | `TASK-040` fixed explainer state and `TASK-041` humanized/single-sourced JSD similarity text; `TASK-042` remains for island-mark cleanup |
+| Post-TASK-039 iteration audit | done | `TASK-040` fixed explainer state, `TASK-041` humanized/single-sourced JSD similarity text, and `TASK-042` cleaned legend, stale compare code, and selected fallback mark behavior |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -85,4 +85,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-028` guided story/copy rewrite: the seven-beat tour, method drawer, data-quiet panel, fingerprint preview, country-panel trace note, and geometry caveats now read as evidence-backed interface copy for owner visual review.
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
-- Completed `TASK-040` and `TASK-041` in parallel Builder lanes, then checked them sequentially: coverage/uncertainty view switches now clear selected geography so the explainer panels render, generated JSD reason text is plain language, and guided beat 6 reads live generated Nauru similarity neighbors instead of a static fixture. `TASK-042` remains next.
+- Completed `TASK-042`: the island-glow legend no longer teaches dots, dead compare-mode code is gone, and selected centroid fallback marks remain visible until island marks replace them. Post-TASK-039 audit follow-up is now closed.

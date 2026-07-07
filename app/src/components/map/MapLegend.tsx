@@ -46,9 +46,9 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
       <div className="legend__block">
         <span className="legend__label">Island glow - indicators behind the score (4 to 9)</span>
         <span className="legend__sizes" aria-hidden="true">
-          <span className="legend__dot" style={{ width: 12, height: 12 }} />
-          <span className="legend__dot" style={{ width: 20, height: 20 }} />
-          <span className="legend__dot" style={{ width: 28, height: 28 }} />
+          <span className="legend__island legend__island--sm" />
+          <span className="legend__island legend__island--md" />
+          <span className="legend__island legend__island--lg" />
         </span>
       </div>
 

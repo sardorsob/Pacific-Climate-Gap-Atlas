@@ -278,9 +278,7 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
-        compareGeo={null}
         onClose={closePanel}
-        onCompare={handleSelect}
         onOpenMethod={() => setDrawerOpen(true)}
       />
     );
@@ -297,7 +295,6 @@ export function App() {
           viewMode={viewMode}
           outlookOn={outlookOn}
           selectedCode={selectedCode}
-          compareCode={null}
           priorityCodes={priorityCodes}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}

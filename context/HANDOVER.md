@@ -71,9 +71,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. `TASK-042`: clean up island-mark polish: legend swatches, dead compare branches, and the low-severity fallback mark race.
-2. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
-3. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
+1. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
+2. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
 
 ## Known Caveats
 
@@ -92,7 +91,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-016 outlook interpretation is stress-test display guidance, not forecasting. Weak or sparse diagnostics should be withheld from outlook layers.
 - TASK-017 monitoring-gap outputs identify PN, NR, AS, and WF as high-gap low-monitoring candidates. AS and WF have missing monitoring rows, so describe them as reporting gaps unless externally verified.
 - TASK-019 outputs exist as analysis artifacts: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`. TASK-037 wires the nearest-neighbor rows into selected-place detail only. Do not present JSD as a global similarity map, causal cluster, policy-need group, or leaderboard.
-- The post-TASK-039 interaction audit was folded into `TASK-040` through `TASK-042` and the standalone audit file was removed. `TASK-040` and `TASK-041` are complete; current known app follow-ups are the `TASK-042` island-mark cleanup items: dot-shaped island-glow legend swatches, stale compare branches, and a low-severity fallback mark timing risk.
+- The post-TASK-039 interaction audit was folded into `TASK-040` through `TASK-042` and is complete. The standalone audit file was removed; durable results now live in `TASKS.md`, `PROJECT.md`, this handover, and the progress log.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.
 - The implemented winner-audit response is a guided scroll atlas, not a long cinematic landing page. The first viewport must still show the map and evidence.
 - TASK-022 belonged to Claude, but Claude did not stage, commit, push, change data methodology, or alter generated artifacts.

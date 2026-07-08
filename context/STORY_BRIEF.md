@@ -29,6 +29,11 @@ The strongest story is:
 
 This is stronger than a simple ranking story because the rank evidence is fragile. It is stronger than a monitoring-only story because monitoring is one proxy, not the whole adaptation system. It is stronger than a responsibility-only story because responsibility-context indicators are context fields, not score drivers. It is stronger than an outlook story because the outlook is a stress test, not a forecast.
 
+Post-TASK-042 story iteration:
+
+- The next story pass (`TASK-046`) should test whether the guided tour opens closer to the data-silence tension before explaining the score method. The current tour is coherent, but it may spend too long on mechanism before the reader reaches the atlas's most distinctive idea: high apparent gaps and uneven official visibility.
+- Keep JSD/evidence-profile similarity selected-anchored. It can remain a guided beat only if it helps the reader understand official-data profile shape; otherwise it should live in explore/detail mode as a reward for selected-place inspection.
+
 ## Story Contract
 
 One-sentence claim:
@@ -201,7 +206,7 @@ Supporting context:
 ### Beat 6: Compare Evidence Fingerprints
 
 - User action: selects a geography and opens "similar evidence profiles."
-- Layer: other points re-encode by JSD distance from the selected geography, if the TASK-019 layer is accepted for V1.
+- Layer: selected-place detail shows nearest evidence-profile neighbors. A selected-only map connector treatment may be tested later, but no global JSD map ramp or all-to-all link web should ship by default.
 - Panel state: nearest evidence-profile neighbors and a compact fingerprint summary.
 - Evidence: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`.
 - Caveat placement: inside the comparison panel and method drawer.

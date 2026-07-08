@@ -991,3 +991,118 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Audit found stale dot swatches, permanently-null comparator props, and a low-severity fallback timing risk in selected point opacity. 2026-07-07: Moved pending -> in-progress for Codex Builder/QA pass. Builder wrote a failing map-model test for removing compare state and preserving selected fallback opacity, implemented the cleanup, and moved the task to Checker review. Checker re-ran verification, live-smoked the legend markup, and accepted.
 - Status: done
+
+## TASK-043
+- Phase: app-map-design
+- Title: Replace under-inked island polygons with presence marks
+- Depends on: TASK-039, TASK-042
+- Assigned agent: Codex Builder/QA, Fable for visual tuning
+- Contract refs: context/DESIGN_BRIEF.md, context/STORY_BRIEF.md
+- Data refs: app/public/data/geographies.json, app/public/data/pacific_land_context.geojson
+- Scientific refs: context/docs/methodology.md, context/DATA_CARD.md
+- User value / decision value: Makes every scored Pacific geography legible at basin zoom, especially atoll geographies whose literal land polygons are nearly invisible.
+- Functional notes: Use the existing centroid feature encoding as the primary mark: guaranteed minimum screen size, score fill, evidence-size intensity/radius, and reporting-status edge/pattern. Keep Natural Earth island shapes as secondary texture/context inside or under the mark where available. Retire the selected viewfinder only after the new mark makes NR, TV, KI, and MH plainly findable without it.
+- Statistical notes: A presence mark is a data symbol, not a boundary. Keep the nearest-centroid/Natural Earth caveat visible and do not imply official territorial polygons.
+- Edge cases: Preserve centroid accessibility hit targets, keyboard/touch selection, coverage priority marks, withheld outlook behavior, and reporting-zero vs missing-row distinction. Atolls must not become visually less important because they have less land area.
+- Files to create/modify: app/src/components/map/AtlasMap.tsx, app/src/components/map/atlasMapModel.ts, app/src/components/map/atlasMapModel.test.ts, app/src/components/map/MapLegend.tsx, app/src/styles/base.css, context/TASKS.md, context/logs/Progress Log.md
+- Artifacts to produce: primary presence-mark rendering, updated legend/caveat language, focused tests for mark visibility/encoding.
+- Acceptance criteria: At default desktop and mobile basin views, all 22 geographies have a legible primary mark; NR, TV, KI, and MH are findable without relying on literal polygon area; selected mark emphasis is visible; Natural Earth land remains contextual or texture only; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Browser-smoke desktop and mobile default map, selected NR/TV/KI/MH/FJ, coverage view, uncertainty view, and land-context loading race.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-08: Created from the folded design critique. Root finding: literal island polygons are honest but under-ink atolls at Pacific-basin zoom; a generated presence mark should carry the data encoding while land geometry remains secondary texture/context.
+- Status: pending
+
+## TASK-044
+- Phase: app-motion
+- Title: Add evidence-bearing motion to the guided atlas
+- Depends on: TASK-043
+- Assigned agent: Codex Builder/QA, Fable optional for timing review
+- Contract refs: context/DESIGN_BRIEF.md, context/WINNER_SCROLL_TOUR_AUDIT.md
+- Data refs: app/public/data/geographies.json
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Turns the scroll-led atlas from hard state cuts into a readable sequence where layer changes, focus, and uncertainty are easier to follow.
+- Functional notes: Add the smallest reduced-motion-safe motion layer: score/layer cross-fade or color transition, selected-mark bloom/focus, and camera easing for story beats that name a place. Prefer MapLibre/CSS native transitions already available; do not add a motion dependency.
+- Statistical notes: Motion must reveal, compare, focus, or re-encode evidence. It must not imply time trends unless the active layer is explicitly outlook/stress-test.
+- Edge cases: Respect prefers-reduced-motion; avoid pulsing alarm effects, decorative waves, and water/flood metaphors for non-flood data; preserve keyboard and scroll navigation.
+- Files to create/modify: app/src/components/map/AtlasMap.tsx, app/src/components/story/StoryRail.tsx if needed, app/src/styles/base.css, context/TASKS.md, context/logs/Progress Log.md
+- Artifacts to produce: motion implementation plus visual QA notes.
+- Acceptance criteria: Guided beat changes no longer feel like hard cuts where evidence is re-encoded; selected geography focus is visibly smooth; reduced-motion mode keeps immediate state changes; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Desktop scroll through all seven beats, keyboard beat navigation, reduced-motion emulation, mobile stepper.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-08: Created from the folded design critique. Keep motion evidence-bearing; decorative ocean shimmer and rising-water metaphors are out unless backed by a matching data layer.
+- Status: pending
+
+## TASK-045
+- Phase: app-visual-system
+- Title: Quiet the chrome and fix the type stack
+- Depends on: TASK-043
+- Assigned agent: Fable Builder, Codex QA/commit
+- Contract refs: context/DESIGN_BRIEF.md
+- Data refs: none
+- Scientific refs: none
+- User value / decision value: Lets the map read as the primary surface instead of a dashboard surrounded by competing panels.
+- Functional notes: Resolve the Inter mismatch either by self-hosting the intended font or by changing CSS to an intentional system stack. Consolidate or quiet map header, layer controls, legend, and metrics chrome where possible. Drop or fold the metrics pills if they do not add decision value. Keep detail-panel readability high; a full dark-glass conversion is optional, not required.
+- Statistical notes: No claims, scores, data files, or methodology should change.
+- Edge cases: Maintain WCAG text contrast, touch target sizes, visible caveats, source/method access, and mobile bottom-sheet usability.
+- Files to create/modify: app/index.html or app/src/styles/base.css, app/src/App.tsx and map/control components as needed, context/DESIGN_BRIEF.md, context/TASKS.md, context/logs/Progress Log.md
+- Artifacts to produce: visual-system cleanup with before/after QA notes.
+- Acceptance criteria: Intended type stack is real and documented; redundant floating chrome is reduced or visually quieted; map remains visible and usable on desktop/mobile; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Desktop explore mode with no selection, selected detail panel, coverage/uncertainty panels, mobile first load and bottom sheet.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-08: Created from the folded design critique. Audit confirmed Inter is declared but not loaded, and explore mode currently presents too many similarly bright floating UI clusters over the map.
+- Status: pending
+
+## TASK-046
+- Phase: story-design
+- Title: Tighten the guided story around data silence
+- Depends on: TASK-043
+- Assigned agent: Fable Editor, Codex claims QA
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md
+- Data refs: artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv, artifacts/tables/eda_similarity_neighbors.csv
+- Scientific refs: context/DATA_CARD.md, context/INFORMATION_DIVERGENCE_PLAN.md
+- User value / decision value: Tests whether the guided tour should open closer to the atlas's distinctive thesis: high apparent gaps and uneven official visibility.
+- Functional notes: Review the seven-beat order and copy. Consider moving the data-silence tension earlier, keeping method explanation after the hook, and deciding whether the JSD beat belongs in the guided spine or only in selected-place explore detail. Preserve the humanized TASK-033 voice.
+- Statistical notes: Keep all numeric claims source-backed; do not imply missing rows mean infrastructure absence; do not turn JSD into causal similarity or policy-need grouping.
+- Edge cases: Beat copy must fit desktop rail and mobile sheet; no new data claims without source trace; Nauru/Tuvalu story contrast can stay if it earns its place.
+- Files to create/modify: app/src/lib/tour.ts, app/src/components/story/* if needed, context/STORY_BRIEF.md, context/TASKS.md, context/logs/Progress Log.md
+- Artifacts to produce: revised tour order/copy or an explicit no-change decision with rationale.
+- Acceptance criteria: Guided story starts with a stronger reader hook without weakening caveats; method remains understandable; JSD is either clearly useful in the guided spine or moved out of it; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Desktop and mobile seven-beat read-through, copy overflow check, claims/source audit.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-08: Created from the folded design critique. Main question: the current tour is coherent but front-loads method before the most distinctive data-silence idea.
+- Status: pending
+
+## TASK-047
+- Phase: app-similarity
+- Title: Prototype selected-only JSD neighbor arcs
+- Depends on: TASK-043, TASK-046
+- Assigned agent: Codex Builder/QA, Fable optional for visual tuning
+- Contract refs: context/INFORMATION_DIVERGENCE_PLAN.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md
+- Data refs: app/public/data/geographies.json, artifacts/tables/eda_similarity_neighbors.csv
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Makes evidence-profile similarity visible without creating a global link web or leaderboard.
+- Functional notes: If TASK-046 keeps JSD as an experience layer, draw faint selected-only arcs or connectors from the selected geography to its nearest evidence-profile neighbors. Use exact generated neighbor data already in `Geo.similarityNeighbors`; do not use pairwise all-to-all links in the default map.
+- Statistical notes: Arc means official-data profile similarity only. It must not imply migration, adjacency, shared risk, shared policy need, or causal relationship.
+- Edge cases: Hide or simplify arcs on mobile if they clutter the map; keep exact JSD distances and caveats in the panel; do not make similarity color compete with gap/pressure/capacity ramps.
+- Files to create/modify: app/src/components/map/AtlasMap.tsx, app/src/components/map/atlasMapModel.ts and tests if geometry is extracted, app/src/components/panels/CountryPanel.tsx if copy needs alignment, context/TASKS.md, context/logs/Progress Log.md
+- Artifacts to produce: selected-only similarity visual or a documented no-build decision if it fails visual/story QA.
+- Acceptance criteria: Selecting Nauru or another geography shows at most the nearest generated neighbors as restrained arcs; no arcs render without a selected geography; panel and map agree on neighbors; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Select NR, TV, FJ, and a missing-row geography; verify arcs are readable, caveated, and not mistaken for physical connections.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-08: Created from the folded design critique and Codex response. Keep this behind TASK-046 because JSD should not consume visual complexity unless it remains part of the story.
+- Status: pending

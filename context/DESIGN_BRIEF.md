@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, and `TASK-031` accessibility QA.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-042` post-audit cleanup. The next design backlog is `TASK-043` through `TASK-047`: presence marks, evidence-bearing motion, chrome/type cleanup, story tightening, and selected-only JSD neighbor arcs.
 
 Design skill basis:
 
@@ -187,11 +187,18 @@ Initial size guidance:
 - Test a restrained range before locking size. Start around 8px to 18px on desktop and 9px to 20px on mobile.
 - Avoid the 7px to 24px range unless visual QA shows it does not overpower color or make low-evidence places look unimportant.
 
+Post-TASK-042 design direction:
+
+- Literal Natural Earth island geometry is valuable context, but it is too small to be the primary score mark at Pacific-basin zoom. Atoll geographies such as NR, TV, KI, and MH can become nearly invisible if land area carries the whole encoding.
+- `TASK-043` should restore a guaranteed-size primary data mark anchored to the scored centroid. Treat it as a "presence" mark: score color, evidence size/intensity, and monitoring/reporting status remain legible before land texture is considered.
+- Natural Earth land should become secondary texture or context inside/under the presence mark where available. It should not be the only thing that carries the data encoding, and it still must not imply official boundaries.
+- The selected viewfinder from TASK-035 should be retired only after presence marks make selected atolls findable without framing empty water.
+
 Selection state:
 
 - Do not use another data-like ring for selection because rings already encode reporting status.
 - Use a bracket, halo offset, label callout, or short leader line for selection.
-- TASK-035 accepted treatment: a viewfinder frame of four achromatic corner brackets around a fixed geographic window (about 1.6 degrees, pixel-clamped), never fitted to land, with a dotted tick from the circle edge to the nearest visual island and an on-surface note "map area, not territory". Land never takes the score ramp. The nearest-island tick is guarded by a unit test against attributing a neighbor's islands (American Samoa resolves to Tutuila, not Samoa). Attempt 2 adds the owner-requested island halo: land polygons are grouped to their nearest scored centroid (a distance grouping for highlighting, cutoff 3.5 degrees, leaving far context land and the disputed Matthew & Hunter islands unassigned by construction), and the selected place's island outlines glow white via MapLibre line layers. Land still never takes the score ramp; the on-map note reads "islands grouped by distance, not boundaries". A true territorial-extent or score-colored-island treatment still requires a future reviewed boundary-source task.
+- TASK-035 accepted treatment: a viewfinder frame of four achromatic corner brackets around a fixed geographic window (about 1.6 degrees, pixel-clamped), never fitted to land, with a dotted tick from the circle edge to the nearest visual island and an on-surface note "map area, not territory". TASK-038 grouped land polygons to their nearest scored centroid for selected-place highlighting only. TASK-039 then made anchored island shapes inherit score/status styling and hide centroid circles once land context loads. TASK-043 supersedes that visual direction: keep the honesty of land texture, but use a guaranteed-size presence mark as the primary score/status symbol so atolls are not under-inked by their tiny land area.
 
 Hover/focus state:
 
@@ -368,6 +375,7 @@ Typography direction:
 
 - Body and UI: highly legible sans-serif with tabular numerals.
 - Display: optional characterful serif or restrained display face for tour claims, used sparingly.
+- Current implementation declares Inter in CSS but does not load it. `TASK-045` should either self-host the intended font or make the system stack intentional.
 
 Tone:
 
@@ -559,6 +567,8 @@ Allowed motion:
 - tour step transitions,
 - optional uncertainty re-encoding transition.
 - optional selected-anchor similarity re-encoding transition.
+
+Current implementation uses very little motion; most guided beat changes hard-swap map state. `TASK-044` should add only evidence-bearing motion: layer re-encode transitions, selected-mark focus, and camera easing for named places. Decorative ocean shimmer, alarm pulses, and rising-water metaphors are out unless a matching data layer makes them honest.
 
 Motion verb:
 

@@ -69,10 +69,36 @@ export type GraticuleFeatureCollection = {
   features: GraticuleFeature[];
 };
 
+export type SimilarityArcFeature = {
+  type: "Feature";
+  geometry: {
+    type: "LineString";
+    coordinates: [[number, number], [number, number]];
+  };
+  properties: {
+    anchorCode: string;
+    neighborCode: string;
+    neighborName: string;
+    rank: number;
+    jsd: number;
+    width: number;
+    opacity: number;
+  };
+};
+
+export type SimilarityArcFeatureCollection = {
+  type: "FeatureCollection";
+  features: SimilarityArcFeature[];
+};
+
 const MAP_MOTION_MS = 420;
 
 export function mapMotionDuration(reducedMotion: boolean): number {
   return reducedMotion ? 0 : MAP_MOTION_MS;
+}
+
+export function similarityArcLimitForWidth(width: number): number {
+  return width < 520 ? 1 : 3;
 }
 
 export function fitBoundsForPacific(): [[number, number], [number, number]] {
@@ -129,6 +155,43 @@ export function buildGraticuleFeatureCollection(options?: {
         properties: { kind: "latitude" as const, value: lat },
       })),
     ],
+  };
+}
+
+export function buildSimilarityArcCollection(
+  geos: Geo[],
+  selectedCode: string | null,
+  maxNeighbors = 3,
+): SimilarityArcFeatureCollection {
+  const selected = selectedCode ? geos.find((geo) => geo.code === selectedCode) : null;
+  if (!selected || maxNeighbors <= 0) return { type: "FeatureCollection", features: [] };
+
+  const byCode = new Map(geos.map((geo) => [geo.code, geo]));
+  const start: [number, number] = [shiftPacificLon(selected.lon), selected.lat];
+  return {
+    type: "FeatureCollection",
+    features: selected.similarityNeighbors
+      .slice(0, maxNeighbors)
+      .flatMap((neighbor) => {
+        const geo = byCode.get(neighbor.code);
+        if (!geo) return [];
+        return [{
+          type: "Feature" as const,
+          geometry: {
+            type: "LineString" as const,
+            coordinates: [start, [shiftPacificLon(geo.lon), geo.lat]] as [[number, number], [number, number]],
+          },
+          properties: {
+            anchorCode: selected.code,
+            neighborCode: neighbor.code,
+            neighborName: neighbor.name,
+            rank: neighbor.rank,
+            jsd: neighbor.jsd,
+            width: Math.max(0.9, 1.7 - neighbor.rank * 0.2),
+            opacity: Number(Math.max(0.18, 0.42 - neighbor.rank * 0.08).toFixed(2)),
+          },
+        }];
+      }),
   };
 }
 

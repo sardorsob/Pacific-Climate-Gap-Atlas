@@ -3,10 +3,12 @@ import type { Geo } from "../../lib/atlasData";
 import {
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
+  buildSimilarityArcCollection,
   fitBoundsForPacific,
   assignLandAnchors,
   markerPaintFor,
   mapMotionDuration,
+  similarityArcLimitForWidth,
   toMapLibreCollection,
 } from "./atlasMapModel";
 
@@ -116,6 +118,94 @@ describe("atlas map model", () => {
   it("collapses map motion when reduced motion is requested", () => {
     expect(mapMotionDuration(false)).toBeGreaterThan(0);
     expect(mapMotionDuration(true)).toBe(0);
+  });
+
+  it("builds selected-only similarity arcs from generated nearest neighbors", () => {
+    const geos: Geo[] = [
+      {
+        ...baseGeo,
+        code: "NR",
+        lon: 166.93,
+        lat: -0.52,
+        similarityNeighbors: [
+          {
+            code: "MP",
+            name: "Northern Mariana Islands",
+            rank: 1,
+            jsd: 0.0797,
+            band: "similar profile",
+            reason: "Selected profile leans toward data visibility.",
+            caveat: "Similarity is about official-data profiles only.",
+          },
+          {
+            code: "GU",
+            name: "Guam",
+            rank: 2,
+            jsd: 0.0809,
+            band: "similar profile",
+            reason: "Selected profile leans toward data visibility.",
+            caveat: "Similarity is about official-data profiles only.",
+          },
+          {
+            code: "NU",
+            name: "Niue",
+            rank: 3,
+            jsd: 0.0895,
+            band: "similar profile",
+            reason: "Both profiles lean toward data visibility.",
+            caveat: "Similarity is about official-data profiles only.",
+          },
+        ],
+      },
+      { ...baseGeo, code: "MP", name: "Northern Mariana Islands", lon: 145.67, lat: 15.1 },
+      { ...baseGeo, code: "GU", name: "Guam", lon: 144.79, lat: 13.44 },
+      { ...baseGeo, code: "NU", name: "Niue", lon: -169.87, lat: -19.05 },
+      { ...baseGeo, code: "TV", name: "Tuvalu", lon: 179.2, lat: -8.52 },
+    ];
+
+    const collection = buildSimilarityArcCollection(geos, "NR");
+
+    expect(collection.features.map((feature) => feature.properties.neighborCode)).toEqual(["MP", "GU", "NU"]);
+    expect(collection.features[0]).toMatchObject({
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [166.93, -0.52],
+          [145.67, 15.1],
+        ],
+      },
+      properties: {
+        anchorCode: "NR",
+        neighborCode: "MP",
+        neighborName: "Northern Mariana Islands",
+        rank: 1,
+        jsd: 0.0797,
+        width: 1.5,
+        opacity: 0.34,
+      },
+    });
+    expect(collection.features[2].geometry.coordinates[1][0]).toBeCloseTo(190.13);
+  });
+
+  it("omits similarity arcs without a selected geography and can simplify to one neighbor", () => {
+    const geos: Geo[] = [
+      {
+        ...baseGeo,
+        similarityNeighbors: [
+          { code: "GU", name: "Guam", rank: 1, jsd: 0.08, band: "similar", reason: "", caveat: "" },
+          { code: "MISSING", name: "Missing", rank: 2, jsd: 0.09, band: "similar", reason: "", caveat: "" },
+        ],
+      },
+      { ...baseGeo, code: "GU", name: "Guam", lon: 144.79, lat: 13.44 },
+    ];
+
+    expect(buildSimilarityArcCollection(geos, null).features).toEqual([]);
+    expect(buildSimilarityArcCollection(geos, "NR", 1).features.map((f) => f.properties.neighborCode)).toEqual(["GU"]);
+  });
+
+  it("limits similarity arcs on compact mobile map widths", () => {
+    expect(similarityArcLimitForWidth(390)).toBe(1);
+    expect(similarityArcLimitForWidth(900)).toBe(3);
   });
 
   it("returns dashed and hatch paint cues for monitoring reporting states", () => {

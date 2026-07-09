@@ -34,6 +34,7 @@ Post-TASK-046 story iteration:
 
 - The guided tour now opens on what the map can see, immediately moves into uneven official monitoring visibility, then explains the score formula. This keeps the distinctive data-visibility tension close to the opening without hiding the method.
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
+- `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
 
 ## Story Contract
 

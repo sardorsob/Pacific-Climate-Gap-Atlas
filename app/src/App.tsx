@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BookOpen, ChevronUp, Compass, Layers } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
+import { similarityArcLimitForWidth } from "./components/map/atlasMapModel";
 import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
@@ -8,7 +9,7 @@ import { DataQuietCallout } from "./components/panels/DataQuietCallout";
 import { FingerprintPreview } from "./components/panels/FingerprintPreview";
 import { MethodDrawer } from "./components/MethodDrawer";
 import { StoryRail } from "./components/story/StoryRail";
-import { BEATS, type Beat } from "./lib/tour";
+import { BEATS, shouldShowSimilarityArcs, type Beat } from "./lib/tour";
 import { atlasLayers } from "./lib/layers";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
@@ -23,6 +24,23 @@ function monShort(geo: Geo): string {
   if (geo.reportingStatus === "reported_positive_latest_count") return "Reported";
   if (geo.reportingStatus === "reported_zero_latest_count") return "Reports 0";
   return "No rows";
+}
+
+function currentViewportWidth(): number {
+  return typeof window === "undefined" ? 1024 : window.innerWidth;
+}
+
+function useSimilarityNeighborLimit(): number {
+  const [width, setWidth] = useState(currentViewportWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(currentViewportWidth());
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return similarityArcLimitForWidth(width);
 }
 
 // Compact two-column "same score, different story" profile used inside beat 3.
@@ -81,6 +99,7 @@ export function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sheetExpanded, setSheetExpanded] = useState(false);
   const [legendOpen, setLegendOpen] = useState(false);
+  const similarityNeighborLimit = useSimilarityNeighborLimit();
 
   useEffect(() => {
     let cancelled = false;
@@ -101,6 +120,14 @@ export function App() {
   const priorityCodes = priorityOneCodes(geos);
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
+  const activeBeat = BEATS[beatIndex];
+  const showSimilarityArcs = shouldShowSimilarityArcs({
+    hasSelection: selectedGeo !== null,
+    viewMode,
+    outlookOn,
+    mode,
+    beatId: activeBeat.id,
+  });
 
   const meta = outlookOn
     ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
@@ -277,6 +304,7 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
+        similarityNeighborLimit={similarityNeighborLimit}
         onClose={closePanel}
         onOpenMethod={() => setDrawerOpen(true)}
       />
@@ -295,6 +323,8 @@ export function App() {
           outlookOn={outlookOn}
           selectedCode={selectedCode}
           priorityCodes={priorityCodes}
+          showSimilarityArcs={showSimilarityArcs}
+          similarityNeighborLimit={similarityNeighborLimit}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}
         />

@@ -23,6 +23,22 @@ export type Beat = {
   state: BeatState;
 };
 
+export function shouldShowSimilarityArcs({
+  hasSelection,
+  viewMode,
+  outlookOn,
+  mode,
+  beatId,
+}: {
+  hasSelection: boolean;
+  viewMode: ViewMode;
+  outlookOn: boolean;
+  mode: "guided" | "explore";
+  beatId: string;
+}): boolean {
+  return hasSelection && viewMode === "default" && !outlookOn && (mode === "explore" || beatId === "fingerprint");
+}
+
 // Seven-beat spine (approved plan). Regional texture and outlook are kept OUT of
 // the guided spine and remain available in free exploration.
 export const BEATS: Beat[] = [

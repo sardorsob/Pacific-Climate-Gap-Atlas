@@ -69,6 +69,12 @@ export type GraticuleFeatureCollection = {
   features: GraticuleFeature[];
 };
 
+const MAP_MOTION_MS = 420;
+
+export function mapMotionDuration(reducedMotion: boolean): number {
+  return reducedMotion ? 0 : MAP_MOTION_MS;
+}
+
 export function fitBoundsForPacific(): [[number, number], [number, number]] {
   return [[130, -30], [240, 20]];
 }

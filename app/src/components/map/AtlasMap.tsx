@@ -16,6 +16,7 @@ import {
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
   fitBoundsForPacific,
+  mapMotionDuration,
   shiftPacificLon,
   toMapLibreCollection,
   type AtlasFeatureCollection,
@@ -75,6 +76,16 @@ const GRATICULE_EQUATOR_LAYER_ID = "atlas-graticule-equator";
 const PRIORITY_LAYER_ID = "atlas-priority-halos";
 const SELECTED_PRESENCE_LAYER_ID = "atlas-selected-presence";
 const POINT_LAYER_ID = "atlas-centroid-points";
+const MOTION_TARGETS = [
+  { layer: PRIORITY_LAYER_ID, paint: ["circle-radius", "circle-opacity", "circle-stroke-width"] },
+  { layer: SELECTED_PRESENCE_LAYER_ID, paint: ["circle-radius", "circle-opacity", "circle-color"] },
+  { layer: POINT_LAYER_ID, paint: ["circle-radius", "circle-color", "circle-opacity", "circle-stroke-color"] },
+  { layer: LAND_MARK_FILL_LAYER_ID, paint: ["fill-color", "fill-opacity"] },
+  { layer: LAND_MARK_GLOW_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
+  { layer: LAND_MARK_SOLID_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
+  { layer: LAND_MARK_ZERO_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
+  { layer: LAND_MARK_MISSING_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
+] as const;
 
 const PACIFIC_STYLE: StyleSpecification = {
   version: 8,
@@ -136,9 +147,25 @@ function cameraForViewport(width: number): { center: [number, number]; zoom: num
   return { center: [185, -6], zoom: 3.15 };
 }
 
+function selectedCameraForViewport(width: number, geo: Geo): { center: [number, number]; zoom: number } {
+  const base = cameraForViewport(width);
+  return {
+    center: [shiftPacificLon(geo.lon), geo.lat],
+    zoom: width < 520 ? base.zoom : Math.min(base.zoom + 0.2, 3.45),
+  };
+}
+
 function fitPacificCamera(map: MapLibreMap, duration = 0) {
   const width = map.getContainer().clientWidth;
   map.easeTo({ ...cameraForViewport(width), duration });
+}
+
+function focusSelectedCamera(map: MapLibreMap, geo: Geo, reducedMotion: boolean) {
+  const width = map.getContainer().clientWidth;
+  map.easeTo({
+    ...selectedCameraForViewport(width, geo),
+    duration: mapMotionDuration(reducedMotion),
+  });
 }
 
 function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
@@ -146,10 +173,20 @@ function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
   if (source) source.setData(asGeoJson(collection));
 }
 
-function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection | null) {
+function syncMapMotion(map: MapLibreMap, reducedMotion: boolean) {
+  const transition = { duration: mapMotionDuration(reducedMotion), delay: 0 };
+  for (const target of MOTION_TARGETS) {
+    if (!map.getLayer(target.layer)) continue;
+    for (const property of target.paint) {
+      map.setPaintProperty(target.layer, `${property}-transition`, transition);
+    }
+  }
+}
+
+function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection | null, reducedMotion: boolean) {
   if (!collection) return;
   if (!map.isStyleLoaded()) {
-    window.setTimeout(() => syncLandContext(map, collection), 50);
+    window.setTimeout(() => syncLandContext(map, collection, reducedMotion), 50);
     return;
   }
   const source = map.getSource(LAND_SOURCE_ID) as GeoJSONSource | undefined;
@@ -253,6 +290,7 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       },
     }, beforeId);
   }
+  syncMapMotion(map, reducedMotion);
 }
 
 function addGraticuleLayers(map: MapLibreMap) {
@@ -291,7 +329,7 @@ function addGraticuleLayers(map: MapLibreMap) {
   }
 }
 
-function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
+function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, reducedMotion: boolean) {
   if (!map.getSource(MAP_SOURCE_ID)) {
     map.addSource(MAP_SOURCE_ID, {
       type: "geojson",
@@ -351,6 +389,7 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
       },
     });
   }
+  syncMapMotion(map, reducedMotion);
 }
 
 function project(map: MapLibreMap, lon: number, lat: number): ScreenPoint {
@@ -408,6 +447,24 @@ function buildOverlayState(map: MapLibreMap, geos: Geo[]): OverlayState {
   return { points, subregions, lonLines, latLines, pxPerDeg };
 }
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = () => setReduced(media.matches);
+    handleChange();
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, []);
+
+  return reduced;
+}
+
 export function AtlasMap({
   geos,
   activeScore,
@@ -421,6 +478,8 @@ export function AtlasMap({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const onSelectRef = useRef(onSelect);
+  const reducedMotion = usePrefersReducedMotion();
+  const reducedMotionRef = useRef(reducedMotion);
   const [mapReady, setMapReady] = useState(false);
   const [landContext, setLandContext] = useState<GeoJSON.FeatureCollection | null>(null);
   const [overlay, setOverlay] = useState<OverlayState>(EMPTY_OVERLAY);
@@ -457,6 +516,10 @@ export function AtlasMap({
   useEffect(() => {
     onSelectRef.current = onSelect;
   }, [onSelect]);
+
+  useEffect(() => {
+    reducedMotionRef.current = reducedMotion;
+  }, [reducedMotion]);
 
   useEffect(() => {
     mapLibreFeaturesRef.current = mapLibreFeatures;
@@ -534,8 +597,8 @@ export function AtlasMap({
     };
     const handleLoad = () => {
       addGraticuleLayers(map);
-      syncLandContext(map, landContextRef.current);
-      addAtlasLayers(map, mapLibreFeaturesRef.current);
+      syncLandContext(map, landContextRef.current, reducedMotionRef.current);
+      addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current);
       map.on("click", POINT_LAYER_ID, handlePointClick);
       map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
       map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
@@ -570,8 +633,14 @@ export function AtlasMap({
   useEffect(() => {
     const map = mapRef.current;
     if (!mapReady || !map) return;
-    syncLandContext(map, styledLand);
-  }, [styledLand, mapReady]);
+    syncLandContext(map, styledLand, reducedMotion);
+  }, [styledLand, mapReady, reducedMotion]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!mapReady || !map) return;
+    syncMapMotion(map, reducedMotion);
+  }, [mapReady, reducedMotion]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -619,6 +688,14 @@ export function AtlasMap({
       map.off("mouseleave", LAND_MARK_MISSING_LAYER_ID, handleLandLeave);
     };
   }, [styledLand, mapReady]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!mapReady || !map) return;
+    const selectedGeo = selectedCode ? geos.find((geo) => geo.code === selectedCode) : null;
+    if (selectedGeo) focusSelectedCamera(map, selectedGeo, reducedMotion);
+    else fitPacificCamera(map, mapMotionDuration(reducedMotion));
+  }, [geos, mapReady, reducedMotion, selectedCode]);
 
   useEffect(() => {
     const map = mapRef.current;

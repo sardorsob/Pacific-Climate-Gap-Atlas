@@ -6,6 +6,7 @@ import {
   fitBoundsForPacific,
   assignLandAnchors,
   markerPaintFor,
+  mapMotionDuration,
   toMapLibreCollection,
 } from "./atlasMapModel";
 
@@ -110,6 +111,11 @@ describe("atlas map model", () => {
     expect(shifted.features).toHaveLength(1);
     expect(shifted.features[0].properties.code).toBe("NR");
     expect(shifted.features[0].geometry.coordinates).toEqual([166.93, -0.52]);
+  });
+
+  it("collapses map motion when reduced motion is requested", () => {
+    expect(mapMotionDuration(false)).toBeGreaterThan(0);
+    expect(mapMotionDuration(true)).toBe(0);
   });
 
   it("returns dashed and hatch paint cues for monitoring reporting states", () => {

@@ -1032,11 +1032,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Guided beat changes no longer feel like hard cuts where evidence is re-encoded; selected geography focus is visibly smooth; reduced-motion mode keeps immediate state changes; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Desktop scroll through all seven beats, keyboard beat navigation, reduced-motion emulation, mobile stepper.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex Checker accepted. Added a pure `mapMotionDuration()` helper with red/green coverage so reduced-motion users get zero-duration map motion. AtlasMap now applies native MapLibre paint transitions to score/coverage/uncertainty re-encodes, selected presence bloom, priority emphasis, and subdued anchored-land texture; selected geographies get a subtle camera focus using the same duration rule. CSS transitions are limited to focus/label/progress states and are disabled inside the existing `prefers-reduced-motion: reduce` block. No motion dependency, decorative pulse, ocean shimmer, water/flood metaphor, scoring change, or data file change was introduced. Verification passed: focused red/green map-model test, `npm --prefix app run test` (12/12), `npm --prefix app run build`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Live Scrapling smoke rendered the app and captured a screenshot after the motion patch, confirming the guided atlas still exposes 22 accessible presence-mark controls and existing story/legend content. Interactive click/reduced-motion browser emulation could not run because local Playwright has no Chromium binary and Scrapling cannot click/emulate media in this session; reduced-motion behavior is covered by the helper test plus source review.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-08: Created from the folded design critique. Keep motion evidence-bearing; decorative ocean shimmer and rising-water metaphors are out unless backed by a matching data layer.
-- Status: pending
+- Attempt log: 2026-07-08: Created from the folded design critique. Keep motion evidence-bearing; decorative ocean shimmer and rising-water metaphors are out unless backed by a matching data layer. 2026-07-09: Builder started after TASK-043 commit. Scope: native MapLibre paint transitions for layer re-encodes, selected-place camera/focus easing, and CSS transitions only where they reveal selection or active beat state; no new dependency and reduced-motion must collapse durations to immediate updates. Read-only sidecar Peirce confirmed this as the smallest useful motion patch. Builder moved in-progress -> in-review after tests/build/live smoke. Checker accepted and moved in-review -> done.
+- Status: done
 
 ## TASK-045
 - Phase: app-visual-system

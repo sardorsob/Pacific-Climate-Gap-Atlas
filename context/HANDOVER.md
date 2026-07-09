@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, `TASK-031`, `TASK-032`, `TASK-033`, `TASK-034`, `TASK-035`, `TASK-036`, `TASK-037`, `TASK-038`, `TASK-039`, `TASK-040`, `TASK-041`, `TASK-042`, and `TASK-043` are complete: the map surface uses MapLibre with guaranteed-size centroid presence marks, Natural Earth visual land texture, first-render graticule lines, overlay labels, accessible geography hit targets, revised evidence-backed story copy, post-map interaction polish, readiness packaging notes, Codex accessibility QA, accepted final Fable visual polish, humanized storyboard copy, desktop guided-story navigation cleanup, regrouped selected-place detail panel, selected-place nearest-neighbor JSD, nearest-centroid island grouping, fixed explainer state, single-sourced/humanized JSD text, cleaned legend/comparator/fallback mark behavior, and restored atoll-legible presence marks while retiring the selected viewfinder.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, `TASK-031`, `TASK-032`, `TASK-033`, `TASK-034`, `TASK-035`, `TASK-036`, `TASK-037`, `TASK-038`, `TASK-039`, `TASK-040`, `TASK-041`, `TASK-042`, `TASK-043`, and `TASK-044` are complete: the map surface uses MapLibre with guaranteed-size centroid presence marks, Natural Earth visual land texture, first-render graticule lines, overlay labels, accessible geography hit targets, evidence-backed layer transitions, reduced-motion-safe selected camera focus, revised story copy, post-map interaction polish, readiness packaging notes, Codex accessibility QA, accepted final Fable visual polish, humanized storyboard copy, desktop guided-story navigation cleanup, regrouped selected-place detail panel, selected-place nearest-neighbor JSD, nearest-centroid island grouping, fixed explainer state, single-sourced/humanized JSD text, cleaned legend/comparator/fallback mark behavior, and restored atoll-legible presence marks while retiring the selected viewfinder.
 
 ## How To Validate The Scaffold
 
@@ -71,11 +71,10 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Start `TASK-044` next: add reduced-motion-safe, evidence-bearing motion to layer/selection/story transitions without introducing a motion dependency.
-2. Then run `TASK-045` chrome/type cleanup. It may overlap CSS and map shell files with `TASK-044`, so split only if the file ownership is clean.
-3. Use `TASK-046` to decide whether the guided tour should open closer to the data-silence thesis and whether JSD stays in the guided spine. Only then consider `TASK-047` selected-only JSD neighbor arcs.
-4. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
-5. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
+1. Start `TASK-045` next: quiet the chrome and resolve the Inter/type-stack mismatch without changing data or methodology.
+2. Use `TASK-046` to decide whether the guided tour should open closer to the data-silence thesis and whether JSD stays in the guided spine. Only then consider `TASK-047` selected-only JSD neighbor arcs.
+3. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
+4. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
 
 ## Known Caveats
 

@@ -103,6 +103,7 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
   color: transparent;
   cursor: pointer;
   pointer-events: auto;
+  transition: opacity 0.22s ease, box-shadow 0.22s ease;
 }
 .map-a11y-point[data-dimmed="true"] { opacity: 0.55; }
 .map-a11y-point:focus-visible {
@@ -111,14 +112,20 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
   box-shadow: 0 0 0 6px rgba(13, 104, 114, 0.42);
 }
 
-.map-labels .map-label__lead { stroke: rgba(220, 232, 238, 0.45); stroke-width: 1; }
+.map-labels .map-label__lead {
+  stroke: rgba(220, 232, 238, 0.45);
+  stroke-width: 1;
+  transition: stroke 0.22s ease, opacity 0.22s ease;
+}
 .map-label__name {
   fill: #e9f1f4; font: 600 12px Inter, sans-serif;
   paint-order: stroke; stroke: rgba(6, 16, 24, 0.72); stroke-width: 3px;
+  transition: fill 0.22s ease, font-size 0.22s ease;
 }
 .map-label__tag {
   fill: #cdd6dc; font: 600 10px Inter, sans-serif;
   paint-order: stroke; stroke: rgba(6, 16, 24, 0.72); stroke-width: 3px;
+  transition: fill 0.22s ease;
 }
 .map-label--selected .map-label__name { fill: #ffffff; font-weight: 800; font-size: 14px; }
 
@@ -390,7 +397,9 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .atlas-point, .panel-dock, .dock--controls, .dock--tour { transition: none; }
+  .atlas-point, .panel-dock, .dock--controls, .dock--tour,
+  .map-a11y-point, .map-label__lead, .map-label__name, .map-label__tag,
+  .beat-progress__dot { transition: none; }
   .story-rail__scroll { scroll-behavior: auto; }
 }
 
@@ -422,7 +431,14 @@ h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; l
 
 .beat-progress { list-style: none; margin: 0; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 2px; align-items: center; border-bottom: 1px solid var(--line); }
 .beat-progress__tick { display: inline-flex; align-items: center; gap: 6px; padding: 5px 6px; border: 0; background: transparent; cursor: pointer; border-radius: var(--r-chip); }
-.beat-progress__dot { width: 9px; height: 9px; border-radius: 50%; background: #cdd6dc; border: 1px solid var(--line); }
+.beat-progress__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #cdd6dc;
+  border: 1px solid var(--line);
+  transition: background-color 0.22s ease, box-shadow 0.22s ease;
+}
 .beat-progress__tick[data-done="true"] .beat-progress__dot { background: var(--accent); }
 .beat-progress__tick[aria-current="step"] .beat-progress__dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(13, 104, 114, 0.2); }
 .beat-progress__label { font-size: 10.5px; color: var(--ink-soft); }

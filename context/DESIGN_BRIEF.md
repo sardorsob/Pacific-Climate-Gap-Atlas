@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-042` post-audit cleanup. The next design backlog is `TASK-043` through `TASK-047`: presence marks, evidence-bearing motion, chrome/type cleanup, story tightening, and selected-only JSD neighbor arcs.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-044` post-audit cleanup. The next design backlog is `TASK-045` through `TASK-047`: chrome/type cleanup, story tightening, and selected-only JSD neighbor arcs.
 
 Design skill basis:
 
@@ -568,7 +568,7 @@ Allowed motion:
 - optional uncertainty re-encoding transition.
 - optional selected-anchor similarity re-encoding transition.
 
-Current implementation uses very little motion; most guided beat changes hard-swap map state. `TASK-044` should add only evidence-bearing motion: layer re-encode transitions, selected-mark focus, and camera easing for named places. Decorative ocean shimmer, alarm pulses, and rising-water metaphors are out unless a matching data layer makes them honest.
+TASK-044 added the first evidence-bearing motion pass: native MapLibre paint transitions for layer re-encodes, selected-mark focus, priority emphasis, and anchored-land texture, plus subtle selected-camera focus. Reduced-motion mode collapses map motion to zero and disables the added CSS transitions. Decorative ocean shimmer, alarm pulses, and rising-water metaphors remain out unless a matching data layer makes them honest.
 
 Motion verb:
 

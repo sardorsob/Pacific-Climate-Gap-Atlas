@@ -190,15 +190,15 @@ Initial size guidance:
 Post-TASK-042 design direction:
 
 - Literal Natural Earth island geometry is valuable context, but it is too small to be the primary score mark at Pacific-basin zoom. Atoll geographies such as NR, TV, KI, and MH can become nearly invisible if land area carries the whole encoding.
-- `TASK-043` should restore a guaranteed-size primary data mark anchored to the scored centroid. Treat it as a "presence" mark: score color, evidence size/intensity, and monitoring/reporting status remain legible before land texture is considered.
+- `TASK-043` restored a guaranteed-size primary data mark anchored to the scored centroid. Treat it as a "presence" mark: score color, evidence size/intensity, and monitoring/reporting status remain legible before land texture is considered.
 - Natural Earth land should become secondary texture or context inside/under the presence mark where available. It should not be the only thing that carries the data encoding, and it still must not imply official boundaries.
-- The selected viewfinder from TASK-035 should be retired only after presence marks make selected atolls findable without framing empty water.
+- The selected viewfinder from TASK-035 is retired. Selected state now relies on the guaranteed-size presence mark and selected bloom rather than framing empty water.
 
 Selection state:
 
 - Do not use another data-like ring for selection because rings already encode reporting status.
 - Use a bracket, halo offset, label callout, or short leader line for selection.
-- TASK-035 accepted treatment: a viewfinder frame of four achromatic corner brackets around a fixed geographic window (about 1.6 degrees, pixel-clamped), never fitted to land, with a dotted tick from the circle edge to the nearest visual island and an on-surface note "map area, not territory". TASK-038 grouped land polygons to their nearest scored centroid for selected-place highlighting only. TASK-039 then made anchored island shapes inherit score/status styling and hide centroid circles once land context loads. TASK-043 supersedes that visual direction: keep the honesty of land texture, but use a guaranteed-size presence mark as the primary score/status symbol so atolls are not under-inked by their tiny land area.
+- TASK-035 accepted treatment: a viewfinder frame of four achromatic corner brackets around a fixed geographic window (about 1.6 degrees, pixel-clamped), never fitted to land, with a dotted tick from the circle edge to the nearest visual island and an on-surface note "map area, not territory". TASK-038 grouped land polygons to their nearest scored centroid for selected-place highlighting only. TASK-039 then made anchored island shapes inherit score/status styling and hide centroid circles once land context loads. TASK-043 supersedes that visual direction: the viewfinder is removed, guaranteed-size presence marks carry the primary score/status symbol, and Natural Earth land stays as subdued texture/context so atolls are not under-inked by their tiny land area.
 
 Hover/focus state:
 

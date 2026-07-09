@@ -73,6 +73,26 @@ export function fitBoundsForPacific(): [[number, number], [number, number]] {
   return [[130, -30], [240, 20]];
 }
 
+export function shiftPacificLon(lon: number): number {
+  return lon < 0 ? lon + 360 : lon;
+}
+
+export function toMapLibreCollection(collection: AtlasFeatureCollection): AtlasFeatureCollection {
+  return {
+    ...collection,
+    features: collection.features.map((feature) => ({
+      ...feature,
+      geometry: {
+        ...feature.geometry,
+        coordinates: [
+          shiftPacificLon(feature.geometry.coordinates[0]),
+          feature.geometry.coordinates[1],
+        ],
+      },
+    })),
+  };
+}
+
 export function buildGraticuleFeatureCollection(options?: {
   longitudes?: number[];
   latitudes?: number[];
@@ -182,105 +202,6 @@ function markerFillFor(geo: Geo, state: AtlasMapState): string {
   if (state.viewMode === "uncertainty") return uncertaintyColor(geo.rankRange);
   if (state.viewMode === "coverage") return "#64777f";
   return scoreColor(state.activeScore, valueForScore(geo, state.activeScore));
-}
-
-// Nearest visual land feature to a scored centroid, in shifted Pacific
-// longitude space. Used only to draw an orientation tick; it is not a
-// territorial attribution or boundary join.
-export function nearestLandCenter(
-  lon: number,
-  lat: number,
-  land: GeoJSON.FeatureCollection,
-): { lon: number; lat: number } | null {
-  const shifted = lon < 0 ? lon + 360 : lon;
-  let best: { lon: number; lat: number } | null = null;
-  let bestDist = Infinity;
-  for (const feature of land.features) {
-    const geometry = feature.geometry;
-    if (!geometry) continue;
-    const polygons =
-      geometry.type === "Polygon"
-        ? [geometry.coordinates]
-        : geometry.type === "MultiPolygon"
-          ? geometry.coordinates
-          : [];
-    for (const polygon of polygons) {
-      const ring = polygon[0];
-      if (!ring || ring.length === 0) continue;
-      let minX = Infinity;
-      let minY = Infinity;
-      let maxX = -Infinity;
-      let maxY = -Infinity;
-      for (const [x, y] of ring) {
-        const sx = x < 0 ? x + 360 : x;
-        if (sx < minX) minX = sx;
-        if (sx > maxX) maxX = sx;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-      }
-      const cx = (minX + maxX) / 2;
-      const cy = (minY + maxY) / 2;
-      const dist = (cx - shifted) ** 2 + (cy - lat) ** 2;
-      if (dist < bestDist) {
-        bestDist = dist;
-        best = { lon: cx, lat: cy };
-      }
-    }
-  }
-  return best;
-}
-
-export type ViewfinderGeometry = {
-  x0: number;
-  y0: number;
-  x1: number;
-  y1: number;
-  cornerLen: number;
-  tick: { x1: number; y1: number; x2: number; y2: number } | null;
-};
-
-// Screen geometry for the selection viewfinder: a fixed +/-1.6 deg window
-// clamped to sane pixel sizes, plus an optional tick to the nearest island.
-// Pure so the clamp and tick-suppression rules stay unit-testable.
-export function viewfinderGeometry(options: {
-  point: { x: number; y: number };
-  pxPerDeg: { x: number; y: number };
-  minViewportSide: number;
-  geoLon: number;
-  geoLat: number;
-  pointRadius: number;
-  landCenter: { lon: number; lat: number } | null;
-}): ViewfinderGeometry {
-  const { point, pxPerDeg, minViewportSide, geoLon, geoLat, pointRadius, landCenter } = options;
-  const half = Math.min(Math.max(1.6 * pxPerDeg.x, 45), minViewportSide * 0.17);
-  const cornerLen = Math.min(14, half * 0.3);
-
-  let tick: ViewfinderGeometry["tick"] = null;
-  if (landCenter) {
-    const shifted = geoLon < 0 ? geoLon + 360 : geoLon;
-    const tx = point.x + (landCenter.lon - shifted) * pxPerDeg.x;
-    const ty = point.y - (landCenter.lat - geoLat) * pxPerDeg.y;
-    const dist = Math.hypot(tx - point.x, ty - point.y);
-    if (dist > pointRadius + 8) {
-      const ux = (tx - point.x) / dist;
-      const uy = (ty - point.y) / dist;
-      tick = {
-        x1: point.x + ux * (pointRadius + 3),
-        y1: point.y + uy * (pointRadius + 3),
-        x2: tx,
-        y2: ty,
-      };
-    }
-  }
-
-  return {
-    x0: point.x - half,
-    y0: point.y - half,
-    x1: point.x + half,
-    y1: point.y + half,
-    cornerLen,
-    tick,
-  };
 }
 
 // Tag each visual land feature with the geo code of its nearest scored

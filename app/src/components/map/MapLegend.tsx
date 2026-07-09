@@ -44,11 +44,11 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
       </div>
 
       <div className="legend__block">
-        <span className="legend__label">Island glow - indicators behind the score (4 to 9)</span>
+        <span className="legend__label">Presence mark - indicators behind the score (4 to 9)</span>
         <span className="legend__sizes" aria-hidden="true">
-          <span className="legend__island legend__island--sm" />
-          <span className="legend__island legend__island--md" />
-          <span className="legend__island legend__island--lg" />
+          <span className="legend__presence legend__presence--sm" />
+          <span className="legend__presence legend__presence--md" />
+          <span className="legend__presence legend__presence--lg" />
         </span>
       </div>
 
@@ -61,7 +61,7 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
         </ul>
       </div>
 
-      <p className="legend__note">Island marks are grouped by nearest centroid; they are not official boundaries.</p>
+      <p className="legend__note">Island texture is grouped by nearest centroid; it is not an official boundary.</p>
     </section>
   );
 }

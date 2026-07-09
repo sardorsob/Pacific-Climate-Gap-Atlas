@@ -16,8 +16,8 @@ import {
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
   fitBoundsForPacific,
-  nearestLandCenter,
-  viewfinderGeometry,
+  shiftPacificLon,
+  toMapLibreCollection,
   type AtlasFeatureCollection,
   type AtlasPointFeature,
 } from "./atlasMapModel";
@@ -73,6 +73,7 @@ const GRATICULE_SOURCE_ID = "atlas-graticule";
 const GRATICULE_LAYER_ID = "atlas-graticule-lines";
 const GRATICULE_EQUATOR_LAYER_ID = "atlas-graticule-equator";
 const PRIORITY_LAYER_ID = "atlas-priority-halos";
+const SELECTED_PRESENCE_LAYER_ID = "atlas-selected-presence";
 const POINT_LAYER_ID = "atlas-centroid-points";
 
 const PACIFIC_STYLE: StyleSpecification = {
@@ -96,28 +97,6 @@ function lonLabel(shiftLon: number): string {
   return `${Math.abs(real)}\u00b0${real > 0 ? "E" : "W"}`;
 }
 
-function shiftPacificLon(lon: number): number {
-  return lon < 0 ? lon + 360 : lon;
-}
-
-function toMapLibreCollection(collection: AtlasFeatureCollection, hiddenCodes = new Set<string>()): AtlasFeatureCollection {
-  return {
-    ...collection,
-    features: collection.features
-      .filter((feature) => !hiddenCodes.has(feature.properties.code))
-      .map((feature) => ({
-        ...feature,
-        geometry: {
-          ...feature.geometry,
-          coordinates: [
-            shiftPacificLon(feature.geometry.coordinates[0]),
-            feature.geometry.coordinates[1],
-          ],
-        },
-      })),
-  };
-}
-
 function asGeoJson(collection: unknown): GeoJSON.FeatureCollection {
   return collection as unknown as GeoJSON.FeatureCollection;
 }
@@ -138,8 +117,8 @@ function styleAnchoredLand(
         properties: {
           ...feature.properties,
           fillColor: props?.fillColor ?? "transparent",
-          markOpacity: props ? Math.min(0.88, props.opacity) : 0,
-          glowOpacity: props ? Math.min(0.78, props.opacity) : 0,
+          markOpacity: props ? Math.min(0.34, props.opacity * 0.42) : 0,
+          glowOpacity: props ? Math.min(0.28, props.opacity * 0.38) : 0,
           strokeColor: props?.strokeColor ?? "transparent",
           reportingStatus: props?.reportingStatus ?? null,
           selected: props?.selected ?? false,
@@ -206,8 +185,7 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       },
     }, beforeId);
   }
-  // Island marks replace point circles once land context is available. The
-  // grouped island shape carries the same score fill and reporting outline.
+  // Island texture stays secondary; centroid presence marks carry the data.
   if (!map.getLayer(LAND_MARK_FILL_LAYER_ID)) {
     map.addLayer({
       id: LAND_MARK_FILL_LAYER_ID,
@@ -216,7 +194,7 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       filter: ANCHOR_FILTER,
       paint: {
         "fill-color": ["get", "fillColor"],
-        "fill-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+        "fill-opacity": ["get", "markOpacity"],
       },
     }, beforeId);
   }
@@ -228,9 +206,9 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       filter: ANCHOR_FILTER,
       paint: {
         "line-color": ["get", "fillColor"],
-        "line-width": ["case", ["==", ["get", "selected"], true], 10, 6],
+        "line-width": ["case", ["==", ["get", "selected"], true], 6, 4],
         "line-blur": 1.4,
-        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "glowOpacity"]],
+        "line-opacity": ["get", "glowOpacity"],
       },
     }, beforeId);
   }
@@ -242,8 +220,8 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       filter: anchorStatusFilter("reported_positive_latest_count"),
       paint: {
         "line-color": ["get", "strokeColor"],
-        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.8],
-        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+        "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3],
+        "line-opacity": ["get", "markOpacity"],
       },
     }, beforeId);
   }
@@ -255,9 +233,9 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       filter: anchorStatusFilter("reported_zero_latest_count"),
       paint: {
         "line-color": ["get", "strokeColor"],
-        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.9],
+        "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3],
         "line-dasharray": [2, 2],
-        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+        "line-opacity": ["get", "markOpacity"],
       },
     }, beforeId);
   }
@@ -269,9 +247,9 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
       filter: anchorStatusFilter("missing_monitoring_dataset_row"),
       paint: {
         "line-color": ["get", "strokeColor"],
-        "line-width": ["case", ["==", ["get", "selected"], true], 3, 1.9],
+        "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3],
         "line-dasharray": [1, 2],
-        "line-opacity": ["case", ["==", ["get", "selected"], true], 1, ["get", "markOpacity"]],
+        "line-opacity": ["get", "markOpacity"],
       },
     }, beforeId);
   }
@@ -333,6 +311,23 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection) {
         "circle-stroke-color": "#ffd58a",
         "circle-stroke-width": 2,
         "circle-opacity": ["get", "opacity"],
+      },
+    });
+  }
+
+  if (!map.getLayer(SELECTED_PRESENCE_LAYER_ID)) {
+    map.addLayer({
+      id: SELECTED_PRESENCE_LAYER_ID,
+      type: "circle",
+      source: MAP_SOURCE_ID,
+      filter: ["==", ["get", "selected"], true],
+      paint: {
+        "circle-radius": ["+", ["get", "radius"], 10],
+        "circle-color": ["get", "fillColor"],
+        "circle-opacity": ["case", ["==", ["get", "withheld"], true], 0, 0.34],
+        "circle-blur": 0.45,
+        "circle-stroke-color": "rgba(255, 255, 255, 0.72)",
+        "circle-stroke-width": 1.2,
       },
     });
   }
@@ -447,16 +442,8 @@ export function AtlasMap({
     () => (landContext && geos.length > 0 ? assignLandAnchors(landContext, geos) : landContext),
     [landContext, geos],
   );
-  const anchoredCodes = useMemo(() => {
-    const codes = new Set<string>();
-    anchoredLand?.features.forEach((feature) => {
-      const code = feature.properties?.anchorCode;
-      if (typeof code === "string" && code !== "") codes.add(code);
-    });
-    return codes;
-  }, [anchoredLand]);
   const styledLand = useMemo(() => styleAnchoredLand(anchoredLand, atlasFeatures.features), [anchoredLand, atlasFeatures]);
-  const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures, anchoredCodes), [atlasFeatures, anchoredCodes]);
+  const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures), [atlasFeatures]);
   const mapLibreFeaturesRef = useRef(mapLibreFeatures);
   const landContextRef = useRef<GeoJSON.FeatureCollection | null>(styledLand);
   const geosRef = useRef(geos);
@@ -651,7 +638,7 @@ export function AtlasMap({
     <div className="map-canvas">
       <div ref={containerRef} className="maplibre-canvas" aria-hidden="true" />
       <p className="sr-only">
-        Map of 22 Pacific geographies shown as island-shaped marks over Natural Earth land context.
+        Map of 22 Pacific geographies shown as presence marks over Natural Earth land context.
         Active layer: {activeLayerLabel}. The map is a comparative screen, not a definitive ranking.
       </p>
 
@@ -691,7 +678,6 @@ export function AtlasMap({
           {geos.map((geo) => {
             const point = overlay.points[geo.code];
             if (!point) return null;
-            if (anchoredCodes.has(geo.code)) return null;
             const r = radiusFor(geo.indicators);
             const variant = ringVariant(geo.reportingStatus);
             const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
@@ -709,44 +695,6 @@ export function AtlasMap({
             );
           })}
         </g>
-
-        {/* Selection viewfinder: a fixed map window around the scored point,
-            never fitted to land, so it frames attention without claiming
-            territory. Tick points to the nearest visual island. */}
-        {selectedCode && overlay.points[selectedCode] && overlay.pxPerDeg.x > 0 && (() => {
-          const geo = geos.find((g) => g.code === selectedCode);
-          const point = overlay.points[selectedCode];
-          if (!geo) return null;
-          const container = mapRef.current?.getContainer();
-          const vf = viewfinderGeometry({
-            point,
-            pxPerDeg: overlay.pxPerDeg,
-            minViewportSide: Math.min(container?.clientWidth ?? 900, container?.clientHeight ?? 900),
-            geoLon: geo.lon,
-            geoLat: geo.lat,
-            pointRadius: 0,
-            landCenter: landContext ? nearestLandCenter(geo.lon, geo.lat, landContext) : null,
-          });
-          return (
-            <g className="viewfinder">
-              {[
-                [vf.x0, vf.y0, 1, 1],
-                [vf.x1, vf.y0, -1, 1],
-                [vf.x0, vf.y1, 1, -1],
-                [vf.x1, vf.y1, -1, -1],
-              ].map(([cx, cy, sx, sy], i) => (
-                <path
-                  key={i}
-                  d={`M ${cx} ${cy + sy * vf.cornerLen} L ${cx} ${cy} L ${cx + sx * vf.cornerLen} ${cy}`}
-                />
-              ))}
-              {vf.tick && <line className="viewfinder__tick" {...vf.tick} />}
-              <text className="viewfinder__note" x={vf.x0} y={vf.y1 + 14}>
-                islands grouped by distance, not boundaries
-              </text>
-            </g>
-          );
-        })()}
 
         <g className="map-labels">
           {geos.map((geo) => {
@@ -819,7 +767,7 @@ export function AtlasMap({
       </div>
 
       <p className="map-note">
-        Natural Earth island marks are grouped by nearest centroid. Scored geographies are not boundary polygons.
+        Natural Earth island texture is grouped by nearest centroid. Scored geographies are not boundary polygons.
       </p>
     </div>
   );

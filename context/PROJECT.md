@@ -2,11 +2,11 @@
 
 ## Current Phase
 
-TASK-032 visual QA through TASK-042 post-audit cleanup are complete. The post-TASK-042 design critique has been folded into `TASK-043` through `TASK-047`. Competition deadline: August 31, 2026.
+TASK-032 visual QA through TASK-043 presence-mark cleanup are complete. The post-TASK-042 design critique has been folded into `TASK-044` through `TASK-047` for motion, chrome/type cleanup, story tightening, and selected-only similarity arcs. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with centroid fallback points, Natural Earth visual land context, first-render graticule lines, React overlay labels/hit targets, and encoded island-shaped marks that replace geography circles once land context loads. The selected-place panel now shows nearest evidence-profile neighbors with exact JSD distances and caveats. The post-map visual/interactions polish, readiness packaging audit, and Codex accessibility QA are complete. The next backlog focuses on making atoll marks legible, adding evidence-bearing motion, quieting UI chrome, tightening the guided story, and optionally testing selected-only JSD neighbor arcs.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with guaranteed-size centroid presence marks, subdued Natural Earth visual land texture, first-render graticule lines, React overlay labels/hit targets, and selected-place bloom/halo treatment. Natural Earth remains context, not official geography scoring geometry. The selected-place panel now shows nearest evidence-profile neighbors with exact JSD distances and caveats. The post-map visual/interactions polish, readiness packaging audit, Codex accessibility QA, and atoll-presence legibility fix are complete. The next backlog focuses on adding evidence-bearing motion, quieting UI chrome, tightening the guided story, and optionally testing selected-only JSD neighbor arcs.
 
 ## Working Title
 
@@ -42,11 +42,11 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Final Fable visual pass | done | `TASK-032` passed Codex source/command QA; remaining owner-review issue is `TASK-037` |
 | Humanized storyboard copy | done | `TASK-033` removed the flagged headline register from the guided storyboard while preserving caveats |
 | Desktop story navigation | done | `TASK-034` removes the unreliable desktop Next/Back row; desktop keeps scroll/progress/keyboard navigation and mobile keeps the stepper |
-| Island-anchored map treatment | done | `TASK-035` adds a selected-centroid viewfinder plus nearest-land tick; `TASK-038` adds nearest-centroid land grouping; `TASK-039` makes anchored Natural Earth land inherit the score/status mark encoding and hides point circles once land marks load |
+| Presence-mark map treatment | done | `TASK-035`/`TASK-038`/`TASK-039` explored island-anchored treatment; `TASK-043` supersedes the under-inked polygon direction by keeping guaranteed-size centroid presence marks primary and Natural Earth land as subdued texture/context |
 | Detail panel redesign | done | `TASK-036` regroups the selected-place panel into score, score-sides, and record sections while preserving trace/caveats |
 | JSD app visibility | done | `TASK-037` shows selected-place nearest neighbors with exact JSD distance, band, reason, and caveat; no global link web, map ramp, or leaderboard ships |
 | Post-TASK-039 iteration audit | done | `TASK-040` fixed explainer state, `TASK-041` humanized/single-sourced JSD similarity text, and `TASK-042` cleaned legend, stale compare code, and selected fallback mark behavior |
-| Post-TASK-042 design direction | pending | `TASK-043` through `TASK-047` distill the design critique into presence marks, motion, chrome/type cleanup, story tightening, and selected-only similarity-arc exploration |
+| Post-TASK-042 design direction | active | `TASK-043` completed presence marks; `TASK-044` through `TASK-047` remain for motion, chrome/type cleanup, story tightening, and selected-only similarity-arc exploration |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 
 ## Last Session Notes
@@ -87,4 +87,4 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-027` post-map visual polish: fixed mobile first-load map framing, guided beat scroll/state sync, country-detail trace loading, data-quiet explanation copy, overlay selection persistence, rank-uncertainty explainers, method-drawer focus/Escape handling, mobile explore hierarchy, story label offsets, and comparator microcopy.
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
 - Completed `TASK-042`: the island-glow legend no longer teaches dots, dead compare-mode code is gone, and selected centroid fallback marks remain visible until island marks replace them. Post-TASK-039 audit follow-up is now closed.
-- Folded the transient post-TASK-042 design critique into durable context. New pending tasks: `TASK-043` presence marks, `TASK-044` evidence-bearing motion, `TASK-045` chrome/type cleanup, `TASK-046` guided-story tightening, and `TASK-047` selected-only JSD neighbor arcs.
+- Completed `TASK-043` presence marks: centroid data symbols are primary again, Natural Earth land is subdued texture/context, and the selected viewfinder is retired. Next work starts with `TASK-044` evidence-bearing motion.

@@ -6,8 +6,7 @@ import {
   fitBoundsForPacific,
   assignLandAnchors,
   markerPaintFor,
-  nearestLandCenter,
-  viewfinderGeometry,
+  toMapLibreCollection,
 } from "./atlasMapModel";
 
 const baseGeo: Geo = {
@@ -98,6 +97,21 @@ describe("atlas map model", () => {
     expect(collection.features[0].properties).not.toHaveProperty("compare");
   });
 
+  it("keeps centroid presence marks when island texture is available", () => {
+    const collection = buildAtlasFeatureCollection([baseGeo], {
+      activeScore: "gap",
+      viewMode: "default",
+      outlookOn: false,
+      selectedCode: null,
+      priorityCodes: [],
+    });
+
+    const shifted = toMapLibreCollection(collection);
+    expect(shifted.features).toHaveLength(1);
+    expect(shifted.features[0].properties.code).toBe("NR");
+    expect(shifted.features[0].geometry.coordinates).toEqual([166.93, -0.52]);
+  });
+
   it("returns dashed and hatch paint cues for monitoring reporting states", () => {
     expect(markerPaintFor("reported_positive_latest_count")).toMatchObject({
       strokeDasharray: null,
@@ -118,54 +132,6 @@ describe("atlas map model", () => {
       [130, -30],
       [240, 20],
     ]);
-  });
-
-  it("ticks the selected point to its own island, not a neighbor's", () => {
-    // American Samoa's centroid sits ~0.1 deg from Tutuila and ~1.7 deg from
-    // Samoa's islands; the tick must resolve to the closer, own-territory land.
-    const tutuila: GeoJSON.Feature = {
-      type: "Feature",
-      properties: {},
-      geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [189.2, -14.35],
-            [189.4, -14.35],
-            [189.4, -14.25],
-            [189.2, -14.25],
-            [189.2, -14.35],
-          ],
-        ],
-      },
-    };
-    const samoaIsland: GeoJSON.Feature = {
-      type: "Feature",
-      properties: {},
-      geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [187.3, -13.9],
-            [187.9, -13.9],
-            [187.9, -13.5],
-            [187.3, -13.5],
-            [187.3, -13.9],
-          ],
-        ],
-      },
-    };
-    const land: GeoJSON.FeatureCollection = {
-      type: "FeatureCollection",
-      features: [samoaIsland, tutuila],
-    };
-
-    const center = nearestLandCenter(-170.7, -14.3, land);
-    expect(center).not.toBeNull();
-    expect(center!.lon).toBeCloseTo(189.3, 1);
-    expect(center!.lat).toBeCloseTo(-14.3, 1);
-
-    expect(nearestLandCenter(-170.7, -14.3, { type: "FeatureCollection", features: [] })).toBeNull();
   });
 
   it("groups land by nearest scored centroid and leaves far or disputed land unassigned", () => {
@@ -209,44 +175,6 @@ describe("atlas map model", () => {
     expect(anchors[3]).toBe("");
     // input collection must not be mutated
     expect(land.features[0].properties).toEqual({});
-  });
-
-  it("clamps the viewfinder window and suppresses the tick for on-point land", () => {
-    const base = {
-      point: { x: 500, y: 400 },
-      geoLon: 166.93,
-      geoLat: -0.52,
-      pointRadius: 12,
-      landCenter: null,
-    };
-
-    // Mobile-like scale: 1.6 deg would be ~6px, so the 45px floor applies.
-    const small = viewfinderGeometry({ ...base, pxPerDeg: { x: 3.7, y: 3.7 }, minViewportSide: 375 });
-    expect(small.x1 - small.x0).toBeCloseTo(90, 5);
-
-    // Deep zoom: the window caps at 17% of the shorter viewport side.
-    const large = viewfinderGeometry({ ...base, pxPerDeg: { x: 200, y: 200 }, minViewportSide: 900 });
-    expect(large.x1 - large.x0).toBeCloseTo(2 * 900 * 0.17, 5);
-
-    // Land essentially under the point (Niue case): no tick.
-    const onPoint = viewfinderGeometry({
-      ...base,
-      pxPerDeg: { x: 12.6, y: 12.6 },
-      minViewportSide: 900,
-      landCenter: { lon: 166.94, lat: -0.53 },
-    });
-    expect(onPoint.tick).toBeNull();
-
-    // Land clearly offset: tick starts at the circle edge and points at it.
-    const offset = viewfinderGeometry({
-      ...base,
-      pxPerDeg: { x: 12.6, y: 12.6 },
-      minViewportSide: 900,
-      landCenter: { lon: 169.0, lat: -0.52 },
-    });
-    expect(offset.tick).not.toBeNull();
-    expect(offset.tick!.x1).toBeGreaterThan(512);
-    expect(offset.tick!.x2).toBeCloseTo(500 + (169.0 - 166.93) * 12.6, 3);
   });
 
   it("builds graticule line features for the Pacific map viewport", () => {

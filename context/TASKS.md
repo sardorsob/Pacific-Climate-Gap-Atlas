@@ -1055,11 +1055,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Intended type stack is real and documented; redundant floating chrome is reduced or visually quieted; map remains visible and usable on desktop/mobile; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Desktop explore mode with no selection, selected detail panel, coverage/uncertainty panels, mobile first load and bottom sheet.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex Checker accepted. The app now uses explicit system sans/serif CSS variables instead of declaring an unloaded Inter stack, removes the explore-mode metrics strip, and quiets the remaining header, controls, legend, and tour chrome through shared translucent chrome backgrounds and softer shadows. The detail panel, source/method access, caveats, touch targets, and generated data surfaces were left intact; no score, data, methodology, or generated artifact changed. Verification passed: `npm --prefix app run test` (12/12), `npm --prefix app run build`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Live Scrapling smoke rendered the app from the running dev server and confirmed the atlas still exposes 22 accessible presence-mark controls; source search confirmed the stale `Inter`, `dock--metrics`, and metrics-strip app code are gone. Interactive click/mobile browser smoke remains limited by the local Playwright browser binary gap and Scrapling's no-click limitation in this session.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-08: Created from the folded design critique. Audit confirmed Inter is declared but not loaded, and explore mode currently presents too many similarly bright floating UI clusters over the map.
-- Status: pending
+- Attempt log: 2026-07-08: Created from the folded design critique. Audit confirmed Inter is declared but not loaded, and explore mode currently presents too many similarly bright floating UI clusters over the map. 2026-07-09: Builder started. Scope: make the system sans stack explicit instead of downloading/self-hosting a font, remove the low-value metrics strip, and soften remaining map chrome through shared translucent chrome variables while keeping the detail panel readable. Builder moved in-progress -> in-review after tests/build/live smoke. Checker accepted and moved in-review -> done.
+- Status: done
 
 ## TASK-046
 - Phase: story-design

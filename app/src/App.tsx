@@ -99,7 +99,6 @@ export function App() {
   const activeLayer = atlasLayers.find((l) => l.id === activeScore) ?? atlasLayers[0];
   const selectedGeo = selectedCode ? getGeo(geos, selectedCode) ?? null : null;
   const priorityCodes = priorityOneCodes(geos);
-  const priorityCount = priorityCodes.length;
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
 
@@ -339,14 +338,6 @@ export function App() {
               onViewMode={handleViewMode}
               onToggleOutlook={handleToggleOutlook}
             />
-          </div>
-        )}
-
-        {mode === "explore" && (
-          <div className="dock dock--metrics" role="status">
-            <span className="metric"><b>{geos.length}</b> geographies</span>
-            <span className="metric metric--flag"><b>{priorityCount}</b> high-gap / low-monitoring</span>
-            {!panelOpen && <span className="metric metric--hint">Select a point to inspect</span>}
           </div>
         )}
 

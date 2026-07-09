@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-044` post-audit cleanup. The next design backlog is `TASK-045` through `TASK-047`: chrome/type cleanup, story tightening, and selected-only JSD neighbor arcs.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-045` post-audit cleanup. The next design backlog is `TASK-046` and `TASK-047`: story tightening and selected-only JSD neighbor arcs.
 
 Design skill basis:
 
@@ -373,9 +373,15 @@ Color QA:
 
 Typography direction:
 
-- Body and UI: highly legible sans-serif with tabular numerals.
+- Body and UI: highly legible system sans-serif with tabular numerals; do not declare an unloaded webfont.
 - Display: optional characterful serif or restrained display face for tour claims, used sparingly.
-- Current implementation declares Inter in CSS but does not load it. `TASK-045` should either self-host the intended font or make the system stack intentional.
+- Current implementation uses explicit CSS font variables for the system sans stack and restrained Georgia display headings.
+
+Chrome direction:
+
+- Keep the map as the primary surface: floating controls should be useful, compact, and visually quiet.
+- Prefer shared translucent chrome treatments over bright dashboard cards.
+- Do not restore the removed explore-mode metrics strip unless it carries a concrete reader decision that is not already visible in the map, legend, or detail panel.
 
 Tone:
 

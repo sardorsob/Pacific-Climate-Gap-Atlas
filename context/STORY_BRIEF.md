@@ -4,11 +4,12 @@
 
 Task: `TASK-018`
 
-Status: final story synthesis for the first atlas build.
+Status: final story synthesis for the first atlas build, updated through `TASK-046`.
 
 Source basis:
 
 - TASK-018 Claude/Codex storyboard brainstorm, now consolidated into this brief and the design brief
+- `TASK-046` guided-story tightening pass
 - `context/ANALYSIS_BRIEF.md`
 - `artifacts/provenance/eda_summary.json`
 - `artifacts/tables/eda_country_story_labels.csv`
@@ -29,10 +30,10 @@ The strongest story is:
 
 This is stronger than a simple ranking story because the rank evidence is fragile. It is stronger than a monitoring-only story because monitoring is one proxy, not the whole adaptation system. It is stronger than a responsibility-only story because responsibility-context indicators are context fields, not score drivers. It is stronger than an outlook story because the outlook is a stress test, not a forecast.
 
-Post-TASK-042 story iteration:
+Post-TASK-046 story iteration:
 
-- The next story pass (`TASK-046`) should test whether the guided tour opens closer to the data-silence tension before explaining the score method. The current tour is coherent, but it may spend too long on mechanism before the reader reaches the atlas's most distinctive idea: high apparent gaps and uneven official visibility.
-- Keep JSD/evidence-profile similarity selected-anchored. It can remain a guided beat only if it helps the reader understand official-data profile shape; otherwise it should live in explore/detail mode as a reward for selected-place inspection.
+- The guided tour now opens on what the map can see, immediately moves into uneven official monitoring visibility, then explains the score formula. This keeps the distinctive data-visibility tension close to the opening without hiding the method.
+- JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 
 ## Story Contract
 
@@ -95,7 +96,7 @@ What the visual will deliberately not imply:
 
 ## Why This Story Wins
 
-The story has a clear visual hook: the map shows both the apparent gap and the uneven visibility of the official record. The signature interaction, "Where the Data Goes Quiet," turns missingness and monitoring uncertainty into something readers can inspect instead of something hidden in a footnote.
+The story has a clear visual hook: the map shows both the apparent gap and the uneven visibility of the official record. The monitoring/data-visibility view turns missingness and monitoring uncertainty into something readers can inspect instead of something hidden in a footnote.
 
 The story is also honest about the evidence. The rank-volatility table labels 19 of 22 geographies fragile and 3 sensitive under leave-one-indicator stress tests. A leaderboard would overclaim. A guided atlas that exposes rank movement, indicator counts, and reporting status is more defensible and more distinctive.
 
@@ -153,17 +154,27 @@ Supporting context:
 
 ## Storyboard Beats
 
-### Beat 1: Open On The Gap
+### Beat 1: What The Map Can See
 
 - User action: lands directly on the Pacific map and starts the guided scroll path.
 - Layer: adaptation-gap centroid points.
 - Panel state: compact intro or collapsed detail panel.
 - Evidence: `adaptation_gap_index.csv`, `eda_country_story_labels.csv`.
 - Caveat placement: under the layer title.
-- Required copy: "Comparative screen, not a ranking of need. Most ranks are fragile."
-- Takeaway: the map is an invitation to inspect mismatches, not a verdict.
+- Required copy: "The record itself is uneven. This is a comparison tool, not a ranking of who needs help most."
+- Takeaway: the map shows what official records can currently show, not a full verdict on need.
 
-### Beat 2: Pull Pressure And Capacity Apart
+### Beat 2: Some Records Barely Show Up
+
+- User action: opens the monitoring/data-coverage layer before the formula is explained.
+- Layer: monitoring quadrant, reporting status rings, and coverage marks.
+- Panel state: "reported zero" versus "missing row" explanation.
+- Evidence: `eda_monitoring_gap.csv`.
+- Caveat placement: primary panel, not just source drawer.
+- Required copy: "Missing numbers mean the record is thin, not that nothing is out there."
+- Takeaway: data absence is an inspectable part of the story from the start.
+
+### Beat 3: Pull Pressure And Capacity Apart
 
 - User action: toggles between climate pressure and visible capacity.
 - Layer: same centroid geography, fill color changes by active score.
@@ -173,25 +184,15 @@ Supporting context:
 - Required copy: "Capacity here is a proxy from official datasets, not a full measure of readiness."
 - Takeaway: the gap is a difference between two imperfect but inspectable sides.
 
-### Beat 3: Inspect A Place
+### Beat 4: Inspect A Place
 
-- User action: selects a point, with Nauru as a strong early exemplar.
+- User action: selects a point, with Nauru and Tuvalu as the early contrast.
 - Layer: selected point emphasized; other points dimmed.
 - Panel state: full country detail.
-- Evidence: `country_details.json`, `eda_indicator_forensics.csv`, `eda_rank_volatility.csv`.
+- Evidence: `country_details.json`, `eda_indicator_forensics.csv`, `eda_monitoring_gap.csv`, `eda_rank_volatility.csv`.
 - Caveat placement: rank chip and trace section.
-- Required copy: "Rank movement frames uncertainty and should not be read as definitive."
+- Required copy: "Similar-looking scores can sit on very different records."
 - Takeaway: every score can be traced to rows, sources, indicators, and caveats.
-
-### Beat 4: Where The Data Goes Quiet
-
-- User action: opens the monitoring/data-coverage layer.
-- Layer: monitoring quadrant, reporting status rings, and coverage marks.
-- Panel state: "Why is this blank?" or "What does zero mean?" explanation.
-- Evidence: `eda_monitoring_gap.csv`.
-- Caveat placement: primary panel, not just source drawer.
-- Required copy: "A reporting gap is not proof that infrastructure is absent. Monitoring counts are unnormalized proxy coverage."
-- Takeaway: data absence is an inspectable part of the story.
 
 ### Beat 5: Show Rank Fragility
 
@@ -203,7 +204,7 @@ Supporting context:
 - Required copy: "This view exists so the gap map cannot be read as a fixed scoreboard."
 - Takeaway: the atlas earns trust by showing uncertainty.
 
-### Beat 6: Compare Evidence Fingerprints
+### Beat 6: Compare Evidence Profiles
 
 - User action: selects a geography and opens "similar evidence profiles."
 - Layer: selected-place detail shows nearest evidence-profile neighbors. A selected-only map connector treatment may be tested later, but no global JSD map ramp or all-to-all link web should ship by default.
@@ -213,27 +214,7 @@ Supporting context:
 - Required copy: "Similarity means official-data profiles look alike under this method; it does not mean the places face the same risks or need the same actions."
 - Takeaway: the atlas can compare what kind of gap a place has, not just how high the score is.
 
-### Beat 7: Regional Texture
-
-- User action: filters by Pacific subregion.
-- Layer: subregion grouping with typology summaries.
-- Panel state: short regional caption and sample count.
-- Evidence: `eda_spatial_typologies.csv`, `eda_subregion_comparisons.csv`.
-- Caveat placement: caption under subregion control.
-- Required copy: "UN M49 statistical groupings, not cultural or political boundaries. Small samples."
-- Takeaway: there is regional texture, but it should be described carefully.
-
-### Beat 8: Optional Outlook Stress Test
-
-- User action: opts into outlook.
-- Layer: future-facing map rows gated by display recommendation.
-- Panel state: trend-quality caveat and scenario explanation.
-- Evidence: `eda_outlook_interpretation.csv`, `adaptation_gap_outlook.csv`.
-- Caveat placement: always visible while the layer is active.
-- Required copy: "Stress-test interpretation, not a forecast."
-- Takeaway: outlook is a curiosity layer, not the story spine.
-
-### Beat 9: Explore Freely
+### Beat 7: Explore Freely
 
 - User action: exits guided scroll into the atlas controls.
 - Layer: preserve the current selected layer and geography, rather than resetting.
@@ -328,9 +309,10 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 
 The design brief should preserve this story hierarchy:
 
-1. Gap map first through a guided scroll path.
-2. Missingness/monitoring as the signature interaction.
-3. Rank uncertainty always visible where ranks appear.
-4. Evidence-profile divergence only as selected-geography comparison; the current app shows nearest neighbors in the selected-place panel, not as a global map layer.
-5. Caveats beside the claims they qualify.
-6. Outlook optional and gated.
+1. Gap map first through a guided scroll path, with the official-record caveat in the opening beat.
+2. Missingness/monitoring as the signature interaction, before the formula beat.
+3. Pressure-versus-capacity method explanation after the hook.
+4. Rank uncertainty always visible where ranks appear.
+5. Evidence-profile divergence only as selected-geography comparison; the current app shows nearest neighbors in the selected-place panel, not as a global map layer.
+6. Caveats beside the claims they qualify.
+7. Outlook optional and gated.

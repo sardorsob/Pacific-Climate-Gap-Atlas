@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-045` post-audit cleanup. The next design backlog is `TASK-046` and `TASK-047`: story tightening and selected-only JSD neighbor arcs.
+Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-046` post-audit cleanup. The next design backlog is `TASK-047`: selected-only JSD neighbor arcs.
 
 Design skill basis:
 
@@ -193,6 +193,7 @@ Post-TASK-042 design direction:
 - `TASK-043` restored a guaranteed-size primary data mark anchored to the scored centroid. Treat it as a "presence" mark: score color, evidence size/intensity, and monitoring/reporting status remain legible before land texture is considered.
 - Natural Earth land should become secondary texture or context inside/under the presence mark where available. It should not be the only thing that carries the data encoding, and it still must not imply official boundaries.
 - The selected viewfinder from TASK-035 is retired. Selected state now relies on the guaranteed-size presence mark and selected bloom rather than framing empty water.
+- `TASK-046` moved official-data visibility before the formula in the guided tour and kept JSD as a late selected-detail beat. `TASK-047` may test selected-only neighbor arcs, but must abandon them if they read as physical connection, causality, migration, shared risk, or decorative network.
 
 Selection state:
 

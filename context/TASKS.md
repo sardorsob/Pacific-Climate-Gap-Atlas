@@ -1078,11 +1078,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Guided story starts with a stronger reader hook without weakening caveats; method remains understandable; JSD is either clearly useful in the guided spine or moved out of it; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Desktop and mobile seven-beat read-through, copy overflow check, claims/source audit.
-- QA notes:
-- Attempts: 0
+- QA notes: Codex Checker accepted. The guided spine now opens with "what the map can see," moves immediately into thin monitoring records, then explains the pressure-minus-visible-capacity formula. The Nauru/Tuvalu contrast, rank-fragility beat, and explore handoff remain, while JSD stays as a late selected-detail beat because it helps explain official-data profile shape without becoming the story hook or a global similarity layer. No data, scoring, generated artifacts, or methodology changed. Verification passed: `npm --prefix app run test` (12/12), `npm --prefix app run build`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check`. Live Scrapling smoke read all seven guided beats from the running dev server and confirmed the revised order, progress labels, source lines, and selected-anchored JSD caveat render in the story rail. Mobile/layout visual QA remains limited by the missing local Playwright browser binary and Scrapling's text-only/no-click limits in this session.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-08: Created from the folded design critique. Main question: the current tour is coherent but front-loads method before the most distinctive data-silence idea.
-- Status: pending
+- Attempt log: 2026-07-08: Created from the folded design critique. Main question: the current tour is coherent but front-loads method before the most distinctive data-silence idea. 2026-07-09: Builder started. Scope: reorder the guided spine so official-data visibility appears before the formula, preserve the TASK-033 spoken voice, keep all source-backed claims intact, and decide whether JSD remains a late selected-detail beat. Builder moved in-progress -> in-review after tests/build/live story smoke. Checker accepted and moved in-review -> done.
+- Status: done
 
 ## TASK-047
 - Phase: app-similarity

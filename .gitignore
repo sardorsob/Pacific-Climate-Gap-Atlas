@@ -1,5 +1,6 @@
 .superpowers/
 .claude/
+.serena/memories/
 
 # Local reference workflow kits copied for agent context only.
 context/agentic-workflow-kit/

@@ -44,12 +44,9 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
       </div>
 
       <div className="legend__block">
-        <span className="legend__label">Presence mark - indicators behind the score (4 to 9)</span>
-        <span className="legend__sizes" aria-hidden="true">
-          <span className="legend__presence legend__presence--sm" />
-          <span className="legend__presence legend__presence--md" />
-          <span className="legend__presence legend__presence--lg" />
-        </span>
+        <span className="legend__label">Score inputs available (of 8)</span>
+        <span className="legend__ticks" aria-hidden="true">Eight fixed positions around each presence mark</span>
+        <span className="legend__note">A detached tick is responsibility context, not part of the score.</span>
       </div>
 
       <div className="legend__block">

@@ -83,6 +83,7 @@ def export_app_data(
 
     index = pd.read_csv(index_path)
     lookup = pd.read_csv(lookup_path)
+    trace = pd.read_csv(trace_path)
     observations = pd.read_csv(observations_path)
     outlook = pd.read_csv(outlook_path)
     monitoring_gap = pd.read_csv(monitoring_gap_path)
@@ -102,12 +103,13 @@ def export_app_data(
         spatial=spatial_typologies,
         outlook_display=outlook_interpretation,
         similarity_neighbors=similarity_neighbors,
+        trace=trace,
     )
     geographies_payload = build_geographies_payload(records)
     atlas_geojson = build_atlas_geojson(records)
     monitoring_geojson = build_monitoring_geojson(observations)
     layers_payload = build_layer_manifest()
-    country_details_payload = build_country_details_payload(records, trace_path=trace_path)
+    country_details_payload = build_country_details_payload(records, trace=trace)
 
     processed_app_dir.mkdir(parents=True, exist_ok=True)
     public_data_dir.mkdir(parents=True, exist_ok=True)
@@ -125,7 +127,7 @@ def export_app_data(
         shutil.copyfile(processed_app_dir / filename, public_data_dir / filename)
 
     summary = {
-        "schema_version": 1,
+        "schema_version": 2,
         "geography_count": len(records),
         "monitoring_feature_count": len(monitoring_geojson["features"]),
         "layer_count": len(layers_payload["layers"]),
@@ -151,14 +153,20 @@ def export_app_data(
             "similarity_neighbors": similarity_neighbors_path.relative_to(ROOT).as_posix(),
         },
         "geometry_policy": "centroid_fallback_until_boundary_join",
+        "evidence_count_contract": {
+            "score_input_indicator_count": "score inputs only; maximum 8",
+            "context_indicator_count": "context-only inputs; currently maximum 1",
+            "trace_indicator_count": "all trace datasets",
+        },
         "summary_output": summary_output.relative_to(ROOT).as_posix(),
     }
     write_json(summary_output, summary)
     return summary
 
 
-def build_country_details_payload(records: list[dict[str, object]], *, trace_path: Path) -> dict[str, object]:
-    trace = pd.read_csv(trace_path)
+def build_country_details_payload(
+    records: list[dict[str, object]], *, trace: pd.DataFrame
+) -> dict[str, object]:
     details = {record["geo_code"]: dict(record) for record in records}
     for geo_code, group in trace.groupby("geo_code", sort=True):
         indicators = []
@@ -180,7 +188,7 @@ def build_country_details_payload(records: list[dict[str, object]], *, trace_pat
             details[geo_code]["indicators"] = indicators
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "details": details,
         "source_refs": {
             "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",

@@ -2,7 +2,7 @@
 
 Date: 2026-06-30
 
-Status: Implemented by `TASK-025`. This file remains as the historical mock-to-public-data mapping and risk inventory that guided the real app-data wiring.
+Status: Implemented by `TASK-025`; evidence semantics were corrected by `TASK-048`. This file remains the historical mock-to-public-data mapping and risk inventory that guided the real app-data wiring. Where the original inventory says `included_indicator_count`, the current contract is the explicit score/context/trace fields below.
 
 Scope: documentation-only inventory for replacing `app/src/mock/mockAtlasData.ts` with public app data, while preserving the current mockup's caveats and visual states. No app source, public data, generated artifacts, or shared task/status files were changed for this note.
 
@@ -18,7 +18,7 @@ The current React mockup passes `ATLAS_GEOS` through `App` into `AtlasMap`, `Cou
 | `gap` | fill color, panel score, bars/labels | `adaptation_gap_score` | Rename and round for display only. |
 | `pressure` | fill color, panel evidence strip/bar | `climate_pressure_score` | Rename and round for display only. |
 | `capacity` | fill color, panel evidence strip/bar | `capacity_score` | Rename and round for display only. |
-| `indicators` | point radius, evidence density, trace count label | `included_indicator_count`; full trace row count in `country_details.json.details[code].indicators` | Use `included_indicator_count` for point size and "of 9"; use detail trace length for trace rows. |
+| `indicators` | evidence density, trace count label | `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, and ordered `score_input_presence`; full trace row count in `country_details.json.details[code].indicators` | Keep the primary mark fixed-size; use the eight presence positions for score-input evidence, a detached context cue, and trace details for the complete record. |
 | `reportingStatus` | ring/pattern, monitoring labels/caveats, data-quiet buckets | Not in current public app JSON. Source exists in `artifacts/tables/eda_monitoring_gap.csv` as `monitoring_reporting_status`. | Must export/derive app-ready monitoring status before wiring. |
 | `monitoringCount` | currently fixture-only, not directly rendered except implied in status | `monitoring_network.geojson.properties.latest_value` when feature exists; EDA source has `monitoring_count` | Need normalize missing feature to status, not zero. |
 | `latestMonitoringYear` | currently fixture-only; available for future panel/caveat | `monitoring_network.geojson.properties.latest_year` when feature exists; EDA source has `latest_monitoring_year` | Missing rows need explicit `null` plus reporting caveat. |
@@ -36,7 +36,7 @@ The current React mockup passes `ATLAS_GEOS` through `App` into `AtlasMap`, `Cou
 `app/public/data/atlas_geographies.geojson`
 
 - Feature count: 22.
-- Useful map properties: `geo_code`, `name`, `adaptation_gap_score`, `climate_pressure_score`, `capacity_score`, `included_indicator_count`, `score_status`, `missingness_flag`, `geometry_status`, `outlook_2030_flat_gap_score`, `outlook_2050_flat_gap_score`, `outlook`, `available_pillars`, `missing_pillars`, `dataset_count`, `row_count`, `first_year`, `last_year`, `datasets`, `source_refs`.
+- Useful map properties: `geo_code`, `name`, `adaptation_gap_score`, `climate_pressure_score`, `capacity_score`, `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`, `score_status`, `missingness_flag`, `geometry_status`, `outlook_2030_flat_gap_score`, `outlook_2050_flat_gap_score`, `outlook`, `available_pillars`, `missing_pillars`, `dataset_count`, `row_count`, `first_year`, `last_year`, `datasets`, `source_refs`.
 - Geometry policy: centroid fallback only. Wire as centroid points, not polygon or boundary claims.
 
 `app/public/data/geographies.json`
@@ -104,7 +104,7 @@ Fields that can remain UI constants:
    - Gate rendering by `score_status`; missing score should not be colored like low score.
 
 2. Wire base score map and panel from public app data.
-   - Map `geo_code -> code`, `name -> name`, GeoJSON coordinates or `centroid -> lon/lat`, `adaptation_gap_score -> gap`, `climate_pressure_score -> pressure`, `capacity_score -> capacity`, `included_indicator_count -> indicators`.
+   - Map `geo_code -> code`, `name -> name`, GeoJSON coordinates or `centroid -> lon/lat`, `adaptation_gap_score -> gap`, `climate_pressure_score -> pressure`, `capacity_score -> capacity`, and the TASK-048 evidence contract (`score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`) into the adapter's score/context/trace fields.
    - Keep `geometry_status` visible through map note/caveat.
    - Keep `country_details.details[code].indicators` available for source/method drilldown.
 

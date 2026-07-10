@@ -61,6 +61,30 @@ class GapIndexTests(unittest.TestCase):
         self.assertLess(fj["climate_pressure_score"], ws["climate_pressure_score"])
         self.assertGreater(fj["capacity_score"], ws["capacity_score"])
 
+    def test_build_gap_index_separates_score_inputs_from_context_rows(self) -> None:
+        observations = pd.DataFrame(
+            [
+                _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10),
+                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100),
+                _row(
+                    "greenhouse-gas-emissions-per-capita",
+                    "GHG per capita",
+                    "responsibility_context",
+                    "FJ",
+                    2023,
+                    2,
+                ),
+            ]
+        )
+
+        index, _ = build_gap_index(observations)
+        fiji = index.iloc[0]
+
+        self.assertEqual(fiji["score_input_indicator_count"], 2)
+        self.assertEqual(fiji["context_indicator_count"], 1)
+        self.assertEqual(fiji["trace_indicator_count"], 3)
+        self.assertNotIn("included_indicator_count", index.columns)
+
     def test_indicator_trace_scores_anomalies_by_magnitude(self) -> None:
         observations = pd.DataFrame(
             [

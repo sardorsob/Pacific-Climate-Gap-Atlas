@@ -5,6 +5,15 @@ export type ReportingStatus =
 
 export type OutlookDisplay = "show" | "show_with_strong_caveat" | "withhold";
 
+export type ScoreInputPillar = "climate_signal" | "observed_stress" | "adaptation_capacity";
+
+export type ScoreInputPresence = {
+  datasetSlug: string;
+  datasetName: string;
+  pillar: ScoreInputPillar;
+  present: boolean;
+};
+
 export type Geo = {
   code: string;
   name: string;
@@ -15,7 +24,10 @@ export type Geo = {
   gap: number;
   pressure: number;
   capacity: number;
-  indicators: number;
+  scoreInputCount: number;
+  contextCount: number;
+  traceCount: number;
+  scoreInputPresence: ScoreInputPresence[];
   reportingStatus: ReportingStatus;
   monitoringCount: number | null;
   latestMonitoringYear: number | null;
@@ -59,6 +71,13 @@ type AppSignal = {
   score?: number | null;
 };
 
+type AppScoreInputPresence = {
+  dataset_slug?: string;
+  dataset_name?: string;
+  pillar?: string;
+  present?: boolean;
+};
+
 type AppGeography = {
   geo_code: string;
   name: string;
@@ -66,7 +85,10 @@ type AppGeography = {
   adaptation_gap_score: number | null;
   climate_pressure_score: number | null;
   capacity_score: number | null;
-  included_indicator_count: number | null;
+  score_input_indicator_count: number | null;
+  context_indicator_count: number | null;
+  trace_indicator_count: number | null;
+  score_input_presence?: AppScoreInputPresence[];
   outlook_2030_flat_gap_score: number | null;
   monitoring?: {
     reporting_status?: string;
@@ -127,7 +149,6 @@ type CountryDetailsPayload = {
   details?: Record<string, DetailRecord>;
 };
 
-export const DEFAULT_SELECTED = "NR";
 export const STORY_EXEMPLARS = ["PN", "NR", "AS", "WF", "TV"];
 
 export const LABEL_OFFSETS: Record<string, { dx: number; dy: number }> = {
@@ -195,7 +216,10 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     gap: asNumber(record.adaptation_gap_score),
     pressure: asNumber(record.climate_pressure_score),
     capacity: asNumber(record.capacity_score),
-    indicators: asNumber(record.included_indicator_count),
+    scoreInputCount: asNumber(record.score_input_indicator_count),
+    contextCount: asNumber(record.context_indicator_count),
+    traceCount: asNumber(record.trace_indicator_count),
+    scoreInputPresence: formatScoreInputPresence(record.score_input_presence),
     reportingStatus,
     monitoringCount: reportingStatus === "missing_monitoring_dataset_row"
       ? null
@@ -216,6 +240,22 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     outlook2030Flat: asNumber(record.outlook_2030_flat_gap_score),
     outlookDisplay,
   };
+}
+
+function formatScoreInputPresence(
+  presence: AppScoreInputPresence[] | undefined,
+): ScoreInputPresence[] {
+  return (presence ?? []).map((input) => ({
+    datasetSlug: input.dataset_slug ?? "",
+    datasetName: input.dataset_name ?? "Official score input",
+    pillar: asScoreInputPillar(input.pillar),
+    present: input.present === true,
+  }));
+}
+
+function asScoreInputPillar(value: string | undefined): ScoreInputPillar {
+  if (value === "observed_stress" || value === "adaptation_capacity") return value;
+  return "climate_signal";
 }
 
 function formatSimilarityNeighbors(neighbors: AppSimilarityNeighbor[] | undefined): SimilarityNeighbor[] {

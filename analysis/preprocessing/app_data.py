@@ -45,6 +45,12 @@ SOURCE_REFS = {
     "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
 }
 
+SCORE_INPUT_PILLAR_ORDER = {
+    "climate_signal": 0,
+    "observed_stress": 1,
+    "adaptation_capacity": 2,
+}
+
 
 def build_geography_records(
     *,
@@ -57,6 +63,7 @@ def build_geography_records(
     spatial: pd.DataFrame | None = None,
     outlook_display: pd.DataFrame | None = None,
     similarity_neighbors: pd.DataFrame | None = None,
+    trace: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     """Join score, coverage, centroid, and outlook fields into app geography records."""
 
@@ -68,6 +75,7 @@ def build_geography_records(
     spatial_by_geo = _lookup_by_geo(spatial)
     outlook_display_by_geo = _build_outlook_display_lookup(outlook_display)
     similarity_by_geo = _build_similarity_lookup(similarity_neighbors)
+    score_input_presence_by_geo = build_score_input_presence(trace)
     records: list[dict[str, Any]] = []
 
     for row in index.sort_values("geo_code", kind="mergesort").to_dict(orient="records"):
@@ -95,7 +103,10 @@ def build_geography_records(
             ),
             "available_pillars": _clean_text(row.get("available_pillars")),
             "missing_pillars": _clean_text(row.get("missing_pillars")),
-            "included_indicator_count": _nullable_int(row.get("included_indicator_count")),
+            "score_input_indicator_count": _nullable_int(row.get("score_input_indicator_count")),
+            "context_indicator_count": _nullable_int(row.get("context_indicator_count")),
+            "trace_indicator_count": _nullable_int(row.get("trace_indicator_count")),
+            "score_input_presence": score_input_presence_by_geo.get(geo_code, []),
             "missingness_flag": _bool(row.get("missingness_flag")),
             "dataset_count": _nullable_int(coverage.get("dataset_count")),
             "row_count": _nullable_int(coverage.get("row_count")),
@@ -120,10 +131,40 @@ def build_geographies_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
     """Build the app JSON geography payload."""
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "geometry_policy": "centroid_fallback_until_boundary_join",
         "geographies": records,
         "source_refs": SOURCE_REFS.copy(),
+    }
+
+
+def build_score_input_presence(trace: pd.DataFrame | None) -> dict[str, list[dict[str, Any]]]:
+    """Build a stable score-input universe and geography-level presence flags."""
+
+    fields = ["dataset_slug", "dataset_name", "pillar", "geo_code"]
+    if trace is None or trace.empty or any(field not in trace.columns for field in fields):
+        return {}
+
+    inputs = trace[trace["pillar"].isin(SCORE_INPUT_PILLAR_ORDER)].copy()
+    universe = (
+        inputs[["dataset_slug", "dataset_name", "pillar"]]
+        .drop_duplicates()
+        .assign(pillar_order=lambda frame: frame["pillar"].map(SCORE_INPUT_PILLAR_ORDER))
+        .sort_values(["pillar_order", "dataset_name", "dataset_slug"], kind="mergesort")
+    )
+    present = set(zip(inputs["geo_code"].astype(str), inputs["dataset_slug"].astype(str)))
+    geographies = sorted(trace["geo_code"].dropna().astype(str).unique())
+    return {
+        geo_code: [
+            {
+                "dataset_slug": str(row.dataset_slug),
+                "dataset_name": str(row.dataset_name),
+                "pillar": str(row.pillar),
+                "present": (geo_code, str(row.dataset_slug)) in present,
+            }
+            for row in universe.itertuples(index=False)
+        ]
+        for geo_code in geographies
     }
 
 

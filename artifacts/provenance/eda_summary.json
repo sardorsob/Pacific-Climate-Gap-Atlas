@@ -152,13 +152,13 @@
     "pairwise_count": 231,
     "nearest_neighbor_count": 66,
     "jsd_min": 0.0003147306,
-    "jsd_max": 0.4426796681,
-    "jsd_mean": 0.1463309048056277,
+    "jsd_max": 0.4334656299,
+    "jsd_mean": 0.14475957583160173,
     "similarity_band_counts": {
       "different_profile": 80,
-      "highly_different_profile": 29,
-      "similar_profile": 35,
-      "very_similar_profile": 87
+      "highly_different_profile": 30,
+      "similar_profile": 33,
+      "very_similar_profile": 88
     },
     "missingness_status_counts": {
       "data_desert_or_missing_pillars": 1,

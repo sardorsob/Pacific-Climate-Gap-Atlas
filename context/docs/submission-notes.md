@@ -14,7 +14,7 @@ The Pacific Adaptation Gap Atlas.
 
 Narrative identity for the approved redesign: **The Shape of What We Know**.
 
-Readiness note: the seven-beat app is the current functioning baseline, but the final visual/accessibility/readiness gate is reopened by `TASK-048` through `TASK-057`. Do not submit the baseline as final while those tasks are active unless the owner explicitly cancels the redesign.
+Readiness note: the seven-beat app is the current functioning baseline, and `TASK-048` evidence semantics is implemented/in review. The final visual/accessibility/readiness gate remains open for `TASK-049` through `TASK-057`. Do not submit the baseline as final while those tasks are active unless the owner explicitly cancels the redesign.
 
 ## Submission Requirements To Track
 

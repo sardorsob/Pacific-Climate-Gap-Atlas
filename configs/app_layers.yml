@@ -58,4 +58,7 @@ panels:
       - climate_pressure_score
       - capacity_score
       - missingness_flag
-      - included_indicator_count
+      - score_input_indicator_count
+      - context_indicator_count
+      - trace_indicator_count
+      - score_input_presence

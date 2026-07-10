@@ -8,7 +8,7 @@ import maplibregl, {
 import type { Geo } from "../../lib/atlasData";
 import { LABEL_OFFSETS, STORY_EXEMPLARS, SUBREGION_ANCHORS } from "../../lib/atlasData";
 import type { ScoreKey } from "../../lib/encoding";
-import { radiusFor, ringVariant } from "../../lib/encoding";
+import { PRESENCE_RADIUS, ringVariant } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
 import { GRATICULE_LATS, GRATICULE_LONS } from "../../lib/projection";
 import {
@@ -816,7 +816,7 @@ export function AtlasMap({
           {geos.map((geo) => {
             const point = overlay.points[geo.code];
             if (!point) return null;
-            const r = radiusFor(geo.indicators);
+            const r = PRESENCE_RADIUS;
             const variant = ringVariant(geo.reportingStatus);
             const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
 
@@ -839,7 +839,7 @@ export function AtlasMap({
             if (!labelCodes.has(geo.code)) return null;
             const point = overlay.points[geo.code];
             if (!point) return null;
-            const r = geo.code === selectedCode ? 0 : radiusFor(geo.indicators);
+            const r = geo.code === selectedCode ? 0 : PRESENCE_RADIUS;
             const off = LABEL_OFFSETS[geo.code] ?? { dx: 0, dy: -22 };
             // Clamp middle-anchored labels inside the map so edge exemplars stay readable.
             const mapWidth = mapRef.current?.getContainer().clientWidth ?? 0;
@@ -879,7 +879,7 @@ export function AtlasMap({
         {geos.map((geo) => {
           const point = overlay.points[geo.code];
           if (!point) return null;
-          const r = radiusFor(geo.indicators) + 10;
+          const r = PRESENCE_RADIUS + 10;
           const dimmed =
             (hasSelection && geo.code !== selectedCode) ||
             (viewMode === "coverage" && !priorityCodes.includes(geo.code) && geo.storyPriority > 3);

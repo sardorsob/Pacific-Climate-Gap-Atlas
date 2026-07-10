@@ -13,7 +13,10 @@ const geo = {
   gap: 89,
   pressure: 62,
   capacity: 27,
-  indicators: 8,
+  scoreInputCount: 8,
+  contextCount: 1,
+  traceCount: 9,
+  scoreInputPresence: [],
   reportingStatus: "reported_zero_latest_count",
   monitoringCount: 0,
   latestMonitoringYear: 2026,
@@ -49,5 +52,20 @@ describe("CountryPanel", () => {
     expect(html).toContain("JSD 0.080");
     expect(html).not.toContain("Guam");
     expect(html).not.toContain("JSD 0.081");
+  });
+
+  it("labels score inputs separately from context-only trace data", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={geo}
+        similarityNeighborLimit={1}
+        onClose={() => undefined}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html).toContain("<strong>8</strong> of 8 possible score inputs are present.");
+    expect(html).toContain("1 context-only dataset");
+    expect(html).not.toContain("of 9 indicators feed this score");
   });
 });

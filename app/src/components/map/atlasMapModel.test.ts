@@ -22,7 +22,10 @@ const baseGeo: Geo = {
   gap: 71,
   pressure: 55,
   capacity: 24,
-  indicators: 6,
+  scoreInputCount: 6,
+  contextCount: 0,
+  traceCount: 6,
+  scoreInputPresence: [],
   reportingStatus: "reported_zero_latest_count",
   monitoringCount: 0,
   latestMonitoringYear: 2024,
@@ -63,6 +66,23 @@ describe("atlas map model", () => {
       reportingStatus: "reported_zero_latest_count",
       geometryStatus: "centroid_fallback",
     });
+  });
+
+  it("keeps the primary presence mark size independent of evidence count", () => {
+    const collection = buildAtlasFeatureCollection(
+      [baseGeo, { ...baseGeo, code: "TV", scoreInputCount: 8 }],
+      {
+        activeScore: "gap",
+        viewMode: "default",
+        outlookOn: false,
+        selectedCode: null,
+        priorityCodes: [],
+      },
+    );
+
+    expect(collection.features[0].properties.radius).toBe(
+      collection.features[1].properties.radius,
+    );
   });
 
   it("withholds outlook marks instead of coloring weak outlook rows", () => {

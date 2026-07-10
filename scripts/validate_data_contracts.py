@@ -23,7 +23,10 @@ REQUIRED_GEOGRAPHY_FIELDS = (
     "adaptation_gap_score",
     "climate_pressure_score",
     "capacity_score",
-    "included_indicator_count",
+    "score_input_indicator_count",
+    "context_indicator_count",
+    "trace_indicator_count",
+    "score_input_presence",
     "missingness_flag",
     "source_refs",
     "monitoring",
@@ -67,6 +70,13 @@ REQUIRED_CONTEXT_FIELDS = (
     "context_quality",
     "regional_context_caveat",
 )
+REQUIRED_SCORE_INPUT_PRESENCE_FIELDS = (
+    "dataset_slug",
+    "dataset_name",
+    "pillar",
+    "present",
+)
+SCORE_INPUT_PILLARS = {"climate_signal", "observed_stress", "adaptation_capacity"}
 REQUIRED_LAYER_FIELDS = ("id", "label", "type", "source_file", "fields")
 REQUIRED_LAYER_IDS = (
     "adaptation_gap",
@@ -143,6 +153,7 @@ def _validate_geographies(payload: object) -> list[str]:
             continue
 
         errors.extend(_require_fields(geography, REQUIRED_GEOGRAPHY_FIELDS, label))
+        errors.extend(_validate_score_input_presence(geography, label))
         centroid = geography.get("centroid")
         if isinstance(centroid, dict):
             errors.extend(_require_fields(centroid, REQUIRED_CENTROID_FIELDS, f"{label}.centroid"))
@@ -177,6 +188,36 @@ def _validate_geographies(payload: object) -> list[str]:
         if "outlook_display" in geography and not isinstance(outlook_display, dict):
             errors.append(f"{label}.outlook_display must be an object")
 
+    return errors
+
+
+def _validate_score_input_presence(
+    geography: dict[str, object], label: str
+) -> list[str]:
+    presence = geography.get("score_input_presence")
+    if not isinstance(presence, list):
+        if "score_input_presence" in geography:
+            return [f"{label}.score_input_presence must be an array"]
+        return []
+
+    errors: list[str] = []
+    seen_slugs: set[str] = set()
+    for index, item in enumerate(presence):
+        item_label = f"{label}.score_input_presence[{index}]"
+        if not isinstance(item, dict):
+            errors.append(f"{item_label} must be an object")
+            continue
+        errors.extend(_require_fields(item, REQUIRED_SCORE_INPUT_PRESENCE_FIELDS, item_label))
+        slug = item.get("dataset_slug")
+        if isinstance(slug, str):
+            if slug in seen_slugs:
+                errors.append(f"{item_label} duplicates dataset_slug: {slug}")
+            seen_slugs.add(slug)
+        pillar = item.get("pillar")
+        if pillar not in SCORE_INPUT_PILLARS:
+            errors.append(f"{item_label} has invalid score-input pillar: {pillar}")
+        if "present" in item and not isinstance(item["present"], bool):
+            errors.append(f"{item_label}.present must be boolean")
     return errors
 
 

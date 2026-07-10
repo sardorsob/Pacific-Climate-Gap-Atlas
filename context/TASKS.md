@@ -1124,11 +1124,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: No user-facing or generated semantic field describes responsibility context as feeding the score; every geography has explicit score/context/trace counts and eight ordered score-input presence records; current marks no longer shrink with thin evidence; data/app tests and builds pass.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/build_gap_index.py --config configs/gap_index.yml; python scripts/run_eda.py --config configs/eda.yml; python scripts/build_app_data.py --config configs/app_layers.yml; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; git diff --check
 - Manual QA: Inspect NR, TV, PN, AS, and FJ for 0–8 score-input counts, separate responsibility context, correct monitoring states, equal-size presence marks, and trace copy that does not overclaim score membership.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Builder verification complete; ready for independent QA. `python -m unittest discover -s tests -t . -v` passed 60/60 tests; `npm --prefix app run test` passed 19/19 tests; `npm --prefix app run build` passed with the existing Vite large-chunk warning. Sequential regeneration passed for the gap index, EDA, and app data. `python scripts/validate_data_contracts.py`, `python scripts/check_required_artifacts.py`, `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check` all passed. Generated checks confirm 22 geographies, eight ordered score-input presence positions per geography, score-input counts capped at 8, and trace counts equal score plus context counts. Manual source/data QA covered NR, TV, PN, AS, and FJ; browser visual QA remains for the independent reviewer. Builder has not marked this task done.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created from the full-repository artistic redesign audit. Root correctness issue: `included_indicator_count` currently includes a responsibility-context dataset while the UI says all counted indicators feed the score.
-- Status: pending
+- Attempt log: 2026-07-09: Created from the full-repository artistic redesign audit. Root correctness issue: `included_indicator_count` currently includes a responsibility-context dataset while the UI says all counted indicators feed the score. 2026-07-10: Builder implemented the separate score/context/trace contract, added red/green coverage across index, EDA, exporter, validator, adapter, panel, and map encoding, regenerated dependent outputs sequentially after correcting generator ordering, and completed the full verification gate. Moved to in-review for independent QA.
+- Status: in-review
 
 ## TASK-049
 - Phase: visual-concept

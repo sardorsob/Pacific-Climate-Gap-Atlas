@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "geography_count": 22,
   "monitoring_feature_count": 18,
   "layer_count": 6,
@@ -32,5 +32,10 @@
     "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
   },
   "geometry_policy": "centroid_fallback_until_boundary_join",
+  "evidence_count_contract": {
+    "score_input_indicator_count": "score inputs only; maximum 8",
+    "context_indicator_count": "context-only inputs; currently maximum 1",
+    "trace_indicator_count": "all trace datasets"
+  },
   "summary_output": "artifacts/provenance/app_data_summary.json"
 }

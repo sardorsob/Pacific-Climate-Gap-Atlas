@@ -13,7 +13,17 @@ describe("atlas data adapter", () => {
             adaptation_gap_score: 89,
             climate_pressure_score: 55,
             capacity_score: 24,
-            included_indicator_count: 1,
+            score_input_indicator_count: 1,
+            context_indicator_count: 0,
+            trace_indicator_count: 1,
+            score_input_presence: [
+              {
+                dataset_slug: "sea-level-anomalies",
+                dataset_name: "Mean sea level anomalies",
+                pillar: "climate_signal",
+                present: true,
+              },
+            ],
             outlook_2030_flat_gap_score: 69,
           },
         ],
@@ -38,6 +48,19 @@ describe("atlas data adapter", () => {
       },
     );
 
+    expect(geo).toMatchObject({
+      scoreInputCount: 1,
+      contextCount: 0,
+      traceCount: 1,
+      scoreInputPresence: [
+        {
+          datasetSlug: "sea-level-anomalies",
+          datasetName: "Mean sea level anomalies",
+          pillar: "climate_signal",
+          present: true,
+        },
+      ],
+    });
     expect(geo.indicatorRows).toEqual([
       {
         datasetName: "Mean sea level anomalies",
@@ -62,7 +85,10 @@ describe("atlas data adapter", () => {
           adaptation_gap_score: 89,
           climate_pressure_score: 55,
           capacity_score: 24,
-          included_indicator_count: 9,
+          score_input_indicator_count: 8,
+          context_indicator_count: 1,
+          trace_indicator_count: 9,
+          score_input_presence: [],
           outlook_2030_flat_gap_score: 69,
           similarity_neighbors: [
             {

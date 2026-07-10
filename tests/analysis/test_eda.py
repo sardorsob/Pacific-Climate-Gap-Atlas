@@ -96,7 +96,9 @@ class EdaDriverTests(unittest.TestCase):
                     "adaptation_gap_score": 90.0,
                     "climate_pressure_score": 80.0,
                     "capacity_score": 20.0,
-                    "included_indicator_count": 5,
+                    "score_input_indicator_count": 5,
+                    "context_indicator_count": 0,
+                    "trace_indicator_count": 5,
                     "missingness_flag": False,
                 },
                 {
@@ -105,7 +107,9 @@ class EdaDriverTests(unittest.TestCase):
                     "adaptation_gap_score": 18.0,
                     "climate_pressure_score": 25.0,
                     "capacity_score": 75.0,
-                    "included_indicator_count": 8,
+                    "score_input_indicator_count": 8,
+                    "context_indicator_count": 0,
+                    "trace_indicator_count": 8,
                     "missingness_flag": False,
                 },
             ]

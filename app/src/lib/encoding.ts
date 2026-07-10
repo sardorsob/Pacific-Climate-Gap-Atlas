@@ -60,11 +60,8 @@ export function uncertaintyColor(rankRange: number): string {
 
 export const UNCERTAINTY_STOPS = UNCERTAINTY_RAMP;
 
-// Evidence density -> radius. Restrained range per DESIGN_BRIEF (8..18 desktop).
-export function radiusFor(indicators: number, base = 8, span = 10): number {
-  const f = (Math.max(4, Math.min(9, indicators)) - 4) / 5;
-  return base + f * span;
-}
+// Primary presence marks keep a stable footprint; evidence completeness is encoded by ticks.
+export const PRESENCE_RADIUS = 12;
 
 export type RingVariant = "solid" | "dashed" | "hatch";
 

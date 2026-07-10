@@ -237,3 +237,11 @@ Reason: the redesign contains meaningful artistic judgment. Recording the decisi
 Schedule dependency cleanup, redundant generated-file removal, MapLibre/React ownership splitting, and stale-context archival after the story and exploration redesign is stable.
 
 Reason: deleting and restructuring during active visual work would create moving targets. `TASK-056` will use characterization tests and source-usage proof so simplification is behavior-preserving rather than speculative.
+
+## 2026-07-10: Implement TASK-048 Evidence-Count Contract
+
+`TASK-048` replaces `included_indicator_count` in the index, EDA, generated app records, validator, React adapter, map encoding, legend, and selected-place panel. The contract now exposes `score_input_indicator_count` (maximum 8), `context_indicator_count`, `trace_indicator_count`, and an ordered `score_input_presence` list. Primary presence marks use a stable radius while the future evidence glyph remains planned for `TASK-052`.
+
+The responsibility-context greenhouse-gas dataset remains available in trace rows and is explicitly labeled as outside the score. EDA evidence density and divergence visibility now use score-input counts only.
+
+Reason: a correct semantic contract is required before missingness and completeness can be made visual. The regenerated artifacts preserve the existing score values while removing the risk of describing context data as score evidence.

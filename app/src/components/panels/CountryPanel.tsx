@@ -32,8 +32,8 @@ function EvidenceStrip({ geo, tone }: { geo: Geo; tone: string }) {
         <span className="profile-cell__v">{geo.rankMin}-{geo.rankMax}</span>
       </div>
       <div className="profile-cell">
-        <span className="profile-cell__k">Indicators</span>
-        <span className="profile-cell__v">{geo.indicators}/9</span>
+        <span className="profile-cell__k">Score inputs</span>
+        <span className="profile-cell__v">{geo.scoreInputCount}/8</span>
       </div>
       <div className={`profile-cell profile-cell--${tone}`}>
         <span className="profile-cell__k">Monitoring</span>
@@ -145,11 +145,14 @@ export function CountryPanel({ geo, similarityNeighborLimit, onClose, onOpenMeth
           <p className="reporting__caveat">{reportingCaveat(geo.reportingStatus)}</p>
         </div>
         <p className="panel__evidence">
-          <strong>{geo.indicators}</strong> of 9 indicators feed this score.
-          {geo.indicators <= 5 && " Thin evidence - read this score with extra caution."}
+          <strong>{geo.scoreInputCount}</strong> of 8 possible score inputs are present.
+          {geo.scoreInputCount <= 4 && " Thin score-input evidence - read this score with extra caution."}
+          {geo.contextCount > 0 && (
+            <span> {geo.contextCount} context-only dataset{geo.contextCount === 1 ? " is" : "s are"} available and {geo.contextCount === 1 ? "does" : "do"} not feed the score.</span>
+          )}
         </p>
         <details className="trace">
-          <summary>The official rows behind this score ({geo.indicatorRows.length || geo.indicators})</summary>
+          <summary>The official trace rows ({geo.indicatorRows.length || geo.traceCount})</summary>
           <p className="trace__note">
             Each row is the latest official record behind one indicator: year, value, unit, its
             0-100 score, and a short hash of the source row.

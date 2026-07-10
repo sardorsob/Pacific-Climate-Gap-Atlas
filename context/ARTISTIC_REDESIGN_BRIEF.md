@@ -87,7 +87,7 @@ The next data contract must expose separate concepts:
 - `trace_indicator_count`: all distinct trace datasets available, equal to the two counts above.
 - per-input presence flags, sufficient to render eight stable score-input positions without deriving semantics from display labels.
 
-Until `TASK-048` lands, no new evidence mark, legend, or copy may claim that the existing count represents only score inputs.
+`TASK-048` now supplies these fields. New evidence marks, legend copy, and panels must consume the explicit score-input count and presence list rather than resurrecting the retired ambiguous field.
 
 ## Signature Evidence Mark
 

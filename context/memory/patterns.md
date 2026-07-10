@@ -44,7 +44,7 @@ Preserve these patterns:
 - mobile as a sibling composition with room for every scene to finish;
 - contemporary scientific ocean-chart art direction without appropriating Pacific cultural motifs.
 
-Do not implement the new mark against the old `included_indicator_count`; `TASK-048` must land first. Do not begin frontend visual work before the `TASK-049` owner concept gate.
+Do not implement the new mark against the retired `included_indicator_count`; `TASK-048` now provides explicit counts and presence records. Do not begin frontend visual work before the `TASK-049` owner concept gate.
 
 ## Delegated Mockup Revision
 

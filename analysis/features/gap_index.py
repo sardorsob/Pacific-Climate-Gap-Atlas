@@ -7,6 +7,7 @@ import pandas as pd
 
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}
+SCORE_INPUT_PILLARS = PRESSURE_PILLARS | CAPACITY_PILLARS
 REQUIRED_PILLARS = {"climate_signal", "adaptation_capacity"}
 INDEX_COLUMNS = [
     "geo_code",
@@ -17,7 +18,9 @@ INDEX_COLUMNS = [
     "raw_gap_difference",
     "available_pillars",
     "missing_pillars",
-    "included_indicator_count",
+    "score_input_indicator_count",
+    "context_indicator_count",
+    "trace_indicator_count",
     "missingness_flag",
 ]
 
@@ -165,12 +168,16 @@ def _availability_summary(trace: pd.DataFrame) -> pd.DataFrame:
     for geo_code, group in trace.groupby("geo_code", sort=True):
         available_pillars = sorted(group["pillar"].dropna().unique().tolist())
         missing_pillars = sorted(REQUIRED_PILLARS.difference(available_pillars))
+        score_inputs = group[group["pillar"].isin(SCORE_INPUT_PILLARS)]
+        context_rows = group[~group["pillar"].isin(SCORE_INPUT_PILLARS)]
         rows.append(
             {
                 "geo_code": geo_code,
                 "available_pillars": " ".join(available_pillars),
                 "missing_pillars": " ".join(missing_pillars),
-                "included_indicator_count": int(group["dataset_slug"].nunique()),
+                "score_input_indicator_count": int(score_inputs["dataset_slug"].nunique()),
+                "context_indicator_count": int(context_rows["dataset_slug"].nunique()),
+                "trace_indicator_count": int(group["dataset_slug"].nunique()),
             }
         )
 

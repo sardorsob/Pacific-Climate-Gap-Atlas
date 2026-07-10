@@ -33,7 +33,7 @@ COMPONENTS: tuple[tuple[str, str], ...] = (
     ),
     (
         "data_visibility",
-        "Relative amount of included official indicator evidence.",
+        "Relative amount of score-input official indicator evidence.",
     ),
     (
         "rank_fragility",
@@ -141,7 +141,9 @@ def build_evidence_fingerprints(
         "adaptation_gap_score",
         "climate_pressure_score",
         "capacity_score",
-        "included_indicator_count",
+        "score_input_indicator_count",
+        "context_indicator_count",
+        "trace_indicator_count",
         "rank_range",
         "pressure_indicator_mean",
         "capacity_indicator_mean",
@@ -151,13 +153,13 @@ def build_evidence_fingerprints(
             fingerprints[column] = pd.NA
         fingerprints[column] = pd.to_numeric(fingerprints[column], errors="coerce")
 
-    max_indicator_count = _positive_max(fingerprints["included_indicator_count"])
+    max_indicator_count = _positive_max(fingerprints["score_input_indicator_count"])
     max_rank_range = _positive_max(fingerprints["rank_range"])
 
     fingerprints["component_pressure"] = fingerprints.apply(_pressure_component, axis=1)
     fingerprints["component_capacity"] = fingerprints.apply(_capacity_component, axis=1)
     fingerprints["component_data_visibility"] = (
-        fingerprints["included_indicator_count"].fillna(0).clip(lower=0)
+        fingerprints["score_input_indicator_count"].fillna(0).clip(lower=0)
         / max_indicator_count
         * 100
     )
@@ -209,7 +211,9 @@ def build_evidence_fingerprints(
         "adaptation_gap_score",
         "climate_pressure_score",
         "capacity_score",
-        "included_indicator_count",
+        "score_input_indicator_count",
+        "context_indicator_count",
+        "trace_indicator_count",
         "scored_indicator_count",
         "pressure_indicator_count",
         "capacity_indicator_count",

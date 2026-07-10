@@ -1,7 +1,7 @@
 import type { Geo, ReportingStatus } from "../../lib/atlasData";
 import type { ScoreKey } from "../../lib/encoding";
 import {
-  radiusFor,
+  PRESENCE_RADIUS,
   ringVariant,
   scoreColor,
   uncertaintyColor,
@@ -238,7 +238,7 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
           scoreValue,
           fillColor: markerFillFor(geo, state),
           strokeColor: withheld ? "#9fb4bf" : paint.strokeColor,
-          radius: radiusFor(geo.indicators),
+          radius: PRESENCE_RADIUS,
           opacity: dimmed ? 0.32 : 1,
           selected: isSelected,
           priority: isPriority,

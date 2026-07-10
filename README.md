@@ -186,7 +186,7 @@ Deploy the static contents of `app/dist/` to the final host. Record the public U
 
 The current app is a production-oriented seven-beat baseline with generated data, MapLibre/Natural Earth map context, selected-place trace and JSD evidence, and post-map interaction/accessibility work complete. It is not yet the final competition submission.
 
-The approved next phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. Work is planned as `TASK-048` through `TASK-057`: correct score-input/context semantics, approve desktop/mobile concepts, replace nested story scrolling, build the five scenes and evidence marks, simplify exploration, remove redundant machinery, add shareable URL state, and complete final QA. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The approved next phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. `TASK-048` corrected score-input/context semantics; the remaining work is `TASK-049` through `TASK-057`: approve desktop/mobile concepts, replace nested story scrolling, build the five scenes and evidence marks, simplify exploration, remove redundant machinery, add shareable URL state, and complete final QA. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Current Frame
 

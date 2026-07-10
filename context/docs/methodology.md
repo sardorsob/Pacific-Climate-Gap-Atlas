@@ -25,9 +25,9 @@ Outputs:
 
 Missing values are not imputed for the primary score. A geography must have at least one climate-signal indicator and one adaptation-capacity indicator to receive a published score.
 
-The current score table includes `included_indicator_count`, `available_pillars`, `missing_pillars`, and `missingness_flag`. Even when a geography is scored, the app should show the indicator trace because some geographies have fewer contributing indicators than others.
+The score table includes `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `available_pillars`, `missing_pillars`, and `missingness_flag`. Even when a geography is scored, the app should show the full indicator trace because context-only rows remain useful evidence without feeding the score.
 
-Known correction scheduled as `TASK-048`: `included_indicator_count` currently counts all trace datasets, including responsibility-context rows. It must not be described as the number of score inputs. The replacement contract will publish `score_input_indicator_count`, `context_indicator_count`, and `trace_indicator_count` separately; the score-input denominator is eight.
+`TASK-048` made the score-input denominator explicit: there are eight possible score-input datasets across climate signal, observed stress, and adaptation capacity. Responsibility-context rows are counted separately and never enter the pressure-minus-capacity score or score-input evidence density.
 
 ## Map Geometry Policy
 

@@ -35,12 +35,14 @@ def build_country_drivers(
         "adaptation_gap_score",
         "climate_pressure_score",
         "capacity_score",
-        "included_indicator_count",
+        "score_input_indicator_count",
+        "context_indicator_count",
+        "trace_indicator_count",
     ):
         if column in drivers:
             drivers[column] = pd.to_numeric(drivers[column], errors="coerce")
-    if "included_indicator_count" in drivers:
-        drivers["included_indicator_count"] = drivers["included_indicator_count"].astype(
+    if "score_input_indicator_count" in drivers:
+        drivers["score_input_indicator_count"] = drivers["score_input_indicator_count"].astype(
             "Int64"
         )
 
@@ -60,7 +62,7 @@ def build_country_drivers(
         _pressure_capacity_summary,
         axis=1,
     )
-    drivers["evidence_density_label"] = drivers["included_indicator_count"].apply(
+    drivers["evidence_density_label"] = drivers["score_input_indicator_count"].apply(
         _evidence_density_label
     )
     drivers = drivers.merge(
@@ -107,7 +109,9 @@ def build_country_drivers(
         "pressure_capacity_typology",
         "pressure_capacity_summary",
         "exemplar_flag",
-        "included_indicator_count",
+        "score_input_indicator_count",
+        "context_indicator_count",
+        "trace_indicator_count",
         "pressure_signal_count",
         "capacity_signal_count",
         "trace_signal_count",
@@ -158,7 +162,7 @@ def build_country_story_labels(
         "exemplar_flag",
         "reason_label",
         "pressure_capacity_summary",
-        "included_indicator_count",
+        "score_input_indicator_count",
         "pressure_signal_count",
         "capacity_signal_count",
         "evidence_density_label",
@@ -231,11 +235,11 @@ def _pressure_capacity_summary(row: pd.Series) -> str:
 
 def _evidence_density_label(value: Any) -> str:
     count = _float_value(value)
-    if count >= 8:
-        return "broad indicator evidence"
+    if count >= 7:
+        return "broad score-input evidence"
     if count >= 5:
-        return "moderate indicator evidence"
-    return "thin indicator evidence"
+        return "moderate score-input evidence"
+    return "thin score-input evidence"
 
 
 def _signal_summary(indicator_trace: pd.DataFrame | None) -> pd.DataFrame:

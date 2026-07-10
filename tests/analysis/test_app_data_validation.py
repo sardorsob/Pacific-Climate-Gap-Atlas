@@ -62,6 +62,28 @@ class AppDataValidationTests(unittest.TestCase):
             self.assertIn("layers[0] missing required field: fields", errors)
             self.assertIn("layers missing required id: outlook_2050_flat", errors)
 
+    def test_validate_root_reports_missing_score_input_presence_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "data" / "processed" / "app"
+            public = root / "app" / "public" / "data"
+            processed.mkdir(parents=True)
+            public.mkdir(parents=True)
+
+            broken_geographies = _valid_geographies()
+            del broken_geographies["geographies"][0]["score_input_presence"][0]["present"]
+            _write_json(processed / "geographies.json", broken_geographies)
+            _write_json(processed / "layers.json", _valid_layers())
+            _write_auxiliary_app_files(processed)
+            _copy_public_app_files(processed, public)
+
+            errors = validate_data_contracts.validate_root(root)
+
+            self.assertIn(
+                "geographies[0].score_input_presence[0] missing required field: present",
+                errors,
+            )
+
     def test_validate_root_checks_all_public_app_file_copies(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -98,7 +120,7 @@ class AppDataValidationTests(unittest.TestCase):
 
 def _valid_geographies() -> dict[str, object]:
     return {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "geographies": [
             {
                 "geo_code": "FJ",
@@ -110,7 +132,17 @@ def _valid_geographies() -> dict[str, object]:
                 "adaptation_gap_score": 42.0,
                 "climate_pressure_score": 67.0,
                 "capacity_score": 25.0,
-                "included_indicator_count": 3,
+                "score_input_indicator_count": 2,
+                "context_indicator_count": 1,
+                "trace_indicator_count": 3,
+                "score_input_presence": [
+                    {
+                        "dataset_slug": "sea-level-anomalies",
+                        "dataset_name": "Sea level anomalies",
+                        "pillar": "climate_signal",
+                        "present": True,
+                    }
+                ],
                 "missingness_flag": False,
                 "source_refs": {
                     "index": "data/processed/gap_index.csv",

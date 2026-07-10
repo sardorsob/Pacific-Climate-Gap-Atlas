@@ -18,7 +18,9 @@ class CountryDriverStoryTests(unittest.TestCase):
                     "adaptation_gap_score": 90.0,
                     "climate_pressure_score": 82.0,
                     "capacity_score": 20.0,
-                    "included_indicator_count": 4,
+                    "score_input_indicator_count": 4,
+                    "context_indicator_count": 0,
+                    "trace_indicator_count": 4,
                     "missingness_flag": False,
                 },
                 {
@@ -27,7 +29,9 @@ class CountryDriverStoryTests(unittest.TestCase):
                     "adaptation_gap_score": 44.0,
                     "climate_pressure_score": 45.0,
                     "capacity_score": 40.0,
-                    "included_indicator_count": 3,
+                    "score_input_indicator_count": 3,
+                    "context_indicator_count": 0,
+                    "trace_indicator_count": 3,
                     "missingness_flag": True,
                 },
             ]
@@ -131,6 +135,25 @@ class CountryDriverStoryTests(unittest.TestCase):
         self.assertEqual(aa["robustness_label"], "fragile")
         self.assertIn("Rank movement", aa["fragility_caveat"])
         self.assertIn("not causal", aa["non_causal_caveat"].lower())
+
+    def test_country_drivers_use_score_input_count_for_evidence_density(self) -> None:
+        index = self.index.copy()
+        index["context_indicator_count"] = [1, 0]
+        index["trace_indicator_count"] = [5, 3]
+
+        drivers = driver_module.build_country_drivers(
+            index,
+            indicator_trace=self.indicator_trace,
+            coverage_by_geography=self.coverage,
+            rank_volatility=self.rank_volatility,
+        )
+
+        self.assertIn("score_input_indicator_count", drivers.columns)
+        self.assertNotIn("included_indicator_count", drivers.columns)
+        self.assertEqual(
+            drivers.loc[drivers["geo_code"] == "AA", "evidence_density_label"].iloc[0],
+            "thin score-input evidence",
+        )
 
     def test_country_story_labels_are_short_app_ready_rows_for_scored_geographies(self) -> None:
         self.assertTrue(callable(getattr(driver_module, "build_country_story_labels", None)))

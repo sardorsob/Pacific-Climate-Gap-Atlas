@@ -12,6 +12,76 @@ from analysis.preprocessing.app_data import (
 
 
 class AppDataExportTests(unittest.TestCase):
+    def test_build_geography_records_exports_score_input_presence_and_counts(self) -> None:
+        index = pd.DataFrame(
+            [
+                {
+                    "geo_code": "FJ",
+                    "score_status": "scored",
+                    "adaptation_gap_score": 10.5,
+                    "climate_pressure_score": 59.0,
+                    "capacity_score": 86.0,
+                    "raw_gap_difference": -27.0,
+                    "available_pillars": "adaptation_capacity climate_signal",
+                    "missing_pillars": "",
+                    "score_input_indicator_count": 2,
+                    "context_indicator_count": 1,
+                    "trace_indicator_count": 3,
+                    "missingness_flag": False,
+                }
+            ]
+        )
+        trace = pd.DataFrame(
+            [
+                {
+                    "geo_code": "FJ",
+                    "dataset_slug": "power-generation",
+                    "dataset_name": "Power generation",
+                    "pillar": "adaptation_capacity",
+                },
+                {
+                    "geo_code": "FJ",
+                    "dataset_slug": "sea-level-anomalies",
+                    "dataset_name": "Sea level anomalies",
+                    "pillar": "climate_signal",
+                },
+                {
+                    "geo_code": "FJ",
+                    "dataset_slug": "greenhouse-gas-emissions-per-capita",
+                    "dataset_name": "GHG per capita",
+                    "pillar": "responsibility_context",
+                },
+            ]
+        )
+
+        record = build_geography_records(
+            index=index,
+            lookup=pd.DataFrame([{"geo_code": "FJ"}]),
+            outlook=pd.DataFrame([]),
+            trace=trace,
+        )[0]
+
+        self.assertEqual(record["score_input_indicator_count"], 2)
+        self.assertEqual(record["context_indicator_count"], 1)
+        self.assertEqual(record["trace_indicator_count"], 3)
+        self.assertEqual(
+            record["score_input_presence"],
+            [
+                {
+                    "dataset_slug": "sea-level-anomalies",
+                    "dataset_name": "Sea level anomalies",
+                    "pillar": "climate_signal",
+                    "present": True,
+                },
+                {
+                    "dataset_slug": "power-generation",
+                    "dataset_name": "Power generation",
+                    "pillar": "adaptation_capacity",
+                    "present": True,
+                },
+            ],
+        )
+
     def test_build_geography_records_joins_scores_lookup_and_outlook(self) -> None:
         index = pd.DataFrame(
             [
@@ -24,7 +94,9 @@ class AppDataExportTests(unittest.TestCase):
                     "raw_gap_difference": -27.0,
                     "available_pillars": "adaptation_capacity climate_signal",
                     "missing_pillars": None,
-                    "included_indicator_count": 9,
+                    "score_input_indicator_count": 8,
+                    "context_indicator_count": 1,
+                    "trace_indicator_count": 9,
                     "missingness_flag": False,
                 }
             ]
@@ -150,6 +222,9 @@ class AppDataExportTests(unittest.TestCase):
         self.assertEqual(record["outlook_2030_flat_gap_score"], 19.7)
         self.assertEqual(record["outlook_2050_flat_gap_score"], 20.3)
         self.assertEqual(record["missing_pillars"], "")
+        self.assertEqual(record["score_input_indicator_count"], 8)
+        self.assertEqual(record["context_indicator_count"], 1)
+        self.assertEqual(record["trace_indicator_count"], 9)
         self.assertIn("indicator_trace", record["source_refs"])
         self.assertEqual(record["monitoring"]["reporting_status"], "reported_positive_latest_count")
         self.assertEqual(record["monitoring"]["latest_value"], 8.0)
@@ -188,7 +263,9 @@ class AppDataExportTests(unittest.TestCase):
                     "raw_gap_difference": 34.6,
                     "available_pillars": "adaptation_capacity climate_signal",
                     "missing_pillars": "",
-                    "included_indicator_count": 9,
+                    "score_input_indicator_count": 8,
+                    "context_indicator_count": 1,
+                    "trace_indicator_count": 9,
                     "missingness_flag": False,
                 }
             ]
@@ -246,7 +323,9 @@ class AppDataExportTests(unittest.TestCase):
                     "raw_gap_difference": 31.5,
                     "available_pillars": "adaptation_capacity climate_signal",
                     "missing_pillars": "",
-                    "included_indicator_count": 7,
+                    "score_input_indicator_count": 7,
+                    "context_indicator_count": 0,
+                    "trace_indicator_count": 7,
                     "missingness_flag": False,
                 }
             ]

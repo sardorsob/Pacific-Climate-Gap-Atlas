@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-047` are complete: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, static app-data pipeline, MapLibre/Natural Earth map, seven-beat guided baseline, selected-place panels, accessibility work, and post-audit visual polish all exist.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-047` are complete, and `TASK-048` is implemented and in review: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, corrected evidence-count contract, static app-data pipeline, MapLibre/Natural Earth map, seven-beat guided baseline, selected-place panels, accessibility work, and post-audit visual polish all exist.
 
 The current app is the functioning baseline, not the next target. A 2026-07-09 full repository/story/implementation/live-layout audit approved **The Shape of What We Know** as the next narrative identity. `context/ARTISTIC_REDESIGN_BRIEF.md` records the five-scene storyboard, fixed-presence evidence-mark grammar, desktop/mobile layout, transition system, art direction, exploration simplification, ethical guardrails, and growth path. `TASK-048` through `TASK-057` are pending with detailed plans under `context/plans/`. No redesign implementation task has started.
 
@@ -73,7 +73,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Start `TASK-048` using `context/plans/task-048-evidence-semantics-implementation-plan.md`. Correct score-input/context/trace counts and regenerate the full data/app contract before drawing new evidence marks.
+1. Review `TASK-048` in `in-review` against its implementation plan, then mark it `done` only after independent QA confirms the regenerated artifacts and evidence-count checks.
 2. Run `TASK-049` as an owner approval gate using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Generate the required desktop/mobile frames and record exact visual decisions before frontend redesign.
 3. Execute `TASK-050` through `TASK-055` in dependency order, one reviewed commit per task. Do not retain guided JSD or map arcs merely because they exist in the baseline.
 4. Run `TASK-056` only after the new experience stabilizes, then `TASK-057` for URL state and final QA using `context/plans/tasks-056-057-simplification-readiness-implementation-plan.md`.
@@ -85,7 +85,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - The SDMX fetch helper avoids undeclared runtime dependencies, but uses a Windows PowerShell fallback because the endpoint returned `422` to Python standard-library HTTP.
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
-- The current `included_indicator_count` is semantically ambiguous: it includes responsibility-context trace data while the app calls the number score inputs. This is the first planned correction in `TASK-048`; do not build the new evidence glyph on the old field.
+- `TASK-048` corrected the former `included_indicator_count` ambiguity. Production app data now exposes score-input, context-only, and total trace counts plus eight ordered score-input presence positions. Do not regress to the retired field when building the new evidence glyph.
 - The outlook baseline is app-optional. Only include it in the interface with visible caveats and row-level notes.
 - TASK-005/TASK-026 scored GIS exports use centroid fallback hit targets, not island boundaries. TASK-029 adds Natural Earth land context for orientation, but not official/selectable boundary polygons. TASK-038/TASK-039 group nearby Natural Earth land to scored centroids for visual marks only; TASK-043 keeps those land shapes as subdued context/texture under guaranteed-size centroid presence marks. This is not a boundary source, and far/disputed land stays unassigned.
 - TASK-010 GIS context is descriptive and boundary-neutral. It can support grouping and app copy, but not scoring.

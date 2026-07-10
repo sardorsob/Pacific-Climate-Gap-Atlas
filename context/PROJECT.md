@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The current app baseline is complete through `TASK-047`. The next approved phase is the artistic redesign sequence `TASK-048` through `TASK-057`, beginning with evidence-count semantics and an owner-reviewed visual concept before app implementation. Competition deadline: August 31, 2026.
+The current app baseline is complete through `TASK-047`; `TASK-048` evidence semantics is now implemented and under QA. The next approved phase continues with `TASK-049` through `TASK-057`, beginning with owner-reviewed visual concepts before the artistic frontend redesign. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -51,7 +51,7 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 | Artistic redesign contract | approved | `context/ARTISTIC_REDESIGN_BRIEF.md` defines “The Shape of What We Know,” the five-scene storyboard, evidence-mark grammar, art direction, motion, mobile, simplification, and growth contracts |
-| Evidence semantics correction | pending | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows before any new mark is built |
+| Evidence semantics correction | in-review | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy |
 | Artistic story rebuild | pending | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | pending | `TASK-056` removes redundant code/data/dependencies/stale context; `TASK-057` adds URL state and runs the final QA matrix |
 
@@ -97,3 +97,4 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 - Completed a second full repository, context, implementation, story, and live-layout audit on 2026-07-09. The review found a semantic correctness issue in `included_indicator_count`, competing nested-scroll/observer state, mobile scene clipping, repeated uncertainty explanation, physical implications from JSD arcs, overloaded mark grammar, redundant runtime products/dependencies, and stale documentation.
 - Approved **The Shape of What We Know** as the next narrative identity while keeping **The Pacific Adaptation Gap Atlas** as the product title. The target story has five scenes: reveal equal-presence marks, expose breaks in the record, separate pressure from visible capacity, compare Nauru and Tuvalu, and rearrange marks into rank bands before returning to exploration.
 - Added `TASK-048` through `TASK-057` and three executable implementation plans. No redesign implementation task has started; `TASK-048` is the next legal task, and `TASK-049` is the owner visual-approval gate before frontend redesign work.
+- Implemented `TASK-048` in the Python index, EDA drivers/divergence layer, app exporter, static contract validator, React adapter, map-size encoding, legend, and selected-place panel. Regenerated index/EDA/app artifacts sequentially. The next legal task is `TASK-049`, the owner visual-approval gate.

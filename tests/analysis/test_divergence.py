@@ -82,6 +82,34 @@ class EvidenceFingerprintDivergenceTests(unittest.TestCase):
         self.assertGreater(row["fingerprint_monitoring_reporting_gap"], 0.0)
         self.assertAlmostEqual(row["fingerprint_total"], 1.0)
 
+    def test_fingerprint_visibility_uses_score_input_count_not_context_count(self) -> None:
+        drivers = _country_drivers()
+        drivers["context_indicator_count"] = [0, 1]
+        drivers["trace_indicator_count"] = [3, 7]
+
+        fingerprints = build_evidence_fingerprints(
+            country_drivers=drivers,
+            indicator_trace=_indicator_trace(),
+            rank_volatility=_rank_volatility(),
+            monitoring_gap=_monitoring_gap(),
+        )
+
+        visibility = fingerprints.set_index("geo_code")["component_data_visibility"]
+        self.assertEqual(visibility["AA"], 50.0)
+        self.assertEqual(visibility["BB"], 100.0)
+
+        drivers["context_indicator_count"] = [100, 200]
+        changed_context = build_evidence_fingerprints(
+            country_drivers=drivers,
+            indicator_trace=_indicator_trace(),
+            rank_volatility=_rank_volatility(),
+            monitoring_gap=_monitoring_gap(),
+        )
+        self.assertEqual(
+            changed_context.set_index("geo_code").loc["AA", "component_data_visibility"],
+            50.0,
+        )
+
     def test_similarity_neighbors_include_cautious_caveats_and_deterministic_ties(self) -> None:
         fingerprints = pd.DataFrame(
             [
@@ -150,7 +178,9 @@ def _country_drivers() -> pd.DataFrame:
                 "adaptation_gap_score": 80.0,
                 "climate_pressure_score": 70.0,
                 "capacity_score": 20.0,
-                "included_indicator_count": 3,
+                "score_input_indicator_count": 3,
+                "context_indicator_count": 0,
+                "trace_indicator_count": 3,
                 "data_desert_flag": True,
                 "monitoring_missing": True,
                 "coverage_flag": "data_desert",
@@ -165,7 +195,9 @@ def _country_drivers() -> pd.DataFrame:
                 "adaptation_gap_score": 40.0,
                 "climate_pressure_score": 30.0,
                 "capacity_score": 60.0,
-                "included_indicator_count": 6,
+                "score_input_indicator_count": 6,
+                "context_indicator_count": 0,
+                "trace_indicator_count": 6,
                 "data_desert_flag": False,
                 "monitoring_missing": False,
                 "coverage_flag": "complete_dataset_coverage",

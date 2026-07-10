@@ -207,12 +207,12 @@ Do not use scored polygon choropleths until a boundary source is chosen, license
 Each point can carry three simultaneous meanings:
 
 1. Fill color: active score layer.
-2. Radius: evidence density through `included_indicator_count`.
+2. Primary footprint: fixed-size presence mark; evidence density is carried by the eight ordered score-input positions and does not shrink a geography's visual importance.
 3. Ring or pattern: monitoring/reporting status.
 
 Correction and redesign note:
 
-- The current `included_indicator_count` also counts responsibility-context data, so it must not be described as score inputs. `TASK-048` replaces it with explicit score-input, context-only, and total trace counts.
+- `TASK-048` replaced the ambiguous `included_indicator_count` with explicit score-input, context-only, and total trace counts. Responsibility context remains visible in trace data but is never described as a score input.
 - The next evidence mark does not use radius for evidence density. It keeps a fixed overall footprint and renders eight stable input positions, missing positions as open cuts, a detached context tick, and monitoring state on the outer edge.
 
 Initial size guidance:
@@ -576,7 +576,7 @@ The drawer is not allowed to be the only place where load-bearing caveats appear
 
 | UI Surface | Data File | Required Fields |
 | --- | --- | --- |
-| Gap map | `app/public/data/atlas_geographies.geojson` | `geo_code`, `name`, `adaptation_gap_score`, `included_indicator_count`, `score_status` |
+| Gap map | `app/public/data/atlas_geographies.geojson` | `geo_code`, `name`, `adaptation_gap_score`, `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`, `score_status` |
 | Pressure/capacity map | same | `climate_pressure_score`, `capacity_score` |
 | Centroid geometry | same | `geometry.coordinates`, `geometry_status` |
 | Country panel | `app/public/data/country_details.json` | geography fields, scores, `indicators[]`, source refs |

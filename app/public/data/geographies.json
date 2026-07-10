@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "geometry_policy": "centroid_fallback_until_boundary_join",
   "geographies": [
     {
@@ -21,7 +21,59 @@
       "outlook_2050_flat_gap_score": 52.9927,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 7,
+      "score_input_indicator_count": 6,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 7,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": false
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": false
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 7,
       "row_count": 563,
@@ -83,7 +135,7 @@
       "story": {
         "story_label": "High gap: moderate pressure / low capacity",
         "story_priority": "primary",
-        "evidence_density_label": "moderate indicator evidence",
+        "evidence_density_label": "moderate score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -153,7 +205,7 @@
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
           "similarity_rank": 2,
-          "jsd_distance": 0.0116,
+          "jsd_distance": 0.0145,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -162,7 +214,7 @@
           "neighbor_geo_code": "WF",
           "neighbor_name": "Wallis and Futuna",
           "similarity_rank": 3,
-          "jsd_distance": 0.018,
+          "jsd_distance": 0.0168,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -200,7 +252,59 @@
       "outlook_2050_flat_gap_score": 30.0569,
       "available_pillars": "adaptation_capacity climate_signal observed_stress",
       "missing_pillars": "",
-      "included_indicator_count": 8,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 0,
+      "trace_indicator_count": 8,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 8,
       "row_count": 603,
@@ -262,7 +366,7 @@
       "story": {
         "story_label": "Lower gap: low pressure / moderate capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Sea level anomalies",
@@ -327,7 +431,7 @@
           "neighbor_geo_code": "TK",
           "neighbor_name": "Tokelau",
           "similarity_rank": 1,
-          "jsd_distance": 0.0216,
+          "jsd_distance": 0.0208,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -336,7 +440,7 @@
           "neighbor_geo_code": "KI",
           "neighbor_name": "Kiribati",
           "similarity_rank": 2,
-          "jsd_distance": 0.0947,
+          "jsd_distance": 0.0923,
           "similarity_band": "similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -345,7 +449,7 @@
           "neighbor_geo_code": "MH",
           "neighbor_name": "Marshall Islands",
           "similarity_rank": 3,
-          "jsd_distance": 0.0962,
+          "jsd_distance": 0.0946,
           "similarity_band": "similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -383,7 +487,59 @@
       "outlook_2050_flat_gap_score": 20.6898,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 706,
@@ -445,7 +601,7 @@
       "story": {
         "story_label": "Lower gap: moderate pressure / high capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Number of directly affected persons attributed to disasters",
@@ -566,7 +722,59 @@
       "outlook_2050_flat_gap_score": 34.329,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 667,
@@ -628,7 +836,7 @@
       "story": {
         "story_label": "Mixed gap: high pressure / moderate capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Number of directly affected persons attributed to disasters",
@@ -749,7 +957,59 @@
       "outlook_2050_flat_gap_score": 23.9362,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 8,
+      "score_input_indicator_count": 7,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 8,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": false
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 8,
       "row_count": 581,
@@ -811,7 +1071,7 @@
       "story": {
         "story_label": "Lower gap: moderate pressure / moderate capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -876,7 +1136,7 @@
           "neighbor_geo_code": "MP",
           "neighbor_name": "Northern Mariana Islands",
           "similarity_rank": 1,
-          "jsd_distance": 0.0055,
+          "jsd_distance": 0.0056,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -885,7 +1145,7 @@
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
           "similarity_rank": 2,
-          "jsd_distance": 0.0179,
+          "jsd_distance": 0.0215,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -932,7 +1192,59 @@
       "outlook_2050_flat_gap_score": 60.1815,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 660,
@@ -994,7 +1306,7 @@
       "story": {
         "story_label": "Lower gap: moderate pressure / moderate capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -1115,7 +1427,59 @@
       "outlook_2050_flat_gap_score": 15.8203,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 665,
@@ -1177,7 +1541,7 @@
       "story": {
         "story_label": "Mixed gap: high pressure / moderate capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Number of directly affected persons attributed to disasters",
@@ -1298,7 +1662,59 @@
       "outlook_2050_flat_gap_score": 42.2646,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 7,
+      "score_input_indicator_count": 6,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 7,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": false
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": false
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 7,
       "row_count": 536,
@@ -1360,7 +1776,7 @@
       "story": {
         "story_label": "Mixed gap: moderate pressure / moderate capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "moderate indicator evidence",
+        "evidence_density_label": "moderate score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -1421,7 +1837,7 @@
           "neighbor_geo_code": "GU",
           "neighbor_name": "Guam",
           "similarity_rank": 1,
-          "jsd_distance": 0.0055,
+          "jsd_distance": 0.0056,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1439,7 +1855,7 @@
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
           "similarity_rank": 3,
-          "jsd_distance": 0.0144,
+          "jsd_distance": 0.0192,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1477,7 +1893,59 @@
       "outlook_2050_flat_gap_score": 7.4734,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 673,
@@ -1539,7 +2007,7 @@
       "story": {
         "story_label": "Lower gap: moderate pressure / high capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -1660,7 +2128,59 @@
       "outlook_2050_flat_gap_score": 100.0,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 742,
@@ -1722,7 +2242,7 @@
       "story": {
         "story_label": "High gap: moderate pressure / low capacity",
         "story_priority": "primary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -1787,7 +2307,7 @@
           "neighbor_geo_code": "MP",
           "neighbor_name": "Northern Mariana Islands",
           "similarity_rank": 1,
-          "jsd_distance": 0.0797,
+          "jsd_distance": 0.0816,
           "similarity_band": "similar_profile",
           "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1796,7 +2316,7 @@
           "neighbor_geo_code": "GU",
           "neighbor_name": "Guam",
           "similarity_rank": 2,
-          "jsd_distance": 0.0809,
+          "jsd_distance": 0.0817,
           "similarity_band": "similar_profile",
           "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1805,7 +2325,7 @@
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
           "similarity_rank": 3,
-          "jsd_distance": 0.0895,
+          "jsd_distance": 0.086,
           "similarity_band": "similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1843,7 +2363,59 @@
       "outlook_2050_flat_gap_score": 77.4728,
       "available_pillars": "adaptation_capacity climate_signal observed_stress",
       "missing_pillars": "",
-      "included_indicator_count": 8,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 0,
+      "trace_indicator_count": 8,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 8,
       "row_count": 657,
@@ -1905,7 +2477,7 @@
       "story": {
         "story_label": "Mixed gap: low pressure / low capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -1970,7 +2542,16 @@
           "neighbor_geo_code": "AS",
           "neighbor_name": "American Samoa",
           "similarity_rank": 1,
-          "jsd_distance": 0.0116,
+          "jsd_distance": 0.0145,
+          "similarity_band": "very_similar_profile",
+          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "WF",
+          "neighbor_name": "Wallis and Futuna",
+          "similarity_rank": 2,
+          "jsd_distance": 0.0191,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -1978,17 +2559,8 @@
         {
           "neighbor_geo_code": "MP",
           "neighbor_name": "Northern Mariana Islands",
-          "similarity_rank": 2,
-          "jsd_distance": 0.0144,
-          "similarity_band": "very_similar_profile",
-          "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
-          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
-        },
-        {
-          "neighbor_geo_code": "GU",
-          "neighbor_name": "Guam",
           "similarity_rank": 3,
-          "jsd_distance": 0.0179,
+          "jsd_distance": 0.0192,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward data visibility; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -2026,7 +2598,59 @@
       "outlook_2050_flat_gap_score": 13.3067,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 656,
@@ -2088,7 +2712,7 @@
       "story": {
         "story_label": "Lower gap: low pressure / moderate capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -2209,7 +2833,59 @@
       "outlook_2050_flat_gap_score": 0.0,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 673,
@@ -2271,7 +2947,7 @@
       "story": {
         "story_label": "Lower gap: high pressure / high capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -2392,7 +3068,59 @@
       "outlook_2050_flat_gap_score": 68.1508,
       "available_pillars": "adaptation_capacity climate_signal",
       "missing_pillars": "",
-      "included_indicator_count": 4,
+      "score_input_indicator_count": 4,
+      "context_indicator_count": 0,
+      "trace_indicator_count": 4,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": false
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": false
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": false
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": false
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 4,
       "row_count": 408,
@@ -2454,7 +3182,7 @@
       "story": {
         "story_label": "High gap: moderate pressure / low capacity",
         "story_priority": "primary",
-        "evidence_density_label": "thin indicator evidence",
+        "evidence_density_label": "thin score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean surface temperature anomalies",
@@ -2519,8 +3247,8 @@
           "neighbor_geo_code": "AS",
           "neighbor_name": "American Samoa",
           "similarity_rank": 1,
-          "jsd_distance": 0.0523,
-          "similarity_band": "similar_profile",
+          "jsd_distance": 0.0484,
+          "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
@@ -2528,7 +3256,7 @@
           "neighbor_geo_code": "MP",
           "neighbor_name": "Northern Mariana Islands",
           "similarity_rank": 2,
-          "jsd_distance": 0.0754,
+          "jsd_distance": 0.073,
           "similarity_band": "similar_profile",
           "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -2537,7 +3265,7 @@
           "neighbor_geo_code": "WF",
           "neighbor_name": "Wallis and Futuna",
           "similarity_rank": 3,
-          "jsd_distance": 0.0774,
+          "jsd_distance": 0.076,
           "similarity_band": "similar_profile",
           "reason_label": "Selected profile leans toward missing data; neighbor leans toward monitoring reporting gap.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -2575,7 +3303,59 @@
       "outlook_2050_flat_gap_score": 35.9917,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 647,
@@ -2637,7 +3417,7 @@
       "story": {
         "story_label": "Mixed gap: moderate pressure / moderate capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean sea surface temperature anomalies",
@@ -2758,7 +3538,59 @@
       "outlook_2050_flat_gap_score": 45.8322,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 678,
@@ -2820,7 +3652,7 @@
       "story": {
         "story_label": "Mixed gap: high pressure / high capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Mean surface temperature anomalies",
@@ -2941,7 +3773,59 @@
       "outlook_2050_flat_gap_score": 74.0574,
       "available_pillars": "adaptation_capacity climate_signal observed_stress",
       "missing_pillars": "",
-      "included_indicator_count": 8,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 0,
+      "trace_indicator_count": 8,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 8,
       "row_count": 518,
@@ -3003,7 +3887,7 @@
       "story": {
         "story_label": "Mixed gap: low pressure / low capacity",
         "story_priority": "secondary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Sea level anomalies",
@@ -3068,25 +3952,25 @@
           "neighbor_geo_code": "CK",
           "neighbor_name": "Cook Islands",
           "similarity_rank": 1,
-          "jsd_distance": 0.0216,
+          "jsd_distance": 0.0208,
           "similarity_band": "very_similar_profile",
-          "reason_label": "Both profiles lean most toward data visibility evidence.",
-          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
-        },
-        {
-          "neighbor_geo_code": "MH",
-          "neighbor_name": "Marshall Islands",
-          "similarity_rank": 2,
-          "jsd_distance": 0.123,
-          "similarity_band": "similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         },
         {
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
+          "similarity_rank": 2,
+          "jsd_distance": 0.1197,
+          "similarity_band": "similar_profile",
+          "reason_label": "Both profiles lean most toward data visibility evidence.",
+          "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
+        },
+        {
+          "neighbor_geo_code": "MH",
+          "neighbor_name": "Marshall Islands",
           "similarity_rank": 3,
-          "jsd_distance": 0.1241,
+          "jsd_distance": 0.1221,
           "similarity_band": "similar_profile",
           "reason_label": "Both profiles lean most toward data visibility evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -3124,7 +4008,59 @@
       "outlook_2050_flat_gap_score": 30.9305,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 730,
@@ -3186,7 +4122,7 @@
       "story": {
         "story_label": "Lower gap: moderate pressure / high capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -3307,7 +4243,59 @@
       "outlook_2050_flat_gap_score": 69.4584,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 721,
@@ -3369,7 +4357,7 @@
       "story": {
         "story_label": "High gap: high pressure / moderate capacity",
         "story_priority": "primary",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -3490,7 +4478,59 @@
       "outlook_2050_flat_gap_score": 29.2059,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 709,
@@ -3552,7 +4592,7 @@
       "story": {
         "story_label": "Mixed gap: moderate pressure / high capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Sea level anomalies",
@@ -3673,7 +4713,59 @@
       "outlook_2050_flat_gap_score": 67.5759,
       "available_pillars": "adaptation_capacity climate_signal observed_stress",
       "missing_pillars": "",
-      "included_indicator_count": 6,
+      "score_input_indicator_count": 6,
+      "context_indicator_count": 0,
+      "trace_indicator_count": 6,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": false
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": false
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 6,
       "row_count": 480,
@@ -3735,7 +4827,7 @@
       "story": {
         "story_label": "High gap: moderate pressure / low capacity",
         "story_priority": "primary",
-        "evidence_density_label": "moderate indicator evidence",
+        "evidence_density_label": "moderate score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",
@@ -3796,7 +4888,7 @@
           "neighbor_geo_code": "AS",
           "neighbor_name": "American Samoa",
           "similarity_rank": 1,
-          "jsd_distance": 0.018,
+          "jsd_distance": 0.0168,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -3805,7 +4897,7 @@
           "neighbor_geo_code": "NU",
           "neighbor_name": "Niue",
           "similarity_rank": 2,
-          "jsd_distance": 0.0192,
+          "jsd_distance": 0.0191,
           "similarity_band": "very_similar_profile",
           "reason_label": "Selected profile leans toward monitoring reporting gap; neighbor leans toward data visibility.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -3814,7 +4906,7 @@
           "neighbor_geo_code": "MP",
           "neighbor_name": "Northern Mariana Islands",
           "similarity_rank": 3,
-          "jsd_distance": 0.0339,
+          "jsd_distance": 0.0343,
           "similarity_band": "very_similar_profile",
           "reason_label": "Both profiles lean most toward monitoring reporting gap evidence.",
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
@@ -3852,7 +4944,59 @@
       "outlook_2050_flat_gap_score": 23.9052,
       "available_pillars": "adaptation_capacity climate_signal observed_stress responsibility_context",
       "missing_pillars": "",
-      "included_indicator_count": 9,
+      "score_input_indicator_count": 8,
+      "context_indicator_count": 1,
+      "trace_indicator_count": 9,
+      "score_input_presence": [
+        {
+          "dataset_slug": "mean-sea-surface-temperature-anomalies",
+          "dataset_name": "Mean sea surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "mean-surface-temperature-anomalies",
+          "dataset_name": "Mean surface temperature anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "rainfall-anomalies",
+          "dataset_name": "Rainfall anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "sea-level-anomalies",
+          "dataset_name": "Sea level anomalies",
+          "pillar": "climate_signal",
+          "present": true
+        },
+        {
+          "dataset_slug": "number-of-directly-affected-persons-attributed-to-disasters",
+          "dataset_name": "Number of directly affected persons attributed to disasters",
+          "pillar": "observed_stress",
+          "present": true
+        },
+        {
+          "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+          "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "meteorological-monitoring-network",
+          "dataset_name": "Meteorological monitoring network",
+          "pillar": "adaptation_capacity",
+          "present": true
+        },
+        {
+          "dataset_slug": "power-generation",
+          "dataset_name": "Power generation",
+          "pillar": "adaptation_capacity",
+          "present": true
+        }
+      ],
       "missingness_flag": false,
       "dataset_count": 9,
       "row_count": 734,
@@ -3914,7 +5058,7 @@
       "story": {
         "story_label": "Mixed gap: moderate pressure / moderate capacity",
         "story_priority": "context",
-        "evidence_density_label": "broad indicator evidence",
+        "evidence_density_label": "broad score-input evidence",
         "top_pressure_signals": [
           {
             "label": "Rainfall anomalies",

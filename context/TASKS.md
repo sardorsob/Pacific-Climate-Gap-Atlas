@@ -1106,3 +1106,233 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: 2026-07-08: Created from the folded design critique and Codex response. Keep this behind TASK-046 because JSD should not consume visual complexity unless it remains part of the story. 2026-07-09: Builder started after TASK-046 kept JSD as a late selected-detail beat. Scope: add a selected-only, restrained neighbor-arc layer gated to the fingerprint beat or free exploration, with no global link web and no arcs in coverage/uncertainty/outlook states. TDD red/green covered arc features, mobile simplification, no-selection behavior, the story gate, and sidecar-review panel/map agreement fix. Builder moved in-progress -> in-review after tests/build/live smoke. Checker accepted and moved in-review -> done.
 - Status: done
+
+## TASK-048
+- Phase: data-semantics
+- Title: Separate score-input evidence from context-only trace rows
+- Depends on: TASK-047
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/task-048-evidence-semantics-implementation-plan.md, context/docs/methodology.md
+- Data refs: artifacts/tables/adaptation_gap_index.csv, artifacts/tables/adaptation_gap_indicator_trace.csv, data/processed/app/geographies.json
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, configs/gap_index.yml
+- User value / decision value: Makes every indicator count, legend label, panel sentence, and future evidence mark scientifically accurate before the visual redesign begins.
+- Functional notes: Replace the ambiguous `included_indicator_count` contract with separate score-input, context-only, and total trace counts; export an ordered eight-position score-input presence list; migrate EDA/app consumers; make current presence marks equal-size while the full glyph is pending.
+- Statistical notes: The score has eight possible input datasets across climate signal, observed stress, and adaptation capacity. Greenhouse-gas emissions per capita is responsibility context only and must not feed the score count or evidence-density component.
+- Edge cases: Preserve trace visibility for context rows; keep reported-zero monitoring distinct from missing monitoring rows; do not hand-edit generated outputs; verify all 22 geographies have eight stable input positions.
+- Files to create/modify: analysis/features/gap_index.py, analysis/eda/drivers.py, analysis/eda/divergence.py, analysis/preprocessing/app_data.py, scripts/build_app_data.py, scripts/validate_data_contracts.py, app/src/lib/atlasData.ts, app/src/components/map/*, app/src/components/panels/CountryPanel.tsx, configs/app_layers.yml, tests/**, generated data/artifacts, context docs/logs
+- Artifacts to produce: corrected index/EDA/app outputs, schema-version-2 app geography contract, updated method/data documentation, QA record.
+- Acceptance criteria: No user-facing or generated semantic field describes responsibility context as feeding the score; every geography has explicit score/context/trace counts and eight ordered score-input presence records; current marks no longer shrink with thin evidence; data/app tests and builds pass.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/build_gap_index.py --config configs/gap_index.yml; python scripts/run_eda.py --config configs/eda.yml; python scripts/build_app_data.py --config configs/app_layers.yml; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; git diff --check
+- Manual QA: Inspect NR, TV, PN, AS, and FJ for 0–8 score-input counts, separate responsibility context, correct monitoring states, equal-size presence marks, and trace copy that does not overclaim score membership.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created from the full-repository artistic redesign audit. Root correctness issue: `included_indicator_count` currently includes a responsibility-context dataset while the UI says all counted indicators feed the score.
+- Status: pending
+
+## TASK-049
+- Phase: visual-concept
+- Title: Approve artistic evidence-mark and scene concepts
+- Depends on: TASK-048
+- Assigned agent: unassigned; owner approval required
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, app/public/data/pacific_land_context.geojson
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Establishes a distinctive, implementable visual direction before code commits lock in the evidence glyph, composition, palette, and mobile behavior.
+- Functional notes: Generate and review desktop/mobile concept frames for scenes 1, 2, 4, and 5; record the chosen evidence-mark silhouette, tick order, context tick, reporting edges, typography, colors, motion tokens, and rejected directions.
+- Statistical notes: Concept frames must preserve the corrected eight-input/context distinction and all caveats; they may not invent values or imply scored boundaries.
+- Edge cases: Test concepts in monochrome; reject mark-size importance cues, physical link lines, cultural appropriation, generic dashboard cards, and mobile compositions that cover the map or scene copy.
+- Files to create/modify: artifacts/design/task-049/*, context/design-concepts/task-049-concept-review.md, context/DESIGN_BRIEF.md, context/TASKS.md, context/logs/*
+- Artifacts to produce: six required concept frames, rubric review, exact approved design decisions, owner approval record.
+- Acceptance criteria: Owner explicitly approves one desktop/mobile direction; every design variable listed in the implementation plan is decided; the direction can be implemented with existing SVG/CSS/MapLibre capabilities and no new runtime dependency.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare all concept frames at target viewport sizes and in grayscale; review the evidence semantics and cultural guardrails before approval.
+- QA notes: Not started. This is a hard approval gate for TASK-050 through TASK-055.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created to prevent visual implementation from outrunning the approved story and evidence semantics.
+- Status: pending
+
+## TASK-050
+- Phase: story-architecture
+- Title: Replace nested tour scrolling with one native scene controller
+- Depends on: TASK-049
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: none
+- Scientific refs: none
+- User value / decision value: Removes desktop progress snap-back and mobile content clipping while making scroll, keyboard, and progress navigation converge on one source of truth.
+- Functional notes: Replace the nested `StoryRail` scroller with normal document sections, a sticky map, a viewport-root observer, progress buttons that only scroll, and pure active-scene/keyboard helpers.
+- Statistical notes: No data, scores, claims, or generated artifacts change in this structural task.
+- Edge cases: Rapid scene scrubbing must be latest-state-wins; mobile fixed UI must not cover section bottoms; reduced motion uses immediate scroll; browser resize must not force stale scene state.
+- Files to create/modify: app/src/lib/sceneState.ts and tests, app/src/components/story/StoryScrolly.tsx, SceneProgress.tsx, StoryScene.tsx, app/src/App.tsx, app/src/styles/base.css; retire StoryRail.tsx, BeatProgress.tsx, StoryBeat.tsx
+- Artifacts to produce: native-scroll guided shell, focused state tests, desktop/mobile navigation QA notes.
+- Acceptance criteria: No nested story overflow container remains; progress clicks do not snap back; one observer owns active scene; keyboard and mobile navigation work; app tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: At 1440x900 and 390x844, click all progress items, scroll rapidly, use Arrow/Page/Home/End, resize, and confirm no content is covered or state reversed.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Audit reproduced competing `onBeat`/observer behavior on desktop and a dense mobile scene extending below the fixed navigation.
+- Status: pending
+
+## TASK-051
+- Phase: story-editorial
+- Title: Replace seven guided beats with five scenes and a handoff
+- Depends on: TASK-050
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: artifacts/tables/adaptation_gap_index.csv, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Turns the atlas into one memorable argument instead of a sequence of interface features.
+- Functional notes: Implement the approved scenes—what the map can see, where the record breaks, the two sides of the gap, Nauru/Tuvalu, and rank fragility—then return to the Pacific and hand off to exploration.
+- Statistical notes: Each scene gets one source line and one necessary caveat. JSD leaves the guided spine; the rank-band scene must not imply confidence intervals or a definitive leaderboard.
+- Edge cases: Keep claims short enough for 360px screens; remove duplicated uncertainty prose/callouts; preserve exact PN/NR versus AS/WF monitoring semantics.
+- Files to create/modify: app/src/lib/scenes.ts and tests, app/src/App.tsx, app/src/components/story/*, context/STORY_BRIEF.md; retire app/src/lib/tour.ts and guided FingerprintPreview files
+- Artifacts to produce: five-scene content model, closing handoff, claims/source audit, responsive read-through notes.
+- Acceptance criteria: Progress contains exactly five scenes in the approved order; guided JSD is absent; each scene has claim/caveat/source; closing line precedes Explore freely; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Read all five scenes on desktop/mobile, verify the map remains present, cross-check every numeric claim/source, and confirm selected-place JSD still exists in explore mode only.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created from the approved “The Shape of What We Know” storyboard.
+- Status: pending
+
+## TASK-052
+- Phase: map-grammar
+- Title: Render fixed-presence evidence portrait marks
+- Depends on: TASK-048, TASK-049, TASK-051
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: app/public/data/geographies.json, app/public/data/pacific_land_context.geojson
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Lets readers see score, score-input availability, context-only evidence, and monitoring status directly in one stable geography mark.
+- Functional notes: Build a pure mark model and accessible SVG component with an inner score field, eight fixed score-input ticks, a detached context tick, a reporting-status edge, and a quiet selection bloom; integrate it at all 22 map anchors and in the legend.
+- Statistical notes: Evidence completeness is a set of present/missing inputs, not mark area. The context tick is never part of the score. Monitoring outer-edge states preserve reported positive, reported zero, and missing row.
+- Edge cases: Keep atolls visible; no color-only missingness; retain accessible 44px hit targets; avoid duplicate accessible SVG labels on map; Natural Earth land stays secondary texture.
+- Files to create/modify: app/src/components/map/evidenceMarkModel.ts and tests, EvidenceMark.tsx and tests, AtlasMap.tsx, MapLegend.tsx, app/src/styles/base.css
+- Artifacts to produce: evidence glyph, semantic legend, exhaustive mark-state tests, all-geography visual QA notes.
+- Acceptance criteria: Every geography renders eight stable input positions and the correct reporting edge; context is detached; overall mark size is stable; NR/TV/KI/MH remain findable; grayscale/reduced-color review passes; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Inspect all 22 marks at basin scale, then NR, TV, KI, MH, PN, AS, and WF in desktop/mobile and grayscale; hide score fill and confirm availability/reporting grammar remains legible.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created to make missing evidence a visible interruption rather than a smaller place.
+- Status: pending
+
+## TASK-053
+- Phase: story-figures
+- Title: Compose pressure-capacity and Nauru-Tuvalu evidence scenes
+- Depends on: TASK-052
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Replaces prose-heavy explanation with two original visual arguments: the score’s two sides and similar-looking scores built on different records.
+- Functional notes: Open evidence marks into paired pressure/visible-capacity forms for scene three; create aligned Nauru/Tuvalu evidence portraits with gap, pressure, capacity, score inputs, monitoring state, and rank band for scene four.
+- Statistical notes: Use “visible capacity,” not readiness. The comparison is about official evidence and does not summarize lived reality. No JSD or physical connector appears in the scene.
+- Edge cases: Keep faint map anchors; avoid covering anchors with the editorial figure; provide accessible labels; use normal-flow or visibly stepped portraits on mobile.
+- Files to create/modify: app/src/components/story/PressureCapacityScene.tsx, EvidencePortrait.tsx, PlaceComparisonScene.tsx, storyFigures.test.tsx, StoryScrolly.tsx, App.tsx, app/src/styles/base.css
+- Artifacts to produce: split-score figure, aligned evidence portraits, component tests, responsive comparison QA notes.
+- Acceptance criteria: The two score sides and Nauru/Tuvalu differences are perceptible without explanatory paragraphs; aligned fields and monitoring states render on desktop/mobile; no JSD/connection implication; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare scene 3 and scene 4 at 1440x900, 1024x768, 390x844, and 360x800; verify accessible names, aligned values, no clipping, and visible map anchors.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created from the approved separate/compare motion verbs.
+- Status: pending
+
+## TASK-054
+- Phase: story-motion
+- Title: Rearrange marks into rank bands with one shared motion system
+- Depends on: TASK-053
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: artifacts/tables/eda_rank_volatility.csv, app/public/data/geographies.json
+- Scientific refs: context/ANALYSIS_BRIEF.md
+- User value / decision value: Makes rank fragility tangible while smoothing transitions through a coherent, reduced-motion-safe visual language.
+- Functional notes: Build a 1–22 interval field from existing rank bands, highlight Marshall Islands 4–19, define shared 450–650ms easing tokens, make rapid scene changes latest-state-wins, and return marks to geography for the handoff.
+- Statistical notes: Rank bands are sensitivity diagnostics, not confidence intervals or an alternative definitive ranking. Preserve the 19-of-22 fragile claim only after source verification.
+- Edge cases: Reduced motion renders a complete static interval figure; no timeout queue may allow stale animation to win; camera focus only when location matters; basin view returns before exploration.
+- Files to create/modify: app/src/components/story/RankBandScene.tsx, rankBandModel.ts and tests, storyFigures.test.tsx, StoryScrolly.tsx, app/src/components/map/AtlasMap.tsx and atlasMapModel.ts, app/src/styles/base.css
+- Artifacts to produce: rank-band scene, motion tokens, latest-state interaction tests/QA, reduced-motion static equivalent.
+- Acceptance criteria: Scene five shows all interval evidence without a leaderboard; MH 4–19 is correct; transitions share one approved motion grammar; rapid navigation converges on latest state; reduced motion is equivalent; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Scroll slowly and rapidly through scenes, use progress during transitions, emulate reduced motion, inspect the interval source claim, and verify the handoff returns marks to the Pacific.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created from the approved rearrange/return transition concept.
+- Status: pending
+
+## TASK-055
+- Phase: app-exploration
+- Title: Simplify exploration and remove physical JSD connectors
+- Depends on: TASK-054
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/INFORMATION_DIVERGENCE_PLAN.md, context/plans/tasks-049-055-artistic-story-implementation-plan.md
+- Data refs: app/public/data/geographies.json, artifacts/tables/eda_similarity_neighbors.csv
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Keeps the exploratory atlas powerful after the story while removing visual cues and controls that compete with or misrepresent the evidence.
+- Functional notes: Remove JSD map arcs and their gate/limit/caveat code; retain full nearest-neighbor evidence in the selected-place panel; calm selection camera; reduce map labels; replace tall mobile card chrome with a compact toolbar and non-covering detail sheet.
+- Statistical notes: JSD remains selected-place official-profile similarity only. No global similarity map, route, causal, physical, vulnerability, or policy-need implication.
+- Edge cases: Panel data must survive arc deletion; selected places remain visible when the panel opens; mobile toolbar stays within safe areas; all layer/legend/method controls remain keyboard/touch accessible.
+- Files to create/modify: app/src/App.tsx, app/src/components/map/AtlasMap.tsx, atlasMapModel.ts and tests, CountryPanel.tsx and tests, LayerControls.tsx, app/src/styles/base.css, context/INFORMATION_DIVERGENCE_PLAN.md, context/docs/design.md
+- Artifacts to produce: panel-only JSD interaction, simplified explore chrome, camera decision test, mobile QA record.
+- Acceptance criteria: No similarity line source/layer or guided JSD remains; selected-place neighbor list and caveat remain; selection preserves basin context unless obscured/offscreen; mobile toolbar/sheet do not cover content; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Enter explore from handoff; exercise every layer/view; select NR, TV, FJ, AS, WF, and MH; confirm panel-only JSD, no connectors, quiet camera, compact mobile controls, and non-covered content.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Audit judged the shipped dashed arcs too likely to read as physical or causal connection and too costly in the guided story.
+- Status: pending
+
+## TASK-056
+- Phase: repository-simplification
+- Title: Remove redundant atlas machinery and archive stale context
+- Depends on: TASK-055
+- Assigned agent: unassigned
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-056-057-simplification-readiness-implementation-plan.md, context/STRUCTURE.md
+- Data refs: app/public/data, data/processed/app, artifacts/provenance/app_data_summary.json
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Reduces code, dependencies, generated payloads, and contradictory documentation after the new experience is stable.
+- Functional notes: Characterize behavior; split MapLibre lifecycle and React overlay from the oversized `AtlasMap`; remove unused projection/default selection, unused Python dependencies, the app-to-root self dependency, no-op app config, and three unused generated runtime products; archive superseded mockup instructions/plans and refresh living docs.
+- Statistical notes: This is behavior-preserving. Do not change scores, monitoring semantics, rank diagnostics, JSD calculations, or trace rows.
+- Edge cases: Delete only after `rg` usage proof and baseline tests; preserve the three runtime data products; regenerate outputs through scripts; do not introduce a service class, context provider, or new dependency while splitting ownership.
+- Files to create/modify: app/src/components/map/useAtlasMap.ts, MapOverlay.tsx, AtlasMap.tsx, atlasMapModel.*, analysis/preprocessing/app_data.py, scripts/build_app_data.py, scripts/validate_data_contracts.py, tests/**, package manifests/lockfiles, pyproject.toml, configs/app_layers.yml removal, generated app data, README.md, context living docs/archive/memory
+- Artifacts to produce: smaller runtime data surface, simplified map ownership, dependency cleanup, archived stale context, before/after size and behavior record.
+- Acceptance criteria: User-visible behavior matches the TASK-055 baseline; app runtime fetches only geographies, country details, and land context; unused dependencies/files are absent; AtlasMap responsibilities are separated without new abstractions; living docs describe the actual five-scene app; all tests/build/validators pass.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/build_app_data.py; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; git diff --check
+- Manual QA: Repeat the full TASK-055 desktop/mobile/reduced-motion route and compare test counts, bundle sizes, public-data size, all 22 marks, story figures, explore states, panels, methods, and legend.
+- QA notes: Not started.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Full audit found unused Python direct dependencies, an app-to-root self dependency, redundant generated files, stale instructions, and concentrated MapLibre/overlay ownership.
+- Status: pending
+
+## TASK-057
+- Phase: redesign-readiness
+- Title: Add shareable atlas state and complete final redesign QA
+- Depends on: TASK-056
+- Assigned agent: unassigned; owner final review required
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-056-057-simplification-readiness-implementation-plan.md, context/docs/submission-notes.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md, context/ANALYSIS_BRIEF.md
+- User value / decision value: Makes meaningful atlas states linkable and verifies the redesigned story is responsible, accessible, responsive, performant, and ready for owner submission actions.
+- Functional notes: Add dependency-free query parsing/serialization for mode, scene, layer, view, place, and outlook; support Back/Forward without loops; enforce a measured JS/CSS bundle budget; run the full visual, interaction, accessibility, reduced-motion, URL, and evidence matrix; refresh final handoff/readiness notes.
+- Statistical notes: Final QA must verify 22 marks, eight input positions, separate context, PN/NR zero versus AS/WF missing, Nauru/Tuvalu evidence, MH 4–19, 19/22 fragility, panel-only JSD, geometry caveat, and outlook stress-test language.
+- Edge cases: Unknown URL values fall back safely; passive scene scrolling replaces history while explicit actions push; no router dependency; do not claim deployment/submission unless external actions actually occur.
+- Files to create/modify: app/src/lib/urlState.ts and tests, app/src/App.tsx, app/src/lib/scenes.ts, scripts/check_app_bundle_budget.py and tests, package.json, context/docs/submission-notes.md, context/HANDOVER.md, context/PROJECT.md, context/TASKS.md, context/logs/*
+- Artifacts to produce: shareable URL contract, bundle-budget checker, final QA matrix and screenshots, current handoff/submission notes.
+- Acceptance criteria: URL reload/copy/Back/Forward restore valid state; invalid parameters never crash; automated gates pass; target desktop/mobile/reduced-motion/accessibility/evidence checks are recorded; remaining owner/deployment actions are explicit and truthful.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; git diff --check
+- Manual QA: Run the full viewport matrix at 1440x900, 1280x800, 1024x768, 430x932, 390x844, and 360x800; test keyboard/focus/touch/reduced-motion/color deficiency, URLs/history, evidence claims, sources, panels, and final handoff.
+- QA notes: Not started. Deployment, final public URL, competition form, AI disclosure, sensitive wording review, and final human visual/accessibility acceptance remain owner actions unless separately authorized.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: 2026-07-09: Created as the final integration and readiness gate for the artistic redesign sequence.
+- Status: pending

@@ -181,3 +181,59 @@ TASK-029 adds Natural Earth 10m land as a low-contrast visual land-context layer
 The layer is not a score input, official territorial boundary source, selectable geography layer, or polygon choropleth. Scored geographies remain centroid features generated from the official-data pipeline. TASK-029 also moves graticule linework into MapLibre so the grid appears on initial render instead of waiting for map movement.
 
 Reason: the owner wanted the islands themselves to be visible, not only dots. Natural Earth improves spatial orientation and visual credibility while preserving the evidence contract that rankings, selections, and caveats attach to centroid records rather than boundary polygons.
+
+## 2026-07-09: Approve “The Shape Of What We Know” As The Next Narrative Identity
+
+Keep **The Pacific Adaptation Gap Atlas** as the product title. Use **The Shape of What We Know** as the narrative identity for the next redesign.
+
+The governing argument is that official records illuminate the Pacific unevenly, and gaps in the record change what the atlas can responsibly compare, rank, and conclude. The adaptation-gap score remains the entry point, but the evidence behind the score becomes the protagonist.
+
+Reason: the current app is careful and functional but reads as a sequence of GIS features. One central argument gives the marks, scene order, layout, motion, and closing line a shared purpose.
+
+## 2026-07-09: Correct Score-Input Semantics Before Visual Redesign
+
+Replace the ambiguous `included_indicator_count` contract with separate score-input, context-only, and total trace counts before building a new evidence glyph.
+
+The score-input universe is eight datasets across climate signal, observed stress, and adaptation capacity. Greenhouse-gas emissions per capita is responsibility context only. It may remain visible in trace/context surfaces but must not be counted or drawn as feeding the score.
+
+Reason: the current count includes all trace datasets while the panel and legend describe that count as inputs behind the score. A more expressive mark would amplify the error unless the data contract is corrected first.
+
+## 2026-07-09: Use Five Scenes And One Visual Operation Per Scene
+
+Replace the current seven-beat guided spine with five scenes: reveal what the map can see, subtract to expose breaks in the record, separate pressure and visible capacity, compare Nauru and Tuvalu, and rearrange marks into rank bands. Return the marks to geography before handing off to exploration.
+
+Each scene gets one claim, one evidence operation, one necessary caveat, and one source line. The method remains accessible but does not need its own guided beat.
+
+Reason: the smaller sequence removes repetition and lets the story flow through perceptual change rather than interface explanation.
+
+## 2026-07-09: Use Fixed-Presence Evidence Portraits
+
+Every geography keeps the same overall visual footprint at basin scale. The target mark uses an inner score field, eight fixed score-input positions, a separate context-only tick, an outer monitoring edge, and a quiet selection bloom.
+
+Missing evidence appears as open cuts or unlit positions. It must not make a geography smaller or less visually important. Natural Earth land remains subdued context/texture.
+
+Reason: evidence-size marks correctly encode density but also make thin-data places disappear—the opposite of the atlas’s editorial argument.
+
+## 2026-07-09: Use Native Document Scroll And One Canonical Scene State
+
+Replace the nested desktop story scroller with normal document sections and a sticky map. A viewport-root observer owns active scene state. Progress and keyboard controls scroll to sections and do not set a competing state ahead of the observer.
+
+Reason: the current observer, `onBeat`, and `scrollIntoView` paths can fight and snap a progress-button jump back. Native page scroll also gives mobile content room to finish without being covered by fixed navigation.
+
+## 2026-07-09: Keep JSD In The Panel And Remove Physical Connectors
+
+Move evidence-profile similarity out of the guided spine. Keep exact nearest-neighbor JSD evidence and caveats in the selected-place exploration panel. Remove dashed map arcs and do not add a global similarity layer.
+
+Reason: the arcs are traceable but readily read as routes, physical relationships, causality, shared risk, or a network. The panel communicates the method with less semantic risk and lower visual cost.
+
+## 2026-07-09: Require Concept Approval Before Frontend Redesign
+
+`TASK-049` must produce and record owner-approved desktop and mobile concept frames before `TASK-050` through `TASK-055` begin. The gate decides the evidence-mark silhouette, score-input order, context tick, reporting edges, typography, palette, motion tokens, and mobile composition.
+
+Reason: the redesign contains meaningful artistic judgment. Recording the decisions before implementation prevents code-first visual drift and keeps review focused.
+
+## 2026-07-09: Simplify Only After The New Experience Stabilizes
+
+Schedule dependency cleanup, redundant generated-file removal, MapLibre/React ownership splitting, and stale-context archival after the story and exploration redesign is stable.
+
+Reason: deleting and restructuring during active visual work would create moving targets. `TASK-056` will use characterization tests and source-usage proof so simplification is behavior-preserving rather than speculative.

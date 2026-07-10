@@ -2,7 +2,7 @@
 
 ## Status
 
-Implemented analysis layer. The generated tables and provenance summary exist, but app-ready JSON and interface wiring are still pending.
+Implemented analysis and selected-place app layer. `TASK-037` exports nearest-neighbor rows into generated geography JSON and renders exact JSD values, bands, reasons, and caveats in the selected-place panel. `TASK-047` also added selected-only dashed map arcs to the current baseline; the approved artistic redesign removes those connectors and keeps JSD panel-only in `TASK-055`.
 
 Working layer name: **Evidence Fingerprint Divergence**.
 
@@ -70,25 +70,17 @@ Produced outputs:
 - `artifacts/tables/eda_similarity_neighbors.csv`
 - `artifacts/provenance/divergence_summary.json`
 
-Potential future app-ready outputs:
+Current app-ready output:
 
-- `data/processed/app/evidence_fingerprints.json`
-- `app/public/data/evidence_fingerprints.json`
+- nearest-neighbor records nested in `data/processed/app/geographies.json` and `app/public/data/geographies.json`
+
+No separate fingerprint JSON is required for the approved panel-only interaction.
 
 ## Story Placement
 
-This is a secondary diagnostic layer, not the story spine.
+This is a secondary selected-place diagnostic, not the story spine.
 
-Recommended storyboard placement:
-
-1. Open on the adaptation gap.
-2. Pull pressure and capacity apart.
-3. Inspect a place.
-4. Show where the data goes quiet.
-5. Show rank fragility.
-6. Show evidence fingerprints: similar score, different profile.
-7. Show regional texture.
-8. Optional outlook stress test.
+The current seven-beat baseline includes a late guided fingerprint beat. The approved five-scene redesign removes that beat. JSD becomes available only after a reader selects a geography in free exploration, where exact values and caveats can be read without consuming guided-story attention.
 
 The layer should answer:
 
@@ -98,30 +90,27 @@ The layer should answer:
 
 ## Interface Design
 
-Primary interaction:
+Approved primary interaction:
 
 - User selects a geography.
-- A panel section shows "Most similar evidence profiles" and "Most different evidence profiles."
-- The map optionally re-encodes other points by similarity to the selected geography.
+- A panel section shows the nearest generated evidence profiles with exact JSD, a plain-language reason, and the required caveat.
+- The map does not re-encode similarity or draw connectors.
 
 Map treatment:
 
-- Do not use it as a new global ranking ramp.
-- Use a selected-geography comparison mode.
-- Selected geography remains the anchor.
-- Other geographies show similarity distance through a restrained sequential ramp or stroke intensity.
-- Missing/low-evidence cases keep their reporting-status marks.
+- Do not use it as a global ranking ramp, selected-geography ramp, cluster view, or link network.
+- Do not draw dashed arcs or other physical connectors.
+- Selected geography remains the panel anchor; the evidence mark keeps its ordinary reporting/missingness grammar.
 
 Panel treatment:
 
-- Add a compact fingerprint strip or mini radar-like bar stack for the selected geography.
-- Show nearest neighbors with short evidence reasons, not just numbers.
+- Show nearest neighbors with exact JSD values, similarity bands, and short evidence reasons.
 - Include caveat: "Similarity means the official evidence profiles look alike under this method; it does not mean the places face the same risks or need the same actions."
 
 Mobile treatment:
 
 - Put the similarity list in the bottom sheet after the pressure/capacity and monitoring sections.
-- The map comparison mode should be one tap from the selected geography panel, not a default first-screen control.
+- Do not add a mobile map comparison mode or connector layer.
 
 ## Caveats
 
@@ -153,6 +142,6 @@ Do not claim:
 ## Open Questions
 
 1. Should later iterations add separate pressure/capacity/visibility fingerprints, or is the combined fingerprint enough for V1?
-2. Should the public UI show exact JSD values, or just "more similar / less similar" bands?
-3. Should the layer ship in the competition V1, or remain a post-mockup analytical enhancement?
-4. Should Claude design a dedicated fingerprint panel from the TASK-019 artifacts, or should app wiring wait until the core public-data adapter is finished?
+2. Is a compact fingerprint strip useful enough to earn panel space after the five-scene redesign, or are the existing neighbor rows sufficient?
+
+Exact JSD values and V1 inclusion are no longer open: the selected-place panel ships them. Any expansion remains out of scope unless a new evidence question and task justify the complexity.

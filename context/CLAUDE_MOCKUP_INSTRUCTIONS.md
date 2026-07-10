@@ -1,5 +1,7 @@
 # Claude Mockup Instructions
 
+> **Historical baseline instructions — superseded for new work.** These instructions produced the current seven-beat atlas and remain useful only as implementation history. Do not use them for the approved artistic redesign. Read `context/ARTISTIC_REDESIGN_BRIEF.md`, `context/TASKS.md` (`TASK-048` through `TASK-057`), and the three active redesign plans under `context/plans/`. `TASK-056` will archive this file after the new experience stabilizes.
+
 ## Purpose
 
 You are Claude, joining the Pacific Adaptation Gap Atlas project after the first reviewable mockup, `TASK-025` real app-data wiring, `TASK-026` MapLibre map substrate, `TASK-029` Natural Earth visual land context, `TASK-028` guided story/copy rewrite, and `TASK-027` post-map visual/interactions polish.

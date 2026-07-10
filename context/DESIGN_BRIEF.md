@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief plus accepted mockup direction. The current app implements the scroll-led hybrid as a reviewable concept, is wired to generated app data, uses a MapLibre-backed map with Natural Earth visual land context under centroid points, has completed the `TASK-028` guided story/copy rewrite, `TASK-027` post-map visual/interactions polish, `TASK-030` readiness packaging, `TASK-031` accessibility QA, and `TASK-040` through `TASK-047` post-audit cleanup.
+Status: semantic design brief for the functioning first atlas plus an approved next-direction contract from the 2026-07-09 full-project audit. The current app implements the seven-beat scroll-led baseline through `TASK-047`. The target artistic redesign is defined in `context/ARTISTIC_REDESIGN_BRIEF.md` and scheduled as `TASK-048` through `TASK-057`; it is not implemented yet.
 
 Design skill basis:
 
@@ -17,7 +17,7 @@ Design skill basis:
 - `context/DATAVIZ_INSPIRATION_AUDIT.md` live reference audit for map, climate, environmental, and selected-geography interaction patterns
 - `context/WINNER_SCROLL_TOUR_AUDIT.md` Pacific Dataviz winner audit recommending a scroll-led hybrid
 
-Concept approval status:
+First-build concept status:
 
 - Text contract: accepted as working design context, not final public-facing copy.
 - Large-screen mockup concept: implemented for review.
@@ -25,7 +25,35 @@ Concept approval status:
 - Mobile landscape concept: optional, recommended if map controls become wide or gesture-heavy.
 - Production gate: final methodology, accessibility, deployment, source/provenance, and owner visual review remain before submission readiness. Official scored-geography polygon boundaries remain a future source gate outside the completed MapLibre/Natural Earth visual substrate.
 
-Future visual changes should preserve the accepted scroll-led mockup unless the project owner explicitly rejects that direction.
+Next-redesign concept status:
+
+- Narrative and semantic direction: approved.
+- Desktop evidence-mark/scene frames: pending `TASK-049` owner approval.
+- Mobile portrait frames: pending `TASK-049` owner approval.
+- Implementation: blocked by the `TASK-048` semantics correction and `TASK-049` concept gate.
+
+The current mockup is the behavior baseline. Future visual work should preserve its scientific and accessibility contracts while following the approved redesign rather than adding another polish layer to the seven-beat rail.
+
+## Approved Next Direction: The Shape Of What We Know
+
+The next design is governed by one idea:
+
+> Official records illuminate the Pacific unevenly. Those gaps change what the atlas can responsibly compare, rank, and conclude.
+
+The major design decisions are:
+
+- five guided scenes plus a short return-to-explore handoff;
+- native document scroll with a sticky map and one observer-confirmed active scene;
+- equal-footprint evidence portraits instead of evidence-size bubbles;
+- eight fixed score-input positions, one detached responsibility-context tick, an outer monitoring edge, and an inner score field;
+- missing evidence shown as breaks and open positions, never by making a place smaller;
+- paired pressure/visible-capacity forms, aligned Nauru/Tuvalu portraits, and a composed rank-band field;
+- one shared 450–650ms evidence-motion language with a complete reduced-motion equivalent;
+- JSD retained in the selected-place panel but removed from the guided spine and map connectors;
+- a contemporary scientific ocean-chart art direction: near-black Pacific blue, subdued cartographic texture, coral/terracotta gap, Pacific blue pressure, sea-glass capacity, mineral-white editorial type;
+- no appropriation of Indigenous Pacific visual motifs; culturally grounded expansion requires Pacific co-design.
+
+`context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe the implemented baseline and its enduring constraints. Where a baseline interaction conflicts with the approved next direction—seven beats, nested story scroll, evidence-size radius, guided JSD, or similarity arcs—the redesign brief governs future work.
 
 ## External Inspiration Guardrails
 
@@ -182,6 +210,11 @@ Each point can carry three simultaneous meanings:
 2. Radius: evidence density through `included_indicator_count`.
 3. Ring or pattern: monitoring/reporting status.
 
+Correction and redesign note:
+
+- The current `included_indicator_count` also counts responsibility-context data, so it must not be described as score inputs. `TASK-048` replaces it with explicit score-input, context-only, and total trace counts.
+- The next evidence mark does not use radius for evidence density. It keeps a fixed overall footprint and renders eight stable input positions, missing positions as open cuts, a detached context tick, and monitoring state on the outer edge.
+
 Initial size guidance:
 
 - Test a restrained range before locking size. Start around 8px to 18px on desktop and 9px to 20px on mobile.
@@ -335,6 +368,17 @@ Accepted scroll-tour steps:
 6. Show evidence fingerprints only as selected-place nearest-neighbor detail, not as a shipped global map layer.
 7. Explore freely with current map state carried into the full controls.
 
+Next-redesign replacement:
+
+1. What the map can see.
+2. Where the record breaks.
+3. The gap has two sides.
+4. Similar scores, different records.
+5. The order does not hold still.
+6. Return the marks to geography and hand off to Explore freely.
+
+JSD does not receive a guided scene in the replacement. Exact neighbors remain selected-place panel evidence in free exploration.
+
 Tour controls:
 
 - Scroll rail plus stepper with next/back and skip.
@@ -449,6 +493,13 @@ Mobile structure:
 - Legend collapses into a chip or short expandable key.
 - Tour stepper docks above bottom sheet or inside sheet header.
 
+Next-redesign mobile replacement:
+
+- Use a sticky map around 42–48svh during geographic scenes.
+- Put story sections in normal document flow so dense comparisons cannot be covered by fixed controls.
+- Use a compact exploration toolbar after the handoff; keep the country-detail sheet separate from guided scene copy.
+- Render Nauru/Tuvalu and rank bands as vertically complete static/stepped figures at narrow widths.
+
 Mobile interaction:
 
 - Tap selects points.
@@ -468,16 +519,16 @@ Mobile QA:
 
 Minimum shareable state:
 
+- guided/explore mode,
 - active layer,
 - selected geography,
-- divergence comparison mode and anchor geography, if implemented,
-- tour step,
-- subregion filter,
+- active scene,
+- coverage/uncertainty view,
 - outlook on/off and horizon if implemented.
 
 The back button should not trap users inside panels or tour states.
 
-If URL-state implementation is deferred, record it as a known V1 limitation.
+The current baseline does not implement shareable URL state. `TASK-057` adds dependency-free query parsing/serialization and Back/Forward behavior after the redesign stabilizes. No divergence map mode or subregion filter is part of that contract.
 
 ## Accessibility Contract
 

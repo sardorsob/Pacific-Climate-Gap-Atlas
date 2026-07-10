@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the core analysis sprint and now has a reviewable visual mockup. `TASK-019` adds an analytical Evidence Fingerprint Divergence layer that uses Jensen-Shannon divergence to compare official-data evidence profiles without replacing the main adaptation-gap story.
+The project completed the core analysis sprint and has a functioning visual atlas baseline. `TASK-019` Evidence Fingerprint Divergence is app-wired as selected-place nearest-neighbor evidence. The approved artistic redesign does not require new analysis, but `TASK-048` must correct score-input versus responsibility-context count semantics before the new evidence mark is built.
 
 ## Current EDA Outputs
 
@@ -64,9 +64,9 @@ The runner writes:
 
 ## Next Priorities
 
-1. Use `context/STORY_BRIEF.md` and `context/DESIGN_BRIEF.md` as the source of truth for visual concepting and app planning.
-2. Run a large-screen and mobile visual concept approval pass before implementation.
-3. Treat outlook layers as optional stress-test context, with display controlled by `eda_outlook_interpretation.csv`.
-4. Keep monitoring/data visibility as the signature diagnostic interaction inside the broader adaptation-gap frame.
-5. Keep rank uncertainty visible wherever ranks or score order appear.
-6. If Evidence Fingerprint Divergence ships in V1, keep it as a selected-geography similarity mode rather than a new leaderboard, and carry the `neighbor_caveat` copy beside nearest-neighbor lists.
+1. Complete `TASK-048`: replace the ambiguous all-trace count with explicit score-input, context-only, and total trace counts; keep the score-input maximum at eight.
+2. Use `context/ARTISTIC_REDESIGN_BRIEF.md` as the next-build source of truth, with `STORY_BRIEF.md` and `DESIGN_BRIEF.md` as supporting evidence/design history.
+3. Run the `TASK-049` desktop/mobile concept approval gate before frontend redesign.
+4. Treat outlook as optional stress-test context controlled by `eda_outlook_interpretation.csv`; keep it outside the five guided scenes.
+5. Make monitoring/data visibility a primary mark grammar and keep rank uncertainty visible wherever order appears.
+6. Keep Evidence Fingerprint Divergence in selected-place panel detail with exact JSD and `neighbor_caveat`; remove guided/map-connector presentation rather than expanding it into a leaderboard or similarity map.

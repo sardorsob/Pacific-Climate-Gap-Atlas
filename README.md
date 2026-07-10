@@ -81,6 +81,7 @@ The most important project context files are:
 ```text
 context/STORY_BRIEF.md
 context/DESIGN_BRIEF.md
+context/ARTISTIC_REDESIGN_BRIEF.md
 context/DATA_CARD.md
 context/MODEL_CARD.md
 context/HANDOVER.md
@@ -183,17 +184,9 @@ npm run app:preview
 
 Deploy the static contents of `app/dist/` to the final host. Record the public URL in `context/docs/submission-notes.md` and keep it available through August 31, 2029.
 
-The current app is a production-oriented mockup with post-map interaction polish complete. It is not yet the final competition submission.
+The current app is a production-oriented seven-beat baseline with generated data, MapLibre/Natural Earth map context, selected-place trace and JSD evidence, and post-map interaction/accessibility work complete. It is not yet the final competition submission.
 
-Current implementation order:
-
-1. `TASK-025` wire public/generated app data into the atlas view model. Done.
-2. `TASK-026` add MapLibre map substrate with centroid fallback. Done.
-3. `TASK-029` add Natural Earth Pacific land context and MapLibre graticule lines. Done.
-4. `TASK-028` rewrite the guided story, caveats, and interface copy. Done.
-5. `TASK-027` polish the production visuals after the MapLibre map and revised story exist. Done.
-6. `TASK-030` audit final methodology, provenance, deployment, and submission readiness. Done.
-7. `TASK-031` audit keyboard, contrast, focus, and mobile accessibility. Done.
+The approved next phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. Work is planned as `TASK-048` through `TASK-057`: correct score-input/context semantics, approve desktop/mobile concepts, replace nested story scrolling, build the five scenes and evidence marks, simplify exploration, remove redundant machinery, add shareable URL state, and complete final QA. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Current Frame
 
@@ -203,10 +196,11 @@ Target artifact: an interactive GIS-style web atlas for the Pacific Dataviz Chal
 
 Primary experience:
 
-- guided 7-beat scroll atlas over a full-bleed MapLibre Pacific map with visual land context,
+- current guided 7-beat baseline over a full-bleed MapLibre Pacific map with visual land context,
+- approved five-scene native-scroll replacement built around reveal, subtract, separate, compare, rearrange, and return,
 - persistent "Explore freely" handoff into the full atlas controls,
 - adaptation gap, pressure, capacity, monitoring/data visibility, and rank-fragility views,
 - selected geography detail panel,
-- static labelled Evidence Fingerprint preview that is analysis-ready but not app-wired,
+- app-wired selected-place Evidence Fingerprint nearest neighbors with exact JSD and caveats,
 - source and methodology drawer,
 - mobile-friendly bottom-sheet story and detail interaction.

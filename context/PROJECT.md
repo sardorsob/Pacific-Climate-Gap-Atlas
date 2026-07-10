@@ -2,11 +2,13 @@
 
 ## Current Phase
 
-TASK-032 visual QA through TASK-047 selected-only similarity arcs are complete. The post-TASK-042 design critique task group is closed. Competition deadline: August 31, 2026.
+The current app baseline is complete through `TASK-047`. The next approved phase is the artistic redesign sequence `TASK-048` through `TASK-057`, beginning with evidence-count semantics and an owner-reviewed visual concept before app implementation. Competition deadline: August 31, 2026.
 
 ## Status
 
-The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, a Dataviz Inspiration audit, a Pacific winner scroll-tour audit, and an accepted React/Vite scroll-led atlas shell wired to generated public data. The app map now uses a MapLibre canvas with guaranteed-size centroid presence marks, subdued Natural Earth visual land texture, first-render graticule lines, React overlay labels/hit targets, selected-place bloom/halo treatment, native evidence-bearing layer transitions, reduced-motion-safe selected camera focus, quieter translucent chrome, an intentional system type stack, and restrained selected-only JSD neighbor arcs. Natural Earth remains context, not official geography scoring geometry. The guided story now brings uneven official-data visibility before the formula, then keeps JSD as a late selected-detail comparison. The selected-place panel shows nearest evidence-profile neighbors with exact JSD distances and caveats, and the map can show those same nearest neighbors as dashed profile-similarity arcs only in free exploration or the guided fingerprint beat. The post-map visual/interactions polish, readiness packaging audit, Codex accessibility QA, atoll-presence legibility fix, first motion pass, chrome/type cleanup, guided-story tightening, and selected-only similarity arcs are complete.
+The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, reference audits, and a functioning React/Vite scroll-led atlas wired to generated public data.
+
+The current implementation still uses seven guided beats, a nested desktop story scroller, evidence-size presence marks, and selected-only JSD neighbor arcs. It is the reviewable baseline, not the approved target state. A full repository/story/live-layout audit on 2026-07-09 approved the next narrative identity, **The Shape of What We Know**: official records illuminate the Pacific unevenly, and those gaps change what the atlas can responsibly say. The target replaces the seven beats with five scenes, uses fixed-presence evidence portraits with eight score-input positions plus a separate context tick, moves JSD out of the guided spine and off the map, adopts native document scroll and a shared motion language, and simplifies the exploration/runtime surface. The complete design contract is `context/ARTISTIC_REDESIGN_BRIEF.md`; execution is split across `TASK-048` through `TASK-057` and three implementation plans under `context/plans/`.
 
 ## Working Title
 
@@ -14,7 +16,7 @@ The Pacific Adaptation Gap Atlas
 
 ## Current Thesis
 
-Pacific geographies face uneven climate pressure, visible capacity, and official-data coverage. The project should help readers explore where climate signals, observed stress, monitoring coverage, and response-capacity proxies appear most out of balance.
+Official records illuminate the Pacific unevenly. The atlas should show where climate pressure and visible adaptation capacity appear out of balance while making the shape and limits of the record impossible to mistake for the full lived reality.
 
 ## Feature Table
 
@@ -48,6 +50,10 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 | Post-TASK-039 iteration audit | done | `TASK-040` fixed explainer state, `TASK-041` humanized/single-sourced JSD similarity text, and `TASK-042` cleaned legend, stale compare code, and selected fallback mark behavior |
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
+| Artistic redesign contract | approved | `context/ARTISTIC_REDESIGN_BRIEF.md` defines “The Shape of What We Know,” the five-scene storyboard, evidence-mark grammar, art direction, motion, mobile, simplification, and growth contracts |
+| Evidence semantics correction | pending | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows before any new mark is built |
+| Artistic story rebuild | pending | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
+| Simplification and readiness | pending | `TASK-056` removes redundant code/data/dependencies/stale context; `TASK-057` adds URL state and runs the final QA matrix |
 
 ## Last Session Notes
 
@@ -88,3 +94,6 @@ Pacific geographies face uneven climate pressure, visible capacity, and official
 - Completed `TASK-030` and `TASK-031` in parallel: readiness packaging/provenance/deployment audit plus accessibility/keyboard/mobile QA. Remaining owner actions are final host/URL, submission-form copy, AI disclosure wording, sensitive wording review, and final human visual/accessibility review.
 - Completed `TASK-042`: the island-glow legend no longer teaches dots, dead compare-mode code is gone, and selected centroid fallback marks remain visible until island marks replace them. Post-TASK-039 audit follow-up is now closed.
 - Completed `TASK-047` selected-only JSD neighbor arcs: selected geographies can show restrained dashed arcs to their generated nearest evidence-profile neighbors in free exploration or the guided fingerprint beat, with mobile simplified to one arc and no arcs in coverage, uncertainty, outlook, or no-selection states. The post-TASK-042 design direction group is complete.
+- Completed a second full repository, context, implementation, story, and live-layout audit on 2026-07-09. The review found a semantic correctness issue in `included_indicator_count`, competing nested-scroll/observer state, mobile scene clipping, repeated uncertainty explanation, physical implications from JSD arcs, overloaded mark grammar, redundant runtime products/dependencies, and stale documentation.
+- Approved **The Shape of What We Know** as the next narrative identity while keeping **The Pacific Adaptation Gap Atlas** as the product title. The target story has five scenes: reveal equal-presence marks, expose breaks in the record, separate pressure from visible capacity, compare Nauru and Tuvalu, and rearrange marks into rank bands before returning to exploration.
+- Added `TASK-048` through `TASK-057` and three executable implementation plans. No redesign implementation task has started; `TASK-048` is the next legal task, and `TASK-049` is the owner visual-approval gate before frontend redesign work.

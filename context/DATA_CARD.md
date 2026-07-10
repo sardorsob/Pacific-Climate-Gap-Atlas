@@ -123,6 +123,8 @@ python scripts/validate_data_contracts.py
 
 Current output includes 22 geography records, 6 atlas layers, and 18 monitoring overlay features. Scored geography geometry remains centroid fallback, so the app should style score layers as point/centroid layers rather than polygon choropleths.
 
+Known contract issue scheduled as `TASK-048`: `included_indicator_count` currently counts all distinct trace datasets, including responsibility-context greenhouse-gas data, while some UI copy describes it as score inputs. The corrected contract will expose score-input, context-only, and total trace counts separately. Until that task lands, do not treat the current count as an eight-input score-completeness field or use it to build the new evidence mark.
+
 ## TASK-029 Land Context Artifacts
 
 The land-context builder now writes:

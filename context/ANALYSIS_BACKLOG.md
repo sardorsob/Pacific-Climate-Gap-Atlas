@@ -2,11 +2,11 @@
 
 ## Purpose
 
-The project is pausing visual design work until the atlas has a stronger evidence base. This backlog defines the in-depth EDA and GIS-oriented analysis needed before a final app story, layout, and Claude visual-design handoff.
+This file records the EDA and GIS lanes that built the atlas evidence base. Those lanes are complete. The current purpose is historical traceability plus routing for any future analysis expansion; the active redesign roadmap lives in `context/TASKS.md` and `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Current Status
 
-Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. `TASK-025` wired the core app data contract, `TASK-026` added the MapLibre centroid map substrate, `TASK-029` added Natural Earth visual land context plus first-render graticule lines, `TASK-028` rewrote the guided story/copy, `TASK-027` completed post-map visual/interactions polish, and `TASK-030`/`TASK-031` completed readiness/accessibility QA. Decide whether divergence ships in V1 before adding similarity fields to the app data contract.
+Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. The current app contract includes selected-place nearest-neighbor JSD rows through `TASK-037`, and the baseline map includes selected-only arcs through `TASK-047`. The approved redesign keeps JSD in the panel but removes it from the guided spine and map connectors. The next analysis/data priority is `TASK-048`: correct the ambiguous evidence-count contract before the eight-position evidence mark is implemented.
 
 ## Principles
 
@@ -184,7 +184,7 @@ Outputs:
 
 Question: Which geographies have similar or different official-data evidence profiles behind their adaptation-gap scores?
 
-Status: implemented as an analysis artifact; app data export and UI are pending.
+Status: implemented as analysis artifacts and selected-place app data/UI. Exact nearest-neighbor values, bands, reasons, and caveats ship in the current panel. The approved redesign keeps that panel evidence and removes guided/map-arc presentation.
 
 Analyses:
 - build pressure, capacity, data-visibility, and combined evidence vectors from official-data-derived trace fields
@@ -202,7 +202,7 @@ Outputs:
 - `artifacts/tables/eda_pairwise_jsd.csv`
 - `artifacts/tables/eda_similarity_neighbors.csv`
 - `artifacts/provenance/divergence_summary.json`
-- optional app-ready `data/processed/app/evidence_fingerprints.json`
+- selected-neighbor records nested in generated `geographies.json`
 
 ### TASK-020: Dataviz Inspiration Audit
 
@@ -225,6 +225,6 @@ Outputs:
 - Coverage/data desert and GIS enrichment can run in parallel.
 - Indicator forensics and driver decomposition can run in parallel after the current score artifacts are available.
 - Sensitivity analysis can run independently from trend/outlook interpretation.
-- Evidence fingerprint divergence has run after indicator forensics, country drivers, rank volatility, and monitoring-gap tables became available. It should be decided before adding similarity/fingerprint fields to a public app contract.
+- Evidence fingerprint divergence has run and selected-neighbor fields are in the public app contract. Do not add a second fingerprint payload or global similarity surface without a new task.
 - The Dataviz Inspiration audit is complete and should inform visual critique immediately. It does not require new data artifacts.
-- Story synthesis should use the completed TASK-018 brief as the story source of truth, with TASK-019 now available as an optional selected-geography comparison layer rather than the primary narrative spine.
+- Story synthesis should use `context/ARTISTIC_REDESIGN_BRIEF.md` as the next-build source of truth, with `STORY_BRIEF.md` and `DESIGN_BRIEF.md` preserving the first-build evidence contract. TASK-019 remains selected-place exploration evidence rather than the narrative spine.

@@ -2,7 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-005` are complete: nine priority official datasets have been profiled, contracted, cached, normalized, scored into a baseline Adaptation Gap Index, stress-tested with an app-optional outlook baseline, and exported into enriched app-ready JSON/GeoJSON. The core EDA/story sprint is complete, `TASK-020` records a Dataviz Inspiration audit, TASK-019 evidence-fingerprint divergence artifacts exist, and the React/Vite app now opens as a scroll-led guided atlas with a free-explore handoff backed by generated public app data. `TASK-026`, `TASK-029`, `TASK-028`, `TASK-027`, `TASK-030`, `TASK-031`, `TASK-032`, `TASK-033`, `TASK-034`, `TASK-035`, `TASK-036`, `TASK-037`, `TASK-038`, `TASK-039`, `TASK-040`, `TASK-041`, `TASK-042`, `TASK-043`, `TASK-044`, `TASK-045`, `TASK-046`, and `TASK-047` are complete: the map surface uses MapLibre with guaranteed-size centroid presence marks, Natural Earth visual land texture, first-render graticule lines, overlay labels, accessible geography hit targets, evidence-backed layer transitions, reduced-motion-safe selected camera focus, revised story copy, post-map interaction polish, readiness packaging notes, Codex accessibility QA, accepted final Fable visual polish, humanized storyboard copy, desktop guided-story navigation cleanup, regrouped selected-place detail panel, selected-place nearest-neighbor JSD, nearest-centroid island grouping, fixed explainer state, single-sourced/humanized JSD text, cleaned legend/comparator/fallback mark behavior, restored atoll-legible presence marks, intentional system typography, quieter floating map chrome, a guided story that introduces data visibility before the formula, and selected-only JSD neighbor arcs gated to free exploration or the guided fingerprint beat.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-047` are complete: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, static app-data pipeline, MapLibre/Natural Earth map, seven-beat guided baseline, selected-place panels, accessibility work, and post-audit visual polish all exist.
+
+The current app is the functioning baseline, not the next target. A 2026-07-09 full repository/story/implementation/live-layout audit approved **The Shape of What We Know** as the next narrative identity. `context/ARTISTIC_REDESIGN_BRIEF.md` records the five-scene storyboard, fixed-presence evidence-mark grammar, desktop/mobile layout, transition system, art direction, exploration simplification, ethical guardrails, and growth path. `TASK-048` through `TASK-057` are pending with detailed plans under `context/plans/`. No redesign implementation task has started.
 
 ## How To Validate The Scaffold
 
@@ -71,10 +73,11 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Run owner visual QA in a real browser for selected NR, TV, FJ, AS, and WF to judge whether the dashed similarity arcs are useful enough to keep.
-2. If the arcs read as physical connection, causality, migration, shared risk, or a decorative web, remove the map layer and keep similarity in the selected-place panel.
-3. Record the final public URL in `context/docs/submission-notes.md` after deployment and keep it live through August 31, 2029.
-4. Keep Codex QA as the gate for any future visual/app changes before committing, and keep owner visual review as the taste/approval gate.
+1. Start `TASK-048` using `context/plans/task-048-evidence-semantics-implementation-plan.md`. Correct score-input/context/trace counts and regenerate the full data/app contract before drawing new evidence marks.
+2. Run `TASK-049` as an owner approval gate using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Generate the required desktop/mobile frames and record exact visual decisions before frontend redesign.
+3. Execute `TASK-050` through `TASK-055` in dependency order, one reviewed commit per task. Do not retain guided JSD or map arcs merely because they exist in the baseline.
+4. Run `TASK-056` only after the new experience stabilizes, then `TASK-057` for URL state and final QA using `context/plans/tasks-056-057-simplification-readiness-implementation-plan.md`.
+5. Record the final public URL in `context/docs/submission-notes.md` only after deployment and keep it live through August 31, 2029.
 
 ## Known Caveats
 
@@ -82,6 +85,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - The SDMX fetch helper avoids undeclared runtime dependencies, but uses a Windows PowerShell fallback because the endpoint returned `422` to Python standard-library HTTP.
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
+- The current `included_indicator_count` is semantically ambiguous: it includes responsibility-context trace data while the app calls the number score inputs. This is the first planned correction in `TASK-048`; do not build the new evidence glyph on the old field.
 - The outlook baseline is app-optional. Only include it in the interface with visible caveats and row-level notes.
 - TASK-005/TASK-026 scored GIS exports use centroid fallback hit targets, not island boundaries. TASK-029 adds Natural Earth land context for orientation, but not official/selectable boundary polygons. TASK-038/TASK-039 group nearby Natural Earth land to scored centroids for visual marks only; TASK-043 keeps those land shapes as subdued context/texture under guaranteed-size centroid presence marks. This is not a boundary source, and far/disputed land stays unassigned.
 - TASK-010 GIS context is descriptive and boundary-neutral. It can support grouping and app copy, but not scoring.
@@ -93,6 +97,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-016 outlook interpretation is stress-test display guidance, not forecasting. Weak or sparse diagnostics should be withheld from outlook layers.
 - TASK-017 monitoring-gap outputs identify PN, NR, AS, and WF as high-gap low-monitoring candidates. AS and WF have missing monitoring rows, so describe them as reporting gaps unless externally verified.
 - TASK-019 outputs exist as analysis artifacts: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`. TASK-037 wires the nearest-neighbor rows into selected-place detail only. Do not present JSD as a global similarity map, causal cluster, policy-need group, or leaderboard.
+- The current app also renders selected-only dashed JSD arcs in guided fingerprint/free-explore states. The approved redesign removes the guided JSD beat and map connectors while retaining exact neighbor evidence in the selected-place panel (`TASK-051` and `TASK-055`).
+- The current story rail uses a nested scroll container whose observer and programmatic beat updates can compete; mobile dense scenes can extend behind fixed navigation. `TASK-050` replaces this with native document scroll and one observer-owned scene state.
 - The post-TASK-039 interaction audit was folded into `TASK-040` through `TASK-042` and is complete. The standalone audit file was removed; durable results now live in `TASKS.md`, `PROJECT.md`, this handover, and the progress log.
 - The post-TASK-042 design critique was folded into `TASK-043` through `TASK-047`; the standalone critique file was removed. `TASK-043` resolved the root visual finding by restoring guaranteed-size presence marks with land geometry as secondary texture/context, `TASK-044` added evidence-bearing motion, `TASK-045` resolved the chrome/type mismatch, `TASK-046` moved official-data visibility before the formula while keeping JSD selected-anchored, and `TASK-047` added selected-only JSD neighbor arcs.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.

@@ -2,11 +2,13 @@
 
 ## Immediate Next Step
 
-Use the completed `TASK-018` story/design briefs, the `TASK-020` Dataviz Inspiration audit, and the TASK-019/TASK-037 divergence artifacts. The analysis lanes through TASK-019 are complete, `TASK-025` app-data wiring is complete, `TASK-026` MapLibre map substrate is complete with centroid fallback, `TASK-029` Natural Earth visual land context is complete, `TASK-028` story/copy rewrite is complete, `TASK-027` final visual/interactions polish is complete, `TASK-030`/`TASK-031` readiness/accessibility QA are complete, and `TASK-037` selected-place JSD neighbor wiring is complete.
+Start `TASK-048` with `context/plans/task-048-evidence-semantics-implementation-plan.md`. The first required change is to separate eight possible score inputs from responsibility-context and total trace rows, regenerate the data/app contract, and correct legend/panel semantics. Do not begin the new evidence glyph against `included_indicator_count`.
 
 ## Next Build Step
 
-Follow the remaining project order: hand Fable only final UI/front-end polish if owner review wants another visual pass, then Codex QA/commit any accepted visual edits. Evidence Fingerprint Divergence ships only as selected-place nearest-neighbor detail; do not add a global link network, similarity ramp, or leaderboard without a new task. If official scored-geography polygon boundaries are pursued, treat them as a separate reviewed-source task rather than part of the completed MapLibre/Natural Earth visual substrate.
+After `TASK-048`, run `TASK-049` as a hard owner visual-approval gate. Then execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
+
+The current seven-beat atlas remains the functioning baseline until those tasks land. The approved target is the five-scene **The Shape of What We Know** story in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence; guided JSD and map arcs are planned for removal.
 
 ## Current Evidence Snapshot
 
@@ -16,6 +18,7 @@ Follow the remaining project order: hand Fable only final UI/front-end polish if
 - Outlook interpretation is display guidance for stress-test layers, not forecasting.
 - Monitoring-gap priorities identify PN, NR, AS, and WF; AS and WF should be framed as reporting gaps unless independently verified.
 - Evidence Fingerprint Divergence has 22 fingerprints, 231 unordered pairwise JSD rows, and 66 nearest-neighbor rows. TASK-037 wires nearest neighbors into selected-place detail only.
+- Indicator forensics contain 165 score-input rows and 17 responsibility-context rows across 182 trace rows. The current geography count field does not separate those roles; `TASK-048` must.
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
-- Claude owns visual mockup edits only; Codex owns critique, QA, staging, commits, and any acceptance decision.
+- `TASK-049` requires owner approval of generated desktop/mobile concept frames before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.

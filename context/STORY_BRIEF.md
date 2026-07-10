@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: final story synthesis for the first atlas build, updated through `TASK-046`.
+Status: first-build story synthesis plus an approved next-story contract, updated through the 2026-07-09 full-project audit. The current app still implements the seven-beat baseline; `TASK-051` will implement the approved five-scene replacement after the semantic, concept, and scroll-architecture gates.
 
 Source basis:
 
@@ -30,11 +30,45 @@ The strongest story is:
 
 This is stronger than a simple ranking story because the rank evidence is fragile. It is stronger than a monitoring-only story because monitoring is one proxy, not the whole adaptation system. It is stronger than a responsibility-only story because responsibility-context indicators are context fields, not score drivers. It is stronger than an outlook story because the outlook is a stress test, not a forecast.
 
-Post-TASK-046 story iteration:
+Current implemented iteration through `TASK-047`:
 
 - The guided tour now opens on what the map can see, immediately moves into uneven official monitoring visibility, then explains the score formula. This keeps the distinctive data-visibility tension close to the opening without hiding the method.
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 - `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
+
+## Approved Next Narrative: The Shape Of What We Know
+
+The next version keeps the product title **The Pacific Adaptation Gap Atlas** and gives the narrative a clearer identity:
+
+> The Shape of What We Know
+
+Its governing idea is:
+
+> Official records illuminate the Pacific unevenly. Those gaps in the record change what the atlas can responsibly compare, rank, and conclude.
+
+This direction supersedes the current seven-beat order for the next redesign. It does not erase the scientific and interaction lessons that made the current app credible.
+
+The guided spine becomes five scenes:
+
+1. **What the map can see** — reveal all 22 places with equal overall visual presence.
+2. **Where the record breaks** — recede score color and foreground missing score inputs plus reported-zero/missing-row monitoring.
+3. **The gap has two sides** — separate climate pressure and visible capacity so the mismatch becomes a visual distance.
+4. **Similar scores, different records** — compare Nauru and Tuvalu as aligned evidence portraits.
+5. **The order does not hold still** — rearrange the same marks into rank bands and highlight Marshall Islands’ 4–19 span.
+
+The story then returns the marks to the Pacific and closes:
+
+> This map cannot tell us who needs help most. It can show us where to look—and where the record asks us to look harder.
+
+Story simplifications:
+
+- JSD leaves the guided spine and remains selected-place panel evidence in free exploration.
+- Dashed JSD map arcs are planned for removal because they can read as physical or causal connection.
+- Uncertainty is explained once, through the rank-band figure, rather than repeated in prose and a callout.
+- The method remains visible but no longer consumes a separate guided scene.
+- Every scene has one claim, one evidence operation, one necessary caveat, and one source line.
+
+The full copy, visual, layout, motion, mobile, and ethical contract lives in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Story Contract
 
@@ -301,19 +335,13 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 
 ## Remaining Product Decisions
 
-1. Should outlook ship in V1, or wait until the core map, missingness, and uncertainty layers are polished?
-2. Should Evidence Fingerprint Divergence get visual polish beyond selected-place detail, or stay as the compact V1 panel section?
-3. Should boundary source selection happen before launch, or is centroid-first acceptable for the competition entry?
-4. Who reviews political-status wording before publication?
+1. `TASK-048` must correct score-input versus context-only counting before the new evidence glyph is designed against production data.
+2. `TASK-049` requires owner approval of desktop and mobile visual concepts before `TASK-050` through `TASK-055` begin.
+3. Exact final palette, evidence-mark silhouette, context-tick position, type stacks, and motion tokens are decided in the `TASK-049` concept review, not improvised during implementation.
+4. Outlook remains app-optional and outside the guided five-scene spine.
+5. Official scored-geography boundary polygons require a separate source/license/geopolitical review and are not part of `TASK-048` through `TASK-057`.
+6. Pacific-language localization and local/community knowledge layers require human review and consent-based collaboration; they are growth paths, not implied scope.
 
 ## Handoff To Design
 
-The design brief should preserve this story hierarchy:
-
-1. Gap map first through a guided scroll path, with the official-record caveat in the opening beat.
-2. Missingness/monitoring as the signature interaction, before the formula beat.
-3. Pressure-versus-capacity method explanation after the hook.
-4. Rank uncertainty always visible where ranks appear.
-5. Evidence-profile divergence only as selected-geography comparison; the current app shows nearest neighbors in the selected-place panel, not as a global map layer.
-6. Caveats beside the claims they qualify.
-7. Outlook optional and gated.
+The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/ARTISTIC_REDESIGN_BRIEF.md` and the `TASK-048` through `TASK-057` sequence rather than extending the current seven-beat rail.

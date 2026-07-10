@@ -1,18 +1,19 @@
 import { useEffect, useRef } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
 import { BookOpen, Compass } from "lucide-react";
-import type { Beat } from "../../lib/tour";
+import type { Scene } from "../../lib/scenes";
 import { pickActiveScene, sceneIndexAfterKey } from "../../lib/sceneState";
 import { SceneProgress } from "./SceneProgress";
 import { StoryScene } from "./StoryScene";
 
 type StoryScrollyProps = {
-  beats: Beat[];
+  scenes: Scene[];
+  handoffCopy: string;
   index: number;
   onActiveChange: (index: number) => void;
   onExplore: () => void;
   onOpenMethod: () => void;
-  renderExtra?: (beat: Beat) => ReactNode;
+  renderExtra?: (scene: Scene) => ReactNode;
 };
 
 function prefersReducedMotion(): boolean {
@@ -20,7 +21,8 @@ function prefersReducedMotion(): boolean {
 }
 
 export function StoryScrolly({
-  beats,
+  scenes,
+  handoffCopy,
   index,
   onActiveChange,
   onExplore,
@@ -49,10 +51,10 @@ export function StoryScrolly({
 
     sectionRefs.current.forEach((section) => section && observer.observe(section));
     return () => observer.disconnect();
-  }, [beats.length, onActiveChange]);
+  }, [scenes.length, onActiveChange]);
 
   const jumpToScene = (sceneIndex: number) => {
-    const next = Math.max(0, Math.min(beats.length - 1, sceneIndex));
+    const next = Math.max(0, Math.min(scenes.length - 1, sceneIndex));
     sectionRefs.current[next]?.scrollIntoView({
       behavior: prefersReducedMotion() ? "auto" : "smooth",
       block: "start",
@@ -62,7 +64,7 @@ export function StoryScrolly({
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (!["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
-    jumpToScene(sceneIndexAfterKey(index, event.key, beats.length));
+    jumpToScene(sceneIndexAfterKey(index, event.key, scenes.length));
   };
 
   return (
@@ -75,32 +77,37 @@ export function StoryScrolly({
           <button type="button" className="ghost-btn" onClick={onOpenMethod}>
             <BookOpen aria-hidden="true" size={14} /> Methods
           </button>
-          <button type="button" className="ghost-btn ghost-btn--accent" onClick={onExplore}>
-            Explore freely
-          </button>
         </div>
       </div>
 
-      <SceneProgress beats={beats} index={index} onJump={jumpToScene} />
+      <SceneProgress scenes={scenes} index={index} onJump={jumpToScene} />
 
       <div className="story-scrolly__sections">
-        {beats.map((beat, beatIndex) => (
+        {scenes.map((scene, sceneIndex) => (
           <section
-            key={beat.id}
-            id={beat.id}
+            key={scene.id}
+            id={scene.id}
             className="story-scene"
-            data-scene-index={beatIndex}
-            data-active={beatIndex === index ? "true" : "false"}
+            data-scene-index={sceneIndex}
+            data-active={sceneIndex === index ? "true" : "false"}
             ref={(element) => {
-              sectionRefs.current[beatIndex] = element;
+              sectionRefs.current[sceneIndex] = element;
             }}
           >
-            <StoryScene beat={beat} index={beatIndex} total={beats.length}>
-              {renderExtra ? renderExtra(beat) : null}
+            <StoryScene scene={scene} index={sceneIndex} total={scenes.length}>
+              {renderExtra ? renderExtra(scene) : null}
             </StoryScene>
           </section>
         ))}
       </div>
+
+      <section className="story-handoff" aria-label="Return to the Pacific">
+        <p className="story-scene__eyebrow">Return to the Pacific</p>
+        <p className="story-handoff__copy">{handoffCopy}</p>
+        <button type="button" className="ghost-btn ghost-btn--accent" onClick={onExplore}>
+          Explore freely
+        </button>
+      </section>
     </main>
   );
 }

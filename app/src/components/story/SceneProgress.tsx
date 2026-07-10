@@ -1,24 +1,24 @@
-import type { Beat } from "../../lib/tour";
+import type { Scene } from "../../lib/scenes";
 
 type SceneProgressProps = {
-  beats: Beat[];
+  scenes: Scene[];
   index: number;
   onJump: (index: number) => void;
 };
 
-export function SceneProgress({ beats, index, onJump }: SceneProgressProps) {
+export function SceneProgress({ scenes, index, onJump }: SceneProgressProps) {
   return (
     <ol className="scene-progress" aria-label="Story progress">
-      {beats.map((beat, beatIndex) => (
-        <li key={beat.id}>
+      {scenes.map((scene, sceneIndex) => (
+        <li key={scene.id}>
           <button
             type="button"
             className="scene-progress__item"
-            aria-current={beatIndex === index ? "step" : undefined}
-            onClick={() => onJump(beatIndex)}
+            aria-current={sceneIndex === index ? "step" : undefined}
+            onClick={() => onJump(sceneIndex)}
           >
             <span className="scene-progress__dot" aria-hidden="true" />
-            <span>{beat.short}</span>
+            <span>{scene.short}</span>
           </button>
         </li>
       ))}

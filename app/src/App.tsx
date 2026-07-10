@@ -6,10 +6,9 @@ import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
 import { DataQuietCallout } from "./components/panels/DataQuietCallout";
-import { FingerprintPreview } from "./components/panels/FingerprintPreview";
 import { MethodDrawer } from "./components/MethodDrawer";
 import { StoryScrolly } from "./components/story/StoryScrolly";
-import { BEATS, shouldShowSimilarityArcs, type Beat } from "./lib/tour";
+import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
@@ -19,12 +18,6 @@ import {
   priorityOneCodes,
   type Geo,
 } from "./lib/atlasData";
-
-function monShort(geo: Geo): string {
-  if (geo.reportingStatus === "reported_positive_latest_count") return "Reported";
-  if (geo.reportingStatus === "reported_zero_latest_count") return "Reports 0";
-  return "No rows";
-}
 
 function currentViewportWidth(): number {
   return typeof window === "undefined" ? 1024 : window.innerWidth;
@@ -41,24 +34,6 @@ function useSimilarityNeighborLimit(): number {
   }, []);
 
   return similarityArcLimitForWidth(width);
-}
-
-// Compact two-column "same score, different story" profile used inside beat 3.
-function MiniProfile({ geo }: { geo: Geo }) {
-  return (
-    <div className="mini">
-      <p className="mini__name">{geo.name}</p>
-      <p className="mini__gap">
-        <b>{geo.gap.toFixed(0)}</b> gap
-      </p>
-      <dl className="mini__rows">
-        <div><dt>Pressure</dt><dd>{geo.pressure.toFixed(0)}</dd></div>
-        <div><dt>Capacity</dt><dd>{geo.capacity.toFixed(0)}</dd></div>
-        <div><dt>Rank</dt><dd>{geo.rankMin}-{geo.rankMax}</dd></div>
-        <div><dt>Monitoring</dt><dd>{monShort(geo)}</dd></div>
-      </dl>
-    </div>
-  );
 }
 
 function RankUncertaintyCallout({ geos, onPick }: { geos: Geo[]; onPick: (code: string) => void }) {
@@ -90,7 +65,7 @@ export function App() {
   const [geos, setGeos] = useState<Geo[]>([]);
   const [dataError, setDataError] = useState<string | null>(null);
   const [mode, setMode] = useState<"guided" | "explore">("guided");
-  const [beatIndex, setBeatIndex] = useState(0);
+  const [sceneIndex, setSceneIndex] = useState(0);
 
   const [activeScore, setActiveScore] = useState<ScoreKey>("gap");
   const [viewMode, setViewMode] = useState<ViewMode>("default");
@@ -120,14 +95,7 @@ export function App() {
   const priorityCodes = priorityOneCodes(geos);
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
-  const activeBeat = BEATS[beatIndex];
-  const showSimilarityArcs = shouldShowSimilarityArcs({
-    hasSelection: selectedGeo !== null,
-    viewMode,
-    outlookOn,
-    mode,
-    beatId: activeBeat.id,
-  });
+  const showSimilarityArcs = mode === "explore" && selectedGeo !== null && viewMode === "default" && !outlookOn;
 
   const meta = outlookOn
     ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
@@ -141,12 +109,12 @@ export function App() {
   // left untouched so state carries forward into Explore freely.
   useEffect(() => {
     if (mode !== "guided") return;
-    const s = BEATS[beatIndex].state;
+    const s = SCENES[sceneIndex].state;
     if (s.score !== undefined) setActiveScore(s.score);
     if (s.view !== undefined) setViewMode(s.view);
-    if (s.outlook !== undefined) setOutlookOn(s.outlook);
+    setOutlookOn(false);
     if (s.selected !== undefined) setSelectedCode(s.selected);
-  }, [beatIndex, mode]);
+  }, [sceneIndex, mode]);
 
   if (dataError) {
     return (
@@ -206,96 +174,6 @@ export function App() {
     if (viewMode === "coverage") setViewMode("default");
   };
 
-  // Beat-specific in-card controls (kept in App so they drive shared state).
-  const renderExtra = (beat: Beat) => {
-    if (beat.id === "pillars") {
-      return (
-        <div className="seg-inline" role="group" aria-label="Pressure or capacity">
-          <button type="button" aria-pressed={activeScore === "pressure"} onClick={() => setActiveScore("pressure")}>
-            Climate pressure
-          </button>
-          <button type="button" aria-pressed={activeScore === "capacity"} onClick={() => setActiveScore("capacity")}>
-            Visible capacity
-          </button>
-        </div>
-      );
-    }
-    if (beat.id === "anchor") {
-      const tv = getGeo(geos, "TV");
-      const nauru = getGeo(geos, "NR");
-      return (
-        <div className="beat-compare">
-          <div className="seg-inline" role="group" aria-label="Anchor geography">
-            <button type="button" aria-pressed={selectedCode === "NR"} onClick={() => setSelectedCode("NR")}>Nauru</button>
-            <button type="button" aria-pressed={selectedCode === "TV"} onClick={() => setSelectedCode("TV")}>Tuvalu</button>
-          </div>
-          <div className="beat-compare__grid">
-            {nauru && <MiniProfile geo={nauru} />}
-            {tv && <MiniProfile geo={tv} />}
-          </div>
-        </div>
-      );
-    }
-    if (beat.id === "quiet") {
-      const picked = selectedGeo && priorityCodes.includes(selectedGeo.code) ? selectedGeo : null;
-      return (
-        <div className="quiet-mini">
-          <div className="quiet-mini__keys">
-            <span className="qk qk--zero">
-              <span className="qk__ring qk__ring--zero" aria-hidden="true" /> reports 0
-            </span>
-            <span className="qk qk--missing">
-              <span className="qk__ring qk__ring--missing" aria-hidden="true" /> no rows
-            </span>
-          </div>
-          <div className="quiet-mini__chips">
-            {priorityCodes.map((code) => {
-              const g = getGeo(geos, code);
-              if (!g) return null;
-              const kind = g.reportingStatus === "reported_zero_latest_count" ? "zero" : "missing";
-              return (
-                <button
-                  key={code}
-                  type="button"
-                  className={`chip chip--${kind}`}
-                  aria-pressed={selectedCode === code}
-                  onClick={() => setSelectedCode(code)}
-                >
-                  {g.code}
-                </button>
-              );
-            })}
-          </div>
-          {picked && (
-            <div className="quiet-mini__explain">
-              <b>{picked.name}</b>
-              <span>{monShort(picked)}</span>
-              <p>
-                {picked.reportingStatus === "reported_zero_latest_count"
-                  ? "The latest official monitoring row reports zero. Keep it as a reported-zero value, not a missing row."
-                  : "No processed monitoring-network row is present. Treat this as a reporting gap, not proof of absent infrastructure."}
-              </p>
-            </div>
-          )}
-        </div>
-      );
-    }
-    if (beat.id === "fragility") {
-      return <RankUncertaintyCallout geos={geos} onPick={setSelectedCode} />;
-    }
-    if (beat.id === "fingerprint") {
-      return <FingerprintPreview geos={geos} />;
-    }
-    if (beat.id === "explore") {
-      return (
-        <button type="button" className="link-btn" onClick={() => setMode("explore")}>
-          Open the full atlas controls
-        </button>
-      );
-    }
-    return null;
-  };
-
   const panelContent =
     viewMode === "coverage" && !selectedGeo ? (
       <DataQuietCallout geos={geos} priorityCodes={priorityCodes} onPick={handleSelect} />
@@ -345,7 +223,7 @@ export function App() {
                 type="button"
                 className="ghost-btn"
                 onClick={() => {
-                  setBeatIndex(0);
+                  setSceneIndex(0);
                   setMode("guided");
                 }}
               >
@@ -400,12 +278,12 @@ export function App() {
 
         {mode === "guided" && (
           <StoryScrolly
-            beats={BEATS}
-            index={beatIndex}
-            onActiveChange={setBeatIndex}
+            scenes={SCENES}
+            handoffCopy={HANDOFF_COPY}
+            index={sceneIndex}
+            onActiveChange={setSceneIndex}
             onExplore={() => setMode("explore")}
             onOpenMethod={() => setDrawerOpen(true)}
-            renderExtra={renderExtra}
           />
         )}
       </div>

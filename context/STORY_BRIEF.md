@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus an approved next-story contract, updated through the 2026-07-09 full-project audit. The current app still implements the seven-beat baseline; `TASK-051` will implement the approved five-scene replacement after the semantic, concept, and scroll-architecture gates.
+Status: first-build story synthesis plus the approved **The Shape of What We Know** story contract. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` now supplies the five-scene guided spine and return-to-explore handoff. The older seven-beat notes below are retained as historical rationale only.
 
 Source basis:
 
@@ -30,11 +30,17 @@ The strongest story is:
 
 This is stronger than a simple ranking story because the rank evidence is fragile. It is stronger than a monitoring-only story because monitoring is one proxy, not the whole adaptation system. It is stronger than a responsibility-only story because responsibility-context indicators are context fields, not score drivers. It is stronger than an outlook story because the outlook is a stress test, not a forecast.
 
-Current implemented iteration through `TASK-047`:
+Historical baseline through `TASK-047`:
 
 - The guided tour now opens on what the map can see, immediately moves into uneven official monitoring visibility, then explains the score formula. This keeps the distinctive data-visibility tension close to the opening without hiding the method.
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 - `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
+
+Current guided story after `TASK-051`:
+
+- `SCENES` contains exactly five ordered scene IDs: `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
+- Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
+- Guided fingerprint content, the seven-beat method/uncertainty repetition, and the static `FingerprintPreview` figure are retired. JSD remains selected-place panel evidence in exploration until TASK-055 removes map connectors.
 
 ## Approved Next Narrative: The Shape Of What We Know
 
@@ -187,7 +193,9 @@ Supporting context:
 - Spatial typologies: help readers compare regional patterns without claiming clusters or adjacency.
 - Outlook: optional stress-test context, off by default, never forecast language.
 
-## Storyboard Beats
+## Historical Seven-Beat Baseline
+
+The following beat descriptions document the retired pre-redesign story and remain useful for understanding what TASK-051 removed. They are not the current guided order; use `app/src/lib/scenes.ts` and `context/ARTISTIC_REDESIGN_BRIEF.md` for the active story.
 
 ### Beat 1: What The Map Can See
 
@@ -335,9 +343,9 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 
 ## Remaining Product Decisions
 
-1. `TASK-048` must correct score-input versus context-only counting before the new evidence glyph is designed against production data.
-2. `TASK-049` requires owner approval of desktop and mobile visual concepts before `TASK-050` through `TASK-055` begin.
-3. Exact final palette, evidence-mark silhouette, context-tick position, type stacks, and motion tokens are decided in the `TASK-049` concept review, not improvised during implementation.
+1. `TASK-048` corrected score-input versus context-only counting before the evidence glyph was designed against production data.
+2. `TASK-049` approved desktop and mobile visual concepts before the frontend redesign began.
+3. Exact final palette, evidence-mark silhouette, context-tick position, type stacks, and motion tokens are locked in the `TASK-049` concept review and consumed by TASK-050 through TASK-055.
 4. Outlook remains app-optional and outside the guided five-scene spine.
 5. Official scored-geography boundary polygons require a separate source/license/geopolitical review and are not part of `TASK-048` through `TASK-057`.
 6. Pacific-language localization and local/community knowledge layers require human review and consent-based collaboration; they are growth paths, not implied scope.

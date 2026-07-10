@@ -1193,11 +1193,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Progress contains exactly five scenes in the approved order; guided JSD is absent; each scene has claim/caveat/source; closing line precedes Explore freely; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Read all five scenes on desktop/mobile, verify the map remains present, cross-check every numeric claim/source, and confirm selected-place JSD still exists in explore mode only.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-10 after Builder and root QA. Added the exact five-scene `SCENES` contract and `HANDOFF_COPY`, rewired the native story shell to scenes, retired `tour.ts` and guided `FingerprintPreview`, and preserved selected-place JSD as an explore/panel-only path. QA caught and removed a duplicate early “Explore freely” shortcut; the only Explore action now follows the closing handoff. Frontend tests passed 20/20 and the production build passed with the existing large-chunk warning. Browser QA at 1440×900 and 390×844 confirmed five sections, five progress items, no guided fingerprint copy, the closing handoff, one Explore action, and a 388px mobile map. Status, secret, and whitespace checks passed; `STORY_BRIEF.md` now labels the seven-beat copy as historical and the five scenes as active.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created from the approved “The Shape of What We Know” storyboard.
-- Status: pending
+- Attempt log: 2026-07-09: Created from the approved “The Shape of What We Know” storyboard. 2026-07-10: Builder began the five-scene story contract after TASK-050 acceptance.
+- Status: done
 
 ## TASK-052
 - Phase: map-grammar

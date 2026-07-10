@@ -52,6 +52,8 @@ Independent QA accepted `TASK-049` on 2026-07-10. The six generated concept fram
 
 Independent QA accepted `TASK-050` on 2026-07-10. The guided story now uses normal document sections and a viewport-root `IntersectionObserver`; `StoryScrolly` owns the active-scene callback, while `SceneProgress` only calls `scrollIntoView`. Keep this one-way ownership model, keyboard clamping, and reduced-motion `behavior: "auto"` behavior when replacing the seven beats in `TASK-051`. Do not reintroduce `StoryRail`, nested story overflow, or progress handlers that set active state directly.
 
+Independent QA accepted `TASK-051` on 2026-07-10. The active guided contract is five `SCENES` plus one closing `HANDOFF_COPY`; the former tour and guided fingerprint are retired. Keep one closing Explore action, short claim/caveat/source lines, and selected-place JSD only in the explore panel. The story shell remains native document scroll with observer-owned scene state; scene-specific figures should attach to these IDs without restoring a global tour abstraction.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

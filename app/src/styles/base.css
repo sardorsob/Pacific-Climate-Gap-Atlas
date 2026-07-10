@@ -454,6 +454,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .story-scene__source { margin: 0; font: 500 10.5px/1.5 ui-monospace, "SF Mono", Menlo, monospace; color: var(--ink-soft); }
 .story-scene__action { margin: 0; font-size: 12px; color: var(--ink-soft); font-style: italic; }
 .story-scene__extra { display: grid; gap: 9px; }
+.story-handoff { min-height: 56svh; display: grid; align-content: center; gap: 12px; padding: 12svh 2rem; border-top: 1px solid var(--line); }
+.story-handoff__copy { max-width: 28rem; margin: 0; font: 600 20px/1.4 Georgia, serif; }
 
 .scene-progress { list-style: none; margin: 0; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 2px; align-items: center; border-bottom: 1px solid var(--line); }
 .scene-progress__item { display: inline-flex; align-items: center; gap: 6px; padding: 5px 6px; border: 0; background: transparent; cursor: pointer; border-radius: var(--r-chip); color: var(--ink-soft); }
@@ -495,16 +497,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .rank-example span { font-weight: 800; color: var(--accent); }
 .rank-example b { font-size: 14px; }
 .rank-example small { color: var(--caveat-ink); text-transform: uppercase; font-size: 10px; font-weight: 800; }
-.fingerprint { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r-card); background: var(--paper-2); }
-.fingerprint__flag { margin: 0; justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 999px; background: #ece7f4; color: #5b3f99; font-size: 10px; font-weight: 800; text-transform: uppercase; }
-.fingerprint__lede { margin: 0; font-size: 12.5px; line-height: 1.4; }
-.fingerprint__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
-.fingerprint__row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: baseline; }
-.fingerprint__name { font-weight: 700; font-size: 12.5px; }
-.fingerprint__band { font-size: 9.5px; font-weight: 800; text-transform: uppercase; color: var(--accent); }
-.fingerprint__reason { grid-column: 1 / -1; font-size: 11px; color: var(--ink-soft); line-height: 1.35; }
-.fingerprint__caveat { margin: 0; font-size: 11px; color: var(--caveat-ink); line-height: 1.35; }
-
 @media (max-width: 880px) {
   .guided-atlas { display: block; }
   .guided-map { position: sticky; top: 0; height: 46svh; min-height: 320px; z-index: 2; }
@@ -517,6 +509,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .story-scene__title { font-size: 23px; }
   .story-scene__claim { font-size: 16px; }
   .story-scene__content { max-width: none; }
+  .story-handoff { min-height: auto; padding: 4rem 1rem 6rem; }
+  .story-handoff__copy { font-size: 18px; }
   .scene-progress { overflow-x: auto; flex-wrap: nowrap; }
   .scene-progress__item { min-height: 38px; white-space: nowrap; }
 }

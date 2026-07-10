@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The current app baseline is complete through `TASK-047`; `TASK-048` evidence semantics is now implemented and under QA. The next approved phase continues with `TASK-049` through `TASK-057`, beginning with owner-reviewed visual concepts before the artistic frontend redesign. Competition deadline: August 31, 2026.
+The current app baseline is complete through `TASK-048`; its evidence semantics correction has passed independent QA. The next approved phase continues with `TASK-049` through `TASK-057`, beginning with owner-reviewed visual concepts before the artistic frontend redesign. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -51,7 +51,7 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 | Artistic redesign contract | approved | `context/ARTISTIC_REDESIGN_BRIEF.md` defines “The Shape of What We Know,” the five-scene storyboard, evidence-mark grammar, art direction, motion, mobile, simplification, and growth contracts |
-| Evidence semantics correction | in-review | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy |
+| Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | pending | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | pending | `TASK-056` removes redundant code/data/dependencies/stale context; `TASK-057` adds URL state and runs the final QA matrix |
 

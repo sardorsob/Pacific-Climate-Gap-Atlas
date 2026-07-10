@@ -1,6 +1,8 @@
 import type { ScoreKey } from "../../lib/encoding";
 import { rampStops, UNCERTAINTY_STOPS } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
+import { EvidenceMark } from "./EvidenceMark";
+import type { EvidenceMarkModel } from "./evidenceMarkModel";
 
 type MapLegendProps = {
   activeScore: ScoreKey;
@@ -11,6 +13,21 @@ type MapLegendProps = {
 function rampCss(stops: string[]): string {
   return `linear-gradient(90deg, ${stops.join(", ")})`;
 }
+
+const LEGEND_MARK: EvidenceMarkModel = {
+  score: 58,
+  inputs: Array.from({ length: 8 }, (_, index) => ({
+    datasetSlug: `legend-input-${index}`,
+    datasetName: `Score input ${index + 1}`,
+    pillar: "climate_signal" as const,
+    present: index < 5,
+    index,
+    angle: -90 + index * 45,
+  })),
+  context: { kind: "context-only", present: true, angle: 112.5 },
+  reportingEdge: "solid",
+  selected: true,
+};
 
 const SCORE_TITLES: Record<ScoreKey, string> = {
   gap: "Adaptation gap (low to high)",
@@ -44,17 +61,20 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
       </div>
 
       <div className="legend__block">
-        <span className="legend__label">Score inputs available (of 8)</span>
-        <span className="legend__ticks" aria-hidden="true">Eight fixed positions around each presence mark</span>
-        <span className="legend__note">A detached tick is responsibility context, not part of the score.</span>
+        <span className="legend__label">Evidence portrait</span>
+        <div className="legend__portrait-key">
+          <EvidenceMark model={LEGEND_MARK} label="Example evidence portrait" size={44} scoreFill={rampStops(outlookOn ? "gap" : activeScore)[2]} />
+          <span>Inner field = active score. Eight fixed ticks = score inputs available; pale bloom = selected place.</span>
+        </div>
+        <span className="legend__note">The detached tick is responsibility context only; it never feeds the score.</span>
       </div>
 
       <div className="legend__block">
-        <span className="legend__label">Ring - monitoring / reporting status</span>
+        <span className="legend__label">Outer edge - monitoring / reporting status</span>
         <ul className="legend__rings">
-          <li><span className="ring-key ring-key--solid" aria-hidden="true" /> Reported monitoring</li>
-          <li><span className="ring-key ring-key--dashed" aria-hidden="true" /> Latest row reports 0</li>
-          <li><span className="ring-key ring-key--hatch" aria-hidden="true" /> No rows in processed data</li>
+          <li><span className="ring-key ring-key--solid" aria-hidden="true" /> Solid edge - reported monitoring</li>
+          <li><span className="ring-key ring-key--dashed" aria-hidden="true" /> Open-dash edge - latest row reports 0</li>
+          <li><span className="ring-key ring-key--hatch" aria-hidden="true" /> Broken-dot edge - no processed row</li>
         </ul>
       </div>
 

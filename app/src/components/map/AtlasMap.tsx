@@ -8,7 +8,7 @@ import maplibregl, {
 import type { Geo } from "../../lib/atlasData";
 import { LABEL_OFFSETS, STORY_EXEMPLARS, SUBREGION_ANCHORS } from "../../lib/atlasData";
 import type { ScoreKey } from "../../lib/encoding";
-import { PRESENCE_RADIUS, ringVariant } from "../../lib/encoding";
+import { PRESENCE_RADIUS } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
 import { GRATICULE_LATS, GRATICULE_LONS } from "../../lib/projection";
 import {
@@ -24,6 +24,8 @@ import {
   type AtlasPointFeature,
   type SimilarityArcFeatureCollection,
 } from "./atlasMapModel";
+import { EvidenceMark } from "./EvidenceMark";
+import { buildEvidenceMark } from "./evidenceMarkModel";
 
 type AtlasMapProps = {
   geos: Geo[];
@@ -401,7 +403,7 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, re
       paint: {
         "circle-radius": ["+", ["get", "radius"], 10],
         "circle-color": ["get", "fillColor"],
-        "circle-opacity": ["case", ["==", ["get", "withheld"], true], 0, 0.34],
+        "circle-opacity": 0,
         "circle-blur": 0.45,
         "circle-stroke-color": "rgba(255, 255, 255, 0.72)",
         "circle-stroke-width": 1.2,
@@ -417,14 +419,11 @@ function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, re
       paint: {
         "circle-radius": ["get", "radius"],
         "circle-color": ["get", "fillColor"],
-        "circle-opacity": [
-          "case",
-          ["==", ["get", "withheld"], true],
-          0,
-          ["get", "opacity"],
-        ],
-        "circle-stroke-color": ["get", "strokeColor"],
-        "circle-stroke-width": ["case", ["get", "withheld"], 1.4, 1.2],
+        // Keep an invisible MapLibre feature layer for map-event compatibility;
+        // the visible primary mark is the fixed-size SVG portrait below.
+        "circle-opacity": 0,
+        "circle-stroke-color": "transparent",
+        "circle-stroke-width": 0,
       },
     });
   }
@@ -781,12 +780,6 @@ export function AtlasMap({
       </p>
 
       <svg className="map-overlay-svg" aria-hidden="true">
-        <defs>
-          <pattern id="hatchOverlay" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="6" stroke="#a8bdc7" strokeWidth="1.4" />
-          </pattern>
-        </defs>
-
         <g className="graticule-labels">
           {overlay.lonLines.map((line) => (
             <text key={`lonlab-${line.id}`} x={line.x2} y={line.y2 + 16} textAnchor="middle">
@@ -812,23 +805,23 @@ export function AtlasMap({
           })}
         </g>
 
-        <g className="atlas-status-overlay">
+        <g className="atlas-evidence-marks">
           {geos.map((geo) => {
             const point = overlay.points[geo.code];
             if (!point) return null;
-            const r = PRESENCE_RADIUS;
-            const variant = ringVariant(geo.reportingStatus);
-            const isPriority = viewMode === "coverage" && priorityCodes.includes(geo.code);
+            const feature = atlasFeatures.features.find((candidate) => candidate.properties.code === geo.code);
 
             return (
               <g key={`status-${geo.code}`}>
-                {isPriority && <circle cx={point.x} cy={point.y} r={r + 9} className="atlas-point__priority" />}
-                {variant === "hatch" && (
-                  <circle cx={point.x} cy={point.y} r={r} fill="url(#hatchOverlay)" className="atlas-point__hatch" />
-                )}
-                {variant === "dashed" && (
-                  <circle cx={point.x} cy={point.y} r={r + 1} className="atlas-point__dash" />
-                )}
+                <EvidenceMark
+                  x={point.x - 22}
+                  y={point.y - 22}
+                  size={44}
+                  model={buildEvidenceMark(geo, { scoreKey: activeScore, selected: geo.code === selectedCode })}
+                  scoreFill={feature?.properties.fillColor}
+                  decorative
+                  className="map-evidence-mark"
+                />
               </g>
             );
           })}
@@ -839,7 +832,7 @@ export function AtlasMap({
             if (!labelCodes.has(geo.code)) return null;
             const point = overlay.points[geo.code];
             if (!point) return null;
-            const r = geo.code === selectedCode ? 0 : PRESENCE_RADIUS;
+            const r = geo.code === selectedCode ? 0 : 22;
             const off = LABEL_OFFSETS[geo.code] ?? { dx: 0, dy: -22 };
             // Clamp middle-anchored labels inside the map so edge exemplars stay readable.
             const mapWidth = mapRef.current?.getContainer().clientWidth ?? 0;

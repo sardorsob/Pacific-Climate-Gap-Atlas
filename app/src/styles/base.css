@@ -85,6 +85,19 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .map-overlay-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
 .map-svg { width: 100%; height: 100%; display: block; }
 
+.atlas-evidence-marks { pointer-events: none; }
+.evidence-mark { display: block; overflow: visible; }
+.evidence-mark__bloom { fill: rgba(255, 255, 255, 0.13); stroke: rgba(255, 255, 255, 0.28); stroke-width: 1; }
+.evidence-mark__edge { fill: rgba(7, 24, 34, 0.5); stroke: #d9edf2; stroke-width: 1.25; }
+.evidence-mark__edge--open-dash { stroke: #f3d39b; stroke-width: 1.45; }
+.evidence-mark__edge--broken-dot { stroke: #a8bdc7; stroke-width: 1.55; }
+.evidence-mark__field { stroke: rgba(248, 252, 252, 0.78); stroke-width: 0.8; }
+.evidence-mark__score { fill: #fff; font: 700 7px var(--font-sans); pointer-events: none; }
+.evidence-mark__tick { stroke: #d9edf2; stroke-linecap: round; stroke-width: 1.7; }
+.evidence-mark__tick--missing { stroke: #9eb2bb; stroke-dasharray: 1 2; opacity: 0.62; }
+.evidence-mark__context { stroke: #e6c889; stroke-linecap: round; stroke-width: 1.7; }
+.evidence-mark__context--missing { stroke: #9eb2bb; stroke-dasharray: 1 2; opacity: 0.62; }
+
 .graticule line { stroke: var(--graticule); stroke-width: 1; }
 .graticule line.graticule__equator { stroke: rgba(150, 190, 205, 0.26); stroke-dasharray: 2 5; }
 .graticule-labels text { fill: rgba(190, 212, 222, 0.5); font: 500 10px var(--font-sans); }
@@ -95,8 +108,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .atlas-point:focus-visible { outline: none; }
 .atlas-point:focus-visible circle:nth-of-type(1) { stroke: #fff; stroke-width: 2.5; }
 .atlas-point__priority { fill: none; stroke: #ffd58a; stroke-width: 2; opacity: 0.9; }
-.atlas-point__dash { fill: none; stroke: #d4dde2; stroke-width: 2.2; stroke-dasharray: 5 4; }
-.atlas-point__hatch { opacity: 0.5; stroke: #9fb4bf; stroke-width: 1.6; stroke-dasharray: 2 3; }
 
 .map-a11y-layer { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .map-a11y-point {
@@ -191,17 +202,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .legend__block { margin-bottom: 11px; }
 .legend__label { display: block; font-size: 11px; color: var(--ink-soft); margin-bottom: 5px; }
 .legend__ramp { display: block; height: 11px; border-radius: 5px; border: 1px solid var(--line); }
-.legend__sizes { display: flex; align-items: center; gap: 10px; }
-.legend__presence {
-  display: inline-block;
-  border-radius: 999px;
-  background: #64777f;
-  border: 1px solid rgba(8, 18, 26, 0.45);
-  box-shadow: 0 0 0 3px rgba(100, 119, 127, 0.14);
-}
-.legend__presence--sm { width: 13px; height: 13px; }
-.legend__presence--md { width: 19px; height: 19px; }
-.legend__presence--lg { width: 27px; height: 27px; }
+.legend__portrait-key { display: flex; align-items: center; gap: 9px; font-size: 10.5px; line-height: 1.35; }
+.legend__portrait-key .evidence-mark { flex: none; }
 .legend__rings { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 11.5px; }
 .legend__rings li { display: flex; align-items: center; gap: 8px; }
 .ring-key { width: 17px; height: 17px; border-radius: 50%; flex: none; }

@@ -1216,11 +1216,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Every geography renders eight stable input positions and the correct reporting edge; context is detached; overall mark size is stable; NR/TV/KI/MH remain findable; grayscale/reduced-color review passes; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Inspect all 22 marks at basin scale, then NR, TV, KI, MH, PN, AS, and WF in desktop/mobile and grayscale; hide score fill and confirm availability/reporting grammar remains legible.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-10 after Builder/root QA. Added the pure `buildEvidenceMark` contract and `EvidenceMark` SVG renderer with eight fixed input ticks, a detached context tick, score field, three reporting edges, selection bloom, and 44px map artwork. Integrated 22 marks over projected anchors, retained 44px accessible hit buttons, hid the legacy visible MapLibre score circles, and updated the legend to teach the portrait grammar without bubble-size encoding. Focused model/component tests passed 5/5; full frontend tests passed 25/25; production build passed with the existing large-chunk warning; task-status, secret, and whitespace checks passed. Browser QA at 1440x900 and 390x844 confirmed 22 marks, 176 score-input ticks, 22 context ticks, 22 hit targets, a 388px mobile map, and MapLibre primary circle opacity 0. A grayscale mobile capture preserved solid/open-dash/broken-dot edges and present/missing ticks. The independent reviewer could not complete because its model was at capacity; root performed the documented QA gate instead.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created to make missing evidence a visible interruption rather than a smaller place.
-- Status: pending
+- Attempt log: 2026-07-09: Created to make missing evidence a visible interruption rather than a smaller place. 2026-07-10: Began TDD with the pure evidence-mark model and component contract.
+- Status: done
 
 ## TASK-053
 - Phase: story-figures

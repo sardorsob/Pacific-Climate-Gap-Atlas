@@ -54,6 +54,8 @@ Independent QA accepted `TASK-050` on 2026-07-10. The guided story now uses norm
 
 Independent QA accepted `TASK-051` on 2026-07-10. The active guided contract is five `SCENES` plus one closing `HANDOFF_COPY`; the former tour and guided fingerprint are retired. Keep one closing Explore action, short claim/caveat/source lines, and selected-place JSD only in the explore panel. The story shell remains native document scroll with observer-owned scene state; scene-specific figures should attach to these IDs without restoring a global tour abstraction.
 
+Root QA accepted `TASK-052` on 2026-07-10. `EvidenceMark` is the visible primary map mark: 44px fixed footprint, 20px inner field, eight stable ticks, detached context tick, and reporting edge grammar. The MapLibre point layer remains only as an invisible event-compatible substrate; do not restore a second visible circle mark or evidence-size encoding. Accessible map buttons remain 44px and own geography labels while the SVG overlay stays decorative.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

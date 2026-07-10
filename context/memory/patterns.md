@@ -46,6 +46,8 @@ Preserve these patterns:
 
 Do not implement the new mark against the retired `included_indicator_count`; `TASK-048` now provides explicit counts and presence records. Do not begin frontend visual work before the `TASK-049` owner concept gate.
 
+Independent QA accepted `TASK-048` after fresh Python/frontend tests, contract/artifact/status/secret/whitespace checks, byte-parity verification, and manual semantic review of NR, TV, PN, AS, and FJ. Keep the explicit score/context/trace fields and eight-slot presence contract as the baseline for `TASK-049` onward.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

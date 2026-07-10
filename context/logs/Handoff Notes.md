@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Review `TASK-048` in `in-review` against `context/plans/task-048-evidence-semantics-implementation-plan.md`, then mark it `done` only after independent QA. The index, EDA, generated app data, validator, map-size encoding, legend, and panel now separate eight possible score inputs from responsibility-context and total trace rows. Do not reintroduce `included_indicator_count`.
+`TASK-048` is QA-accepted and done. The index, EDA, generated app data, validator, map-size encoding, legend, and panel separate eight possible score inputs from responsibility-context and total trace rows. Do not reintroduce `included_indicator_count`.
 
 ## Next Build Step
 
-After `TASK-048` review, run `TASK-049` as a hard owner visual-approval gate. Then execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
+Run `TASK-049` as a hard owner visual-approval gate. Then execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
 
 The current seven-beat atlas remains the functioning baseline until those tasks land. The approved target is the five-scene **The Shape of What We Know** story in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence; guided JSD and map arcs are planned for removal.
 

@@ -44,9 +44,11 @@ Preserve these patterns:
 - mobile as a sibling composition with room for every scene to finish;
 - contemporary scientific ocean-chart art direction without appropriating Pacific cultural motifs.
 
-Do not implement the new mark against the retired `included_indicator_count`; `TASK-048` now provides explicit counts and presence records. Do not begin frontend visual work before the `TASK-049` owner concept gate.
+Do not implement the new mark against the retired `included_indicator_count`; `TASK-048` now provides explicit counts and presence records. `TASK-049` has now passed the owner concept gate; frontend work must use the locked concept values and generated data.
 
 Independent QA accepted `TASK-048` after fresh Python/frontend tests, contract/artifact/status/secret/whitespace checks, byte-parity verification, and manual semantic review of NR, TV, PN, AS, and FJ. Keep the explicit score/context/trace fields and eight-slot presence contract as the baseline for `TASK-049` onward.
+
+Independent QA accepted `TASK-049` on 2026-07-10. The six generated concept frames and eight baseline captures are composition references only; generated labels, numbers, boundaries, and icons must never become data. The approved direction locks a 44px fixed presence portrait, 20px inner field, eight ordered 5px score-input ticks, detached 4:30 context tick, continuous/open-dash/broken-dot reporting edges, 28rem desktop story column, 46svh mobile map, Georgia/system sans typography, and 560ms `cubic-bezier(0.22, 1, 0.36, 1)` motion. Grayscale QA confirmed reported-zero, missing-score-input, and no-processed-row treatments remain distinguishable without color. Frontend implementation begins at `TASK-050` and must consume generated app data and these values.
 
 ## Delegated Mockup Revision
 

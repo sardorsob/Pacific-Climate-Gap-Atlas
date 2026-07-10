@@ -28,9 +28,9 @@ First-build concept status:
 Next-redesign concept status:
 
 - Narrative and semantic direction: approved.
-- Desktop evidence-mark/scene frames: pending `TASK-049` owner approval.
-- Mobile portrait frames: pending `TASK-049` owner approval.
-- Implementation: blocked by the `TASK-048` semantics correction and `TASK-049` concept gate.
+- Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
+- Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
+- Implementation: unlocked after TASK-048 QA acceptance and the TASK-049 concept gate.
 
 The current mockup is the behavior baseline. Future visual work should preserve its scientific and accessibility contracts while following the approved redesign rather than adding another polish layer to the seven-beat rail.
 
@@ -52,6 +52,8 @@ The major design decisions are:
 - JSD retained in the selected-place panel but removed from the guided spine and map connectors;
 - a contemporary scientific ocean-chart art direction: near-black Pacific blue, subdued cartographic texture, coral/terracotta gap, Pacific blue pressure, sea-glass capacity, mineral-white editorial type;
 - no appropriation of Indigenous Pacific visual motifs; culturally grounded expansion requires Pacific co-design.
+
+TASK-049 locks the implementation values: 44px circular evidence portraits with a 20px inner field and eight 5px radial ticks; score-input order is sea-surface temperature, surface temperature, rainfall, sea level, directly affected persons, monitoring network, power generation, fisheries management; the detached context tick sits at 4:30; reporting edges are continuous, open-dash, or broken-dot; desktop scene copy is capped at 28rem; mobile map height targets 46svh; motion uses 560ms with `cubic-bezier(0.22, 1, 0.36, 1)`; and the type stacks remain Georgia plus the system sans stack. The six concept frames are composition studies only and never override generated data values.
 
 `context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe the implemented baseline and its enduring constraints. Where a baseline interaction conflicts with the approved next direction—seven beats, nested story scroll, evidence-size radius, guided JSD, or similarity arcs—the redesign brief governs future work.
 

@@ -1147,11 +1147,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Owner explicitly approves one desktop/mobile direction; every design variable listed in the implementation plan is decided; the direction can be implemented with existing SVG/CSS/MapLibre capabilities and no new runtime dependency.
 - Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Compare all concept frames at target viewport sizes and in grayscale; review the evidence semantics and cultural guardrails before approval.
-- QA notes: Not started. This is a hard approval gate for TASK-050 through TASK-055.
-- Attempts: 0
+- QA notes: Independent QA accepted on 2026-07-10. Reviewed all six concept PNGs and all eight baseline captures, verified the recorded target dimensions (concept desktop 1586x992, concept mobile 853x1844, baseline desktop 1440x900, baseline mobile 390x844), and checked the concepts in grayscale. The approved direction keeps fixed presence, eight score-input positions, a detached context tick, and distinct open-dash/broken-dot reporting states; no mark-size importance cue, physical connector, cultural ornament, or dashboard-card treatment was accepted. Exact locked values in the concept review match the implementation plan (44px portrait, 20px inner field, eight 5px ticks, ordered score inputs, detached 4:30 context tick, 28rem desktop column, 46svh mobile map, Georgia/system sans stacks, and 560ms cubic-bezier motion). Generated labels, numbers, boundaries, and icons are explicitly composition-only and are not data sources; implementation must use generated app data. Owner authorization for TASK-049 through TASK-055 is recorded in the concept review and attempt log. `python scripts/validate_task_statuses.py`, `python scripts/check_secrets.py`, and `git diff --check` passed. No production code or image files were modified during QA.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created to prevent visual implementation from outrunning the approved story and evidence semantics.
-- Status: pending
+- Attempt log: 2026-07-09: Created to prevent visual implementation from outrunning the approved story and evidence semantics. 2026-07-10: Builder captured 1440×900 and 390×844 baseline states, generated six concept frames with the approved art direction, and recorded the implementation-ready direction. Owner authorized execution of TASK-049–055 in the current request; the recommended defaults are retained because no visual variable was changed.
+- Status: done
 
 ## TASK-050
 - Phase: story-architecture

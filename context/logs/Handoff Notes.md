@@ -6,7 +6,7 @@
 
 ## Next Build Step
 
-Run `TASK-049` as a hard owner visual-approval gate. Then execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
+`TASK-049` is approved and done. Execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
 
 The current seven-beat atlas remains the functioning baseline until those tasks land. The approved target is the five-scene **The Shape of What We Know** story in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence; guided JSD and map arcs are planned for removal.
 
@@ -21,4 +21,4 @@ The current seven-beat atlas remains the functioning baseline until those tasks 
 - Indicator forensics contain 165 score-input rows and 17 responsibility-context rows across 182 trace rows. Generated geography records now expose those roles separately through `TASK-048`.
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
-- `TASK-049` requires owner approval of generated desktop/mobile concept frames before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
+- `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.

@@ -3,9 +3,10 @@ import type { Geo } from "../../lib/atlasData";
 import { reportingCaveat, reportingLabel } from "../../lib/encoding";
 import { RankChip } from "../RankChip";
 
+const JSD_CAVEAT = "Similarity describes official-data profile shape only. It does not imply physical connection, shared risk, lived experience, or shared policy need.";
+
 type CountryPanelProps = {
   geo: Geo | null;
-  similarityNeighborLimit: number;
   onClose: () => void;
   onOpenMethod: () => void;
 };
@@ -58,7 +59,7 @@ function PillarBar({ label, value, kind, caveat }: { label: string; value: numbe
   );
 }
 
-export function CountryPanel({ geo, similarityNeighborLimit, onClose, onOpenMethod }: CountryPanelProps) {
+export function CountryPanel({ geo, onClose, onOpenMethod }: CountryPanelProps) {
   if (!geo) {
     return (
       <aside className="panel panel--intro" aria-label="Atlas detail panel">
@@ -80,7 +81,7 @@ export function CountryPanel({ geo, similarityNeighborLimit, onClose, onOpenMeth
 
   const reportingTone =
     geo.reportingStatus === "reported_positive_latest_count" ? "ok" : "warn";
-  const visibleSimilarityNeighbors = geo.similarityNeighbors.slice(0, similarityNeighborLimit);
+  const visibleSimilarityNeighbors = geo.similarityNeighbors;
 
   return (
     <aside className="panel" aria-label={`${geo.name} detail`}>
@@ -178,7 +179,7 @@ export function CountryPanel({ geo, similarityNeighborLimit, onClose, onOpenMeth
         <section className="panel__group">
           <h2 className="panel__h">Records with a similar shape</h2>
           <p className="panel__evidence">
-            Jensen-Shannon distance compares official-data profiles. Lower means more alike.
+            Similarity describes official-data profile shape only. Lower Jensen-Shannon distance means more alike.
           </p>
           <ul className="similarity-list">
             {visibleSimilarityNeighbors.map((neighbor) => (
@@ -192,10 +193,7 @@ export function CountryPanel({ geo, similarityNeighborLimit, onClose, onOpenMeth
               </li>
             ))}
           </ul>
-          <p className="panel__fineprint">
-            {visibleSimilarityNeighbors[0]?.caveat ||
-              "Similarity here is about official-data profiles only, not shared vulnerability or policy need."}
-          </p>
+          <p className="panel__fineprint">{JSD_CAVEAT}</p>
         </section>
       )}
 

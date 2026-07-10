@@ -38,11 +38,10 @@ const geo = {
 } satisfies Geo;
 
 describe("CountryPanel", () => {
-  it("uses the visible similarity-neighbor limit shared with map arcs", () => {
+  it("keeps the complete nearest-neighbor evidence in the panel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
-        similarityNeighborLimit={1}
         onClose={() => undefined}
         onOpenMethod={() => undefined}
       />,
@@ -50,15 +49,16 @@ describe("CountryPanel", () => {
 
     expect(html).toContain("Northern Mariana Islands");
     expect(html).toContain("JSD 0.080");
-    expect(html).not.toContain("Guam");
-    expect(html).not.toContain("JSD 0.081");
+    expect(html).toContain("Guam");
+    expect(html).toContain("JSD 0.081");
+    expect(html).toContain("official-data profile shape only");
+    expect(html).toContain("physical connection, shared risk, lived experience, or shared policy need");
   });
 
   it("labels score inputs separately from context-only trace data", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
-        similarityNeighborLimit={1}
         onClose={() => undefined}
         onOpenMethod={() => undefined}
       />,

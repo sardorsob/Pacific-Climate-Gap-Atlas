@@ -15,14 +15,13 @@ import {
   assignLandAnchors,
   buildGraticuleFeatureCollection,
   buildAtlasFeatureCollection,
-  buildSimilarityArcCollection,
   fitBoundsForPacific,
   mapMotionDuration,
+  shouldReframeSelection,
   shiftPacificLon,
   toMapLibreCollection,
   type AtlasFeatureCollection,
   type AtlasPointFeature,
-  type SimilarityArcFeatureCollection,
 } from "./atlasMapModel";
 import { EvidenceMark } from "./EvidenceMark";
 import { buildEvidenceMark } from "./evidenceMarkModel";
@@ -34,9 +33,9 @@ type AtlasMapProps = {
   outlookOn: boolean;
   selectedCode: string | null;
   priorityCodes: string[];
-  showSimilarityArcs: boolean;
-  similarityNeighborLimit: number;
   focusSelection?: boolean;
+  panelOpen?: boolean;
+  panelExpanded?: boolean;
   onSelect: (code: string) => void;
   activeLayerLabel: string;
 };
@@ -67,14 +66,7 @@ const LAND_MARK_GLOW_LAYER_ID = "pacific-land-selected-glow";
 const LAND_MARK_SOLID_LAYER_ID = "pacific-land-selected-line-solid";
 const LAND_MARK_ZERO_LAYER_ID = "pacific-land-selected-line-zero";
 const LAND_MARK_MISSING_LAYER_ID = "pacific-land-selected-line-missing";
-const SIMILARITY_SOURCE_ID = "atlas-similarity-arcs";
-const SIMILARITY_LAYER_ID = "atlas-similarity-arcs";
-const NO_ANCHOR_FILTER: FilterSpecification = ["==", ["get", "anchorCode"], "__none__"];
 const ANCHOR_FILTER: FilterSpecification = ["!=", "anchorCode", ""];
-
-function anchorFilterFor(code: string | null): FilterSpecification {
-  return code ? ["==", ["get", "anchorCode"], code] : NO_ANCHOR_FILTER;
-}
 
 function anchorStatusFilter(status: string): FilterSpecification {
   return ["all", ["!=", "anchorCode", ""], ["==", "reportingStatus", status]] as FilterSpecification;
@@ -94,7 +86,6 @@ const MOTION_TARGETS = [
   { layer: LAND_MARK_SOLID_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
   { layer: LAND_MARK_ZERO_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
   { layer: LAND_MARK_MISSING_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
-  { layer: SIMILARITY_LAYER_ID, paint: ["line-width", "line-opacity"] },
 ] as const;
 
 const PACIFIC_STYLE: StyleSpecification = {
@@ -183,38 +174,6 @@ function focusSelectedCamera(map: MapLibreMap, geo: Geo, reducedMotion: boolean)
 function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
   const source = map.getSource(MAP_SOURCE_ID) as GeoJSONSource | undefined;
   if (source) source.setData(asGeoJson(collection));
-}
-
-function syncSimilarityArcs(map: MapLibreMap, collection: SimilarityArcFeatureCollection, reducedMotion: boolean) {
-  if (!map.isStyleLoaded()) {
-    window.setTimeout(() => syncSimilarityArcs(map, collection, reducedMotion), 50);
-    return;
-  }
-  const source = map.getSource(SIMILARITY_SOURCE_ID) as GeoJSONSource | undefined;
-  if (source) {
-    source.setData(asGeoJson(collection));
-  } else {
-    map.addSource(SIMILARITY_SOURCE_ID, {
-      type: "geojson",
-      data: asGeoJson(collection),
-    });
-  }
-
-  if (!map.getLayer(SIMILARITY_LAYER_ID)) {
-    map.addLayer({
-      id: SIMILARITY_LAYER_ID,
-      type: "line",
-      source: SIMILARITY_SOURCE_ID,
-      paint: {
-        "line-color": "#d9edf2",
-        "line-width": ["get", "width"],
-        "line-opacity": ["get", "opacity"],
-        "line-dasharray": [1, 2],
-        "line-blur": 0.35,
-      },
-    }, map.getLayer(PRIORITY_LAYER_ID) ? PRIORITY_LAYER_ID : undefined);
-  }
-  syncMapMotion(map, reducedMotion);
 }
 
 function syncMapMotion(map: MapLibreMap, reducedMotion: boolean) {
@@ -513,9 +472,9 @@ export function AtlasMap({
   outlookOn,
   selectedCode,
   priorityCodes,
-  showSimilarityArcs,
-  similarityNeighborLimit,
   focusSelection = true,
+  panelOpen = false,
+  panelExpanded = false,
   onSelect,
   activeLayerLabel,
 }: AtlasMapProps) {
@@ -547,16 +506,7 @@ export function AtlasMap({
   );
   const styledLand = useMemo(() => styleAnchoredLand(anchoredLand, atlasFeatures.features), [anchoredLand, atlasFeatures]);
   const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures), [atlasFeatures]);
-  const similarityArcs = useMemo(
-    () => buildSimilarityArcCollection(
-      geos,
-      showSimilarityArcs ? selectedCode : null,
-      similarityNeighborLimit,
-    ),
-    [geos, selectedCode, showSimilarityArcs, similarityNeighborLimit],
-  );
   const mapLibreFeaturesRef = useRef(mapLibreFeatures);
-  const similarityArcsRef = useRef(similarityArcs);
   const landContextRef = useRef<GeoJSON.FeatureCollection | null>(styledLand);
   const geosRef = useRef(geos);
 
@@ -577,10 +527,6 @@ export function AtlasMap({
   useEffect(() => {
     mapLibreFeaturesRef.current = mapLibreFeatures;
   }, [mapLibreFeatures]);
-
-  useEffect(() => {
-    similarityArcsRef.current = similarityArcs;
-  }, [similarityArcs]);
 
   useEffect(() => {
     geosRef.current = geos;
@@ -656,7 +602,6 @@ export function AtlasMap({
       addGraticuleLayers(map);
       syncLandContext(map, landContextRef.current, reducedMotionRef.current);
       addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current);
-      syncSimilarityArcs(map, similarityArcsRef.current, reducedMotionRef.current);
       map.on("click", POINT_LAYER_ID, handlePointClick);
       map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
       map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
@@ -687,12 +632,6 @@ export function AtlasMap({
     if (!mapReady || !map) return;
     syncAtlasSource(map, mapLibreFeatures);
   }, [mapLibreFeatures, mapReady]);
-
-  useEffect(() => {
-    const map = mapRef.current;
-    if (!mapReady || !map) return;
-    syncSimilarityArcs(map, similarityArcs, reducedMotion);
-  }, [mapReady, reducedMotion, similarityArcs]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -757,9 +696,22 @@ export function AtlasMap({
     const map = mapRef.current;
     if (!mapReady || !map) return;
     const selectedGeo = selectedCode ? geos.find((geo) => geo.code === selectedCode) : null;
-    if (selectedGeo && focusSelection) focusSelectedCamera(map, selectedGeo, reducedMotion);
-    else fitPacificCamera(map, mapMotionDuration(reducedMotion));
-  }, [focusSelection, geos, mapReady, reducedMotion, selectedCode]);
+    if (selectedGeo) {
+      const width = map.getContainer().clientWidth;
+      const height = map.getContainer().clientHeight;
+      const point = project(map, selectedGeo.lon, selectedGeo.lat);
+      const pointVisible = point.x >= 0 && point.x <= width && point.y >= 0 && point.y <= height;
+      const panelTop = width < 760
+        ? height - (panelExpanded ? height * 0.7 : 60)
+        : height;
+      const pointCoveredByPanel = panelOpen && (width < 760 ? point.y >= panelTop : point.x >= width - 400);
+      if (focusSelection || shouldReframeSelection({ pointVisible, pointCoveredByPanel })) {
+        focusSelectedCamera(map, selectedGeo, reducedMotion);
+      }
+      return;
+    }
+    fitPacificCamera(map, mapMotionDuration(reducedMotion));
+  }, [focusSelection, geos, mapReady, panelExpanded, panelOpen, reducedMotion, selectedCode]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -903,7 +855,6 @@ export function AtlasMap({
 
       <p className="map-note">
         Natural Earth island texture is grouped by nearest centroid. Scored geographies are not boundary polygons.
-        {showSimilarityArcs && " Dashed arcs show official-data profile similarity, not physical links."}
       </p>
     </div>
   );

@@ -1285,11 +1285,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: No similarity line source/layer or guided JSD remains; selected-place neighbor list and caveat remain; selection preserves basin context unless obscured/offscreen; mobile toolbar/sheet do not cover content; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Enter explore from handoff; exercise every layer/view; select NR, TV, FJ, AS, WF, and MH; confirm panel-only JSD, no connectors, quiet camera, compact mobile controls, and non-covered content.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-10 after Builder and independent QA. Removed all similarity arc builders, source/layer setup, mobile neighbor limits, guided gates, and dashed-arc copy. The selected-place panel now renders the complete generated neighbor list with the locked panel-only caveat: “Similarity describes official-data profile shape only. It does not imply physical connection, shared risk, lived experience, or shared policy need.” `shouldReframeSelection` preserves basin context unless a selected mark is offscreen or covered; mobile selection opens the detail sheet collapsed so the selected mark remains visible, while desktop still opens the full panel. Mobile exploration controls are a 56px toolbar with 44px buttons; panel sheet and map remain non-overflowing. Full frontend tests passed 29/29, production build passed with the existing large-chunk warning, and required-artifact/status/secret/whitespace checks passed. Independent browser QA covered NR, TV, FJ, AS, WF, and MH at 390x844 plus desktop NR, with no similarity source/layer, three panel neighbors, unchanged basin camera for visible selections, a 390px collapsed sheet at y=794, and 44px toolbar/legend/method touch targets. The reviewer’s initial expanded-sheet overlap finding was resolved and the final matrix passed.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Audit judged the shipped dashed arcs too likely to read as physical or causal connection and too costly in the guided story.
-- Status: pending
+- Attempt log: 2026-07-09: Audit judged the shipped dashed arcs too likely to read as physical or causal connection and too costly in the guided story. 2026-07-10: Began TDD by replacing arc tests with a no-connector contract and preparing the selection reframe helper.
+- Status: done
 
 ## TASK-056
 - Phase: repository-simplification

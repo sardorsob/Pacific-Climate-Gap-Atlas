@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { BookOpen, ChevronUp, Compass, Layers } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
-import { similarityArcLimitForWidth } from "./components/map/atlasMapModel";
 import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
@@ -22,21 +21,8 @@ import {
   type Geo,
 } from "./lib/atlasData";
 
-function currentViewportWidth(): number {
-  return typeof window === "undefined" ? 1024 : window.innerWidth;
-}
-
-function useSimilarityNeighborLimit(): number {
-  const [width, setWidth] = useState(currentViewportWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(currentViewportWidth());
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return similarityArcLimitForWidth(width);
+function isCompactViewport(): boolean {
+  return typeof window !== "undefined" && window.innerWidth < 760;
 }
 
 function RankUncertaintyCallout({ geos, onPick }: { geos: Geo[]; onPick: (code: string) => void }) {
@@ -77,7 +63,6 @@ export function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sheetExpanded, setSheetExpanded] = useState(false);
   const [legendOpen, setLegendOpen] = useState(false);
-  const similarityNeighborLimit = useSimilarityNeighborLimit();
 
   useEffect(() => {
     let cancelled = false;
@@ -98,7 +83,6 @@ export function App() {
   const priorityCodes = priorityOneCodes(geos);
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
-  const showSimilarityArcs = mode === "explore" && selectedGeo !== null && viewMode === "default" && !outlookOn;
 
   const meta = outlookOn
     ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
@@ -140,7 +124,7 @@ export function App() {
 
   const handleSelect = (code: string) => {
     setSelectedCode(code);
-    if (mode === "explore") setSheetExpanded(true);
+    if (mode === "explore") setSheetExpanded(!isCompactViewport());
   };
 
   const handleScore = (id: ScoreKey) => {
@@ -201,7 +185,6 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
-        similarityNeighborLimit={similarityNeighborLimit}
         onClose={closePanel}
         onOpenMethod={() => setDrawerOpen(true)}
       />
@@ -222,9 +205,9 @@ export function App() {
           outlookOn={outlookOn}
           selectedCode={selectedCode}
           priorityCodes={priorityCodes}
-          showSimilarityArcs={showSimilarityArcs}
-          similarityNeighborLimit={similarityNeighborLimit}
-          focusSelection={mode === "explore" || sceneIndex === 3}
+          focusSelection={mode === "guided" && sceneIndex === 3}
+          panelOpen={panelOpen}
+          panelExpanded={sheetExpanded}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}
             />

@@ -2,7 +2,7 @@
 
 ## Status
 
-Implemented analysis and selected-place app layer. `TASK-037` exports nearest-neighbor rows into generated geography JSON and renders exact JSD values, bands, reasons, and caveats in the selected-place panel. `TASK-047` also added selected-only dashed map arcs to the current baseline; the approved artistic redesign removes those connectors and keeps JSD panel-only in `TASK-055`.
+Implemented analysis and selected-place app layer. `TASK-037` exports nearest-neighbor rows into generated geography JSON and renders exact JSD values, bands, reasons, and caveats in the selected-place panel. `TASK-055` removes the former selected-only dashed map arcs and keeps JSD panel-only in the current redesigned app.
 
 Working layer name: **Evidence Fingerprint Divergence**.
 

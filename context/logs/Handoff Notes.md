@@ -6,9 +6,9 @@
 
 ## Next Build Step
 
-`TASK-049` through `TASK-054` are approved and done. `TASK-050` established the native document-scroll shell and observer-owned active state; `TASK-051` replaced the seven-beat spine with five scenes plus a closing handoff; `TASK-052` added fixed-size evidence portraits with eight score-input ticks, a detached context tick, and reporting edges; `TASK-053` added pressure/capacity lobes and aligned Nauru/Tuvalu figures; `TASK-054` added the 22-row rank-band scene and shared motion grammar. Execute `TASK-055` using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`, then finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
+`TASK-049` through `TASK-055` are approved and done. `TASK-050` established the native document-scroll shell and observer-owned active state; `TASK-051` replaced the seven-beat spine with five scenes plus a closing handoff; `TASK-052` added fixed-size evidence portraits with eight score-input ticks, a detached context tick, and reporting edges; `TASK-053` added pressure/capacity lobes and aligned Nauru/Tuvalu figures; `TASK-054` added the 22-row rank-band scene and shared motion grammar; `TASK-055` removed similarity map connectors, kept full panel-only JSD evidence, and made mobile selection sheets collapsed by default. Execute `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
 
-The current seven-beat atlas remains the functioning baseline until those tasks land. The approved target is the five-scene **The Shape of What We Know** story in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence; guided JSD and map arcs are planned for removal.
+The five-scene **The Shape of What We Know** story is now the functioning redesigned path in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence only; similarity map arcs are removed. TASK-056/057 are the remaining simplification and readiness gates.
 
 ## Current Evidence Snapshot
 

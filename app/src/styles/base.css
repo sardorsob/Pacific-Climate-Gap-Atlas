@@ -350,17 +350,18 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   /* controls become a top toolbar so they never fight the bottom sheet */
   .dock--controls {
     top: auto; bottom: 116px; left: 10px; right: 10px; width: auto;
-    margin-top: 0; position: absolute; overflow-x: auto;
+    height: 56px; max-height: 56px; margin-top: 0; position: absolute; overflow: hidden;
   }
   .atlas-shell--panel .dock--controls { right: 10px; }
-  .controls { display: flex; align-items: stretch; gap: 10px; padding: 9px 11px; }
-  .controls__group { min-width: max-content; }
-  .controls__toggle { width: auto; margin-bottom: 0; white-space: nowrap; }
-  .controls__segment { grid-template-columns: repeat(3, auto); }
+  .controls { display: flex; align-items: center; gap: 10px; height: 56px; min-height: 56px; padding: 6px 10px; overflow-x: auto; }
+  .controls__group { display: flex; align-items: center; gap: 6px; min-width: max-content; }
+  .controls__heading, .controls__caveat { display: none; }
+  .controls__segment { display: flex; gap: 4px; }
+  .controls__seg-btn, .controls__toggle { width: auto; min-height: 44px; height: 44px; margin: 0; padding: 6px 10px; white-space: nowrap; }
 
   .dock--legend { left: 10px; bottom: 64px; width: auto; }
   .legend-toggle {
-    display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 8px 13px;
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 13px;
     background: var(--chrome-bg); border: 1px solid var(--line); border-radius: 999px; font-weight: 700;
     font-size: 12px; cursor: pointer; box-shadow: var(--chrome-shadow);
   }
@@ -383,6 +384,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
     display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 50px;
     border: 0; border-radius: 16px 16px 0 0; background: var(--paper); font-weight: 700; font-size: 14px; cursor: pointer;
   }
+  .story-scrolly .ghost-btn, .map-header .ghost-btn { min-height: 44px; }
   .panel { padding: 18px; }
   .panel__thesis { font-size: 21px; }
   .signals { grid-template-columns: 1fr 1fr; }

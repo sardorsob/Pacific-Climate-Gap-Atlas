@@ -60,6 +60,8 @@ Root QA accepted `TASK-053` on 2026-07-10. Story figures use real `Geo` records 
 
 Independent QA accepted `TASK-054` on 2026-07-10. Rank bands are interval evidence, not ordered rows: sort by midpoint, highlight MH 4–19, keep the sensitivity caveat, and render all 22 geographies. Use the shared 560ms `cubic-bezier(0.22, 1, 0.36, 1)` motion token, stop camera transitions before new targets, keep scene-five basin framing, and make reduced motion a complete static equivalent.
 
+Root QA accepted `TASK-055` on 2026-07-10. JSD is panel-only: keep the complete generated nearest-neighbor list and the exact caveat about profile shape, physical connection, shared risk, lived experience, and policy need; remove every similarity map source/layer/gate/limit/copy. Selection camera reframes only offscreen or panel-covered marks. On compact mobile, selection opens a collapsed detail handle by default so the selected 44px mark remains visible; users can expand the sheet intentionally.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

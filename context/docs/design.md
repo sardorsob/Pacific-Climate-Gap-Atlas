@@ -13,7 +13,7 @@ Current baseline:
 1. User lands in the seven-beat guided scroll atlas with the map visible.
 2. Guided mode changes the same map state used by the explorer.
 3. Explore mode reveals layer controls, detail panel, and source/method access.
-4. User selects a geography to inspect score, pressure, visible capacity, monitoring, rank uncertainty, trace rows, and JSD neighbors.
+4. User selects a geography in exploration to inspect score, pressure, visible capacity, monitoring, rank uncertainty, trace rows, and panel-only JSD neighbors.
 
 Approved target:
 

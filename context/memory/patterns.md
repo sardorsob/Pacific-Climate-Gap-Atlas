@@ -50,6 +50,8 @@ Independent QA accepted `TASK-048` after fresh Python/frontend tests, contract/a
 
 Independent QA accepted `TASK-049` on 2026-07-10. The six generated concept frames and eight baseline captures are composition references only; generated labels, numbers, boundaries, and icons must never become data. The approved direction locks a 44px fixed presence portrait, 20px inner field, eight ordered 5px score-input ticks, detached 4:30 context tick, continuous/open-dash/broken-dot reporting edges, 28rem desktop story column, 46svh mobile map, Georgia/system sans typography, and 560ms `cubic-bezier(0.22, 1, 0.36, 1)` motion. Grayscale QA confirmed reported-zero, missing-score-input, and no-processed-row treatments remain distinguishable without color. Frontend implementation begins at `TASK-050` and must consume generated app data and these values.
 
+Independent QA accepted `TASK-050` on 2026-07-10. The guided story now uses normal document sections and a viewport-root `IntersectionObserver`; `StoryScrolly` owns the active-scene callback, while `SceneProgress` only calls `scrollIntoView`. Keep this one-way ownership model, keyboard clamping, and reduced-motion `behavior: "auto"` behavior when replacing the seven beats in `TASK-051`. Do not reintroduce `StoryRail`, nested story overflow, or progress handlers that set active state directly.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

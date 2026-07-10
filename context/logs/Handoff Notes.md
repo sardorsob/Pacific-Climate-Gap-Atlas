@@ -6,7 +6,7 @@
 
 ## Next Build Step
 
-`TASK-049` is approved and done. Execute `TASK-050` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
+`TASK-049` and `TASK-050` are approved and done. `TASK-050` established the native document-scroll shell and observer-owned active state. Execute `TASK-051` through `TASK-055` in dependency order using `context/plans/tasks-049-055-artistic-story-implementation-plan.md`. Finish with `TASK-056` and `TASK-057` using the simplification/readiness plan. Each task receives its own Builder/QA status transitions and commit.
 
 The current seven-beat atlas remains the functioning baseline until those tasks land. The approved target is the five-scene **The Shape of What We Know** story in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence; guided JSD and map arcs are planned for removal.
 

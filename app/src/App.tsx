@@ -8,7 +8,7 @@ import { CountryPanel } from "./components/panels/CountryPanel";
 import { DataQuietCallout } from "./components/panels/DataQuietCallout";
 import { FingerprintPreview } from "./components/panels/FingerprintPreview";
 import { MethodDrawer } from "./components/MethodDrawer";
-import { StoryRail } from "./components/story/StoryRail";
+import { StoryScrolly } from "./components/story/StoryScrolly";
 import { BEATS, shouldShowSimilarityArcs, type Beat } from "./lib/tour";
 import { atlasLayers } from "./lib/layers";
 import type { ScoreKey } from "./lib/encoding";
@@ -315,8 +315,10 @@ export function App() {
 
   return (
     <div className={shellClass}>
-      <div className="atlas-map-region">
-        <AtlasMap
+      <div className="guided-atlas">
+        <div className="guided-map">
+          <div className="atlas-map-region">
+            <AtlasMap
           geos={geos}
           activeScore={activeScore}
           viewMode={viewMode}
@@ -327,7 +329,7 @@ export function App() {
           similarityNeighborLimit={similarityNeighborLimit}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}
-        />
+            />
 
         <header className="map-header">
           <p className="map-header__wordmark">
@@ -393,11 +395,14 @@ export function App() {
           </p>
         )}
 
+          </div>
+        </div>
+
         {mode === "guided" && (
-          <StoryRail
+          <StoryScrolly
             beats={BEATS}
             index={beatIndex}
-            onBeat={setBeatIndex}
+            onActiveChange={setBeatIndex}
             onExplore={() => setMode("explore")}
             onOpenMethod={() => setDrawerOpen(true)}
             renderExtra={renderExtra}

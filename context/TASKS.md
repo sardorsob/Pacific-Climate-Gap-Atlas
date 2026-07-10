@@ -1170,11 +1170,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: No nested story overflow container remains; progress clicks do not snap back; one observer owns active scene; keyboard and mobile navigation work; app tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: At 1440x900 and 390x844, click all progress items, scroll rapidly, use Arrow/Page/Home/End, resize, and confirm no content is covered or state reversed.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Independent QA accepted on 2026-07-10. Reviewed the scoped source diff and confirmed the nested `StoryRail`, `BeatProgress`, `StoryBeat`, `.story-rail__scroll`, and `overflow-y:auto` story-container patterns are retired; only the intended `StoryScrolly` normal-flow shell remains. `sceneState.ts` passes deterministic active-scene and keyboard-helper tests. `StoryScrolly` observes with `root: null`, owns the active-scene callback, and uses latest visible intersection state; `SceneProgress` only requests `scrollIntoView` and never writes active state. Reduced-motion switches jumps to `behavior: "auto"` and disables scene transitions. The fresh 1440×900 and 390×844 browser evidence recorded by the Builder confirms seven normal-flow sections, progress jumps that settle on the observer-confirmed scene, a 388px mobile map, and no fixed navigation overlap at the final scene. `npm --prefix app run test` passed 21/21, `npm --prefix app run build` passed with the existing large-chunk warning, and task-status, secret, and whitespace checks passed. No production code was changed during QA.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Audit reproduced competing `onBeat`/observer behavior on desktop and a dense mobile scene extending below the fixed navigation.
-- Status: pending
+- Attempt log: 2026-07-09: Audit reproduced competing `onBeat`/observer behavior on desktop and a dense mobile scene extending below the fixed navigation. 2026-07-10: Builder began the native document-scroll controller after TASK-049 concept approval. 2026-07-10: Independent QA reran the app test/build/status/secret/whitespace gate and accepted the native-scroll, observer-owned implementation.
+- Status: done
 
 ## TASK-051
 - Phase: story-editorial

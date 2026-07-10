@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Geo } from "../../lib/atlasData";
 import { PlaceComparisonScene } from "./PlaceComparisonScene";
 import { PressureCapacityScene } from "./PressureCapacityScene";
+import { RankBandScene } from "./RankBandScene";
 
 function makeGeo(overrides: Partial<Geo> = {}): Geo {
   return {
@@ -80,5 +81,16 @@ describe("story figures", () => {
     expect((html.match(/class="pressure-capacity-figure__lobe /g) ?? []).length).toBe(4);
     expect((html.match(/evidence-mark/g) ?? []).length).toBeGreaterThan(1);
     expect(html).not.toContain("Adaptation readiness");
+  });
+
+  it("shows rank bands as sensitivity intervals and highlights Marshall Islands", () => {
+    const marshall = makeGeo({ code: "MH", name: "Marshall Islands", rankMin: 4, rankMax: 19, rankRange: 15, robustness: "fragile" });
+    const html = renderToStaticMarkup(<RankBandScene geos={[marshall, nauru]} reducedMotion />);
+
+    expect(html).toContain("Marshall Islands");
+    expect(html).toContain("4–19");
+    expect(html).toContain("Sensitivity bands, not a fixed scoreboard");
+    expect(html).toContain('data-motion-mode="static"');
+    expect(html).toContain("not confidence intervals");
   });
 });

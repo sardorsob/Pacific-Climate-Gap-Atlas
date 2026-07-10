@@ -58,6 +58,8 @@ Root QA accepted `TASK-052` on 2026-07-10. `EvidenceMark` is the visible primary
 
 Root QA accepted `TASK-053` on 2026-07-10. Story figures use real `Geo` records and explicit `visible capacity` language: scene 3 opens fixed evidence marks into paired pressure/capacity lobes with negative space, and scene 4 uses aligned `EvidencePortrait` records. Keep monitoring labels and caveats attached to each portrait, avoid JSD/connectors, and preserve the map as a sticky evidence surface. The shell must not have an overflow-clipping ancestor that disables `position: sticky`; map-canvas itself owns visual clipping.
 
+Independent QA accepted `TASK-054` on 2026-07-10. Rank bands are interval evidence, not ordered rows: sort by midpoint, highlight MH 4–19, keep the sensitivity caveat, and render all 22 geographies. Use the shared 560ms `cubic-bezier(0.22, 1, 0.36, 1)` motion token, stop camera transitions before new targets, keep scene-five basin framing, and make reduced motion a complete static equivalent.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

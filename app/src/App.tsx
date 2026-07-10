@@ -9,6 +9,7 @@ import { DataQuietCallout } from "./components/panels/DataQuietCallout";
 import { MethodDrawer } from "./components/MethodDrawer";
 import { PlaceComparisonScene } from "./components/story/PlaceComparisonScene";
 import { PressureCapacityScene } from "./components/story/PressureCapacityScene";
+import { RankBandScene } from "./components/story/RankBandScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
@@ -186,6 +187,9 @@ export function App() {
     if (scene.id === "similar-scores-different-records") {
       return <PlaceComparisonScene nauru={storyNauru} tuvalu={storyTuvalu} />;
     }
+    if (scene.id === "the-order-does-not-hold-still") {
+      return <RankBandScene geos={geos} />;
+    }
     return null;
   };
 
@@ -220,6 +224,7 @@ export function App() {
           priorityCodes={priorityCodes}
           showSimilarityArcs={showSimilarityArcs}
           similarityNeighborLimit={similarityNeighborLimit}
+          focusSelection={mode === "explore" || sceneIndex === 3}
           onSelect={handleSelect}
           activeLayerLabel={meta.title}
             />
@@ -297,7 +302,10 @@ export function App() {
             handoffCopy={HANDOFF_COPY}
             index={sceneIndex}
             onActiveChange={setSceneIndex}
-            onExplore={() => setMode("explore")}
+            onExplore={() => {
+              setSelectedCode(null);
+              setMode("explore");
+            }}
             onOpenMethod={() => setDrawerOpen(true)}
             renderExtra={renderStoryFigure}
           />

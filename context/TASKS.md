@@ -1262,11 +1262,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Scene five shows all interval evidence without a leaderboard; MH 4–19 is correct; transitions share one approved motion grammar; rapid navigation converges on latest state; reduced motion is equivalent; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Scroll slowly and rapidly through scenes, use progress during transitions, emulate reduced motion, inspect the interval source claim, and verify the handoff returns marks to the Pacific.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-10 after Builder/root QA. Added interval-model tests/helpers, `RankBandScene` for all 22 geographies, MH 4–19 highlighting, shared 560ms cubic-bezier motion tokens, reduced-motion static mode, basin-preserving scene-five camera behavior, latest-state camera stops, and closing Explore reset. Full frontend tests passed 30/30; production build passed with the existing large-chunk warning; task-status, secret, and whitespace checks passed. Browser QA confirmed 22 rows, MH 4–19, `rearrange` mode, basin framing at scene five, 390px mobile completion, no horizontal overflow, rapid scene 1→5→2 settling on scene 2, and reduced-motion `static` mode with 22 rows. The independent reviewer could not complete because its model was at capacity; root performed the documented QA gate instead.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created from the approved rearrange/return transition concept.
-- Status: pending
+- Attempt log: 2026-07-09: Created from the approved rearrange/return transition concept. 2026-07-10: Began TDD with interval ordering and reduced-motion transition tests.
+- Status: done
 
 ## TASK-055
 - Phase: app-exploration

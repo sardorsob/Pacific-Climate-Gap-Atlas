@@ -36,6 +36,7 @@ type AtlasMapProps = {
   priorityCodes: string[];
   showSimilarityArcs: boolean;
   similarityNeighborLimit: number;
+  focusSelection?: boolean;
   onSelect: (code: string) => void;
   activeLayerLabel: string;
 };
@@ -166,11 +167,13 @@ function selectedCameraForViewport(width: number, geo: Geo): { center: [number, 
 
 function fitPacificCamera(map: MapLibreMap, duration = 0) {
   const width = map.getContainer().clientWidth;
+  map.stop();
   map.easeTo({ ...cameraForViewport(width), duration });
 }
 
 function focusSelectedCamera(map: MapLibreMap, geo: Geo, reducedMotion: boolean) {
   const width = map.getContainer().clientWidth;
+  map.stop();
   map.easeTo({
     ...selectedCameraForViewport(width, geo),
     duration: mapMotionDuration(reducedMotion),
@@ -512,6 +515,7 @@ export function AtlasMap({
   priorityCodes,
   showSimilarityArcs,
   similarityNeighborLimit,
+  focusSelection = true,
   onSelect,
   activeLayerLabel,
 }: AtlasMapProps) {
@@ -753,9 +757,9 @@ export function AtlasMap({
     const map = mapRef.current;
     if (!mapReady || !map) return;
     const selectedGeo = selectedCode ? geos.find((geo) => geo.code === selectedCode) : null;
-    if (selectedGeo) focusSelectedCamera(map, selectedGeo, reducedMotion);
+    if (selectedGeo && focusSelection) focusSelectedCamera(map, selectedGeo, reducedMotion);
     else fitPacificCamera(map, mapMotionDuration(reducedMotion));
-  }, [geos, mapReady, reducedMotion, selectedCode]);
+  }, [focusSelection, geos, mapReady, reducedMotion, selectedCode]);
 
   useEffect(() => {
     const map = mapRef.current;

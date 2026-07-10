@@ -91,7 +91,7 @@ export type SimilarityArcFeatureCollection = {
   features: SimilarityArcFeature[];
 };
 
-const MAP_MOTION_MS = 420;
+const MAP_MOTION_MS = 560;
 
 export function mapMotionDuration(reducedMotion: boolean): number {
   return reducedMotion ? 0 : MAP_MOTION_MS;

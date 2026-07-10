@@ -77,7 +77,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- shell + map ---------- */
-.atlas-shell { position: relative; min-height: 100vh; overflow: hidden; }
+.atlas-shell { position: relative; min-height: 100vh; overflow: visible; }
 .atlas-map-region { position: absolute; inset: 0; }
 .map-canvas { position: absolute; inset: 0; overflow: hidden; background: var(--ocean); }
 .maplibre-canvas { position: absolute; inset: 0; }
@@ -456,6 +456,34 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .story-scene__source { margin: 0; font: 500 10.5px/1.5 ui-monospace, "SF Mono", Menlo, monospace; color: var(--ink-soft); }
 .story-scene__action { margin: 0; font-size: 12px; color: var(--ink-soft); font-style: italic; }
 .story-scene__extra { display: grid; gap: 9px; }
+.pressure-capacity-figure, .place-comparison-figure { margin: 0; display: grid; gap: 10px; }
+.pressure-capacity-figure__legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 10.5px; font-weight: 700; color: var(--ink-soft); }
+.pressure-capacity-figure__key { display: inline-flex; align-items: center; gap: 5px; }
+.pressure-capacity-figure__key::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: #4f74c4; }
+.pressure-capacity-figure__key--capacity::before { background: #4fa873; }
+.pressure-capacity-figure__rows { display: grid; gap: 9px; }
+.pressure-capacity-figure__row { display: grid; grid-template-columns: 58px 1fr; gap: 8px; align-items: center; }
+.pressure-capacity-figure__anchor { display: grid; justify-items: center; gap: 2px; }
+.pressure-capacity-figure__anchor figcaption { font-size: 10px; font-weight: 700; }
+.pressure-capacity-figure__lobes { min-width: 0; }
+.pressure-capacity-figure__lobes svg { display: block; width: 100%; height: 106px; overflow: visible; }
+.pressure-capacity-figure__lobe { stroke-width: 1.2; stroke-linejoin: round; }
+.pressure-capacity-figure__lobe--pressure { fill: rgba(79, 116, 196, 0.25); stroke: #4f74c4; }
+.pressure-capacity-figure__lobe--capacity { fill: rgba(79, 168, 115, 0.25); stroke: #4fa873; }
+.pressure-capacity-figure__anchor-dot { fill: var(--ink); stroke: var(--paper); stroke-width: 1.5; }
+.pressure-capacity-figure__lobes text { fill: var(--ink-soft); font: 700 10px var(--font-sans); }
+.pressure-capacity-figure__caption, .place-comparison-figure__caption { margin: 0; color: var(--ink-soft); font-size: 10.5px; font-style: italic; }
+.place-comparison-figure__portraits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.evidence-portrait { margin: 0; padding-top: 8px; border-top: 2px solid var(--line); display: grid; gap: 8px; }
+.evidence-portrait__head { display: flex; align-items: center; gap: 8px; }
+.evidence-portrait__head figcaption { min-width: 0; }
+.evidence-portrait__head h3 { margin: 0; font: 700 14px var(--font-sans); }
+.evidence-portrait__head p { margin: 2px 0 0; color: var(--ink-soft); font-size: 10px; line-height: 1.25; }
+.evidence-portrait__stats { margin: 0; display: grid; gap: 3px; }
+.evidence-portrait__stats > div { display: flex; justify-content: space-between; gap: 7px; font-size: 10.5px; }
+.evidence-portrait__stats dt { color: var(--ink-soft); }
+.evidence-portrait__stats dd { margin: 0; text-align: right; font-weight: 800; }
+.evidence-portrait__caveat { margin: 0; color: var(--caveat-ink); font-size: 9.5px; line-height: 1.3; }
 .story-handoff { min-height: 56svh; display: grid; align-content: center; gap: 12px; padding: 12svh 2rem; border-top: 1px solid var(--line); }
 .story-handoff__copy { max-width: 28rem; margin: 0; font: 600 20px/1.4 Georgia, serif; }
 
@@ -511,6 +539,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .story-scene__title { font-size: 23px; }
   .story-scene__claim { font-size: 16px; }
   .story-scene__content { max-width: none; }
+  .place-comparison-figure__portraits { grid-template-columns: 1fr; gap: 15px; }
+  .pressure-capacity-figure__row { grid-template-columns: 52px 1fr; }
   .story-handoff { min-height: auto; padding: 4rem 1rem 6rem; }
   .story-handoff__copy { font-size: 18px; }
   .scene-progress { overflow-x: auto; flex-wrap: nowrap; }

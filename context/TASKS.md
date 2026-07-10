@@ -1239,11 +1239,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The two score sides and Nauru/Tuvalu differences are perceptible without explanatory paragraphs; aligned fields and monitoring states render on desktop/mobile; no JSD/connection implication; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Compare scene 3 and scene 4 at 1440x900, 1024x768, 390x844, and 360x800; verify accessible names, aligned values, no clipping, and visible map anchors.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-10 after Builder/root QA. Added `PressureCapacityScene`, reusable `EvidencePortrait`, and `PlaceComparisonScene`, wired to scene 3 and scene 4 with real NR/TV records and no JSD/connectors. Scene 3 reuses `EvidenceMark` gap anchors and opens each into paired pressure/capacity lobes with explicit negative space, matching the approved separate motion rather than a generic bar chart. Static figure tests passed 2/2; full frontend tests passed 27/27; production build passed with the existing large-chunk warning; task-status, secret, and whitespace checks passed. Browser QA at 1440x900, 1024x768, 390x844, and 360x800 confirmed the lobe figure, aligned Nauru/Tuvalu portraits, exact monitoring labels, no JSD in scene 4, no clipping, no horizontal overflow, and visible map anchors. QA caught that `.atlas-shell { overflow: hidden; }` prevented the documented sticky map after scene jumps; changing it to `overflow: visible` restored the map at the viewport edge without affecting map-canvas clipping. The independent reviewer flagged the initial bar-chart deviation; root resolved it and reran the full gate.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created from the approved separate/compare motion verbs.
-- Status: pending
+- Attempt log: 2026-07-09: Created from the approved separate/compare motion verbs. 2026-07-10: Began TDD with static markup tests for the split and aligned comparison figures.
+- Status: done
 
 ## TASK-054
 - Phase: story-motion

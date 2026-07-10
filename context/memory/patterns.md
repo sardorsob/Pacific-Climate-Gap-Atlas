@@ -56,6 +56,8 @@ Independent QA accepted `TASK-051` on 2026-07-10. The active guided contract is 
 
 Root QA accepted `TASK-052` on 2026-07-10. `EvidenceMark` is the visible primary map mark: 44px fixed footprint, 20px inner field, eight stable ticks, detached context tick, and reporting edge grammar. The MapLibre point layer remains only as an invisible event-compatible substrate; do not restore a second visible circle mark or evidence-size encoding. Accessible map buttons remain 44px and own geography labels while the SVG overlay stays decorative.
 
+Root QA accepted `TASK-053` on 2026-07-10. Story figures use real `Geo` records and explicit `visible capacity` language: scene 3 opens fixed evidence marks into paired pressure/capacity lobes with negative space, and scene 4 uses aligned `EvidencePortrait` records. Keep monitoring labels and caveats attached to each portrait, avoid JSD/connectors, and preserve the map as a sticky evidence surface. The shell must not have an overflow-clipping ancestor that disables `position: sticky`; map-canvas itself owns visual clipping.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

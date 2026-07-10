@@ -7,6 +7,8 @@ import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
 import { DataQuietCallout } from "./components/panels/DataQuietCallout";
 import { MethodDrawer } from "./components/MethodDrawer";
+import { PlaceComparisonScene } from "./components/story/PlaceComparisonScene";
+import { PressureCapacityScene } from "./components/story/PressureCapacityScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
@@ -174,6 +176,19 @@ export function App() {
     if (viewMode === "coverage") setViewMode("default");
   };
 
+  const storyNauru = getGeo(geos, "NR") ?? geos[0];
+  const storyTuvalu = getGeo(geos, "TV") ?? geos[1] ?? geos[0];
+  const renderStoryFigure = (scene: (typeof SCENES)[number]) => {
+    if (!storyNauru || !storyTuvalu) return null;
+    if (scene.id === "the-gap-has-two-sides") {
+      return <PressureCapacityScene geos={[storyNauru, storyTuvalu]} />;
+    }
+    if (scene.id === "similar-scores-different-records") {
+      return <PlaceComparisonScene nauru={storyNauru} tuvalu={storyTuvalu} />;
+    }
+    return null;
+  };
+
   const panelContent =
     viewMode === "coverage" && !selectedGeo ? (
       <DataQuietCallout geos={geos} priorityCodes={priorityCodes} onPick={handleSelect} />
@@ -284,6 +299,7 @@ export function App() {
             onActiveChange={setSceneIndex}
             onExplore={() => setMode("explore")}
             onOpenMethod={() => setDrawerOpen(true)}
+            renderExtra={renderStoryFigure}
           />
         )}
       </div>

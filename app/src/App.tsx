@@ -75,6 +75,19 @@ export function App() {
   const initialUrlAppliedRef = useRef(false);
   const skipGuidedSyncRef = useRef(false);
   const skipInitialSceneObservationRef = useRef(false);
+  const sceneScrollRequestRef = useRef(0);
+
+  const scheduleSceneScroll = (sceneId: string) => {
+    if (typeof window === "undefined") return;
+    const request = sceneScrollRequestRef.current + 1;
+    sceneScrollRequestRef.current = request;
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        if (sceneScrollRequestRef.current !== request) return;
+        document.getElementById(sceneId)?.scrollIntoView({ behavior: "auto", block: "start" });
+      });
+    });
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -99,6 +112,7 @@ export function App() {
         setHistoryHydrationRevision((revision) => revision + 1);
         applyingHistoryRef.current = false;
         initialUrlAppliedRef.current = true;
+        if (parsed.mode === "guided") scheduleSceneScroll(parsed.scene);
       })
       .catch((error: unknown) => {
         if (!cancelled) setDataError(error instanceof Error ? error.message : "Failed to load atlas data");
@@ -141,6 +155,7 @@ export function App() {
     if (geos.length === 0 || typeof window === "undefined") return;
     const onPopState = () => {
       const parsed = parseAtlasUrl(window.location.search, geos.map((geo) => geo.code));
+      sceneScrollRequestRef.current += 1;
       applyingHistoryRef.current = true;
       skipGuidedSyncRef.current = parsed.mode === "guided";
       skipInitialSceneObservationRef.current = parsed.mode === "guided";
@@ -152,6 +167,9 @@ export function App() {
       setOutlookOn(parsed.outlook);
       setHistoryHydrationRevision((revision) => revision + 1);
       applyingHistoryRef.current = false;
+      if (parsed.mode === "guided") {
+        scheduleSceneScroll(parsed.scene);
+      }
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
@@ -237,13 +255,11 @@ export function App() {
 
   const handleSceneChange = (nextIndex: number) => {
     if (skipInitialSceneObservationRef.current) {
-      if (nextIndex === sceneIndex) {
-        skipInitialSceneObservationRef.current = false;
-        return;
-      }
       skipInitialSceneObservationRef.current = false;
+      return;
     }
     const next = Math.max(0, Math.min(SCENES.length - 1, nextIndex));
+    if (next === sceneIndex) return;
     setSceneIndex(next);
     if (mode === "guided") {
       const sceneState = SCENES[next].state;
@@ -259,12 +275,16 @@ export function App() {
   };
 
   const handleExplore = () => {
+    sceneScrollRequestRef.current += 1;
+    skipInitialSceneObservationRef.current = false;
     setSelectedCode(null);
     setMode("explore");
     commitUrlState("pushState", { mode: "explore", place: null });
   };
 
   const handleGuidedTour = () => {
+    sceneScrollRequestRef.current += 1;
+    skipInitialSceneObservationRef.current = false;
     setSceneIndex(0);
     setMode("guided");
     setActiveScore("gap");

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BookOpen, ChevronUp, Compass, Layers } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
 import { MapLegend } from "./components/map/MapLegend";
@@ -12,6 +12,7 @@ import { RankBandScene } from "./components/story/RankBandScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
+import { parseAtlasUrl, serializeAtlasUrl, type AtlasUrlState } from "./lib/urlState";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
 import {
@@ -23,6 +24,12 @@ import {
 
 function isCompactViewport(): boolean {
   return typeof window !== "undefined" && window.innerWidth < 760;
+}
+
+function writeAtlasUrl(state: AtlasUrlState, method: "pushState" | "replaceState") {
+  if (typeof window === "undefined") return;
+  const search = serializeAtlasUrl(state);
+  window.history[method]({}, "", `${window.location.pathname}${search}${window.location.hash}`);
 }
 
 function RankUncertaintyCallout({ geos, onPick }: { geos: Geo[]; onPick: (code: string) => void }) {
@@ -63,12 +70,33 @@ export function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sheetExpanded, setSheetExpanded] = useState(false);
   const [legendOpen, setLegendOpen] = useState(false);
+  const applyingHistoryRef = useRef(false);
+  const initialUrlAppliedRef = useRef(false);
+  const skipGuidedSyncRef = useRef(false);
+  const skipInitialSceneObservationRef = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
     loadAtlasData()
       .then((loaded) => {
-        if (!cancelled) setGeos(loaded);
+        if (cancelled) return;
+        setGeos(loaded);
+        if (initialUrlAppliedRef.current) return;
+        const parsed = parseAtlasUrl(
+          typeof window === "undefined" ? "" : window.location.search,
+          loaded.map((geo) => geo.code),
+        );
+        applyingHistoryRef.current = true;
+        skipGuidedSyncRef.current = parsed.mode === "guided";
+        skipInitialSceneObservationRef.current = parsed.mode === "guided";
+        setMode(parsed.mode);
+        setSceneIndex(Math.max(0, SCENES.findIndex((scene) => scene.id === parsed.scene)));
+        setActiveScore(parsed.layer);
+        setViewMode(parsed.view);
+        setSelectedCode(parsed.place);
+        setOutlookOn(parsed.outlook);
+        applyingHistoryRef.current = false;
+        initialUrlAppliedRef.current = true;
       })
       .catch((error: unknown) => {
         if (!cancelled) setDataError(error instanceof Error ? error.message : "Failed to load atlas data");
@@ -96,12 +124,35 @@ export function App() {
   // left untouched so state carries forward into Explore freely.
   useEffect(() => {
     if (mode !== "guided") return;
+    if (skipGuidedSyncRef.current) {
+      skipGuidedSyncRef.current = false;
+      return;
+    }
     const s = SCENES[sceneIndex].state;
     if (s.score !== undefined) setActiveScore(s.score);
     if (s.view !== undefined) setViewMode(s.view);
     setOutlookOn(false);
     if (s.selected !== undefined) setSelectedCode(s.selected);
   }, [sceneIndex, mode]);
+
+  useEffect(() => {
+    if (geos.length === 0 || typeof window === "undefined") return;
+    const onPopState = () => {
+      const parsed = parseAtlasUrl(window.location.search, geos.map((geo) => geo.code));
+      applyingHistoryRef.current = true;
+      skipGuidedSyncRef.current = parsed.mode === "guided";
+      skipInitialSceneObservationRef.current = parsed.mode === "guided";
+      setMode(parsed.mode);
+      setSceneIndex(Math.max(0, SCENES.findIndex((scene) => scene.id === parsed.scene)));
+      setActiveScore(parsed.layer);
+      setViewMode(parsed.view);
+      setSelectedCode(parsed.place);
+      setOutlookOn(parsed.outlook);
+      applyingHistoryRef.current = false;
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [geos]);
 
   if (dataError) {
     return (
@@ -122,18 +173,37 @@ export function App() {
     );
   }
 
+  const currentUrlState = (overrides: Partial<AtlasUrlState> = {}): AtlasUrlState => ({
+    mode,
+    scene: SCENES[sceneIndex]?.id ?? SCENES[0].id,
+    layer: activeScore,
+    view: viewMode,
+    place: selectedCode,
+    outlook: outlookOn,
+    ...overrides,
+  });
+
+  const commitUrlState = (method: "pushState" | "replaceState", overrides: Partial<AtlasUrlState> = {}) => {
+    if (applyingHistoryRef.current) return;
+    writeAtlasUrl(currentUrlState(overrides), method);
+  };
+
   const handleSelect = (code: string) => {
     setSelectedCode(code);
     if (mode === "explore") setSheetExpanded(!isCompactViewport());
+    commitUrlState("pushState", { place: code });
   };
 
   const handleScore = (id: ScoreKey) => {
     setActiveScore(id);
     setViewMode("default");
     setOutlookOn(false);
+    commitUrlState("pushState", { layer: id, view: "default", outlook: false });
   };
 
   const handleViewMode = (m: ViewMode) => {
+    const nextPlace = m === "coverage" || m === "uncertainty" ? null : selectedCode;
+    const nextOutlook = m === "default" ? outlookOn : false;
     setViewMode(m);
     if (m !== "default") setOutlookOn(false);
     if (m === "coverage") {
@@ -145,20 +215,64 @@ export function App() {
     } else if (viewMode === "coverage" || viewMode === "uncertainty") {
       setSheetExpanded(false);
     }
+    commitUrlState("pushState", { view: m, place: nextPlace, outlook: nextOutlook });
   };
 
   const handleToggleOutlook = () => {
-    setOutlookOn((prev) => {
-      const next = !prev;
-      if (next) setViewMode("default");
-      return next;
-    });
+    const next = !outlookOn;
+    setOutlookOn(next);
+    if (next) setViewMode("default");
+    commitUrlState("pushState", { outlook: next, view: next ? "default" : viewMode });
   };
 
   const closePanel = () => {
     setSelectedCode(null);
     setSheetExpanded(false);
     if (viewMode === "coverage") setViewMode("default");
+    commitUrlState("pushState", { place: null, view: viewMode === "coverage" ? "default" : viewMode });
+  };
+
+  const handleSceneChange = (nextIndex: number) => {
+    if (skipInitialSceneObservationRef.current) {
+      skipInitialSceneObservationRef.current = false;
+      return;
+    }
+    const next = Math.max(0, Math.min(SCENES.length - 1, nextIndex));
+    setSceneIndex(next);
+    if (mode === "guided") {
+      const sceneState = SCENES[next].state;
+      commitUrlState("replaceState", {
+        mode: "guided",
+        scene: SCENES[next].id,
+        layer: sceneState.score ?? activeScore,
+        view: sceneState.view ?? viewMode,
+        place: sceneState.selected === undefined ? selectedCode : sceneState.selected,
+        outlook: sceneState.view === undefined ? outlookOn : false,
+      });
+    }
+  };
+
+  const handleExplore = () => {
+    setSelectedCode(null);
+    setMode("explore");
+    commitUrlState("pushState", { mode: "explore", place: null });
+  };
+
+  const handleGuidedTour = () => {
+    setSceneIndex(0);
+    setMode("guided");
+    setActiveScore("gap");
+    setViewMode("default");
+    setOutlookOn(false);
+    setSelectedCode(null);
+    commitUrlState("pushState", {
+      mode: "guided",
+      scene: SCENES[0].id,
+      layer: "gap",
+      view: "default",
+      place: null,
+      outlook: false,
+    });
   };
 
   const storyNauru = getGeo(geos, "NR") ?? geos[0];
@@ -226,10 +340,7 @@ export function App() {
               <button
                 type="button"
                 className="ghost-btn"
-                onClick={() => {
-                  setSceneIndex(0);
-                  setMode("guided");
-                }}
+                onClick={handleGuidedTour}
               >
                 <Compass aria-hidden="true" size={14} /> Guided tour
               </button>
@@ -285,11 +396,8 @@ export function App() {
             scenes={SCENES}
             handoffCopy={HANDOFF_COPY}
             index={sceneIndex}
-            onActiveChange={setSceneIndex}
-            onExplore={() => {
-              setSelectedCode(null);
-              setMode("explore");
-            }}
+            onActiveChange={handleSceneChange}
+            onExplore={handleExplore}
             onOpenMethod={() => setDrawerOpen(true)}
             renderExtra={renderStoryFigure}
           />

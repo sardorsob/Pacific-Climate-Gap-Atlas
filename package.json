@@ -6,6 +6,7 @@
     "app:dev": "npm --prefix app run dev",
     "app:build": "npm --prefix app run build",
     "app:preview": "npm --prefix app run preview",
+    "check:app-budget": "python scripts/check_app_bundle_budget.py",
     "validate:artifacts": "python scripts/check_required_artifacts.py",
     "validate:tasks": "python scripts/validate_task_statuses.py",
     "check:secrets": "python scripts/check_secrets.py"

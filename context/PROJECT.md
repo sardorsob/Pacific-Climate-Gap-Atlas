@@ -2,13 +2,13 @@
 
 ## Current Phase
 
-The current app baseline is complete through `TASK-048`; its evidence semantics correction has passed independent QA. The next approved phase continues with `TASK-049` through `TASK-057`, beginning with owner-reviewed visual concepts before the artistic frontend redesign. Competition deadline: August 31, 2026.
+The redesigned app is implemented through `TASK-056`, and `TASK-057` is in review for shareable URL state, bundle budgeting, and final readiness QA. Competition deadline: August 31, 2026.
 
 ## Status
 
 The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, reference audits, and a functioning React/Vite scroll-led atlas wired to generated public data.
 
-The current implementation uses five native-scroll guided scenes, fixed-size evidence portraits, and panel-only JSD neighbors. A full repository/story/live-layout audit on 2026-07-09 approved the narrative identity **The Shape of What We Know**: official records illuminate the Pacific unevenly, and those gaps change what the atlas can responsibly say. The app keeps eight score-input positions plus a separate context tick, moves JSD off the map, and uses a reduced runtime data surface of geographies JSON, country-details JSON, and Natural Earth land context. The complete design contract is `context/ARTISTIC_REDESIGN_BRIEF.md`; execution is split across `TASK-048` through `TASK-057` and the active implementation plans under `context/plans/`.
+The current implementation uses five native-scroll guided scenes, fixed-size evidence portraits, panel-only JSD neighbors, and dependency-free URL state/history for meaningful map states. A full repository/story/live-layout audit on 2026-07-09 approved the narrative identity **The Shape of What We Know**: official records illuminate the Pacific unevenly, and those gaps change what the atlas can responsibly say. The app keeps eight score-input positions plus a separate context tick, moves JSD off the map, and uses a reduced runtime data surface of geographies JSON, country-details JSON, and Natural Earth land context. The complete design contract is `context/ARTISTIC_REDESIGN_BRIEF.md`; execution is split across `TASK-048` through `TASK-057` and the active implementation plans under `context/plans/`.
 
 ## Working Title
 
@@ -53,7 +53,9 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 | Artistic redesign contract | approved | `context/ARTISTIC_REDESIGN_BRIEF.md` defines “The Shape of What We Know,” the five-scene storyboard, evidence-mark grammar, art direction, motion, mobile, simplification, and growth contracts |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | pending | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
-| Simplification and readiness | pending | `TASK-056` removes redundant code/data/dependencies/stale context; `TASK-057` adds URL state and runs the final QA matrix |
+| Simplification and readiness | in-review | `TASK-056` is accepted; `TASK-057` adds URL state, bundle budget, and verified local release gates; owner visual/accessibility/deployment actions remain |
+| Shareable URL state | verified locally | `mode`, `scene`, `layer`, `view`, `place`, and `outlook` parse/serialize safely with guarded history updates and no router |
+| App bundle budget | verified locally | JS 1,021,813 bytes; CSS 93,895 bytes; caps 1,050,000 and 95,000 bytes |
 
 ## Last Session Notes
 
@@ -98,3 +100,4 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 - Approved **The Shape of What We Know** as the next narrative identity while keeping **The Pacific Adaptation Gap Atlas** as the product title. The target story has five scenes: reveal equal-presence marks, expose breaks in the record, separate pressure from visible capacity, compare Nauru and Tuvalu, and rearrange marks into rank bands before returning to exploration.
 - Added `TASK-048` through `TASK-057` and three executable implementation plans. No redesign implementation task has started; `TASK-048` is the next legal task, and `TASK-049` is the owner visual-approval gate before frontend redesign work.
 - Implemented `TASK-048` in the Python index, EDA drivers/divergence layer, app exporter, static contract validator, React adapter, map-size encoding, legend, and selected-place panel. Regenerated index/EDA/app artifacts sequentially. The next legal task is `TASK-049`, the owner visual-approval gate.
+- Implemented `TASK-057` URL state/history and bundle-budget checks. Local automated release gates passed (60 Python tests, 34 frontend tests, contracts/artifacts/status/secrets, build, budget, whitespace); browser-use smoke covered URL reload/invalid fallback, Explore/layer/place push, passive scene replacement, Back/Forward, five scenes, 22 marks, and no overflow at 1200x734. The six requested viewport dimensions still need owner/human visual, keyboard, focus, contrast, and color-deficiency sign-off; deployment, AI disclosure, sensitive wording, submission form, and public URL remain pending.

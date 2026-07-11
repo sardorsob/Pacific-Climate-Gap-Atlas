@@ -14,7 +14,7 @@ The Pacific Adaptation Gap Atlas.
 
 Narrative identity for the approved redesign: **The Shape of What We Know**.
 
-Readiness note: the seven-beat app is the current functioning baseline, and `TASK-048` evidence semantics is implemented/in review. The final visual/accessibility/readiness gate remains open for `TASK-049` through `TASK-057`. Do not submit the baseline as final while those tasks are active unless the owner explicitly cancels the redesign.
+Readiness note (2026-07-11): the five-scene redesign and `TASK-057` shareable-state/budget implementation are in review. Automated release gates pass; deployment, sensitive wording, AI disclosure, final human visual/accessibility review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
 
 ## Submission Requirements To Track
 
@@ -24,9 +24,11 @@ Readiness note: the seven-beat app is the current functioning baseline, and `TAS
 | List all data sources | in-progress | `data/contracts/*.json`, `artifacts/provenance/dataset_pipeline_summary.json`, `artifacts/provenance/app_data_summary.json`, `artifacts/provenance/land_context_summary.json` | Copy final source list into submission form |
 | Explain method and caveats | in-progress | `context/docs/methodology.md`, `context/MODEL_CARD.md`, app method drawer | Final human read-through |
 | Public interactive URL remains accessible until at least 31 August 2029 | not started | Deploy `app/dist/` after `npm run app:build`; preview with `npm run app:preview` | Choose host, record URL here, confirm durability |
+| Shareable URL state and history | verified locally | `app/src/lib/urlState.ts`, `app/src/lib/urlState.test.ts`; browser smoke covered reload, Explore/layer/place push, scene replace, Back/Forward | Owner to recheck on deployed host |
+| App bundle budget | satisfied locally | `python scripts/check_app_bundle_budget.py`; JS 1,021,813 bytes; CSS 93,895 bytes | Re-run after deployment/build environment changes |
 | English or French dataviz/explanations | satisfied | Current app and docs are English | Final typo pass |
 | AI-assisted work disclosure | needs owner wording | Progress log records AI tools; workflow keeps human/orchestrator review | Approve final disclosure text |
-| Final accessibility/mobile review | in-progress | `TASK-031` baseline audit; `TASK-057` redesign matrix pending | Human keyboard/mobile check after the redesign |
+| Final accessibility/mobile review | owner review pending | `TASK-031` baseline audit plus `TASK-057` automated/browser smoke; six requested viewport dimensions still need a human visual/focus/color-deficiency pass | Owner keyboard/mobile/accessibility sign-off |
 
 ## Draft Description
 
@@ -53,4 +55,4 @@ Build with `npm run app:build`, preview with `npm run app:preview`, and deploy t
 
 ## Current Analysis State
 
-The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, and JSD nearest-neighbor evidence. Final submission copy should follow `context/ARTISTIC_REDESIGN_BRIEF.md` after `TASK-057` verifies the implemented app.
+The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, and JSD nearest-neighbor evidence. `TASK-057` verified the implemented five-scene app locally; final submission copy should follow `context/ARTISTIC_REDESIGN_BRIEF.md` after the owner completes the remaining review and deployment actions.

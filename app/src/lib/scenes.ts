@@ -12,9 +12,9 @@ export type Scene = {
   source: string;
   visual: SceneVisual;
   state: {
-    score: ScoreKey;
-    view: ViewMode;
-    selected: string | null;
+    score?: ScoreKey;
+    view?: ViewMode;
+    selected?: string | null;
   };
 };
 
@@ -70,6 +70,9 @@ export const SCENES: Scene[] = [
     state: { score: "gap", view: "uncertainty", selected: "MH" },
   },
 ];
+
+/** Stable scene ids used by the shareable URL contract. */
+export const SCENE_IDS = SCENES.map((scene) => scene.id);
 
 export const HANDOFF_COPY =
   "The evidence has a shape, and now the map is yours. Explore freely, keep the caveats close, and ask what the record can support.";

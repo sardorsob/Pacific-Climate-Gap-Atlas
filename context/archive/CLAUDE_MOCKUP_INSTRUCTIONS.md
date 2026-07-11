@@ -1,3 +1,5 @@
+> Historical archive. Superseded by `context/ARTISTIC_REDESIGN_BRIEF.md`; retained for provenance only.
+
 # Claude Mockup Instructions
 
 > **Historical baseline instructions — superseded for new work.** These instructions produced the current seven-beat atlas and remain useful only as implementation history. Do not use them for the approved artistic redesign. Read `context/ARTISTIC_REDESIGN_BRIEF.md`, `context/TASKS.md` (`TASK-048` through `TASK-057`), and the three active redesign plans under `context/plans/`. `TASK-056` will archive this file after the new experience stabilizes.

@@ -208,8 +208,9 @@ export function App() {
           focusSelection={mode === "guided" && sceneIndex === 3}
           panelOpen={panelOpen}
           panelExpanded={sheetExpanded}
-          onSelect={handleSelect}
-          activeLayerLabel={meta.title}
+              onSelect={handleSelect}
+              activeLayerLabel={meta.title}
+              sceneVisual={mode === "guided" ? SCENES[sceneIndex].visual : null}
             />
 
         <header className="map-header">

@@ -42,7 +42,32 @@ const baseGeo: Geo = {
   outlookDisplay: "show_with_strong_caveat",
 };
 
+const defaultGeos = Array.from({ length: 22 }, (_, index) => ({
+  ...baseGeo,
+  code: index === 0 ? "NR" : `G${index}`,
+  name: index === 0 ? "Nauru" : `Geography ${index}`,
+}));
+const defaultOptions = {
+  activeScore: "gap" as const,
+  viewMode: "default" as const,
+  outlookOn: false,
+  selectedCode: null,
+  priorityCodes: [],
+};
+
 describe("atlas map model", () => {
+  it("keeps 22 selectable evidence marks in the default collection", () => {
+    const collection = buildAtlasFeatureCollection(defaultGeos, defaultOptions);
+    expect(collection.features).toHaveLength(22);
+    expect(new Set(collection.features.map((feature) => feature.properties.code)).size).toBe(22);
+  });
+
+  it("keeps reporting states and selected emphasis during refactor", () => {
+    const selected = buildAtlasFeatureCollection(defaultGeos, { ...defaultOptions, selectedCode: "NR" });
+    expect(selected.features.find((feature) => feature.properties.code === "NR")?.properties)
+      .toMatchObject({ selected: true, reportingStatus: "reported_zero_latest_count" });
+  });
+
   it("builds MapLibre point features without changing centroid coordinates", () => {
     const collection = buildAtlasFeatureCollection([baseGeo], {
       activeScore: "gap",

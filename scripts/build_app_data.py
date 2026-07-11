@@ -14,20 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from analysis.preprocessing.app_data import (  # noqa: E402
-    build_atlas_geojson,
-    build_geographies_payload,
-    build_geography_records,
-    build_layer_manifest,
-    build_monitoring_geojson,
-)
+from analysis.preprocessing.app_data import build_geographies_payload, build_geography_records  # noqa: E402
 
 
-DEFAULT_CONFIG = ROOT / "configs" / "app_layers.yml"
 DEFAULT_INDEX = ROOT / "artifacts" / "tables" / "adaptation_gap_index.csv"
 DEFAULT_TRACE = ROOT / "artifacts" / "tables" / "adaptation_gap_indicator_trace.csv"
 DEFAULT_LOOKUP = ROOT / "data" / "processed" / "geography_lookup.csv"
-DEFAULT_OBSERVATIONS = ROOT / "data" / "processed" / "official_observations.csv"
 DEFAULT_OUTLOOK = ROOT / "artifacts" / "tables" / "adaptation_gap_outlook.csv"
 DEFAULT_MONITORING_GAP = ROOT / "artifacts" / "tables" / "eda_monitoring_gap.csv"
 DEFAULT_RANK_VOLATILITY = ROOT / "artifacts" / "tables" / "eda_rank_volatility.csv"
@@ -42,11 +34,9 @@ DEFAULT_SUMMARY_OUTPUT = ROOT / "artifacts" / "provenance" / "app_data_summary.j
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--index", type=Path, default=DEFAULT_INDEX)
     parser.add_argument("--indicator-trace", type=Path, default=DEFAULT_TRACE)
     parser.add_argument("--geography-lookup", type=Path, default=DEFAULT_LOOKUP)
-    parser.add_argument("--observations", type=Path, default=DEFAULT_OBSERVATIONS)
     parser.add_argument("--outlook", type=Path, default=DEFAULT_OUTLOOK)
     parser.add_argument("--monitoring-gap", type=Path, default=DEFAULT_MONITORING_GAP)
     parser.add_argument("--rank-volatility", type=Path, default=DEFAULT_RANK_VOLATILITY)
@@ -65,7 +55,6 @@ def export_app_data(
     index_path: Path,
     trace_path: Path,
     lookup_path: Path,
-    observations_path: Path,
     outlook_path: Path,
     monitoring_gap_path: Path,
     rank_volatility_path: Path,
@@ -73,18 +62,13 @@ def export_app_data(
     spatial_typologies_path: Path,
     outlook_interpretation_path: Path,
     similarity_neighbors_path: Path,
-    config_path: Path,
     processed_app_dir: Path,
     public_data_dir: Path,
     summary_output: Path,
 ) -> dict[str, object]:
-    if not config_path.exists():
-        raise FileNotFoundError(f"App layer config not found: {config_path}")
-
     index = pd.read_csv(index_path)
     lookup = pd.read_csv(lookup_path)
     trace = pd.read_csv(trace_path)
-    observations = pd.read_csv(observations_path)
     outlook = pd.read_csv(outlook_path)
     monitoring_gap = pd.read_csv(monitoring_gap_path)
     rank_volatility = pd.read_csv(rank_volatility_path)
@@ -106,9 +90,6 @@ def export_app_data(
         trace=trace,
     )
     geographies_payload = build_geographies_payload(records)
-    atlas_geojson = build_atlas_geojson(records)
-    monitoring_geojson = build_monitoring_geojson(observations)
-    layers_payload = build_layer_manifest()
     country_details_payload = build_country_details_payload(records, trace=trace)
 
     processed_app_dir.mkdir(parents=True, exist_ok=True)
@@ -116,9 +97,6 @@ def export_app_data(
 
     outputs = {
         "geographies.json": geographies_payload,
-        "atlas_geographies.geojson": atlas_geojson,
-        "monitoring_network.geojson": monitoring_geojson,
-        "layers.json": layers_payload,
         "country_details.json": country_details_payload,
     }
 
@@ -129,8 +107,6 @@ def export_app_data(
     summary = {
         "schema_version": 2,
         "geography_count": len(records),
-        "monitoring_feature_count": len(monitoring_geojson["features"]),
-        "layer_count": len(layers_payload["layers"]),
         "processed_outputs": sorted(
             str((processed_app_dir / name).relative_to(ROOT)).replace("\\", "/")
             for name in outputs
@@ -139,11 +115,9 @@ def export_app_data(
             str((public_data_dir / name).relative_to(ROOT)).replace("\\", "/") for name in outputs
         ),
         "source_refs": {
-            "app_layer_config": config_path.relative_to(ROOT).as_posix(),
             "index": index_path.relative_to(ROOT).as_posix(),
             "indicator_trace": trace_path.relative_to(ROOT).as_posix(),
             "geography_lookup": lookup_path.relative_to(ROOT).as_posix(),
-            "observations": observations_path.relative_to(ROOT).as_posix(),
             "outlook": outlook_path.relative_to(ROOT).as_posix(),
             "monitoring_gap": monitoring_gap_path.relative_to(ROOT).as_posix(),
             "rank_volatility": rank_volatility_path.relative_to(ROOT).as_posix(),
@@ -215,16 +189,12 @@ def nullable_text(value: object) -> str:
 
 def main() -> int:
     args = parse_args()
-    config_path = ROOT / args.config if not args.config.is_absolute() else args.config
     index_path = ROOT / args.index if not args.index.is_absolute() else args.index
     trace_path = ROOT / args.indicator_trace if not args.indicator_trace.is_absolute() else args.indicator_trace
     lookup_path = (
         ROOT / args.geography_lookup
         if not args.geography_lookup.is_absolute()
         else args.geography_lookup
-    )
-    observations_path = (
-        ROOT / args.observations if not args.observations.is_absolute() else args.observations
     )
     outlook_path = ROOT / args.outlook if not args.outlook.is_absolute() else args.outlook
     monitoring_gap_path = (
@@ -269,7 +239,6 @@ def main() -> int:
         index_path=index_path,
         trace_path=trace_path,
         lookup_path=lookup_path,
-        observations_path=observations_path,
         outlook_path=outlook_path,
         monitoring_gap_path=monitoring_gap_path,
         rank_volatility_path=rank_volatility_path,
@@ -277,7 +246,6 @@ def main() -> int:
         spatial_typologies_path=spatial_typologies_path,
         outlook_interpretation_path=outlook_interpretation_path,
         similarity_neighbors_path=similarity_neighbors_path,
-        config_path=config_path,
         processed_app_dir=processed_app_dir,
         public_data_dir=public_data_dir,
         summary_output=summary_output,
@@ -285,8 +253,7 @@ def main() -> int:
 
     print(
         f"Exported app data: geographies={summary['geography_count']}, "
-        f"layers={summary['layer_count']}, "
-        f"monitoring_features={summary['monitoring_feature_count']}"
+        f"country_details={summary['geography_count']}"
     )
     print(f"Wrote processed app data: {processed_app_dir}")
     print(f"Wrote public app data: {public_data_dir}")

@@ -1,28 +1,18 @@
 {
   "schema_version": 2,
   "geography_count": 22,
-  "monitoring_feature_count": 18,
-  "layer_count": 6,
   "processed_outputs": [
-    "data/processed/app/atlas_geographies.geojson",
     "data/processed/app/country_details.json",
-    "data/processed/app/geographies.json",
-    "data/processed/app/layers.json",
-    "data/processed/app/monitoring_network.geojson"
+    "data/processed/app/geographies.json"
   ],
   "public_outputs": [
-    "app/public/data/atlas_geographies.geojson",
     "app/public/data/country_details.json",
-    "app/public/data/geographies.json",
-    "app/public/data/layers.json",
-    "app/public/data/monitoring_network.geojson"
+    "app/public/data/geographies.json"
   ],
   "source_refs": {
-    "app_layer_config": "configs/app_layers.yml",
     "index": "artifacts/tables/adaptation_gap_index.csv",
     "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
     "geography_lookup": "data/processed/geography_lookup.csv",
-    "observations": "data/processed/official_observations.csv",
     "outlook": "artifacts/tables/adaptation_gap_outlook.csv",
     "monitoring_gap": "artifacts/tables/eda_monitoring_gap.csv",
     "rank_volatility": "artifacts/tables/eda_rank_volatility.csv",

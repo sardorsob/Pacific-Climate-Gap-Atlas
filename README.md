@@ -69,7 +69,7 @@ research/      Challenge brief, dataset inventory, and prior-entry research
 context/       Project memory, story/design briefs, data cards, decisions, and handoff notes
 analysis/      Python analysis package for processing, scoring, modeling, and EDA
 scripts/       Reproducible command-line entry points
-configs/       Dataset, index, outlook, EDA, and app-layer configuration
+configs/       Dataset, index, outlook, and EDA configuration
 data/          Raw cache, processed data, contracts, and app-ready exports
 artifacts/     Tables, provenance, figures, and run outputs
 app/           Vite/React/TypeScript atlas app and current mockup shell
@@ -146,7 +146,7 @@ python scripts/run_outlook.py --config configs/outlook.yml
 Build app-ready data:
 
 ```powershell
-python scripts/build_app_data.py --config configs/app_layers.yml
+python scripts/build_app_data.py
 python scripts/validate_data_contracts.py
 ```
 
@@ -184,7 +184,7 @@ npm run app:preview
 
 Deploy the static contents of `app/dist/` to the final host. Record the public URL in `context/docs/submission-notes.md` and keep it available through August 31, 2029.
 
-The current app is a production-oriented seven-beat baseline with generated data, MapLibre/Natural Earth map context, selected-place trace and JSD evidence, and post-map interaction/accessibility work complete. It is not yet the final competition submission.
+The current app is a five-scene guided atlas with generated data, MapLibre/Natural Earth map context, selected-place trace and panel-only JSD evidence, and accessible exploration controls. It is not yet the final competition submission.
 
 The approved next phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. `TASK-048` corrected score-input/context semantics; the remaining work is `TASK-049` through `TASK-057`: approve desktop/mobile concepts, replace nested story scrolling, build the five scenes and evidence marks, simplify exploration, remove redundant machinery, add shareable URL state, and complete final QA. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
@@ -196,11 +196,10 @@ Target artifact: an interactive GIS-style web atlas for the Pacific Dataviz Chal
 
 Primary experience:
 
-- current guided 7-beat baseline over a full-bleed MapLibre Pacific map with visual land context,
-- approved five-scene native-scroll replacement built around reveal, subtract, separate, compare, rearrange, and return,
+- five-scene native-scroll story over a full-bleed MapLibre Pacific map with visual land context,
 - persistent "Explore freely" handoff into the full atlas controls,
 - adaptation gap, pressure, capacity, monitoring/data visibility, and rank-fragility views,
 - selected geography detail panel,
-- app-wired selected-place Evidence Fingerprint nearest neighbors with exact JSD and caveats,
+- selected-place Evidence Fingerprint nearest neighbors with exact JSD and caveats,
 - source and methodology drawer,
 - mobile-friendly bottom-sheet story and detail interaction.

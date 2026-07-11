@@ -62,10 +62,8 @@
 - `data/processed/geography_lookup.csv`: geography coverage lookup across priority datasets.
 - `data/processed/app/atlas_dataset_summary.json`: compact app-ready data summary without geometry.
 - `data/processed/app/geographies.json`: score, source, centroid, and outlook records for each geography.
-- `data/processed/app/atlas_geographies.geojson`: centroid GeoJSON for adaptation-gap, pillar, and outlook map layers.
-- `data/processed/app/monitoring_network.geojson`: latest monitoring-network centroid overlay.
-- `data/processed/app/layers.json`: app layer manifest.
 - `data/processed/app/country_details.json`: geography detail records with indicator trace rows.
+- `data/processed/app/pacific_land_context.geojson`: Natural Earth land context used beneath fixed presence marks.
 - `data/external/`: boundaries and lookup tables.
 - `data/external/geography_context.csv`: descriptive GIS context table for subregions, status labels, and island-group notes.
 - `data/contracts/`: generated JSON source, coverage, and schema contracts for priority official datasets.

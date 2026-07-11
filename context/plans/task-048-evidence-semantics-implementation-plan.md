@@ -332,7 +332,7 @@ Expected: all tests pass.
 
 - Modify: `scripts/validate_data_contracts.py`
 - Modify: `tests/analysis/test_app_data_validation.py`
-- Modify: `configs/app_layers.yml`
+- Modify: `data/processed/app`
 
 **Interfaces:**
 
@@ -391,7 +391,7 @@ REQUIRED_SCORE_INPUT_PRESENCE_FIELDS = (
 
 Validate that the list exists, contains exactly eight items in generated production data, has unique `dataset_slug` values, uses only the three score-input pillars, and uses booleans for `present`. Unit fixtures may contain a shorter list but must still pass shape validation; enforce exactly eight in a production-level test against generated data.
 
-Update `configs/app_layers.yml` country-detail required fields to the three count fields plus `score_input_presence`.
+Update `data/processed/app` country-detail required fields to the three count fields plus `score_input_presence`.
 
 - [ ] **Step 4: Run validation tests**
 
@@ -579,7 +579,7 @@ Run:
 ```bash
 python scripts/build_gap_index.py --config configs/gap_index.yml
 python scripts/run_eda.py --config configs/eda.yml
-python scripts/build_app_data.py --config configs/app_layers.yml
+python scripts/build_app_data.py
 ```
 
 Expected: all three commands exit 0 and generated public/processed copies are updated.

@@ -107,21 +107,19 @@ The outlook is a transparent stress-test layer, not an operational forecast. It 
 The app-data exporter now writes:
 
 - `data/processed/app/geographies.json`: app-facing geography records with scores, source refs, centroid metadata, and nested outlook values.
-- `data/processed/app/atlas_geographies.geojson`: centroid GeoJSON for map layers with flattened score and outlook fields.
-- `data/processed/app/monitoring_network.geojson`: latest monitoring-network centroid overlay.
-- `data/processed/app/layers.json`: layer manifest for six atlas layers.
 - `data/processed/app/country_details.json`: detail-panel records with indicator trace rows.
-- `app/public/data/*`: byte-for-byte public copies consumed by the web app.
+- `data/processed/app/pacific_land_context.geojson`: Natural Earth land context for the MapLibre substrate.
+- `app/public/data/geographies.json`, `country_details.json`, and `pacific_land_context.geojson`: byte-for-byte public copies consumed by the web app.
 - `artifacts/provenance/app_data_summary.json`: output counts, source refs, and geometry policy.
 
 Run command:
 
 ```powershell
-python scripts/build_app_data.py --config configs/app_layers.yml
+python scripts/build_app_data.py
 python scripts/validate_data_contracts.py
 ```
 
-Current output includes 22 geography records, 6 atlas layers, and 18 monitoring overlay features. Scored geography geometry remains centroid fallback, so the app should style score layers as point/centroid layers rather than polygon choropleths.
+Current output includes 22 geography records and a separate Natural Earth land-context GeoJSON. Scored geography geometry remains centroid fallback, so the app styles score layers as fixed presence points rather than polygon choropleths.
 
 `TASK-048` corrected the evidence-count contract. Each geography now exposes `score_input_indicator_count` (0–8 score inputs), `context_indicator_count` (context-only datasets, currently 0–1), `trace_indicator_count` (all trace datasets), and an ordered `score_input_presence` list. Responsibility-context greenhouse-gas data remains traceable but never feeds the score-input count or evidence-density component.
 

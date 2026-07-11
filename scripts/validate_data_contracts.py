@@ -5,13 +5,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-VALIDATED_JSON_FILES = ("geographies.json", "layers.json")
-PUBLIC_COPY_FILES = (
+VALIDATED_JSON_FILES = ("geographies.json", "country_details.json")
+PUBLIC_APP_FILES = (
     "geographies.json",
-    "atlas_geographies.geojson",
-    "monitoring_network.geojson",
-    "layers.json",
     "country_details.json",
+    "pacific_land_context.geojson",
 )
 REQUIRED_GEOGRAPHY_FIELDS = (
     "geo_code",
@@ -77,33 +75,21 @@ REQUIRED_SCORE_INPUT_PRESENCE_FIELDS = (
     "present",
 )
 SCORE_INPUT_PILLARS = {"climate_signal", "observed_stress", "adaptation_capacity"}
-REQUIRED_LAYER_FIELDS = ("id", "label", "type", "source_file", "fields")
-REQUIRED_LAYER_IDS = (
-    "adaptation_gap",
-    "climate_pressure",
-    "capacity",
-    "outlook_2030_flat",
-    "outlook_2050_flat",
-)
-
-
 def validate_root(root: Path | str = Path(".")) -> list[str]:
     base = Path(root)
     errors: list[str] = []
 
     geographies = _load_app_json(base, "geographies.json", errors)
-    layers = _load_app_json(base, "layers.json", errors)
+    country_details = _load_app_json(base, "country_details.json", errors)
 
     if geographies is not None:
         errors.extend(_validate_geographies(geographies))
-    if layers is not None:
-        errors.extend(_validate_layers(layers))
+    if country_details is not None:
+        errors.extend(_validate_country_details(country_details))
 
-    for file_name in PUBLIC_COPY_FILES:
+    for file_name in PUBLIC_APP_FILES:
         errors.extend(
-            _validate_public_copy(
-                base, file_name, require_processed=file_name not in VALIDATED_JSON_FILES
-            )
+            _validate_public_copy(base, file_name, require_processed=True)
         )
 
     return errors
@@ -221,34 +207,13 @@ def _validate_score_input_presence(
     return errors
 
 
-def _validate_layers(payload: object) -> list[str]:
+def _validate_country_details(payload: object) -> list[str]:
     errors: list[str] = []
     if not isinstance(payload, dict):
-        return ["layers.json must contain a top-level object"]
-
-    errors.extend(_require_fields(payload, ("schema_version", "layers"), "layers.json"))
-    layers = payload.get("layers")
-    if not isinstance(layers, list):
-        errors.append("layers must be an array")
-        return errors
-
-    seen_ids: set[str] = set()
-    for index, layer in enumerate(layers):
-        label = f"layers[{index}]"
-        if not isinstance(layer, dict):
-            errors.append(f"{label} must be an object")
-            continue
-
-        errors.extend(_require_fields(layer, REQUIRED_LAYER_FIELDS, label))
-        layer_id = layer.get("id")
-        if isinstance(layer_id, str):
-            seen_ids.add(layer_id)
-        if "fields" in layer and not isinstance(layer.get("fields"), list):
-            errors.append(f"{label}.fields must be an array")
-
-    for layer_id in REQUIRED_LAYER_IDS:
-        if layer_id not in seen_ids:
-            errors.append(f"layers missing required id: {layer_id}")
+        return ["country_details.json must contain a top-level object"]
+    errors.extend(_require_fields(payload, ("schema_version", "details"), "country_details.json"))
+    if "details" in payload and not isinstance(payload["details"], dict):
+        errors.append("country_details.json.details must be an object")
 
     return errors
 

@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-055` are complete: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, corrected evidence-count contract, static app-data pipeline, MapLibre/Natural Earth map, fixed-presence evidence portraits, composed pressure/capacity and Nauru/Tuvalu story figures, rank-band sensitivity scene, panel-only JSD exploration, five-scene guided story, selected-place panels, accessibility work, post-audit visual polish, and the owner-approved artistic concept package all exist.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` are complete: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, corrected evidence-count contract, reduced static app-data pipeline, MapLibre/Natural Earth map, fixed-presence evidence portraits, composed pressure/capacity and Nauru/Tuvalu story figures, rank-band sensitivity scene, panel-only JSD exploration, five-scene guided story, selected-place panels, accessibility work, post-audit visual polish, and the owner-approved artistic concept package all exist.
 
 The current app is the functioning baseline, not the next target. A 2026-07-09 full repository/story/implementation/live-layout audit approved **The Shape of What We Know** as the next narrative identity. `context/ARTISTIC_REDESIGN_BRIEF.md` records the five-scene storyboard, fixed-presence evidence-mark grammar, desktop/mobile layout, transition system, art direction, exploration simplification, ethical guardrails, and growth path. `TASK-049` completed the owner approval gate with six concept frames, eight baseline captures, exact design tokens, and a non-data-bearing concept rule. `TASK-050` is QA-accepted and done: the guided shell uses native document scroll, a viewport-root observer, scroll-only progress buttons, and a sticky map with no nested story scroller. `TASK-051` is also QA-accepted and done: the active story is now five scenes plus a closing Explore handoff, with guided JSD retired. `TASK-052` is QA-accepted and done: the map now uses fixed-size evidence portraits with explicit score-input, context-only, and reporting-state grammar. `TASK-053` is QA-accepted and done: scene 3 separates climate pressure from visible capacity with paired evidence lobes and scene 4 aligns Nauru/Tuvalu portraits without JSD or connector implications. `TASK-054` is QA-accepted and done: scene 5 rearranges all 22 rank intervals, highlights Marshall Islands 4–19, uses the locked motion grammar, and restores basin framing before exploration. `TASK-055` is QA-accepted and done: exploration has no similarity line source/layer, keeps complete JSD neighbors and the exact caveat in the selected-place panel, preserves basin framing for visible selections, and uses a collapsed mobile detail sheet with compact 56px controls. `TASK-056` and `TASK-057` remain with detailed plans under `context/plans/`; frontend redesign implementation is ready for repository simplification/readiness QA.
 
@@ -45,7 +45,7 @@ python scripts/run_outlook.py --config configs/outlook.yml
 ## How To Rebuild App Data
 
 ```powershell
-python scripts/build_app_data.py --config configs/app_layers.yml
+python scripts/build_app_data.py
 python scripts/validate_data_contracts.py
 ```
 

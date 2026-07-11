@@ -7,8 +7,10 @@ import {
   uncertaintyColor,
   valueForScore,
 } from "../../lib/encoding";
-import { GRATICULE_LATS, GRATICULE_LONS } from "../../lib/projection";
 import type { ViewMode } from "../../lib/types";
+
+export const GRATICULE_LONS = [140, 160, 180, 200, 220];
+export const GRATICULE_LATS = [-20, -10, 0, 10];
 
 export type AtlasMapState = {
   activeScore: ScoreKey;

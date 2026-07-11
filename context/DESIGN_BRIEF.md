@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning first atlas plus an approved next-direction contract from the 2026-07-09 full-project audit. The current app implements the seven-beat scroll-led baseline through `TASK-047`. The target artistic redesign is defined in `context/ARTISTIC_REDESIGN_BRIEF.md` and scheduled as `TASK-048` through `TASK-057`; it is not implemented yet.
+Status: semantic design brief for the functioning five-scene atlas and its approved artistic direction. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-056`. The target artistic redesign is defined in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 Design skill basis:
 
@@ -32,7 +32,7 @@ Next-redesign concept status:
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Implementation: unlocked after TASK-048 QA acceptance and the TASK-049 concept gate.
 
-The current mockup is the behavior baseline. Future visual work should preserve its scientific and accessibility contracts while following the approved redesign rather than adding another polish layer to the seven-beat rail.
+The current app is the behavior baseline. Future visual work should preserve its scientific and accessibility contracts while following the approved redesign.
 
 ## Approved Next Direction: The Shape Of What We Know
 
@@ -55,7 +55,7 @@ The major design decisions are:
 
 TASK-049 locks the implementation values: 44px circular evidence portraits with a 20px inner field and eight 5px radial ticks; score-input order is sea-surface temperature, surface temperature, rainfall, sea level, directly affected persons, monitoring network, power generation, fisheries management; the detached context tick sits at 4:30; reporting edges are continuous, open-dash, or broken-dot; desktop scene copy is capped at 28rem; mobile map height targets 46svh; motion uses 560ms with `cubic-bezier(0.22, 1, 0.36, 1)`; and the type stacks remain Georgia plus the system sans stack. The six concept frames are composition studies only and never override generated data values.
 
-`context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe the implemented baseline and its enduring constraints. Where a baseline interaction conflicts with the approved next direction—seven beats, nested story scroll, evidence-size radius, guided JSD, or similarity arcs—the redesign brief governs future work.
+`context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe enduring constraints; the active story uses five scenes, native document scroll, fixed evidence marks, and panel-only JSD.
 
 ## External Inspiration Guardrails
 
@@ -125,8 +125,8 @@ Every visible score, label, and caveat should trace to one of these sources:
 
 | Visual Surface | Primary Source | Evidence Status |
 | --- | --- | --- |
-| Gap score | `data/processed/app/atlas_geographies.geojson`, `artifacts/tables/adaptation_gap_index.csv` | modeled comparative screen |
-| Pressure/capacity scores | same | modeled comparative screen |
+| Gap score | `data/processed/app/geographies.json`, `artifacts/tables/adaptation_gap_index.csv` | modeled comparative screen |
+| Pressure/capacity scores | `data/processed/app/geographies.json` | modeled comparative screen |
 | Indicator detail | `data/processed/app/country_details.json` | measured/latest official rows plus derived scores |
 | Monitoring status | `artifacts/tables/eda_monitoring_gap.csv` | measured reporting status / proxy count |
 | Rank uncertainty | `artifacts/tables/eda_rank_volatility.csv` | sensitivity stress test |
@@ -578,12 +578,11 @@ The drawer is not allowed to be the only place where load-bearing caveats appear
 
 | UI Surface | Data File | Required Fields |
 | --- | --- | --- |
-| Gap map | `app/public/data/atlas_geographies.geojson` | `geo_code`, `name`, `adaptation_gap_score`, `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`, `score_status` |
+| Gap map | `app/public/data/geographies.json` | `geo_code`, `name`, `adaptation_gap_score`, `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`, `score_status` |
 | Pressure/capacity map | same | `climate_pressure_score`, `capacity_score` |
-| Centroid geometry | same | `geometry.coordinates`, `geometry_status` |
+| Centroid geometry | same | `centroid.lon`, `centroid.lat`, `geometry_status` |
 | Country panel | `app/public/data/country_details.json` | geography fields, scores, `indicators[]`, source refs |
-| Layer manifest | `app/public/data/layers.json` | layer ids, labels, fields, caveats |
-| Monitoring overlay | `artifacts/tables/eda_monitoring_gap.csv` or derived app JSON | `monitoring_reporting_status`, `monitoring_quadrant`, `story_priority`, caveats |
+| Monitoring status | `app/public/data/geographies.json` | `monitoring.reporting_status`, `monitoring_quadrant`, `story_priority`, caveats |
 | Rank chip | `artifacts/tables/eda_rank_volatility.csv` or derived app JSON | `rank_range`, `scenario_rank_min`, `scenario_rank_max`, `robustness_label` |
 | Evidence fingerprint similarity | `eda_similarity_neighbors.csv`, `eda_pairwise_jsd.csv`, `eda_evidence_fingerprints.csv` or derived app JSON | selected `geo_code`, neighbor `geo_code`, `jsd_distance`, `similarity_band`, profile family, caveat |
 | Subregion filter | `eda_spatial_typologies.csv`, `eda_subregion_comparisons.csv` | `subregion`, typology, counts, caveats |

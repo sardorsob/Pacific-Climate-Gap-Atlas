@@ -20,7 +20,7 @@ class AppDataValidationTests(unittest.TestCase):
             public.mkdir(parents=True)
 
             _write_json(processed / "geographies.json", _valid_geographies())
-            _write_json(processed / "layers.json", _valid_layers())
+            _write_json(processed / "country_details.json", _valid_country_details())
             _write_auxiliary_app_files(processed)
             _copy_public_app_files(processed, public)
 
@@ -28,7 +28,7 @@ class AppDataValidationTests(unittest.TestCase):
 
             self.assertEqual(errors, [])
 
-    def test_validate_root_reports_missing_required_fields_and_layer_ids(self) -> None:
+    def test_validate_root_reports_missing_required_fields(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             processed = root / "data" / "processed" / "app"
@@ -43,11 +43,8 @@ class AppDataValidationTests(unittest.TestCase):
             del broken_geographies["geographies"][0]["rank"]["rank_range"]
             del broken_geographies["geographies"][0]["story"]["story_label"]
             del broken_geographies["geographies"][0]["context"]["subregion"]
-            broken_layers = _valid_layers()
-            broken_layers["layers"] = broken_layers["layers"][:-1]
-            del broken_layers["layers"][0]["fields"]
             _write_json(processed / "geographies.json", broken_geographies)
-            _write_json(processed / "layers.json", broken_layers)
+            _write_json(processed / "country_details.json", _valid_country_details())
             _write_auxiliary_app_files(processed)
             _copy_public_app_files(processed, public)
 
@@ -59,8 +56,6 @@ class AppDataValidationTests(unittest.TestCase):
             self.assertIn("geographies[0].rank missing required field: rank_range", errors)
             self.assertIn("geographies[0].story missing required field: story_label", errors)
             self.assertIn("geographies[0].context missing required field: subregion", errors)
-            self.assertIn("layers[0] missing required field: fields", errors)
-            self.assertIn("layers missing required id: outlook_2050_flat", errors)
 
     def test_validate_root_reports_missing_score_input_presence_fields(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -73,7 +68,7 @@ class AppDataValidationTests(unittest.TestCase):
             broken_geographies = _valid_geographies()
             del broken_geographies["geographies"][0]["score_input_presence"][0]["present"]
             _write_json(processed / "geographies.json", broken_geographies)
-            _write_json(processed / "layers.json", _valid_layers())
+            _write_json(processed / "country_details.json", _valid_country_details())
             _write_auxiliary_app_files(processed)
             _copy_public_app_files(processed, public)
 
@@ -93,7 +88,7 @@ class AppDataValidationTests(unittest.TestCase):
             public.mkdir(parents=True)
 
             _write_json(processed / "geographies.json", _valid_geographies())
-            _write_json(processed / "layers.json", _valid_layers())
+            _write_json(processed / "country_details.json", _valid_country_details())
             _write_auxiliary_app_files(processed)
             _copy_public_app_files(processed, public)
             _write_json(public / "country_details.json", {"schema_version": 1, "stale": True})
@@ -196,27 +191,8 @@ def _valid_geographies() -> dict[str, object]:
     }
 
 
-def _valid_layers() -> dict[str, object]:
-    return {
-        "schema_version": "1.0",
-        "layers": [
-            _layer("adaptation_gap"),
-            _layer("climate_pressure"),
-            _layer("capacity"),
-            _layer("outlook_2030_flat"),
-            _layer("outlook_2050_flat"),
-        ],
-    }
-
-
-def _layer(layer_id: str) -> dict[str, object]:
-    return {
-        "id": layer_id,
-        "label": layer_id.replace("_", " ").title(),
-        "type": "choropleth",
-        "source_file": "geographies.json",
-        "fields": ["geo_code", layer_id],
-    }
+def _valid_country_details() -> dict[str, object]:
+    return {"schema_version": 2, "details": {"FJ": {"indicators": []}}}
 
 
 def _write_json(path: Path, payload: dict[str, object]) -> None:
@@ -224,14 +200,14 @@ def _write_json(path: Path, payload: dict[str, object]) -> None:
 
 
 def _write_auxiliary_app_files(processed: Path) -> None:
-    for file_name in validate_data_contracts.PUBLIC_COPY_FILES:
+    for file_name in validate_data_contracts.PUBLIC_APP_FILES:
         path = processed / file_name
         if not path.exists():
             _write_json(path, {"schema_version": 1})
 
 
 def _copy_public_app_files(processed: Path, public: Path) -> None:
-    for file_name in validate_data_contracts.PUBLIC_COPY_FILES:
+    for file_name in validate_data_contracts.PUBLIC_APP_FILES:
         (public / file_name).write_bytes((processed / file_name).read_bytes())
 
 

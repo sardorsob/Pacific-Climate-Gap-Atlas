@@ -62,6 +62,7 @@ export function App() {
   const [dataError, setDataError] = useState<string | null>(null);
   const [mode, setMode] = useState<"guided" | "explore">("guided");
   const [sceneIndex, setSceneIndex] = useState(0);
+  const [historyHydrationRevision, setHistoryHydrationRevision] = useState(0);
 
   const [activeScore, setActiveScore] = useState<ScoreKey>("gap");
   const [viewMode, setViewMode] = useState<ViewMode>("default");
@@ -95,6 +96,7 @@ export function App() {
         setViewMode(parsed.view);
         setSelectedCode(parsed.place);
         setOutlookOn(parsed.outlook);
+        setHistoryHydrationRevision((revision) => revision + 1);
         applyingHistoryRef.current = false;
         initialUrlAppliedRef.current = true;
       })
@@ -133,7 +135,7 @@ export function App() {
     if (s.view !== undefined) setViewMode(s.view);
     setOutlookOn(false);
     if (s.selected !== undefined) setSelectedCode(s.selected);
-  }, [sceneIndex, mode]);
+  }, [sceneIndex, mode, historyHydrationRevision]);
 
   useEffect(() => {
     if (geos.length === 0 || typeof window === "undefined") return;
@@ -148,6 +150,7 @@ export function App() {
       setViewMode(parsed.view);
       setSelectedCode(parsed.place);
       setOutlookOn(parsed.outlook);
+      setHistoryHydrationRevision((revision) => revision + 1);
       applyingHistoryRef.current = false;
     };
     window.addEventListener("popstate", onPopState);
@@ -234,8 +237,11 @@ export function App() {
 
   const handleSceneChange = (nextIndex: number) => {
     if (skipInitialSceneObservationRef.current) {
+      if (nextIndex === sceneIndex) {
+        skipInitialSceneObservationRef.current = false;
+        return;
+      }
       skipInitialSceneObservationRef.current = false;
-      return;
     }
     const next = Math.max(0, Math.min(SCENES.length - 1, nextIndex));
     setSceneIndex(next);

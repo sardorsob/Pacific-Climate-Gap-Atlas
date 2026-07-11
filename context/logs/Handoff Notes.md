@@ -22,3 +22,7 @@ The five-scene **The Shape of What We Know** story is now the functioning redesi
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
 - `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
+
+## 2026-07-11
+
+- Independent browser QA accepted `TASK-056`: desktop 1200x734, mobile 390x844, Explore handoff, all five scenes, selected NR/TV/FJ/AS/WF/MH panels, Methods & sources, and reduced-motion behavior passed with 22 marks, no overflow, expected visual attributes, 56px/44px mobile controls, and the panel-only similarity caveat. `TASK-056` is done; proceed to `TASK-057` for URL state, bundle-budget, and final readiness QA.

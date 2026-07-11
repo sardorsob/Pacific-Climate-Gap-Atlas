@@ -1308,11 +1308,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: User-visible behavior matches the TASK-055 baseline; app runtime fetches only geographies, country details, and land context; unused dependencies/files are absent; AtlasMap responsibilities are separated without new abstractions; living docs describe the actual five-scene app; all tests/build/validators pass.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/build_app_data.py; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; git diff --check
 - Manual QA: Repeat the full TASK-055 desktop/mobile/reduced-motion route and compare test counts, bundle sizes, public-data size, all 22 marks, story figures, explore states, panels, methods, and legend.
-- QA notes: Not started.
-- Attempts: 0
+- QA notes: Accepted on 2026-07-11 after the full repository simplification gate and independent browser QA. App tests passed (31/31), validator tests passed (9/9), the data-contract validator passed, the production build passed with the existing large-chunk warning, and `git diff --check` passed. Browser-use at desktop 1200x734 loaded `mapReady=true` with all 22 marks, five scenes, and no overflow; scrolling each scene produced active IDs `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`, with visual attributes for presence/missingness/split/comparison/rank-bands. The Explore handoff retained 22 marks, all score/overlay controls, and no overflow. Selecting NR, TV, FJ, AS, WF, and MH opened panels with the panel-only similarity caveat; Methods & sources opened. Mobile emulation at 390x844 showed a 388px map, 22 marks, no overflow, a 56px control dock, 44px controls, and the collapsed panel top fixed at 794px. Reduced-motion mobile reached scene 5 with rank-bands visual, 0s transitions, and no overflow. No generated data or production code changed in this QA acceptance pass.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Full audit found unused Python direct dependencies, an app-to-root self dependency, redundant generated files, stale instructions, and concentrated MapLibre/overlay ownership.
-- Status: pending
+- Attempt log: 2026-07-09: Full audit found unused Python direct dependencies, an app-to-root self dependency, redundant generated files, stale instructions, and concentrated MapLibre/overlay ownership. 2026-07-11: Builder completed the simplification and review follow-up commits; independent browser QA covered desktop, mobile, Explore, all five scenes, six selected places, Methods & sources, and reduced-motion behavior. QA accepted the preservation matrix and moved the task to done.
+- Status: done
 
 ## TASK-057
 - Phase: redesign-readiness

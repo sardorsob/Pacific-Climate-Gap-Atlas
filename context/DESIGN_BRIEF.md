@@ -530,7 +530,7 @@ Minimum shareable state:
 
 The back button should not trap users inside panels or tour states.
 
-The current baseline does not implement shareable URL state. `TASK-057` adds dependency-free query parsing/serialization and Back/Forward behavior after the redesign stabilizes. No divergence map mode or subregion filter is part of that contract.
+`TASK-057` now provides dependency-free query parsing/serialization and Back/Forward behavior for the functioning five-scene redesign, including guided/explore mode, scene, layer, view, place, and outlook state. No divergence map mode or subregion filter is part of that contract.
 
 ## Accessibility Contract
 

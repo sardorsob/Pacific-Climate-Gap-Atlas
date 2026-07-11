@@ -515,7 +515,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .scene-progress__item[aria-current="step"] { color: var(--ink); font-weight: 700; }
 .scene-progress__item span:last-child { font-size: 10.5px; }
 
-/* beat in-card controls retained until TASK-051 replaces the seven-beat copy */
+/* Historical beat in-card controls retained for styling compatibility; the current path is five-scene native scroll. */
 .seg-inline { display: inline-flex; gap: 4px; flex-wrap: wrap; }
 .seg-inline button { min-height: 36px; padding: 6px 11px; border: 1px solid var(--line); border-radius: var(--r-chip); background: var(--paper-2); font-size: 12px; font-weight: 600; cursor: pointer; }
 .seg-inline button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }

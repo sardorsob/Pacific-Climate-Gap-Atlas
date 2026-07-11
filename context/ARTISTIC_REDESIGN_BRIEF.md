@@ -2,9 +2,9 @@
 
 ## Status
 
-Approved planning direction as of 2026-07-09. This brief defines the next version of the Pacific Adaptation Gap Atlas. It does not describe work already implemented.
+Approved design contract as of 2026-07-09. The five-scene redesign is implemented through `TASK-057` and remains the active product direction; this brief records the contract and guardrails for final owner review.
 
-The current seven-beat app remains the functioning baseline until `TASK-048` through `TASK-057` pass their individual review gates. The redesign must be built incrementally so each task leaves a coherent, testable app.
+The seven-beat app was the historical pre-redesign baseline before `TASK-048`. The current functioning path is the five-scene native-scroll redesign through `TASK-057`; the remaining gate is owner visual/accessibility and submission readiness review.
 
 Working title:
 
@@ -20,7 +20,7 @@ Public-facing thesis candidate:
 
 ## Why The Atlas Needs Another Pass
 
-The current app is scientifically careful, visually competent, and technically healthy. Its limitation is editorial: it reads as a polished sequence of GIS features rather than one inevitable argument. Seven beats repeatedly explain the interface, while the strongest original idea—uneven official visibility—does not fully govern the marks, scene order, layout, and motion.
+The historical pre-redesign app was scientifically careful, visually competent, and technically healthy. Its limitation was editorial: it read as a polished sequence of GIS features rather than one inevitable argument. Seven beats repeatedly explained the interface, while the strongest original idea—uneven official visibility—did not fully govern the marks, scene order, layout, and motion.
 
 The redesign should make one argument through every layer of the experience:
 
@@ -60,7 +60,7 @@ The redesign must preserve these facts and limits:
 
 ### Reframe
 
-- Replace the current seven-beat tour with five scenes and a short handoff.
+- The redesign replaces the historical seven-beat tour with five scenes and a short handoff.
 - Replace evidence-size circles with fixed-presence evidence marks. Thin evidence should look interrupted, not physically unimportant.
 - Make monitoring and score-input availability part of the primary mark grammar instead of secondary prose.
 - Use one motion verb per scene: reveal, subtract, separate, compare, rearrange, return.

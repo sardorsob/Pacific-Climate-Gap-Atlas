@@ -184,9 +184,9 @@ npm run app:preview
 
 Deploy the static contents of `app/dist/` to the final host. Record the public URL in `context/docs/submission-notes.md` and keep it available through August 31, 2029.
 
-The current app is a five-scene guided atlas with generated data, MapLibre/Natural Earth map context, selected-place trace and panel-only JSD evidence, and accessible exploration controls. It is not yet the final competition submission.
+The current app is a five-scene guided atlas with generated data, MapLibre/Natural Earth map context, selected-place trace and panel-only JSD evidence, accessible exploration controls, and dependency-free shareable URL state. It is not yet the final competition submission; owner visual/accessibility review, deployment, and submission actions remain.
 
-The approved next phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. `TASK-048` corrected score-input/context semantics; the remaining work is `TASK-049` through `TASK-057`: approve desktop/mobile concepts, replace nested story scrolling, build the five scenes and evidence marks, simplify exploration, remove redundant machinery, add shareable URL state, and complete final QA. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The implemented phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. `TASK-048` through `TASK-056` are complete; `TASK-057` implementation and hydration follow-ups are complete and remain in review for the six-viewport human matrix. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Current Frame
 

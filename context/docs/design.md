@@ -8,14 +8,14 @@ The approved next narrative identity is **The Shape of What We Know**. The gover
 
 ## Main User Flow
 
-Current baseline:
+Current path:
 
-1. User lands in the seven-beat guided scroll atlas with the map visible.
+1. User lands in the five-scene native-scroll atlas with the map visible.
 2. Guided mode changes the same map state used by the explorer.
 3. Explore mode reveals layer controls, detail panel, and source/method access.
 4. User selects a geography in exploration to inspect score, pressure, visible capacity, monitoring, rank uncertainty, trace rows, and panel-only JSD neighbors.
 
-Approved target:
+Current story:
 
 1. User moves through five native-scroll scenes: reveal, subtract, separate, compare, and rearrange.
 2. The same 22 marks return to geographic position before the Explore freely handoff.

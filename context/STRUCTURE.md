@@ -34,7 +34,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: active implementation and analysis plans. The active redesign plans are `task-048-evidence-semantics-implementation-plan.md`, `tasks-049-055-artistic-story-implementation-plan.md`, and `tasks-056-057-simplification-readiness-implementation-plan.md`. Completed one-off plans are consolidated back into living context and may be archived or pruned.
+- `context/plans/`: implementation and analysis plans retained for traceability. The redesign plans `task-048-evidence-semantics-implementation-plan.md`, `tasks-049-055-artistic-story-implementation-plan.md`, and `tasks-056-057-simplification-readiness-implementation-plan.md` are complete; no redesign implementation plan remains active. Completed one-off plans are consolidated back into living context and may be archived or pruned.
 
 ## Analysis
 

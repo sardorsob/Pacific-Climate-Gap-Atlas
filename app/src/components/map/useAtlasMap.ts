@@ -203,13 +203,11 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
   const styledLand = useMemo(() => styleAnchoredLand(anchoredLand, atlasFeatures.features), [anchoredLand, atlasFeatures.features]);
   const mapLibreFeaturesRef = useRef(mapLibreFeatures);
   const landContextRef = useRef<GeoJSON.FeatureCollection | null>(styledLand);
-  const geosRef = useRef(geos);
 
   useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
   useEffect(() => { reducedMotionRef.current = reducedMotion; }, [reducedMotion]);
   useEffect(() => { mapLibreFeaturesRef.current = mapLibreFeatures; }, [mapLibreFeatures]);
   useEffect(() => { landContextRef.current = styledLand; }, [styledLand]);
-  useEffect(() => { geosRef.current = geos; }, [geos]);
 
   useEffect(() => {
     let cancelled = false;
@@ -241,6 +239,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
       map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
       map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
       setMapReady(true);
+      map.resize();
       refreshProjection();
       requestAnimationFrame(refreshProjection);
     };

@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-VALIDATED_JSON_FILES = ("geographies.json", "country_details.json")
 PUBLIC_APP_FILES = (
     "geographies.json",
     "country_details.json",

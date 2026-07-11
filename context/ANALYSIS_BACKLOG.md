@@ -218,7 +218,7 @@ Outputs:
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`
 - updates to `context/STORY_BRIEF.md`
 - updates to `context/DESIGN_BRIEF.md`
-- updates to `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- updates to `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive)
 
 ## Parallelization Plan
 

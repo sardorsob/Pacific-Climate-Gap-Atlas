@@ -475,7 +475,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Functional notes: Use live browser interaction and gallery route sampling to identify map-first, climate, environmental, selected-place, and evidence-strip patterns.
 - Statistical notes: Inspiration findings do not change the data method; they only guide visual hierarchy, interaction grammar, and caveat placement.
 - Edge cases: Treat references as principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic climate-stripe treatments.
-- Files to create/modify: `context/DATAVIZ_INSPIRATION_AUDIT.md`, `context/DESIGN_BRIEF.md`, `context/STORY_BRIEF.md`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/PROJECT.md`, `context/HANDOVER.md`, `context/ANALYSIS_BACKLOG.md`, `context/DECISIONS.md`, `context/STRUCTURE.md`, `context/docs/design.md`, `context/memory/architecture.md`, `context/memory/patterns.md`, `context/logs/Handoff Notes.md`, `context/logs/Progress Log.md`
+- Files to create/modify: `context/DATAVIZ_INSPIRATION_AUDIT.md`, `context/DESIGN_BRIEF.md`, `context/STORY_BRIEF.md`, `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive), `context/PROJECT.md`, `context/HANDOVER.md`, `context/ANALYSIS_BACKLOG.md`, `context/DECISIONS.md`, `context/STRUCTURE.md`, `context/docs/design.md`, `context/memory/architecture.md`, `context/memory/patterns.md`, `context/logs/Handoff Notes.md`, `context/logs/Progress Log.md`
 - Artifacts to produce: documented interaction audit and updated design/story/mockup guardrails
 - Acceptance criteria: The audit records gallery route findings, original project studies, common strengths/risks, and concrete implications for the atlas default view, selected geography workflow, data-quiet layer, country panel, guided tour, and mobile layout.
 - Verification commands: `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `python scripts/check_required_artifacts.py`; `git diff --check`
@@ -491,14 +491,14 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Critique current mockup against story and inspiration audit
 - Depends on: TASK-006, TASK-018, TASK-020
 - Assigned agent: Codex
-- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/CLAUDE_MOCKUP_INSTRUCTIONS.md
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive)
 - Data refs: app/public/data, historical app/src/mock/mockAtlasData.ts fixture later removed by TASK-025
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Converts the new visual inspiration and story contract into a concrete revision checklist before Claude changes the mockup.
 - Functional notes: Review current desktop and mobile states, identify gaps against the audit, and write precise Claude instructions for the revision pass.
 - Statistical notes: Do not alter scoring, data methodology, or generated artifacts.
 - Edge cases: Critique should preserve what already works; do not request visual changes that weaken caveat placement or evidence traceability.
-- Files to create/modify: `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`, `context/TASKS.md`, `context/PROJECT.md`, `context/HANDOVER.md`, `context/logs/Progress Log.md`
+- Files to create/modify: `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive), `context/TASKS.md`, `context/PROJECT.md`, `context/HANDOVER.md`, `context/logs/Progress Log.md`
 - Artifacts to produce: mockup critique checklist and Claude revision brief
 - Acceptance criteria: Claude has clear prioritized instructions for desktop default, selected-country, data-quiet, and mobile states.
 - Verification commands: `npm --prefix app run build`; `python scripts/validate_task_statuses.py`; `python scripts/check_secrets.py`; `python scripts/check_required_artifacts.py`; `git diff --check`
@@ -514,7 +514,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Claude visual revision pass for atlas mockup
 - Depends on: TASK-021
 - Assigned agent: Claude
-- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md
+- Contract refs: context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive), context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md
 - Data refs: historical app/src/mock/mockAtlasData.ts fixture later removed by TASK-025, app/public/data
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Makes the reviewable mockup more polished, map-first, exploratory, and aligned with the audit before final data wiring.
@@ -560,7 +560,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: QA Claude visual revision before acceptance
 - Depends on: TASK-022
 - Assigned agent: Codex
-- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md
+- Contract refs: context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive), context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md
 - Data refs: app/src, app/public/data
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Ensures visual polish does not break evidence discipline, accessibility, mobile usability, or build stability before commit.
@@ -629,14 +629,14 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Polish guided atlas visuals after real map exists
 - Depends on: TASK-026, TASK-028, TASK-029
 - Assigned agent: Claude builder, Codex QA
-- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
+- Contract refs: context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive), context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
 - Data refs: app/public/data/*, app/src/lib/*
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Makes the production atlas feel polished enough for the competition after the real data/map substrate is in place.
 - Functional notes: Refine spacing, map/copy hierarchy, beat transitions, labels, evidence cards, mobile beat sheet, legends, and handoff from guided mode to explore mode without changing analysis logic.
 - Statistical notes: Preserve caveat visibility, source adjacency, uncertainty language, and selected-geography anchored comparisons.
 - Edge cases: Do not add decorative atmosphere that weakens evidence reading; do not copy audited reference-project identities; do not hide map caveats to improve aesthetics.
-- Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- Files to create/modify: `app/src/App.tsx`, `app/src/components/**`, `app/src/lib/tour.ts`, `app/src/styles/base.css`, `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive)
 - Artifacts to produce: visually polished production mockup over real data and MapLibre map, Codex QA notes
 - Acceptance criteria: Build passes; guided and explore modes remain usable and evidence-disciplined; pre-polish QA blockers below are resolved or explicitly deferred with owner approval; owner visual taste review remains the final approval gate before submission readiness.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
@@ -659,7 +659,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Functional notes: Rewrite the seven guided beats, map callouts, panel microcopy, caveats, CTA labels, and method/source summaries while keeping the existing story spine and data limitations.
 - Statistical notes: Avoid causal claims, definitive rank language, responsibility framing, and overclaiming divergence, outlook, monitoring absence, or boundary precision.
 - Edge cases: Copy must fit desktop cards and mobile sheets without overflow; claims must remain tied to available data fields; optional TASK-019 similarity text must stay labelled as analysis-ready unless wired.
-- Files to create/modify: `app/src/lib/tour.ts`, `app/src/components/story/*`, `app/src/components/panels/*`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- Files to create/modify: `app/src/lib/tour.ts`, `app/src/components/story/*`, `app/src/components/panels/*`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive)
 - Artifacts to produce: revised story-copy pass, claim/caveat QA notes, owner-reviewable guided text
 - Acceptance criteria: Guided story reads as a clear argument, each beat has one claim and one nearby caveat, and no UI text makes unsupported claims.
 - Verification commands: `npm --prefix app run build`; `python scripts/check_secrets.py`; `python scripts/validate_task_statuses.py`; `git diff --check`
@@ -744,7 +744,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Final Fable front-end visual pass
 - Depends on: TASK-027, TASK-030, TASK-031
 - Assigned agent: Fable Builder, Codex QA
-- Contract refs: context/CLAUDE_MOCKUP_INSTRUCTIONS.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
+- Contract refs: context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive), context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md, context/WINNER_SCROLL_TOUR_AUDIT.md
 - Data refs: app/public/data/*
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: Final owner-facing visual quality pass so the atlas reads as competition-worthy on first screenshot, desktop and mobile.
@@ -767,7 +767,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Humanize guided storyboard copy
 - Depends on: TASK-028, TASK-032
 - Assigned agent: Fable Editor, Codex Reviewer
-- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/CLAUDE_MOCKUP_INSTRUCTIONS.md
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md (historical archive)
 - Data refs: artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv, artifacts/tables/eda_similarity_neighbors.csv
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md
 - User value / decision value: The guided tour reads as a told story rather than methodology dressed as narration, without loosening any evidence guardrail.

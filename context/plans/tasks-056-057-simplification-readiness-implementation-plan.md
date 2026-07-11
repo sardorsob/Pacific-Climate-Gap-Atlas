@@ -69,7 +69,7 @@ Removed runtime data products:
 - Modify: `context/STRUCTURE.md`
 - Modify: `context/DATA_CARD.md`
 - Modify: `context/DESIGN_BRIEF.md`
-- Move: `context/CLAUDE_MOCKUP_INSTRUCTIONS.md` to `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md`
+- Archived: `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical mockup instructions)
 - Move completed superseded one-off plans to `context/archive/plans/` only when no living file links to them
 - Modify: `context/memory/architecture.md`
 - Modify: `context/memory/patterns.md`

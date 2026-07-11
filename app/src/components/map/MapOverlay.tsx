@@ -27,8 +27,6 @@ type ScreenPoint = { x: number; y: number };
 type GraticuleLine = { id: string; label: string; x1: number; y1: number; x2: number; y2: number };
 type OverlayState = { points: Record<string, ScreenPoint>; subregions: Record<string, ScreenPoint>; lonLines: GraticuleLine[]; latLines: GraticuleLine[] };
 
-const EMPTY_OVERLAY: OverlayState = { points: {}, subregions: {}, lonLines: [], latLines: [] };
-
 function lonLabel(shiftLon: number): string {
   const real = shiftLon > 180 ? shiftLon - 360 : shiftLon;
   if (real === 180 || real === -180) return "180\u00b0";

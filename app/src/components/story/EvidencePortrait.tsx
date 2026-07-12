@@ -20,7 +20,7 @@ function monitoringShort(status: ReportingStatus): string {
 export function EvidencePortrait({ geo, scoreKey = "gap", selected = false, compact = false }: EvidencePortraitProps) {
   const score = valueForScore(geo, scoreKey);
   return (
-    <figure className={`evidence-portrait${compact ? " evidence-portrait--compact" : ""}`}>
+    <figure className={`evidence-portrait${compact ? " evidence-portrait--compact" : ""}`} data-code={geo.code}>
       <div className="evidence-portrait__head">
         <EvidenceMark
           model={buildEvidenceMark(geo, { scoreKey, selected })}

@@ -349,7 +349,7 @@ The completed first redesign grew the atlas through evidence correction, native 
 
 1. `TASK-059`: add and validate the premise plus revised scene copy.
 2. `TASK-060`: replace the grid rail with the fullscreen native-scroll composition.
-3. `TASK-061`: promote Nauru/Tuvalu into the scene-4 takeover.
+3. `TASK-061`: promote Nauru/Tuvalu into the scene-4 takeover. The Builder pass now supplies stable stage/geography identity, aligned full-scale portrait tracks, no selection bloom, and portrait-only stacking; root viewport and Checker QA remain.
 4. `TASK-062`: promote rank sensitivity into the scene-5 interval field.
 5. `TASK-063`: connect evidence-bearing transitions and the Explore handoff.
 6. `TASK-064`: rerun the complete owner QA matrix and return `TASK-057` to review.

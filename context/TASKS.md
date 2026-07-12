@@ -1412,7 +1412,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: story-figures
 - Title: Promote Nauru and Tuvalu into a fullscreen comparison takeover
 - Depends on: TASK-060
-- Assigned agent: unassigned
+- Assigned agent: Builder
 - Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: app/public/data/geographies.json, app/public/data/country_details.json
 - Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
@@ -1420,16 +1420,16 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Functional notes: Render aligned desktop and landscape portraits at stage scale; use consecutive full-width Nauru and Tuvalu reading order plus a comparison takeaway on portrait mobile; neither portrait receives an unexplained selection bloom; keep a quiet locator only when it helps orientation.
 - Statistical notes: Compare official evidence only; use visible capacity; preserve gap, pressure, capacity, score inputs, monitoring state, and rank bands; no JSD or lived-reality inference.
 - Edge cases: Long labels, 1024×768, 360px portrait, mobile landscape, keyboard reading order, and no-swipe fallback must work.
-- Files to create/modify: app/src/components/story/PlaceComparisonScene.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css
+- Files to create/modify: app/src/components/story/PlaceComparisonScene.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css, app/src/main.tsx, app/src/App.tsx
 - Artifacts to produce: stage-sized comparison, responsive sequential composition, accessibility and claims QA.
 - Acceptance criteria: Every field is readable without zoom at target viewports; desktop alignment and mobile sequence expose the same evidence; no clipping, horizontal overflow, or map/figure competition; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Compare scene 4 at 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800, and landscape mobile.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder TDD evidence: the focused comparison markup test first failed 1/3 because the stage attribute was absent; a second focused regression failed 1/3 on the existing Nauru-only `data-selected="true"` bloom. The focused test then passed 3/3 after the minimal markup change. The figure now exposes `data-stage-figure="comparison"`, both portraits expose stable `data-code` identity, neither portrait is selected, and aligned header/stat/caveat tracks remain two-column on desktop/landscape while portrait orientation stacks them consecutively in normal flow. Retired mini-comparison CSS was deleted instead of raising the cap. Full frontend tests passed 41/41; the production build and bundle budget passed at 1,023,619-byte JS and 94,665-byte CSS with only the recorded large-chunk warning. Generated-data audit confirmed real NR/TV gap, pressure, visible-capacity, eight-input, monitoring, and 1–7 / 2–9 rank-band records remain the source; no JSD, value, control, dependency, or generated artifact changed. Root browser integration QA then failed the resize/reload path: starting comparison at 1440×900, switching the same tab to 390×844, and reloading activated scene 3 (`where-the-record-breaks`) instead of comparison. The existing `ownScrollRestoration(window.history)` call ran in `App`'s first effect, after the browser could replay automatic reload restoration. The minimal correction moves the unchanged helper call to `main.tsx` before React root creation/render and removes the late effect call; no timeout, controller, observer, helper change, dependency, or broader refactor was added. Focused URL-state tests passed 4/4, full frontend tests passed 41/41, build/budget passed at 1,023,600-byte JS and 94,665-byte CSS, and status/secret/whitespace gates passed. Root must rerun the exact 1440×900 to 390×844 same-tab reload reproduction before acceptance.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created from TASK-057 owner scale finding.
-- Status: pending
+- Attempt log: Created from TASK-057 owner scale finding. 2026-07-12: Builder started the approved stage-sized Nauru/Tuvalu comparison with strict TDD and the binding portrait-orientation layout contract. Added stage and stable geography semantics, removed the unexplained selection bloom, replaced the compact portrait treatment with aligned stage-scale tracks, and advanced only to Checker review after automated, bundle, and source-evidence gates. 2026-07-12: Root browser integration QA reproduced a same-tab 1440×900 comparison to 390×844 reload failure that activated scene 3, so TASK-061 moved `in-review -> needs-fix` with the startup-timing evidence above, then `needs-fix -> in-progress` for the scoped entrypoint correction. The Builder moved scroll-restoration ownership from the late App effect to the browser entrypoint, preserved the pure helper/unit test, passed focused/full/build/budget/status/secret/whitespace gates, and returned the task only to `in-review` for root browser re-QA.
+- Status: in-review
 
 ## TASK-062
 - Phase: story-figures

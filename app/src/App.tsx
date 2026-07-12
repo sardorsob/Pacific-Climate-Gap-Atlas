@@ -12,12 +12,7 @@ import { RankBandScene } from "./components/story/RankBandScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
-import {
-  ownScrollRestoration,
-  parseAtlasUrl,
-  serializeAtlasUrl,
-  type AtlasUrlState,
-} from "./lib/urlState";
+import { parseAtlasUrl, serializeAtlasUrl, type AtlasUrlState } from "./lib/urlState";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
 import {
@@ -95,7 +90,6 @@ export function App() {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") ownScrollRestoration(window.history);
     let cancelled = false;
     loadAtlasData()
       .then((loaded) => {

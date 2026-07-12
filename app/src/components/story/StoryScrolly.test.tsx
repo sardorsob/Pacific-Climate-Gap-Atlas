@@ -7,6 +7,7 @@ const props = {
   scenes: SCENES,
   handoffCopy: "Explore freely",
   onActiveChange: () => undefined,
+  onHandoffActive: () => undefined,
   onExplore: () => undefined,
   onOpenMethod: () => undefined,
   renderExtra: () => null,
@@ -17,6 +18,8 @@ describe("fullscreen story shell", () => {
     const html = renderToStaticMarkup(<StoryScrolly {...props} index={0} />);
 
     expect(html).toContain('data-active-visual="premise"');
+    expect(html).toContain('class="story-handoff"');
+    expect(html).toContain('data-story-handoff="true"');
     expect(html).toContain('id="what-this-atlas-is-asking"');
     expect(html).toContain('data-stage-mode="map-immersive"');
     expect(html).toContain('id="similar-scores-different-records"');

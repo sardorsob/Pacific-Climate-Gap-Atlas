@@ -88,7 +88,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .map-svg { width: 100%; height: 100%; display: block; }
 
 .atlas-evidence-marks { pointer-events: none; }
-.evidence-mark { display: block; overflow: visible; }
+.evidence-mark { display: block; overflow: visible; transition: opacity var(--motion-duration-evidence) var(--motion-ease-evidence), transform var(--motion-duration-evidence) var(--motion-ease-evidence); }
 .evidence-mark__bloom { fill: rgba(255, 255, 255, 0.13); stroke: rgba(255, 255, 255, 0.28); stroke-width: 1; }
 .evidence-mark__edge { fill: rgba(7, 24, 34, 0.5); stroke: #d9edf2; stroke-width: 1.25; }
 .evidence-mark__edge--open-dash { stroke: #f3d39b; stroke-width: 1.45; }
@@ -463,8 +463,11 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .story-scene[data-stage-mode="figure-takeover"] {
   background: var(--paper);
   color: var(--ink);
+  transition: background-color var(--motion-duration-evidence) var(--motion-ease-evidence);
 }
-.story-scene__content { width: min(42rem, 100%); display: grid; gap: 12px; }
+.story-scene__content { width: min(42rem, 100%); display: grid; gap: 12px; opacity: 0.34; transform: translateY(18px); transition: opacity 220ms ease, transform 220ms ease; }
+.story-scene[data-active="true"] .story-scene__content { opacity: 1; transform: translateY(0); }
+.story-scene[data-active="false"] :is(.evidence-mark, .pressure-capacity-figure__lobe) { opacity: 0.45; transform: scale(0.94); }
 .story-scene[data-stage-mode="figure-takeover"] .story-scene__content {
   width: min(86rem, 100%);
   margin-inline: auto;
@@ -494,7 +497,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .pressure-capacity-figure__anchor figcaption { font-size: 10px; font-weight: 700; }
 .pressure-capacity-figure__lobes { min-width: 0; }
 .pressure-capacity-figure__lobes svg { display: block; width: 100%; height: 106px; overflow: visible; }
-.pressure-capacity-figure__lobe { stroke-width: 1.2; stroke-linejoin: round; }
+.pressure-capacity-figure__lobe { stroke-width: 1.2; stroke-linejoin: round; transition: opacity var(--motion-duration-evidence) var(--motion-ease-evidence), transform var(--motion-duration-evidence) var(--motion-ease-evidence); }
 .pressure-capacity-figure__lobe--pressure { fill: rgba(79, 116, 196, 0.25); stroke: #4f74c4; }
 .pressure-capacity-figure__lobe--capacity { fill: rgba(79, 168, 115, 0.25); stroke: #4fa873; }
 .pressure-capacity-figure__anchor-dot { fill: var(--ink); stroke: var(--paper); stroke-width: 1.5; }
@@ -528,8 +531,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .rank-band-figure__row--highlight .rank-band-figure__band { top: 7px; height: 6px; background: #e8895a; }
 .rank-band-figure__value { position: absolute; left: calc(var(--rank-start) + var(--rank-width)); top: -5px; transform: translateX(-100%); color: #9a4a34; font-size: 12px; font-weight: 800; white-space: nowrap; }
 .rank-band-figure__caption { margin: 0; color: var(--ink-soft); font-size: 12px; font-style: italic; line-height: 1.4; }
-.story-handoff { min-height: 56svh; display: grid; align-content: center; gap: 12px; padding: 12svh 2rem; border-top: 1px solid var(--line); }
-.story-handoff__copy { max-width: 28rem; margin: 0; font: 600 20px/1.4 Georgia, serif; }
+.story-handoff { min-height: 100svh; display: grid; align-content: center; gap: 14px; padding: 12svh clamp(1rem, 5vw, 5rem); color: #f6f3eb; background: linear-gradient(90deg, rgba(7, 27, 41, 0.84), rgba(7, 27, 41, 0.18) 65%, transparent); }
+.story-handoff__copy { max-width: 42rem; margin: 0; font: 600 clamp(24px, 3vw, 42px)/1.35 Georgia, serif; }
 
 .scene-progress { list-style: none; margin: 0; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 2px; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.16); background: rgba(7, 27, 41, 0.82); }
 .scene-progress__item { display: inline-flex; align-items: center; gap: 6px; padding: 5px 6px; border: 0; background: transparent; cursor: pointer; border-radius: var(--r-chip); color: rgba(246, 243, 235, 0.72); }

@@ -18,3 +18,12 @@ export function sceneIndexAfterKey(index: number, key: string, total: number): n
   if (key === "ArrowUp" || key === "PageUp") return Math.max(0, index - 1);
   return Math.max(0, Math.min(total - 1, index));
 }
+
+export function requestedSceneIndexAfterKey(
+  observedIndex: number,
+  requestedIndex: number | null,
+  key: string,
+  total: number,
+): number {
+  return sceneIndexAfterKey(requestedIndex ?? observedIndex, key, total);
+}

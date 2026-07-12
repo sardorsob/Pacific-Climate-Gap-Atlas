@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { pickActiveScene, sceneIndexAfterKey } from "./sceneState";
+import { pickActiveScene, requestedSceneIndexAfterKey, sceneIndexAfterKey } from "./sceneState";
 
 describe("scene state", () => {
   it("chooses the most visible intersecting scene", () => {
@@ -17,5 +17,11 @@ describe("scene state", () => {
     expect(sceneIndexAfterKey(4, "PageDown", 5)).toBe(4);
     expect(sceneIndexAfterKey(2, "Home", 5)).toBe(0);
     expect(sceneIndexAfterKey(2, "End", 5)).toBe(4);
+  });
+
+  it("keeps the latest requested index while observer state lags", () => {
+    expect(requestedSceneIndexAfterKey(3, 5, "Home", 6)).toBe(0);
+    expect(requestedSceneIndexAfterKey(3, 0, "PageDown", 6)).toBe(1);
+    expect(requestedSceneIndexAfterKey(3, null, "PageDown", 6)).toBe(4);
   });
 });

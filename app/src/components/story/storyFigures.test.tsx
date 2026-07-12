@@ -97,6 +97,7 @@ describe("story figures", () => {
     expect(html).toContain("Sensitivity bands, not a fixed scoreboard");
     expect(html).toContain('data-stage-figure="rank-bands"');
     expect(html).toContain('data-motion-mode="static"');
+    expect(html).toContain('data-code="MH"');
     expect(html).toContain('class="rank-band-figure__rows"');
     expect(html).toContain('style="--rank-start:');
     expect(html).toContain("not confidence intervals");

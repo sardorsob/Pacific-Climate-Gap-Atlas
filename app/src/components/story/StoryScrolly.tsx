@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
 import { BookOpen, Compass } from "lucide-react";
 import type { Scene } from "../../lib/scenes";
-import { pickActiveScene, sceneIndexAfterKey } from "../../lib/sceneState";
+import { pickActiveScene, requestedSceneIndexAfterKey } from "../../lib/sceneState";
 import { SceneProgress } from "./SceneProgress";
 import { StoryScene } from "./StoryScene";
 
@@ -11,14 +11,11 @@ type StoryScrollyProps = {
   handoffCopy: string;
   index: number;
   onActiveChange: (index: number) => void;
+  onHandoffActive: () => void;
   onExplore: () => void;
   onOpenMethod: () => void;
   renderExtra?: (scene: Scene) => ReactNode;
 };
-
-function prefersReducedMotion(): boolean {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
 
 export function isStoryNavigationControl(target: EventTarget | null): boolean {
   return Boolean((target as Element | null)?.closest?.("button, a, input, select, textarea"));
@@ -29,18 +26,27 @@ export function StoryScrolly({
   handoffCopy,
   index,
   onActiveChange,
+  onHandoffActive,
   onExplore,
   onOpenMethod,
   renderExtra,
 }: StoryScrollyProps) {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const handoffRef = useRef<HTMLElement | null>(null);
+  const requestedIndexRef = useRef<number | null>(null);
   const intersections = useRef(new Map<number, { index: number; ratio: number; isIntersecting: boolean }>());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        let handoffActive = false;
         entries.forEach((entry) => {
-          const sceneIndex = Number((entry.target as HTMLElement).dataset.sceneIndex);
+          const target = entry.target as HTMLElement;
+          if (target.dataset.storyHandoff === "true") {
+            handoffActive = entry.isIntersecting;
+            return;
+          }
+          const sceneIndex = Number(target.dataset.sceneIndex);
           intersections.current.set(sceneIndex, {
             index: sceneIndex,
             ratio: entry.intersectionRatio,
@@ -49,18 +55,21 @@ export function StoryScrolly({
         });
         const active = pickActiveScene(Array.from(intersections.current.values()));
         if (active !== null) onActiveChange(active);
+        if (handoffActive) onHandoffActive();
       },
       { root: null, rootMargin: "-20% 0px -20% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
 
     sectionRefs.current.forEach((section) => section && observer.observe(section));
+    if (handoffRef.current) observer.observe(handoffRef.current);
     return () => observer.disconnect();
-  }, [scenes.length, onActiveChange]);
+  }, [scenes.length, onActiveChange, onHandoffActive]);
 
   const jumpToScene = (sceneIndex: number) => {
     const next = Math.max(0, Math.min(scenes.length - 1, sceneIndex));
+    requestedIndexRef.current = next;
     sectionRefs.current[next]?.scrollIntoView({
-      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      behavior: "auto",
       block: "start",
     });
   };
@@ -69,7 +78,11 @@ export function StoryScrolly({
     if (isStoryNavigationControl(event.target)) return;
     if (!["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
-    jumpToScene(sceneIndexAfterKey(index, event.key, scenes.length));
+    jumpToScene(requestedSceneIndexAfterKey(index, requestedIndexRef.current, event.key, scenes.length));
+  };
+
+  const clearRequestedIndex = () => {
+    requestedIndexRef.current = null;
   };
 
   return (
@@ -79,6 +92,9 @@ export function StoryScrolly({
       data-active-visual={scenes[index]?.visual}
       tabIndex={0}
       onKeyDown={onKeyDown}
+      onPointerDown={clearRequestedIndex}
+      onTouchStart={clearRequestedIndex}
+      onWheel={clearRequestedIndex}
     >
       {scenes[index]?.visual !== "premise" && (
         <>
@@ -117,7 +133,13 @@ export function StoryScrolly({
         ))}
       </div>
 
-      <section className="story-handoff" aria-label="Return to the Pacific">
+      <section
+        ref={handoffRef}
+        className="story-handoff"
+        data-stage-mode="map-immersive"
+        data-story-handoff="true"
+        aria-label="Return to the Pacific"
+      >
         <p className="story-scene__eyebrow">Return to the Pacific</p>
         <p className="story-handoff__copy">{handoffCopy}</p>
         <button type="button" className="ghost-btn ghost-btn--accent" onClick={onExplore}>

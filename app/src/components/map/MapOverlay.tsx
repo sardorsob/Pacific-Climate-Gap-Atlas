@@ -100,7 +100,7 @@ export function MapOverlay({ geos, project, selectedCode, activeScore, sceneVisu
             if (!point) return null;
             const feature = featureByCode.get(geo.code);
             return (
-              <g key={`status-${geo.code}`}>
+              <g key={`status-${geo.code}`} data-code={geo.code}>
                 <EvidenceMark x={point.x - 22} y={point.y - 22} size={44} model={buildEvidenceMark(geo, { scoreKey: activeScore, selected: geo.code === selectedCode })} scoreFill={feature?.properties.fillColor} decorative className="map-evidence-mark" />
               </g>
             );

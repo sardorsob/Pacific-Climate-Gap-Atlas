@@ -259,7 +259,14 @@ export function App() {
       return;
     }
     const next = Math.max(0, Math.min(SCENES.length - 1, nextIndex));
-    if (next === sceneIndex) return;
+    if (next === sceneIndex) {
+      const sceneState = SCENES[next].state;
+      if (sceneState.score !== undefined) setActiveScore(sceneState.score);
+      if (sceneState.view !== undefined) setViewMode(sceneState.view);
+      setOutlookOn(false);
+      if (sceneState.selected !== undefined) setSelectedCode(sceneState.selected);
+      return;
+    }
     setSceneIndex(next);
     if (mode === "guided") {
       const sceneState = SCENES[next].state;
@@ -274,12 +281,28 @@ export function App() {
     }
   };
 
+  const handleHandoffActive = () => {
+    setActiveScore("gap");
+    setViewMode("default");
+    setOutlookOn(false);
+    setSelectedCode(null);
+  };
+
   const handleExplore = () => {
     sceneScrollRequestRef.current += 1;
     skipInitialSceneObservationRef.current = false;
+    setActiveScore("gap");
+    setViewMode("default");
+    setOutlookOn(false);
     setSelectedCode(null);
     setMode("explore");
-    commitUrlState("pushState", { mode: "explore", place: null });
+    commitUrlState("pushState", {
+      mode: "explore",
+      layer: "gap",
+      view: "default",
+      place: null,
+      outlook: false,
+    });
   };
 
   const handleGuidedTour = () => {
@@ -426,6 +449,7 @@ export function App() {
             handoffCopy={HANDOFF_COPY}
             index={sceneIndex}
             onActiveChange={handleSceneChange}
+            onHandoffActive={handleHandoffActive}
             onExplore={handleExplore}
             onOpenMethod={() => setDrawerOpen(true)}
             renderExtra={renderStoryFigure}

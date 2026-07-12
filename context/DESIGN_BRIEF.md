@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning five-scene atlas and its approved fullscreen-stage revision. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-057`, but owner QA returned the composition `needs-fix`. The target revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+Status: semantic design brief for the functioning fullscreen atlas. The owner likes the visual system but has reopened the competition narrative. Preserve the composition and interaction system during `TASK-065`–`TASK-068`; treat the current title, premise, exemplar pair, layer priority, and scene claims as provisional. `context/ARTISTIC_REDESIGN_BRIEF.md` records the visual baseline and data-first hold.
 
 Design skill basis:
 
@@ -25,9 +25,9 @@ First-build concept status:
 - Mobile landscape concept: optional, recommended if map controls become wide or gesture-heavy.
 - Production gate: final methodology, accessibility, deployment, source/provenance, and owner visual review remain before submission readiness. Official scored-geography polygon boundaries remain a future source gate outside the completed MapLibre/Natural Earth visual substrate.
 
-Next-redesign concept status:
+Current concept status:
 
-- Narrative and semantic direction: approved.
+- Narrative and semantic direction: reopened pending expanded-data EDA and `TASK-068` approval.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
@@ -35,7 +35,7 @@ Next-redesign concept status:
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
 - Implementation: `TASK-059` through `TASK-063` are approved and done. `TASK-064` passed the automated, responsive, interaction, and screenshot gates and remains `in-review` for owner visual acceptance; `TASK-057` remains `needs-fix` until that decision.
 
-The current app remains the behavioral and scientific baseline. Future visual work should preserve those contracts while replacing the rail hierarchy with the fullscreen stage.
+The current app remains the behavioral and visual baseline. No new visual work should preview speculative candidate data. After `TASK-068`, reuse the fullscreen stage where it still serves the approved evidence and revise only the claims, figures, exemplars, or layers the data decision requires.
 
 ## Fullscreen Stage Layout Revision
 

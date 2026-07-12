@@ -12,6 +12,21 @@ Pacific Data Hub / Pacific Community data infrastructure, as referenced by the o
 
 At least one official dataset is required for the competition. This project targets a multi-dataset official-data spine and may add open external GIS reference files only when they improve map usability or boundary context.
 
+## Planned Data-First Expansion
+
+The current processed evidence base contains nine official datasets. The final competition story is reopened, so `TASK-065` will profile a deliberately small candidate expansion before any new narrative or score decision:
+
+| Candidate | Preliminary official coverage snapshot | Research value | Primary gate |
+| --- | --- | --- | --- |
+| Population growth | 22 geographies, 1990–2025 | context and denominator review | do not confuse growth rate with population size |
+| Renewable energy share | 20 geographies, 2000–2023 | rate-based transition/response context | confirm comparable definition and latest-year spread |
+| Safely managed drinking water | 19 geographies, 2000–2022 | recorded essential-service condition | do not attribute changes to climate without causal evidence |
+| Crop yield | 15 geographies, 1961–2024 | food-system pattern exploration | inspect crop mix, aggregation, and climate attribution limits |
+| Direct disaster economic loss | 12 geographies, 2007–2020 | recorded consequence/economic context | sparse coverage, currency/unit consistency, and reporting bias |
+| Climate-altering land-cover index | 22 geographies, 1992–2022 | land-system change context | verify direction, baseline, and public interpretation |
+
+These figures are a preliminary July 12 API/metadata snapshot, not accepted contracts. `TASK-065` must regenerate and record them. Candidates may be rejected. No candidate becomes a score input by default, and no new composite index should be created merely to accommodate the expanded inventory.
+
 ## TASK-001 Profile Artifacts
 
 The tracked profiler now writes:

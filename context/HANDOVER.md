@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-063` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and is `in-review` for the required owner visual/accessibility decision. `TASK-057` remains `needs-fix` until that acceptance.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-063` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-065` through `TASK-069` now define a data-first sequence: targeted official-data acquisition, processing, comparability/story EDA, scientific/owner narrative selection, then roadmap rewrite.
 
-The current app remains the functioning behavioral/scientific baseline. Owner-approved `TASK-058` replaces the rail composition with **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, one reachable sticky toolbar/progress region, and a return of the same marks to geography for Explore. QA screenshots live under `artifacts/design/task-064/`; the three concept boards under `artifacts/design/task-058/` remain composition-only. The written contract is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The current app remains the functioning behavioral/scientific baseline. Its fullscreen composition, evidence marks, comparison/rank takeovers, native scroll, accessibility behavior, and Explore handoff should be preserved during research. Its title, opening thesis, exemplars, scene order, and Adaptation Gap Index prominence are provisional until `TASK-068`. QA screenshots live under `artifacts/design/task-064/`; concept boards remain composition-only.
 
 ## How To Validate The Scaffold
 
@@ -73,8 +73,10 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Owner reviews the `TASK-064` viewport/accessibility matrix under `artifacts/design/task-064/`. Keep `TASK-064` in review until that explicit decision.
-2. Only after owner acceptance, return `TASK-057` legally from `needs-fix -> in-progress -> in-review`, rerun its release gate, then complete external deployment/submission actions. Record the public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
+1. Start `TASK-065`: profile the six targeted official dataset candidates and explicitly accept or reject each for processing.
+2. Run `TASK-066` and `TASK-067` sequentially. Do not change the current index, app, or scene copy during acquisition/EDA.
+3. Use `TASK-068` for the scientific and owner narrative decision. Only then may `TASK-069` rewrite the storyboard and create implementation tasks.
+4. Keep `TASK-064` in owner review and `TASK-057` in `needs-fix`; do not deploy or submit a story that has been reopened.
 
 ## Known Caveats
 
@@ -82,6 +84,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - The SDMX fetch helper avoids undeclared runtime dependencies, but uses a Windows PowerShell fallback because the endpoint returned `422` to Python standard-library HTTP.
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
+- The current gap varies more with its visible-capacity proxies than with its climate-pressure side, and those capacity inputs include unnormalized station counts, total power generation, and fisheries-measure counts. Treat the index as provisional evidence, not the final story verdict.
+- The candidate expansion is research scope only. Water, crops, renewable energy, population, disaster loss, and land cover must not enter the score or guided story merely because they were downloaded.
 - `TASK-048` corrected the former `included_indicator_count` ambiguity. Production app data now exposes score-input, context-only, and total trace counts plus eight ordered score-input presence positions. Do not regress to the retired field when building the new evidence glyph.
 - The outlook baseline is app-optional. Only include it in the interface with visible caveats and row-level notes.
 - TASK-005/TASK-026 scored GIS exports use centroid fallback hit targets, not island boundaries. TASK-029 adds Natural Earth land context for orientation, but not official/selectable boundary polygons. TASK-038/TASK-039 group nearby Natural Earth land to scored centroids for visual marks only; TASK-043 keeps those land shapes as subdued context/texture under guaranteed-size centroid presence marks. This is not a boundary source, and far/disputed land stays unassigned.

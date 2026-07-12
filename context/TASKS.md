@@ -1499,3 +1499,118 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Created as the closing gate for TASK-057 owner findings. 2026-07-12: QA Maker opened the approved automated, browser, evidence, interaction, and accessibility matrix; the first pass found unreachable progress controls, added a focused failing test, repaired them with one native sticky chrome wrapper, re-ran the complete matrix, and advanced the task for independent/owner review without touching TASK-057.
 - Status: in-review
+
+## TASK-065
+- Phase: data-expansion
+- Title: Acquire and profile the targeted official dataset expansion
+- Depends on: TASK-001
+- Assigned agent: unassigned
+- Contract refs: context/SCOPE.md, context/DATA_CARD.md, configs/datasets.yml
+- Data refs: research/official_datasets_2026.csv, Pacific Data Hub official sources
+- Scientific refs: context/ANALYSIS_BACKLOG.md, context/ASSUMPTIONS.md
+- User value / decision value: Establishes the real evidence available for a stronger story before any narrative is selected.
+- Functional notes: Add population growth, renewable-energy share, safely managed drinking water, crop yield, direct disaster economic loss, and climate-altering land-cover index to the profiling configuration. Inspect disaggregated crop data only if the aggregate cannot answer the grain question. Reuse the existing profiler, local raw-cache policy, contracts, and provenance patterns; do not create task-specific Markdown.
+- Statistical notes: Record rows, geographies, years, units, denominators, grain, missingness, source semantics, licences, and API failures. Preliminary coverage figures are hypotheses to reproduce, not acceptance targets.
+- Edge cases: SDMX 422 behavior, multiple units, sparse disaster-loss reporting, crop-item aggregation, geography aliases, latest-year differences, and the sea-level metadata/API unit discrepancy discovered during research.
+- Files to create/modify: configs/datasets.yml, tests/analysis/test_dataset_profile.py, analysis/io/dataset_config.py only if the existing schema cannot express the official grain, data/contracts/*.json, data/raw/README.md, artifacts/tables/dataset_profile.csv, context/DATA_CARD.md
+- Artifacts to produce: reproducible profiles and contracts for every accepted or rejected candidate, with rejection reasons retained
+- Acceptance criteria: Every candidate has a reproducible fetch/profile result and an explicit accept-for-processing or reject decision; no score, app layer, or story claim changes; existing nine profiles remain reproducible.
+- Verification commands: python scripts/profile_datasets.py --config configs/datasets.yml; python -m unittest discover -s tests -t . -v; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare each profile with its official .Stat metadata/source page and spot-check units, geography counts, year ranges, and licences.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from the owner-approved data-first narrative pivot; acquisition must precede story selection.
+- Status: pending
+
+## TASK-066
+- Phase: data-pipeline
+- Title: Process accepted candidate datasets without changing the baseline index
+- Depends on: TASK-065
+- Assigned agent: unassigned
+- Contract refs: context/DATA_CARD.md, configs/datasets.yml
+- Data refs: data/raw/official, data/processed/official_observations.csv, data/processed/geography_lookup.csv
+- Scientific refs: context/ASSUMPTIONS.md, context/docs/methodology.md
+- User value / decision value: Makes the expanded evidence reproducible and analysis-ready while protecting the current app from speculative methodology changes.
+- Functional notes: Reuse the local-cache-first fetch and normalized long-form pipeline. Preserve raw values, official units, flags, disaggregation fields, source references, and row hashes. Extend geography aliases only when source evidence supports them. Do not wire candidate fields into the app yet.
+- Statistical notes: Keep candidate roles descriptive until TASK-067. Do not treat water, crop, renewable energy, loss, population, or land cover as pressure/capacity score inputs by default. Regenerate and compare the current gap index to prove it is unchanged.
+- Edge cases: Multi-series SDMX dimensions, duplicate geography/year/item rows, mixed units, missing denominators, incompatible aggregates, nonannual observations, and rejected TASK-065 candidates.
+- Files to create/modify: analysis/io/official_data.py, analysis/preprocessing/official_dataset.py, scripts/make_dataset.py, tests/analysis/test_official_dataset_pipeline.py, data/processed/official_observations.csv, data/processed/geography_lookup.csv, data/processed/app/atlas_dataset_summary.json, artifacts/provenance/dataset_pipeline_summary.json, context/DATA_CARD.md
+- Artifacts to produce: deterministic expanded observation table, refreshed geography/dataset summaries, and provenance counts by dataset
+- Acceptance criteria: A clean rebuild contains only TASK-065-accepted candidates, preserves source semantics, passes contracts, and produces byte- or value-equivalent baseline Adaptation Gap scores before any methodology change.
+- Verification commands: python scripts/make_dataset.py --config configs/datasets.yml; python scripts/build_gap_index.py --config configs/gap_index.yml; python scripts/validate_data_contracts.py; python -m unittest discover -s tests -t . -v; git diff --check
+- Manual QA: Trace at least two rows per candidate from raw source through processed output and confirm rejected candidates do not appear.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from the data-first pivot; processing is deliberately separate from narrative and score selection.
+- Status: pending
+
+## TASK-067
+- Phase: analysis
+- Title: Audit comparability and discover story signals in the expanded data
+- Depends on: TASK-066
+- Assigned agent: unassigned
+- Contract refs: context/ANALYSIS_BACKLOG.md, configs/eda.yml
+- Data refs: data/processed/official_observations.csv, artifacts/tables
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/ASSUMPTIONS.md
+- User value / decision value: Finds concrete, defensible Pacific patterns and eliminates attractive but misleading story ideas before design work resumes.
+- Functional notes: Extend the script-first EDA with candidate coverage, unit/denominator, temporal-alignment, trend, missingness, and named-place comparison outputs. Produce one compact story-signal table with supported, weak, contradicted, and unavailable hypotheses. Do not write final scene copy or add app layers.
+- Statistical notes: Separate within-indicator comparison from cross-indicator synthesis; distinguish rates from totals; test defensible normalizations; record latest-year spread; avoid climate causality; treat missing official data as reporting visibility only.
+- Edge cases: Small overlapping samples, environmental/disaster reporting bias, territory/population scale, crop composition, disaster-loss currency units, trend breaks, and comparisons that depend on one geography or one year.
+- Files to create/modify: configs/eda.yml, create analysis/eda/candidate_datasets.py, scripts/run_eda.py, create tests/analysis/test_eda_candidate_datasets.py, artifacts/tables/eda_candidate_dataset_coverage.csv, artifacts/tables/eda_candidate_comparability.csv, artifacts/tables/eda_candidate_story_signals.csv, artifacts/provenance/eda_summary.json, context/ANALYSIS_BRIEF.md, context/DATA_CARD.md, context/EXPERIMENTS.md
+- Artifacts to produce: reproducible expanded-data EDA tables, named-place evidence candidates, rejected-claim reasons, and updated provenance
+- Acceptance criteria: Each candidate dataset receives a comparability judgment; every proposed story signal names its evidence, time basis, geography scope, and caveat; no final narrative or new composite score is declared.
+- Verification commands: python scripts/run_eda.py --config configs/eda.yml; python -m unittest discover -s tests -t . -v; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; git diff --check
+- Manual QA: Review the strongest and weakest candidate claims against raw/processed rows and confirm no chart-worthy pattern is promoted solely because it looks dramatic.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created to make story discovery an evidence product rather than an intuition-only rewrite.
+- Status: pending
+
+## TASK-068
+- Phase: story-selection
+- Title: Select the final evidence-backed narrative through scientific and owner review
+- Depends on: TASK-067
+- Assigned agent: Codex synthesis; independent scientific reviewer; owner final decision
+- Contract refs: context/PROBLEM.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DECISIONS.md
+- Data refs: artifacts/tables/eda_candidate_story_signals.csv and supporting expanded-data tables
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md, context/EXPERIMENTS.md
+- User value / decision value: Chooses one memorable climate story that the available evidence can actually support.
+- Functional notes: Compare at least three narrative hypotheses: signal-to-recorded-condition-to-response, climate-observation visibility, and the limits of a single Pacific ranking. For each, write a one-sentence problem, claim chain, named-place evidence, visual operations, action/decision value, caveats, and rejection risks inside existing context files. Do not create a standalone concept file.
+- Statistical notes: Reject any arc requiring unsupported causal attribution, incomparable totals, unstable ranks as verdicts, hidden missingness, or a proxy labeled as full adaptation readiness.
+- Edge cases: A visually attractive hypothesis may fail scientific review; the strongest dataset may support only a narrow geography set; no story may justify retaining the Adaptation Gap Index as the product title or default layer.
+- Files to create/modify: context/PROBLEM.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/DECISIONS.md, context/PROJECT.md, context/TASKS.md, context/logs/*
+- Artifacts to produce: approved problem statement, narrative spine, exemplar set, evidence/caveat contract, and explicit rejected alternatives in existing briefs
+- Acceptance criteria: Scientific reviewer accepts the claim chain and caveats; owner approves one narrative; the decision states whether the current title/index/default layer survive; no app implementation begins before approval.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_required_artifacts.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Cold-read the one-sentence problem and scene sequence with a nontechnical reader; verify every scene against its cited artifact.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created after the owner explicitly chose data acquisition and exploration before narrative design.
+- Status: pending
+
+## TASK-069
+- Phase: roadmap
+- Title: Rewrite the existing storyboard and implementation roadmap after story approval
+- Depends on: TASK-068
+- Assigned agent: Orchestrator
+- Contract refs: context/AGENTS.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: approved TASK-068 evidence contract
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Converts the approved story into bounded implementation work without cluttering context or prematurely changing the app.
+- Functional notes: Update existing project/story/design/scope/handover files, revise or retire stale scene contracts, and add the smallest independently reviewable implementation tasks to `context/TASKS.md`. Reuse one batch plan only if code execution needs it; do not create one Markdown file per task.
+- Statistical notes: Every planned scene/layer must point to an approved generated artifact and nearby caveat. No unapproved score or causal claim may re-enter through copy or interaction.
+- Edge cases: The approved story may require new app-data fields, may retire the current index from guided mode, or may preserve the visuals while replacing every scene claim.
+- Files to create/modify: context/PROJECT.md, context/SCOPE.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/HANDOVER.md, context/TASKS.md, context/logs/*; no app files in this task
+- Artifacts to produce: updated living context and a task-by-task implementation/QA sequence in the existing task ledger
+- Acceptance criteria: All living context agrees on the approved story and next task; stale narrative pointers are removed or labeled historical; owner accepts the roadmap before implementation.
+- Verification commands: python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; rg -n "TASK-0(65|66|67|68|69)" context; git diff --check
+- Manual QA: Read PROJECT -> SCOPE -> STORY -> TASKS -> HANDOVER as one chain and confirm there is no contradictory next action or unnecessary new Markdown.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created to apply the owner context-hygiene rule to the post-research implementation roadmap.
+- Status: pending

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. `TASK-059` through `TASK-063` are done; `TASK-064` is `in-review` with a refreshed 25-frame viewport matrix and awaits the required owner visual/accessibility decision. `TASK-057` remains `needs-fix` until that acceptance. Competition deadline: August 31, 2026.
+The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual system but has reopened the competition narrative. The next phase is data-first discovery: acquire a small, decision-relevant expansion of the official 2026 datasets, profile and process it, run comparability/story EDA, and only then choose a new narrative. `TASK-065` through `TASK-069` record that sequence. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no further story implementation or submission work should begin from the current storyboard. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -16,7 +16,7 @@ The Pacific Adaptation Gap Atlas
 
 ## Current Thesis
 
-Official records illuminate the Pacific unevenly. The atlas should show where climate pressure and visible adaptation capacity appear out of balance while making the shape and limits of the record impossible to mistake for the full lived reality.
+The implemented thesis remains a functioning baseline, not the locked competition story. The next thesis must be earned from the expanded official-data evidence. Current hypotheses include a place-specific path from climate signal to recorded impact and response, a narrower climate-observation/monitoring story, and a story about why the available evidence cannot support a single Pacific ranking. None is approved before `TASK-068`.
 
 ## Feature Table
 
@@ -25,6 +25,7 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 | Research source folder | present | `research/` includes brief, official dataset inventory, past winners, and review board |
 | Workflow shell | done | all durable project Markdown lives under `context/` |
 | Dataset profile | done | `artifacts/tables/dataset_profile.csv` and `data/contracts/*.json` cover nine priority official datasets |
+| Targeted dataset expansion | planned | `TASK-065`–`TASK-067` acquire, process, and audit a small shortlist before any narrative choice; no new indicator feeds the current index by default |
 | Data science pipeline | done | `scripts/make_dataset.py` produces normalized observations, geography lookup, app summary, and provenance |
 | Adaptation Gap Index | done | `scripts/build_gap_index.py` produces geography scores plus indicator trace |
 | Outlook model | done | trend stress-test baseline is methodology-ready and app-optional |
@@ -51,6 +52,7 @@ Official records illuminate the Pacific unevenly. The atlas should show where cl
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 | Artistic redesign contract | owner review | `TASK-059`–`TASK-063` are done; `TASK-064` passed the QA Maker matrix and remains `in-review` for owner visual/accessibility acceptance |
+| Data-first narrative discovery | planned | `TASK-068` compares evidence-backed story hypotheses after the expanded-data EDA; `TASK-069` updates the storyboard and implementation roadmap only after owner approval |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | needs-fix | `TASK-056` is accepted; `TASK-057` automated gates passed, but owner visual QA found opening-clarity and scene-scale failures now split into `TASK-058` through `TASK-064` |

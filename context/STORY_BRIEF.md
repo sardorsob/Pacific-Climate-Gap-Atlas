@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. `TASK-059` through `TASK-063` are done; `TASK-064` passed the automated and screenshot matrix and remains `in-review` for owner visual acceptance. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
+Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` through `TASK-067` acquire and explore additional official data before `TASK-068` chooses a story. No current scene, exemplar, title, or index role should be treated as the next implementation contract until that gate. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
 
 Source basis:
 
@@ -20,7 +20,38 @@ Source basis:
 - `artifacts/tables/eda_outlook_interpretation.csv`
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`
 
+## 2026-07-12 Data-First Narrative Reopening
+
+The project will not finalize a stronger story and then search for data that confirms it. It will first expand the official-data evidence base, test comparability and named-place patterns, and select the narrative that survives that review.
+
+Provisional story hypotheses to test, not approved directions:
+
+1. **From signal to recorded condition to response** — trace how climate signals, recorded impacts or essential-service conditions, response systems, and unknowns differ by place.
+2. **Where the climate record goes quiet** — center monitoring and reporting visibility without equating missing official rows with missing infrastructure or local knowledge.
+3. **The map that cannot rank the Pacific** — use the current score as an object of examination and show where units, denominators, missingness, and analytical choices make a single order irresponsible.
+
+Candidate artistic language remains provisional:
+
+- many climate stories, uneven lines of sight;
+- each geography as an unfinished evidence portrait;
+- motion verbs such as arrive, diverge, compare, dissolve, and return;
+- a selected place followed through evidence families rather than reduced to a global rank.
+
+The next story must:
+
+- state a consequential Pacific problem in one sentence;
+- connect numbers to a concrete recorded condition or decision without inventing lived testimony;
+- distinguish observation, context, proxy, estimate, and missingness;
+- avoid causal climate-impact claims not supported by the analysis;
+- preserve the reader's ability to inspect sources and uncertainty;
+- earn its exemplar places from `TASK-067`, not inherit Nauru/Tuvalu automatically;
+- obtain owner approval in `TASK-068` before scene copy or app behavior changes.
+
+The current fullscreen stage, equal-presence marks, enlarged comparison, readable rank field, native scroll, accessibility behavior, and Explore handoff are reusable. Their existing claims and ordering are not protected from revision.
+
 ## Narrative Decision
+
+The decision below describes the implemented baseline and is suspended as the final competition-story decision until `TASK-068`.
 
 The atlas should use the broader Adaptation Gap frame as the spine, with official-data visibility and monitoring gaps as the signature diagnostic interaction.
 

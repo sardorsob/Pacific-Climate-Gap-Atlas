@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the core analysis sprint and has a functioning visual atlas baseline. `TASK-019` Evidence Fingerprint Divergence is app-wired as selected-place nearest-neighbor evidence. `TASK-048` now separates score-input, context-only, and total trace counts in the index, EDA, generated app data, validator, and panel/legend copy.
+The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` through `TASK-067` will profile, process, and audit targeted additional official datasets; the findings below remain the baseline evidence, not the final story conclusion.
 
 ## Current EDA Outputs
 
@@ -64,8 +64,8 @@ The runner writes:
 
 ## Next Priorities
 
-1. Use `context/ARTISTIC_REDESIGN_BRIEF.md` as the next-build source of truth, with `STORY_BRIEF.md` and `DESIGN_BRIEF.md` as supporting evidence/design history.
-2. Run the `TASK-049` desktop/mobile concept approval gate before frontend redesign.
-3. Treat outlook as optional stress-test context controlled by `eda_outlook_interpretation.csv`; keep it outside the five guided scenes.
-4. Make monitoring/data visibility a primary mark grammar and keep rank uncertainty visible wherever order appears.
-5. Keep Evidence Fingerprint Divergence in selected-place panel detail with exact JSD and `neighbor_caveat`; remove guided/map-connector presentation rather than expanding it into a leaderboard or similarity map.
+1. Run `TASK-065` and explicitly accept or reject each targeted official dataset candidate.
+2. Process only accepted candidates in `TASK-066` while proving the current baseline index remains unchanged.
+3. Use `TASK-067` to audit comparability, denominators, time alignment, named-place patterns, and unsupported claims.
+4. Choose the final narrative only in `TASK-068`; until then, treat the current index-first story and exemplar set as provisional.
+5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.

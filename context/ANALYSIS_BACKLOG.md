@@ -2,15 +2,17 @@
 
 ## Purpose
 
-This file records the EDA and GIS lanes that built the atlas evidence base. Those lanes are complete. The current purpose is historical traceability plus routing for any future analysis expansion; the active redesign roadmap lives in `context/TASKS.md` and `context/ARTISTIC_REDESIGN_BRIEF.md`.
+This file records the EDA and GIS lanes that built the atlas evidence base and routes the approved data-first expansion. The active task ledger lives in `context/TASKS.md`; no separate task-specific Markdown is required.
 
 ## Current Status
 
-Completed analysis lanes now cover the script-first EDA foundation, GIS context, official-data coverage, indicator forensics, country story labels, rank volatility, spatial typologies, trend/outlook interpretation, monitoring-gap GIS priorities, story/design synthesis, the Dataviz Inspiration audit, and `TASK-019` Evidence Fingerprint Divergence. The current app contract includes selected-place nearest-neighbor JSD rows through `TASK-037`, and the baseline map includes selected-only arcs through `TASK-047`. The approved redesign keeps JSD in the panel but removes it from the guided spine and map connectors. The next analysis/data priority is `TASK-048`: correct the ambiguous evidence-count contract before the eight-position evidence mark is implemented.
+Completed analysis lanes cover the original nine-dataset evidence base. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The next analysis sequence is `TASK-065` acquisition/profile, `TASK-066` processing, `TASK-067` comparability/story EDA, and `TASK-068` scientific/owner story selection. `TASK-069` updates the storyboard and implementation roadmap only after that gate.
 
 ## Principles
 
 - Start from analytical questions, not chart ideas.
+- Acquire and inspect data before locking the narrative; treat story concepts as hypotheses until evidence and caveats are reviewed.
+- Prefer a few useful datasets over a broad 27-dataset dashboard.
 - Use Python modules and scripts as the source of truth; notebooks are optional review surfaces only.
 - Save reportable outputs under `artifacts/` with stable names.
 - Preserve caveats when scores depend on sparse data, proxy indicators, centroid geometry, or generalized visual land context.
@@ -220,6 +222,70 @@ Outputs:
 - updates to `context/DESIGN_BRIEF.md`
 - updates to `context/archive/CLAUDE_MOCKUP_INSTRUCTIONS.md` (historical archive)
 
+### TASK-065: Targeted Official-Dataset Acquisition
+
+Question: Which additional official 2026 datasets are sufficiently available, interpretable, and decision-relevant to justify deeper exploration?
+
+Candidate set:
+- population growth
+- renewable energy share
+- safely managed drinking water
+- crop yield, with disaggregated crop data only if needed
+- direct disaster economic loss
+- climate-altering land-cover index
+
+Required checks:
+- official source and licence
+- raw row count, geography count, and year range
+- indicator grain, unit, denominator, and disaggregation
+- missing geography/year patterns
+- source/API inconsistencies and reproducible fetch behavior
+
+The output is a profiled candidate set, not a commitment to use every dataset.
+
+### TASK-066: Candidate Processing Lane
+
+Question: Can the accepted candidates enter the normalized long-form data without changing the existing score or hiding source semantics?
+
+Required checks:
+- deterministic local-cache-first rebuild
+- geography-code reconciliation
+- raw values, units, flags, and source hashes preserved
+- existing nine-dataset artifacts remain reproducible
+- current Adaptation Gap scores remain unchanged unless a later methodology task explicitly revises them
+
+### TASK-067: Comparability And Story EDA
+
+Question: What concrete, non-causal Pacific patterns do the expanded datasets support, and which apparent patterns fail comparability review?
+
+Analyses:
+- geography overlap and year alignment across climate, impact/service, and response datasets
+- rate versus absolute-count comparability
+- denominator feasibility using population, coastline, land area, or another justified exposure base
+- within-dataset trends and named-place contrasts
+- missingness and reporting-semantics audit
+- candidate story-signal table recording supported, weak, contradicted, and unavailable claims
+
+This task does not write final scene copy or add app layers.
+
+### TASK-068: Scientific Story Selection Gate
+
+Question: Which story is strongest after the expanded-data audit, and what claims must be rejected?
+
+Compare at minimum:
+- climate signal -> recorded impact/service condition -> response system -> unknowns
+- where the climate-observation record goes quiet
+- why the current evidence cannot support a single Pacific ranking
+
+Selection criteria:
+- important Pacific problem or opportunity
+- intuitive one-sentence problem statement
+- source-backed and non-causal claim chain
+- meaningful named-place evidence
+- visual fit with the existing fullscreen map/figure system
+- honest missingness, units, denominators, and time basis
+- owner approval before storyboard implementation
+
 ## Parallelization Plan
 
 - Coverage/data desert and GIS enrichment can run in parallel.
@@ -227,4 +293,7 @@ Outputs:
 - Sensitivity analysis can run independently from trend/outlook interpretation.
 - Evidence fingerprint divergence has run and selected-neighbor fields are in the public app contract. Do not add a second fingerprint payload or global similarity surface without a new task.
 - The Dataviz Inspiration audit is complete and should inform visual critique immediately. It does not require new data artifacts.
-- Story synthesis should use `context/ARTISTIC_REDESIGN_BRIEF.md` as the next-build source of truth, with `STORY_BRIEF.md` and `DESIGN_BRIEF.md` preserving the first-build evidence contract. TASK-019 remains selected-place exploration evidence rather than the narrative spine.
+- Acquisition and processing may be planned together but must run sequentially so failed candidates do not enter the processed contract.
+- Candidate-specific EDA can run in parallel after `TASK-066` only when outputs and files do not overlap; the synthesis remains one reviewed `TASK-067` result.
+- `context/ARTISTIC_REDESIGN_BRIEF.md` remains the visual-system baseline, not the final story source, until `TASK-068` is approved.
+- TASK-019 remains selected-place exploration evidence rather than an assumed narrative spine.

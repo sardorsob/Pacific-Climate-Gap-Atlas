@@ -261,3 +261,13 @@ The owner-approved direction is **One Constellation on an Elastic Stage**, with 
 The current scientific, evidence-mark, URL-state, accessibility, generated-data, geometry, and panel-only JSD contracts remain intact. The layout revision may not introduce nested scrolling, scrolljacking, a second active-scene writer, an animation dependency, generated concept data, or unsourced cultural/geopolitical visual claims.
 
 Reason: visual hierarchy must follow the evidence. A persistent map is useful while geography is the main question, but it becomes wasted space when the reader needs aligned comparison fields or 22 readable rank intervals.
+
+## 2026-07-12: Acquire And Explore Additional Data Before Choosing The Final Story
+
+Reopen the competition narrative while preserving the implemented visual system as the baseline. Do not select a final story, rewrite scenes, or add app layers until a targeted official-data expansion has been acquired, processed, and audited.
+
+The first candidate set is population growth, renewable-energy share, safely managed drinking water, crop yield, direct disaster economic loss, and the climate-altering land-cover index. This is a research shortlist, not a promise to use every dataset. Candidates may be rejected for weak coverage, unclear units or denominators, incompatible time periods, ambiguous source semantics, or inability to support a responsible non-causal claim.
+
+`TASK-065` through `TASK-069` implement the sequence: profile -> process -> explore -> select story -> rewrite roadmap. The current Adaptation Gap Index, product title, Nauru/Tuvalu comparison, premise, and five-scene order remain functional but provisional. No candidate becomes a score input automatically.
+
+Reason: the owner prefers building the narrative from explored evidence rather than choosing a compelling concept first and searching for confirming data. This also prevents a broader dataset inventory from becoming an unfocused dashboard or a new composite score without scientific justification.

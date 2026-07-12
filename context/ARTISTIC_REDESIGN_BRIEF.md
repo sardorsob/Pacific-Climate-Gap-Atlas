@@ -2,7 +2,7 @@
 
 ## Status
 
-The 2026-07-09 five-scene evidence contract remains scientifically active, but its 28rem desktop story-rail composition is superseded by the owner-approved 2026-07-11 fullscreen story-stage revision below.
+The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the design but has reopened the final narrative. The five-scene evidence contract and its copy remain the current implementation, not an approved future storyboard. `TASK-065` through `TASK-068` must complete before narrative implementation resumes.
 
 Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is approved and done; `TASK-059` through `TASK-064` form the repair batch.
 
@@ -17,6 +17,27 @@ Narrative identity:
 Public-facing thesis candidate:
 
 > The shape of what the official record can—and cannot—see.
+
+## 2026-07-12 Data-First Hold
+
+Preserve during research:
+
+- the fullscreen map/figure ownership model;
+- equal-presence evidence marks and non-color missingness cues;
+- viewport-scale comparison and rank figures;
+- native document scroll, one canonical scene observer, reduced motion, and accessible controls;
+- generated-data-only evidence and panel-only JSD.
+
+Treat as provisional until `TASK-068`:
+
+- product and narrative titles;
+- the Adaptation Gap Index as the opening or primary layer;
+- the premise and five-scene order;
+- Nauru/Tuvalu as the comparison pair;
+- the claim that uneven general dataset coverage is the main Pacific story;
+- any signal -> impact -> response sequence suggested before the candidate datasets pass comparability review.
+
+Do not modify the app to preview speculative datasets or story copy. New artistic concepts should be recorded in existing briefs and tested against real `TASK-067` evidence before code or generated concept art is commissioned.
 
 ## 2026-07-11 Fullscreen Stage Revision
 

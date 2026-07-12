@@ -4,6 +4,7 @@
 
 - Build an exploratory GIS-first website for the Pacific Adaptation Gap Atlas.
 - Use official Pacific Dataviz Challenge 2026 datasets as the core evidence base.
+- Expand the current nine-dataset baseline with a small, profiled set of additional official datasets before selecting the final competition narrative.
 - Produce a reproducible Python pipeline for dataset profiling, normalization, index construction, and app-ready exports.
 - Create a transparent Adaptation Gap Index with visible missingness and caveats.
 - Add an optional Adaptation Gap Outlook layer if the baseline projection passes data and evaluation gates.
@@ -24,7 +25,7 @@
 
 Primary source inventory lives in `research/official_datasets_2026.csv`.
 
-Priority datasets:
+Current processed baseline:
 
 - mean sea surface temperature anomalies
 - mean surface temperature anomalies
@@ -36,9 +37,22 @@ Priority datasets:
 - fisheries management measures
 - greenhouse gas emissions per capita as responsibility context
 
+Candidate expansion for `TASK-065` profiling, not yet accepted for the story or index:
+
+- population growth, primarily for context and denominator review
+- renewable energy share, as a rate-based response/transition signal
+- safely managed drinking water, as a recorded essential-service condition
+- crop yield, with disaggregated crops inspected only if the aggregate is too coarse
+- direct disaster economic loss, subject to sparse coverage and time alignment
+- climate-altering land-cover index, subject to interpretation and comparability review
+
+Acquisition precedes narrative selection. A candidate may be rejected for weak coverage, incompatible units, ambiguous semantics, poor year alignment, lack of a defensible denominator, or inability to support a non-causal claim. No candidate enters the Adaptation Gap Index automatically.
+
 ## App Scope
 
 The app should open on the map. A short intro can exist, but the first screen must be the exploratory atlas experience.
+
+The current fullscreen map/figure system remains the visual baseline during data discovery. Guided copy, exemplar places, layer priority, the product title, and the role of the Adaptation Gap Index are provisional until `TASK-068` passes owner/scientific review. Do not modify the app narrative merely because a dataset has been acquired.
 
 Core interactions:
 

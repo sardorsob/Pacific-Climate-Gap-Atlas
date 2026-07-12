@@ -1,12 +1,18 @@
 # Problem
 
-## Research Question
+## Current Discovery Question
+
+Which additional official 2026 datasets can support a concrete, defensible Pacific climate story, and what do they reveal after coverage, units, denominators, time alignment, missingness, and causal limits are examined?
+
+## Implemented Baseline Question
 
 Where are Pacific island countries facing the largest mismatch between intensifying climate signals and the systems available to monitor, absorb, or respond to those changes?
 
+This remains the question implemented in the current app. It is provisional because the present capacity side relies on sparse proxies and unnormalized absolute counts, while most rank positions are sensitive to indicator choice. `TASK-068` will decide whether to retain, narrow, or replace it after expanded-data EDA.
+
 ## Decision Value
 
-The atlas should help policymakers, journalists, students, and local advocates identify which geographies deserve closer investigation, not declare definitive winners or losers.
+The final dataviz should help policymakers, journalists, students, and local advocates understand one important Pacific climate problem through traceable evidence. It may help identify places or questions for closer investigation, but it must not declare definitive winners, losers, vulnerability, readiness, or funding need from incomparable proxies.
 
 ## Audience
 
@@ -42,3 +48,5 @@ A public, map-first interactive atlas that lets a user select a Pacific geograph
 - Hiding normalization and weighting choices.
 - Turning JSD/KL divergence into a black-box cluster story or leaderboard.
 - Overfitting an index to look dramatic rather than defensible.
+- Choosing a strong-sounding story first and using only the datasets that confirm it.
+- Adding official datasets merely to increase breadth or create another composite score.

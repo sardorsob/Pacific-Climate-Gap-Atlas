@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Geo } from "../../lib/atlasData";
-import { buildRankBandRows, rankBandTransition } from "./rankBandModel";
+import { buildRankBandRows, rankBandTransition, rankToPercent } from "./rankBandModel";
 
 function makeGeo(code: string, min: number, max: number, robustness: Geo["robustness"]): Geo {
   return {
@@ -36,7 +36,7 @@ function makeGeo(code: string, min: number, max: number, robustness: Geo["robust
 }
 
 describe("rank band model", () => {
-  it("sorts intervals by midpoint without presenting a definitive rank", () => {
+  it("uses stable alphabetical order instead of implying a leaderboard", () => {
     const rows = buildRankBandRows([makeGeo("MH", 4, 19, "fragile"), makeGeo("NR", 1, 7, "sensitive")]);
 
     expect(rows.find((row) => row.code === "MH")).toMatchObject({
@@ -44,10 +44,16 @@ describe("rank band model", () => {
       min: 4,
       max: 19,
       span: 15,
-      midpoint: 11.5,
       highlight: true,
     });
-    expect(rows.map((row) => row.code)).toEqual(["NR", "MH"]);
+    expect(rows.map((row) => row.name)).toEqual(["Marshall Islands", "Nauru"]);
+  });
+
+  it("maps the shared 1 to 22 scale to percentages", () => {
+    expect(rankToPercent(1)).toBe(0);
+    expect(rankToPercent(11.5)).toBe(50);
+    expect(rankToPercent(22)).toBe(100);
+    expect(rankToPercent(99)).toBe(100);
   });
 
   it("uses static layout under reduced motion", () => {

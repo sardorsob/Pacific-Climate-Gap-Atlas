@@ -95,7 +95,12 @@ describe("story figures", () => {
     expect(html).toContain("Marshall Islands");
     expect(html).toContain("4–19");
     expect(html).toContain("Sensitivity bands, not a fixed scoreboard");
+    expect(html).toContain('data-stage-figure="rank-bands"');
     expect(html).toContain('data-motion-mode="static"');
+    expect(html).toContain('class="rank-band-figure__rows"');
+    expect(html).toContain('style="--rank-start:');
     expect(html).toContain("not confidence intervals");
+    expect(html).not.toContain("<svg");
+    expect(html).not.toContain("midpoint");
   });
 });

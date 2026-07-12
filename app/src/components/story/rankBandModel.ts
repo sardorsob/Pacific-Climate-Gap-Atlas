@@ -6,7 +6,6 @@ export type RankBandRow = {
   min: number;
   max: number;
   span: number;
-  midpoint: number;
   robustness: Geo["robustness"];
   highlight: boolean;
 };
@@ -19,11 +18,15 @@ export function buildRankBandRows(geos: Geo[]): RankBandRow[] {
       min: geo.rankMin,
       max: geo.rankMax,
       span: geo.rankMax - geo.rankMin,
-      midpoint: (geo.rankMin + geo.rankMax) / 2,
       robustness: geo.robustness,
       highlight: geo.code === "MH",
     }))
-    .sort((a, b) => a.midpoint - b.midpoint || a.code.localeCompare(b.code));
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function rankToPercent(rank: number): number {
+  const clamped = Math.max(1, Math.min(22, rank));
+  return ((clamped - 1) / 21) * 100;
 }
 
 export function rankBandTransition(reducedMotion: boolean): {

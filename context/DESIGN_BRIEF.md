@@ -33,7 +33,7 @@ Next-redesign concept status:
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
 - Fullscreen stage concepts: cataloged under `artifacts/design/task-058/`.
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
-- Implementation: unlocked by owner approval of `TASK-058`; follow-on tasks are `TASK-059` through `TASK-064`.
+- Implementation: `TASK-059` through `TASK-061` are approved and done; `TASK-062` is back in Checker review after the max-880px fixed-chrome clearance correction; `TASK-063` and `TASK-064` remain.
 
 The current app remains the behavioral and scientific baseline. Future visual work should preserve those contracts while replacing the rail hierarchy with the fullscreen stage.
 
@@ -46,6 +46,8 @@ The map no longer has to remain the largest surface in every guided scene. Visua
 - `explore`: the same marks return to geography and the existing atlas controls become available.
 
 This revision removes the 30rem/28rem rail and 330px rank-chart caps as target constraints. It preserves native scroll, one observer-owned active state, shared evidence marks, URL state, keyboard navigation, reduced motion, and panel-only JSD. See `context/ARTISTIC_REDESIGN_BRIEF.md` for the complete contract.
+
+The rank-sensitivity takeover now uses an unordered HTML interval field rather than the miniature SVG: all geography names remain full and alphabetically ordered, bands share the exact 1–22 scale, Marshall Islands 4–19 remains highlighted, and portrait completion stays in normal page flow with a sticky title/axis. The measured 71px sticky clearance now follows the actual max-880px toolbar breakpoint in both orientations, while 1024px desktop retains 56px; root responsive and Checker acceptance remain.
 
 ## Approved Next Direction: The Shape Of What We Know
 

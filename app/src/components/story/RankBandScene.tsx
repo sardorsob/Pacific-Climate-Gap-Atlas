@@ -1,6 +1,6 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import type { Geo } from "../../lib/atlasData";
-import { buildRankBandRows, rankBandTransition } from "./rankBandModel";
+import { buildRankBandRows, rankBandTransition, rankToPercent } from "./rankBandModel";
 
 type RankBandSceneProps = {
   geos: Geo[];
@@ -23,47 +23,57 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-function axisX(rank: number): number {
-  return 132 + ((Math.max(1, Math.min(22, rank)) - 1) / 21) * 250;
-}
+type RankStyle = CSSProperties & {
+  "--rank-start": string;
+  "--rank-width": string;
+};
 
 export function RankBandScene({ geos, reducedMotion }: RankBandSceneProps) {
   const mediaReducedMotion = usePrefersReducedMotion();
   const transition = rankBandTransition(reducedMotion ?? mediaReducedMotion);
   const rows = buildRankBandRows(geos);
-  const height = Math.max(150, rows.length * 22 + 42);
 
   return (
     <figure
       className="rank-band-figure"
+      data-stage-figure="rank-bands"
       data-motion-mode={transition.mode}
       style={{ "--rank-band-duration": `${transition.duration}ms` } as CSSProperties}
       aria-label="Sensitivity rank bands for the 22 Pacific geographies"
     >
-      <p className="rank-band-figure__intro">Sensitivity bands, not a fixed scoreboard</p>
-      <svg className="rank-band-figure__svg" viewBox={`0 0 400 ${height}`} role="img" aria-label="Rank bands run from 1 to 22; wider bands show more sensitivity to indicator choices.">
-        <line className="rank-band-figure__axis" x1={axisX(1)} y1="18" x2={axisX(22)} y2="18" />
-        {[1, 11, 22].map((rank) => (
-          <text key={rank} className="rank-band-figure__axis-label" x={axisX(rank)} y="11" textAnchor="middle">{rank}</text>
-        ))}
-        {rows.map((row, index) => {
-          const y = 36 + index * 22;
+      <div className="rank-band-figure__sticky-head">
+        <p className="rank-band-figure__intro">Sensitivity bands, not a fixed scoreboard</p>
+        <div className="rank-band-figure__axis" aria-hidden="true">
+          {[1, 8, 15, 22].map((rank) => (
+            <span key={rank} style={{ "--rank-tick": `${rankToPercent(rank)}%` } as CSSProperties}>{rank}</span>
+          ))}
+        </div>
+      </div>
+      <ul className="rank-band-figure__rows">
+        {rows.map((row) => {
+          const start = rankToPercent(row.min);
+          const end = rankToPercent(row.max);
+          const style = {
+            "--rank-start": `${start}%`,
+            "--rank-width": `${Math.max(0, end - start)}%`,
+          } as RankStyle;
           return (
-            <g
+            <li
               key={row.code}
               className={`rank-band-figure__row${row.highlight ? " rank-band-figure__row--highlight" : ""}`}
               data-code={row.code}
               data-highlight={row.highlight ? "true" : "false"}
               aria-label={`${row.name}, sensitivity band ${row.min} to ${row.max}`}
             >
-              <text className="rank-band-figure__name" x="0" y={y + 4}>{row.name}</text>
-              <line className="rank-band-figure__band" x1={axisX(row.min)} y1={y} x2={axisX(row.max)} y2={y} />
-              <circle className="rank-band-figure__midpoint" cx={axisX(row.midpoint)} cy={y} r={row.highlight ? 4 : 3} />
-              {row.highlight && <text className="rank-band-figure__value" x={axisX(row.max) + 7} y={y + 4}>4–19</text>}
-            </g>
+              <span className="rank-band-figure__name">{row.name}</span>
+              <span className="rank-band-figure__plot" style={style} aria-hidden="true">
+                <span className="rank-band-figure__band" />
+                {row.highlight && <span className="rank-band-figure__value">4–19</span>}
+              </span>
+            </li>
           );
         })}
-      </svg>
+      </ul>
       <figcaption className="rank-band-figure__caption">The bands are sensitivity diagnostics, not confidence intervals or a definitive leaderboard.</figcaption>
     </figure>
   );

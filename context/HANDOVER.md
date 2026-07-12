@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` are complete, with `TASK-057` in review: official datasets are profiled and reproducible; the Adaptation Gap Index, optional outlook, EDA, monitoring/rank/JSD diagnostics, corrected evidence-count contract, reduced static app-data pipeline, MapLibre/Natural Earth map, fixed-presence evidence portraits, composed pressure/capacity and Nauru/Tuvalu story figures, rank-band sensitivity scene, panel-only JSD exploration, five-scene guided story, selected-place panels, accessibility work, post-audit visual polish, repository simplification, stale-context cleanup, URL state/history, and bundle-budget checks all exist.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` are complete. `TASK-057` automated and URL-state work exists, but owner visual QA moved the task `in-review -> needs-fix`: the opening does not communicate the atlas premise strongly enough, and scenes 4 and 5 are too small in the fixed story rail.
 
-The current app is the functioning five-scene redesign. A 2026-07-09 full repository/story/implementation/live-layout audit approved **The Shape of What We Know** as the narrative identity. `context/ARTISTIC_REDESIGN_BRIEF.md` records the five-scene storyboard, fixed-presence evidence-mark grammar, desktop/mobile layout, transition system, art direction, exploration simplification, ethical guardrails, and growth path. `TASK-049` through `TASK-056` are QA-accepted and done. `TASK-057` implementation and hydration follow-ups are complete and remain in review: local automated gates and browser-use copied-scene/default-first-scroll checks pass, while the six-viewport human visual/accessibility matrix and deployment/submission actions remain owner-owned. Final build assets are JS 1,022,289 bytes and CSS 93,895 bytes under 1,050,000/95,000 caps.
+The current app remains the functioning behavioral/scientific baseline. `TASK-058` catalogs the replacement composition as **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, and a return of the same marks to geography for Explore. Three concept boards live under `artifacts/design/task-058/`; their generated content is composition-only. The written contract is `context/design-concepts/task-058-fullscreen-story-stage.md`. `TASK-059` through `TASK-064` are pending behind owner approval of `TASK-058`.
 
 ## How To Validate The Scaffold
 
@@ -73,8 +73,9 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Complete owner review for `TASK-057`: run the six requested viewport sizes, keyboard/focus/contrast/color-deficiency checks, and final evidence/claims read-through. Keep JSD panel-only and do not reintroduce similarity map arcs.
-2. Deploy only after owner approval; record the final public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
+1. Review `context/design-concepts/task-058-fullscreen-story-stage.md` and the three `artifacts/design/task-058/` boards. Approve or revise the recommended synthesis before a code-level plan is written.
+2. After approval, implement `TASK-059` through `TASK-064` one task/commit at a time with separate Maker and Checker passes.
+3. Deploy only after `TASK-064` closes the owner findings and `TASK-057` legally returns to review; record the final public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
 
 ## Known Caveats
 
@@ -99,7 +100,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - The post-TASK-039 interaction audit was folded into `TASK-040` through `TASK-042` and is complete. The standalone audit file was removed; durable results now live in `TASKS.md`, `PROJECT.md`, this handover, and the progress log.
 - The post-TASK-042 design critique was folded into `TASK-043` through `TASK-047`; the standalone critique file was removed. `TASK-043` resolved the root visual finding by restoring guaranteed-size presence marks with land geometry as secondary texture/context, `TASK-044` added evidence-bearing motion, `TASK-045` resolved the chrome/type mismatch, `TASK-046` moved official-data visibility before the formula while keeping JSD selected-anchored, and `TASK-047` added selected-only JSD neighbor arcs.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.
-- The implemented winner-audit response is a guided scroll atlas, not a long cinematic landing page. The first viewport must still show the map and evidence.
+- The implemented winner-audit response remains a guided scroll atlas, not a detached landing page. `TASK-058` permits a fullscreen premise because the map and evidence still occupy the first viewport; it does not permit a long decorative pre-map intro.
 - TASK-022 belonged to Claude, but Claude did not stage, commit, push, change data methodology, or alter generated artifacts.
 - TASK-024 QA is complete for the accepted TASK-022 revision. Future Claude visual or copy changes should go through the same Codex QA gate before commit.
 - TASK-021 found a concrete first-fix issue: the desktop legend was hidden inside a closed `<details>` disclosure whose summary was hidden. That issue was fixed in the accepted mockup revision.

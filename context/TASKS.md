@@ -1331,8 +1331,171 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: URL reload/copy/Back/Forward restore valid state; invalid parameters never crash; automated gates pass; target desktop/mobile/reduced-motion/accessibility/evidence checks are recorded; remaining owner/deployment actions are explicit and truthful.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; git diff --check
 - Manual QA: Run the full viewport matrix at 1440x900, 1280x800, 1024x768, 430x932, 390x844, and 360x800; test keyboard/focus/touch/reduced-motion/color deficiency, URLs/history, evidence claims, sources, panels, and final handoff.
-- QA notes: Implementation and hydration follow-ups are complete and ready for owner review. Added dependency-free `mode`, `scene`, `layer`, `view`, `place`, and `outlook` query state with sanitization, passive scene `replaceState`, explicit action `pushState`, guarded `popstate` application, hydration revision ordering, and deferred copied-scene restoration; no router or runtime dependency was added. Added URL round-trip/invalid-input tests and a bundle checker test; accepted TASK-056 baseline was JS 1,018,827 bytes and CSS 93,895 bytes. Final build is JS 1,022,289 bytes and CSS 93,895 bytes under 1,050,000/95,000 caps. Automated verification passed: Python discovery 60/60, frontend 34/34, data contracts, required artifacts, task statuses, secret scan, build, budget, and whitespace. Browser-use verified copied-scene URL restoration with deferred scroll, default first-scroll canonicalization, invalid fallback, Explore/layer/place push, passive replacement, and Back/Forward. The six requested viewport dimensions and final human evidence/accessibility review remain owner-pending; deployment, final public URL, competition form, AI disclosure, and sensitive wording review remain explicitly pending.
+- QA notes: Implementation and hydration follow-ups completed the automated and URL-state portion of the gate. Added dependency-free `mode`, `scene`, `layer`, `view`, `place`, and `outlook` query state with sanitization, passive scene `replaceState`, explicit action `pushState`, guarded `popstate` application, hydration revision ordering, and deferred copied-scene restoration; no router or runtime dependency was added. Added URL round-trip/invalid-input tests and a bundle checker test; accepted TASK-056 baseline was JS 1,018,827 bytes and CSS 93,895 bytes. Final build is JS 1,022,289 bytes and CSS 93,895 bytes under 1,050,000/95,000 caps. Automated verification passed: Python discovery 60/60, frontend 34/34, data contracts, required artifacts, task statuses, secret scan, build, budget, and whitespace. Browser-use verified copied-scene URL restoration with deferred scroll, default first-scroll canonicalization, invalid fallback, Explore/layer/place push, passive replacement, and Back/Forward.
+
+  Owner visual QA on 2026-07-11 failed two acceptance conditions: the opening story does not communicate the project premise clearly enough, and the 30rem/28rem rail plus 330px rank-figure cap makes scenes 4 and 5 too small for comfortable reading. This is an `in-review -> needs-fix` transition. The correction is cataloged in `TASK-058` and implemented through `TASK-059`–`TASK-064`; deployment and submission remain out of scope until the repaired owner matrix passes.
 - Attempts: 3
+- Max attempts: 4
+- Attempt log: 2026-07-09: Created as the final integration and readiness gate for the artistic redesign sequence. 2026-07-11: Implemented URL state/history and bundle budget with TDD; ran automated gates and local browser-use URL/history smoke. Follow-ups fixed hydration revision ordering and copied-scene URL preservation with deferred scroll. 2026-07-11 owner visual QA rejected the opening clarity and scene-4/5 scale; repair work was decomposed into TASK-058–064 before another attempt.
+- Status: needs-fix
+
+## TASK-058
+- Phase: visual-concept
+- Title: Lock the fullscreen story-stage revision
+- Depends on: TASK-056; owner findings from TASK-057
+- Assigned agent: Codex Maker; owner approval required
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
+- User value / decision value: Replaces the undersized story rail with a coherent fullscreen composition before implementation changes the functioning baseline.
+- Functional notes: Catalog the Elastic Stage, Tidal Chapters, and One Constellation boards; select one implementable synthesis; define prologue, stage ownership, desktop/mobile composition, motion, component boundaries, and QA gates.
+- Statistical notes: Concept images are composition studies only. Generated values, labels, photographs, land shapes, and boundaries never become implementation data.
+- Edge cases: Preserve one native scroll owner, stable scene URLs, reduced motion, equal geography presence, panel-only JSD, and all reported-zero/missing-row distinctions.
+- Files to create/modify: artifacts/design/task-058/*, context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/PROJECT.md, context/DECISIONS.md, context/HANDOVER.md, context/TASKS.md, context/logs/*, context/memory/patterns.md
+- Artifacts to produce: three cataloged concept boards, one written synthesis, dependency-ordered follow-on tasks, stale-state corrections.
+- Acceptance criteria: Owner approves One Constellation on an Elastic Stage or records a replacement direction; the document contains no placeholders or contradictory layout rules; scenes 4 and 5 have explicit readable-scale contracts; mobile portrait and landscape behavior are defined; implementation remains gated.
+- Verification commands: python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare all three boards; read the design contract against owner feedback; confirm generated visual content is labeled non-data and the old rail constraints are explicitly superseded.
+- QA notes: Separate Checker pass completed for the cataloging artifact. All three boards are present at 1536×1024 and explicitly labeled composition-only. The design-spec placeholder scan returned no `TBD`, `TODO`, or vague implementation instructions. `python scripts/check_required_artifacts.py` passed 48 paths; `python scripts/validate_task_statuses.py` passed 65 statuses; `python scripts/check_secrets.py` passed; `git diff --check` passed. Diff scope contains context Markdown plus the three concept PNGs and no app/data implementation changes. The written contract is internally consistent about the six guided IDs, three stage modes, superseded rail constraints, mobile sibling composition, and TASK-057 legal state. Owner review is still required before this task can become done.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-09: Created as the final integration and readiness gate for the artistic redesign sequence. 2026-07-11: Implemented URL state/history and bundle budget with TDD; ran automated gates and local browser-use URL/history smoke. Follow-ups fixed hydration revision ordering and copied-scene URL preservation with deferred scroll; owner-only final review and deployment actions remain.
+- Attempt log: 2026-07-11: Owner authorized cataloging after approving fullscreen visual takeovers. Maker created the durable design contract and split implementation into TASK-059–064.
 - Status: in-review
+
+## TASK-059
+- Phase: story-editorial
+- Title: Add the fullscreen premise and rewrite guided scene copy
+- Depends on: TASK-058
+- Assigned agent: unassigned
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/STORY_BRIEF.md
+- Data refs: app/public/data/geographies.json, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
+- User value / decision value: Lets a first-time reader understand what the atlas compares, why the official record matters, and what the map cannot claim before technical detail begins.
+- Functional notes: Add one stable premise prologue before the five evidence scenes; keep one claim, caveat, source, and visual operation per evidence scene; remove rail-sized or interface-explainer copy.
+- Statistical notes: Use `visible capacity`, not readiness; preserve 22 places, 19/22 fragile, MH 4–19, and monitoring semantics only after source checks.
+- Edge cases: Copy must fit 360px without hiding active marks; the opening caveat remains visible but subordinate; progress and URL state must handle the new premise safely.
+- Files to create/modify: app/src/lib/scenes.ts and tests, app/src/components/story/StoryScene.tsx, app/src/components/story/SceneProgress.tsx, context/STORY_BRIEF.md
+- Artifacts to produce: premise content contract, revised scene copy, claims/source audit.
+- Acceptance criteria: A cold reader can state the project premise after the prologue; all six guided IDs are stable and tested; each evidence claim has a caveat/source; no new overclaim or guided JSD appears.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Read prologue and all five scenes at 1440×900 and 360×800; cross-check every numeric and monitoring claim.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from TASK-057 owner QA and TASK-058 design synthesis.
+- Status: pending
+
+## TASK-060
+- Phase: story-architecture
+- Title: Replace the fixed rail with one fullscreen story stage
+- Depends on: TASK-059
+- Assigned agent: unassigned
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: none
+- Scientific refs: none
+- User value / decision value: Gives the active evidence the viewport while preserving predictable native scrolling, keyboard navigation, and copied URLs.
+- Functional notes: Keep `StoryScrolly` as observer owner; add a focused stage host and pure scene-to-stage model; render map-immersive and figure-takeover modes without nested overflow or scroll interception.
+- Statistical notes: Structural task only; no generated data, score, rank, monitoring, or JSD semantics change.
+- Edge cases: Rapid scroll is latest-state-wins; Back/Forward and copied scene URLs restore the correct stage; ResizeObserver/viewport changes do not strand a stale takeover; reduced motion is immediate.
+- Files to create/modify: app/src/App.tsx, app/src/components/story/StoryScrolly.tsx, app/src/components/story/StoryStage.tsx, app/src/lib/storyStageModel.ts and tests, app/src/styles/base.css, app/src/lib/urlState.ts tests
+- Artifacts to produce: fullscreen sticky stage shell, deterministic stage model, desktop/mobile shell QA.
+- Acceptance criteria: The 30rem grid rail is absent in guided mode; one observer remains the only active-scene writer; map and figure stage modes fill the intended viewport; URL/history/keyboard tests pass; Explore behavior remains intact.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Exercise scroll, progress, keyboard, copied URLs, Back/Forward, resize, and reduced motion at desktop and mobile sizes.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from TASK-058.
+- Status: pending
+
+## TASK-061
+- Phase: story-figures
+- Title: Promote Nauru and Tuvalu into a fullscreen comparison takeover
+- Depends on: TASK-060
+- Assigned agent: unassigned
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/STORY_BRIEF.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Makes the scene-four evidence legible and lets readers compare aligned records instead of deciphering two miniature cards.
+- Functional notes: Render aligned desktop portraits at stage scale; use consecutive Nauru and Tuvalu steps plus a comparison takeaway on portrait mobile; keep a quiet locator only when it helps orientation.
+- Statistical notes: Compare official evidence only; use visible capacity; preserve gap, pressure, capacity, score inputs, monitoring state, and rank bands; no JSD or lived-reality inference.
+- Edge cases: Long labels, 1024×768, 360px portrait, mobile landscape, keyboard reading order, and no-swipe fallback must work.
+- Files to create/modify: app/src/components/story/PlaceComparisonScene.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css
+- Artifacts to produce: stage-sized comparison, responsive sequential composition, accessibility and claims QA.
+- Acceptance criteria: Every field is readable without zoom at target viewports; desktop alignment and mobile sequence expose the same evidence; no clipping, horizontal overflow, or map/figure competition; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare scene 4 at 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800, and landscape mobile.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from TASK-057 owner scale finding.
+- Status: pending
+
+## TASK-062
+- Phase: story-figures
+- Title: Promote rank sensitivity into a fullscreen interval field
+- Depends on: TASK-060
+- Assigned agent: unassigned
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: app/public/data/geographies.json, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/ANALYSIS_BRIEF.md
+- User value / decision value: Makes all 22 geography names and rank bands readable while preserving one shared comparison scale.
+- Functional notes: Remove the 330px cap; render a desktop/landscape full-screen interval field and a portrait page-tall field with sticky title/axis and no nested scroll.
+- Statistical notes: Sort and label exactly as the approved sensitivity diagnostic requires; highlight MH 4–19; bands are not confidence intervals or a definitive leaderboard.
+- Edge cases: At least 13px labels and roughly 26–30px desktop row height; long names; 22 rows; reduced motion; screen-reader summary; portrait completion without fixed-chrome overlap.
+- Files to create/modify: app/src/components/story/RankBandScene.tsx, app/src/components/story/rankBandModel.ts and tests, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css
+- Artifacts to produce: responsive interval field, text alternative, scale/row-size QA record.
+- Acceptance criteria: All 22 names and bands are readable without zoom; one 1–22 scale is preserved; MH 4–19 and 19/22 fragility are correct; no clipping, 9px labels, nested scroll, or leaderboard implication; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Inspect scene 5 at all target viewports, portrait completion, mobile landscape, reduced motion, and screen-reader reading order.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from TASK-057 owner scale finding.
+- Status: pending
+
+## TASK-063
+- Phase: story-motion
+- Title: Connect shared-mark transitions and the Explore handoff
+- Depends on: TASK-061, TASK-062
+- Assigned agent: unassigned
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/DESIGN_BRIEF.md
+- Data refs: app/public/data/geographies.json
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Makes the sequence feel like one evidence system changing form and ensures the story disappears cleanly when exploration begins.
+- Functional notes: Preserve geography keys through map, split, comparison, interval, and return states; add restrained chamber arrival/recession; remove story chrome after handoff; keep existing Explore controls and panel behavior.
+- Statistical notes: Motion never invents interpolation meaning or changes values; all final states use generated data.
+- Edge cases: Rapid scene scrubbing, progress jumps, copied URLs, Back/Forward, reduced motion, aborted camera transitions, and reopening guided mode must settle deterministically.
+- Files to create/modify: app/src/components/story/StoryStage.tsx, app/src/components/story/StoryScrolly.tsx, app/src/components/map/AtlasMap.tsx, app/src/App.tsx, app/src/styles/base.css, focused tests
+- Artifacts to produce: shared-motion sequence, deterministic latest-state checks, clean handoff/re-entry QA.
+- Acceptance criteria: Marks preserve identity across forms; no stale transition wins; reduced motion presents complete static states; Explore removes story chrome and restores the full current atlas; tests/build pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Scroll slowly/rapidly, jump 1→5→2, enter Explore, use Back, reopen Guided, and repeat with reduced motion.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created from TASK-058.
+- Status: pending
+
+## TASK-064
+- Phase: redesign-readiness
+- Title: Re-run owner QA and close the fullscreen-stage repair
+- Depends on: TASK-059, TASK-060, TASK-061, TASK-062, TASK-063
+- Assigned agent: unassigned; owner final review required
+- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/HANDOVER.md, context/docs/submission-notes.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
+- Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
+- User value / decision value: Proves the redesigned story now communicates its purpose and gives primary evidence enough space before deployment or submission.
+- Functional notes: Run Maker/Checker source, automated, browser, responsive, accessibility, URL/history, reduced-motion, evidence, bundle, and owner-taste gates; reconcile TASK-057 only after evidence passes.
+- Statistical notes: Recheck all 22 marks, eight inputs/context separation, PN/NR zero versus AS/WF missing, Nauru/Tuvalu fields, MH 4–19, 19/22 fragility, panel-only JSD, geometry caveat, and outlook language.
+- Edge cases: Six standard viewports plus mobile landscape; keyboard/focus/contrast/color deficiency; slow and rapid scroll; copied URLs; offline/data-error state; no deployment claim without external action.
+- Files to create/modify: app tests if QA finds gaps, context/TASKS.md, context/PROJECT.md, context/HANDOVER.md, context/logs/*, context/docs/submission-notes.md
+- Artifacts to produce: final screenshot matrix, QA evidence, owner decision, reconciled readiness state.
+- Acceptance criteria: Opening premise passes cold-read review; scenes 4 and 5 pass readability targets; all automated and manual gates pass; owner accepts visual/accessibility matrix; TASK-057 may legally return needs-fix -> in-progress -> in-review.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; git diff --check
+- Manual QA: Full target viewport, mobile-landscape, keyboard, focus, touch, reduced-motion, contrast, color-deficiency, URL/history, claims, source, panel, and Explore matrix.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created as the closing gate for TASK-057 owner findings.
+- Status: pending

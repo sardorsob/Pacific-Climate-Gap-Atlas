@@ -2,9 +2,9 @@
 
 ## Status
 
-Approved design contract as of 2026-07-09. The five-scene redesign is implemented through `TASK-057` and remains the active product direction; this brief records the contract and guardrails for final owner review.
+The 2026-07-09 five-scene evidence contract remains scientifically active, but its 28rem desktop story-rail composition is superseded by the 2026-07-11 fullscreen story-stage revision in `context/design-concepts/task-058-fullscreen-story-stage.md`.
 
-The seven-beat app was the historical pre-redesign baseline before `TASK-048`. The current functioning path is the five-scene native-scroll redesign through `TASK-057`; the remaining gate is owner visual/accessibility and submission readiness review.
+Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is the owner-review design gate for the next implementation batch.
 
 Working title:
 
@@ -17,6 +17,19 @@ Narrative identity:
 Public-facing thesis candidate:
 
 > The shape of what the official record can—and cannot—see.
+
+## 2026-07-11 Fullscreen Stage Revision
+
+The next composition is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for editorial evidence chambers.
+
+- Add one full-screen premise prologue before the five evidence scenes.
+- Let the map own the full viewport for the prologue and scenes 1–3.
+- Let the Nauru/Tuvalu comparison own the viewport in scene 4.
+- Let the 22-row interval field own the viewport in scene 5.
+- Return the same 22 evidence marks to geography for Explore.
+- Keep native document scroll and one observer-owned active state; do not add scrolljacking or nested overflow.
+
+The evidence grammar, fixed-presence marks, five evidence operations, panel-only JSD, generated-data contract, and ethical guardrails below remain authoritative. Where the older layout contract says the map must remain sticky beside a 28rem story column or the mobile map must remain 46svh for every scene, the `TASK-058` fullscreen-stage contract supersedes it.
 
 ## Why The Atlas Needs Another Pass
 

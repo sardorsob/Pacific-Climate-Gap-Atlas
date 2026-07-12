@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the approved **The Shape of What We Know** story contract. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` now supplies the five-scene guided spine and return-to-explore handoff. The older seven-beat notes below are retained as historical rationale only.
+Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner QA on 2026-07-11 kept those five evidence scenes but added a fullscreen premise prologue and promoted scenes 4 and 5 to viewport takeovers. The complete revision is `context/design-concepts/task-058-fullscreen-story-stage.md`; older seven-beat notes remain historical rationale only.
 
 Source basis:
 
@@ -28,6 +28,16 @@ The strongest story is:
 
 > Across 22 Pacific geographies, climate pressure and visible adaptation capacity are unevenly matched, and so is the official data behind the comparison. This atlas maps where the gap looks widest and is honest about where the record falls silent.
 
+The next guided opening states that argument before teaching the evidence grammar:
+
+> Climate pressure is not the same as adaptation capacity.
+
+> Across 22 Pacific places, official records show both unevenly.
+
+> This atlas maps the gap between them—and makes the missing evidence visible.
+
+The necessary opening caveat remains visible but subordinate: visible capacity is what the available official datasets can show, not full readiness or lived adaptive capacity.
+
 This is stronger than a simple ranking story because the rank evidence is fragile. It is stronger than a monitoring-only story because monitoring is one proxy, not the whole adaptation system. It is stronger than a responsibility-only story because responsibility-context indicators are context fields, not score drivers. It is stronger than an outlook story because the outlook is a stress test, not a forecast.
 
 Historical baseline through `TASK-047`:
@@ -36,7 +46,7 @@ Historical baseline through `TASK-047`:
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 - `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
 
-Current guided story after `TASK-051`:
+Current evidence spine after `TASK-051`, retained by `TASK-058` after the new premise prologue:
 
 - `SCENES` contains exactly five ordered scene IDs: `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
 - Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
@@ -344,12 +354,12 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 ## Remaining Product Decisions
 
 1. `TASK-048` corrected score-input versus context-only counting before the evidence glyph was designed against production data.
-2. `TASK-049` approved desktop and mobile visual concepts before the frontend redesign began.
-3. Exact final palette, evidence-mark silhouette, context-tick position, type stacks, and motion tokens are locked in the `TASK-049` concept review and consumed by TASK-050 through TASK-055.
+2. `TASK-049` approved the evidence-mark grammar before the frontend redesign began; `TASK-058` supersedes its rail dimensions after owner visual QA.
+3. The palette, evidence-mark silhouette, context-tick position, type stacks, and 560ms evidence motion remain locked from `TASK-049`; fullscreen stage ownership and responsive scene scale come from `TASK-058`.
 4. Outlook remains app-optional and outside the guided five-scene spine.
-5. Official scored-geography boundary polygons require a separate source/license/geopolitical review and are not part of `TASK-048` through `TASK-057`.
+5. Official scored-geography boundary polygons require a separate source/license/geopolitical review and are not part of `TASK-048` through `TASK-064`.
 6. Pacific-language localization and local/community knowledge layers require human review and consent-based collaboration; they are growth paths, not implied scope.
 
 ## Handoff To Design
 
-The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/ARTISTIC_REDESIGN_BRIEF.md` and the `TASK-048` through `TASK-057` sequence rather than extending the current seven-beat rail.
+The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/design-concepts/task-058-fullscreen-story-stage.md` and `TASK-059` through `TASK-064`; do not extend either the retired seven-beat rail or the undersized 28rem five-scene rail.

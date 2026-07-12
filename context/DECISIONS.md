@@ -245,3 +245,19 @@ Reason: deleting and restructuring during active visual work would create moving
 The responsibility-context greenhouse-gas dataset remains available in trace rows and is explicitly labeled as outside the score. EDA evidence density and divergence visibility now use score-input counts only.
 
 Reason: a correct semantic contract is required before missingness and completeness can be made visual. The regenerated artifacts preserve the existing score values while removing the risk of describing context data as score evidence.
+
+## 2026-07-11: Propose A Fullscreen Evidence Stage To Replace The Fixed Story Rail
+
+Owner QA rejected the functioning 28rem rail composition because the opening did not explain the project clearly enough and scenes 4 and 5 made primary evidence too small to read comfortably.
+
+The recommended planning direction, pending the `TASK-058` owner gate, is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for the comparison and rank chambers:
+
+- one fullscreen premise precedes the five evidence scenes;
+- the map owns the viewport for the premise and scenes 1–3;
+- Nauru/Tuvalu owns the viewport in scene 4;
+- the 22-row interval field owns the viewport in scene 5;
+- the same 22 marks return to geography for Explore.
+
+The current scientific, evidence-mark, URL-state, accessibility, generated-data, geometry, and panel-only JSD contracts remain intact. The layout revision may not introduce nested scrolling, scrolljacking, a second active-scene writer, an animation dependency, generated concept data, or unsourced cultural/geopolitical visual claims.
+
+Reason: visual hierarchy must follow the evidence. A persistent map is useful while geography is the main question, but it becomes wasted space when the reader needs aligned comparison fields or 22 readable rank intervals.

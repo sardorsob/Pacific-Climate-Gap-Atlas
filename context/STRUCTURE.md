@@ -26,6 +26,7 @@
 - `context/STORY_BRIEF.md`: final TASK-018 narrative contract, storyboard beats, exemplars, and caveats.
 - `context/DESIGN_BRIEF.md`: final TASK-018 map-first visual and interaction contract for design/build.
 - `context/ARTISTIC_REDESIGN_BRIEF.md`: approved 2026-07-09 next-direction contract for “The Shape of What We Know,” including five scenes, evidence marks, motion, mobile, simplification, and growth.
+- `context/design-concepts/task-058-fullscreen-story-stage.md`: 2026-07-11 owner-review contract that supersedes the fixed rail with a fullscreen premise, map-led geographic scenes, and figure takeovers.
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`: live reference audit for map, climate, environmental, selected-geography, evidence-strip, and guided-tour interaction patterns.
 - `context/WINNER_SCROLL_TOUR_AUDIT.md`: Pacific Dataviz winner audit and scroll-led hybrid recommendation.
 - `context/INFORMATION_DIVERGENCE_PLAN.md`: analysis-ready JSD evidence-fingerprint layer scope and interface notes.
@@ -34,7 +35,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: implementation and analysis plans retained for traceability. The redesign plans `task-048-evidence-semantics-implementation-plan.md`, `tasks-049-055-artistic-story-implementation-plan.md`, and `tasks-056-057-simplification-readiness-implementation-plan.md` are complete; no redesign implementation plan remains active. Completed one-off plans are consolidated back into living context and may be archived or pruned.
+- `context/plans/`: implementation and analysis plans retained for traceability. The redesign plans `task-048-evidence-semantics-implementation-plan.md`, `tasks-049-055-artistic-story-implementation-plan.md`, and `tasks-056-057-simplification-readiness-implementation-plan.md` are complete. The TASK-058 design is awaiting owner review, so no code-level TASK-059–064 plan exists yet.
 
 ## Analysis
 
@@ -68,6 +69,7 @@
 - `data/external/geography_context.csv`: descriptive GIS context table for subregions, status labels, and island-group notes.
 - `data/contracts/`: generated JSON source, coverage, and schema contracts for priority official datasets.
 - `artifacts/`: figures, tables, reports, run bundles, and provenance.
+- `artifacts/design/task-058/`: Elastic Stage, Tidal Chapters, and One Constellation composition boards; generated content is visual reference only, never app data.
 - `artifacts/tables/dataset_profile.csv`: generated official dataset profile table.
 - `artifacts/tables/adaptation_gap_index.csv`: geography-level draft Adaptation Gap Index baseline.
 - `artifacts/tables/adaptation_gap_indicator_trace.csv`: latest-observation trace table behind each score.

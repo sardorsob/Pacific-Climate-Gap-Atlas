@@ -2,13 +2,13 @@
 
 ## Immediate Next Step
 
-`TASK-048` is QA-accepted and done. The index, EDA, generated app data, validator, map-size encoding, legend, and panel separate eight possible score inputs from responsibility-context and total trace rows. Do not reintroduce `included_indicator_count`.
+`TASK-057` is `needs-fix` after owner visual QA. Automated URL/history, build, data, and bundle checks passed, but the opening did not communicate the project strongly enough and scenes 4 and 5 were too small in the fixed rail. `TASK-058` is the current owner-review gate; read `context/design-concepts/task-058-fullscreen-story-stage.md` before any app edit.
 
 ## Next Build Step
 
-`TASK-049` through `TASK-056` are approved and done. `TASK-050` established the native document-scroll shell and observer-owned active state; `TASK-051` replaced the historical seven-beat spine with five scenes plus a closing handoff; `TASK-052` added fixed-size evidence portraits with eight score-input ticks, a detached context tick, and reporting edges; `TASK-053` added pressure/capacity lobes and aligned Nauru/Tuvalu figures; `TASK-054` added the 22-row rank-band scene and shared motion grammar; `TASK-055` removed similarity map connectors, kept full panel-only JSD evidence, and made mobile selection sheets collapsed by default; `TASK-056` completed repository simplification. `TASK-057` implementation and hydration follow-ups are complete and remain in review for the owner matrix. Each task receives its own Builder/QA status transitions and commit.
+`TASK-049` through `TASK-056` are approved and done. Their evidence grammar and interaction contracts remain the baseline. The next batch is `TASK-059` premise copy, `TASK-060` fullscreen stage architecture, `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Do not write the code-level implementation plan or begin app changes until the owner approves `TASK-058`.
 
-The five-scene **The Shape of What We Know** story is now the functioning redesigned path in `context/ARTISTIC_REDESIGN_BRIEF.md`. JSD remains selected-place panel evidence only; similarity map arcs are removed. TASK-056 is accepted; TASK-057 implementation and hydration follow-ups are complete and remain in review for the owner matrix.
+The five evidence scenes remain the narrative spine, preceded by one fullscreen premise. The recommended composition is **One Constellation on an Elastic Stage**. JSD remains selected-place panel evidence only; similarity map arcs stay removed.
 
 ## Current Evidence Snapshot
 
@@ -25,5 +25,7 @@ The five-scene **The Shape of What We Know** story is now the functioning redesi
 
 ## 2026-07-11
 
+- Owner visual QA moved `TASK-057` from `in-review` to `needs-fix`: the first story view does not explain the atlas premise clearly enough, and the fixed 30rem/28rem rail plus 330px rank figure makes scenes 4 and 5 too small. Cataloged three new composition boards under `artifacts/design/task-058/` and wrote the fullscreen-stage synthesis and `TASK-059`–`TASK-064` batch. No app code, data, scoring, or generated runtime artifacts changed.
+
 - Independent browser QA accepted `TASK-056`: desktop 1200x734, mobile 390x844, Explore handoff, all five scenes, selected NR/TV/FJ/AS/WF/MH panels, Methods & sources, and reduced-motion behavior passed with 22 marks, no overflow, expected visual attributes, 56px/44px mobile controls, and the panel-only similarity caveat. `TASK-056` is done; proceed to `TASK-057` for URL state, bundle-budget, and final readiness QA.
-- `TASK-057` implementation and hydration follow-ups are complete and remain in review. URL state is dependency-free and history-safe; automated release gates passed (60 Python tests, 34 frontend tests, contracts/artifacts/statuses/secrets, build, 1,022,289-byte JS and 93,895-byte CSS budget, whitespace). Browser-use verified copied-scene URL restoration with deferred scroll, default first-scroll canonicalization, invalid fallback, Explore/layer/place pushes, passive replacement, and Back/Forward. The six requested viewport dimensions, final keyboard/focus/contrast/color-deficiency pass, sensitive wording/AI disclosure review, submission form, hosting, and public URL remain owner actions; no deployment or submission is claimed.
+- `TASK-057` URL/history and hydration follow-ups passed their automated gates (60 Python tests, 34 frontend tests, contracts/artifacts/statuses/secrets, build, 1,022,289-byte JS and 93,895-byte CSS budget, whitespace), and Browser-use verified copied-scene restoration and history behavior. Owner visual QA then failed the opening clarity and scene-4/5 scale, so the task is `needs-fix`; no deployment or submission is claimed.

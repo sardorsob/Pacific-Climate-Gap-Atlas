@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning five-scene atlas and its approved artistic direction. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-056`. The target artistic redesign is defined in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+Status: semantic design brief for the functioning five-scene atlas and its next fullscreen-stage revision. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-057`, but owner QA returned the composition `needs-fix`. The target revision is defined in `context/design-concepts/task-058-fullscreen-story-stage.md` and reconciled into `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 Design skill basis:
 
@@ -30,9 +30,22 @@ Next-redesign concept status:
 - Narrative and semantic direction: approved.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
-- Implementation: unlocked after TASK-048 QA acceptance and the TASK-049 concept gate.
+- Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
+- Fullscreen stage concepts: cataloged under `artifacts/design/task-058/`.
+- Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
+- Implementation: locked behind owner review of `TASK-058`; follow-on tasks are `TASK-059` through `TASK-064`.
 
-The current app is the behavior baseline. Future visual work should preserve its scientific and accessibility contracts while following the approved redesign.
+The current app remains the behavioral and scientific baseline. Future visual work should preserve those contracts while replacing the rail hierarchy with the fullscreen stage.
+
+## Fullscreen Stage Layout Revision
+
+The map no longer has to remain the largest surface in every guided scene. Visual ownership follows the evidence:
+
+- `map-immersive`: premise and scenes 1–3 use a full-viewport map with large captions over safe ocean space;
+- `figure-takeover`: scene 4 expands Nauru/Tuvalu into a full-screen aligned comparison and scene 5 expands the 22 rank bands into a full-screen interval field;
+- `explore`: the same marks return to geography and the existing atlas controls become available.
+
+This revision removes the 30rem/28rem rail and 330px rank-chart caps as target constraints. It preserves native scroll, one observer-owned active state, shared evidence marks, URL state, keyboard navigation, reduced motion, and panel-only JSD. See `context/design-concepts/task-058-fullscreen-story-stage.md` for the complete contract.
 
 ## Approved Next Direction: The Shape Of What We Know
 
@@ -53,7 +66,7 @@ The major design decisions are:
 - a contemporary scientific ocean-chart art direction: near-black Pacific blue, subdued cartographic texture, coral/terracotta gap, Pacific blue pressure, sea-glass capacity, mineral-white editorial type;
 - no appropriation of Indigenous Pacific visual motifs; culturally grounded expansion requires Pacific co-design.
 
-TASK-049 locks the implementation values: 44px circular evidence portraits with a 20px inner field and eight 5px radial ticks; score-input order is sea-surface temperature, surface temperature, rainfall, sea level, directly affected persons, monitoring network, power generation, fisheries management; the detached context tick sits at 4:30; reporting edges are continuous, open-dash, or broken-dot; desktop scene copy is capped at 28rem; mobile map height targets 46svh; motion uses 560ms with `cubic-bezier(0.22, 1, 0.36, 1)`; and the type stacks remain Georgia plus the system sans stack. The six concept frames are composition studies only and never override generated data values.
+TASK-049 locks the evidence-mark values: 44px circular evidence portraits with a 20px inner field and eight 5px radial ticks; score-input order is sea-surface temperature, surface temperature, rainfall, sea level, directly affected persons, monitoring network, power generation, fisheries management; the detached context tick sits at 4:30; reporting edges are continuous, open-dash, or broken-dot; motion uses 560ms with `cubic-bezier(0.22, 1, 0.36, 1)`; and the type stacks remain Georgia plus the system sans stack. Its 28rem desktop copy cap and universal 46svh mobile map are historical rail values superseded by TASK-058 stage ownership. All concept frames remain composition studies and never override generated data values.
 
 `context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe enduring constraints; the active story uses five scenes, native document scroll, fixed evidence marks, and panel-only JSD.
 

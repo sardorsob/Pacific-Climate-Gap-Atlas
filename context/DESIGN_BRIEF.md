@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning five-scene atlas and its next fullscreen-stage revision. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-057`, but owner QA returned the composition `needs-fix`. The target revision is defined in `context/design-concepts/task-058-fullscreen-story-stage.md` and reconciled into `context/ARTISTIC_REDESIGN_BRIEF.md`.
+Status: semantic design brief for the functioning five-scene atlas and its approved fullscreen-stage revision. The current app implements the native-scroll five-scene story and panel-only JSD contract through `TASK-057`, but owner QA returned the composition `needs-fix`. The target revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 Design skill basis:
 
@@ -33,7 +33,7 @@ Next-redesign concept status:
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
 - Fullscreen stage concepts: cataloged under `artifacts/design/task-058/`.
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
-- Implementation: locked behind owner review of `TASK-058`; follow-on tasks are `TASK-059` through `TASK-064`.
+- Implementation: unlocked by owner approval of `TASK-058`; follow-on tasks are `TASK-059` through `TASK-064`.
 
 The current app remains the behavioral and scientific baseline. Future visual work should preserve those contracts while replacing the rail hierarchy with the fullscreen stage.
 
@@ -45,7 +45,7 @@ The map no longer has to remain the largest surface in every guided scene. Visua
 - `figure-takeover`: scene 4 expands Nauru/Tuvalu into a full-screen aligned comparison and scene 5 expands the 22 rank bands into a full-screen interval field;
 - `explore`: the same marks return to geography and the existing atlas controls become available.
 
-This revision removes the 30rem/28rem rail and 330px rank-chart caps as target constraints. It preserves native scroll, one observer-owned active state, shared evidence marks, URL state, keyboard navigation, reduced motion, and panel-only JSD. See `context/design-concepts/task-058-fullscreen-story-stage.md` for the complete contract.
+This revision removes the 30rem/28rem rail and 330px rank-chart caps as target constraints. It preserves native scroll, one observer-owned active state, shared evidence marks, URL state, keyboard navigation, reduced motion, and panel-only JSD. See `context/ARTISTIC_REDESIGN_BRIEF.md` for the complete contract.
 
 ## Approved Next Direction: The Shape Of What We Know
 

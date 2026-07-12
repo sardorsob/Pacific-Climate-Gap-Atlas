@@ -1343,31 +1343,31 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: visual-concept
 - Title: Lock the fullscreen story-stage revision
 - Depends on: TASK-056; owner findings from TASK-057
-- Assigned agent: Codex Maker; owner approval required
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md
+- Assigned agent: Codex Maker/Checker; owner approved
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md
 - Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/eda_rank_volatility.csv
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
 - User value / decision value: Replaces the undersized story rail with a coherent fullscreen composition before implementation changes the functioning baseline.
 - Functional notes: Catalog the Elastic Stage, Tidal Chapters, and One Constellation boards; select one implementable synthesis; define prologue, stage ownership, desktop/mobile composition, motion, component boundaries, and QA gates.
 - Statistical notes: Concept images are composition studies only. Generated values, labels, photographs, land shapes, and boundaries never become implementation data.
 - Edge cases: Preserve one native scroll owner, stable scene URLs, reduced motion, equal geography presence, panel-only JSD, and all reported-zero/missing-row distinctions.
-- Files to create/modify: artifacts/design/task-058/*, context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/PROJECT.md, context/DECISIONS.md, context/HANDOVER.md, context/TASKS.md, context/logs/*, context/memory/patterns.md
+- Files to create/modify: artifacts/design/task-058/*, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/PROJECT.md, context/DECISIONS.md, context/HANDOVER.md, context/TASKS.md, context/logs/*, context/memory/patterns.md
 - Artifacts to produce: three cataloged concept boards, one written synthesis, dependency-ordered follow-on tasks, stale-state corrections.
 - Acceptance criteria: Owner approves One Constellation on an Elastic Stage or records a replacement direction; the document contains no placeholders or contradictory layout rules; scenes 4 and 5 have explicit readable-scale contracts; mobile portrait and landscape behavior are defined; implementation remains gated.
 - Verification commands: python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Compare all three boards; read the design contract against owner feedback; confirm generated visual content is labeled non-data and the old rail constraints are explicitly superseded.
-- QA notes: Separate Checker pass completed for the cataloging artifact. All three boards are present at 1536×1024 and explicitly labeled composition-only. The design-spec placeholder scan returned no `TBD`, `TODO`, or vague implementation instructions. `python scripts/check_required_artifacts.py` passed 48 paths; `python scripts/validate_task_statuses.py` passed 65 statuses; `python scripts/check_secrets.py` passed; `git diff --check` passed. Diff scope contains context Markdown plus the three concept PNGs and no app/data implementation changes. The written contract is internally consistent about the six guided IDs, three stage modes, superseded rail constraints, mobile sibling composition, and TASK-057 legal state. Owner review is still required before this task can become done.
+- QA notes: Separate Checker pass completed for the cataloging artifact. All three boards are present at 1536×1024 and explicitly labeled composition-only. The owner approved the recommended synthesis on 2026-07-12. Per owner context-hygiene direction, the one-off TASK-058 Markdown was removed and its durable contract was consolidated into `context/ARTISTIC_REDESIGN_BRIEF.md`; TASK-059 through TASK-064 share one batch implementation plan. The final consolidation gate passed 48 required paths, 65 legal task statuses, secret and whitespace checks, and zero stale deleted-file references or plan placeholders. No app, data, score, or generated runtime artifact changed.
 - Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-11: Owner authorized cataloging after approving fullscreen visual takeovers. Maker created the durable design contract and split implementation into TASK-059–064.
-- Status: in-review
+- Attempt log: 2026-07-11: Owner authorized cataloging after approving fullscreen visual takeovers. Maker created the durable design contract and split implementation into TASK-059–064. 2026-07-12: Owner approved TASK-058 and directed consolidation into existing context instead of per-task Markdown; contract and plan organization updated accordingly.
+- Status: done
 
 ## TASK-059
 - Phase: story-editorial
 - Title: Add the fullscreen premise and rewrite guided scene copy
 - Depends on: TASK-058
 - Assigned agent: unassigned
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/STORY_BRIEF.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: app/public/data/geographies.json, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
 - User value / decision value: Lets a first-time reader understand what the atlas compares, why the official record matters, and what the map cannot claim before technical detail begins.
@@ -1390,15 +1390,15 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Replace the fixed rail with one fullscreen story stage
 - Depends on: TASK-059
 - Assigned agent: unassigned
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: none
 - Scientific refs: none
 - User value / decision value: Gives the active evidence the viewport while preserving predictable native scrolling, keyboard navigation, and copied URLs.
-- Functional notes: Keep `StoryScrolly` as observer owner; add a focused stage host and pure scene-to-stage model; render map-immersive and figure-takeover modes without nested overflow or scroll interception.
+- Functional notes: Keep `StoryScrolly` as observer owner; reuse the existing sticky map as the stage; let scene data attributes and CSS switch between transparent map-immersive sections and opaque figure takeovers without nested overflow, scroll interception, or a new stage abstraction.
 - Statistical notes: Structural task only; no generated data, score, rank, monitoring, or JSD semantics change.
 - Edge cases: Rapid scroll is latest-state-wins; Back/Forward and copied scene URLs restore the correct stage; ResizeObserver/viewport changes do not strand a stale takeover; reduced motion is immediate.
-- Files to create/modify: app/src/App.tsx, app/src/components/story/StoryScrolly.tsx, app/src/components/story/StoryStage.tsx, app/src/lib/storyStageModel.ts and tests, app/src/styles/base.css, app/src/lib/urlState.ts tests
-- Artifacts to produce: fullscreen sticky stage shell, deterministic stage model, desktop/mobile shell QA.
+- Files to create/modify: app/src/App.tsx, app/src/components/story/StoryScrolly.tsx and focused markup tests, app/src/styles/base.css, app/src/lib/urlState.ts tests
+- Artifacts to produce: fullscreen sticky stage shell, deterministic stage behavior, desktop/mobile shell QA.
 - Acceptance criteria: The 30rem grid rail is absent in guided mode; one observer remains the only active-scene writer; map and figure stage modes fill the intended viewport; URL/history/keyboard tests pass; Explore behavior remains intact.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Exercise scroll, progress, keyboard, copied URLs, Back/Forward, resize, and reduced motion at desktop and mobile sizes.
@@ -1413,7 +1413,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Promote Nauru and Tuvalu into a fullscreen comparison takeover
 - Depends on: TASK-060
 - Assigned agent: unassigned
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/STORY_BRIEF.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: app/public/data/geographies.json, app/public/data/country_details.json
 - Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
 - User value / decision value: Makes the scene-four evidence legible and lets readers compare aligned records instead of deciphering two miniature cards.
@@ -1436,7 +1436,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Promote rank sensitivity into a fullscreen interval field
 - Depends on: TASK-060
 - Assigned agent: unassigned
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: app/public/data/geographies.json, artifacts/tables/eda_rank_volatility.csv
 - Scientific refs: context/ANALYSIS_BRIEF.md
 - User value / decision value: Makes all 22 geography names and rank bands readable while preserving one shared comparison scale.
@@ -1459,14 +1459,14 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Connect shared-mark transitions and the Explore handoff
 - Depends on: TASK-061, TASK-062
 - Assigned agent: unassigned
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/DESIGN_BRIEF.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: app/public/data/geographies.json
 - Scientific refs: context/DATA_CARD.md
 - User value / decision value: Makes the sequence feel like one evidence system changing form and ensures the story disappears cleanly when exploration begins.
 - Functional notes: Preserve geography keys through map, split, comparison, interval, and return states; add restrained chamber arrival/recession; remove story chrome after handoff; keep existing Explore controls and panel behavior.
 - Statistical notes: Motion never invents interpolation meaning or changes values; all final states use generated data.
 - Edge cases: Rapid scene scrubbing, progress jumps, copied URLs, Back/Forward, reduced motion, aborted camera transitions, and reopening guided mode must settle deterministically.
-- Files to create/modify: app/src/components/story/StoryStage.tsx, app/src/components/story/StoryScrolly.tsx, app/src/components/map/AtlasMap.tsx, app/src/App.tsx, app/src/styles/base.css, focused tests
+- Files to create/modify: app/src/components/story/StoryScrolly.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/map/MapOverlay.tsx, app/src/App.tsx, app/src/styles/base.css, focused tests
 - Artifacts to produce: shared-motion sequence, deterministic latest-state checks, clean handoff/re-entry QA.
 - Acceptance criteria: Marks preserve identity across forms; no stale transition wins; reduced motion presents complete static states; Explore removes story chrome and restores the full current atlas; tests/build pass.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
@@ -1482,7 +1482,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Title: Re-run owner QA and close the fullscreen-stage repair
 - Depends on: TASK-059, TASK-060, TASK-061, TASK-062, TASK-063
 - Assigned agent: unassigned; owner final review required
-- Contract refs: context/design-concepts/task-058-fullscreen-story-stage.md, context/HANDOVER.md, context/docs/submission-notes.md
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md, context/HANDOVER.md, context/docs/submission-notes.md
 - Data refs: app/public/data/geographies.json, app/public/data/country_details.json, artifacts/tables/eda_monitoring_gap.csv, artifacts/tables/eda_rank_volatility.csv
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/docs/methodology.md
 - User value / decision value: Proves the redesigned story now communicates its purpose and gives primary evidence enough space before deployment or submission.

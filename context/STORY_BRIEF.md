@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner QA on 2026-07-11 kept those five evidence scenes but added a fullscreen premise prologue and promoted scenes 4 and 5 to viewport takeovers. The complete revision is `context/design-concepts/task-058-fullscreen-story-stage.md`; older seven-beat notes remain historical rationale only.
+Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
 
 Source basis:
 
@@ -362,4 +362,4 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 
 ## Handoff To Design
 
-The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/design-concepts/task-058-fullscreen-story-stage.md` and `TASK-059` through `TASK-064`; do not extend either the retired seven-beat rail or the undersized 28rem five-scene rail.
+The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/ARTISTIC_REDESIGN_BRIEF.md` and the single batch plan for `TASK-059` through `TASK-064`; do not extend either the retired seven-beat rail or the undersized 28rem five-scene rail.

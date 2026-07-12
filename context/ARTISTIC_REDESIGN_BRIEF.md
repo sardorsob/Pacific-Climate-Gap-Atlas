@@ -2,9 +2,9 @@
 
 ## Status
 
-The 2026-07-09 five-scene evidence contract remains scientifically active, but its 28rem desktop story-rail composition is superseded by the 2026-07-11 fullscreen story-stage revision in `context/design-concepts/task-058-fullscreen-story-stage.md`.
+The 2026-07-09 five-scene evidence contract remains scientifically active, but its 28rem desktop story-rail composition is superseded by the owner-approved 2026-07-11 fullscreen story-stage revision below.
 
-Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is the owner-review design gate for the next implementation batch.
+Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is approved and done; `TASK-059` through `TASK-064` form the repair batch.
 
 Working title:
 
@@ -20,7 +20,7 @@ Public-facing thesis candidate:
 
 ## 2026-07-11 Fullscreen Stage Revision
 
-The next composition is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for editorial evidence chambers.
+The approved composition is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for editorial evidence chambers.
 
 - Add one full-screen premise prologue before the five evidence scenes.
 - Let the map own the full viewport for the prologue and scenes 1–3.
@@ -29,7 +29,9 @@ The next composition is **One Constellation on an Elastic Stage**, with restrain
 - Return the same 22 evidence marks to geography for Explore.
 - Keep native document scroll and one observer-owned active state; do not add scrolljacking or nested overflow.
 
-The evidence grammar, fixed-presence marks, five evidence operations, panel-only JSD, generated-data contract, and ethical guardrails below remain authoritative. Where the older layout contract says the map must remain sticky beside a 28rem story column or the mobile map must remain 46svh for every scene, the `TASK-058` fullscreen-stage contract supersedes it.
+The three reviewed boards remain under `artifacts/design/task-058/`: Elastic Stage supplies the layout system, One Constellation supplies evidence-mark continuity, and Tidal Chapters supplies only the quiet arrival/recession rhythm. Generated labels, values, photographs, land shapes, and boundaries are visual references only and never implementation data.
+
+The evidence grammar, fixed-presence marks, five evidence operations, panel-only JSD, generated-data contract, and ethical guardrails below remain authoritative. Where the older contract says the map must remain beside a 28rem story column or remain 46svh on mobile for every scene, this fullscreen-stage contract supersedes it.
 
 ## Why The Atlas Needs Another Pass
 
@@ -133,9 +135,21 @@ Missing evidence should be visible as interruption. It should not make the geogr
 - Mobile labels are fewer and may use one compact collision-aware list or leaders rather than all exemplar names at once.
 - Selection is a quiet bloom, not another data ring.
 
-## Five-Scene Storyboard
+## Premise And Five-Scene Storyboard
 
-The story uses five scenes, each with one claim, one visual operation, one necessary caveat, and one evidence source line. Copy should sound spoken and precise, not like a slogan generator.
+The story uses one premise plus five evidence scenes. Each evidence scene keeps one claim, one visual operation, one necessary caveat, and one evidence source line. Copy should sound spoken and precise, not like a slogan generator.
+
+### Premise: What This Atlas Is Asking
+
+The map fills the first viewport. No opaque story rail, legend wall, or method-control cluster competes with the premise.
+
+> Climate pressure is not the same as adaptation capacity.
+
+> Across 22 Pacific places, official records show both unevenly. This atlas maps the gap between them—and makes the missing evidence visible.
+
+Caveat: visible capacity is what the available official datasets can show, not full readiness or lived adaptive capacity.
+
+The premise is one stable, linkable scene. Its text appears over safe ocean space and leaves when the next scene becomes active. Native page scroll remains the only scroll owner.
 
 ### Scene 1: What The Map Can See
 
@@ -200,10 +214,11 @@ Claim:
 
 Visual state:
 
-- Keep faint Nauru and Tuvalu anchors on the map.
-- Enlarge two evidence portraits into a balanced editorial comparison.
+- Let the map recede to a quiet locator or disappear.
+- Enlarge two evidence portraits into a viewport-scale editorial comparison.
 - Compare gap, pressure, visible capacity, monitoring state, score-input completeness, and rank band.
 - Use aligned fields so differences are perceptual, not buried in prose.
+- Show both portraits together on desktop/landscape and in consecutive full-width reading order on portrait mobile; do not require swiping.
 
 Motion verb: compare.
 
@@ -219,10 +234,10 @@ Claim:
 
 Visual state:
 
-- Soften the map.
-- Move the existing marks into a rank-band field while preserving mark identity.
+- Replace the map with a viewport-scale rank-band field while preserving geography identity.
 - Highlight Marshall Islands’ 4–19 span and the broad pattern: 19 of 22 geographies are labeled fragile under the current leave-one-indicator diagnostic.
 - Do not display a definitive ordered leaderboard behind the bands.
+- Give every geography at least a 13px label and roughly 26–30px desktop row height. On portrait mobile, use normal page height with a sticky title/axis and no nested chart scroll.
 
 Motion verb: rearrange.
 
@@ -246,33 +261,30 @@ Motion verb: return.
 
 ## Layout Contract
 
-### Desktop
+The guided experience has three ownership modes:
 
-- Use native page scroll. Do not create a nested scrolling rail.
-- Keep the Pacific map sticky for the guided sequence.
+1. `map-immersive`: premise and scenes 1–3. The map fills the viewport; scene copy overlays safe ocean space with a restrained contrast veil and no card-heavy rail.
+2. `figure-takeover`: scenes 4–5. The active figure owns approximately 80–90vw and the usable viewport height; the map is absent or reduced to a quiet locator.
+3. `explore`: after the handoff. Story chrome leaves, the map owns the viewport, and the existing exploration controls return.
+
+Shared rules:
+
+- Use native page scroll. Do not create nested story or chart scrolling.
 - Each scene is a normal document section with a stable `id` and approximately one viewport of breathing room.
 - One `IntersectionObserver` owns the canonical active scene.
-- Progress controls call `scrollIntoView` only; they do not set a competing active scene before the observer confirms it.
-- Scene copy occupies a restrained editorial column and never covers the geography or visual comparison it explains.
-- Country exploration opens a panel after the guided handoff; it should not be permanently present during the five-scene narrative.
-
-### Mobile
-
-- Treat mobile as a sibling composition, not a shrunken desktop.
-- Keep the map at roughly 42–48 `svh` during geographic scenes.
-- Put story content in normal page flow below or alongside the sticky map region.
-- Use a fixed navigation bar only when measured content and safe-area padding prove it cannot cover the active scene.
-- Turn the Nauru/Tuvalu comparison into two stepped or horizontally paged evidence portraits.
-- Turn rank fragility into a static, vertically readable interval figure when animated rearrangement would be cramped.
-- Use fewer direct map labels and a compact exploration toolbar instead of a tall bottom card.
-- Test at 390 × 844 and at least one narrower 360px viewport.
+- Progress controls call `scrollIntoView` only; they never write a competing active state.
+- On portrait mobile, keep one claim per viewport-scale step, stack the scene-4 portraits in full-width reading order, and let scene 5 grow vertically in document flow.
+- On landscape mobile, let the scene-5 interval field fill the screen.
+- Use fewer direct map labels and compact exploration controls on mobile.
+- Test 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800, and landscape mobile for scene 5.
 
 ## Motion And Transition Contract
 
 Motion is explanatory punctuation. It must never become ambient atmosphere.
 
-- One shared easing curve across map, marks, text emphasis, and scene figures.
-- Typical transition duration: 450–650ms.
+- Preserve 560ms `cubic-bezier(0.22, 1, 0.36, 1)` for evidence transformations.
+- Use 180–240ms opacity/translate transitions for scene text.
+- Use one restrained 450–600ms chamber arrival/recession for scenes 4 and 5.
 - Transitions must be interruptible and converge on the most recent scene state.
 - Morph marks already on screen instead of fading the entire canvas to black and replacing it.
 - Use camera motion only when a scene names a place whose location matters.
@@ -331,16 +343,14 @@ Simplify:
 
 ## Growth Path
 
-The redesign sequence should grow the atlas in this order:
+The completed first redesign grew the atlas through evidence correction, native scroll, fixed-presence marks, composed figures, exploration simplification, URL state, and release checks. The approved repair now proceeds in this order:
 
-1. Correct score-input and context indicator accounting.
-2. Approve the evidence-mark and mobile/desktop visual concepts.
-3. Replace nested scroll with one native-scroll scene controller.
-4. Ship the five-scene narrative.
-5. Add evidence marks and the composed comparison/uncertainty scenes.
-6. Simplify exploration and remove misleading JSD arcs.
-7. Consolidate code, dependencies, generated layer manifests, and stale context.
-8. Add shareable URL state, final accessibility checks, performance budgets, and release QA.
+1. `TASK-059`: add and validate the premise plus revised scene copy.
+2. `TASK-060`: replace the grid rail with the fullscreen native-scroll composition.
+3. `TASK-061`: promote Nauru/Tuvalu into the scene-4 takeover.
+4. `TASK-062`: promote rank sensitivity into the scene-5 interval field.
+5. `TASK-063`: connect evidence-bearing transitions and the Explore handoff.
+6. `TASK-064`: rerun the complete owner QA matrix and return `TASK-057` to review.
 
 Future possibilities only after the core redesign works:
 
@@ -353,12 +363,12 @@ Future possibilities only after the core redesign works:
 
 The redesign succeeds when:
 
-- a first-time reader can state the thesis after the five scenes without remembering the interface mechanics;
+- a first-time reader can state the thesis after the premise without remembering interface mechanics;
 - the score-input/context distinction is correct in generated data, marks, copy, and legend;
 - every one of 22 places remains visible at basin scale;
 - missing evidence is legible as a break in a stable structure;
 - reported zero and missing row are distinguishable in colorblind and monochrome review;
-- Nauru/Tuvalu and Marshall Islands each earn one focused scene without turning the app into a leaderboard;
+- Nauru/Tuvalu and Marshall Islands each receive a readable viewport-scale scene without turning the app into a leaderboard;
 - progress controls never fight scroll state;
 - mobile scenes are not covered by fixed controls;
 - reduced-motion users receive an equivalent static story;

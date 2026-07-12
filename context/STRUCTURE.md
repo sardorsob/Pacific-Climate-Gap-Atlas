@@ -26,7 +26,6 @@
 - `context/STORY_BRIEF.md`: final TASK-018 narrative contract, storyboard beats, exemplars, and caveats.
 - `context/DESIGN_BRIEF.md`: final TASK-018 map-first visual and interaction contract for design/build.
 - `context/ARTISTIC_REDESIGN_BRIEF.md`: approved 2026-07-09 next-direction contract for “The Shape of What We Know,” including five scenes, evidence marks, motion, mobile, simplification, and growth.
-- `context/design-concepts/task-058-fullscreen-story-stage.md`: 2026-07-11 owner-review contract that supersedes the fixed rail with a fullscreen premise, map-led geographic scenes, and figure takeovers.
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`: live reference audit for map, climate, environmental, selected-geography, evidence-strip, and guided-tour interaction patterns.
 - `context/WINNER_SCROLL_TOUR_AUDIT.md`: Pacific Dataviz winner audit and scroll-led hybrid recommendation.
 - `context/INFORMATION_DIVERGENCE_PLAN.md`: analysis-ready JSD evidence-fingerprint layer scope and interface notes.
@@ -35,7 +34,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: implementation and analysis plans retained for traceability. The redesign plans `task-048-evidence-semantics-implementation-plan.md`, `tasks-049-055-artistic-story-implementation-plan.md`, and `tasks-056-057-simplification-readiness-implementation-plan.md` are complete. The TASK-058 design is awaiting owner review, so no code-level TASK-059–064 plan exists yet.
+- `context/plans/`: implementation and analysis plans retained for traceability. Completed redesign plans cover `TASK-048` through `TASK-057`; `tasks-059-064-fullscreen-story-stage-implementation-plan.md` is the single active plan for the approved repair batch.
 
 ## Analysis
 

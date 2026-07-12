@@ -246,11 +246,11 @@ The responsibility-context greenhouse-gas dataset remains available in trace row
 
 Reason: a correct semantic contract is required before missingness and completeness can be made visual. The regenerated artifacts preserve the existing score values while removing the risk of describing context data as score evidence.
 
-## 2026-07-11: Propose A Fullscreen Evidence Stage To Replace The Fixed Story Rail
+## 2026-07-12: Approve A Fullscreen Evidence Stage To Replace The Fixed Story Rail
 
 Owner QA rejected the functioning 28rem rail composition because the opening did not explain the project clearly enough and scenes 4 and 5 made primary evidence too small to read comfortably.
 
-The recommended planning direction, pending the `TASK-058` owner gate, is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for the comparison and rank chambers:
+The owner-approved direction is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for the comparison and rank chambers:
 
 - one fullscreen premise precedes the five evidence scenes;
 - the map owns the viewport for the premise and scenes 1–3;

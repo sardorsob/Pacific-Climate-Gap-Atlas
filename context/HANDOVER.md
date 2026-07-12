@@ -4,7 +4,7 @@
 
 The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` are complete. `TASK-057` automated and URL-state work exists, but owner visual QA moved the task `in-review -> needs-fix`: the opening does not communicate the atlas premise strongly enough, and scenes 4 and 5 are too small in the fixed story rail.
 
-The current app remains the functioning behavioral/scientific baseline. `TASK-058` catalogs the replacement composition as **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, and a return of the same marks to geography for Explore. Three concept boards live under `artifacts/design/task-058/`; their generated content is composition-only. The written contract is `context/design-concepts/task-058-fullscreen-story-stage.md`. `TASK-059` through `TASK-064` are pending behind owner approval of `TASK-058`.
+The current app remains the functioning behavioral/scientific baseline. Owner-approved `TASK-058` replaces the rail composition with **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, and a return of the same marks to geography for Explore. Three concept boards live under `artifacts/design/task-058/`; their generated content is composition-only. The written contract is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`. `TASK-059` through `TASK-064` are pending and share one implementation plan.
 
 ## How To Validate The Scaffold
 
@@ -73,9 +73,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Review `context/design-concepts/task-058-fullscreen-story-stage.md` and the three `artifacts/design/task-058/` boards. Approve or revise the recommended synthesis before a code-level plan is written.
-2. After approval, implement `TASK-059` through `TASK-064` one task/commit at a time with separate Maker and Checker passes.
-3. Deploy only after `TASK-064` closes the owner findings and `TASK-057` legally returns to review; record the final public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
+1. Execute `TASK-059` through `TASK-064` from `context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md`, one task/commit at a time with separate Maker and Checker passes.
+2. Deploy only after `TASK-064` closes the owner findings and `TASK-057` legally returns to review; record the final public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
 
 ## Known Caveats
 

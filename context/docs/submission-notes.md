@@ -14,7 +14,7 @@ The Pacific Adaptation Gap Atlas.
 
 Narrative identity for the approved redesign: **The Shape of What We Know**.
 
-Readiness note (2026-07-11): `TASK-057` shareable-state, history, hydration, and budget checks passed, but owner visual QA returned the release gate to `needs-fix`. The opening must communicate the project premise more clearly, and scenes 4 and 5 must become readable fullscreen evidence takeovers. `TASK-058` is awaiting owner review; `TASK-059` through `TASK-064` are pending. Deployment, sensitive wording, AI disclosure, final human visual/accessibility review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
+Readiness note (2026-07-12): `TASK-057` shareable-state, history, hydration, and budget checks passed, but owner visual QA returned the release gate to `needs-fix`. The owner approved `TASK-058`'s fullscreen-stage correction; `TASK-059` through `TASK-064` remain pending. Deployment, sensitive wording, AI disclosure, final human visual/accessibility review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
 
 ## Submission Requirements To Track
 

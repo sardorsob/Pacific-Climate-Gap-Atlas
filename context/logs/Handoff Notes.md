@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-`TASK-057` is `needs-fix` after owner visual QA. Automated URL/history, build, data, and bundle checks passed, but the opening did not communicate the project strongly enough and scenes 4 and 5 were too small in the fixed rail. `TASK-058` is the current owner-review gate; read `context/design-concepts/task-058-fullscreen-story-stage.md` before any app edit.
+`TASK-057` is `needs-fix` after owner visual QA. Automated URL/history, build, data, and bundle checks passed, but the opening did not communicate the project strongly enough and scenes 4 and 5 were too small in the fixed rail. `TASK-058` is owner-approved and done; read `context/ARTISTIC_REDESIGN_BRIEF.md` and `context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md` before any app edit.
 
 ## Next Build Step
 
-`TASK-049` through `TASK-056` are approved and done. Their evidence grammar and interaction contracts remain the baseline. The next batch is `TASK-059` premise copy, `TASK-060` fullscreen stage architecture, `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Do not write the code-level implementation plan or begin app changes until the owner approves `TASK-058`.
+`TASK-049` through `TASK-056` and `TASK-058` are approved and done. Their evidence grammar, interaction contracts, and fullscreen composition remain the baseline. The next batch is `TASK-059` premise copy, `TASK-060` fullscreen composition, `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Use the single batch implementation plan and commit each task separately.
 
 The five evidence scenes remain the narrative spine, preceded by one fullscreen premise. The recommended composition is **One Constellation on an Elastic Stage**. JSD remains selected-place panel evidence only; similarity map arcs stay removed.
 
@@ -22,6 +22,10 @@ The five evidence scenes remain the narrative spine, preceded by one fullscreen 
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
 - `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
+
+## 2026-07-12
+
+- 2026-07-12: Owner approved `TASK-058` and rejected per-task Markdown clutter. Consolidated the fullscreen-stage contract into `context/ARTISTIC_REDESIGN_BRIEF.md`, removed the one-off TASK-058 design file, and organized TASK-059–064 under one batch implementation plan. `TASK-057` remains `needs-fix`; implementation has not started.
 
 ## 2026-07-11
 

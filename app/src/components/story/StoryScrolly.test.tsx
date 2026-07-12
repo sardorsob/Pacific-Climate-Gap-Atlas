@@ -36,6 +36,15 @@ describe("fullscreen story shell", () => {
     expect(evidenceScene).toContain('aria-label="Story progress"');
   });
 
+  it("keeps the toolbar and progress controls in one reachable chrome region", () => {
+    const evidenceScene = renderToStaticMarkup(<StoryScrolly {...props} index={1} />);
+
+    expect(evidenceScene).toContain('class="story-scrolly__chrome"');
+    expect(evidenceScene).toMatch(
+      /story-scrolly__chrome[\s\S]*story-scrolly__top[\s\S]*aria-label="Story progress"/,
+    );
+  });
+
   it("identifies interactive controls that must keep their own key handling", () => {
     const control = { closest: () => ({}) } as unknown as EventTarget;
     const section = { closest: () => null } as unknown as EventTarget;

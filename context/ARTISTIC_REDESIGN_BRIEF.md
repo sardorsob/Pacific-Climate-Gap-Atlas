@@ -345,14 +345,14 @@ Simplify:
 
 ## Growth Path
 
-The completed first redesign grew the atlas through evidence correction, native scroll, fixed-presence marks, composed figures, exploration simplification, URL state, and release checks. The approved repair now proceeds in this order:
+The completed first redesign grew the atlas through evidence correction, native scroll, fixed-presence marks, composed figures, exploration simplification, URL state, and release checks. The fullscreen repair proceeded in this order:
 
-1. `TASK-059`: add and validate the premise plus revised scene copy.
-2. `TASK-060`: replace the grid rail with the fullscreen native-scroll composition.
-3. `TASK-061`: promote Nauru/Tuvalu into the scene-4 takeover. The Builder pass now supplies stable stage/geography identity, aligned full-scale portrait tracks, no selection bloom, and portrait-only stacking; root viewport and Checker QA remain.
-4. `TASK-062`: promote rank sensitivity into the scene-5 interval field.
-5. `TASK-063`: connect evidence-bearing transitions and the Explore handoff.
-6. `TASK-064`: rerun the complete owner QA matrix and return `TASK-057` to review.
+1. `TASK-059`: added and validated the premise plus revised scene copy.
+2. `TASK-060`: replaced the grid rail with the fullscreen native-scroll composition.
+3. `TASK-061`: promoted Nauru/Tuvalu into the scene-4 takeover with stable identity, aligned full-scale portraits, no selection bloom, and portrait-only stacking.
+4. `TASK-062`: promoted rank sensitivity into the scene-5 interval field.
+5. `TASK-063`: connected evidence-bearing transitions and the Explore handoff.
+6. `TASK-064`: completed the automated and screenshot matrix and remains `in-review` for owner visual acceptance. `TASK-057` remains `needs-fix` until that decision.
 
 Future possibilities only after the core redesign works:
 

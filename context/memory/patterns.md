@@ -64,6 +64,8 @@ Root QA accepted `TASK-055` on 2026-07-10. JSD is panel-only: keep the complete 
 
 Owner-approved `TASK-058` supersedes the `TASK-049` rail dimensions without superseding its evidence grammar. For the next build, read `context/ARTISTIC_REDESIGN_BRIEF.md`: use One Constellation on an Elastic Stage, keep the map fullscreen for the premise and scenes 1–3, promote scenes 4 and 5 to fullscreen evidence takeovers, and return the same 22 marks to geography for Explore. Preserve one native scroll owner, stable URL state, reduced-motion equivalents, fixed-presence marks, and panel-only JSD. The generated `TASK-058` boards are composition references only.
 
+`TASK-064` adds one reachability rule to that pattern: controls placed before fullscreen scroll sections need a sticky owner of their own. Keep the existing toolbar and `SceneProgress` inside one conditional sticky chrome region, keep progress targets at least 44px, and measure rank-heading offsets against the complete chrome in desktop, portrait, and landscape. Do not rely on an offscreen DOM control or automation-forced click as evidence of user reachability.
+
 ## Delegated Mockup Revision
 
 - Codex owns critique, QA, staging, commits, and push decisions.

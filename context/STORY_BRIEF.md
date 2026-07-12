@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. `TASK-059` and `TASK-060` are done; the `TASK-061` Builder pass enlarges the aligned Nauru/Tuvalu comparison and remains `in-review` for root viewport and Checker QA. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
+Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. `TASK-059` through `TASK-063` are done; `TASK-064` passed the automated and screenshot matrix and remains `in-review` for owner visual acceptance. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
 
 Source basis:
 

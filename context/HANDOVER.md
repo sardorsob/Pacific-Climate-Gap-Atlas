@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` are complete. `TASK-057` automated and URL-state work exists, but owner visual QA moved the task `in-review -> needs-fix`: the opening does not communicate the atlas premise strongly enough, and scenes 4 and 5 are too small in the fixed story rail.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-063` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and is `in-review` for the required owner visual/accessibility decision. `TASK-057` remains `needs-fix` until that acceptance.
 
-The current app remains the functioning behavioral/scientific baseline. Owner-approved `TASK-058` replaces the rail composition with **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, and a return of the same marks to geography for Explore. `TASK-059` through `TASK-062` are accepted; `TASK-063` is in Checker review after adding stable geography identity, restrained evidence transitions, and a deterministic map-first Explore handoff without another observer or animation engine. Three concept boards live under `artifacts/design/task-058/`; their generated content is composition-only. The written contract is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The current app remains the functioning behavioral/scientific baseline. Owner-approved `TASK-058` replaces the rail composition with **One Constellation on an Elastic Stage**: a fullscreen premise and map-led scenes 1–3, fullscreen Nauru/Tuvalu and rank-band takeovers for scenes 4 and 5, one reachable sticky toolbar/progress region, and a return of the same marks to geography for Explore. QA screenshots live under `artifacts/design/task-064/`; the three concept boards under `artifacts/design/task-058/` remain composition-only. The written contract is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## How To Validate The Scaffold
 
@@ -73,8 +73,8 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Complete independent code/browser Checker QA for `TASK-063`, then run `TASK-064` from `context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md`. Keep `TASK-064` in review until the owner's final visual acceptance.
-2. Deploy only after `TASK-064` closes the owner findings and `TASK-057` legally returns to review; record the final public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
+1. Owner reviews the `TASK-064` viewport/accessibility matrix under `artifacts/design/task-064/`. Keep `TASK-064` in review until that explicit decision.
+2. Only after owner acceptance, return `TASK-057` legally from `needs-fix -> in-progress -> in-review`, rerun its release gate, then complete external deployment/submission actions. Record the public URL in `context/docs/submission-notes.md` and keep it live through August 31, 2029.
 
 ## Known Caveats
 
@@ -96,7 +96,7 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 - TASK-019 outputs exist as analysis artifacts: `eda_evidence_fingerprints.csv`, `eda_pairwise_jsd.csv`, `eda_similarity_neighbors.csv`, and `divergence_summary.json`. TASK-037 wires the nearest-neighbor rows into selected-place detail only. Do not present JSD as a global similarity map, causal cluster, policy-need group, or leaderboard.
 - The current app keeps exact JSD nearest-neighbor evidence in the selected-place panel only. `TASK-055` removed the former selected-only dashed map arcs and all physical-link copy; do not reintroduce a similarity line source or layer.
 - `TASK-050` replaced the former nested story rail with native document scroll and one observer-owned scene state. The remaining story work must preserve that single scroll owner and keep mobile scene bottoms clear of fixed chrome.
-- `TASK-060` reuses that observer and sticky map for fullscreen ownership, omits premise top/progress chrome from the DOM, ignores story keys from interactive controls, and publishes active visual/stage attributes. Its hydration flow sets manual history scroll restoration so a retained landscape reload offset cannot overwrite the copied-scene scroll after a portrait switch. `TASK-063` extends the same observer to the separate handoff, restores gap/default/no-selection there and again in Explore, and keeps geography continuity through stable codes and native CSS transitions; it is in Checker review.
+- `TASK-060` reuses that observer and sticky map for fullscreen ownership, omits premise chrome from the DOM, ignores story keys from interactive controls, and publishes active visual/stage attributes. `TASK-064` repaired the evidence-scene progress path by keeping toolbar and progress inside one sticky chrome region with 44px progress targets and matching rank-heading clearance. Its hydration flow owns manual scroll restoration. `TASK-063` extends the same observer to the handoff, restores gap/default/no-selection there and again in Explore, and keeps geography continuity through stable codes and native CSS transitions.
 - The post-TASK-039 interaction audit was folded into `TASK-040` through `TASK-042` and is complete. The standalone audit file was removed; durable results now live in `TASKS.md`, `PROJECT.md`, this handover, and the progress log.
 - The post-TASK-042 design critique was folded into `TASK-043` through `TASK-047`; the standalone critique file was removed. `TASK-043` resolved the root visual finding by restoring guaranteed-size presence marks with land geometry as secondary texture/context, `TASK-044` added evidence-bearing motion, `TASK-045` resolved the chrome/type mismatch, `TASK-046` moved official-data visibility before the formula while keeping JSD selected-anchored, and `TASK-047` added selected-only JSD neighbor arcs.
 - TASK-020 reference examples are principle studies only. Do not copy publication identity, palettes, layouts, illustrations, or iconic stripe treatments from audited projects.

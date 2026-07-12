@@ -97,7 +97,7 @@ export function StoryScrolly({
       onWheel={clearRequestedIndex}
     >
       {scenes[index]?.visual !== "premise" && (
-        <>
+        <div className="story-scrolly__chrome">
           <div className="story-scrolly__top">
             <span className="story-scrolly__brand">
               <Compass aria-hidden="true" size={14} /> Guided atlas
@@ -110,7 +110,7 @@ export function StoryScrolly({
           </div>
 
           <SceneProgress scenes={scenes} index={index} onJump={jumpToScene} />
-        </>
+        </div>
       )}
 
       <div className="story-scrolly__sections">

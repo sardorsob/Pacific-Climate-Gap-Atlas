@@ -27,6 +27,10 @@ const LAYERS = new Set<ScoreKey>(["gap", "pressure", "capacity"]);
 const VIEWS = new Set<ViewMode>(["default", "coverage", "uncertainty"]);
 const APPROVED_SCENE_IDS = new Set(SCENE_IDS);
 
+export function ownScrollRestoration(history: Pick<History, "scrollRestoration">): void {
+  history.scrollRestoration = "manual";
+}
+
 function paramsFor(input: string): URLSearchParams {
   if (input.startsWith("?")) return new URLSearchParams(input.slice(1));
   try {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseAtlasUrl, serializeAtlasUrl } from "./urlState";
+import { ownScrollRestoration, parseAtlasUrl, serializeAtlasUrl } from "./urlState";
 
 describe("atlas URL state", () => {
   it("round-trips guided and explore state", () => {
@@ -36,5 +36,12 @@ describe("atlas URL state", () => {
         outlook: true,
       }),
     ).toBe("?outlook=1");
+  });
+
+  it("keeps copied-scene hydration in control of reload scrolling", () => {
+    const history: Pick<History, "scrollRestoration"> = { scrollRestoration: "auto" };
+
+    ownScrollRestoration(history);
+    expect(history.scrollRestoration).toBe("manual");
   });
 });

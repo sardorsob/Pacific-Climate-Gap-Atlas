@@ -20,6 +20,10 @@ function prefersReducedMotion(): boolean {
   return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+export function isStoryNavigationControl(target: EventTarget | null): boolean {
+  return Boolean((target as Element | null)?.closest?.("button, a, input, select, textarea"));
+}
+
 export function StoryScrolly({
   scenes,
   handoffCopy,
@@ -46,7 +50,7 @@ export function StoryScrolly({
         const active = pickActiveScene(Array.from(intersections.current.values()));
         if (active !== null) onActiveChange(active);
       },
-      { root: null, rootMargin: "-20% 0px -20% 0px", threshold: [0.25, 0.5, 0.75, 1] },
+      { root: null, rootMargin: "-20% 0px -20% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
 
     sectionRefs.current.forEach((section) => section && observer.observe(section));
@@ -62,25 +66,36 @@ export function StoryScrolly({
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (isStoryNavigationControl(event.target)) return;
     if (!["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     jumpToScene(sceneIndexAfterKey(index, event.key, scenes.length));
   };
 
   return (
-    <main className="story-scrolly" aria-label="Guided atlas story" tabIndex={0} onKeyDown={onKeyDown}>
-      <div className="story-scrolly__top">
-        <span className="story-scrolly__brand">
-          <Compass aria-hidden="true" size={14} /> Guided atlas
-        </span>
-        <div className="story-scrolly__actions">
-          <button type="button" className="ghost-btn" onClick={onOpenMethod}>
-            <BookOpen aria-hidden="true" size={14} /> Methods
-          </button>
-        </div>
-      </div>
+    <main
+      className="story-scrolly"
+      aria-label="Guided atlas story"
+      data-active-visual={scenes[index]?.visual}
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+    >
+      {scenes[index]?.visual !== "premise" && (
+        <>
+          <div className="story-scrolly__top">
+            <span className="story-scrolly__brand">
+              <Compass aria-hidden="true" size={14} /> Guided atlas
+            </span>
+            <div className="story-scrolly__actions">
+              <button type="button" className="ghost-btn" onClick={onOpenMethod}>
+                <BookOpen aria-hidden="true" size={14} /> Methods
+              </button>
+            </div>
+          </div>
 
-      <SceneProgress scenes={scenes} index={index} onJump={jumpToScene} />
+          <SceneProgress scenes={scenes} index={index} onJump={jumpToScene} />
+        </>
+      )}
 
       <div className="story-scrolly__sections">
         {scenes.map((scene, sceneIndex) => (
@@ -90,6 +105,7 @@ export function StoryScrolly({
             className="story-scene"
             data-scene-index={sceneIndex}
             data-active={sceneIndex === index ? "true" : "false"}
+            data-stage-mode={scene.stage}
             ref={(element) => {
               sectionRefs.current[sceneIndex] = element;
             }}

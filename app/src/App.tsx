@@ -12,7 +12,12 @@ import { RankBandScene } from "./components/story/RankBandScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
-import { parseAtlasUrl, serializeAtlasUrl, type AtlasUrlState } from "./lib/urlState";
+import {
+  ownScrollRestoration,
+  parseAtlasUrl,
+  serializeAtlasUrl,
+  type AtlasUrlState,
+} from "./lib/urlState";
 import type { ScoreKey } from "./lib/encoding";
 import type { ViewMode } from "./lib/types";
 import {
@@ -90,6 +95,7 @@ export function App() {
   };
 
   useEffect(() => {
+    if (typeof window !== "undefined") ownScrollRestoration(window.history);
     let cancelled = false;
     loadAtlasData()
       .then((loaded) => {
@@ -334,7 +340,10 @@ export function App() {
     `atlas-shell atlas-shell--${mode}` + (panelOpen ? " atlas-shell--panel" : "");
 
   return (
-    <div className={shellClass}>
+    <div
+      className={shellClass}
+      data-scene-visual={mode === "guided" ? SCENES[sceneIndex]?.visual : undefined}
+    >
       <div className="guided-atlas">
         <div className="guided-map">
           <div className="atlas-map-region">

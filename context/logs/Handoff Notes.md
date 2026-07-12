@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-`TASK-057` remains `needs-fix` after owner visual QA. `TASK-059` passed independent Checker review and is done. Start `TASK-060` from the binding preflight corrections in the single batch plan: conditional premise chrome, one native-scroll observer, fullscreen map/figure ownership, keyboard isolation, and desktop/mobile/landscape QA.
+`TASK-057` remains `needs-fix` after owner visual QA. `TASK-059` and `TASK-060` are done after TDD, independent review, and desktop/portrait/landscape browser QA. Start `TASK-061` for the aligned Nauru/Tuvalu takeover; keep desktop/landscape paired and portrait in consecutive full-width reading order.
 
 ## Next Build Step
 
-`TASK-049` through `TASK-056`, `TASK-058`, and `TASK-059` are approved and done. Their evidence grammar, premise/copy/URL contract, and fullscreen composition remain the baseline. `TASK-060` is next, followed by `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Use the single batch implementation plan and commit each task separately.
+`TASK-049` through `TASK-056` and `TASK-058` through `TASK-060` are approved and done. Their evidence grammar, premise/copy/URL contract, and fullscreen composition remain the baseline. Continue with `TASK-061`, then `TASK-062`, `TASK-063`, and `TASK-064`. Use the single batch implementation plan and commit each task separately.
 
 The five evidence scenes remain the narrative spine, preceded by one fullscreen premise. The recommended composition is **One Constellation on an Elastic Stage**. JSD remains selected-place panel evidence only; similarity map arcs stay removed.
 
@@ -25,6 +25,7 @@ The five evidence scenes remain the narrative spine, preceded by one fullscreen 
 
 ## 2026-07-12
 
+- 2026-07-12: `TASK-060` Builder pass moved to `in-review`. The existing `StoryScrolly`, sticky map, observer, URL state, and figure routing now form a fullscreen shell with map-immersive and figure-takeover ownership; premise top/progress chrome is absent from the DOM, interactive controls retain their own keys, observer threshold zero is included, and native focus/reduced-motion rules remain visible and immediate. Root later reproduced an existing-tab landscape-to-portrait reload failure: automatic browser restoration replayed the stale landscape offset after copied-scene scrolling, placing the missingness scene at the observer line and rewriting the URL. A focused RED/GREEN test now assigns scroll restoration to the existing hydration flow with `history.scrollRestoration = "manual"`; focused tests pass 9/9, full frontend passes 41/41, and build/budget/status/secret/whitespace gates pass. Root browser re-QA remains required.
 - 2026-07-12: `TASK-059` Builder pass moved to `in-review`. The app contract now exposes six stable guided IDs with `what-this-atlas-is-asking` first, map/figure stage ownership, a premise-aware eyebrow, premise URL fallback, and comparison focus tied to stable visual meaning rather than scene index. Focused tests passed 7/7 after an observed RED gate; full frontend tests passed 37/37; build and source/claims audit passed with the known chunk warning. A separate Checker must review before `TASK-059` can become done.
 - 2026-07-12: Owner approved `TASK-058` and rejected per-task Markdown clutter. Consolidated the fullscreen-stage contract into `context/ARTISTIC_REDESIGN_BRIEF.md`, removed the one-off TASK-058 design file, and organized TASK-059–064 under one batch implementation plan. `TASK-057` remains `needs-fix`; implementation has not started.
 

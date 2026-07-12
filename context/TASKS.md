@@ -1389,7 +1389,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: story-architecture
 - Title: Replace the fixed rail with one fullscreen story stage
 - Depends on: TASK-059
-- Assigned agent: unassigned
+- Assigned agent: Builder
 - Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 - Data refs: none
 - Scientific refs: none
@@ -1402,11 +1402,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The 30rem grid rail is absent in guided mode; one observer remains the only active-scene writer; map and figure stage modes fill the intended viewport; URL/history/keyboard tests pass; Explore behavior remains intact.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Exercise scroll, progress, keyboard, copied URLs, Back/Forward, resize, and reduced motion at desktop and mobile sizes.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder TDD evidence: the focused fullscreen-shell test first failed 3/3 for absent active visual/stage attributes, premise chrome still present in the DOM, and the missing interactive-control key guard; it then passed 3/3 after the minimal implementation. Focused shell/state/evidence-operation tests passed 31/31, confirming equal-size 22-place presence marks, missingness coverage/evidence breaks, and the pressure plus pressure/capacity split. Full frontend tests passed 40/40; the production build and bundle-budget check passed with only the recorded large-chunk warning. Root browser QA failed copied-scene restoration after a viewport switch: `?scene=similar-scores-different-records` restored correctly at 844x390, but after switching to 390x844 and reloading, the observer activated `where-the-record-breaks` and rewrote the URL to coverage. A fresh portrait tab restored comparison correctly, isolating automatic reload restoration replaying the retained landscape offset after the app-owned scene scroll. The focused regression test failed RED because scroll ownership was absent, then passed 9/9 after startup set `history.scrollRestoration` to `manual`; no timeout, observer/controller, dependency, or broad refactor was added. Full frontend tests passed 41/41; build/budget passed at 1,023,518-byte JS and 94,925-byte CSS; statuses, secrets, and whitespace passed. Independent code Checker found no actionable issues. Root browser recheck passed: the 844×390 comparison link survived a 390×844 resize/reload with comparison still active, top approximately 58px, URL unchanged, and zero horizontal overflow; desktop premise used a 900px sticky map with no premise chrome or overflow; portrait premise used exactly 844px with no chrome/overflow; figure takeovers used opaque paper; keyboard focus showed a 3px outline; Explore restored 22 marks/controls and removed story chrome; Back/Forward restored Guided/Explore states. Reduced-motion selectors and automated checks cover immediate static transitions. TASK-060 accepted.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created from TASK-058.
-- Status: pending
+- Attempt log: Created from TASK-058. 2026-07-12: Builder replaced the 30rem grid rail with the existing sticky-map fullscreen composition, conditionally omitted premise chrome, published active visual/stage attributes, added observer threshold zero and interactive-control keyboard isolation, preserved native focus and reduced-motion behavior, verified the existing evidence operations, and advanced the task for root browser/Checker review. 2026-07-12: Root browser QA reproduced a portrait copied-scene reload failure and returned the task for correction; Builder traced it to automatic browser restoration replaying a stale landscape offset, added a focused RED/GREEN regression, assigned reload scroll ownership to the existing hydration flow, and returned the task for root browser re-review.
+- Status: done
 
 ## TASK-061
 - Phase: story-figures

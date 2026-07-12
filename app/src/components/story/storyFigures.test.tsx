@@ -70,6 +70,11 @@ describe("story figures", () => {
     expect(html).toContain("Reported monitoring");
     expect(html).toContain("Score inputs");
     expect(html).toContain("Rank band");
+    expect(html).toContain('data-stage-figure="comparison"');
+    expect(html).toContain('data-code="NR"');
+    expect(html).toContain('data-code="TV"');
+    expect((html.match(/<figure class="evidence-portrait/g) ?? []).length).toBe(2);
+    expect(html).not.toContain('data-selected="true"');
     expect(html).not.toContain("JSD");
   });
 

@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. The `TASK-059` Builder pass now implements the stable premise contract, six guided IDs, premise-aware evidence-scene numbering, and premise URL default; it remains `in-review` pending a separate Checker. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
+Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. `TASK-059` and `TASK-060` are done; the `TASK-061` Builder pass enlarges the aligned Nauru/Tuvalu comparison and remains `in-review` for root viewport and Checker QA. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
 
 Source basis:
 
@@ -50,6 +50,7 @@ Current guided contract after the `TASK-059` Builder pass:
 
 - `SCENES` contains exactly six ordered scene IDs: the stable premise `what-this-atlas-is-asking`, followed by `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
 - The premise uses the map-immersive stage and the approved opening claim/caveat. The next three scenes remain map-immersive; the comparison and rank-band scenes declare figure-takeover ownership for the following layout tasks.
+- The comparison takeover uses the same real Nauru/Tuvalu fields in two aligned, unselected evidence portraits: paired on desktop and landscape, then consecutive full-width portraits in portrait reading order with no swipe or nested scroll.
 - Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
 - Guided fingerprint content, the seven-beat method/uncertainty repetition, and the static `FingerprintPreview` figure are retired. JSD remains selected-place panel evidence in exploration until TASK-055 removes map connectors.
 

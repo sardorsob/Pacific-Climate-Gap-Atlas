@@ -506,6 +506,8 @@ git commit -m "feat(story): TASK-060 add fullscreen story composition"
 - Modify: `app/src/components/story/EvidencePortrait.tsx`
 - Modify: `app/src/components/story/storyFigures.test.tsx`
 - Modify: `app/src/styles/base.css`
+- Modify: `app/src/main.tsx`
+- Modify: `app/src/App.tsx`
 - Modify after verification: existing task/story/design/log context
 
 **Interfaces:**

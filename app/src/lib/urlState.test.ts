@@ -17,7 +17,7 @@ describe("atlas URL state", () => {
   it("drops unknown values instead of crashing", () => {
     expect(parseAtlasUrl("?mode=bad&layer=rainbow&place=ZZ", ["NR", "TV"])).toEqual({
       mode: "guided",
-      scene: "what-the-map-can-see",
+      scene: "what-this-atlas-is-asking",
       layer: "gap",
       view: "default",
       place: null,
@@ -29,7 +29,7 @@ describe("atlas URL state", () => {
     expect(
       serializeAtlasUrl({
         mode: "guided",
-        scene: "what-the-map-can-see",
+        scene: "what-this-atlas-is-asking",
         layer: "gap",
         view: "default",
         place: null,

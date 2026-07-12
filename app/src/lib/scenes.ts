@@ -1,7 +1,8 @@
 import type { ScoreKey } from "./encoding";
 import type { ViewMode } from "./types";
 
-export type SceneVisual = "presence" | "missingness" | "split" | "comparison" | "rank-bands";
+export type SceneVisual = "premise" | "presence" | "missingness" | "split" | "comparison" | "rank-bands";
+export type SceneStage = "map-immersive" | "figure-takeover";
 
 export type Scene = {
   id: string;
@@ -11,6 +12,7 @@ export type Scene = {
   caveat: string;
   source: string;
   visual: SceneVisual;
+  stage: SceneStage;
   state: {
     score?: ScoreKey;
     view?: ViewMode;
@@ -20,6 +22,17 @@ export type Scene = {
 
 export const SCENES: Scene[] = [
   {
+    id: "what-this-atlas-is-asking",
+    short: "The question",
+    title: "Climate pressure is not the same as adaptation capacity.",
+    claim: "Across 22 Pacific places, official records show both unevenly. This atlas maps the gap between them—and makes the missing evidence visible.",
+    caveat: "Visible capacity is what the available official datasets can show, not full readiness or lived adaptive capacity.",
+    source: "adaptation_gap_index.csv; generated geography records",
+    visual: "premise",
+    stage: "map-immersive",
+    state: { score: "gap", view: "default", selected: null },
+  },
+  {
     id: "what-the-map-can-see",
     short: "What the map can see",
     title: "Twenty-two places. Uneven light.",
@@ -27,6 +40,7 @@ export const SCENES: Scene[] = [
     caveat: "Every mark keeps the same footprint. Thin evidence is an interruption in the record, not a smaller place.",
     source: "adaptation_gap_index.csv; generated geography records",
     visual: "presence",
+    stage: "map-immersive",
     state: { score: "gap", view: "default", selected: null },
   },
   {
@@ -37,6 +51,7 @@ export const SCENES: Scene[] = [
     caveat: "Thin records describe official visibility, not conditions on the ground. A reported zero is not the same as a missing row.",
     source: "eda_monitoring_gap.csv; adaptation_gap_indicator_trace.csv",
     visual: "missingness",
+    stage: "map-immersive",
     state: { score: "gap", view: "coverage", selected: null },
   },
   {
@@ -47,6 +62,7 @@ export const SCENES: Scene[] = [
     caveat: "Visible capacity is an official-data proxy, not full readiness or lived adaptive capacity.",
     source: "eda_country_drivers.csv; adaptation_gap_indicator_trace.csv",
     visual: "split",
+    stage: "map-immersive",
     state: { score: "pressure", view: "default", selected: null },
   },
   {
@@ -57,6 +73,7 @@ export const SCENES: Scene[] = [
     caveat: "This compares official evidence, not either place's full lived reality. Similarity is not physical connection or shared policy need.",
     source: "generated geography records; eda_monitoring_gap.csv; eda_rank_volatility.csv",
     visual: "comparison",
+    stage: "figure-takeover",
     state: { score: "gap", view: "default", selected: "NR" },
   },
   {
@@ -67,6 +84,7 @@ export const SCENES: Scene[] = [
     caveat: "These bands show sensitivity to analytical choices. They are not confidence intervals or a definitive leaderboard.",
     source: "eda_rank_volatility.csv",
     visual: "rank-bands",
+    stage: "figure-takeover",
     state: { score: "gap", view: "uncertainty", selected: "MH" },
   },
 ];

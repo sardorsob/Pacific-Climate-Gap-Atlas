@@ -345,7 +345,7 @@ export function App() {
           outlookOn={outlookOn}
           selectedCode={selectedCode}
           priorityCodes={priorityCodes}
-          focusSelection={mode === "guided" && sceneIndex === 3}
+          focusSelection={mode === "guided" && SCENES[sceneIndex]?.visual === "comparison"}
           panelOpen={panelOpen}
           panelExpanded={sheetExpanded}
               onSelect={handleSelect}

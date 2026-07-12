@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-`TASK-057` is `needs-fix` after owner visual QA. Automated URL/history, build, data, and bundle checks passed, but the opening did not communicate the project strongly enough and scenes 4 and 5 were too small in the fixed rail. `TASK-058` is owner-approved and done; read `context/ARTISTIC_REDESIGN_BRIEF.md` and `context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md` before any app edit.
+`TASK-057` remains `needs-fix` after owner visual QA. `TASK-059` passed independent Checker review and is done. Start `TASK-060` from the binding preflight corrections in the single batch plan: conditional premise chrome, one native-scroll observer, fullscreen map/figure ownership, keyboard isolation, and desktop/mobile/landscape QA.
 
 ## Next Build Step
 
-`TASK-049` through `TASK-056` and `TASK-058` are approved and done. Their evidence grammar, interaction contracts, and fullscreen composition remain the baseline. The next batch is `TASK-059` premise copy, `TASK-060` fullscreen composition, `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Use the single batch implementation plan and commit each task separately.
+`TASK-049` through `TASK-056`, `TASK-058`, and `TASK-059` are approved and done. Their evidence grammar, premise/copy/URL contract, and fullscreen composition remain the baseline. `TASK-060` is next, followed by `TASK-061` Nauru/Tuvalu takeover, `TASK-062` rank-field takeover, `TASK-063` shared transitions/handoff, and `TASK-064` full QA reconciliation. Use the single batch implementation plan and commit each task separately.
 
 The five evidence scenes remain the narrative spine, preceded by one fullscreen premise. The recommended composition is **One Constellation on an Elastic Stage**. JSD remains selected-place panel evidence only; similarity map arcs stay removed.
 
@@ -25,6 +25,7 @@ The five evidence scenes remain the narrative spine, preceded by one fullscreen 
 
 ## 2026-07-12
 
+- 2026-07-12: `TASK-059` Builder pass moved to `in-review`. The app contract now exposes six stable guided IDs with `what-this-atlas-is-asking` first, map/figure stage ownership, a premise-aware eyebrow, premise URL fallback, and comparison focus tied to stable visual meaning rather than scene index. Focused tests passed 7/7 after an observed RED gate; full frontend tests passed 37/37; build and source/claims audit passed with the known chunk warning. A separate Checker must review before `TASK-059` can become done.
 - 2026-07-12: Owner approved `TASK-058` and rejected per-task Markdown clutter. Consolidated the fullscreen-stage contract into `context/ARTISTIC_REDESIGN_BRIEF.md`, removed the one-off TASK-058 design file, and organized TASK-059–064 under one batch implementation plan. `TASK-057` remains `needs-fix`; implementation has not started.
 
 ## 2026-07-11

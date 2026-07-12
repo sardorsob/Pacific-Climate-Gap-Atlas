@@ -1374,16 +1374,16 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Functional notes: Add one stable premise prologue before the five evidence scenes; keep one claim, caveat, source, and visual operation per evidence scene; remove rail-sized or interface-explainer copy.
 - Statistical notes: Use `visible capacity`, not readiness; preserve 22 places, 19/22 fragile, MH 4–19, and monitoring semantics only after source checks.
 - Edge cases: Copy must fit 360px without hiding active marks; the opening caveat remains visible but subordinate; progress and URL state must handle the new premise safely.
-- Files to create/modify: app/src/lib/scenes.ts and tests, app/src/components/story/StoryScene.tsx, app/src/components/story/SceneProgress.tsx, context/STORY_BRIEF.md
+- Files to create/modify: app/src/lib/scenes.ts and tests, app/src/lib/urlState.test.ts, app/src/components/story/StoryScene.tsx and test, app/src/App.tsx, context/STORY_BRIEF.md, existing progress/handoff context
 - Artifacts to produce: premise content contract, revised scene copy, claims/source audit.
 - Acceptance criteria: A cold reader can state the project premise after the prologue; all six guided IDs are stable and tested; each evidence claim has a caveat/source; no new overclaim or guided JSD appears.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Read prologue and all five scenes at 1440×900 and 360×800; cross-check every numeric and monitoring claim.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder TDD evidence: the focused six-scene, URL-default, premise-numbering, and stable-comparison tests first failed for the expected missing-contract reasons, then passed 7/7 after the minimal implementation. Full frontend tests passed 37/37 and the production build completed with only the previously recorded large-chunk warning. Claims/source audit confirmed 22 generated geographies, 19 fragile labels, Marshall Islands 4–19, PN/NR reported-zero monitoring, AS/WF missing monitoring rows, and all named evidence files. Independent Checker reviewed commit `035a2a4` against the task and binding preflight corrections, found no actionable issues, confirmed legal status/scope/no-coauthor evidence, and accepted TASK-059.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created from TASK-057 owner QA and TASK-058 design synthesis.
-- Status: pending
+- Attempt log: Created from TASK-057 owner QA and TASK-058 design synthesis. 2026-07-12: Builder started the approved fullscreen premise implementation with strict TDD, added the stable premise/stage/URL contract and premise-aware copy treatment, replaced the numeric comparison-camera condition with stable visual semantics, verified the claims, and advanced the task for independent review.
+- Status: done
 
 ## TASK-060
 - Phase: story-architecture
@@ -1396,7 +1396,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - User value / decision value: Gives the active evidence the viewport while preserving predictable native scrolling, keyboard navigation, and copied URLs.
 - Functional notes: Keep `StoryScrolly` as observer owner; reuse the existing sticky map as the stage; let scene data attributes and CSS switch between transparent map-immersive sections and opaque figure takeovers without nested overflow, scroll interception, or a new stage abstraction.
 - Statistical notes: Structural task only; no generated data, score, rank, monitoring, or JSD semantics change.
-- Edge cases: Rapid scroll is latest-state-wins; Back/Forward and copied scene URLs restore the correct stage; ResizeObserver/viewport changes do not strand a stale takeover; reduced motion is immediate.
+- Edge cases: Rapid scroll is latest-state-wins; Back/Forward and copied scene URLs restore the correct stage; the premise omits hidden focusable chrome; interactive controls do not bubble into story navigation; ResizeObserver/viewport changes do not strand a stale takeover; reduced motion is immediate.
 - Files to create/modify: app/src/App.tsx, app/src/components/story/StoryScrolly.tsx and focused markup tests, app/src/styles/base.css, app/src/lib/urlState.ts tests
 - Artifacts to produce: fullscreen sticky stage shell, deterministic stage behavior, desktop/mobile shell QA.
 - Acceptance criteria: The 30rem grid rail is absent in guided mode; one observer remains the only active-scene writer; map and figure stage modes fill the intended viewport; URL/history/keyboard tests pass; Explore behavior remains intact.
@@ -1417,7 +1417,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Data refs: app/public/data/geographies.json, app/public/data/country_details.json
 - Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
 - User value / decision value: Makes the scene-four evidence legible and lets readers compare aligned records instead of deciphering two miniature cards.
-- Functional notes: Render aligned desktop portraits at stage scale; use consecutive Nauru and Tuvalu steps plus a comparison takeaway on portrait mobile; keep a quiet locator only when it helps orientation.
+- Functional notes: Render aligned desktop and landscape portraits at stage scale; use consecutive full-width Nauru and Tuvalu reading order plus a comparison takeaway on portrait mobile; neither portrait receives an unexplained selection bloom; keep a quiet locator only when it helps orientation.
 - Statistical notes: Compare official evidence only; use visible capacity; preserve gap, pressure, capacity, score inputs, monitoring state, and rank bands; no JSD or lived-reality inference.
 - Edge cases: Long labels, 1024×768, 360px portrait, mobile landscape, keyboard reading order, and no-swipe fallback must work.
 - Files to create/modify: app/src/components/story/PlaceComparisonScene.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css
@@ -1440,7 +1440,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Data refs: app/public/data/geographies.json, artifacts/tables/eda_rank_volatility.csv
 - Scientific refs: context/ANALYSIS_BRIEF.md
 - User value / decision value: Makes all 22 geography names and rank bands readable while preserving one shared comparison scale.
-- Functional notes: Remove the 330px cap; render a desktop/landscape full-screen interval field and a portrait page-tall field with sticky title/axis and no nested scroll.
+- Functional notes: Remove the 330px cap; render an alphabetically ordered desktop/landscape full-screen interval field and a portrait page-tall field with sticky title/axis and no nested scroll. Use an unordered list, full wrapping names, exact shared-scale ticks, and no synthetic midpoint dot.
 - Statistical notes: Sort and label exactly as the approved sensitivity diagnostic requires; highlight MH 4–19; bands are not confidence intervals or a definitive leaderboard.
 - Edge cases: At least 13px labels and roughly 26–30px desktop row height; long names; 22 rows; reduced motion; screen-reader summary; portrait completion without fixed-chrome overlap.
 - Files to create/modify: app/src/components/story/RankBandScene.tsx, app/src/components/story/rankBandModel.ts and tests, app/src/components/story/storyFigures.test.tsx, app/src/styles/base.css
@@ -1463,7 +1463,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Data refs: app/public/data/geographies.json
 - Scientific refs: context/DATA_CARD.md
 - User value / decision value: Makes the sequence feel like one evidence system changing form and ensures the story disappears cleanly when exploration begins.
-- Functional notes: Preserve geography keys through map, split, comparison, interval, and return states; add restrained chamber arrival/recession; remove story chrome after handoff; keep existing Explore controls and panel behavior.
+- Functional notes: Preserve geography keys through map, split, comparison, interval, and return states; add restrained per-mark/chamber arrival and recession without a shared-element engine; let the existing observer restore gap/default/no-selection at the handoff; repeat that reset when entering Explore; remove story chrome after handoff; keep existing Explore controls and panel behavior.
 - Statistical notes: Motion never invents interpolation meaning or changes values; all final states use generated data.
 - Edge cases: Rapid scene scrubbing, progress jumps, copied URLs, Back/Forward, reduced motion, aborted camera transitions, and reopening guided mode must settle deterministically.
 - Files to create/modify: app/src/components/story/StoryScrolly.tsx, app/src/components/story/EvidencePortrait.tsx, app/src/components/map/MapOverlay.tsx, app/src/App.tsx, app/src/styles/base.css, focused tests

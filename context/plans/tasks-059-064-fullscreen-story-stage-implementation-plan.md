@@ -24,6 +24,22 @@
 - Use generated app data and existing EDA artifacts; concept-board labels, values, photographs, and boundaries are never implementation inputs.
 - Each task follows TDD where logic/markup changes, runs its own verification gate, receives a separate Checker pass, and ends in its own commit without `Co-authored-by` trailers.
 
+## Binding Preflight Corrections
+
+These corrections supersede any narrower code sample below where the two conflict.
+
+- TASK-059 replaces the hard-coded `sceneIndex === 3` comparison-camera condition in `App.tsx` with the stable comparison scene id or visual. Adding the premise must not move named-place focus to scene 3.
+- TASK-060 removes premise chrome from layout, focus order, and the accessibility tree by conditionally omitting the existing top/progress wrapper while the premise is active. Opacity alone is insufficient. The existing observer thresholds include `0`, and story-level keyboard navigation ignores events originating inside buttons or links.
+- TASK-060 also verifies the existing map scene operations rather than treating `data-scene-visual` as decoration: presence keeps all 22 footprints equal, missingness uses the existing coverage state and evidence breaks, and split uses the existing pressure state plus the pressure/capacity figure. No second map renderer is added.
+- TASK-061 and TASK-062 remain sequential because they share `storyFigures.test.tsx` and `base.css`.
+- TASK-061 stacks portraits only in portrait orientation. Landscape keeps the two-column comparison, removes the unexplained Nauru-only selection bloom, and aligns each portrait's header/stat/caveat tracks.
+- TASK-062 uses stable alphabetical geography order and an unordered list, removes the synthetic midpoint dot, uses mathematically aligned `1 / 8 / 15 / 22` ticks, and allows full geography names to wrap. No ellipsis may hide a name. Portrait and landscape both use normal document scroll rather than a nested chart scroller.
+- TASK-063 uses the existing observer to detect the handoff and restore `{ score: "gap", view: "default", selected: null }`; `handleExplore()` repeats that reset before changing mode so Explore and its URL never inherit scene-5 uncertainty.
+- Stable `data-code` identity, the reused `EvidenceMark`, per-mark CSS transitions, and chamber motion provide continuity. A cross-DOM FLIP/shared-element engine is deliberately excluded under Ponytail/YAGNI; TASK-064 records this implementation interpretation and the owner may accept it or return TASK-063 to `needs-fix`.
+- Reduced motion disables transitions on the animated elements themselves, including `.story-scene`, `.story-scrolly__top`, `.story-handoff`, evidence marks, and descendants.
+- TASK-064 may advance only to `in-review` after automated and delegated Checker evidence. It requires the owner's visual/accessibility acceptance before `in-review -> done`; TASK-057 remains `needs-fix` until then.
+- Stage exact touched paths for every commit. Do not use broad `git add context`, `git add app`, or equivalent directory-wide staging.
+
 ---
 
 ## Target File Structure
@@ -53,6 +69,7 @@
 - Modify: `app/src/lib/scenes.test.ts:1-18`
 - Modify: `app/src/lib/urlState.test.ts:17-39`
 - Modify: `app/src/components/story/StoryScene.tsx:11-22`
+- Modify: `app/src/App.tsx` comparison-scene camera condition
 - Modify after verification: `context/TASKS.md`, `context/STORY_BRIEF.md`, `context/logs/Progress Log.md`, `context/logs/Handoff Notes.md`
 
 **Interfaces:**
@@ -163,7 +180,7 @@ Insert this object first in `SCENES`:
 },
 ```
 
-Add `stage: "map-immersive"` to the next three scene objects and `stage: "figure-takeover"` to the Nauru/Tuvalu and rank-band objects. Do not change their IDs or evidence state.
+Add `stage: "map-immersive"` to the next three scene objects and `stage: "figure-takeover"` to the Nauru/Tuvalu and rank-band objects. Keep the five approved evidence claims, caveats, sources, and IDs. Replace the comparison camera's hard-coded numeric scene index in `App.tsx` with the stable `similar-scores-different-records` id so the premise insertion cannot shift it.
 
 - [ ] **Step 5: Make StoryScene distinguish premise from evidence scenes**
 
@@ -214,7 +231,7 @@ git diff --check
 Move TASK-059 `in-progress -> in-review`; after the separate Checker pass, move it `in-review -> done`, update existing logs, and commit:
 
 ```bash
-git add app/src/lib/scenes.ts app/src/lib/scenes.test.ts app/src/lib/urlState.test.ts app/src/components/story/StoryScene.tsx context
+git add app/src/lib/scenes.ts app/src/lib/scenes.test.ts app/src/lib/urlState.test.ts app/src/components/story/StoryScene.tsx app/src/App.tsx context/TASKS.md context/STORY_BRIEF.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md" context/plans/tasks-059-064-fullscreen-story-stage-implementation-plan.md
 git commit -m "feat(story): TASK-059 add fullscreen premise"
 ```
 
@@ -296,6 +313,8 @@ Add this attribute to every mapped scene `<section>`:
 data-stage-mode={scene.stage}
 ```
 
+Render the existing `.story-scrolly__top` wrapper only when `scenes[index]?.visual !== "premise"`; this removes its buttons and progress controls from layout and focus order during the premise. Add `0` to the existing observer thresholds. In `onKeyDown`, return without story navigation when the event target is inside `button`, `a`, `input`, `select`, or `textarea`.
+
 Do not add a `StoryStage` component, a second observer, or stage state in `App`.
 
 - [ ] **Step 3: Expose the active visual on the existing app shell**
@@ -360,11 +379,6 @@ Replace the current `.guided-atlas` through `.story-scene__extra` layout rules w
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
   transition: opacity 200ms ease;
-}
-.story-scrolly[data-active-visual="premise"] .story-scrolly__top,
-.story-scrolly[data-active-visual="premise"] .scene-progress {
-  opacity: 0;
-  pointer-events: none;
 }
 .story-scrolly__brand { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; color: #f6f3eb; }
 .story-scrolly__actions { display: flex; gap: 6px; }
@@ -438,6 +452,16 @@ Replace the story portion of the `max-width: 880px` media query with:
   .scene-progress { overflow-x: auto; flex-wrap: nowrap; }
   .scene-progress__item { min-height: 44px; white-space: nowrap; }
 }
+
+@media (max-width: 880px) and (orientation: landscape) {
+  .story-scene[data-stage-mode="figure-takeover"] .story-scene__content {
+    grid-template-columns: minmax(14rem, 20rem) minmax(0, 1fr);
+  }
+  .story-scene[data-stage-mode="figure-takeover"] .story-scene__extra {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+  }
+}
 ```
 
 Do not delete existing evidence-mark, figure, panel, explorer, or reduced-motion rules in this task.
@@ -465,10 +489,10 @@ At 1440×900 and 390×844 verify:
 
 - [ ] **Step 7: Complete Checker gate and commit**
 
-Run the standard frontend/status/secret/whitespace gate, update existing context only, and commit:
+Run the standard frontend/status/secret/whitespace gate, update existing context only, and stage exact paths before committing:
 
 ```bash
-git add app/src/App.tsx app/src/components/story/StoryScrolly.tsx app/src/components/story/StoryScrolly.test.tsx app/src/styles/base.css context
+git add app/src/App.tsx app/src/components/story/StoryScrolly.tsx app/src/components/story/StoryScrolly.test.tsx app/src/styles/base.css context/TASKS.md context/PROJECT.md context/HANDOVER.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md"
 git commit -m "feat(story): TASK-060 add fullscreen story composition"
 ```
 
@@ -529,7 +553,7 @@ Change the `EvidencePortrait` opening tag to:
 >
 ```
 
-Do not add new values, prose fields, JSD, photographs, or comparison controls.
+Render both portraits without `selected`; the comparison scene has no user selection and must not give Nauru an unexplained bloom. Do not add new values, prose fields, JSD, photographs, or comparison controls.
 
 - [ ] **Step 3: Replace the compact comparison styles with stage-scale styles**
 
@@ -547,6 +571,7 @@ Use:
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border-top: 3px solid var(--line);
   display: grid;
+  grid-template-rows: auto 1fr auto;
   gap: 18px;
   background: var(--paper-2);
 }
@@ -561,7 +586,7 @@ Use:
 .evidence-portrait__caveat { margin: 0; color: var(--caveat-ink); font-size: 12px; line-height: 1.45; }
 .place-comparison-figure__caption { margin: 0; color: var(--ink-soft); font-size: 12px; font-style: italic; }
 
-@media (max-width: 880px) {
+@media (max-width: 880px) and (orientation: portrait) {
   .place-comparison-figure__portraits { grid-template-columns: 1fr; gap: 2rem; }
   .evidence-portrait { min-height: min(60svh, 34rem); align-content: center; }
 }
@@ -582,7 +607,7 @@ Inspect scene 4 at 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800
 After claims, accessibility, status, secret, and whitespace review:
 
 ```bash
-git add app/src/components/story/PlaceComparisonScene.tsx app/src/components/story/EvidencePortrait.tsx app/src/components/story/storyFigures.test.tsx app/src/styles/base.css context
+git add app/src/components/story/PlaceComparisonScene.tsx app/src/components/story/EvidencePortrait.tsx app/src/components/story/storyFigures.test.tsx app/src/styles/base.css context/TASKS.md context/STORY_BRIEF.md context/DESIGN_BRIEF.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md"
 git commit -m "feat(story): TASK-061 enlarge place comparison"
 ```
 
@@ -602,7 +627,7 @@ git commit -m "feat(story): TASK-061 enlarge place comparison"
 **Interfaces:**
 
 - Consumes: `RankBandRow[]` from generated `Geo.rankMin/rankMax`, existing 560ms reduced-motion contract.
-- Produces: `rankToPercent(rank): number`; 22 HTML rows on one 1–22 scale; CSS variables `--rank-start`, `--rank-width`, and `--rank-mid`.
+- Produces: `rankToPercent(rank): number`; 22 alphabetically ordered HTML rows on one 1–22 scale; CSS variables `--rank-start` and `--rank-width`.
 
 - [ ] **Step 1: Write failing percentage and HTML-row tests**
 
@@ -616,6 +641,14 @@ it("maps the shared 1 to 22 scale to percentages", () => {
   expect(rankToPercent(11.5)).toBe(50);
   expect(rankToPercent(22)).toBe(100);
   expect(rankToPercent(99)).toBe(100);
+});
+
+it("uses stable alphabetical order instead of implying a leaderboard", () => {
+  const rows = buildRankBandRows([
+    makeGeo("NR", 1, 7, "sensitive"),
+    makeGeo("MH", 4, 19, "fragile"),
+  ]);
+  expect(rows.map((row) => row.name)).toEqual(["Marshall Islands", "Nauru"]);
 });
 ```
 
@@ -659,7 +692,6 @@ import { buildRankBandRows, rankBandTransition, rankToPercent } from "./rankBand
 type RankStyle = CSSProperties & {
   "--rank-start": string;
   "--rank-width": string;
-  "--rank-mid": string;
 };
 
 export function RankBandScene({ geos, reducedMotion }: RankBandSceneProps) {
@@ -675,18 +707,19 @@ export function RankBandScene({ geos, reducedMotion }: RankBandSceneProps) {
       style={{ "--rank-band-duration": `${transition.duration}ms` } as CSSProperties}
       aria-label="Sensitivity rank bands for the 22 Pacific geographies"
     >
-      <p className="rank-band-figure__intro">Sensitivity bands, not a fixed scoreboard</p>
-      <div className="rank-band-figure__axis" aria-hidden="true">
-        <span>1</span><span>11</span><span>22</span>
+      <div className="rank-band-figure__sticky-head">
+        <p className="rank-band-figure__intro">Sensitivity bands, not a fixed scoreboard</p>
+        <div className="rank-band-figure__axis" aria-hidden="true">
+          <span>1</span><span>8</span><span>15</span><span>22</span>
+        </div>
       </div>
-      <ol className="rank-band-figure__rows">
+      <ul className="rank-band-figure__rows">
         {rows.map((row) => {
           const start = rankToPercent(row.min);
           const end = rankToPercent(row.max);
           const style = {
             "--rank-start": `${start}%`,
             "--rank-width": `${Math.max(0, end - start)}%`,
-            "--rank-mid": `${rankToPercent(row.midpoint)}%`,
           } as RankStyle;
           return (
             <li
@@ -699,13 +732,12 @@ export function RankBandScene({ geos, reducedMotion }: RankBandSceneProps) {
               <span className="rank-band-figure__name">{row.name}</span>
               <span className="rank-band-figure__plot" style={style} aria-hidden="true">
                 <span className="rank-band-figure__band" />
-                <span className="rank-band-figure__midpoint" />
                 {row.highlight && <span className="rank-band-figure__value">4–19</span>}
               </span>
             </li>
           );
         })}
-      </ol>
+      </ul>
       <figcaption className="rank-band-figure__caption">
         The bands are sensitivity diagnostics, not confidence intervals or a definitive leaderboard.
       </figcaption>
@@ -714,7 +746,7 @@ export function RankBandScene({ geos, reducedMotion }: RankBandSceneProps) {
 }
 ```
 
-Keep the existing `usePrefersReducedMotion`, prop type, and transition behavior.
+Keep the existing `usePrefersReducedMotion`, prop type, and transition behavior. Update `buildRankBandRows()` to sort by `name.localeCompare()` and remove its unused synthetic midpoint field.
 
 - [ ] **Step 4: Replace the SVG-specific rank CSS**
 
@@ -723,19 +755,17 @@ Use:
 ```css
 .rank-band-figure { margin: 0; display: grid; gap: 12px; width: 100%; }
 .rank-band-figure__intro { margin: 0; color: var(--ink-soft); font-size: 13px; font-weight: 800; }
+.rank-band-figure__sticky-head { position: sticky; top: 56px; z-index: 1; display: grid; gap: 6px; background: var(--paper); }
 .rank-band-figure__axis {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   margin-left: clamp(7rem, 18vw, 15rem);
   padding: 6px 0;
   color: var(--ink-soft);
   background: var(--paper);
   font-size: 12px;
 }
-.rank-band-figure__axis span:nth-child(2) { text-align: center; }
+.rank-band-figure__axis span:not(:first-child):not(:last-child) { text-align: center; }
 .rank-band-figure__axis span:last-child { text-align: right; }
 .rank-band-figure__rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .rank-band-figure__row {
@@ -745,7 +775,7 @@ Use:
   gap: 14px;
   align-items: center;
 }
-.rank-band-figure__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-soft); font-size: 13px; font-weight: 650; }
+.rank-band-figure__name { min-width: 0; color: var(--ink-soft); font-size: 13px; font-weight: 650; line-height: 1.15; overflow-wrap: anywhere; }
 .rank-band-figure__plot { position: relative; height: 18px; border-bottom: 1px solid rgba(82, 105, 116, 0.18); }
 .rank-band-figure__band {
   position: absolute;
@@ -757,24 +787,11 @@ Use:
   background: #8095a0;
   transition: left var(--rank-band-duration) var(--motion-ease-evidence), width var(--rank-band-duration) var(--motion-ease-evidence);
 }
-.rank-band-figure__midpoint {
-  position: absolute;
-  left: var(--rank-mid);
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  background: #d7e3e7;
-  border: 1px solid #526974;
-  transition: left var(--rank-band-duration) var(--motion-ease-evidence);
-}
 .rank-band-figure__row--highlight .rank-band-figure__band { height: 6px; top: 7px; background: #e8895a; }
-.rank-band-figure__row--highlight .rank-band-figure__midpoint { background: #e8895a; border-color: #7b3426; }
 .rank-band-figure__value { position: absolute; left: calc(var(--rank-start) + var(--rank-width) + 8px); top: 1px; color: #9a4a34; font-size: 12px; font-weight: 800; white-space: nowrap; }
 .rank-band-figure__caption { margin: 0; color: var(--ink-soft); font-size: 12px; font-style: italic; line-height: 1.4; }
 
-@media (max-width: 880px) {
+@media (max-width: 880px) and (orientation: portrait) {
   .rank-band-figure__row { grid-template-columns: 7rem minmax(0, 1fr); gap: 8px; min-height: 34px; }
   .rank-band-figure__axis { margin-left: 7rem; }
   .rank-band-figure__name { font-size: 13px; }
@@ -795,7 +812,7 @@ Run tests/build, then inspect all seven standard viewports plus mobile landscape
 - [ ] **Step 6: Complete Checker gate and commit**
 
 ```bash
-git add app/src/components/story/RankBandScene.tsx app/src/components/story/rankBandModel.ts app/src/components/story/rankBandModel.test.ts app/src/components/story/storyFigures.test.tsx app/src/styles/base.css context
+git add app/src/components/story/RankBandScene.tsx app/src/components/story/rankBandModel.ts app/src/components/story/rankBandModel.test.ts app/src/components/story/storyFigures.test.tsx app/src/styles/base.css context/TASKS.md context/DESIGN_BRIEF.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md"
 git commit -m "feat(story): TASK-062 enlarge rank interval field"
 ```
 
@@ -810,14 +827,14 @@ git commit -m "feat(story): TASK-062 enlarge rank interval field"
 - Modify: `app/src/components/story/StoryScrolly.tsx:104-110`
 - Modify: `app/src/components/story/StoryScrolly.test.tsx`
 - Modify: `app/src/components/story/storyFigures.test.tsx`
-- Modify: `app/src/App.tsx` only if browser evidence exposes a stale handoff attribute
+- Modify: `app/src/App.tsx` handoff and Explore state reset
 - Modify: `app/src/styles/base.css`
 - Modify after verification: existing task/design/log context
 
 **Interfaces:**
 
 - Consumes: stable `Geo.code`, current `data-active`, 560ms evidence token, existing reduced-motion media query, and `handleExplore()`.
-- Produces: `data-code` across map/portrait/rank forms; transparent `data-stage-mode="map-immersive"` handoff; interruptible text/chamber transitions.
+- Produces: `data-code` across map/portrait/rank forms; an observer-confirmed transparent handoff that restores gap/default map state; interruptible text/chamber transitions.
 
 - [ ] **Step 1: Write failing identity and handoff assertions**
 
@@ -826,6 +843,7 @@ In `StoryScrolly.test.tsx`, add:
 ```typescript
 expect(html).toContain('class="story-handoff"');
 expect(html).toContain('data-stage-mode="map-immersive"');
+expect(html).toContain('data-story-handoff="true"');
 ```
 
 In `storyFigures.test.tsx`, retain the comparison `data-code` assertions and add:
@@ -850,11 +868,14 @@ Change the handoff opening tag in `StoryScrolly.tsx` to:
 <section
   className="story-handoff"
   data-stage-mode="map-immersive"
+  data-story-handoff="true"
   aria-label="Return to the Pacific"
 >
 ```
 
-`EvidencePortrait` and rank rows already expose `data-code` from TASK-061 and TASK-062. Do not build a DOM shared-element engine; stable identity and the existing evidence components are sufficient.
+Add `onHandoffActive` to `StoryScrollyProps`, attach a ref to this section, and observe it with the same `IntersectionObserver` used for scenes. When the handoff crosses the existing active threshold, call `onHandoffActive()` without inventing a seventh scene id. In `App.tsx`, that callback restores gap/default/no-selection state; `handleExplore()` repeats the reset before switching mode and commits `layer=gap`, `view=default`, and `place=null` so the Explore URL cannot inherit scene 5.
+
+`EvidencePortrait` and rank rows already expose `data-code` from TASK-061 and TASK-062. Do not build a DOM shared-element engine; stable identity, reused evidence marks, per-mark transitions, and the existing chamber components are the deliberate minimal continuity mechanism.
 
 - [ ] **Step 3: Add evidence-bearing CSS transitions**
 
@@ -885,7 +906,7 @@ Add:
 .story-handoff__copy { max-width: 42rem; margin: 0; font: 600 clamp(24px, 3vw, 42px)/1.35 Georgia, serif; }
 ```
 
-Ensure the existing reduced-motion block includes `.story-handoff *` and already forces transitions to `0ms !important`.
+Ensure the existing reduced-motion block includes `.story-scene`, `.story-scrolly__top`, `.story-handoff`, `.story-handoff *`, and evidence-mark elements themselves; force their transitions to `0ms !important`.
 
 - [ ] **Step 4: Verify navigation converges on the latest state**
 
@@ -907,7 +928,7 @@ python scripts/check_app_bundle_budget.py
 python scripts/validate_task_statuses.py
 python scripts/check_secrets.py
 git diff --check
-git add app/src/components/map/MapOverlay.tsx app/src/components/story/EvidencePortrait.tsx app/src/components/story/StoryScrolly.tsx app/src/components/story/StoryScrolly.test.tsx app/src/components/story/storyFigures.test.tsx app/src/styles/base.css context
+git add app/src/components/map/MapOverlay.tsx app/src/components/story/EvidencePortrait.tsx app/src/components/story/StoryScrolly.tsx app/src/components/story/StoryScrolly.test.tsx app/src/components/story/storyFigures.test.tsx app/src/App.tsx app/src/styles/base.css context/TASKS.md context/DESIGN_BRIEF.md context/HANDOVER.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md"
 git commit -m "feat(story): TASK-063 connect stage transitions"
 ```
 
@@ -988,22 +1009,23 @@ Confirm:
 
 If any acceptance condition fails, move TASK-064 `in-progress -> in-review -> needs-fix` with exact file-level notes and leave TASK-057 `needs-fix`.
 
-If every condition passes:
+If every automated, delegated Checker, and local browser condition passes:
 
 1. Move TASK-064 `in-progress -> in-review` after the Maker pass.
-2. Run a separate Checker pass and move TASK-064 `in-review -> done` with evidence.
-3. Move TASK-057 `needs-fix -> in-progress`, record the completed repair batch, rerun its release gate, then move it `in-progress -> in-review` for final owner deployment/submission actions.
+2. Run a separate Checker pass and record its evidence, but leave TASK-064 `in-review` for the required owner visual/accessibility decision.
+3. After the owner accepts the viewport matrix, move TASK-064 `in-review -> done`.
+4. Only then move TASK-057 `needs-fix -> in-progress`, record the completed repair batch, rerun its release gate, and move it `in-progress -> in-review` for final owner deployment/submission actions.
 
 Do not mark TASK-057 done and do not claim deployment or submission.
 
 - [ ] **Step 6: Commit the QA reconciliation**
 
 ```bash
-git add artifacts/design/task-064 context app
+git add artifacts/design/task-064 context/TASKS.md context/PROJECT.md context/HANDOVER.md context/docs/submission-notes.md "context/logs/Progress Log.md" "context/logs/Handoff Notes.md" context/memory/patterns.md
 git commit -m "test(release): TASK-064 verify fullscreen story repair"
 ```
 
-The commit must contain only QA-driven fixes, screenshots, and durable existing-context updates; it must not create another per-task Markdown report.
+The pre-owner commit records QA evidence and the `in-review` state. It must contain only QA-driven fixes, screenshots, and durable existing-context updates; it must not create another per-task Markdown report. If QA found an app fix, stage that exact file explicitly rather than staging the `app` directory.
 
 ---
 

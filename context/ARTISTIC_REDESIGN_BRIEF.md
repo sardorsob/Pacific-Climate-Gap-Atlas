@@ -292,6 +292,8 @@ Motion is explanatory punctuation. It must never become ambient atmosphere.
 - `prefers-reduced-motion: reduce` produces immediate state changes or a static equivalent, not merely shorter animation.
 - Progress navigation, scrolling, browser history, and keyboard navigation must all converge on one scene-state controller.
 
+Implementation interpretation for the repair batch: reuse the same evidence-mark component and stable geography codes across map, comparison, and interval forms; animate marks and chambers with native CSS; do not add a cross-DOM FLIP/shared-element engine. This preserves recognizable mark identity while keeping native scroll, interruptibility, reduced motion, and the no-new-dependency constraint. `TASK-064` must expose this interpretation in owner QA rather than treating it as silently approved motion fidelity.
+
 ## Art Direction
 
 The target is a contemporary scientific ocean chart with an editorial soul. It is neither a generic dark analytics dashboard nor cultural ornament.

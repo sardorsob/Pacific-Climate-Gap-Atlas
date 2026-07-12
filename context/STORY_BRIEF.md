@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
+Status: first-build story synthesis plus the active evidence contract for **The Shape of What We Know**. `TASK-050` replaced the nested seven-beat scroller with native document flow, and `TASK-051` supplied the five-scene evidence spine. Owner-approved `TASK-058` keeps those five evidence scenes, adds a fullscreen premise, and promotes scenes 4 and 5 to viewport takeovers. The `TASK-059` Builder pass now implements the stable premise contract, six guided IDs, premise-aware evidence-scene numbering, and premise URL default; it remains `in-review` pending a separate Checker. The complete revision is consolidated in `context/ARTISTIC_REDESIGN_BRIEF.md`; older seven-beat notes remain historical rationale only.
 
 Source basis:
 
@@ -46,9 +46,10 @@ Historical baseline through `TASK-047`:
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 - `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
 
-Current evidence spine after `TASK-051`, retained by `TASK-058` after the new premise prologue:
+Current guided contract after the `TASK-059` Builder pass:
 
-- `SCENES` contains exactly five ordered scene IDs: `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
+- `SCENES` contains exactly six ordered scene IDs: the stable premise `what-this-atlas-is-asking`, followed by `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
+- The premise uses the map-immersive stage and the approved opening claim/caveat. The next three scenes remain map-immersive; the comparison and rank-band scenes declare figure-takeover ownership for the following layout tasks.
 - Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
 - Guided fingerprint content, the seven-beat method/uncertainty repetition, and the static `FingerprintPreview` figure are retired. JSD remains selected-place panel evidence in exploration until TASK-055 removes map connectors.
 
@@ -64,7 +65,7 @@ Its governing idea is:
 
 This direction supersedes the current seven-beat order for the next redesign. It does not erase the scientific and interaction lessons that made the current app credible.
 
-The guided spine becomes five scenes:
+After the premise, the guided evidence spine remains five scenes:
 
 1. **What the map can see** — reveal all 22 places with equal overall visual presence.
 2. **Where the record breaks** — recede score color and foreground missing score inputs plus reported-zero/missing-row monitoring.

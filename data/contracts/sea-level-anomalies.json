@@ -5,7 +5,7 @@
   "story_role": "climate_exposure",
   "status": "ok",
   "candidate": false,
-  "generated_at_utc": "2026-07-13T00:27:36Z",
+  "generated_at_utc": "2026-07-13T00:36:50Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.SEA_LVL.&pd=,&to[TIME_PERIOD]=false",

@@ -48,32 +48,43 @@ def read_validated_raw_cache(
     """Read a manual cache, or validate a manifested cache status and content hash."""
 
     raw_path = raw_dir / f"{slug}.csv"
+    manifest_path = raw_dir / "manifest.json"
+    entry: dict[str, object] | None = None
+    if manifest_path.exists():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError, UnicodeDecodeError) as exc:
+            return None, None, f"Raw cache manifest could not be read: {exc}"
+
+        entries = list(manifest.get("datasets", [])) + list(
+            manifest.get("supplementary_datasets", [])
+        )
+        entry = next((item for item in entries if item.get("slug") == slug), None)
+        if entry is None:
+            return None, None, "Raw cache manifest has no entry for this dataset."
+        if entry.get("status") != "ok":
+            return (
+                None,
+                entry,
+                f"Raw cache manifest status is {entry.get('status', 'unknown')}.",
+            )
+
     if not raw_path.exists():
+        if entry is not None:
+            return None, entry, "Raw cache file is missing for the successful manifest entry."
         return None, None, None
 
-    raw_bytes = raw_path.read_bytes()
-    text = raw_bytes.decode("utf-8")
-    manifest_path = raw_dir / "manifest.json"
-    if not manifest_path.exists():
-        return text, None, None
-
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        return None, None, f"Raw cache manifest could not be read: {exc}"
+        raw_bytes = raw_path.read_bytes()
+    except OSError as exc:
+        return None, entry, f"Raw cache file could not be read: {exc}"
+    try:
+        text = raw_bytes.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        return None, entry, f"Raw cache file is not valid UTF-8: {exc}"
 
-    entries = list(manifest.get("datasets", [])) + list(
-        manifest.get("supplementary_datasets", [])
-    )
-    entry = next((item for item in entries if item.get("slug") == slug), None)
     if entry is None:
-        return None, None, "Raw cache manifest has no entry for this dataset."
-    if entry.get("status") != "ok":
-        return (
-            None,
-            entry,
-            f"Raw cache manifest status is {entry.get('status', 'unknown')}.",
-        )
+        return text, None, None
 
     expected_hash = str(entry.get("source_content_sha256", ""))
     actual_hash = hashlib.sha256(raw_bytes).hexdigest()

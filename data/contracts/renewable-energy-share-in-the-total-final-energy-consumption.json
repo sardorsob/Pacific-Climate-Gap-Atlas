@@ -5,7 +5,7 @@
   "story_role": "response_or_capacity",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:27:36Z",
+  "generated_at_utc": "2026-07-13T00:36:50Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?fs[0]=Development%20indicators,0%7CSustainable%20Development%20Goals%23SDG%23&pg=0&fc=Development%20indicators&bp=true&snb=18&df[ds]=ds%3ASPC2&df[id]=DF_SDG&df[ag]=SPC&df[vs]=3.0&dq=A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T&pd=,&to[TIME_PERIOD]=false",

@@ -193,7 +193,7 @@ def load_or_fetch_csv_text(
 
     raw_dir.mkdir(parents=True, exist_ok=True)
     raw_path = raw_dir / f"{slug}.csv"
-    raw_path.write_text(text, encoding="utf-8")
+    raw_path.write_bytes(text.encode("utf-8"))
     return text, "ok", ""
 
 

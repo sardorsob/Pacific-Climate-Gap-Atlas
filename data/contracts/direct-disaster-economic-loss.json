@@ -5,7 +5,7 @@
   "story_role": "impact",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:27:36Z",
+  "generated_at_utc": "2026-07-13T00:36:50Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AALT...._T.....&pd=,&to[TIME_PERIOD]=false",

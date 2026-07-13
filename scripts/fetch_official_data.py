@@ -141,9 +141,10 @@ def _fetch_dataset_entry(
     byte_count = 0
     row_count = 0
     if status is None and text is not None:
-        raw_path.write_text(text, encoding="utf-8")
-        content_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
-        byte_count = len(text.encode("utf-8"))
+        payload = text.encode("utf-8")
+        raw_path.write_bytes(payload)
+        content_hash = hashlib.sha256(payload).hexdigest()
+        byte_count = len(payload)
         row_count = max(0, sum(1 for _ in csv.reader(StringIO(text))) - 1)
 
     return {

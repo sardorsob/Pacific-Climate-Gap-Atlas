@@ -46,7 +46,7 @@ Run command:
 python scripts/profile_datasets.py --config configs/datasets.yml
 ```
 
-Fetch before profiling so the profile is cache-reproducible. When a manifest exists, cache use requires an `ok` entry and an exact byte-level SHA-256 match; a failed or mismatched entry becomes `cache_manifest_error` rather than an `ok` profile. A manually supplied cache remains supported when no manifest exists. The fetcher first calls the inventory v2 URL, then translates HTTP `422` responses to the [documented stable interface](https://docs.pacificdata.org/dotstat/api/interface) at `/rest/data/{flowRef}/{key}/{provider}` with the SDMX CSV 2.1 media type. PowerShell remains a final Windows transport fallback for network behavior unrelated to the API route.
+Fetch before profiling so the profile is cache-reproducible. Live response text is encoded once and the same byte payload is written, counted, and hashed. When a manifest exists, cache use requires its expected entry, an `ok` status, a present readable UTF-8 file, and an exact byte-level SHA-256 match; any failure becomes `cache_manifest_error` rather than an `ok` profile or an unmanifested live replacement. When no manifest exists, an absent file may be fetched and a manually supplied file remains supported. The fetcher first calls the inventory v2 URL, then translates HTTP `422` responses to the [documented stable interface](https://docs.pacificdata.org/dotstat/api/interface) at `/rest/data/{flowRef}/{key}/{provider}` with the SDMX CSV 2.1 media type. PowerShell remains a final Windows transport fallback for network behavior unrelated to the API route.
 
 ## Coverage Findings
 

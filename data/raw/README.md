@@ -38,7 +38,7 @@ python scripts/profile_datasets.py --config configs/datasets.yml
 
 The fetch writes `data/raw/official/manifest.json` with status, row/byte counts, SHA-256 source hash, requested/effective endpoints, initial API status, and fallback note for every configured response. The optional supplementary name is recorded in a separate manifest section and does not change the 15-source candidate count. The cache and manifest are deliberately ignored because raw source pulls are reproducible and may be large; the profile table and contracts are tracked.
 
-When `manifest.json` exists, profiling and processing accept a matching CSV only when its manifest status is `ok` and its byte-level SHA-256 matches. A failed or mismatched manifest entry is never treated as a successful stale cache. Manual cache files remain supported when no manifest exists.
+Live response text is encoded once; that exact byte payload is written, counted, and hashed. When `manifest.json` exists, profiling and processing require the expected entry, `ok` status, a present readable UTF-8 CSV, and its exact byte-level SHA-256. A missing file/entry, unreadable file, invalid UTF-8, failed status, or hash mismatch becomes an explicit cache error and is never replaced by an unmanifested fetch. When no manifest exists, an absent file may be fetched and a manual cache file may be read.
 
 The current Pacific v2 dataflow URLs return HTTP `422` for empty key dimensions. The fetcher retries those URLs through the documented stable Pacific Data Hub `/rest/data/{flowRef}/{key}/{provider}` interface with SDMX CSV 2.1 while preserving the configured source URL in provenance.
 

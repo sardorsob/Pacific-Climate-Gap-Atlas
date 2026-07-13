@@ -12,9 +12,10 @@ from urllib.error import HTTPError
 import analysis.io.sdmx as sdmx
 from analysis.io.dataset_config import load_dataset_config, select_processing_datasets
 from analysis.io.dataset_profile import profile_csv_text, profile_to_contract, slugify
+from analysis.io.official_data import OfficialDataset
 from analysis.io.sdmx import fetch_sdmx_csv_text
 from scripts.fetch_official_data import fetch_to_raw_cache
-from scripts.make_dataset import build_processed_dataset
+from scripts.make_dataset import build_processed_dataset, load_or_fetch_csv_text
 from scripts.profile_datasets import profile_priority_datasets
 
 
@@ -313,6 +314,64 @@ class DatasetProfileTests(unittest.TestCase):
         self.assertEqual(len(supplementary["source_content_sha256"]), 64)
         self.assertEqual(supplementary["sdmx_csv_api_url"], "https://example.test/crop.csv")
 
+    def test_fetcher_writes_exact_crlf_payload_bytes_used_by_manifest_hash(self) -> None:
+        with TemporaryDirectory(dir=Path.cwd()) as directory:
+            root = Path(directory)
+            inventory_path = root / "inventory.csv"
+            inventory_path.write_text(
+                "name,story_role,official_url,sdmx_csv_api_url\n"
+                "Population growth,context,https://example.test/pop,https://example.test/pop.csv\n",
+                encoding="utf-8",
+            )
+            config_path = root / "datasets.yml"
+            config_path.write_text(
+                f"official_inventory: {inventory_path}\n"
+                "priority_datasets:\n"
+                "  - name: Population growth\n"
+                "    pillar: candidate_context\n",
+                encoding="utf-8",
+            )
+            output_dir = root / "official"
+            response_text = "GEO_PICT,TIME_PERIOD,OBS_VALUE\r\nFJ,2022,0.8\r\n"
+            payload = response_text.encode("utf-8")
+            original_write_text = Path.write_text
+
+            def reject_csv_text_write(path: Path, data: str, **kwargs: object) -> int:
+                if path.suffix == ".csv":
+                    raise AssertionError("raw CSV must be written as exact bytes")
+                return original_write_text(path, data, **kwargs)
+
+            with (
+                patch(
+                    "scripts.fetch_official_data.fetch_sdmx_csv_text",
+                    return_value=(
+                        response_text,
+                        None,
+                        "",
+                        {
+                            "requested_url": "https://example.test/pop.csv",
+                            "effective_url": "https://example.test/pop.csv",
+                            "initial_error_status": "",
+                            "fallback_used": False,
+                            "fallback_note": "",
+                        },
+                    ),
+                ),
+                patch.object(Path, "write_text", new=reject_csv_text_write),
+            ):
+                manifest = fetch_to_raw_cache(
+                    config_path=config_path,
+                    output_dir=output_dir,
+                    manifest_path=output_dir / "manifest.json",
+                    timeout=1,
+                )
+            written_payload = (output_dir / "population-growth.csv").read_bytes()
+
+        entry = manifest["datasets"][0]
+        self.assertEqual(written_payload, payload)
+        self.assertEqual(entry["byte_count"], len(payload))
+        self.assertEqual(entry["source_content_sha256"], hashlib.sha256(payload).hexdigest())
+
     def test_profiler_rejects_cache_whose_hash_does_not_match_manifest(self) -> None:
         config = {
             "official_inventory": "research/official_datasets_2026.csv",
@@ -376,6 +435,82 @@ class DatasetProfileTests(unittest.TestCase):
 
         self.assertEqual(profile.status, "ok")
         self.assertEqual(profile.row_count, 1)
+
+    def test_profiler_returns_cache_error_for_invalid_utf8(self) -> None:
+        config = {
+            "official_inventory": "research/official_datasets_2026.csv",
+            "priority_datasets": [
+                {"name": "Population growth", "pillar": "candidate_context"}
+            ],
+        }
+        with TemporaryDirectory(dir=Path.cwd()) as directory:
+            raw_dir = Path(directory)
+            (raw_dir / "population-growth.csv").write_bytes(b"\xff\xfe")
+
+            profile = profile_priority_datasets(config=config, timeout=1, raw_dir=raw_dir)[0]
+
+        self.assertEqual(profile.status, "cache_manifest_error")
+        self.assertIn("UTF-8", profile.caveat_notes)
+
+    def test_profiler_does_not_fetch_when_manifested_file_is_missing(self) -> None:
+        config = {
+            "official_inventory": "research/official_datasets_2026.csv",
+            "priority_datasets": [
+                {"name": "Population growth", "pillar": "candidate_context"}
+            ],
+        }
+        with TemporaryDirectory(dir=Path.cwd()) as directory:
+            raw_dir = Path(directory)
+            (raw_dir / "manifest.json").write_text(
+                json.dumps(
+                    {
+                        "datasets": [
+                            {
+                                "slug": "population-growth",
+                                "status": "ok",
+                                "source_content_sha256": "0" * 64,
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with patch(
+                "scripts.profile_datasets.fetch_sdmx_csv_text",
+                side_effect=AssertionError("manifested missing cache must not be fetched"),
+            ):
+                profile = profile_priority_datasets(config=config, timeout=1, raw_dir=raw_dir)[0]
+
+        self.assertEqual(profile.status, "cache_manifest_error")
+        self.assertIn("missing", profile.caveat_notes.lower())
+
+    def test_processed_loader_does_not_fetch_when_manifest_entry_is_missing(self) -> None:
+        dataset = OfficialDataset(
+            name="Population growth",
+            story_role="context",
+            official_url="https://example.test/pop",
+            sdmx_csv_api_url="https://example.test/pop.csv",
+        )
+        with TemporaryDirectory(dir=Path.cwd()) as directory:
+            raw_dir = Path(directory)
+            (raw_dir / "manifest.json").write_text(
+                json.dumps({"datasets": []}),
+                encoding="utf-8",
+            )
+            with patch(
+                "scripts.make_dataset.fetch_sdmx_csv_text",
+                side_effect=AssertionError("missing manifest entry must not be fetched"),
+            ):
+                text, status, caveat = load_or_fetch_csv_text(
+                    dataset=dataset,
+                    raw_dir=raw_dir,
+                    accept_header="text/csv",
+                    timeout=1,
+                )
+
+        self.assertEqual(text, "")
+        self.assertEqual(status, "cache_manifest_error")
+        self.assertIn("no entry", caveat)
 
     def test_profiler_prefers_raw_cache_and_propagates_candidate_metadata(self) -> None:
         config = {

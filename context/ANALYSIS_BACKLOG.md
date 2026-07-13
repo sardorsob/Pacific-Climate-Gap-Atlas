@@ -6,7 +6,7 @@ This file records the EDA and GIS lanes that built the atlas evidence base and r
 
 ## Current Status
 
-Completed analysis lanes cover the original nine-dataset evidence base. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The next analysis sequence is `TASK-065` acquisition/profile, `TASK-066` processing, `TASK-067` comparability/story EDA, and `TASK-068` scientific/owner story selection. `TASK-069` updates the storyboard and implementation roadmap only after that gate.
+Completed analysis lanes cover the original nine-dataset evidence base, and `TASK-065` has completed the six-candidate acquisition/profile gate. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The next analysis sequence is `TASK-066` processing, `TASK-067` comparability/story EDA, and `TASK-068` scientific/owner story selection. `TASK-069` updates the storyboard and implementation roadmap only after that gate.
 
 ## Principles
 
@@ -241,7 +241,7 @@ Required checks:
 - missing geography/year patterns
 - source/API inconsistencies and reproducible fetch behavior
 
-The output is a profiled candidate set, not a commitment to use every dataset.
+Outcome: five candidates are accepted only for `TASK-066` processing review; aggregate crop yield is rejected because the supplementary item-level source exposes composition that the aggregate hides. All six remain processing-disabled, and the original nine-dataset processed baseline is unchanged.
 
 ### TASK-066: Candidate Processing Lane
 

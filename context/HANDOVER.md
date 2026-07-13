@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-063` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-065` through `TASK-069` now define a data-first sequence: targeted official-data acquisition, processing, comparability/story EDA, scientific/owner narrative selection, then roadmap rewrite.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, and `TASK-065` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-066` through `TASK-069` continue the data-first sequence: process accepted candidates, run comparability/story EDA, make the scientific/owner narrative selection, then rewrite the roadmap.
 
 The current app remains the functioning behavioral/scientific baseline. Its fullscreen composition, evidence marks, comparison/rank takeovers, native scroll, accessibility behavior, and Explore handoff should be preserved during research. Its title, opening thesis, exemplars, scene order, and Adaptation Gap Index prominence are provisional until `TASK-068`. QA screenshots live under `artifacts/design/task-064/`; concept boards remain composition-only.
 
@@ -17,6 +17,7 @@ python scripts/check_secrets.py
 ## How To Rebuild The Dataset Profile
 
 ```powershell
+python scripts/fetch_official_data.py --config configs/datasets.yml --supplementary "Crop yield - disaggregated"
 python scripts/profile_datasets.py --config configs/datasets.yml
 ```
 
@@ -73,15 +74,15 @@ This writes the script-first EDA tables under `artifacts/tables/` and records `a
 
 ## Next Recommended Work
 
-1. Start `TASK-065`: profile the six targeted official dataset candidates and explicitly accept or reject each for processing.
-2. Run `TASK-066` and `TASK-067` sequentially. Do not change the current index, app, or scene copy during acquisition/EDA.
+1. Start `TASK-066`: enable and normalize only the five candidates accepted by `TASK-065`; aggregate crop yield remains rejected.
+2. Run `TASK-067` after processing. Do not change the current index, app, or scene copy during processing/EDA.
 3. Use `TASK-068` for the scientific and owner narrative decision. Only then may `TASK-069` rewrite the storyboard and create implementation tasks.
 4. Keep `TASK-064` in owner review and `TASK-057` in `needs-fix`; do not deploy or submit a story that has been reopened.
 
 ## Known Caveats
 
 - In a fresh checkout, install app and Python dependencies before rebuilding. The local working copy has previously run the Vite build successfully.
-- The SDMX fetch helper avoids undeclared runtime dependencies, but uses a Windows PowerShell fallback because the endpoint returned `422` to Python standard-library HTTP.
+- The saved v2 SDMX routes currently return `422`; the fetch helper records that failure and retries through the documented stable Pacific Data Hub endpoint, with PowerShell retained only as a final Windows transport fallback.
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
 - The current gap varies more with its visible-capacity proxies than with its climate-pressure side, and those capacity inputs include unnormalized station counts, total power generation, and fisheries-measure counts. Treat the index as provisional evidence, not the final story verdict.

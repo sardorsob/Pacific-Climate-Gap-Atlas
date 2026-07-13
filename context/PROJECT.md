@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual system but has reopened the competition narrative. The next phase is data-first discovery: acquire a small, decision-relevant expansion of the official 2026 datasets, profile and process it, run comparability/story EDA, and only then choose a new narrative. `TASK-065` through `TASK-069` record that sequence. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no further story implementation or submission work should begin from the current storyboard. Competition deadline: August 31, 2026.
+The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual system but has reopened the competition narrative. `TASK-065` completed the first data-first discovery gate: six official candidates were fetched and profiled, five were accepted for later processing, and aggregate crop yield was rejected after item-level inspection. `TASK-066` through `TASK-069` now process and audit the accepted evidence, select the narrative, and only then rewrite the roadmap. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no further story implementation or submission work should begin from the current storyboard. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -24,8 +24,8 @@ The implemented thesis remains a functioning baseline, not the locked competitio
 | --- | --- | --- |
 | Research source folder | present | `research/` includes brief, official dataset inventory, past winners, and review board |
 | Workflow shell | done | all durable project Markdown lives under `context/` |
-| Dataset profile | done | `artifacts/tables/dataset_profile.csv` and `data/contracts/*.json` cover nine priority official datasets |
-| Targeted dataset expansion | planned | `TASK-065`–`TASK-067` acquire, process, and audit a small shortlist before any narrative choice; no new indicator feeds the current index by default |
+| Dataset profile | done | `artifacts/tables/dataset_profile.csv` and `data/contracts/*.json` cover the original nine plus six processing-disabled official candidates |
+| Targeted dataset expansion | acquisition done | `TASK-065` accepted five candidates for `TASK-066`, rejected aggregate crop yield, and left all six outside current processing/index/app/story outputs |
 | Data science pipeline | done | `scripts/make_dataset.py` produces normalized observations, geography lookup, app summary, and provenance |
 | Adaptation Gap Index | done | `scripts/build_gap_index.py` produces geography scores plus indicator trace |
 | Outlook model | done | trend stress-test baseline is methodology-ready and app-optional |

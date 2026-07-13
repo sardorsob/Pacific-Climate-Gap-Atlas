@@ -50,3 +50,17 @@ def load_dataset_config(path: Path) -> dict[str, object]:
         raise ValueError(f"{path} is missing `priority_datasets`.")
 
     return config
+
+
+def select_processing_datasets(config: dict[str, object]) -> list[dict[str, str]]:
+    """Return entries enabled for the processed-data pipeline; existing entries default on."""
+
+    entries = config.get("priority_datasets", [])
+    if not isinstance(entries, list):
+        raise ValueError("`priority_datasets` must be a list.")
+    return [
+        entry
+        for entry in entries
+        if isinstance(entry, dict)
+        and str(entry.get("processing_enabled", "true")).strip().lower() == "true"
+    ]

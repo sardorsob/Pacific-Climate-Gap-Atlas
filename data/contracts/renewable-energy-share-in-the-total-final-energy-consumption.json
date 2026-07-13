@@ -5,11 +5,19 @@
   "story_role": "response_or_capacity",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "generated_at_utc": "2026-07-13T00:27:36Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?fs[0]=Development%20indicators,0%7CSustainable%20Development%20Goals%23SDG%23&pg=0&fc=Development%20indicators&bp=true&snb=18&df[ds]=ds%3ASPC2&df[id]=DF_SDG&df[ag]=SPC&df[vs]=3.0&dq=A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG/3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T?dimensionAtObservation=AllDimensions"
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG/3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T?dimensionAtObservation=AllDimensions",
+    "requested_sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG/3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T?dimensionAtObservation=AllDimensions",
+    "effective_sdmx_csv_api_url": "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_SDG,3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T/SPC?dimensionAtObservation=AllDimensions",
+    "source_content_sha256": "39ec0e48fd9d9ce16daac97c58646d7007c625cd7932d7b1c6fde5faab449349",
+    "fetch": {
+      "initial_api_status": "api_error_422",
+      "fallback_used": true,
+      "fallback_note": "Original v2 request returned HTTP 422; retried through the documented stable Pacific Data Hub endpoint."
+    }
   },
   "coverage": {
     "row_count": 461,
@@ -40,9 +48,18 @@
       "start": 2000,
       "end": 2023
     },
-    "value_count": 461,
-    "missing_value_count": 0,
-    "missing_value_pct": 0.0
+    "returned_row_value_coverage": {
+      "numeric_observation_value_count": 461,
+      "blank_or_non_numeric_value_count": 0,
+      "blank_or_non_numeric_value_pct": 0.0
+    },
+    "structural_geography_year_coverage": {
+      "observed_distinct_geography_years": 461,
+      "possible_geography_years_in_observed_span": 480,
+      "missing_geography_years_in_observed_span": 19,
+      "coverage_pct": 0.9604166666666667,
+      "caveat": "Structural reporting coverage only; a missing geography-year is not evidence of zero or no event."
+    }
   },
   "schema": {
     "columns": [
@@ -77,8 +94,7 @@
     ],
     "denominator": "Total final energy consumption; denominator values are not included in the filtered response.",
     "grain": "One row per geography and year for the filtered SDG indicator and fixed disaggregation.",
-    "grain_columns": [
-      "DATAFLOW",
+    "dimension_columns": [
       "FREQ",
       "INDICATOR",
       "GEO_PICT",
@@ -93,8 +109,7 @@
       "TIME_PERIOD",
       "UNIT_MEASURE",
       "REPORTING_TYPE",
-      "NATURE",
-      "DATA_SOURCE"
+      "NATURE"
     ],
     "source_semantics": "Renewable energy as a share of total final energy consumption.",
     "licence": "not stated in reviewed source metadata"

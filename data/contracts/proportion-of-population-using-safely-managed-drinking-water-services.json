@@ -5,11 +5,19 @@
   "story_role": "impact",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "generated_at_utc": "2026-07-13T00:27:36Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_06&df[ag]=SPC&df[vs]=3.0&dq=A.SH_H2O_SAFE...._T.....&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_06/3.0/A.SH_H2O_SAFE...._T.....?dimensionAtObservation=AllDimensions"
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_06/3.0/A.SH_H2O_SAFE...._T.....?dimensionAtObservation=AllDimensions",
+    "requested_sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_06/3.0/A.SH_H2O_SAFE...._T.....?dimensionAtObservation=AllDimensions",
+    "effective_sdmx_csv_api_url": "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_SDG_06,3.0/A.SH_H2O_SAFE...._T...../SPC?dimensionAtObservation=AllDimensions",
+    "source_content_sha256": "b511fc5015d0aa435b37c029794e9c249cf59fcbd06d6c254318e0ef26dc6586",
+    "fetch": {
+      "initial_api_status": "api_error_422",
+      "fallback_used": true,
+      "fallback_note": "Original v2 request returned HTTP 422; retried through the documented stable Pacific Data Hub endpoint."
+    }
   },
   "coverage": {
     "row_count": 430,
@@ -39,9 +47,18 @@
       "start": 2000,
       "end": 2022
     },
-    "value_count": 430,
-    "missing_value_count": 0,
-    "missing_value_pct": 0.0
+    "returned_row_value_coverage": {
+      "numeric_observation_value_count": 430,
+      "blank_or_non_numeric_value_count": 0,
+      "blank_or_non_numeric_value_pct": 0.0
+    },
+    "structural_geography_year_coverage": {
+      "observed_distinct_geography_years": 430,
+      "possible_geography_years_in_observed_span": 437,
+      "missing_geography_years_in_observed_span": 7,
+      "coverage_pct": 0.9839816933638444,
+      "caveat": "Structural reporting coverage only; a missing geography-year is not evidence of zero or no event."
+    }
   },
   "schema": {
     "columns": [
@@ -76,8 +93,7 @@
     ],
     "denominator": "Population in the represented geography; denominator values are not included in the filtered response.",
     "grain": "One row per geography and year for the filtered SDG indicator and fixed disaggregation.",
-    "grain_columns": [
-      "DATAFLOW",
+    "dimension_columns": [
       "FREQ",
       "INDICATOR",
       "GEO_PICT",
@@ -92,8 +108,7 @@
       "TIME_PERIOD",
       "UNIT_MEASURE",
       "REPORTING_TYPE",
-      "NATURE",
-      "DATA_SOURCE"
+      "NATURE"
     ],
     "source_semantics": "Proportion of population using safely managed drinking water services; it is not a climate-attribution measure.",
     "licence": "not stated in reviewed source metadata"

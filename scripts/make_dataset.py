@@ -15,9 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from analysis.io.dataset_config import load_dataset_config  # noqa: E402
+from analysis.io.dataset_config import load_dataset_config, select_processing_datasets  # noqa: E402
 from analysis.io.dataset_profile import slugify  # noqa: E402
-from analysis.io.official_data import OfficialDataset, read_official_inventory  # noqa: E402
+from analysis.io.official_data import (  # noqa: E402
+    OfficialDataset,
+    read_official_inventory,
+    read_validated_raw_cache,
+)
 from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa: E402
 from analysis.preprocessing.official_dataset import (  # noqa: E402
     build_app_dataset_summary,
@@ -64,7 +68,7 @@ def build_processed_dataset(
 
     normalized_frames: list[pd.DataFrame] = []
     fetch_log: list[dict[str, object]] = []
-    for entry in config["priority_datasets"]:
+    for entry in select_processing_datasets(config):
         name = str(entry["name"])
         pillar = str(entry["pillar"])
         dataset = inventory.get(name)
@@ -170,11 +174,16 @@ def load_or_fetch_csv_text(
     timeout: float,
 ) -> tuple[str, str, str]:
     slug = slugify(dataset.name)
-    raw_path = raw_dir / f"{slug}.csv"
-    if raw_path.exists():
-        return raw_path.read_text(encoding="utf-8"), "ok", ""
+    cached_text, _manifest_entry, cache_error = read_validated_raw_cache(
+        raw_dir=raw_dir,
+        slug=slug,
+    )
+    if cache_error:
+        return "", "cache_manifest_error", cache_error
+    if cached_text is not None:
+        return cached_text, "ok", ""
 
-    text, status, caveat_notes = fetch_sdmx_csv_text(
+    text, status, caveat_notes, _provenance = fetch_sdmx_csv_text(
         url=dataset.sdmx_csv_api_url,
         accept_header=accept_header,
         timeout=timeout,
@@ -183,6 +192,7 @@ def load_or_fetch_csv_text(
         return "", status or "fetch_error", caveat_notes
 
     raw_dir.mkdir(parents=True, exist_ok=True)
+    raw_path = raw_dir / f"{slug}.csv"
     raw_path.write_text(text, encoding="utf-8")
     return text, "ok", ""
 

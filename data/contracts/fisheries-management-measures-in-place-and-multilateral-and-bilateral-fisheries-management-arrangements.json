@@ -5,11 +5,19 @@
   "story_role": "response_or_capacity",
   "status": "ok",
   "candidate": false,
-  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "generated_at_utc": "2026-07-13T00:27:36Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.FISH_MNGT_MULT_BILAT_ARGMT.&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.FISH_MNGT_MULT_BILAT_ARGMT.?dimensionAtObservation=AllDimensions"
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.FISH_MNGT_MULT_BILAT_ARGMT.?dimensionAtObservation=AllDimensions",
+    "requested_sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.FISH_MNGT_MULT_BILAT_ARGMT.?dimensionAtObservation=AllDimensions",
+    "effective_sdmx_csv_api_url": "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_CLIMATE_CHANGE,1.0/A.FISH_MNGT_MULT_BILAT_ARGMT./SPC?dimensionAtObservation=AllDimensions",
+    "source_content_sha256": "5d9ffaef2a7064e1cf5e6553260f26ebf0264f80d7c09f7d45f1575abcd20253",
+    "fetch": {
+      "initial_api_status": "api_error_422",
+      "fallback_used": true,
+      "fallback_note": "Original v2 request returned HTTP 422; retried through the documented stable Pacific Data Hub endpoint."
+    }
   },
   "coverage": {
     "row_count": 1563,
@@ -42,9 +50,18 @@
       "start": 1903,
       "end": 2026
     },
-    "value_count": 1563,
-    "missing_value_count": 0,
-    "missing_value_pct": 0.0
+    "returned_row_value_coverage": {
+      "numeric_observation_value_count": 1563,
+      "blank_or_non_numeric_value_count": 0,
+      "blank_or_non_numeric_value_pct": 0.0
+    },
+    "structural_geography_year_coverage": {
+      "observed_distinct_geography_years": 1563,
+      "possible_geography_years_in_observed_span": 2728,
+      "missing_geography_years_in_observed_span": 1165,
+      "coverage_pct": 0.5729472140762464,
+      "caveat": "Structural reporting coverage only; a missing geography-year is not evidence of zero or no event."
+    }
   },
   "schema": {
     "columns": [
@@ -71,8 +88,7 @@
     ],
     "denominator": "not stated",
     "grain": "not stated",
-    "grain_columns": [
-      "DATAFLOW",
+    "dimension_columns": [
       "FREQ",
       "CLIMATE_CHANGE_INDICATORS",
       "GEO_PICT",

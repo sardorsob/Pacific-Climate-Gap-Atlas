@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 from io import StringIO
 import re
 import unicodedata
@@ -12,7 +13,8 @@ import pandas as pd
 
 MISSING_TOKENS = {"", "nan", "none", "null", "na", "n/a"}
 NOT_STATED = "not stated"
-NON_GRAIN_COLUMNS = {
+NON_DIMENSION_COLUMNS = {
+    "DATAFLOW",
     "STRUCTURE",
     "STRUCTURE_ID",
     "ACTION",
@@ -21,7 +23,13 @@ NON_GRAIN_COLUMNS = {
     "OBS_COMMENT",
     "ERROR_TYPE",
     "ERROR_VAL",
+    "DATA_SOURCE",
+    "UNIT_MULT",
 }
+STRUCTURAL_COVERAGE_CAVEAT = (
+    "Structural reporting coverage only; a missing geography-year is not evidence of zero "
+    "or no event."
+)
 
 
 @dataclass(frozen=True)
@@ -37,9 +45,13 @@ class DatasetProfile:
     geography_count: int
     year_start: int | None
     year_end: int | None
-    value_count: int
-    missing_value_count: int
-    missing_value_pct: float | None
+    numeric_observation_value_count: int
+    blank_or_non_numeric_value_count: int
+    blank_or_non_numeric_value_pct: float | None
+    observed_geography_year_count: int
+    possible_geography_year_count: int
+    missing_geography_year_count: int
+    geography_year_coverage_pct: float | None
     geography_codes: list[str]
     geography_column: str | None
     time_column: str | None
@@ -52,11 +64,17 @@ class DatasetProfile:
     units: list[str]
     denominator: str
     grain: str
-    grain_columns: list[str]
+    dimension_columns: list[str]
     source_semantics: str
     licence: str
     processing_decision: str
     decision_reason: str
+    requested_api_url: str
+    effective_api_url: str | None
+    initial_api_status: str
+    fallback_used: bool | None
+    fallback_note: str
+    source_content_sha256: str
 
 
 def slugify(value: str) -> str:
@@ -82,6 +100,7 @@ def profile_csv_text(
     licence: str = NOT_STATED,
     processing_decision: str = NOT_STATED,
     decision_reason: str = NOT_STATED,
+    acquisition: dict[str, object] | None = None,
 ) -> DatasetProfile:
     """Profile an SDMX CSV response body."""
 
@@ -101,6 +120,7 @@ def profile_csv_text(
             licence=licence,
             processing_decision=processing_decision,
             decision_reason=decision_reason,
+            acquisition=acquisition,
         )
 
     try:
@@ -121,7 +141,15 @@ def profile_csv_text(
             licence=licence,
             processing_decision=processing_decision,
             decision_reason=decision_reason,
+            acquisition=acquisition,
         )
+
+    acquisition = dict(acquisition or {})
+    acquisition.setdefault("requested_url", sdmx_csv_api_url)
+    acquisition.setdefault(
+        "source_content_sha256",
+        hashlib.sha256(csv_text.encode("utf-8")).hexdigest(),
+    )
 
     return profile_frame(
         name=name,
@@ -137,6 +165,7 @@ def profile_csv_text(
         licence=licence,
         processing_decision=processing_decision,
         decision_reason=decision_reason,
+        acquisition=acquisition,
     )
 
 
@@ -155,6 +184,7 @@ def profile_frame(
     licence: str = NOT_STATED,
     processing_decision: str = NOT_STATED,
     decision_reason: str = NOT_STATED,
+    acquisition: dict[str, object] | None = None,
 ) -> DatasetProfile:
     """Profile an already-loaded dataframe."""
 
@@ -167,21 +197,35 @@ def profile_frame(
 
     geography_codes = _unique_non_missing(frame[geography_column]) if geography_column else []
     units = _unique_non_missing(frame[unit_column]) if unit_column else []
-    grain_columns = [
+    dimension_columns = [
         column
         for column in columns
-        if column.upper() not in NON_GRAIN_COLUMNS and _unique_non_missing(frame[column])
+        if column.upper() not in NON_DIMENSION_COLUMNS and _unique_non_missing(frame[column])
     ]
     year_start, year_end = _year_range(frame[time_column]) if time_column else (None, None)
-    value_count, missing_value_count, missing_value_pct = _value_coverage(frame, value_column)
+    numeric_value_count, blank_value_count, blank_value_pct = _value_coverage(
+        frame,
+        value_column,
+    )
+    observed_geo_years, possible_geo_years, missing_geo_years, geo_year_coverage_pct = (
+        _geography_year_coverage(
+            frame=frame,
+            geography_column=geography_column,
+            time_column=time_column,
+            geography_count=len(geography_codes),
+            year_start=year_start,
+            year_end=year_end,
+        )
+    )
+    acquisition_fields = _acquisition_fields(acquisition, sdmx_csv_api_url)
 
     caveats = _build_caveats(
         row_count=row_count,
         geography_column=geography_column,
         time_column=time_column,
         value_column=value_column,
-        missing_value_count=missing_value_count,
-        missing_value_pct=missing_value_pct,
+        missing_value_count=blank_value_count,
+        missing_value_pct=blank_value_pct,
     )
 
     return DatasetProfile(
@@ -194,9 +238,13 @@ def profile_frame(
         geography_count=len(geography_codes),
         year_start=year_start,
         year_end=year_end,
-        value_count=value_count,
-        missing_value_count=missing_value_count,
-        missing_value_pct=missing_value_pct,
+        numeric_observation_value_count=numeric_value_count,
+        blank_or_non_numeric_value_count=blank_value_count,
+        blank_or_non_numeric_value_pct=blank_value_pct,
+        observed_geography_year_count=observed_geo_years,
+        possible_geography_year_count=possible_geo_years,
+        missing_geography_year_count=missing_geo_years,
+        geography_year_coverage_pct=geo_year_coverage_pct,
         geography_codes=geography_codes,
         geography_column=geography_column,
         time_column=time_column,
@@ -209,11 +257,12 @@ def profile_frame(
         units=units,
         denominator=denominator,
         grain=grain,
-        grain_columns=grain_columns,
+        dimension_columns=dimension_columns,
         source_semantics=source_semantics,
         licence=licence,
         processing_decision=processing_decision,
         decision_reason=decision_reason,
+        **acquisition_fields,
     )
 
 
@@ -233,6 +282,7 @@ def error_profile(
     licence: str = NOT_STATED,
     processing_decision: str = NOT_STATED,
     decision_reason: str = NOT_STATED,
+    acquisition: dict[str, object] | None = None,
 ) -> DatasetProfile:
     """Build a profile row for missing or failed sources."""
 
@@ -246,9 +296,13 @@ def error_profile(
         geography_count=0,
         year_start=None,
         year_end=None,
-        value_count=0,
-        missing_value_count=0,
-        missing_value_pct=None,
+        numeric_observation_value_count=0,
+        blank_or_non_numeric_value_count=0,
+        blank_or_non_numeric_value_pct=None,
+        observed_geography_year_count=0,
+        possible_geography_year_count=0,
+        missing_geography_year_count=0,
+        geography_year_coverage_pct=None,
         geography_codes=[],
         geography_column=None,
         time_column=None,
@@ -261,11 +315,12 @@ def error_profile(
         units=[],
         denominator=denominator,
         grain=grain,
-        grain_columns=[],
+        dimension_columns=[],
         source_semantics=source_semantics,
         licence=licence,
         processing_decision=processing_decision,
         decision_reason=decision_reason,
+        **_acquisition_fields(acquisition, sdmx_csv_api_url),
     )
 
 
@@ -282,11 +337,17 @@ def profile_to_csv_row(profile: DatasetProfile, *, generated_at_utc: str) -> dic
         "geography_count": profile.geography_count,
         "year_start": "" if profile.year_start is None else profile.year_start,
         "year_end": "" if profile.year_end is None else profile.year_end,
-        "value_count": profile.value_count,
-        "missing_value_count": profile.missing_value_count,
-        "missing_value_pct": ""
-        if profile.missing_value_pct is None
-        else round(profile.missing_value_pct, 4),
+        "numeric_observation_value_count": profile.numeric_observation_value_count,
+        "blank_or_non_numeric_value_count": profile.blank_or_non_numeric_value_count,
+        "blank_or_non_numeric_value_pct": ""
+        if profile.blank_or_non_numeric_value_pct is None
+        else round(profile.blank_or_non_numeric_value_pct, 4),
+        "observed_geography_year_count": profile.observed_geography_year_count,
+        "possible_geography_year_count": profile.possible_geography_year_count,
+        "missing_geography_year_count": profile.missing_geography_year_count,
+        "geography_year_coverage_pct": ""
+        if profile.geography_year_coverage_pct is None
+        else round(profile.geography_year_coverage_pct, 4),
         "geography_column": profile.geography_column or "",
         "time_column": profile.time_column or "",
         "value_column": profile.value_column or "",
@@ -296,11 +357,17 @@ def profile_to_csv_row(profile: DatasetProfile, *, generated_at_utc: str) -> dic
         "units": " | ".join(profile.units),
         "denominator": profile.denominator,
         "grain": profile.grain,
-        "grain_columns": " | ".join(profile.grain_columns),
+        "dimension_columns": " | ".join(profile.dimension_columns),
         "source_semantics": profile.source_semantics,
         "licence": profile.licence,
         "processing_decision": profile.processing_decision,
         "decision_reason": profile.decision_reason,
+        "requested_api_url": profile.requested_api_url,
+        "effective_api_url": profile.effective_api_url or "",
+        "initial_api_status": profile.initial_api_status,
+        "fallback_used": "" if profile.fallback_used is None else profile.fallback_used,
+        "fallback_note": profile.fallback_note,
+        "source_content_sha256": profile.source_content_sha256,
         "official_url": profile.official_url,
         "sdmx_csv_api_url": profile.sdmx_csv_api_url,
         "profiled_at_utc": generated_at_utc,
@@ -322,15 +389,36 @@ def profile_to_contract(profile: DatasetProfile, *, generated_at_utc: str) -> di
             "provider": "Pacific Data Hub / Pacific Community",
             "official_url": profile.official_url,
             "sdmx_csv_api_url": profile.sdmx_csv_api_url,
+            "requested_sdmx_csv_api_url": profile.requested_api_url,
+            "effective_sdmx_csv_api_url": profile.effective_api_url,
+            "source_content_sha256": profile.source_content_sha256,
+            "fetch": {
+                "initial_api_status": profile.initial_api_status,
+                "fallback_used": profile.fallback_used,
+                "fallback_note": profile.fallback_note,
+            },
         },
         "coverage": {
             "row_count": profile.row_count,
             "geography_count": profile.geography_count,
             "geography_codes": profile.geography_codes,
             "year_range": {"start": profile.year_start, "end": profile.year_end},
-            "value_count": profile.value_count,
-            "missing_value_count": profile.missing_value_count,
-            "missing_value_pct": profile.missing_value_pct,
+            "returned_row_value_coverage": {
+                "numeric_observation_value_count": profile.numeric_observation_value_count,
+                "blank_or_non_numeric_value_count": profile.blank_or_non_numeric_value_count,
+                "blank_or_non_numeric_value_pct": profile.blank_or_non_numeric_value_pct,
+            },
+            "structural_geography_year_coverage": {
+                "observed_distinct_geography_years": profile.observed_geography_year_count,
+                "possible_geography_years_in_observed_span": (
+                    profile.possible_geography_year_count
+                ),
+                "missing_geography_years_in_observed_span": (
+                    profile.missing_geography_year_count
+                ),
+                "coverage_pct": profile.geography_year_coverage_pct,
+                "caveat": STRUCTURAL_COVERAGE_CAVEAT,
+            },
         },
         "schema": {
             "columns": profile.columns,
@@ -342,7 +430,7 @@ def profile_to_contract(profile: DatasetProfile, *, generated_at_utc: str) -> di
             "units": profile.units,
             "denominator": profile.denominator,
             "grain": profile.grain,
-            "grain_columns": profile.grain_columns,
+            "dimension_columns": profile.dimension_columns,
             "source_semantics": profile.source_semantics,
             "licence": profile.licence,
         },
@@ -388,16 +476,64 @@ def _year_range(series: pd.Series) -> tuple[int | None, int | None]:
     return int(years.min()), int(years.max())
 
 
+def _geography_year_coverage(
+    *,
+    frame: pd.DataFrame,
+    geography_column: str | None,
+    time_column: str | None,
+    geography_count: int,
+    year_start: int | None,
+    year_end: int | None,
+) -> tuple[int, int, int, float | None]:
+    if (
+        not geography_column
+        or not time_column
+        or year_start is None
+        or year_end is None
+        or geography_count == 0
+    ):
+        return 0, 0, 0, None
+
+    pairs = pd.DataFrame(
+        {
+            "geography": frame[geography_column].astype(str).str.strip(),
+            "year": pd.to_numeric(frame[time_column], errors="coerce"),
+        }
+    )
+    valid_geography = ~pairs["geography"].str.lower().isin(MISSING_TOKENS)
+    observed = int(pairs[valid_geography].dropna().drop_duplicates().shape[0])
+    possible = geography_count * (year_end - year_start + 1)
+    missing = max(0, possible - observed)
+    return observed, possible, missing, observed / possible if possible else None
+
+
+def _acquisition_fields(
+    acquisition: dict[str, object] | None,
+    sdmx_csv_api_url: str,
+) -> dict[str, object]:
+    values = acquisition or {}
+    effective_url = values.get("effective_url")
+    fallback_used = values.get("fallback_used")
+    return {
+        "requested_api_url": str(values.get("requested_url") or sdmx_csv_api_url),
+        "effective_api_url": str(effective_url) if effective_url else None,
+        "initial_api_status": str(values.get("initial_error_status") or ""),
+        "fallback_used": bool(fallback_used) if fallback_used is not None else None,
+        "fallback_note": str(values.get("fallback_note") or ""),
+        "source_content_sha256": str(values.get("source_content_sha256") or ""),
+    }
+
+
 def _value_coverage(frame: pd.DataFrame, value_column: str | None) -> tuple[int, int, float | None]:
     row_count = int(len(frame))
     if not value_column:
         return 0, row_count, 1.0 if row_count else None
 
     numeric_values = pd.to_numeric(frame[value_column], errors="coerce")
-    value_count = int(numeric_values.notna().sum())
-    missing_value_count = row_count - value_count
-    missing_value_pct = None if row_count == 0 else missing_value_count / row_count
-    return value_count, missing_value_count, missing_value_pct
+    numeric_value_count = int(numeric_values.notna().sum())
+    blank_value_count = row_count - numeric_value_count
+    blank_value_pct = None if row_count == 0 else blank_value_count / row_count
+    return numeric_value_count, blank_value_count, blank_value_pct
 
 
 def _build_caveats(
@@ -420,8 +556,11 @@ def _build_caveats(
     if not value_column:
         caveats.append("No observation value column was detected.")
     if missing_value_count == 1:
-        caveats.append("One value is missing.")
+        caveats.append("One returned row has a blank or non-numeric observation value.")
     elif missing_value_count > 1 and missing_value_pct is not None:
-        caveats.append(f"{missing_value_count} values are missing ({missing_value_pct:.1%}).")
+        caveats.append(
+            f"{missing_value_count} returned rows have blank or non-numeric observation "
+            f"values ({missing_value_pct:.1%})."
+        )
 
     return caveats

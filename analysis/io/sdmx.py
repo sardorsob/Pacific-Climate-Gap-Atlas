@@ -19,9 +19,13 @@ def fetch_sdmx_csv_text(
     url: str,
     accept_header: str = DEFAULT_ACCEPT_HEADER,
     timeout: float = 30.0,
-) -> tuple[str | None, str | None, str]:
+    _requested_url: str | None = None,
+    _initial_error_status: str = "",
+    _fallback_note: str = "",
+) -> tuple[str | None, str | None, str, dict[str, object]]:
     """Fetch SDMX CSV text, using PowerShell fallback for picky Windows endpoint behavior."""
 
+    requested_url = _requested_url or url
     headers = {
         "Accept": accept_header,
         "User-Agent": "pacific-climate-gap-atlas/0.1 dataset-pipeline",
@@ -40,21 +44,96 @@ def fetch_sdmx_csv_text(
                     url=fallback_url,
                     accept_header=DEFAULT_ACCEPT_HEADER,
                     timeout=timeout,
+                    _requested_url=requested_url,
+                    _initial_error_status="api_error_422",
+                    _fallback_note=(
+                        "Original v2 request returned HTTP 422; retried through the "
+                        "documented stable Pacific Data Hub endpoint."
+                    ),
                 )
             fallback_text = fetch_with_powershell(url=url, accept_header=accept_header, timeout=timeout)
             if fallback_text is not None:
-                return fallback_text, None, ""
-        return None, f"api_error_{exc.code}", f"SDMX CSV API returned HTTP {exc.code}."
+                return fallback_text, None, "", _fetch_provenance(
+                    requested_url=requested_url,
+                    effective_url=url,
+                    initial_error_status="api_error_422",
+                    fallback_note=(
+                        "Original request returned HTTP 422; PowerShell transport fallback succeeded."
+                    ),
+                )
+        return (
+            None,
+            f"api_error_{exc.code}",
+            f"SDMX CSV API returned HTTP {exc.code}.",
+            _fetch_provenance(
+                requested_url=requested_url,
+                effective_url=url,
+                initial_error_status=_initial_error_status,
+                fallback_note=_fallback_note,
+            ),
+        )
     except (OSError, URLError) as exc:
         fallback_text = fetch_with_powershell(url=url, accept_header=accept_header, timeout=timeout)
         if fallback_text is not None:
-            return fallback_text, None, ""
-        return None, "fetch_error", f"Could not fetch SDMX CSV API response: {exc}"
+            return fallback_text, None, "", _fetch_provenance(
+                requested_url=requested_url,
+                effective_url=url,
+                initial_error_status=_initial_error_status or "fetch_error",
+                fallback_note=_fallback_note
+                or "Python transport failed; PowerShell transport fallback succeeded.",
+            )
+        return (
+            None,
+            "fetch_error",
+            f"Could not fetch SDMX CSV API response: {exc}",
+            _fetch_provenance(
+                requested_url=requested_url,
+                effective_url=url,
+                initial_error_status=_initial_error_status,
+                fallback_note=_fallback_note,
+            ),
+        )
 
     if status_code != 200:
-        return None, f"api_error_{status_code}", f"SDMX CSV API returned HTTP {status_code}."
+        return (
+            None,
+            f"api_error_{status_code}",
+            f"SDMX CSV API returned HTTP {status_code}.",
+            _fetch_provenance(
+                requested_url=requested_url,
+                effective_url=url,
+                initial_error_status=_initial_error_status,
+                fallback_note=_fallback_note,
+            ),
+        )
 
-    return body.decode(charset, errors="replace"), None, ""
+    return (
+        body.decode(charset, errors="replace"),
+        None,
+        "",
+        _fetch_provenance(
+            requested_url=requested_url,
+            effective_url=url,
+            initial_error_status=_initial_error_status,
+            fallback_note=_fallback_note,
+        ),
+    )
+
+
+def _fetch_provenance(
+    *,
+    requested_url: str,
+    effective_url: str,
+    initial_error_status: str,
+    fallback_note: str,
+) -> dict[str, object]:
+    return {
+        "requested_url": requested_url,
+        "effective_url": effective_url,
+        "initial_error_status": initial_error_status,
+        "fallback_used": bool(fallback_note),
+        "fallback_note": fallback_note,
+    }
 
 
 def stable_sdmx_url(url: str) -> str | None:

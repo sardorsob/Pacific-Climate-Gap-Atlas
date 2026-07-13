@@ -5,11 +5,19 @@
   "story_role": "impact",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "generated_at_utc": "2026-07-13T00:27:36Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AALT...._T.....&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AALT...._T.....?dimensionAtObservation=AllDimensions"
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AALT...._T.....?dimensionAtObservation=AllDimensions",
+    "requested_sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AALT...._T.....?dimensionAtObservation=AllDimensions",
+    "effective_sdmx_csv_api_url": "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_SDG_11,3.0/A.VC_DSR_AALT...._T...../SPC?dimensionAtObservation=AllDimensions",
+    "source_content_sha256": "10af83868cfd596c8826267c9861acd67644633e70f797afb3c3af9a7fe1516b",
+    "fetch": {
+      "initial_api_status": "api_error_422",
+      "fallback_used": true,
+      "fallback_note": "Original v2 request returned HTTP 422; retried through the documented stable Pacific Data Hub endpoint."
+    }
   },
   "coverage": {
     "row_count": 39,
@@ -32,9 +40,18 @@
       "start": 2007,
       "end": 2020
     },
-    "value_count": 39,
-    "missing_value_count": 0,
-    "missing_value_pct": 0.0
+    "returned_row_value_coverage": {
+      "numeric_observation_value_count": 39,
+      "blank_or_non_numeric_value_count": 0,
+      "blank_or_non_numeric_value_pct": 0.0
+    },
+    "structural_geography_year_coverage": {
+      "observed_distinct_geography_years": 39,
+      "possible_geography_years_in_observed_span": 168,
+      "missing_geography_years_in_observed_span": 129,
+      "coverage_pct": 0.23214285714285715,
+      "caveat": "Structural reporting coverage only; a missing geography-year is not evidence of zero or no event."
+    }
   },
   "schema": {
     "columns": [
@@ -70,8 +87,7 @@
     ],
     "denominator": "Not applicable to the filtered direct-loss total; no denominator values are included in the response.",
     "grain": "Reported direct economic loss by geography and year for the filtered SDG indicator and fixed disaggregation.",
-    "grain_columns": [
-      "DATAFLOW",
+    "dimension_columns": [
       "FREQ",
       "INDICATOR",
       "GEO_PICT",
@@ -86,8 +102,7 @@
       "TIME_PERIOD",
       "UNIT_MEASURE",
       "REPORTING_TYPE",
-      "NATURE",
-      "DATA_SOURCE"
+      "NATURE"
     ],
     "source_semantics": "Recorded direct economic loss attributed to disasters; missing years are not evidence of zero loss.",
     "licence": "not stated in reviewed source metadata"

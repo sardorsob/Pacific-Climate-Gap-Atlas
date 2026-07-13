@@ -23,7 +23,11 @@ from analysis.io.dataset_profile import (  # noqa: E402
     profile_to_csv_row,
     slugify,
 )
-from analysis.io.official_data import OfficialDataset, read_official_inventory  # noqa: E402
+from analysis.io.official_data import (  # noqa: E402
+    OfficialDataset,
+    read_official_inventory,
+    read_validated_raw_cache,
+)
 from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa: E402
 
 
@@ -107,8 +111,33 @@ def profile_priority_datasets(
             )
             continue
 
-        raw_path = raw_dir / f"{slugify(name)}.csv" if raw_dir is not None else None
-        if raw_path is not None and raw_path.exists():
+        cached_text: str | None = None
+        manifest_entry: dict[str, object] | None = None
+        cache_error: str | None = None
+        if raw_dir is not None:
+            cached_text, manifest_entry, cache_error = read_validated_raw_cache(
+                raw_dir=raw_dir,
+                slug=slugify(name),
+            )
+        if cache_error:
+            profiles.append(
+                error_profile(
+                    name=inventory_row.name,
+                    pillar=pillar,
+                    story_role=inventory_row.story_role,
+                    official_url=inventory_row.official_url,
+                    sdmx_csv_api_url=inventory_row.sdmx_csv_api_url,
+                    status="cache_manifest_error",
+                    caveat_notes=cache_error,
+                    acquisition=_manifest_acquisition(
+                        manifest_entry,
+                        inventory_row.sdmx_csv_api_url,
+                    ),
+                    **metadata,
+                )
+            )
+            continue
+        if cached_text is not None:
             profiles.append(
                 profile_csv_text(
                     name=inventory_row.name,
@@ -116,7 +145,11 @@ def profile_priority_datasets(
                     story_role=inventory_row.story_role,
                     official_url=inventory_row.official_url,
                     sdmx_csv_api_url=inventory_row.sdmx_csv_api_url,
-                    csv_text=raw_path.read_text(encoding="utf-8"),
+                    csv_text=cached_text,
+                    acquisition=_manifest_acquisition(
+                        manifest_entry,
+                        inventory_row.sdmx_csv_api_url,
+                    ),
                     **metadata,
                 )
             )
@@ -167,7 +200,7 @@ def profile_inventory_row(
             decision_reason=decision_reason,
         )
 
-    csv_text, error_status, caveat_notes = fetch_sdmx_csv_text(
+    csv_text, error_status, caveat_notes, acquisition = fetch_sdmx_csv_text(
         url=inventory_row.sdmx_csv_api_url,
         accept_header=accept_header,
         timeout=timeout,
@@ -188,6 +221,7 @@ def profile_inventory_row(
             licence=licence,
             processing_decision=processing_decision,
             decision_reason=decision_reason,
+            acquisition=acquisition,
         )
 
     return profile_csv_text(
@@ -204,6 +238,7 @@ def profile_inventory_row(
         licence=licence,
         processing_decision=processing_decision,
         decision_reason=decision_reason,
+        acquisition=acquisition,
     )
 
 
@@ -216,6 +251,22 @@ def _profile_metadata(entry: dict[str, object]) -> dict[str, object]:
         "licence": str(entry.get("licence", "not stated")),
         "processing_decision": str(entry.get("processing_decision", "not stated")),
         "decision_reason": str(entry.get("decision_reason", "not stated")),
+    }
+
+
+def _manifest_acquisition(
+    entry: dict[str, object] | None,
+    requested_url: str,
+) -> dict[str, object]:
+    if entry is None:
+        return {"requested_url": requested_url}
+    return {
+        "requested_url": entry.get("requested_api_url") or requested_url,
+        "effective_url": entry.get("effective_api_url"),
+        "initial_error_status": entry.get("initial_api_status", ""),
+        "fallback_used": entry.get("fallback_used"),
+        "fallback_note": entry.get("fallback_note", ""),
+        "source_content_sha256": entry.get("source_content_sha256", ""),
     }
 
 

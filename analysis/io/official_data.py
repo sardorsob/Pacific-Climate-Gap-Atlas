@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -38,3 +40,44 @@ def read_official_inventory(path: Path) -> list[OfficialDataset]:
         )
         for _, row in frame.iterrows()
     ]
+
+
+def read_validated_raw_cache(
+    *, raw_dir: Path, slug: str
+) -> tuple[str | None, dict[str, object] | None, str | None]:
+    """Read a manual cache, or validate a manifested cache status and content hash."""
+
+    raw_path = raw_dir / f"{slug}.csv"
+    if not raw_path.exists():
+        return None, None, None
+
+    raw_bytes = raw_path.read_bytes()
+    text = raw_bytes.decode("utf-8")
+    manifest_path = raw_dir / "manifest.json"
+    if not manifest_path.exists():
+        return text, None, None
+
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return None, None, f"Raw cache manifest could not be read: {exc}"
+
+    entries = list(manifest.get("datasets", [])) + list(
+        manifest.get("supplementary_datasets", [])
+    )
+    entry = next((item for item in entries if item.get("slug") == slug), None)
+    if entry is None:
+        return None, None, "Raw cache manifest has no entry for this dataset."
+    if entry.get("status") != "ok":
+        return (
+            None,
+            entry,
+            f"Raw cache manifest status is {entry.get('status', 'unknown')}.",
+        )
+
+    expected_hash = str(entry.get("source_content_sha256", ""))
+    actual_hash = hashlib.sha256(raw_bytes).hexdigest()
+    if not expected_hash or expected_hash != actual_hash:
+        return None, entry, "Raw cache SHA-256 does not match the successful manifest entry."
+
+    return text, entry, None

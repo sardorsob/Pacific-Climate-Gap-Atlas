@@ -5,11 +5,19 @@
   "story_role": "climate_exposure",
   "status": "ok",
   "candidate": true,
-  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "generated_at_utc": "2026-07-13T00:27:36Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.ALT_LAND_COVER.&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ALT_LAND_COVER.?dimensionAtObservation=AllDimensions"
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ALT_LAND_COVER.?dimensionAtObservation=AllDimensions",
+    "requested_sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ALT_LAND_COVER.?dimensionAtObservation=AllDimensions",
+    "effective_sdmx_csv_api_url": "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_CLIMATE_CHANGE,1.0/A.ALT_LAND_COVER./SPC?dimensionAtObservation=AllDimensions",
+    "source_content_sha256": "d04ddf1138425cb4cb06d686283d1e15f9889a6247c249facdff5f5de83ce65a",
+    "fetch": {
+      "initial_api_status": "api_error_422",
+      "fallback_used": true,
+      "fallback_note": "Original v2 request returned HTTP 422; retried through the documented stable Pacific Data Hub endpoint."
+    }
   },
   "coverage": {
     "row_count": 681,
@@ -42,9 +50,18 @@
       "start": 1992,
       "end": 2022
     },
-    "value_count": 681,
-    "missing_value_count": 0,
-    "missing_value_pct": 0.0
+    "returned_row_value_coverage": {
+      "numeric_observation_value_count": 681,
+      "blank_or_non_numeric_value_count": 0,
+      "blank_or_non_numeric_value_pct": 0.0
+    },
+    "structural_geography_year_coverage": {
+      "observed_distinct_geography_years": 681,
+      "possible_geography_years_in_observed_span": 682,
+      "missing_geography_years_in_observed_span": 1,
+      "coverage_pct": 0.998533724340176,
+      "caveat": "Structural reporting coverage only; a missing geography-year is not evidence of zero or no event."
+    }
   },
   "schema": {
     "columns": [
@@ -71,8 +88,7 @@
     ],
     "denominator": "Not applicable to the published index; no denominator values are included in the response.",
     "grain": "One row per geography and year for the filtered land-cover index and fixed disaggregation.",
-    "grain_columns": [
-      "DATAFLOW",
+    "dimension_columns": [
       "FREQ",
       "CLIMATE_CHANGE_INDICATORS",
       "GEO_PICT",

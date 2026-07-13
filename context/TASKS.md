@@ -1614,3 +1614,26 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Created to apply the owner context-hygiene rule to the post-research implementation roadmap.
 - Status: pending
+
+## TASK-070
+- Phase: repository-maintenance
+- Title: Remove unused notebook, platform, package, and artifact scaffolding
+- Depends on: TASK-065
+- Assigned agent: Codex Builder/QA
+- Contract refs: context/STRUCTURE.md, context/development_rules.md
+- Data refs: repository tracked-file inventory and import/reference audit
+- Scientific refs: context/ANALYSIS_BACKLOG.md
+- User value / decision value: Keeps the repository focused on the script-first data pipeline and imminent TASK-066/TASK-067 work instead of advertising unused execution surfaces.
+- Functional notes: Delete placeholder-only `kaggle`, `notebooks`, `hf`, root `reports`, and test-fixture lanes; delete unused empty analysis packages and the unimported path helper; delete unused artifact/data tiers and empty prompt/QA log placeholders; remove redundant `.gitkeep` markers from populated directories. Retain `artifacts/figures` because TASK-067 explicitly targets figures, `artifacts/logs/runs` because existing model provenance references run bundles, and every imported analysis package.
+- Statistical notes: No data, analysis result, model, score, app output, or source cache may change.
+- Edge cases: Historical task text may mention a removed scaffold path; living structure, data policy, development rules, and ignore rules must not continue promising deleted tiers.
+- Files to create/modify: delete unused tracked placeholders/packages; .gitignore; context/STRUCTURE.md; context/DATA_CARD.md; context/ANALYSIS_BACKLOG.md; context/development_rules.md; context/TASKS.md; context/logs/*
+- Artifacts to produce: smaller tracked tree with no empty Kaggle/notebook/Hugging Face/report/interim scaffolding and no dead Python package imports
+- Acceptance criteria: Every removed path is placeholder-only or unreferenced by runtime/tests/current near-term plans; retained future lanes have an explicit current reference; full Python tests and repository validation pass; no app/data/generated artifact changes.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Inspect deleted-file list, rerun import/reference searches, and confirm only `artifacts/figures` and `artifacts/logs/runs` remain among empty forward-looking artifact lanes for documented near-term/historical reasons.
+- QA notes: QA accepted the 15-directory, 25-file scaffold cleanup. The final tracked tree retains only two `.gitkeep` files: `artifacts/figures/.gitkeep` for imminent TASK-067 outputs and `artifacts/logs/runs/.gitkeep` for the existing outlook run-bundle contract. Runtime/test import search found no consumers of the deleted analysis packages or path helper; living structure/data/development/ignore rules no longer promise deleted tiers. Full Python passed 75/75 with only pre-existing pandas FutureWarnings; 48 required artifacts, 71 legal task statuses, secrets, and whitespace passed. No runtime app file, data product, source cache, score, model output, or generated analysis artifact changed.
+- Attempts: 2
+- Max attempts: 3
+- Attempt log: Created from the owner's explicit request to remove notebooks, Kaggle, and other folders unlikely to support the current TASK-066/TASK-067 sequence. First pass moved `in-progress -> in-review` after 75/75 tests and repository gates. QA returned `in-review -> needs-fix` for the remaining empty fixture lane and redundant markers, then resumed `needs-fix -> in-progress` for the final minimal deletion pass.
+- Status: done

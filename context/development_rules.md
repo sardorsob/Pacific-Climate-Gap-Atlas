@@ -16,7 +16,7 @@ Use `context/` as the durable project memory. Update it when scope, task status,
 - Keep Python analysis code package-style under `analysis/`.
 - Keep CLI orchestration under `scripts/`.
 - Keep app code under `app/src/`.
-- Avoid notebook-only core logic.
+- Keep current analysis reproducible through modules, scripts, and tests; do not add notebook scaffolding without a concrete review need.
 - Prefer small, testable functions with explicit inputs.
 
 ## Verification

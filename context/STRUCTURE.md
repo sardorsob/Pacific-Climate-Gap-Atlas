@@ -42,11 +42,7 @@
 - `analysis/preprocessing/`: schema normalization and geography joins.
 - `analysis/features/`: gap index feature construction.
 - `analysis/modeling/`: outlook model baselines.
-- `analysis/evaluation/`: metric and backtest helpers.
 - `analysis/eda/`: script-first exploratory analysis helpers.
-- `analysis/uncertainty/`: uncertainty and sensitivity helpers.
-- `analysis/viz/`: analysis-side chart helpers.
-- `analysis/utils/`: paths and shared utilities.
 
 ## App
 
@@ -57,7 +53,6 @@
 ## Generated / Data
 
 - `data/raw/`: immutable source pulls, ignored by Git.
-- `data/interim/`: temporary transforms, ignored by Git.
 - `data/processed/official_observations.csv`: normalized official observations in long form.
 - `data/processed/geography_lookup.csv`: geography coverage lookup across priority datasets.
 - `data/processed/app/atlas_dataset_summary.json`: compact app-ready data summary without geometry.
@@ -67,7 +62,7 @@
 - `data/external/`: boundaries and lookup tables.
 - `data/external/geography_context.csv`: descriptive GIS context table for subregions, status labels, and island-group notes.
 - `data/contracts/`: generated JSON source, coverage, and schema contracts for priority official datasets.
-- `artifacts/`: figures, tables, reports, run bundles, and provenance.
+- `artifacts/`: figures, tables, run bundles, and provenance.
 - `artifacts/design/task-058/`: Elastic Stage, Tidal Chapters, and One Constellation composition boards; generated content is visual reference only, never app data.
 - `artifacts/tables/dataset_profile.csv`: generated official dataset profile table.
 - `artifacts/tables/adaptation_gap_index.csv`: geography-level draft Adaptation Gap Index baseline.

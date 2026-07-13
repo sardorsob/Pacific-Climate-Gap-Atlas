@@ -30,17 +30,9 @@ app/vite.config.d.ts
 
 # Data tiers: keep manifests/contracts, not bulky generated inputs.
 data/raw/*
-!data/raw/.gitkeep
 !data/raw/README.md
-data/interim/*
-!data/interim/.gitkeep
-!data/interim/README.md
 
 # Generated artifacts and run bundles.
 artifacts/logs/*.log
 artifacts/logs/runs/*
 !artifacts/logs/runs/.gitkeep
-artifacts/models/*
-!artifacts/models/.gitkeep
-artifacts/reports/*
-!artifacts/reports/.gitkeep

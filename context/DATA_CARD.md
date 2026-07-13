@@ -216,7 +216,6 @@ These outputs should document vector components, normalization, smoothing if any
 
 - `data/raw/` is immutable and ignored by Git except for documentation.
 - Manual raw-cache filenames are listed in `data/raw/README.md`.
-- `data/interim/` is ignored and can be regenerated.
 - `data/processed/` can be selectively tracked when files are small and needed by the app.
 - Every reusable processed dataset needs a contract under `data/contracts/`.
 

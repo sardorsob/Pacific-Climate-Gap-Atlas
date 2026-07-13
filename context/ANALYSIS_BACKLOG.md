@@ -13,7 +13,7 @@ Completed analysis lanes cover the original nine-dataset evidence base, and `TAS
 - Start from analytical questions, not chart ideas.
 - Acquire and inspect data before locking the narrative; treat story concepts as hypotheses until evidence and caveats are reviewed.
 - Prefer a few useful datasets over a broad 27-dataset dashboard.
-- Use Python modules and scripts as the source of truth; notebooks are optional review surfaces only.
+- Use Python modules and scripts as the source of truth; notebooks are outside the current workflow and should not be reintroduced without a concrete review need.
 - Save reportable outputs under `artifacts/` with stable names.
 - Preserve caveats when scores depend on sparse data, proxy indicators, centroid geometry, or generalized visual land context.
 - Treat GIS claims carefully while scored geometry is centroid fallback and Natural Earth is visual context rather than official boundaries.

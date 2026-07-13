@@ -11,6 +11,17 @@ import pandas as pd
 
 
 MISSING_TOKENS = {"", "nan", "none", "null", "na", "n/a"}
+NOT_STATED = "not stated"
+NON_GRAIN_COLUMNS = {
+    "STRUCTURE",
+    "STRUCTURE_ID",
+    "ACTION",
+    "OBS_VALUE",
+    "OBS_STATUS",
+    "OBS_COMMENT",
+    "ERROR_TYPE",
+    "ERROR_VAL",
+}
 
 
 @dataclass(frozen=True)
@@ -37,6 +48,15 @@ class DatasetProfile:
     official_url: str
     sdmx_csv_api_url: str
     caveat_notes: str
+    candidate: bool
+    units: list[str]
+    denominator: str
+    grain: str
+    grain_columns: list[str]
+    source_semantics: str
+    licence: str
+    processing_decision: str
+    decision_reason: str
 
 
 def slugify(value: str) -> str:
@@ -55,6 +75,13 @@ def profile_csv_text(
     official_url: str,
     sdmx_csv_api_url: str,
     csv_text: str,
+    candidate: bool = False,
+    denominator: str = NOT_STATED,
+    grain: str = NOT_STATED,
+    source_semantics: str = NOT_STATED,
+    licence: str = NOT_STATED,
+    processing_decision: str = NOT_STATED,
+    decision_reason: str = NOT_STATED,
 ) -> DatasetProfile:
     """Profile an SDMX CSV response body."""
 
@@ -67,6 +94,13 @@ def profile_csv_text(
             sdmx_csv_api_url=sdmx_csv_api_url,
             status="empty_response",
             caveat_notes="API response was empty.",
+            candidate=candidate,
+            denominator=denominator,
+            grain=grain,
+            source_semantics=source_semantics,
+            licence=licence,
+            processing_decision=processing_decision,
+            decision_reason=decision_reason,
         )
 
     try:
@@ -80,6 +114,13 @@ def profile_csv_text(
             sdmx_csv_api_url=sdmx_csv_api_url,
             status="parse_error",
             caveat_notes=f"Could not parse CSV response: {exc}",
+            candidate=candidate,
+            denominator=denominator,
+            grain=grain,
+            source_semantics=source_semantics,
+            licence=licence,
+            processing_decision=processing_decision,
+            decision_reason=decision_reason,
         )
 
     return profile_frame(
@@ -89,6 +130,13 @@ def profile_csv_text(
         official_url=official_url,
         sdmx_csv_api_url=sdmx_csv_api_url,
         frame=frame,
+        candidate=candidate,
+        denominator=denominator,
+        grain=grain,
+        source_semantics=source_semantics,
+        licence=licence,
+        processing_decision=processing_decision,
+        decision_reason=decision_reason,
     )
 
 
@@ -100,6 +148,13 @@ def profile_frame(
     official_url: str,
     sdmx_csv_api_url: str,
     frame: pd.DataFrame,
+    candidate: bool = False,
+    denominator: str = NOT_STATED,
+    grain: str = NOT_STATED,
+    source_semantics: str = NOT_STATED,
+    licence: str = NOT_STATED,
+    processing_decision: str = NOT_STATED,
+    decision_reason: str = NOT_STATED,
 ) -> DatasetProfile:
     """Profile an already-loaded dataframe."""
 
@@ -108,8 +163,15 @@ def profile_frame(
     geography_column = _pick_column(columns, preferred=["GEO_PICT"], contains=["GEO"])
     time_column = _pick_column(columns, preferred=["TIME_PERIOD", "TIME", "YEAR"], contains=["TIME", "YEAR"])
     value_column = _pick_column(columns, preferred=["OBS_VALUE", "VALUE"], contains=["VALUE"])
+    unit_column = _pick_column(columns, preferred=["UNIT_MEASURE"], contains=["UNIT"])
 
     geography_codes = _unique_non_missing(frame[geography_column]) if geography_column else []
+    units = _unique_non_missing(frame[unit_column]) if unit_column else []
+    grain_columns = [
+        column
+        for column in columns
+        if column.upper() not in NON_GRAIN_COLUMNS and _unique_non_missing(frame[column])
+    ]
     year_start, year_end = _year_range(frame[time_column]) if time_column else (None, None)
     value_count, missing_value_count, missing_value_pct = _value_coverage(frame, value_column)
 
@@ -143,6 +205,15 @@ def profile_frame(
         official_url=official_url,
         sdmx_csv_api_url=sdmx_csv_api_url,
         caveat_notes=" ".join(caveats),
+        candidate=candidate,
+        units=units,
+        denominator=denominator,
+        grain=grain,
+        grain_columns=grain_columns,
+        source_semantics=source_semantics,
+        licence=licence,
+        processing_decision=processing_decision,
+        decision_reason=decision_reason,
     )
 
 
@@ -155,6 +226,13 @@ def error_profile(
     sdmx_csv_api_url: str,
     status: str,
     caveat_notes: str,
+    candidate: bool = False,
+    denominator: str = NOT_STATED,
+    grain: str = NOT_STATED,
+    source_semantics: str = NOT_STATED,
+    licence: str = NOT_STATED,
+    processing_decision: str = NOT_STATED,
+    decision_reason: str = NOT_STATED,
 ) -> DatasetProfile:
     """Build a profile row for missing or failed sources."""
 
@@ -179,6 +257,15 @@ def error_profile(
         official_url=official_url,
         sdmx_csv_api_url=sdmx_csv_api_url,
         caveat_notes=caveat_notes,
+        candidate=candidate,
+        units=[],
+        denominator=denominator,
+        grain=grain,
+        grain_columns=[],
+        source_semantics=source_semantics,
+        licence=licence,
+        processing_decision=processing_decision,
+        decision_reason=decision_reason,
     )
 
 
@@ -205,6 +292,15 @@ def profile_to_csv_row(profile: DatasetProfile, *, generated_at_utc: str) -> dic
         "value_column": profile.value_column or "",
         "geography_codes": " ".join(profile.geography_codes),
         "caveat_notes": profile.caveat_notes,
+        "candidate": profile.candidate,
+        "units": " | ".join(profile.units),
+        "denominator": profile.denominator,
+        "grain": profile.grain,
+        "grain_columns": " | ".join(profile.grain_columns),
+        "source_semantics": profile.source_semantics,
+        "licence": profile.licence,
+        "processing_decision": profile.processing_decision,
+        "decision_reason": profile.decision_reason,
         "official_url": profile.official_url,
         "sdmx_csv_api_url": profile.sdmx_csv_api_url,
         "profiled_at_utc": generated_at_utc,
@@ -220,6 +316,7 @@ def profile_to_contract(profile: DatasetProfile, *, generated_at_utc: str) -> di
         "pillar": profile.pillar,
         "story_role": profile.story_role,
         "status": profile.status,
+        "candidate": profile.candidate,
         "generated_at_utc": generated_at_utc,
         "source": {
             "provider": "Pacific Data Hub / Pacific Community",
@@ -240,6 +337,18 @@ def profile_to_contract(profile: DatasetProfile, *, generated_at_utc: str) -> di
             "geography_column": profile.geography_column,
             "time_column": profile.time_column,
             "value_column": profile.value_column,
+        },
+        "semantics": {
+            "units": profile.units,
+            "denominator": profile.denominator,
+            "grain": profile.grain,
+            "grain_columns": profile.grain_columns,
+            "source_semantics": profile.source_semantics,
+            "licence": profile.licence,
+        },
+        "processing_decision": {
+            "status": profile.processing_decision,
+            "reason": profile.decision_reason,
         },
         "caveat_notes": profile.caveat_notes,
     }

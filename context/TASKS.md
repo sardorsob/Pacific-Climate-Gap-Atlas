@@ -1504,7 +1504,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: data-expansion
 - Title: Acquire and profile the targeted official dataset expansion
 - Depends on: TASK-001
-- Assigned agent: unassigned
+- Assigned agent: Codex Builder
 - Contract refs: context/SCOPE.md, context/DATA_CARD.md, configs/datasets.yml
 - Data refs: research/official_datasets_2026.csv, Pacific Data Hub official sources
 - Scientific refs: context/ANALYSIS_BACKLOG.md, context/ASSUMPTIONS.md
@@ -1515,13 +1515,13 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Files to create/modify: configs/datasets.yml, tests/analysis/test_dataset_profile.py, analysis/io/dataset_config.py only if the existing schema cannot express the official grain, data/contracts/*.json, data/raw/README.md, artifacts/tables/dataset_profile.csv, context/DATA_CARD.md
 - Artifacts to produce: reproducible profiles and contracts for every accepted or rejected candidate, with rejection reasons retained
 - Acceptance criteria: Every candidate has a reproducible fetch/profile result and an explicit accept-for-processing or reject decision; no score, app layer, or story claim changes; existing nine profiles remain reproducible.
-- Verification commands: python scripts/profile_datasets.py --config configs/datasets.yml; python -m unittest discover -s tests -t . -v; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Verification commands: python scripts/fetch_official_data.py --config configs/datasets.yml; python scripts/profile_datasets.py --config configs/datasets.yml; python -m unittest discover -s tests -t . -v; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Compare each profile with its official .Stat metadata/source page and spot-check units, geography counts, year ranges, and licences.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder live fetch completed 15/15 with non-empty byte counts and 64-character SHA-256 hashes in the ignored raw manifest; cache-backed profiling completed 15/15. Candidate gates are five `accept_for_processing` and one `reject` for aggregate crop yield after a 20,725-row disaggregated inspection found 78 crop items and two production types. The tracked profile/contracts expose units, denominator statements, grain, source semantics, licence status, missingness, failures/status, and reasons. Focused RED/GREEN passed 9/9; full Python passed 66/66 with only pre-existing pandas FutureWarnings; required artifacts, 70 legal statuses, secrets, and whitespace passed. Independent QA must inspect the diff, live manifest, source metadata, and candidate decisions before `done`.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created from the owner-approved data-first narrative pivot; acquisition must precede story selection.
-- Status: pending
+- Attempt log: Created from the owner-approved data-first narrative pivot; acquisition must precede story selection. 2026-07-12: Builder started the isolated acquisition/profile pass with focused TDD, live raw-cache verification, and no processing, score, app, or narrative changes. The initial sandbox fetch failed 15/15 on DNS; approved network access exposed v2 HTTP 422. A documented stable-API fallback first used the short flow ID, which live QA showed returned 403 for four SDG sources; the full agency/flow/version reference then fetched all 15. Profiles reproduced the six preliminary coverage hypotheses, and the supplementary crop inspection supported the aggregate rejection.
+- Status: in-review
 
 ## TASK-066
 - Phase: data-pipeline

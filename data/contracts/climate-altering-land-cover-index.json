@@ -1,18 +1,18 @@
 {
-  "name": "Rainfall anomalies",
-  "slug": "rainfall-anomalies",
-  "pillar": "climate_signal",
+  "name": "Climate altering land cover index",
+  "slug": "climate-altering-land-cover-index",
+  "pillar": "candidate_land_context",
   "story_role": "climate_exposure",
   "status": "ok",
-  "candidate": false,
+  "candidate": true,
   "generated_at_utc": "2026-07-13T00:03:21Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
-    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.RAIN_ANOM.&pd=,&to[TIME_PERIOD]=false",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.RAIN_ANOM.?dimensionAtObservation=AllDimensions"
+    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.ALT_LAND_COVER.&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ALT_LAND_COVER.?dimensionAtObservation=AllDimensions"
   },
   "coverage": {
-    "row_count": 1034,
+    "row_count": 681,
     "geography_count": 22,
     "geography_codes": [
       "AS",
@@ -39,10 +39,10 @@
       "WS"
     ],
     "year_range": {
-      "start": 1979,
-      "end": 2025
+      "start": 1992,
+      "end": 2022
     },
-    "value_count": 1034,
+    "value_count": 681,
     "missing_value_count": 0,
     "missing_value_pct": 0.0
   },
@@ -67,10 +67,10 @@
   },
   "semantics": {
     "units": [
-      "MM"
+      "PERCENT"
     ],
-    "denominator": "not stated",
-    "grain": "not stated",
+    "denominator": "Not applicable to the published index; no denominator values are included in the response.",
+    "grain": "One row per geography and year for the filtered land-cover index and fixed disaggregation.",
     "grain_columns": [
       "DATAFLOW",
       "FREQ",
@@ -80,12 +80,12 @@
       "UNIT_MEASURE",
       "REPORTING_TYPE"
     ],
-    "source_semantics": "not stated",
-    "licence": "not stated"
+    "source_semantics": "Published climate-altering land-cover index; direction and baseline require source-aware interpretation.",
+    "licence": "not stated in reviewed source metadata"
   },
   "processing_decision": {
-    "status": "not stated",
-    "reason": "not stated"
+    "status": "accept_for_processing",
+    "reason": "Broad geography and annual coverage support descriptive land-system exploration while the index direction and baseline remain explicit caveats."
   },
   "caveat_notes": ""
 }

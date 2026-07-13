@@ -12,27 +12,31 @@ Pacific Data Hub / Pacific Community data infrastructure, as referenced by the o
 
 At least one official dataset is required for the competition. This project targets a multi-dataset official-data spine and may add open external GIS reference files only when they improve map usability or boundary context.
 
-## Planned Data-First Expansion
+## TASK-065 Data-First Acquisition Gate
 
-The current processed evidence base contains nine official datasets. The final competition story is reopened, so `TASK-065` will profile a deliberately small candidate expansion before any new narrative or score decision:
+The processed evidence base still contains the original nine official datasets. `TASK-065` fetched and profiled six additional official candidates without processing, score, app, or story changes. The ignored raw manifest records 15/15 successful source pulls, byte counts, and 64-character SHA-256 hashes; the tracked profile and contracts preserve the review decisions.
 
-| Candidate | Preliminary official coverage snapshot | Research value | Primary gate |
-| --- | --- | --- | --- |
-| Population growth | 22 geographies, 1990–2025 | context and denominator review | do not confuse growth rate with population size |
-| Renewable energy share | 20 geographies, 2000–2023 | rate-based transition/response context | confirm comparable definition and latest-year spread |
-| Safely managed drinking water | 19 geographies, 2000–2022 | recorded essential-service condition | do not attribute changes to climate without causal evidence |
-| Crop yield | 15 geographies, 1961–2024 | food-system pattern exploration | inspect crop mix, aggregation, and climate attribution limits |
-| Direct disaster economic loss | 12 geographies, 2007–2020 | recorded consequence/economic context | sparse coverage, currency/unit consistency, and reporting bias |
-| Climate-altering land-cover index | 22 geographies, 1992–2022 | land-system change context | verify direction, baseline, and public interpretation |
+| Candidate | Rows | Geographies | Years | Units | Missing values | Gate | Evidence-based reason |
+| --- | ---: | ---: | --- | --- | ---: | --- | --- |
+| Population growth | 792 | 22 | 1990–2025 | `PERCENT` | 0 | accept for processing | broad annual rate coverage; retain the rate-versus-population-size distinction |
+| Renewable energy share | 461 | 20 | 2000–2023 | `PERCENT` | 0 | accept for processing | comparable rate fields support transition-context review |
+| Safely managed drinking water | 430 | 19 | 2000–2022 | `PERCENT` | 0 | accept for processing | useful essential-service context if kept descriptive and non-causal |
+| Crop yield | 900 | 15 | 1961–2024 | `KGHA` | 0 | reject | aggregate rows hide crop-item composition and would conflate changing crop mixes |
+| Direct disaster economic loss | 39 | 12 | 2007–2020 | `USD`, `USD_MILLIONS` | 0 | accept for processing | sparse recorded-loss evidence is exploratory only and must retain unit/reporting limits |
+| Climate-altering land-cover index | 681 | 22 | 1992–2022 | `PERCENT` | 0 | accept for processing | broad coverage supports descriptive review with direction/baseline caveats |
 
-These figures are a preliminary July 12 API/metadata snapshot, not accepted contracts. `TASK-065` must regenerate and record them. Candidates may be rejected. No candidate becomes a score input by default, and no new composite index should be created merely to accommodate the expanded inventory.
+The crop decision includes the required supplementary grain inspection. The official disaggregated response has 20,725 rows across 15 geographies and 1961–2024, with 78 crop items, two production types, and `KGHA`/`KG_AN` units. It confirms that the 900-row one-row-per-geography-year aggregate is not item-comparable. The disaggregated source is inspection evidence only, not a seventh candidate.
+
+The filtered responses do not contain denominator values. Contracts state the indicator-implied denominator or `not applicable` and do not invent values. Dataset-specific licences were not stated in the reviewed indicator pages or SDMX responses; contracts therefore say `not stated in reviewed source metadata`. [Pacific Data Hub terms](https://pacificdata.org/terms-use) also instruct users to check the licence attached to each dataset rather than infer one platform-wide licence.
+
+Acceptance here means eligible for `TASK-066` normalization and later comparability review. It does not make a candidate a score input or narrative claim, and no new composite index is implied.
 
 ## TASK-001 Profile Artifacts
 
 The tracked profiler now writes:
 
-- `artifacts/tables/dataset_profile.csv`: flat row/geography/year/missingness summary for the configured priority datasets.
-- `data/contracts/*.json`: per-dataset source, coverage, schema, and caveat contracts.
+- `artifacts/tables/dataset_profile.csv`: flat coverage, unit, grain, denominator, source-semantic, licence, caveat, and processing-decision summary for the configured datasets.
+- `data/contracts/*.json`: per-dataset source, coverage, schema, semantics, caveat, and acquisition-decision contracts.
 
 Run command:
 
@@ -40,7 +44,7 @@ Run command:
 python scripts/profile_datasets.py --config configs/datasets.yml
 ```
 
-The script first tries Python standard-library HTTP and falls back to Windows PowerShell `Invoke-WebRequest -UseBasicParsing` when the Pacific SDMX endpoint returns `422` to the Python client. The fallback preserves the same configured SDMX CSV accept header.
+Fetch before profiling so the profile is cache-reproducible. The fetcher first calls the inventory v2 URL, then translates HTTP `422` responses to the [documented stable interface](https://docs.pacificdata.org/dotstat/api/interface) at `/rest/data/{flowRef}/{key}/{provider}` with the SDMX CSV 2.1 media type. PowerShell remains a final Windows transport fallback for network behavior unrelated to the API route.
 
 ## Coverage Findings
 
@@ -66,7 +70,9 @@ FJ, FM, KI, MH, NC, NR, PF, PG, PW, SB, TO, TV, VU, WS
 
 ## Known API Caveats
 
-Some generated SDMX URLs returned `422 Unprocessable Entity` to Python standard-library requests but succeeded through PowerShell `Invoke-WebRequest` using `Accept: application/vnd.sdmx.data+csv;version=2.0`. The profiling script records hard failures as dataset caveats rather than silently removing them.
+The current v2 dataflow routes return `422 Unprocessable Entity` for the inventory keys with empty dimensions. The documented stable API succeeds when the full agency, flow, and version reference is preserved; using only the short flow identifier returned `403` for four SDG flows during live verification. The focused fetch test locks the full-reference transform. Final acquisition succeeded for all 15 configured datasets, and any future hard failure remains explicit in the raw manifest and profile status rather than being silently removed or represented by a stale cache path.
+
+The stable sea-level response reports `UNIT_MEASURE=METER`. Earlier source-page research described millimetres, so downstream work must preserve the API unit and resolve that metadata/API discrepancy before conversion or public copy; this task does not reinterpret the values.
 
 ## TASK-002 Processed Data Artifacts
 

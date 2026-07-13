@@ -1,5 +1,5 @@
 official_inventory: research/official_datasets_2026.csv
-api_accept_header: application/vnd.sdmx.data+csv;version=2.0
+api_accept_header: application/vnd.sdmx.data+csv;version=2.1
 priority_geography_policy:
   minimum_candidate_coverage: 8
   full_overlap_geographies:
@@ -45,3 +45,63 @@ priority_datasets:
   - name: Greenhouse gas emissions per capita
     pillar: responsibility_context
     source: official_2026
+  - name: Population growth
+    pillar: candidate_context
+    source: official_2026
+    candidate: true
+    denominator: Prior-period population is implied by the growth-rate definition; denominator values are not included in the filtered response.
+    grain: One row per geography and year for the filtered population-growth indicator and fixed disaggregation.
+    source_semantics: Annual population growth rate; it is not population size.
+    licence: not stated in reviewed source metadata
+    processing_decision: accept_for_processing
+    decision_reason: Broad geography and annual coverage support descriptive context once the rate-versus-size distinction is preserved.
+  - name: Renewable energy share in the total final energy consumption
+    pillar: candidate_response_context
+    source: official_2026
+    candidate: true
+    denominator: Total final energy consumption; denominator values are not included in the filtered response.
+    grain: One row per geography and year for the filtered SDG indicator and fixed disaggregation.
+    source_semantics: Renewable energy as a share of total final energy consumption.
+    licence: not stated in reviewed source metadata
+    processing_decision: accept_for_processing
+    decision_reason: A rate-based transition measure with explicit geography, year, value, and unit fields is suitable for comparability review.
+  - name: Proportion of population using safely managed drinking water services
+    pillar: candidate_service_context
+    source: official_2026
+    candidate: true
+    denominator: Population in the represented geography; denominator values are not included in the filtered response.
+    grain: One row per geography and year for the filtered SDG indicator and fixed disaggregation.
+    source_semantics: Proportion of population using safely managed drinking water services; it is not a climate-attribution measure.
+    licence: not stated in reviewed source metadata
+    processing_decision: accept_for_processing
+    decision_reason: The comparable proportion can support essential-service context if it remains descriptive and non-causal.
+  - name: Crop yield
+    pillar: candidate_food_context
+    source: official_2026
+    candidate: true
+    denominator: Harvested area is implied by the yield measure; denominator values are not included in the filtered response.
+    grain: Aggregate climate-indicator response by geography and year; crop-item composition is not exposed in this filtered response.
+    source_semantics: Aggregate crop-yield indicator; crop mix and climate attribution are not identified by this response alone.
+    licence: not stated in reviewed source metadata
+    processing_decision: reject
+    decision_reason: The 20,725-row supplementary disaggregated inspection exposes 78 crop items and two production types while the aggregate response hides that composition, so cross-place or trend interpretation would conflate changing crop mixes.
+  - name: Direct disaster economic loss
+    pillar: candidate_loss_context
+    source: official_2026
+    candidate: true
+    denominator: Not applicable to the filtered direct-loss total; no denominator values are included in the response.
+    grain: Reported direct economic loss by geography and year for the filtered SDG indicator and fixed disaggregation.
+    source_semantics: Recorded direct economic loss attributed to disasters; missing years are not evidence of zero loss.
+    licence: not stated in reviewed source metadata
+    processing_decision: accept_for_processing
+    decision_reason: Sparse recorded-loss observations remain useful for reporting-aware exploratory analysis when currency, unit, and missing-year limits are retained.
+  - name: Climate altering land cover index
+    pillar: candidate_land_context
+    source: official_2026
+    candidate: true
+    denominator: Not applicable to the published index; no denominator values are included in the response.
+    grain: One row per geography and year for the filtered land-cover index and fixed disaggregation.
+    source_semantics: Published climate-altering land-cover index; direction and baseline require source-aware interpretation.
+    licence: not stated in reviewed source metadata
+    processing_decision: accept_for_processing
+    decision_reason: Broad geography and annual coverage support descriptive land-system exploration while the index direction and baseline remain explicit caveats.

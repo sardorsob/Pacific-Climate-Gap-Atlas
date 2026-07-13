@@ -1,0 +1,100 @@
+{
+  "name": "Population growth",
+  "slug": "population-growth",
+  "pillar": "candidate_context",
+  "story_role": "context",
+  "status": "ok",
+  "candidate": true,
+  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "source": {
+    "provider": "Pacific Data Hub / Pacific Community",
+    "official_url": "https://stats.pacificdata.org/vis?tm=population%20growth&pg=0&snb=11&df[ds]=ds%3ASPC2&df[id]=DF_NMDI_POP&df[ag]=SPC&df[vs]=1.0&dq=A..NMDI0002._T._T._T..&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_NMDI_POP/1.0/A..NMDI0002._T._T._T..?dimensionAtObservation=AllDimensions"
+  },
+  "coverage": {
+    "row_count": 792,
+    "geography_count": 22,
+    "geography_codes": [
+      "AS",
+      "CK",
+      "FJ",
+      "FM",
+      "GU",
+      "KI",
+      "MH",
+      "MP",
+      "NC",
+      "NR",
+      "NU",
+      "PF",
+      "PG",
+      "PN",
+      "PW",
+      "SB",
+      "TK",
+      "TO",
+      "TV",
+      "VU",
+      "WF",
+      "WS"
+    ],
+    "year_range": {
+      "start": 1990,
+      "end": 2025
+    },
+    "value_count": 792,
+    "missing_value_count": 0,
+    "missing_value_pct": 0.0
+  },
+  "schema": {
+    "columns": [
+      "DATAFLOW",
+      "FREQ",
+      "GEO_PICT",
+      "INDICATOR",
+      "SEX",
+      "AGE",
+      "URBANIZATION",
+      "DISABILITY",
+      "COMPOSITE_BREAKDOWN",
+      "TIME_PERIOD",
+      "OBS_VALUE",
+      "UNIT_MEASURE",
+      "UNIT_MULT",
+      "OBS_STATUS",
+      "OBS_COMMENT",
+      "DATA_SOURCE"
+    ],
+    "geography_column": "GEO_PICT",
+    "time_column": "TIME_PERIOD",
+    "value_column": "OBS_VALUE"
+  },
+  "semantics": {
+    "units": [
+      "PERCENT"
+    ],
+    "denominator": "Prior-period population is implied by the growth-rate definition; denominator values are not included in the filtered response.",
+    "grain": "One row per geography and year for the filtered population-growth indicator and fixed disaggregation.",
+    "grain_columns": [
+      "DATAFLOW",
+      "FREQ",
+      "GEO_PICT",
+      "INDICATOR",
+      "SEX",
+      "AGE",
+      "URBANIZATION",
+      "DISABILITY",
+      "COMPOSITE_BREAKDOWN",
+      "TIME_PERIOD",
+      "UNIT_MEASURE",
+      "DATA_SOURCE"
+    ],
+    "source_semantics": "Annual population growth rate; it is not population size.",
+    "licence": "not stated in reviewed source metadata"
+  },
+  "processing_decision": {
+    "status": "accept_for_processing",
+    "reason": "Broad geography and annual coverage support descriptive context once the rate-versus-size distinction is preserved."
+  },
+  "caveat_notes": ""
+}

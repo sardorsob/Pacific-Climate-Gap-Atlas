@@ -1,47 +1,38 @@
 {
-  "name": "Number of directly affected persons attributed to disasters",
-  "slug": "number-of-directly-affected-persons-attributed-to-disasters",
-  "pillar": "observed_stress",
+  "name": "Direct disaster economic loss",
+  "slug": "direct-disaster-economic-loss",
+  "pillar": "candidate_loss_context",
   "story_role": "impact",
   "status": "ok",
-  "candidate": false,
+  "candidate": true,
   "generated_at_utc": "2026-07-13T00:03:21Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
-    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AFFCT.........&pd=,&to[TIME_PERIOD]=false&lb=bt",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AFFCT.........?dimensionAtObservation=AllDimensions"
+    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AALT...._T.....&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AALT...._T.....?dimensionAtObservation=AllDimensions"
   },
   "coverage": {
-    "row_count": 174,
-    "geography_count": 21,
+    "row_count": 39,
+    "geography_count": 12,
     "geography_codes": [
-      "AS",
-      "CK",
       "FJ",
       "FM",
-      "GU",
       "KI",
       "MH",
-      "MP",
       "NC",
-      "NR",
-      "NU",
       "PF",
       "PG",
       "PW",
       "SB",
-      "TK",
       "TO",
-      "TV",
       "VU",
-      "WF",
       "WS"
     ],
     "year_range": {
-      "start": 2005,
-      "end": 2023
+      "start": 2007,
+      "end": 2020
     },
-    "value_count": 174,
+    "value_count": 39,
     "missing_value_count": 0,
     "missing_value_pct": 0.0
   },
@@ -74,10 +65,11 @@
   },
   "semantics": {
     "units": [
-      "N"
+      "USD",
+      "USD_MILLIONS"
     ],
-    "denominator": "not stated",
-    "grain": "not stated",
+    "denominator": "Not applicable to the filtered direct-loss total; no denominator values are included in the response.",
+    "grain": "Reported direct economic loss by geography and year for the filtered SDG indicator and fixed disaggregation.",
     "grain_columns": [
       "DATAFLOW",
       "FREQ",
@@ -97,12 +89,12 @@
       "NATURE",
       "DATA_SOURCE"
     ],
-    "source_semantics": "not stated",
-    "licence": "not stated"
+    "source_semantics": "Recorded direct economic loss attributed to disasters; missing years are not evidence of zero loss.",
+    "licence": "not stated in reviewed source metadata"
   },
   "processing_decision": {
-    "status": "not stated",
-    "reason": "not stated"
+    "status": "accept_for_processing",
+    "reason": "Sparse recorded-loss observations remain useful for reporting-aware exploratory analysis when currency, unit, and missing-year limits are retained."
   },
   "caveat_notes": ""
 }

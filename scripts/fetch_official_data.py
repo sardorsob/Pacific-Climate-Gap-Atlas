@@ -85,7 +85,11 @@ def fetch_to_raw_cache(
                 "pillar": pillar,
                 "story_role": dataset.story_role,
                 "status": status or "ok",
-                "raw_path": raw_path.relative_to(ROOT).as_posix() if raw_path.exists() else "",
+                "raw_path": (
+                    raw_path.relative_to(ROOT).as_posix()
+                    if status is None and text is not None
+                    else ""
+                ),
                 "byte_count": byte_count,
                 "source_content_sha256": content_hash,
                 "official_url": dataset.official_url,

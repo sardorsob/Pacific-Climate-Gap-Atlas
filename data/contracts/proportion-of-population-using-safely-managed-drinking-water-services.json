@@ -1,25 +1,24 @@
 {
-  "name": "Number of directly affected persons attributed to disasters",
-  "slug": "number-of-directly-affected-persons-attributed-to-disasters",
-  "pillar": "observed_stress",
+  "name": "Proportion of population using safely managed drinking water services",
+  "slug": "proportion-of-population-using-safely-managed-drinking-water-services",
+  "pillar": "candidate_service_context",
   "story_role": "impact",
   "status": "ok",
-  "candidate": false,
+  "candidate": true,
   "generated_at_utc": "2026-07-13T00:03:21Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
-    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AFFCT.........&pd=,&to[TIME_PERIOD]=false&lb=bt",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AFFCT.........?dimensionAtObservation=AllDimensions"
+    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_06&df[ag]=SPC&df[vs]=3.0&dq=A.SH_H2O_SAFE...._T.....&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_06/3.0/A.SH_H2O_SAFE...._T.....?dimensionAtObservation=AllDimensions"
   },
   "coverage": {
-    "row_count": 174,
-    "geography_count": 21,
+    "row_count": 430,
+    "geography_count": 19,
     "geography_codes": [
       "AS",
       "CK",
       "FJ",
       "FM",
-      "GU",
       "KI",
       "MH",
       "MP",
@@ -30,7 +29,6 @@
       "PG",
       "PW",
       "SB",
-      "TK",
       "TO",
       "TV",
       "VU",
@@ -38,10 +36,10 @@
       "WS"
     ],
     "year_range": {
-      "start": 2005,
-      "end": 2023
+      "start": 2000,
+      "end": 2022
     },
-    "value_count": 174,
+    "value_count": 430,
     "missing_value_count": 0,
     "missing_value_pct": 0.0
   },
@@ -74,10 +72,10 @@
   },
   "semantics": {
     "units": [
-      "N"
+      "PERCENT"
     ],
-    "denominator": "not stated",
-    "grain": "not stated",
+    "denominator": "Population in the represented geography; denominator values are not included in the filtered response.",
+    "grain": "One row per geography and year for the filtered SDG indicator and fixed disaggregation.",
     "grain_columns": [
       "DATAFLOW",
       "FREQ",
@@ -97,12 +95,12 @@
       "NATURE",
       "DATA_SOURCE"
     ],
-    "source_semantics": "not stated",
-    "licence": "not stated"
+    "source_semantics": "Proportion of population using safely managed drinking water services; it is not a climate-attribution measure.",
+    "licence": "not stated in reviewed source metadata"
   },
   "processing_decision": {
-    "status": "not stated",
-    "reason": "not stated"
+    "status": "accept_for_processing",
+    "reason": "The comparable proportion can support essential-service context if it remains descriptive and non-causal."
   },
   "caveat_notes": ""
 }

@@ -1,0 +1,83 @@
+{
+  "name": "Crop yield",
+  "slug": "crop-yield",
+  "pillar": "candidate_food_context",
+  "story_role": "impact",
+  "status": "ok",
+  "candidate": true,
+  "generated_at_utc": "2026-07-13T00:03:21Z",
+  "source": {
+    "provider": "Pacific Data Hub / Pacific Community",
+    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.CROP_YIELD.&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.CROP_YIELD.?dimensionAtObservation=AllDimensions"
+  },
+  "coverage": {
+    "row_count": 900,
+    "geography_count": 15,
+    "geography_codes": [
+      "CK",
+      "FJ",
+      "FM",
+      "KI",
+      "MH",
+      "NC",
+      "NR",
+      "NU",
+      "PF",
+      "PG",
+      "SB",
+      "TO",
+      "TV",
+      "VU",
+      "WS"
+    ],
+    "year_range": {
+      "start": 1961,
+      "end": 2024
+    },
+    "value_count": 900,
+    "missing_value_count": 0,
+    "missing_value_pct": 0.0
+  },
+  "schema": {
+    "columns": [
+      "DATAFLOW",
+      "FREQ",
+      "CLIMATE_CHANGE_INDICATORS",
+      "GEO_PICT",
+      "TIME_PERIOD",
+      "OBS_VALUE",
+      "OBS_STATUS",
+      "UNIT_MEASURE",
+      "ERROR_TYPE",
+      "ERROR_VAL",
+      "REPORTING_TYPE",
+      "OBS_COMMENT"
+    ],
+    "geography_column": "GEO_PICT",
+    "time_column": "TIME_PERIOD",
+    "value_column": "OBS_VALUE"
+  },
+  "semantics": {
+    "units": [
+      "KGHA"
+    ],
+    "denominator": "Harvested area is implied by the yield measure; denominator values are not included in the filtered response.",
+    "grain": "Aggregate climate-indicator response by geography and year; crop-item composition is not exposed in this filtered response.",
+    "grain_columns": [
+      "DATAFLOW",
+      "FREQ",
+      "CLIMATE_CHANGE_INDICATORS",
+      "GEO_PICT",
+      "TIME_PERIOD",
+      "UNIT_MEASURE"
+    ],
+    "source_semantics": "Aggregate crop-yield indicator; crop mix and climate attribution are not identified by this response alone.",
+    "licence": "not stated in reviewed source metadata"
+  },
+  "processing_decision": {
+    "status": "reject",
+    "reason": "The 20,725-row supplementary disaggregated inspection exposes 78 crop items and two production types while the aggregate response hides that composition, so cross-place or trend interpretation would conflate changing crop mixes."
+  },
+  "caveat_notes": ""
+}

@@ -21,6 +21,7 @@ from analysis.io.dataset_profile import (  # noqa: E402
     profile_csv_text,
     profile_to_contract,
     profile_to_csv_row,
+    slugify,
 )
 from analysis.io.official_data import OfficialDataset, read_official_inventory  # noqa: E402
 from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa: E402
@@ -29,6 +30,7 @@ from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa:
 DEFAULT_CONFIG = ROOT / "configs" / "datasets.yml"
 DEFAULT_OUTPUT = ROOT / "artifacts" / "tables" / "dataset_profile.csv"
 DEFAULT_CONTRACTS_DIR = ROOT / "data" / "contracts"
+DEFAULT_RAW_DIR = ROOT / "data" / "raw" / "official"
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,6 +54,12 @@ def parse_args() -> argparse.Namespace:
         help="Directory for per-dataset JSON contracts.",
     )
     parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        default=DEFAULT_RAW_DIR,
+        help="Directory containing raw SDMX CSV cache files.",
+    )
+    parser.add_argument(
         "--timeout",
         type=float,
         default=30.0,
@@ -69,6 +77,7 @@ def profile_priority_datasets(
     *,
     config: dict[str, object],
     timeout: float,
+    raw_dir: Path | None = None,
 ) -> list[DatasetProfile]:
     inventory_path = ROOT / str(config.get("official_inventory", "research/official_datasets_2026.csv"))
     accept_header = str(config.get("api_accept_header", DEFAULT_ACCEPT_HEADER))
@@ -81,6 +90,7 @@ def profile_priority_datasets(
 
         name = str(entry["name"])
         pillar = str(entry["pillar"])
+        metadata = _profile_metadata(entry)
         inventory_row = inventory.get(name)
         if inventory_row is None:
             profiles.append(
@@ -92,6 +102,22 @@ def profile_priority_datasets(
                     sdmx_csv_api_url="",
                     status="missing_inventory_row",
                     caveat_notes="Dataset is listed in config but not found in official inventory.",
+                    **metadata,
+                )
+            )
+            continue
+
+        raw_path = raw_dir / f"{slugify(name)}.csv" if raw_dir is not None else None
+        if raw_path is not None and raw_path.exists():
+            profiles.append(
+                profile_csv_text(
+                    name=inventory_row.name,
+                    pillar=pillar,
+                    story_role=inventory_row.story_role,
+                    official_url=inventory_row.official_url,
+                    sdmx_csv_api_url=inventory_row.sdmx_csv_api_url,
+                    csv_text=raw_path.read_text(encoding="utf-8"),
+                    **metadata,
                 )
             )
             continue
@@ -102,6 +128,7 @@ def profile_priority_datasets(
                 pillar=pillar,
                 accept_header=accept_header,
                 timeout=timeout,
+                **metadata,
             )
         )
 
@@ -114,6 +141,13 @@ def profile_inventory_row(
     pillar: str,
     accept_header: str,
     timeout: float,
+    candidate: bool = False,
+    denominator: str = "not stated",
+    grain: str = "not stated",
+    source_semantics: str = "not stated",
+    licence: str = "not stated",
+    processing_decision: str = "not stated",
+    decision_reason: str = "not stated",
 ) -> DatasetProfile:
     if not inventory_row.sdmx_csv_api_url:
         return error_profile(
@@ -124,6 +158,13 @@ def profile_inventory_row(
             sdmx_csv_api_url="",
             status="no_api_url",
             caveat_notes="Official inventory has no SDMX CSV API URL.",
+            candidate=candidate,
+            denominator=denominator,
+            grain=grain,
+            source_semantics=source_semantics,
+            licence=licence,
+            processing_decision=processing_decision,
+            decision_reason=decision_reason,
         )
 
     csv_text, error_status, caveat_notes = fetch_sdmx_csv_text(
@@ -140,6 +181,13 @@ def profile_inventory_row(
             sdmx_csv_api_url=inventory_row.sdmx_csv_api_url,
             status=error_status,
             caveat_notes=caveat_notes,
+            candidate=candidate,
+            denominator=denominator,
+            grain=grain,
+            source_semantics=source_semantics,
+            licence=licence,
+            processing_decision=processing_decision,
+            decision_reason=decision_reason,
         )
 
     return profile_csv_text(
@@ -149,7 +197,26 @@ def profile_inventory_row(
         official_url=inventory_row.official_url,
         sdmx_csv_api_url=inventory_row.sdmx_csv_api_url,
         csv_text=csv_text or "",
+        candidate=candidate,
+        denominator=denominator,
+        grain=grain,
+        source_semantics=source_semantics,
+        licence=licence,
+        processing_decision=processing_decision,
+        decision_reason=decision_reason,
     )
+
+
+def _profile_metadata(entry: dict[str, object]) -> dict[str, object]:
+    return {
+        "candidate": str(entry.get("candidate", "false")).lower() == "true",
+        "denominator": str(entry.get("denominator", "not stated")),
+        "grain": str(entry.get("grain", "not stated")),
+        "source_semantics": str(entry.get("source_semantics", "not stated")),
+        "licence": str(entry.get("licence", "not stated")),
+        "processing_decision": str(entry.get("processing_decision", "not stated")),
+        "decision_reason": str(entry.get("decision_reason", "not stated")),
+    }
 
 
 def write_outputs(
@@ -197,9 +264,10 @@ def main() -> int:
     config_path = ROOT / args.config if not args.config.is_absolute() else args.config
     output_path = ROOT / args.output if not args.output.is_absolute() else args.output
     contracts_dir = ROOT / args.contracts_dir if not args.contracts_dir.is_absolute() else args.contracts_dir
+    raw_dir = ROOT / args.raw_dir if not args.raw_dir.is_absolute() else args.raw_dir
 
     config = load_dataset_config(config_path)
-    profiles = profile_priority_datasets(config=config, timeout=args.timeout)
+    profiles = profile_priority_datasets(config=config, timeout=args.timeout, raw_dir=raw_dir)
     generated_at_utc = args.generated_at or datetime.now(UTC).replace(microsecond=0).isoformat().replace(
         "+00:00",
         "Z",

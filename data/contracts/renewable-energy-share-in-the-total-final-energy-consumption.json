@@ -1,19 +1,19 @@
 {
-  "name": "Number of directly affected persons attributed to disasters",
-  "slug": "number-of-directly-affected-persons-attributed-to-disasters",
-  "pillar": "observed_stress",
-  "story_role": "impact",
+  "name": "Renewable energy share in the total final energy consumption",
+  "slug": "renewable-energy-share-in-the-total-final-energy-consumption",
+  "pillar": "candidate_response_context",
+  "story_role": "response_or_capacity",
   "status": "ok",
-  "candidate": false,
+  "candidate": true,
   "generated_at_utc": "2026-07-13T00:03:21Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
-    "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AFFCT.........&pd=,&to[TIME_PERIOD]=false&lb=bt",
-    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AFFCT.........?dimensionAtObservation=AllDimensions"
+    "official_url": "https://stats.pacificdata.org/vis?fs[0]=Development%20indicators,0%7CSustainable%20Development%20Goals%23SDG%23&pg=0&fc=Development%20indicators&bp=true&snb=18&df[ds]=ds%3ASPC2&df[id]=DF_SDG&df[ag]=SPC&df[vs]=3.0&dq=A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T&pd=,&to[TIME_PERIOD]=false",
+    "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG/3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T?dimensionAtObservation=AllDimensions"
   },
   "coverage": {
-    "row_count": 174,
-    "geography_count": 21,
+    "row_count": 461,
+    "geography_count": 20,
     "geography_codes": [
       "AS",
       "CK",
@@ -30,7 +30,6 @@
       "PG",
       "PW",
       "SB",
-      "TK",
       "TO",
       "TV",
       "VU",
@@ -38,10 +37,10 @@
       "WS"
     ],
     "year_range": {
-      "start": 2005,
+      "start": 2000,
       "end": 2023
     },
-    "value_count": 174,
+    "value_count": 461,
     "missing_value_count": 0,
     "missing_value_pct": 0.0
   },
@@ -74,10 +73,10 @@
   },
   "semantics": {
     "units": [
-      "N"
+      "PERCENT"
     ],
-    "denominator": "not stated",
-    "grain": "not stated",
+    "denominator": "Total final energy consumption; denominator values are not included in the filtered response.",
+    "grain": "One row per geography and year for the filtered SDG indicator and fixed disaggregation.",
     "grain_columns": [
       "DATAFLOW",
       "FREQ",
@@ -97,12 +96,12 @@
       "NATURE",
       "DATA_SOURCE"
     ],
-    "source_semantics": "not stated",
-    "licence": "not stated"
+    "source_semantics": "Renewable energy as a share of total final energy consumption.",
+    "licence": "not stated in reviewed source metadata"
   },
   "processing_decision": {
-    "status": "not stated",
-    "reason": "not stated"
+    "status": "accept_for_processing",
+    "reason": "A rate-based transition measure with explicit geography, year, value, and unit fields is suitable for comparability review."
   },
   "caveat_notes": ""
 }

@@ -5,10 +5,13 @@ from __future__ import annotations
 import shutil
 import subprocess
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
 
-DEFAULT_ACCEPT_HEADER = "application/vnd.sdmx.data+csv;version=2.0"
+DEFAULT_ACCEPT_HEADER = "application/vnd.sdmx.data+csv;version=2.1"
+STABLE_SDMX_HOST = "stats-nsi-stable.pacificdata.org"
+V2_DATAFLOW_PREFIX = "/rest/v2/data/dataflow/"
 
 
 def fetch_sdmx_csv_text(
@@ -31,6 +34,13 @@ def fetch_sdmx_csv_text(
             charset = response.headers.get_content_charset() or "utf-8"
     except HTTPError as exc:
         if exc.code == 422:
+            fallback_url = stable_sdmx_url(url)
+            if fallback_url is not None:
+                return fetch_sdmx_csv_text(
+                    url=fallback_url,
+                    accept_header=DEFAULT_ACCEPT_HEADER,
+                    timeout=timeout,
+                )
             fallback_text = fetch_with_powershell(url=url, accept_header=accept_header, timeout=timeout)
             if fallback_text is not None:
                 return fallback_text, None, ""
@@ -45,6 +55,24 @@ def fetch_sdmx_csv_text(
         return None, f"api_error_{status_code}", f"SDMX CSV API returned HTTP {status_code}."
 
     return body.decode(charset, errors="replace"), None, ""
+
+
+def stable_sdmx_url(url: str) -> str | None:
+    """Translate a Pacific v2 dataflow URL to the documented stable data endpoint."""
+
+    parts = urlsplit(url)
+    if parts.netloc != "stats-sdmx-disseminate.pacificdata.org" or not parts.path.startswith(
+        V2_DATAFLOW_PREFIX
+    ):
+        return None
+
+    path_parts = parts.path.removeprefix(V2_DATAFLOW_PREFIX).split("/", 4)
+    if len(path_parts) != 4:
+        return None
+
+    agency, flow, version, key = path_parts
+    stable_path = f"/rest/data/{agency},{flow},{version}/{key}/{agency}"
+    return urlunsplit((parts.scheme, STABLE_SDMX_HOST, stable_path, parts.query, parts.fragment))
 
 
 def fetch_with_powershell(*, url: str, accept_header: str, timeout: float) -> str | None:

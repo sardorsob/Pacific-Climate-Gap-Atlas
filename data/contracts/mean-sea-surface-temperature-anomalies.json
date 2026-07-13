@@ -4,7 +4,8 @@
   "pillar": "climate_signal",
   "story_role": "climate_exposure",
   "status": "ok",
-  "generated_at_utc": "2026-06-24T23:13:48Z",
+  "candidate": false,
+  "generated_at_utc": "2026-07-13T00:03:21Z",
   "source": {
     "provider": "Pacific Data Hub / Pacific Community",
     "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.SST_ANOM.&pd=,&to[TIME_PERIOD]=false",
@@ -46,9 +47,7 @@
   },
   "schema": {
     "columns": [
-      "STRUCTURE",
-      "STRUCTURE_ID",
-      "ACTION",
+      "DATAFLOW",
       "FREQ",
       "CLIMATE_CHANGE_INDICATORS",
       "GEO_PICT",
@@ -64,6 +63,28 @@
     "geography_column": "GEO_PICT",
     "time_column": "TIME_PERIOD",
     "value_column": "OBS_VALUE"
+  },
+  "semantics": {
+    "units": [
+      "CELSIUS"
+    ],
+    "denominator": "not stated",
+    "grain": "not stated",
+    "grain_columns": [
+      "DATAFLOW",
+      "FREQ",
+      "CLIMATE_CHANGE_INDICATORS",
+      "GEO_PICT",
+      "TIME_PERIOD",
+      "UNIT_MEASURE",
+      "REPORTING_TYPE"
+    ],
+    "source_semantics": "not stated",
+    "licence": "not stated"
+  },
+  "processing_decision": {
+    "status": "not stated",
+    "reason": "not stated"
   },
   "caveat_notes": ""
 }

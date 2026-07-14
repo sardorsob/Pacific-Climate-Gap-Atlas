@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` through `TASK-067` will profile, process, and audit targeted additional official datasets; the findings below remain the baseline evidence, not the final story conclusion.
+The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` completed acquisition and profiling; `TASK-066` will process the five accepted candidates, and `TASK-067` will audit them through reproducible tables, a static visual research atlas, and three rough evidence-board story auditions. The findings below remain the baseline evidence, not the final story conclusion.
 
 ## Current EDA Outputs
 
@@ -64,8 +64,8 @@ The runner writes:
 
 ## Next Priorities
 
-1. Run `TASK-065` and explicitly accept or reject each targeted official dataset candidate.
-2. Process only accepted candidates in `TASK-066` while proving the current baseline index remains unchanged.
-3. Use `TASK-067` to audit comparability, denominators, time alignment, named-place patterns, and unsupported claims.
-4. Choose the final narrative only in `TASK-068`; until then, treat the current index-first story and exemplar set as provisional.
+1. Start `TASK-066`: process only population growth, renewable-energy share, safely managed drinking water, direct disaster economic loss, and climate-altering land cover while proving the current baseline index remains unchanged. Aggregate crop yield remains rejected.
+2. Use `TASK-067` to audit comparability, denominators, time alignment, distributions, trends, reporting visibility, named-place patterns, and unsupported claims.
+3. Generate the TASK-067 static visual research atlas first, then use supported findings to compose three rough evidence-board story auditions. Matplotlib is the default; interaction or new GIS dependencies require evidence that they materially improve the review.
+4. Choose the final narrative only in `TASK-068`; until then, treat every audition, the current index-first story, and the exemplar set as provisional.
 5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.

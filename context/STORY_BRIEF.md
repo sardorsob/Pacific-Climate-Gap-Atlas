@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` through `TASK-067` acquire and explore additional official data before `TASK-068` chooses a story. No current scene, exemplar, title, or index role should be treated as the next implementation contract until that gate. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
+Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` completed acquisition; `TASK-066` processes the accepted evidence; and `TASK-067` builds a visual research atlas plus three rough evidence-board auditions before `TASK-068` chooses a story. No current scene, exemplar, title, index role, or research audition should be treated as the next implementation contract until that gate. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
 
 Source basis:
 
@@ -45,6 +45,8 @@ The next story must:
 - avoid causal climate-impact claims not supported by the analysis;
 - preserve the reader's ability to inspect sources and uncertainty;
 - earn its exemplar places from `TASK-067`, not inherit Nauru/Tuvalu automatically;
+- emerge from the reviewed TASK-067 figures and story-signal table rather than from a preferred visual motif;
+- compete against two meaningfully different evidence-board auditions before owner selection;
 - obtain owner approval in `TASK-068` before scene copy or app behavior changes.
 
 The current fullscreen stage, equal-presence marks, enlarged comparison, readable rank field, native scroll, accessibility behavior, and Explore handoff are reusable. Their existing claims and ordering are not protected from revision.

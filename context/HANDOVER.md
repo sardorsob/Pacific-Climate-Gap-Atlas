@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, and `TASK-065` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-066` through `TASK-069` continue the data-first sequence: process accepted candidates, run comparability/story EDA, make the scientific/owner narrative selection, then rewrite the roadmap.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, `TASK-065`, and `TASK-070` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-066` through `TASK-069` continue the data-first sequence: process accepted candidates; build a visual research atlas and three rough evidence-board auditions; make the scientific/owner narrative selection; then rewrite the roadmap.
 
 The current app remains the functioning behavioral/scientific baseline. Its fullscreen composition, evidence marks, comparison/rank takeovers, native scroll, accessibility behavior, and Explore handoff should be preserved during research. Its title, opening thesis, exemplars, scene order, and Adaptation Gap Index prominence are provisional until `TASK-068`. QA screenshots live under `artifacts/design/task-064/`; concept boards remain composition-only.
 
@@ -70,13 +70,13 @@ This writes `data/processed/app/pacific_land_context.geojson`, mirrors it to `ap
 python scripts/run_eda.py --config configs/eda.yml
 ```
 
-This writes the script-first EDA tables under `artifacts/tables/` and records `artifacts/provenance/eda_summary.json`. It now includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, monitoring-gap GIS story priorities, and TASK-019 Evidence Fingerprint Divergence outputs. Read `context/ANALYSIS_BRIEF.md`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/DATAVIZ_INSPIRATION_AUDIT.md`, `context/WINNER_SCROLL_TOUR_AUDIT.md`, and `context/INFORMATION_DIVERGENCE_PLAN.md` before resuming app or design work around the similarity layer.
+This currently writes the script-first EDA tables under `artifacts/tables/` and records `artifacts/provenance/eda_summary.json`. It includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, monitoring-gap GIS story priorities, and TASK-019 Evidence Fingerprint Divergence outputs. TASK-067 will extend the same command with the accepted-candidate tables, five static analytical research figures, and one separate contact sheet of three provisional evidence-board auditions under `artifacts/figures/`. Read `context/ANALYSIS_BRIEF.md`, `context/STORY_BRIEF.md`, `context/DESIGN_BRIEF.md`, `context/DATAVIZ_INSPIRATION_AUDIT.md`, `context/WINNER_SCROLL_TOUR_AUDIT.md`, and `context/INFORMATION_DIVERGENCE_PLAN.md` before resuming app or design work around the similarity layer.
 
 ## Next Recommended Work
 
 1. Start `TASK-066`: enable and normalize only the five candidates accepted by `TASK-065`; aggregate crop yield remains rejected.
-2. Run `TASK-067` after processing. Do not change the current index, app, or scene copy during processing/EDA.
-3. Use `TASK-068` for the scientific and owner narrative decision. Only then may `TASK-069` rewrite the storyboard and create implementation tasks.
+2. Run `TASK-067` after processing: generate comparison tables and the static visual research atlas first, then compose three rough evidence-board auditions from supported findings. Do not change the current index, app, or scene copy during processing/EDA.
+3. Use `TASK-068` to review the three auditions and make the scientific and owner narrative decision. Only then may `TASK-069` rewrite the storyboard and create implementation tasks.
 4. Keep `TASK-064` in owner review and `TASK-057` in `needs-fix`; do not deploy or submit a story that has been reopened.
 
 ## Known Caveats

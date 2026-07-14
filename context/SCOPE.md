@@ -37,16 +37,19 @@ Current processed baseline:
 - fisheries management measures
 - greenhouse gas emissions per capita as responsibility context
 
-Candidate expansion for `TASK-065` profiling, not yet accepted for the story or index:
+`TASK-065` acquisition decisions. Accepted for `TASK-066` processing and `TASK-067` research only—not for the story or index:
 
 - population growth, primarily for context and denominator review
 - renewable energy share, as a rate-based response/transition signal
 - safely managed drinking water, as a recorded essential-service condition
-- crop yield, with disaggregated crops inspected only if the aggregate is too coarse
 - direct disaster economic loss, subject to sparse coverage and time alignment
 - climate-altering land-cover index, subject to interpretation and comparability review
 
-Acquisition precedes narrative selection. A candidate may be rejected for weak coverage, incompatible units, ambiguous semantics, poor year alignment, lack of a defensible denominator, or inability to support a non-causal claim. No candidate enters the Adaptation Gap Index automatically.
+Rejected from processing:
+
+- aggregate crop yield, because the item-level inspection showed that the aggregate hides crop composition across 78 items and mixed production types/units
+
+Processing and visual comparability review precede narrative selection. Acceptance for processing does not make a candidate a score input, app layer, story claim, or causal explanation. A candidate may still be excluded from an audition for weak overlap, incompatible units, ambiguous semantics, poor year alignment, lack of a defensible denominator, or inability to support a non-causal claim.
 
 ## App Scope
 

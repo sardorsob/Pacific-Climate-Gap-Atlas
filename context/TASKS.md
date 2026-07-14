@@ -1552,21 +1552,21 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Depends on: TASK-066
 - Assigned agent: unassigned
 - Contract refs: context/ANALYSIS_BACKLOG.md, configs/eda.yml
-- Data refs: data/processed/official_observations.csv, artifacts/tables
+- Data refs: data/processed/official_observations.csv, artifacts/tables, artifacts/figures
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/ASSUMPTIONS.md
 - User value / decision value: Finds concrete, defensible Pacific patterns and eliminates attractive but misleading story ideas before design work resumes.
-- Functional notes: Extend the script-first EDA with candidate coverage, unit/denominator, temporal-alignment, trend, missingness, and named-place comparison outputs. Produce one compact story-signal table with supported, weak, contradicted, and unavailable hypotheses. Do not write final scene copy or add app layers.
+- Functional notes: Extend the script-first EDA in two reviewed stages. First, build a static visual research atlas covering candidate coverage/time alignment, within-indicator distributions, small-multiple trends, named-place contrasts, and reporting visibility. Second, use only supported findings to compose one contact sheet with three rough evidence-board story auditions. Produce one compact story-signal table with supported, weak, contradicted, and unavailable hypotheses. These are research surfaces, not final scene copy or app layers.
 - Statistical notes: Separate within-indicator comparison from cross-indicator synthesis; distinguish rates from totals; test defensible normalizations; record latest-year spread; avoid climate causality; treat missing official data as reporting visibility only.
 - Edge cases: Small overlapping samples, environmental/disaster reporting bias, territory/population scale, crop composition, disaster-loss currency units, trend breaks, and comparisons that depend on one geography or one year.
-- Files to create/modify: configs/eda.yml, create analysis/eda/candidate_datasets.py, scripts/run_eda.py, create tests/analysis/test_eda_candidate_datasets.py, artifacts/tables/eda_candidate_dataset_coverage.csv, artifacts/tables/eda_candidate_comparability.csv, artifacts/tables/eda_candidate_story_signals.csv, artifacts/provenance/eda_summary.json, context/ANALYSIS_BRIEF.md, context/DATA_CARD.md, context/EXPERIMENTS.md
-- Artifacts to produce: reproducible expanded-data EDA tables, named-place evidence candidates, rejected-claim reasons, and updated provenance
-- Acceptance criteria: Each candidate dataset receives a comparability judgment; every proposed story signal names its evidence, time basis, geography scope, and caveat; no final narrative or new composite score is declared.
+- Files to create/modify: pyproject.toml (add Matplotlib as the only plotting dependency); configs/eda.yml; create analysis/eda/candidate_datasets.py; create analysis/eda/candidate_figures.py; scripts/run_eda.py; create tests/analysis/test_eda_candidate_datasets.py; artifacts/tables/eda_candidate_dataset_coverage.csv; artifacts/tables/eda_candidate_comparability.csv; artifacts/tables/eda_candidate_story_signals.csv; artifacts/figures/eda_candidate_coverage_alignment.png; artifacts/figures/eda_candidate_distributions.png; artifacts/figures/eda_candidate_trends.png; artifacts/figures/eda_candidate_named_place_contrasts.png; artifacts/figures/eda_candidate_reporting_visibility.png; artifacts/figures/eda_candidate_story_auditions.png; artifacts/provenance/eda_summary.json; context/ANALYSIS_BRIEF.md; context/DATA_CARD.md; context/EXPERIMENTS.md
+- Artifacts to produce: reproducible expanded-data EDA tables; a five-figure static visual research atlas; named-place evidence candidates; rejected-claim reasons; a three-audition evidence-board contact sheet; and updated provenance
+- Acceptance criteria: Each candidate dataset receives a comparability judgment; every figure is reproducible from reviewed rows and carries units, time basis, geography scope, source, and caveat; every proposed story signal names its supporting or disqualifying evidence; three meaningfully different auditions are shown without declaring a winner; no final narrative, new composite score, or app change is declared.
 - Verification commands: python scripts/run_eda.py --config configs/eda.yml; python -m unittest discover -s tests -t . -v; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; git diff --check
-- Manual QA: Review the strongest and weakest candidate claims against raw/processed rows and confirm no chart-worthy pattern is promoted solely because it looks dramatic.
+- Manual QA: Inspect every figure at full size; trace the strongest and weakest candidate claims to raw/processed rows; verify comparable units, denominators, time windows, labels, and named places; confirm sparse trends or relationships switch to a more honest form; and confirm no pattern is promoted solely because it looks dramatic.
 - QA notes: Pending.
 - Attempts: 0
 - Max attempts: 3
-- Attempt log: Created to make story discovery an evidence product rather than an intuition-only rewrite.
+- Attempt log: Created to make story discovery an evidence product rather than an intuition-only rewrite. 2026-07-13: Owner approved a visual-research-atlas-first pass followed by three rough evidence-board auditions; the task remains pending behind TASK-066.
 - Status: pending
 
 ## TASK-068
@@ -1575,21 +1575,21 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Depends on: TASK-067
 - Assigned agent: Codex synthesis; independent scientific reviewer; owner final decision
 - Contract refs: context/PROBLEM.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DECISIONS.md
-- Data refs: artifacts/tables/eda_candidate_story_signals.csv and supporting expanded-data tables
+- Data refs: artifacts/tables/eda_candidate_story_signals.csv, artifacts/figures/eda_candidate_*.png, and supporting expanded-data tables
 - Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md, context/EXPERIMENTS.md
 - User value / decision value: Chooses one memorable climate story that the available evidence can actually support.
-- Functional notes: Compare at least three narrative hypotheses: signal-to-recorded-condition-to-response, climate-observation visibility, and the limits of a single Pacific ranking. For each, write a one-sentence problem, claim chain, named-place evidence, visual operations, action/decision value, caveats, and rejection risks inside existing context files. Do not create a standalone concept file.
+- Functional notes: Review the three TASK-067 evidence-board auditions: signal-to-recorded-condition-to-response, climate-observation visibility, and the limits of a single Pacific ranking. For each, write a one-sentence problem, claim chain, named-place evidence, visual operations, action/decision value, caveats, and rejection risks inside existing context files. Scientific review may reject or merge an audition, but owner selection occurs only here. Do not create a standalone concept file.
 - Statistical notes: Reject any arc requiring unsupported causal attribution, incomparable totals, unstable ranks as verdicts, hidden missingness, or a proxy labeled as full adaptation readiness.
 - Edge cases: A visually attractive hypothesis may fail scientific review; the strongest dataset may support only a narrow geography set; no story may justify retaining the Adaptation Gap Index as the product title or default layer.
 - Files to create/modify: context/PROBLEM.md, context/STORY_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/DECISIONS.md, context/PROJECT.md, context/TASKS.md, context/logs/*
 - Artifacts to produce: approved problem statement, narrative spine, exemplar set, evidence/caveat contract, and explicit rejected alternatives in existing briefs
-- Acceptance criteria: Scientific reviewer accepts the claim chain and caveats; owner approves one narrative; the decision states whether the current title/index/default layer survive; no app implementation begins before approval.
+- Acceptance criteria: Scientific reviewer accepts the selected claim chain, evidence-board traceability, and caveats; owner approves one narrative; rejected auditions and reasons remain recorded; the decision states whether the current title/index/default layer survive; no app implementation begins before approval.
 - Verification commands: python scripts/validate_task_statuses.py; python scripts/check_required_artifacts.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Cold-read the one-sentence problem and scene sequence with a nontechnical reader; verify every scene against its cited artifact.
 - QA notes: Pending.
 - Attempts: 0
 - Max attempts: 3
-- Attempt log: Created after the owner explicitly chose data acquisition and exploration before narrative design.
+- Attempt log: Created after the owner explicitly chose data acquisition and exploration before narrative design. 2026-07-13: Clarified that this gate selects from three rough visual evidence-board auditions produced by TASK-067 rather than inventing a story from prose alone.
 - Status: pending
 
 ## TASK-069

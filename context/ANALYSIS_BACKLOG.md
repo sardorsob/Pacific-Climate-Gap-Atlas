@@ -266,11 +266,25 @@ Analyses:
 - missingness and reporting-semantics audit
 - candidate story-signal table recording supported, weak, contradicted, and unavailable claims
 
-This task does not write final scene copy or add app layers.
+Visual research atlas:
+- `artifacts/figures/eda_candidate_coverage_alignment.png`: geography/year coverage and temporal-overlap matrix
+- `artifacts/figures/eda_candidate_distributions.png`: within-indicator distributions and outlier context without cross-unit ranking
+- `artifacts/figures/eda_candidate_trends.png`: sufficiently populated small-multiple trends with sparse-series fallbacks
+- `artifacts/figures/eda_candidate_named_place_contrasts.png`: named-place comparisons, relationships, or centroid orientation views only where the grain is defensible
+- `artifacts/figures/eda_candidate_reporting_visibility.png`: observed geography-years versus missing official reporting, never absence-of-condition inference
+
+Story audition surface:
+- `artifacts/figures/eda_candidate_story_auditions.png`: one separate contact sheet comparing three rough evidence-board narrative auditions
+
+Use reproducible static Matplotlib figures by default. Add Plotly only if linked interaction changes the analytical judgment, and do not add GeoPandas or imply polygon precision while scored geography remains centroid fallback. Each figure must show units, time basis, geography scope, source, and a nearby caveat; attractive but failed patterns belong in the story-signal table with rejection reasons.
+
+This task does not select a final narrative, write final scene copy, or add app layers.
 
 ### TASK-068: Scientific Story Selection Gate
 
 Question: Which story is strongest after the expanded-data audit, and what claims must be rejected?
+
+Input: the reviewed TASK-067 research atlas, story-signal table, and three evidence-board auditions. TASK-068 may reject or merge an audition, but it must not bypass the evidence review with a new unsupported concept.
 
 Compare at minimum:
 - climate signal -> recorded impact/service condition -> response system -> unknowns

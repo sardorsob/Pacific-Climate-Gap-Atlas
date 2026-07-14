@@ -271,3 +271,11 @@ The first candidate set is population growth, renewable-energy share, safely man
 `TASK-065` through `TASK-069` implement the sequence: profile -> process -> explore -> select story -> rewrite roadmap. The current Adaptation Gap Index, product title, Nauru/Tuvalu comparison, premise, and five-scene order remain functional but provisional. No candidate becomes a score input automatically.
 
 Reason: the owner prefers building the narrative from explored evidence rather than choosing a compelling concept first and searching for confirming data. This also prevents a broader dataset inventory from becoming an unfocused dashboard or a new composite score without scientific justification.
+
+## 2026-07-13: Use A Visual Research Atlas Before Selecting The Story
+
+Keep the approved `TASK-065 -> TASK-066 -> TASK-067 -> TASK-068 -> TASK-069` sequence and strengthen `TASK-067` instead of creating more task files. After candidate processing, TASK-067 will first generate reproducible coverage/alignment, distribution, trend, and named-place comparison figures. It will then compose one contact sheet with three rough evidence-board narrative auditions using only supported findings. TASK-068 remains the scientific and owner selection gate.
+
+Use static Matplotlib figures by default. Plotly is optional only when linked interaction materially changes the analytical judgment. Do not add GeoPandas or imply polygon precision while the scored geography contract remains centroid fallback. No research figure or audition is final scene copy, an app layer, or approval to change the index.
+
+Reason: tables establish correctness, but visual exploration makes distributions, temporal mismatches, named-place contrasts, and narrative tension easier to inspect. Separating the research atlas from story selection lets the project pursue a stronger and more human story without promoting a dramatic but incomparable pattern.

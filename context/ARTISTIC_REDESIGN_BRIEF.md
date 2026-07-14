@@ -2,7 +2,7 @@
 
 ## Status
 
-The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the design but has reopened the final narrative. The five-scene evidence contract and its copy remain the current implementation, not an approved future storyboard. `TASK-065` through `TASK-068` must complete before narrative implementation resumes.
+The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the design but has reopened the final narrative. The five-scene evidence contract and its copy remain the current implementation, not an approved future storyboard. `TASK-065` is complete; `TASK-066` processing, `TASK-067` visual research/story auditions, and `TASK-068` scientific/owner selection must complete before narrative implementation resumes.
 
 Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is approved and done; `TASK-059` through `TASK-064` form the repair batch.
 
@@ -37,7 +37,7 @@ Treat as provisional until `TASK-068`:
 - the claim that uneven general dataset coverage is the main Pacific story;
 - any signal -> impact -> response sequence suggested before the candidate datasets pass comparability review.
 
-Do not modify the app to preview speculative datasets or story copy. New artistic concepts should be recorded in existing briefs and tested against real `TASK-067` evidence before code or generated concept art is commissioned.
+Do not modify the app to preview speculative datasets or story copy. TASK-067 first produces a reproducible five-figure research atlas and then one contact sheet comparing three rough evidence-board auditions. These boards may reuse the fullscreen map/figure vocabulary, but their claims, exemplars, and order must come from reviewed evidence. TASK-068 selects or rejects them before code or generated concept art is commissioned.
 
 ## 2026-07-11 Fullscreen Stage Revision
 

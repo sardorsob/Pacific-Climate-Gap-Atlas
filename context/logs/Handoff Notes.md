@@ -6,7 +6,7 @@ Start `TASK-066` from the approved `TASK-065` acquisition gate. Enable and norma
 
 ## Next Build Step
 
-`TASK-065` -> `TASK-066` -> `TASK-067` -> `TASK-068` -> `TASK-069` is the approved order. Acquire data, process accepted candidates, explore comparability/story signals, choose the narrative, then rewrite the roadmap. Use existing context files; do not create per-task Markdown.
+`TASK-065` -> `TASK-066` -> `TASK-067` -> `TASK-068` -> `TASK-069` is the approved order. Acquisition is complete. Process accepted candidates; generate the reproducible visual research atlas; compose three rough evidence-board auditions; choose one narrative through scientific/owner review; then rewrite the roadmap. Use existing context files; do not create per-task Markdown.
 
 The fullscreen composition remains the preferred visual system. The existing premise, five evidence scenes, Nauru/Tuvalu comparison, title, and index-first narrative are provisional. JSD remains selected-place panel evidence only unless a future approved story explicitly changes that contract.
 
@@ -24,6 +24,10 @@ The fullscreen composition remains the preferred visual system. The existing pre
 - `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
 - `TASK-065` is independently approved and done. It profiles 15 official sources successfully but selects only the original nine for current processing. Five candidates are eligible for `TASK-066`; aggregate crop yield is rejected after item-level inspection. Manifested cache integrity, stable-endpoint fallback provenance, structural coverage, and the supplementary crop source are explicit. Tracked processed/app/index/story artifacts remain unchanged.
 - `TASK-070` removed unused notebook/Kaggle/Hugging Face/report/interim scaffolding, empty analysis packages, unused artifact lanes, empty fixtures, and redundant markers. Only the explicitly justified empty figure and run-bundle lanes remain; do not recreate removed scaffolding without a concrete task.
+
+## 2026-07-13
+
+- 2026-07-13: Owner approved the refined exploration contract before TASK-066 begins. TASK-067 now requires a five-figure static visual research atlas followed by one contact sheet with three rough evidence-board story auditions. Matplotlib is the default future renderer; Plotly or new GIS dependencies require a demonstrated analytical need, and centroid geometry remains the spatial limit. TASK-068 retains final scientific/owner selection. No app, score, processed data, or scene implementation changed in this planning pass.
 
 ## 2026-07-12
 

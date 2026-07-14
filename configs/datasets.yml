@@ -49,7 +49,7 @@ priority_datasets:
     pillar: candidate_context
     source: official_2026
     candidate: true
-    processing_enabled: false
+    processing_enabled: true
     denominator: Prior-period population is implied by the growth-rate definition; denominator values are not included in the filtered response.
     grain: One row per geography and year for the filtered population-growth indicator and fixed disaggregation.
     source_semantics: Annual population growth rate; it is not population size.
@@ -60,7 +60,7 @@ priority_datasets:
     pillar: candidate_response_context
     source: official_2026
     candidate: true
-    processing_enabled: false
+    processing_enabled: true
     denominator: Total final energy consumption; denominator values are not included in the filtered response.
     grain: One row per geography and year for the filtered SDG indicator and fixed disaggregation.
     source_semantics: Renewable energy as a share of total final energy consumption.
@@ -71,7 +71,7 @@ priority_datasets:
     pillar: candidate_service_context
     source: official_2026
     candidate: true
-    processing_enabled: false
+    processing_enabled: true
     denominator: Population in the represented geography; denominator values are not included in the filtered response.
     grain: One row per geography and year for the filtered SDG indicator and fixed disaggregation.
     source_semantics: Proportion of population using safely managed drinking water services; it is not a climate-attribution measure.
@@ -93,7 +93,7 @@ priority_datasets:
     pillar: candidate_loss_context
     source: official_2026
     candidate: true
-    processing_enabled: false
+    processing_enabled: true
     denominator: Not applicable to the filtered direct-loss total; no denominator values are included in the response.
     grain: Reported direct economic loss by geography and year for the filtered SDG indicator and fixed disaggregation.
     source_semantics: Recorded direct economic loss attributed to disasters; missing years are not evidence of zero loss.
@@ -104,7 +104,7 @@ priority_datasets:
     pillar: candidate_land_context
     source: official_2026
     candidate: true
-    processing_enabled: false
+    processing_enabled: true
     denominator: Not applicable to the published index; no denominator values are included in the response.
     grain: One row per geography and year for the filtered land-cover index and fixed disaggregation.
     source_semantics: Published climate-altering land-cover index; direction and baseline require source-aware interpretation.

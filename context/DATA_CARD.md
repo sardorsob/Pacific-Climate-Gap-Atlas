@@ -12,9 +12,9 @@ Pacific Data Hub / Pacific Community data infrastructure, as referenced by the o
 
 At least one official dataset is required for the competition. This project targets a multi-dataset official-data spine and may add open external GIS reference files only when they improve map usability or boundary context.
 
-## TASK-065 Data-First Acquisition Gate
+## TASK-065 Acquisition and TASK-066 Processing Gates
 
-The processed evidence base still contains the original nine official datasets. `TASK-065` fetched and profiled six additional official candidates without processing, score, app, or story changes. All six carry `processing_enabled: false`, while existing entries default to enabled, so the current processed-data selector remains exactly nine sources until `TASK-066` enables only accepted candidates. The ignored raw manifest records 15/15 successful source pulls, byte counts, row counts, 64-character SHA-256 hashes, requested/effective endpoints, and fallback results; the tracked profile and contracts preserve those facts and the review decisions.
+`TASK-065` fetched and profiled six additional official candidates. `TASK-066` now enables only the five accepted candidates for processed analysis: population growth, renewable-energy share, safely managed drinking water, direct disaster economic loss, and climate-altering land cover. Aggregate crop yield remains `processing_enabled: false` and is absent from processed output. The expanded evidence base contains 14 official datasets; none of the five candidate pillars enters the baseline index, public app data, guided story, or scene logic. The ignored raw manifest records 15/15 successful source pulls, byte counts, row counts, 64-character SHA-256 hashes, requested/effective endpoints, and fallback results; the tracked profile and contracts preserve those facts and the review decisions.
 
 | Candidate | Rows | Geographies | Years | Units | Blank/non-numeric values in returned rows | Observed/possible geography-years | Gate | Evidence-based reason |
 | --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- |
@@ -31,7 +31,7 @@ The crop decision includes the required supplementary grain inspection. The offi
 
 The filtered responses do not contain denominator values. Contracts state the indicator-implied denominator or `not applicable` and do not invent values. Dataset-specific licences were not stated in the reviewed indicator pages or SDMX responses; contracts therefore say `not stated in reviewed source metadata`. [Pacific Data Hub terms](https://pacificdata.org/terms-use) also instruct users to check the licence attached to each dataset rather than infer one platform-wide licence.
 
-Acceptance here means eligible for `TASK-066` normalization and later comparability review. It does not enable processing now, make a candidate a score input or narrative claim, or imply a new composite index.
+Acceptance here means normalized for `TASK-067` comparability review. It does not make a candidate a score input, public app field, narrative claim, or new composite index.
 
 ## TASK-001 Profile Artifacts
 
@@ -80,7 +80,7 @@ The stable sea-level response reports `UNIT_MEASURE=METER`. Earlier source-page 
 
 The processed pipeline now writes:
 
-- `data/processed/official_observations.csv`: 14,007 normalized long-form official observations across nine priority datasets and 22 geographies.
+- `data/processed/official_observations.csv`: 16,410 normalized long-form official observations across 14 priority datasets and 22 geographies.
 - `data/processed/geography_lookup.csv`: geography-level dataset coverage, row counts, and year ranges.
 - `data/processed/app/atlas_dataset_summary.json`: compact app-ready dataset and geography metadata without geometry.
 - `artifacts/provenance/dataset_pipeline_summary.json`: row-count, source URL, content hash, and output provenance.
@@ -92,6 +92,8 @@ python scripts/make_dataset.py --config configs/datasets.yml
 ```
 
 The pipeline selects only entries whose `processing_enabled` value is true; missing values default to true for the original nine. It uses valid local files in `data/raw/official/` first. If a manifest exists, status and SHA-256 must match before processing; if a file is absent, the pipeline fetches from the official SDMX CSV API and writes the ignored raw cache.
+
+`TASK-066` adds one deterministic `source_metadata` JSON field rather than dataset-specific columns. It preserves every non-core SDMX dimension and attribute, including disaggregation, nature, data-source, and observation-comment fields, while the existing columns retain values, units, geography/year keys, observation/reporting flags, URLs, and content hashes. Candidate row hashes include that metadata; the original nine retain their existing row-hash contract. The refreshed content hashes match the validated `TASK-065` raw manifest. The compact dataset summary is research metadata only: it is not mirrored into `app/public/data/` or consumed by a scene.
 
 ## TASK-003 Index Artifacts
 
@@ -107,7 +109,7 @@ Run command:
 python scripts/build_gap_index.py --config configs/gap_index.yml
 ```
 
-The score is comparative within the available Pacific geographies. It uses latest observations, percentile ranks, absolute anomaly magnitudes for anomaly datasets, equal weights, and no missing-value imputation.
+The score is comparative within the available Pacific geographies. It uses latest observations, percentile ranks, absolute anomaly magnitudes for anomaly datasets, equal weights, and no missing-value imputation. The index pipeline explicitly admits only the established climate-signal, observed-stress, adaptation-capacity, and responsibility-context pillars. A `TASK-066` equivalence check confirmed the serialized 22-row index and 182-row indicator trace are unchanged after candidate processing.
 
 ## TASK-004 Outlook Artifacts
 

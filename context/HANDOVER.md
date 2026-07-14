@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, `TASK-065`, and `TASK-070` are complete. `TASK-064` passed its automated, source, interaction, accessibility, and 25-frame browser Maker matrix and remains `in-review`; `TASK-057` remains `needs-fix`. The owner likes the visual system but has reopened the final story. `TASK-066` through `TASK-069` continue the data-first sequence: process accepted candidates; build a visual research atlas and three rough evidence-board auditions; make the scientific/owner narrative selection; then rewrite the roadmap.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, `TASK-065`, and `TASK-070` are complete. `TASK-064` and the freshly built `TASK-066` remain in owner review; `TASK-057` remains `needs-fix`. `TASK-066` expands processed research data to 16,410 rows across 14 datasets without changing the baseline index, public app, or story. The owner likes the visual system but has reopened the final story. `TASK-067` through `TASK-069` now continue the data-first sequence: build a visual research atlas and three rough evidence-board auditions; make the scientific/owner narrative selection; then rewrite the roadmap.
 
 The current app remains the functioning behavioral/scientific baseline. Its fullscreen composition, evidence marks, comparison/rank takeovers, native scroll, accessibility behavior, and Explore handoff should be preserved during research. Its title, opening thesis, exemplars, scene order, and Adaptation Gap Index prominence are provisional until `TASK-068`. QA screenshots live under `artifacts/design/task-064/`; concept boards remain composition-only.
 
@@ -74,8 +74,8 @@ This currently writes the script-first EDA tables under `artifacts/tables/` and 
 
 ## Next Recommended Work
 
-1. Start `TASK-066`: enable and normalize only the five candidates accepted by `TASK-065`; aggregate crop yield remains rejected.
-2. Run `TASK-067` after processing: generate comparison tables and the static visual research atlas first, then compose three rough evidence-board auditions from supported findings. Do not change the current index, app, or scene copy during processing/EDA.
+1. Run `TASK-067` on the expanded processed data: generate comparison tables and the static visual research atlas first, then compose three rough evidence-board auditions from supported findings. Do not change the current index, app, or scene copy during EDA.
+2. Keep `TASK-066` in owner review until the requested QA pass; its Builder evidence records exact source traces and unchanged index outputs.
 3. Use `TASK-068` to review the three auditions and make the scientific and owner narrative decision. Only then may `TASK-069` rewrite the storyboard and create implementation tasks.
 4. Keep `TASK-064` in owner review and `TASK-057` in `needs-fix`; do not deploy or submit a story that has been reopened.
 
@@ -86,7 +86,7 @@ This currently writes the script-first EDA tables under `artifacts/tables/` and 
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
 - The current gap varies more with its visible-capacity proxies than with its climate-pressure side, and those capacity inputs include unnormalized station counts, total power generation, and fisheries-measure counts. Treat the index as provisional evidence, not the final story verdict.
-- The candidate expansion is research scope only. Water, crops, renewable energy, population, disaster loss, and land cover must not enter the score or guided story merely because they were downloaded.
+- The candidate expansion is research scope only. Population, renewable energy, water, disaster loss, and land cover are processed for TASK-067 but do not enter the score, public app data, or guided story. Crop yield remains rejected and processing-disabled.
 - `TASK-048` corrected the former `included_indicator_count` ambiguity. Production app data now exposes score-input, context-only, and total trace counts plus eight ordered score-input presence positions. Do not regress to the retired field when building the new evidence glyph.
 - The outlook baseline is app-optional. Only include it in the interface with visible caveats and row-level notes.
 - TASK-005/TASK-026 scored GIS exports use centroid fallback hit targets, not island boundaries. TASK-029 adds Natural Earth land context for orientation, but not official/selectable boundary polygons. TASK-038/TASK-039 group nearby Natural Earth land to scored centroids for visual marks only; TASK-043 keeps those land shapes as subdued context/texture under guaranteed-size centroid presence marks. This is not a boundary source, and far/disputed land stays unassigned.

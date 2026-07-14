@@ -115,6 +115,7 @@ def build_processed_dataset(
             official_url=dataset.official_url,
             sdmx_csv_api_url=dataset.sdmx_csv_api_url,
             source_content_sha256=content_hash,
+            include_metadata_in_hash=str(entry.get("candidate", "false")).lower() == "true",
         )
         normalized_frames.append(normalized)
         fetch_log.append(

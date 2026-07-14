@@ -1,10 +1,42 @@
 {
   "schema_version": 1,
   "pipeline_task": "TASK-002",
-  "total_rows": 14007,
-  "dataset_count": 9,
+  "total_rows": 16410,
+  "dataset_count": 14,
   "geography_count": 22,
   "datasets": [
+    {
+      "dataset_slug": "climate-altering-land-cover-index",
+      "dataset_name": "Climate altering land cover index",
+      "pillar": "candidate_land_context",
+      "row_count": 681,
+      "geography_count": 22,
+      "first_observed_year": 1992,
+      "last_observed_year": 2022,
+      "year_range": {
+        "start": 1992,
+        "end": 2022
+      },
+      "source_content_sha256": "d04ddf1138425cb4cb06d686283d1e15f9889a6247c249facdff5f5de83ce65a",
+      "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.ALT_LAND_COVER.&pd=,&to[TIME_PERIOD]=false",
+      "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ALT_LAND_COVER.?dimensionAtObservation=AllDimensions"
+    },
+    {
+      "dataset_slug": "direct-disaster-economic-loss",
+      "dataset_name": "Direct disaster economic loss",
+      "pillar": "candidate_loss_context",
+      "row_count": 39,
+      "geography_count": 12,
+      "first_observed_year": 2007,
+      "last_observed_year": 2020,
+      "year_range": {
+        "start": 2007,
+        "end": 2020
+      },
+      "source_content_sha256": "10af83868cfd596c8826267c9861acd67644633e70f797afb3c3af9a7fe1516b",
+      "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AALT...._T.....&pd=,&to[TIME_PERIOD]=false",
+      "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AALT...._T.....?dimensionAtObservation=AllDimensions"
+    },
     {
       "dataset_slug": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
       "dataset_name": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
@@ -17,7 +49,7 @@
         "start": 1903,
         "end": 2026
       },
-      "source_content_sha256": "9556ee9432d45c743beef9d66a31bc95e31608e74223f67cd030349e23136ca6",
+      "source_content_sha256": "5d9ffaef2a7064e1cf5e6553260f26ebf0264f80d7c09f7d45f1575abcd20253",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.FISH_MNGT_MULT_BILAT_ARGMT.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.FISH_MNGT_MULT_BILAT_ARGMT.?dimensionAtObservation=AllDimensions"
     },
@@ -33,7 +65,7 @@
         "start": 1970,
         "end": 2024
       },
-      "source_content_sha256": "2f2131c6cf9e5f729165fa04dcbd7e40f21ed961f75c6fe3a76953e2efeb8113",
+      "source_content_sha256": "e6b71e02e40d7adae956288ac5cae508fb2c05e2ca5bc2d90ef3eb071dfcf907",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.GHG_EMI_CAPITA.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.GHG_EMI_CAPITA.?dimensionAtObservation=AllDimensions"
     },
@@ -49,7 +81,7 @@
         "start": 1850,
         "end": 2025
       },
-      "source_content_sha256": "e183c11102f8430617eafdd9aade74383f5e36da83ec0165984a2a248e07e9f5",
+      "source_content_sha256": "1a64905523a182ca60e4460313e3bd6e852b106a56f60d1a507d5d07ddeb62b3",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.SST_ANOM.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.SST_ANOM.?dimensionAtObservation=AllDimensions"
     },
@@ -65,7 +97,7 @@
         "start": 1850,
         "end": 2025
       },
-      "source_content_sha256": "522d5f4e5e19c67c6cc194216e57be85fdbc84018f02e6b279f811f1494bd1e3",
+      "source_content_sha256": "a261219ea74e9f7c414fe54613df01a0764636a61624343f10e693d45eeac940",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.ST_ANOM.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.ST_ANOM.?dimensionAtObservation=AllDimensions"
     },
@@ -81,7 +113,7 @@
         "start": 1889,
         "end": 2026
       },
-      "source_content_sha256": "bcafcf6c2c08129dfc37ecda627427403c7dc32fc4eb0a10732884523b9ef9a9",
+      "source_content_sha256": "4289b4ff9ed26126a8b47f46054641c0c2738d2939d61a7a746d4bafc2e2e4fc",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.METEO_MONITOR_NET.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.METEO_MONITOR_NET.?dimensionAtObservation=AllDimensions"
     },
@@ -97,9 +129,25 @@
         "start": 2005,
         "end": 2023
       },
-      "source_content_sha256": "667ce982c1491bcb2ea1a383a9d95cd21406dea9b059a0c0e4b6e971ed2e3a73",
+      "source_content_sha256": "6a3526ab17b5060eda5202bd8f1729149b3ade530fe49bf1ed208a48163a10f7",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_11&df[ag]=SPC&df[vs]=3.0&dq=A.VC_DSR_AFFCT.........&pd=,&to[TIME_PERIOD]=false&lb=bt",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_11/3.0/A.VC_DSR_AFFCT.........?dimensionAtObservation=AllDimensions"
+    },
+    {
+      "dataset_slug": "population-growth",
+      "dataset_name": "Population growth",
+      "pillar": "candidate_context",
+      "row_count": 792,
+      "geography_count": 22,
+      "first_observed_year": 1990,
+      "last_observed_year": 2025,
+      "year_range": {
+        "start": 1990,
+        "end": 2025
+      },
+      "source_content_sha256": "0a584e6e42850e03de82f5211816b235d6302c18903106de3c8e938ee848ad23",
+      "official_url": "https://stats.pacificdata.org/vis?tm=population%20growth&pg=0&snb=11&df[ds]=ds%3ASPC2&df[id]=DF_NMDI_POP&df[ag]=SPC&df[vs]=1.0&dq=A..NMDI0002._T._T._T..&pd=,&to[TIME_PERIOD]=false",
+      "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_NMDI_POP/1.0/A..NMDI0002._T._T._T..?dimensionAtObservation=AllDimensions"
     },
     {
       "dataset_slug": "power-generation",
@@ -113,9 +161,25 @@
         "start": 2000,
         "end": 2023
       },
-      "source_content_sha256": "116fee8ecb2a9cf44cdc4c3a82055082d39925bc85a6dd4069a5bff404340cd7",
+      "source_content_sha256": "dc0fd25496dc9a9f14ea41de773f7f9e38a1cdc002bf8f8eb025d607cd039289",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.POWER_GEN.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.POWER_GEN.?dimensionAtObservation=AllDimensions"
+    },
+    {
+      "dataset_slug": "proportion-of-population-using-safely-managed-drinking-water-services",
+      "dataset_name": "Proportion of population using safely managed drinking water services",
+      "pillar": "candidate_service_context",
+      "row_count": 430,
+      "geography_count": 19,
+      "first_observed_year": 2000,
+      "last_observed_year": 2022,
+      "year_range": {
+        "start": 2000,
+        "end": 2022
+      },
+      "source_content_sha256": "b511fc5015d0aa435b37c029794e9c249cf59fcbd06d6c254318e0ef26dc6586",
+      "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=ds%3ASPC2&df[id]=DF_SDG_06&df[ag]=SPC&df[vs]=3.0&dq=A.SH_H2O_SAFE...._T.....&pd=,&to[TIME_PERIOD]=false",
+      "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG_06/3.0/A.SH_H2O_SAFE...._T.....?dimensionAtObservation=AllDimensions"
     },
     {
       "dataset_slug": "rainfall-anomalies",
@@ -129,9 +193,25 @@
         "start": 1979,
         "end": 2025
       },
-      "source_content_sha256": "0123389776aa353268c2c23fd4840384e33a47b2db5650a6ed5f8a9ab5431d7e",
+      "source_content_sha256": "ab20fb3b34b242843d18883badc0d62fef96b0b7e6111527fa0a7ee87e822906",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.RAIN_ANOM.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.RAIN_ANOM.?dimensionAtObservation=AllDimensions"
+    },
+    {
+      "dataset_slug": "renewable-energy-share-in-the-total-final-energy-consumption",
+      "dataset_name": "Renewable energy share in the total final energy consumption",
+      "pillar": "candidate_response_context",
+      "row_count": 461,
+      "geography_count": 20,
+      "first_observed_year": 2000,
+      "last_observed_year": 2023,
+      "year_range": {
+        "start": 2000,
+        "end": 2023
+      },
+      "source_content_sha256": "39ec0e48fd9d9ce16daac97c58646d7007c625cd7932d7b1c6fde5faab449349",
+      "official_url": "https://stats.pacificdata.org/vis?fs[0]=Development%20indicators,0%7CSustainable%20Development%20Goals%23SDG%23&pg=0&fc=Development%20indicators&bp=true&snb=18&df[ds]=ds%3ASPC2&df[id]=DF_SDG&df[ag]=SPC&df[vs]=3.0&dq=A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T&pd=,&to[TIME_PERIOD]=false",
+      "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_SDG/3.0/A.EG_FEC_RNEW.._T._T._T._T._T._T._Z._T?dimensionAtObservation=AllDimensions"
     },
     {
       "dataset_slug": "sea-level-anomalies",
@@ -145,7 +225,7 @@
         "start": 1993,
         "end": 2023
       },
-      "source_content_sha256": "cfdf7990eb848d3af1ffb97dc7841ef78a3314450a61fa6ba9bf26362aa4816e",
+      "source_content_sha256": "28cbb803a2d5e9612447e41adfbbaf03a5885618af2ac7d4805806186cddeb7e",
       "official_url": "https://stats.pacificdata.org/vis?lc=en&df[ds]=SPC2&df[id]=DF_CLIMATE_CHANGE&df[ag]=SPC&df[vs]=1.0&av=true&dq=A.SEA_LVL.&pd=,&to[TIME_PERIOD]=false",
       "sdmx_csv_api_url": "https://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/DF_CLIMATE_CHANGE/1.0/A.SEA_LVL.?dimensionAtObservation=AllDimensions"
     }
@@ -157,7 +237,7 @@
       "pillar": "climate_signal",
       "status": "ok",
       "rows": 3696,
-      "source_content_sha256": "e183c11102f8430617eafdd9aade74383f5e36da83ec0165984a2a248e07e9f5",
+      "source_content_sha256": "1a64905523a182ca60e4460313e3bd6e852b106a56f60d1a507d5d07ddeb62b3",
       "caveat_notes": ""
     },
     {
@@ -166,7 +246,7 @@
       "pillar": "climate_signal",
       "status": "ok",
       "rows": 3872,
-      "source_content_sha256": "522d5f4e5e19c67c6cc194216e57be85fdbc84018f02e6b279f811f1494bd1e3",
+      "source_content_sha256": "a261219ea74e9f7c414fe54613df01a0764636a61624343f10e693d45eeac940",
       "caveat_notes": ""
     },
     {
@@ -175,7 +255,7 @@
       "pillar": "climate_signal",
       "status": "ok",
       "rows": 1034,
-      "source_content_sha256": "0123389776aa353268c2c23fd4840384e33a47b2db5650a6ed5f8a9ab5431d7e",
+      "source_content_sha256": "ab20fb3b34b242843d18883badc0d62fef96b0b7e6111527fa0a7ee87e822906",
       "caveat_notes": ""
     },
     {
@@ -184,7 +264,7 @@
       "pillar": "climate_signal",
       "status": "ok",
       "rows": 651,
-      "source_content_sha256": "cfdf7990eb848d3af1ffb97dc7841ef78a3314450a61fa6ba9bf26362aa4816e",
+      "source_content_sha256": "28cbb803a2d5e9612447e41adfbbaf03a5885618af2ac7d4805806186cddeb7e",
       "caveat_notes": ""
     },
     {
@@ -193,7 +273,7 @@
       "pillar": "observed_stress",
       "status": "ok",
       "rows": 174,
-      "source_content_sha256": "667ce982c1491bcb2ea1a383a9d95cd21406dea9b059a0c0e4b6e971ed2e3a73",
+      "source_content_sha256": "6a3526ab17b5060eda5202bd8f1729149b3ade530fe49bf1ed208a48163a10f7",
       "caveat_notes": ""
     },
     {
@@ -202,7 +282,7 @@
       "pillar": "adaptation_capacity",
       "status": "ok",
       "rows": 1650,
-      "source_content_sha256": "bcafcf6c2c08129dfc37ecda627427403c7dc32fc4eb0a10732884523b9ef9a9",
+      "source_content_sha256": "4289b4ff9ed26126a8b47f46054641c0c2738d2939d61a7a746d4bafc2e2e4fc",
       "caveat_notes": ""
     },
     {
@@ -211,7 +291,7 @@
       "pillar": "adaptation_capacity",
       "status": "ok",
       "rows": 432,
-      "source_content_sha256": "116fee8ecb2a9cf44cdc4c3a82055082d39925bc85a6dd4069a5bff404340cd7",
+      "source_content_sha256": "dc0fd25496dc9a9f14ea41de773f7f9e38a1cdc002bf8f8eb025d607cd039289",
       "caveat_notes": ""
     },
     {
@@ -220,7 +300,7 @@
       "pillar": "adaptation_capacity",
       "status": "ok",
       "rows": 1563,
-      "source_content_sha256": "9556ee9432d45c743beef9d66a31bc95e31608e74223f67cd030349e23136ca6",
+      "source_content_sha256": "5d9ffaef2a7064e1cf5e6553260f26ebf0264f80d7c09f7d45f1575abcd20253",
       "caveat_notes": ""
     },
     {
@@ -229,7 +309,52 @@
       "pillar": "responsibility_context",
       "status": "ok",
       "rows": 935,
-      "source_content_sha256": "2f2131c6cf9e5f729165fa04dcbd7e40f21ed961f75c6fe3a76953e2efeb8113",
+      "source_content_sha256": "e6b71e02e40d7adae956288ac5cae508fb2c05e2ca5bc2d90ef3eb071dfcf907",
+      "caveat_notes": ""
+    },
+    {
+      "name": "Population growth",
+      "slug": "population-growth",
+      "pillar": "candidate_context",
+      "status": "ok",
+      "rows": 792,
+      "source_content_sha256": "0a584e6e42850e03de82f5211816b235d6302c18903106de3c8e938ee848ad23",
+      "caveat_notes": ""
+    },
+    {
+      "name": "Renewable energy share in the total final energy consumption",
+      "slug": "renewable-energy-share-in-the-total-final-energy-consumption",
+      "pillar": "candidate_response_context",
+      "status": "ok",
+      "rows": 461,
+      "source_content_sha256": "39ec0e48fd9d9ce16daac97c58646d7007c625cd7932d7b1c6fde5faab449349",
+      "caveat_notes": ""
+    },
+    {
+      "name": "Proportion of population using safely managed drinking water services",
+      "slug": "proportion-of-population-using-safely-managed-drinking-water-services",
+      "pillar": "candidate_service_context",
+      "status": "ok",
+      "rows": 430,
+      "source_content_sha256": "b511fc5015d0aa435b37c029794e9c249cf59fcbd06d6c254318e0ef26dc6586",
+      "caveat_notes": ""
+    },
+    {
+      "name": "Direct disaster economic loss",
+      "slug": "direct-disaster-economic-loss",
+      "pillar": "candidate_loss_context",
+      "status": "ok",
+      "rows": 39,
+      "source_content_sha256": "10af83868cfd596c8826267c9861acd67644633e70f797afb3c3af9a7fe1516b",
+      "caveat_notes": ""
+    },
+    {
+      "name": "Climate altering land cover index",
+      "slug": "climate-altering-land-cover-index",
+      "pillar": "candidate_land_context",
+      "status": "ok",
+      "rows": 681,
+      "source_content_sha256": "d04ddf1138425cb4cb06d686283d1e15f9889a6247c249facdff5f5de83ce65a",
       "caveat_notes": ""
     }
   ],

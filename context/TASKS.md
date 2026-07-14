@@ -1527,7 +1527,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: data-pipeline
 - Title: Process accepted candidate datasets without changing the baseline index
 - Depends on: TASK-065
-- Assigned agent: unassigned
+- Assigned agent: Codex Builder; owner QA
 - Contract refs: context/DATA_CARD.md, configs/datasets.yml
 - Data refs: data/raw/official, data/processed/official_observations.csv, data/processed/geography_lookup.csv
 - Scientific refs: context/ASSUMPTIONS.md, context/docs/methodology.md
@@ -1540,11 +1540,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: A clean rebuild contains only TASK-065-accepted candidates, preserves source semantics, passes contracts, and produces byte- or value-equivalent baseline Adaptation Gap scores before any methodology change.
 - Verification commands: python scripts/make_dataset.py --config configs/datasets.yml; python scripts/build_gap_index.py --config configs/gap_index.yml; python scripts/validate_data_contracts.py; python -m unittest discover -s tests -t . -v; git diff --check
 - Manual QA: Trace at least two rows per candidate from raw source through processed output and confirm rejected candidates do not appear.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder pass produced 16,410 rows across 14 datasets and 22 geographies from the validated local cache. Exact candidate counts are population 792, renewable energy 461, safely managed water 430, direct loss 39, and land cover 681; crop yield is absent. One deterministic `source_metadata` JSON field preserves non-core SDMX dimensions/attributes without five bespoke schemas. Two-row traces per candidate confirmed original values, units, geography/year keys, flags, data-source/disaggregation metadata, URLs, content hashes, and row hashes. Refreshed content hashes match the TASK-065 manifest; original-nine values/units/keys/flags/URLs/row hashes remain exact. The gap pipeline now locks its established pillar allowlist, and serialized comparison proves the 22-row index plus 182-row trace are unchanged. Focused RED/GREEN covered selector, metadata-aware candidate hashing, legacy hash stability, and candidate exclusion from the index. Owner QA remains the final gate.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created from the data-first pivot; processing is deliberately separate from narrative and score selection.
-- Status: pending
+- Attempt log: Created from the data-first pivot; processing is deliberately separate from narrative and score selection. 2026-07-13: Builder started the accepted-candidate normalization pass with RED tests for the exact 14-source selector and generic preservation of extra SDMX row metadata. The first rebuild exposed candidate context rows leaking into index trace counts and a legacy hash migration; focused RED/GREEN repairs preserved the original hash contract and restricted the index to its established pillars. Builder verification returned the task to owner-gated review without app or story wiring.
+- Status: in-review
 
 ## TASK-067
 - Phase: analysis

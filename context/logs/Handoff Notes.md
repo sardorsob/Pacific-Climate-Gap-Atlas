@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Start `TASK-066` from the approved `TASK-065` acquisition gate. Enable and normalize only population growth, renewable-energy share, safely managed drinking water, direct disaster economic loss, and climate-altering land cover; aggregate crop yield remains rejected. Preserve the current nine-dataset values, score, app, and story while proving candidate normalization and provenance. `TASK-064` remains in owner review and `TASK-057` remains `needs-fix`; do not resume story implementation, deployment, or submission.
+Proceed through `TASK-067` on the expanded research data while `TASK-066` waits for owner QA. Build the five-figure visual research atlas before composing the three evidence-board auditions. Keep the index, public app data, scene copy, and current visual system unchanged. `TASK-064` remains in owner review and `TASK-057` remains `needs-fix`; do not resume story implementation, deployment, or submission.
 
 ## Next Build Step
 
-`TASK-065` -> `TASK-066` -> `TASK-067` -> `TASK-068` -> `TASK-069` is the approved order. Acquisition is complete. Process accepted candidates; generate the reproducible visual research atlas; compose three rough evidence-board auditions; choose one narrative through scientific/owner review; then rewrite the roadmap. Use existing context files; do not create per-task Markdown.
+`TASK-065` -> `TASK-066` -> `TASK-067` -> `TASK-068` -> `TASK-069` is the approved order. Acquisition and the Builder processing pass are complete. Generate the reproducible visual research atlas; compose three rough evidence-board auditions; choose one narrative through scientific/owner review; then rewrite the roadmap. Use existing context files; do not create per-task Markdown.
 
 The fullscreen composition remains the preferred visual system. The existing premise, five evidence scenes, Nauru/Tuvalu comparison, title, and index-first narrative are provisional. JSD remains selected-place panel evidence only unless a future approved story explicitly changes that contract.
 
@@ -22,11 +22,12 @@ The fullscreen composition remains the preferred visual system. The existing pre
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
 - `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
-- `TASK-065` is independently approved and done. It profiles 15 official sources successfully but selects only the original nine for current processing. Five candidates are eligible for `TASK-066`; aggregate crop yield is rejected after item-level inspection. Manifested cache integrity, stable-endpoint fallback provenance, structural coverage, and the supplementary crop source are explicit. Tracked processed/app/index/story artifacts remain unchanged.
+- `TASK-066` is in owner review. Its Builder pass processes the five accepted candidates into 16,410 rows across 14 datasets and leaves crop yield absent. Generic JSON metadata retains SDMX disaggregation without bespoke schemas; candidate content hashes match the validated manifest; the original nine row hashes remain stable; and the serialized 22-row gap index plus 182-row trace are unchanged. No public app or story file consumes candidate data.
 - `TASK-070` removed unused notebook/Kaggle/Hugging Face/report/interim scaffolding, empty analysis packages, unused artifact lanes, empty fixtures, and redundant markers. Only the explicitly justified empty figure and run-bundle lanes remain; do not recreate removed scaffolding without a concrete task.
 
 ## 2026-07-13
 
+- 2026-07-13: `TASK-066` Builder pass moved to `in-review`. The accepted candidates now contribute 2,403 rows to a deterministic 16,410-row/14-dataset processed table; crop yield remains excluded. Focused TDD locks selection, generic SDMX metadata preservation, metadata-aware candidate hashes, legacy hash stability, and strict exclusion from gap-index outputs. Two-row manual traces per candidate and manifest checks passed; serialized comparison proved the 22-row index and 182-row trace unchanged. Owner QA retains acceptance.
 - 2026-07-13: Owner approved the refined exploration contract before TASK-066 begins. TASK-067 now requires a five-figure static visual research atlas followed by one contact sheet with three rough evidence-board story auditions. Matplotlib is the default future renderer; Plotly or new GIS dependencies require a demonstrated analytical need, and centroid geometry remains the spatial limit. TASK-068 retains final scientific/owner selection. No app, score, processed data, or scene implementation changed in this planning pass.
 
 ## 2026-07-12

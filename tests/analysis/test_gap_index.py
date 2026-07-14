@@ -85,6 +85,46 @@ class GapIndexTests(unittest.TestCase):
         self.assertEqual(fiji["trace_indicator_count"], 3)
         self.assertNotIn("included_indicator_count", index.columns)
 
+    def test_build_gap_index_ignores_unapproved_candidate_pillars(self) -> None:
+        baseline = pd.DataFrame(
+            [
+                _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10.0),
+                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100.0),
+                _row(
+                    "greenhouse-gas-emissions-per-capita",
+                    "GHG per capita",
+                    "responsibility_context",
+                    "FJ",
+                    2023,
+                    2.0,
+                ),
+            ]
+        )
+        with_candidate = pd.concat(
+            [
+                baseline,
+                pd.DataFrame(
+                    [
+                        _row(
+                            "population-growth",
+                            "Population growth",
+                            "candidate_context",
+                            "FJ",
+                            2023,
+                            1.5,
+                        )
+                    ]
+                ),
+            ],
+            ignore_index=True,
+        )
+
+        baseline_index, baseline_trace = build_gap_index(baseline)
+        candidate_index, candidate_trace = build_gap_index(with_candidate)
+
+        pd.testing.assert_frame_equal(candidate_index, baseline_index)
+        pd.testing.assert_frame_equal(candidate_trace, baseline_trace)
+
     def test_indicator_trace_scores_anomalies_by_magnitude(self) -> None:
         observations = pd.DataFrame(
             [

@@ -144,11 +144,14 @@ class DatasetProfileTests(unittest.TestCase):
 
         self.assertEqual(len(entries), 15)
         self.assertEqual(candidates.difference(entries), set())
-        self.assertEqual(len(select_processing_datasets(config)), 9)
+        self.assertEqual(len(select_processing_datasets(config)), 14)
         for name in candidates:
             self.assertEqual(entries[name]["candidate"], "true")
-            self.assertEqual(entries[name]["processing_enabled"], "false")
             self.assertIn(entries[name]["processing_decision"], {"accept_for_processing", "reject"})
+            expected_enabled = (
+                "true" if entries[name]["processing_decision"] == "accept_for_processing" else "false"
+            )
+            self.assertEqual(entries[name]["processing_enabled"], expected_enabled)
             self.assertTrue(entries[name]["decision_reason"])
 
     def test_processed_builder_honors_processing_enabled_gate(self) -> None:

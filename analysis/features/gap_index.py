@@ -8,6 +8,7 @@ import pandas as pd
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}
 SCORE_INPUT_PILLARS = PRESSURE_PILLARS | CAPACITY_PILLARS
+INDEX_PILLARS = SCORE_INPUT_PILLARS | {"responsibility_context"}
 REQUIRED_PILLARS = {"climate_signal", "adaptation_capacity"}
 INDEX_COLUMNS = [
     "geo_code",
@@ -104,7 +105,8 @@ def _scoring_value(frame: pd.DataFrame) -> pd.Series:
 def build_gap_index(observations: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Build geography-level Adaptation Gap Index and indicator trace tables."""
 
-    snapshot = latest_indicator_snapshot(observations)
+    index_observations = observations[observations["pillar"].isin(INDEX_PILLARS)]
+    snapshot = latest_indicator_snapshot(index_observations)
     trace = build_indicator_trace(snapshot)
     if trace.empty:
         return pd.DataFrame(columns=INDEX_COLUMNS), trace

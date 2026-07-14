@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` completed acquisition and profiling; `TASK-066` will process the five accepted candidates, and `TASK-067` will audit them through reproducible tables, a static visual research atlas, and three rough evidence-board story auditions. The findings below remain the baseline evidence, not the final story conclusion.
+The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` completed acquisition and profiling; `TASK-066` processed the five accepted candidates without changing the baseline index; and the `TASK-067` Builder pass has produced reproducible comparison tables, a static visual research atlas, and three rough evidence-board story auditions. Both Builder tasks remain in owner review. No final story is selected until `TASK-068`.
 
 ## Current EDA Outputs
 
@@ -31,12 +31,21 @@ The runner writes:
 - `artifacts/tables/eda_evidence_fingerprints.csv`
 - `artifacts/tables/eda_pairwise_jsd.csv`
 - `artifacts/tables/eda_similarity_neighbors.csv`
+- `artifacts/tables/eda_candidate_dataset_coverage.csv`
+- `artifacts/tables/eda_candidate_comparability.csv`
+- `artifacts/tables/eda_candidate_story_signals.csv`
+- `artifacts/figures/eda_candidate_coverage_alignment.png`
+- `artifacts/figures/eda_candidate_distributions.png`
+- `artifacts/figures/eda_candidate_trends.png`
+- `artifacts/figures/eda_candidate_named_place_contrasts.png`
+- `artifacts/figures/eda_candidate_reporting_visibility.png`
+- `artifacts/figures/eda_candidate_story_auditions.png`
 - `artifacts/provenance/eda_summary.json`
 - `artifacts/provenance/divergence_summary.json`
 
 ## Early Signals
 
-- The coverage deep dive includes 22 geographies and 9 datasets. PN is the only data-desert geography under the current stricter flag; the more important issue is partial geography coverage by dataset, especially GHG per capita, power generation, monitoring network, directly affected persons, sea-level anomalies, and sea-surface temperature anomalies.
+- The established coverage/story/JSD lane remains scoped to its original nine datasets across 22 geographies, so candidate research cannot silently change app-wired evidence fingerprints. PN remains the only data-desert geography under that baseline. The broad processed lookup now reflects 14 datasets, while the separate candidate coverage table audits the five additions without feeding the baseline score, driver labels, or JSD.
 - Indicator forensics preserve all 182 trace rows: 165 score-input rows and 17 context-only responsibility rows. The first outlier pass flags 11 within-dataset scoring-value outliers, including context-only GHG outliers for NC and PW that should not be described as score drivers.
 - Country driver labels are now joined to trace-level pressure/capacity signals, coverage caveats, and rank-volatility caveats. The story-label table keeps 22 scored geographies: 5 primary, 8 secondary, and 9 context rows. Current primary high-gap geographies are PN, NR, AS, WF, and TV.
 - Spatial typologies are rule-based, not statistical clusters. Polynesia currently has the highest mean adaptation-gap score and the most high-gap/low-capacity cases; Melanesia reads more as high-pressure with higher visible capacity; Micronesia is mostly mixed-gap context with fragile ranks.
@@ -46,6 +55,18 @@ The runner writes:
 - Evidence Fingerprint Divergence now produces 22 geography fingerprints, 231 unordered pairwise JSD rows, and 66 nearest-neighbor rows. The public metric is base-2 Jensen-Shannon divergence over normalized official-data-derived profiles, bounded from 0 to 1. Its value is explanatory: "similar gap, different evidence mix" and "different gap, similar evidence profile." It must not become a new global rank or a claim that similar places share the same vulnerability or policy needs.
 - The V1 combined fingerprint preserves six component families: pressure, visible capacity, data visibility, rank fragility, missing data, and monitoring reporting gap. Zero components remain zero; the public artifacts do not use smoothing, and missingness/status components are visible as their own mass rather than hidden in a footnote.
 - The nearest-neighbor output is suitable for selected-geography comparison only. Current exemplar QA rows are recorded in `artifacts/provenance/divergence_summary.json` for NR, TV, PN, AS, WF, and MH.
+
+## TASK-067 Candidate Findings
+
+- The five accepted candidates contribute 2,403 descriptive rows. Population growth and land cover reach all 22 geographies; renewable energy reaches 20, safely managed water 19, and recorded direct loss only 12.
+- Their clocks do not align. The latest published projected/estimated population-growth rate is uniformly 2025, renewable energy spans 2022–2023, safely managed water spans 2020–2022, direct loss spans 2013–2020, and land cover is uniformly 2022. Latest-value comparisons therefore keep the year beside every value.
+- Direct loss has 39 returned geography-years out of 168 possible across its 2007–2020 window. Four explicit `USD_MILLIONS` rows are converted to USD; absent rows remain missing records, never zero-loss observations. The honest visual form is a reporting raster, not a continuous trend or per-capita comparison.
+- The strongest named-place signal is a descriptive cross-current, not a causal result: from first to latest returned values, Papua New Guinea safely managed water changes +18.49 percentage points while renewable-energy share changes -15.60; Samoa changes +11.98 and -27.94. Raw and processed endpoints match exactly.
+- Safely managed water remains uneven in the latest returned rows: Papua New Guinea 50.24% (2022), Solomon Islands 67.45% (2021), Wallis and Futuna Islands 68.88% (2022), and Tuvalu 99.26% (2022). This is essential-service context, not climate attribution.
+- Eight of 22 latest projected population-growth rates are negative in 2025. All 792 rows are flagged `E` and cite `Population projections (PDH.Stat)`, so this is published estimated/projection context—not observed realized population change, population size, or vulnerability.
+- The land-cover index is retained only as weak research evidence. Latest 2022 values range from Samoa 51.4 to Solomon Islands 133.3, and Vanuatu falls from a published 668.4 in 1992 to 104.7 in 2022; without resolved source direction and baseline semantics, high/low and movement cannot be labelled better/worse.
+- A single candidate progress ladder is contradicted. Latest water and renewable within-indicator ranks correlate -0.43, raw magnitudes have different meanings, and the candidate set supplies neither population-size denominators for loss-per-capita nor a causal identification design.
+- Three provisional auditions remain open for `TASK-068`: different reporting clocks/visibility; service and energy cross-currents; and profiles instead of a single rank. The contact sheet declares no winner, and no audition is wired into the app or current scene copy.
 
 ## Caveats
 
@@ -61,11 +82,12 @@ The runner writes:
 - Outlook interpretation is stress-test display guidance. It should not be framed as a prediction or operational forecast.
 - Driver labels are useful for exploration and app copy drafts, not final scientific claims.
 - JSD compares normalized evidence profiles. It does not explain causality, lived experience, full adaptation readiness, vulnerability, or policy need. Sparse or missing data can create misleading similarity and must stay visible. KL is not required for public UI interpretation.
+- Candidate comparisons stay within indicators. Their raw values are never summed, averaged across measures, or added to the Adaptation Gap Index.
+- The TASK-067 figures are research surfaces, not final publication scenes. Their headlines, named places, and visual forms remain subject to owner/scientific review in TASK-068.
 
 ## Next Priorities
 
-1. Start `TASK-066`: process only population growth, renewable-energy share, safely managed drinking water, direct disaster economic loss, and climate-altering land cover while proving the current baseline index remains unchanged. Aggregate crop yield remains rejected.
-2. Use `TASK-067` to audit comparability, denominators, time alignment, distributions, trends, reporting visibility, named-place patterns, and unsupported claims.
-3. Generate the TASK-067 static visual research atlas first, then use supported findings to compose three rough evidence-board story auditions. Matplotlib is the default; interaction or new GIS dependencies require evidence that they materially improve the review.
-4. Choose the final narrative only in `TASK-068`; until then, treat every audition, the current index-first story, and the exemplar set as provisional.
-5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.
+1. Complete owner QA for `TASK-066` and `TASK-067`; both Builder passes remain `in-review` rather than self-approved.
+2. In `TASK-068`, scientifically review, merge, reject, or select among the three evidence-board auditions. Keep the exact claim chain, named rows, comparison limits, and rejected alternatives visible.
+3. Do not rewrite the app, title, index prominence, or storyboard until the owner selects a narrative in `TASK-068`.
+4. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.

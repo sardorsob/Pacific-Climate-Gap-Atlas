@@ -18,7 +18,7 @@ At least one official dataset is required for the competition. This project targ
 
 | Candidate | Rows | Geographies | Years | Units | Blank/non-numeric values in returned rows | Observed/possible geography-years | Gate | Evidence-based reason |
 | --- | ---: | ---: | --- | --- | ---: | ---: | --- | --- |
-| Population growth | 792 | 22 | 1990–2025 | `PERCENT` | 0 | 792/792 (100.0%) | accept for processing | broad annual rate coverage; retain the rate-versus-population-size distinction |
+| Population growth | 792 | 22 | 1990–2025 | `PERCENT` | 0 | 792/792 (100.0%) | accept for processing | all rows are flagged `E` and cite `Population projections (PDH.Stat)`; treat as published projection/estimated rates, not observed change or population size |
 | Renewable energy share | 461 | 20 | 2000–2023 | `PERCENT` | 0 | 461/480 (96.0%) | accept for processing | comparable rate fields support transition-context review |
 | Safely managed drinking water | 430 | 19 | 2000–2022 | `PERCENT` | 0 | 430/437 (98.4%) | accept for processing | useful essential-service context if kept descriptive and non-causal |
 | Crop yield | 900 | 15 | 1961–2024 | `KGHA` | 0 | 900/960 (93.8%) | reject | aggregate rows hide crop-item composition and would conflate changing crop mixes |
@@ -200,6 +200,34 @@ python scripts/run_eda.py --config configs/eda.yml
 ```
 
 This is descriptive EDA only. It is designed to guide deeper analysis and story selection, not to make causal claims or finalize the atlas narrative. Coverage outputs describe official-data availability, not outcomes. Indicator outliers compare values within the same dataset and unit only. Country story labels and spatial typologies are descriptive screens, not causal explanations. Outlook interpretation is stress-test display guidance, not forecasting. Missing monitoring rows are reporting gaps, not confirmed infrastructure absence. Rank-volatility outputs should be used to caveat or de-emphasize rank order, not to create a new definitive ranking.
+
+## TASK-067 Candidate Research Atlas
+
+The same EDA command now also writes three candidate evidence tables:
+
+- `artifacts/tables/eda_candidate_dataset_coverage.csv`: returned rows, geography coverage, time span, observed/possible geography-years, latest-year spread, units, and missingness caveat for all five candidates.
+- `artifacts/tables/eda_candidate_comparability.csv`: measure kind, denominator, explicit unit conversion, permitted within-indicator use, latest-year basis, missingness interpretation, and one comparability judgment per candidate.
+- `artifacts/tables/eda_candidate_story_signals.csv`: eight bounded hypotheses spanning supported, weak, contradicted, and unavailable results, each with evidence, named places, time basis, decision, and caveat.
+
+It also writes five analytical PNGs plus one three-audition contact sheet under `artifacts/figures/`. Each figure is generated directly from the processed official rows, keeps units and years visible, cites the Pacific Data Hub source, and places its key interpretive limit on the plate. Matplotlib is the only new plotting dependency; no notebook, Plotly, interactive GIS, app layer, or final scene was added.
+
+The comparability decisions are deliberately restrictive:
+
+| Candidate | Comparison judgment | Permitted use |
+| --- | --- | --- |
+| Population growth | `comparable_within_indicator` | published projection/estimated rate context only; never observed realized change, population size, or vulnerability |
+| Renewable energy share | `comparable_within_indicator` | trends and latest shares within this indicator only |
+| Safely managed drinking water | `comparable_with_latest_year_caution` | within-geography trends and named latest values with 2020–2022 years shown |
+| Direct disaster economic loss | `reporting_visibility_only` | recorded event-years after explicit `USD_MILLIONS` to USD conversion; no continuous, zero-filled, per-capita, or GDP-normalized trend |
+| Climate-altering land-cover index | `direction_requires_source_review` | inspect shape and range only; do not label direction, high, or low as better/worse |
+
+Manual raw-to-processed traces reproduced the strongest descriptive cross-current exactly: Papua New Guinea water 31.75 (2000) to 50.24 (2022) while renewable share changes 66.38 to 50.78; Samoa water 87.06 to 99.04 while renewable changes 59.69 to 31.75. The weakest signal also reproduces exactly but remains semantically withheld: the land-cover index has Samoa 51.4 and Solomon Islands 133.3 in 2022, while Vanuatu changes from 668.4 in 1992 to 104.7 in 2022. These values do not resolve what index direction or baseline means.
+
+The direct-loss source has 35 `USD` rows and four `USD_MILLIONS` rows. The analysis converts only the four explicitly marked million-unit rows. Its 39 returned records cover 12 geographies and 23.2% of possible geography-years in 2007–2020; blank years are absence of returned records, not evidence of no disaster or no loss.
+
+The three contact-sheet auditions—different clocks/visibility, progress cross-currents, and profiles instead of a ladder—are provisional research alternatives. `TASK-067` does not choose one, combine the candidates into a score, or change public app data. `TASK-068` owns scientific review and owner selection.
+
+Pipeline boundary: the existing nine-dataset coverage/driver/JSD lane is rebuilt from baseline observations only. Candidate rows feed only the new candidate tables and figures. This keeps the already app-wired similarity artifacts byte-stable while the expanded 14-dataset lookup can still report broad research coverage.
 
 ## TASK-019 Divergence Artifacts
 

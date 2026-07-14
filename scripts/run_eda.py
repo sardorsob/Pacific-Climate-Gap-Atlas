@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 
@@ -13,6 +13,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from analysis.eda.candidate_datasets import (  # noqa: E402
+    build_candidate_tables,
+    select_baseline_observations,
+)
+from analysis.eda.candidate_figures import render_candidate_research_atlas  # noqa: E402
 from analysis.eda.coverage import (  # noqa: E402
     build_data_coverage,
     build_monitoring_gap,
@@ -28,7 +33,6 @@ from analysis.eda.sensitivity import build_rank_volatility, build_weight_sensiti
 from analysis.eda.spatial_patterns import build_spatial_pattern_tables  # noqa: E402
 from analysis.eda.trends import build_outlook_interpretation, build_trend_profiles  # noqa: E402
 
-
 DEFAULT_CONFIG = ROOT / "configs" / "eda.yml"
 DEFAULT_DATASET_PROFILE = ROOT / "artifacts" / "tables" / "dataset_profile.csv"
 DEFAULT_GEOGRAPHY_CONTEXT = ROOT / "data" / "external" / "geography_context.csv"
@@ -39,6 +43,7 @@ DEFAULT_INDICATOR_TRACE = ROOT / "artifacts" / "tables" / "adaptation_gap_indica
 DEFAULT_TREND_DIAGNOSTICS = ROOT / "artifacts" / "tables" / "climate_trend_diagnostics.csv"
 DEFAULT_OUTLOOK = ROOT / "artifacts" / "tables" / "adaptation_gap_outlook.csv"
 DEFAULT_TABLE_DIR = ROOT / "artifacts" / "tables"
+DEFAULT_FIGURE_DIR = ROOT / "artifacts" / "figures"
 DEFAULT_SUMMARY = ROOT / "artifacts" / "provenance" / "eda_summary.json"
 DEFAULT_DIVERGENCE_SUMMARY = ROOT / "artifacts" / "provenance" / "divergence_summary.json"
 
@@ -55,8 +60,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--trend-diagnostics", type=Path, default=DEFAULT_TREND_DIAGNOSTICS)
     parser.add_argument("--outlook", type=Path, default=DEFAULT_OUTLOOK)
     parser.add_argument("--table-dir", type=Path, default=DEFAULT_TABLE_DIR)
+    parser.add_argument("--figure-dir", type=Path, default=DEFAULT_FIGURE_DIR)
     parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY)
-    parser.add_argument("--divergence-summary-output", type=Path, default=DEFAULT_DIVERGENCE_SUMMARY)
+    parser.add_argument(
+        "--divergence-summary-output", type=Path, default=DEFAULT_DIVERGENCE_SUMMARY
+    )
     return parser.parse_args()
 
 
@@ -72,6 +80,7 @@ def run_eda(
     trend_diagnostics_path: Path,
     outlook_path: Path,
     table_dir: Path,
+    figure_dir: Path,
     summary_output: Path,
     divergence_summary_output: Path,
 ) -> dict[str, object]:
@@ -87,7 +96,16 @@ def run_eda(
     trend_diagnostics = pd.read_csv(trend_diagnostics_path)
     outlook = pd.read_csv(outlook_path)
 
-    coverage_tables = build_task011_coverage_tables(observations, lookup, dataset_profile)
+    baseline_observations = select_baseline_observations(observations)
+    profile_slug_column = "slug" if "slug" in dataset_profile.columns else "dataset_slug"
+    baseline_profile = dataset_profile[
+        dataset_profile[profile_slug_column].isin(baseline_observations["dataset_slug"].unique())
+    ]
+    coverage_tables = build_task011_coverage_tables(
+        baseline_observations,
+        lookup,
+        baseline_profile,
+    )
     coverage_by_geography = coverage_tables["eda_coverage_by_geography.csv"]
     rank_volatility = build_rank_volatility(index, indicator_trace)
     country_drivers = build_country_drivers(
@@ -127,11 +145,19 @@ def run_eda(
         rank_volatility=rank_volatility,
         monitoring_gap=monitoring_gap,
     )
-    output_tables = tables | divergence_tables
+    candidate_tables = build_candidate_tables(observations, geography_context)
+    output_tables = tables | divergence_tables | candidate_tables
 
     table_dir.mkdir(parents=True, exist_ok=True)
     for file_name, table in output_tables.items():
         table.to_csv(table_dir / file_name, index=False)
+
+    figure_paths = render_candidate_research_atlas(
+        observations,
+        geography_context,
+        candidate_tables["eda_candidate_story_signals.csv"],
+        figure_dir,
+    )
 
     summary = build_summary(
         config_path=config_path,
@@ -145,6 +171,7 @@ def run_eda(
         outlook_path=outlook_path,
         table_dir=table_dir,
         tables=output_tables,
+        figure_paths=figure_paths,
         summary_output=summary_output,
         divergence_summary_output=divergence_summary_output,
     )
@@ -192,6 +219,7 @@ def build_summary(
     outlook_path: Path,
     table_dir: Path,
     tables: dict[str, pd.DataFrame],
+    figure_paths: dict[str, Path],
     summary_output: Path,
     divergence_summary_output: Path,
 ) -> dict[str, object]:
@@ -211,6 +239,9 @@ def build_summary(
     divergence_fingerprints = tables.get("eda_evidence_fingerprints.csv")
     pairwise_jsd = tables.get("eda_pairwise_jsd.csv")
     similarity_neighbors = tables.get("eda_similarity_neighbors.csv")
+    candidate_coverage = tables["eda_candidate_dataset_coverage.csv"]
+    candidate_comparability = tables["eda_candidate_comparability.csv"]
+    candidate_signals = tables["eda_candidate_story_signals.csv"]
     divergence_section: dict[str, object] | None = None
     if (
         divergence_fingerprints is not None
@@ -228,17 +259,14 @@ def build_summary(
                 pairwise_jsd["similarity_band"].value_counts().sort_index().to_dict()
             ),
             "missingness_status_counts": (
-                divergence_fingerprints["missingness_status"]
-                .value_counts()
-                .sort_index()
-                .to_dict()
+                divergence_fingerprints["missingness_status"].value_counts().sort_index().to_dict()
             ),
         }
 
     return {
         "schema_version": 1,
         "pipeline_task": "TASK-009",
-        "status": "eda_foundation_ready",
+        "status": "candidate_visual_research_ready",
         "pipeline_tasks": [
             "TASK-009",
             "TASK-011",
@@ -249,6 +277,7 @@ def build_summary(
             "TASK-016",
             "TASK-017",
             "TASK-019",
+            "TASK-067",
         ],
         "config": relative_path(config_path),
         "inputs": {
@@ -261,9 +290,8 @@ def build_summary(
             "trend_diagnostics": relative_path(trend_diagnostics_path),
             "outlook": relative_path(outlook_path),
         },
-        "outputs": {
-            file_name: relative_path(table_dir / file_name) for file_name in sorted(tables)
-        }
+        "outputs": {file_name: relative_path(table_dir / file_name) for file_name in sorted(tables)}
+        | {file_name: relative_path(path) for file_name, path in sorted(figure_paths.items())}
         | {
             "summary": relative_path(summary_output),
             "divergence_summary": relative_path(divergence_summary_output),
@@ -307,20 +335,14 @@ def build_summary(
         "monitoring_gap": {
             "row_count": int(len(monitoring)),
             "story_count": int(monitoring["monitoring_story_flag"].sum()),
-            "priority_counts": (
-                monitoring["story_priority"].value_counts().sort_index().to_dict()
-            ),
+            "priority_counts": (monitoring["story_priority"].value_counts().sort_index().to_dict()),
             "missing_reporting_count": int(
                 (
-                    monitoring["monitoring_reporting_status"]
-                    == "missing_monitoring_dataset_row"
+                    monitoring["monitoring_reporting_status"] == "missing_monitoring_dataset_row"
                 ).sum()
             ),
             "reported_zero_count": int(
-                (
-                    monitoring["monitoring_reporting_status"]
-                    == "reported_zero_latest_count"
-                ).sum()
+                (monitoring["monitoring_reporting_status"] == "reported_zero_latest_count").sum()
             ),
         },
         "monitoring_story_count": int(monitoring["monitoring_story_flag"].sum()),
@@ -328,10 +350,7 @@ def build_summary(
             "row_count": int(len(spatial_typologies)),
             "subregion_count": int(subregion_comparisons["subregion"].nunique()),
             "typology_counts": (
-                spatial_typologies["spatial_typology"]
-                .value_counts()
-                .sort_index()
-                .to_dict()
+                spatial_typologies["spatial_typology"].value_counts().sort_index().to_dict()
             ),
             "top_mean_gap_subregion": str(
                 subregion_comparisons.sort_values(
@@ -365,6 +384,21 @@ def build_summary(
         ),
         "rank_volatility_max_range": int(rank_volatility["rank_range"].max()),
         "evidence_fingerprint_divergence": divergence_section,
+        "candidate_analysis": {
+            "dataset_count": int(candidate_coverage["dataset_slug"].nunique()),
+            "row_count": int(candidate_coverage["row_count"].sum()),
+            "figure_count": len(figure_paths),
+            "comparability_judgments": (
+                candidate_comparability["comparability_judgment"]
+                .value_counts()
+                .sort_index()
+                .to_dict()
+            ),
+            "story_signal_statuses": (
+                candidate_signals["status"].value_counts().sort_index().to_dict()
+            ),
+            "selected_story": None,
+        },
         "caveats": [
             "This is descriptive EDA, not causal inference.",
             "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -386,6 +420,12 @@ def build_summary(
                 "not lived vulnerability, policy need, or causal similarity."
             ),
             "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks.",
+            "Candidate raw magnitudes remain separate and are not summed into a score.",
+            "Missing direct-loss years are reporting gaps, not zero-loss years.",
+            (
+                "TASK-067 story auditions are provisional research boards; TASK-068 "
+                "selects or rejects them."
+            ),
         ],
     }
 
@@ -414,18 +454,18 @@ def main() -> int:
         trend_diagnostics_path=resolve_path(args.trend_diagnostics),
         outlook_path=resolve_path(args.outlook),
         table_dir=resolve_path(args.table_dir),
+        figure_dir=resolve_path(args.figure_dir),
         summary_output=resolve_path(args.summary_output),
         divergence_summary_output=resolve_path(args.divergence_summary_output),
     )
     print(
         f"Built EDA tables: outputs={len(summary['row_counts'])}, "
         f"geographies={summary['coverage']['geography_count']}, "
-        f"monitoring_story_count={summary['monitoring_story_count']}"
+        f"candidate_figures={summary['candidate_analysis']['figure_count']}"
     )
     print(f"Wrote summary: {relative_path(resolve_path(args.summary_output))}")
     print(
-        "Wrote divergence summary: "
-        f"{relative_path(resolve_path(args.divergence_summary_output))}"
+        f"Wrote divergence summary: {relative_path(resolve_path(args.divergence_summary_output))}"
     )
     return 0
 

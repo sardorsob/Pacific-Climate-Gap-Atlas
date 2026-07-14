@@ -6,7 +6,7 @@ This file records the EDA and GIS lanes that built the atlas evidence base and r
 
 ## Current Status
 
-Completed analysis lanes cover the original nine-dataset evidence base, and `TASK-065` has completed the six-candidate acquisition/profile gate. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The next analysis sequence is `TASK-066` processing, `TASK-067` comparability/story EDA, and `TASK-068` scientific/owner story selection. `TASK-069` updates the storyboard and implementation roadmap only after that gate.
+Completed analysis lanes cover the original nine-dataset evidence base. `TASK-065` completed the six-candidate acquisition/profile gate, `TASK-066` completed its five-candidate processing Builder pass, and `TASK-067` completed its comparability/story EDA Builder pass. TASK-066 and TASK-067 remain in owner review. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. `TASK-068` is the next scientific/owner story-selection gate; `TASK-069` updates the storyboard and implementation roadmap only after that gate.
 
 ## Principles
 
@@ -279,6 +279,8 @@ Story audition surface:
 Use reproducible static Matplotlib figures by default. Add Plotly only if linked interaction changes the analytical judgment, and do not add GeoPandas or imply polygon precision while scored geography remains centroid fallback. Each figure must show units, time basis, geography scope, source, and a nearby caveat; attractive but failed patterns belong in the story-signal table with rejection reasons.
 
 This task does not select a final narrative, write final scene copy, or add app layers.
+
+Builder result: all five datasets received a judgment; three tables, five analytical figures, and one three-audition contact sheet are reproducible from the EDA runner. Four hypotheses are supported, one weak, one contradicted, and two unavailable. Direct loss is restricted to reporting visibility, land-cover direction is withheld, and no candidate composite or winner was declared. Owner QA remains required.
 
 ### TASK-068: Scientific Story Selection Gate
 

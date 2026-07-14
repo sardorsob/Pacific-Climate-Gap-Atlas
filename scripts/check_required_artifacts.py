@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_PATHS = [
@@ -53,6 +52,15 @@ REQUIRED_PATHS = [
     "artifacts/tables/eda_evidence_fingerprints.csv",
     "artifacts/tables/eda_pairwise_jsd.csv",
     "artifacts/tables/eda_similarity_neighbors.csv",
+    "artifacts/tables/eda_candidate_dataset_coverage.csv",
+    "artifacts/tables/eda_candidate_comparability.csv",
+    "artifacts/tables/eda_candidate_story_signals.csv",
+    "artifacts/figures/eda_candidate_coverage_alignment.png",
+    "artifacts/figures/eda_candidate_distributions.png",
+    "artifacts/figures/eda_candidate_trends.png",
+    "artifacts/figures/eda_candidate_named_place_contrasts.png",
+    "artifacts/figures/eda_candidate_reporting_visibility.png",
+    "artifacts/figures/eda_candidate_story_auditions.png",
     "artifacts/provenance/eda_summary.json",
     "artifacts/provenance/divergence_summary.json",
     "tests/analysis/test_divergence.py",

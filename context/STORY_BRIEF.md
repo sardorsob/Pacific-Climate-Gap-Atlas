@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` completed acquisition; `TASK-066` processes the accepted evidence; and `TASK-067` builds a visual research atlas plus three rough evidence-board auditions before `TASK-068` chooses a story. No current scene, exemplar, title, index role, or research audition should be treated as the next implementation contract until that gate. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
+Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` completed acquisition, `TASK-066` completed the accepted-candidate processing Builder pass, and `TASK-067` completed the visual research atlas plus three rough evidence-board auditions. Both Builder passes remain in owner review. No current scene, exemplar, title, index role, or research audition should be treated as the next implementation contract until `TASK-068` selects, merges, or rejects the alternatives. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
 
 Source basis:
 
@@ -50,6 +50,14 @@ The next story must:
 - obtain owner approval in `TASK-068` before scene copy or app behavior changes.
 
 The current fullscreen stage, equal-presence marks, enlarged comparison, readable rank field, native scroll, accessibility behavior, and Explore handoff are reusable. Their existing claims and ordering are not protected from revision.
+
+TASK-067 leaves three evidence-board directions open for TASK-068:
+
+1. **Different clocks / reporting visibility** — temporal mismatch and sparse official reporting become the argument, anchored by only 39 direct-loss records across 12 geographies and 23.2% of possible geography-years. Risk: a metadata story may feel distant from lived conditions.
+2. **Service and energy cross-currents** — Papua New Guinea and Samoa show safely managed water rising while renewable-energy share falls, with each measure kept on its own axis. Risk: descriptive movement cannot be presented as climate or policy causality.
+3. **Profiles instead of a ladder** — named places change position across separate within-indicator views, contradicting one coherent progress rank. Risk: the profile matrix must never become another composite score.
+
+No direction is selected. Land-cover semantics, loss-per-capita comparison, and climate attribution remain unavailable or withheld, and the existing index-first story remains one more provisional alternative rather than the default winner.
 
 ## Narrative Decision
 

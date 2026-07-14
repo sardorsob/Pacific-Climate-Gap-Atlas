@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Python analysis pipeline for the Pacific Adaptation Gap Atlas."
 requires-python = ">=3.11"
 dependencies = [
+  "matplotlib>=3.10",
   "pandas>=2.2",
 ]
 

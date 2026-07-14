@@ -27,6 +27,15 @@ outputs:
   evidence_fingerprints: artifacts/tables/eda_evidence_fingerprints.csv
   pairwise_jsd: artifacts/tables/eda_pairwise_jsd.csv
   similarity_neighbors: artifacts/tables/eda_similarity_neighbors.csv
+  candidate_dataset_coverage: artifacts/tables/eda_candidate_dataset_coverage.csv
+  candidate_comparability: artifacts/tables/eda_candidate_comparability.csv
+  candidate_story_signals: artifacts/tables/eda_candidate_story_signals.csv
+  candidate_coverage_alignment_figure: artifacts/figures/eda_candidate_coverage_alignment.png
+  candidate_distributions_figure: artifacts/figures/eda_candidate_distributions.png
+  candidate_trends_figure: artifacts/figures/eda_candidate_trends.png
+  candidate_named_place_contrasts_figure: artifacts/figures/eda_candidate_named_place_contrasts.png
+  candidate_reporting_visibility_figure: artifacts/figures/eda_candidate_reporting_visibility.png
+  candidate_story_auditions_figure: artifacts/figures/eda_candidate_story_auditions.png
   summary: artifacts/provenance/eda_summary.json
   divergence_summary: artifacts/provenance/divergence_summary.json
 caveats:
@@ -43,3 +52,6 @@ caveats:
   - Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.
   - Evidence fingerprint divergence compares official-data profiles, not lived vulnerability or policy need.
   - JSD similarity is a selected-geography diagnostic, not a cluster model or new ranking.
+  - Candidate values are compared within indicators; raw magnitudes are never summed across measures.
+  - USD_MILLIONS direct-loss rows are converted to USD; missing loss years remain missing, not zero.
+  - Candidate figures are static research surfaces, not final scenes or app layers.

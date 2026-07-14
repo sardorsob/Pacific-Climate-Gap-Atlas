@@ -1550,7 +1550,7 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Phase: analysis
 - Title: Audit comparability and discover story signals in the expanded data
 - Depends on: TASK-066
-- Assigned agent: unassigned
+- Assigned agent: Codex Builder; owner QA
 - Contract refs: context/ANALYSIS_BACKLOG.md, configs/eda.yml
 - Data refs: data/processed/official_observations.csv, artifacts/tables, artifacts/figures
 - Scientific refs: context/DATA_CARD.md, context/ANALYSIS_BRIEF.md, context/ASSUMPTIONS.md
@@ -1563,11 +1563,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Each candidate dataset receives a comparability judgment; every figure is reproducible from reviewed rows and carries units, time basis, geography scope, source, and caveat; every proposed story signal names its supporting or disqualifying evidence; three meaningfully different auditions are shown without declaring a winner; no final narrative, new composite score, or app change is declared.
 - Verification commands: python scripts/run_eda.py --config configs/eda.yml; python -m unittest discover -s tests -t . -v; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; git diff --check
 - Manual QA: Inspect every figure at full size; trace the strongest and weakest candidate claims to raw/processed rows; verify comparable units, denominators, time windows, labels, and named places; confirm sparse trends or relationships switch to a more honest form; and confirm no pattern is promoted solely because it looks dramatic.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder pass analyzed all 2,403 accepted candidate rows and produced three compact evidence tables, five full-size analytical figures, and one three-audition contact sheet. Comparability review records four supported signals, one weak signal, one contradicted signal, and two unavailable hypotheses without selecting a winning story. Direct-loss evidence preserves 35 USD and 4 USD_MILLIONS rows with explicit conversion, reports only 39 of 168 expected place-years, and never converts missing reports to zero. Population is consistently labeled as a published projection/estimated series. Every audition now shows units, time basis, geography scope, overlap, and caveats; headline values are derived from reviewed rows and a perturbation regression proves they are not hardcoded. The established nine-source EDA lane remains exactly 14,007 rows, and all eight app-wired legacy coverage, driver, story, spatial, and divergence artifacts are byte-identical to TASK-066 commit `0bcbb88`. Two consecutive EDA runs produced identical SHA-256 hashes for all three candidate tables, six PNGs, and the EDA summary. Full-size visual inspection passed after separating trend endpoint labels. Focused tests passed 5/5, full Python passed 83/83, and Ruff, compileall, required-artifact, task-status, secret, contract, whitespace, and Semgrep source checks passed. Independent re-review found no remaining actionable issues; owner QA remains the final gate.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created to make story discovery an evidence product rather than an intuition-only rewrite. 2026-07-13: Owner approved a visual-research-atlas-first pass followed by three rough evidence-board auditions; the task remains pending behind TASK-066.
-- Status: pending
+- Attempt log: Created to make story discovery an evidence product rather than an intuition-only rewrite. 2026-07-13: Owner approved a visual-research-atlas-first pass followed by three rough evidence-board auditions. Builder started after the separate TASK-066 commit, locking a Matplotlib-only, within-indicator, no-app/no-story implementation with explicit loss-unit conversion and missing-year semantics. Initial independent review found that the baseline EDA filter could admit future candidates, two audition metrics were hardcoded, population projection semantics were implicit, the contact sheet needed clearer units/time/scope, and three trend labels collided. Focused RED/GREEN repairs replaced exclusion logic with the exact nine-pillar baseline allowlist, derived every displayed metric from rows, added a perturbation regression, carried projection semantics throughout, annotated each audition, and offset the endpoint labels. Re-review passed with no remaining findings, so Builder returned the task `in-progress -> in-review` for owner QA.
+- Status: in-review
 
 ## TASK-068
 - Phase: story-selection

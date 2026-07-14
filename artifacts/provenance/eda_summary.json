@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pipeline_task": "TASK-009",
-  "status": "eda_foundation_ready",
+  "status": "candidate_visual_research_ready",
   "pipeline_tasks": [
     "TASK-009",
     "TASK-011",
@@ -11,7 +11,8 @@
     "TASK-015",
     "TASK-016",
     "TASK-017",
-    "TASK-019"
+    "TASK-019",
+    "TASK-067"
   ],
   "config": "configs/eda.yml",
   "inputs": {
@@ -25,6 +26,9 @@
     "outlook": "artifacts/tables/adaptation_gap_outlook.csv"
   },
   "outputs": {
+    "eda_candidate_comparability.csv": "artifacts/tables/eda_candidate_comparability.csv",
+    "eda_candidate_dataset_coverage.csv": "artifacts/tables/eda_candidate_dataset_coverage.csv",
+    "eda_candidate_story_signals.csv": "artifacts/tables/eda_candidate_story_signals.csv",
     "eda_country_drivers.csv": "artifacts/tables/eda_country_drivers.csv",
     "eda_country_story_labels.csv": "artifacts/tables/eda_country_story_labels.csv",
     "eda_coverage_by_dataset.csv": "artifacts/tables/eda_coverage_by_dataset.csv",
@@ -42,10 +46,19 @@
     "eda_subregion_comparisons.csv": "artifacts/tables/eda_subregion_comparisons.csv",
     "eda_trend_profiles.csv": "artifacts/tables/eda_trend_profiles.csv",
     "index_sensitivity.csv": "artifacts/tables/index_sensitivity.csv",
+    "eda_candidate_coverage_alignment.png": "artifacts/figures/eda_candidate_coverage_alignment.png",
+    "eda_candidate_distributions.png": "artifacts/figures/eda_candidate_distributions.png",
+    "eda_candidate_named_place_contrasts.png": "artifacts/figures/eda_candidate_named_place_contrasts.png",
+    "eda_candidate_reporting_visibility.png": "artifacts/figures/eda_candidate_reporting_visibility.png",
+    "eda_candidate_story_auditions.png": "artifacts/figures/eda_candidate_story_auditions.png",
+    "eda_candidate_trends.png": "artifacts/figures/eda_candidate_trends.png",
     "summary": "artifacts/provenance/eda_summary.json",
     "divergence_summary": "artifacts/provenance/divergence_summary.json"
   },
   "row_counts": {
+    "eda_candidate_comparability.csv": 5,
+    "eda_candidate_dataset_coverage.csv": 5,
+    "eda_candidate_story_signals.csv": 8,
     "eda_country_drivers.csv": 22,
     "eda_country_story_labels.csv": 22,
     "eda_coverage_by_dataset.csv": 9,
@@ -66,8 +79,8 @@
   },
   "coverage": {
     "geography_count": 22,
-    "thin_coverage_count": 1,
-    "data_desert_count": 1
+    "thin_coverage_count": 0,
+    "data_desert_count": 0
   },
   "coverage_deep_dive": {
     "geography_count": 22,
@@ -166,6 +179,24 @@
       "profile_components_present": 14
     }
   },
+  "candidate_analysis": {
+    "dataset_count": 5,
+    "row_count": 2403,
+    "figure_count": 6,
+    "comparability_judgments": {
+      "comparable_with_latest_year_caution": 1,
+      "comparable_within_indicator": 2,
+      "direction_requires_source_review": 1,
+      "reporting_visibility_only": 1
+    },
+    "story_signal_statuses": {
+      "contradicted": 1,
+      "supported": 4,
+      "unavailable": 2,
+      "weak": 1
+    },
+    "selected_story": null
+  },
   "caveats": [
     "This is descriptive EDA, not causal inference.",
     "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -180,6 +211,9 @@
     "Outlook interpretation is stress-test display guidance, not forecasting.",
     "Missing monitoring rows are reporting gaps, not confirmed infrastructure absence.",
     "Evidence fingerprint divergence compares normalized official-data profiles, not lived vulnerability, policy need, or causal similarity.",
-    "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks."
+    "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks.",
+    "Candidate raw magnitudes remain separate and are not summed into a score.",
+    "Missing direct-loss years are reporting gaps, not zero-loss years.",
+    "TASK-067 story auditions are provisional research boards; TASK-068 selects or rejects them."
   ]
 }

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual system but has reopened the competition narrative. `TASK-065` completed the first data-first discovery gate: six official candidates were fetched and profiled, five were accepted for later processing, and aggregate crop yield was rejected after item-level inspection. `TASK-066` processes that evidence; `TASK-067` builds a static visual research atlas and three rough evidence-board story auditions; `TASK-068` selects the narrative; and `TASK-069` only then rewrites the roadmap. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no further story implementation or submission work should begin from the current storyboard. Competition deadline: August 31, 2026.
+The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual system but has reopened the competition narrative. `TASK-065` completed acquisition/profile review; `TASK-066` processed the five accepted candidates without changing the baseline index; and `TASK-067` built a static visual research atlas plus three rough evidence-board auditions without selecting one. TASK-066 and TASK-067 remain in owner review. `TASK-068` selects, merges, or rejects the narrative alternatives, and `TASK-069` only then rewrites the roadmap. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no further story implementation or submission work should begin from the current storyboard. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -25,7 +25,7 @@ The implemented thesis remains a functioning baseline, not the locked competitio
 | Research source folder | present | `research/` includes brief, official dataset inventory, past winners, and review board |
 | Workflow shell | done | all durable project Markdown lives under `context/` |
 | Dataset profile | done | `artifacts/tables/dataset_profile.csv` and `data/contracts/*.json` cover the original nine plus six processing-disabled official candidates |
-| Targeted dataset expansion | acquisition done | `TASK-065` accepted five candidates for `TASK-066`, rejected aggregate crop yield, and left all six outside current processing/index/app/story outputs |
+| Targeted dataset expansion | owner review | `TASK-066` processes five accepted candidates into research data while preserving the baseline index and public app; aggregate crop yield remains rejected |
 | Data science pipeline | done | `scripts/make_dataset.py` produces normalized observations, geography lookup, app summary, and provenance |
 | Adaptation Gap Index | done | `scripts/build_gap_index.py` produces geography scores plus indicator trace |
 | Outlook model | done | trend stress-test baseline is methodology-ready and app-optional |
@@ -52,7 +52,7 @@ The implemented thesis remains a functioning baseline, not the locked competitio
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 | Artistic redesign contract | owner review | `TASK-059`–`TASK-063` are done; `TASK-064` passed the QA Maker matrix and remains `in-review` for owner visual/accessibility acceptance |
-| Data-first narrative discovery | planned | `TASK-067` produces reproducible comparison tables, a five-figure static research atlas, and three rough evidence-board auditions; `TASK-068` selects one through scientific/owner review; `TASK-069` updates the storyboard and roadmap only after approval |
+| Data-first narrative discovery | owner review | `TASK-067` produced reproducible comparison tables, a five-figure static research atlas, and three non-selected evidence-board auditions; `TASK-068` selects, merges, or rejects them through scientific/owner review; `TASK-069` updates the storyboard and roadmap only after approval |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | needs-fix | `TASK-056` is accepted; `TASK-057` automated gates passed, but owner visual QA found opening-clarity and scene-scale failures now split into `TASK-058` through `TASK-064` |

@@ -50,3 +50,16 @@ Do not delete failed or rejected runs. Mark them as rejected and explain why.
 - Artifacts: `artifacts/tables/eda_evidence_fingerprints.csv`, `artifacts/tables/eda_pairwise_jsd.csv`, `artifacts/tables/eda_similarity_neighbors.csv`, `artifacts/provenance/divergence_summary.json`.
 - Decision: Accept as analysis-ready; app layer decision pending.
 - Reason: Outputs are bounded, traceable, and caveated enough for selected-geography comparison, but they should not become a leaderboard or shipped UI until app-data wiring and visual QA are done.
+
+## 2026-07-13__task-067-candidate-research-atlas
+- Task: TASK-067
+- Purpose: Audit the five accepted candidate datasets for comparability and test which story directions survive contact with the evidence.
+- Config: `configs/eda.yml`.
+- Data version: `data/processed/official_observations.csv` from TASK-066: 16,410 rows across 14 datasets, including 2,403 candidate rows.
+- Split: Not applicable; descriptive exploration and claim auditing, not prediction.
+- Method/model: Returned-row/structural coverage audit, explicit direct-loss unit normalization, latest-value distributions with year visibility, small-multiple trajectories, named-place within-indicator contrasts, a loss reporting raster, and three provisional evidence-board auditions. No imputation, smoothing, causal model, new composite, or cross-unit arithmetic.
+- Primary metric: Whether every candidate receives a defensible comparison judgment and every audition has a traceable claim chain plus visible rejection risk.
+- Secondary metrics: 5 candidate datasets, 22 total geographies, 39/168 direct-loss geography-years, latest-year spreads, within-indicator endpoint changes, and supported/weak/contradicted/unavailable hypothesis counts.
+- Artifacts: Three `eda_candidate_*.csv` tables, five analytical `eda_candidate_*.png` figures, one `eda_candidate_story_auditions.png` contact sheet, and refreshed `artifacts/provenance/eda_summary.json`.
+- Decision: Retain all three auditions for TASK-068 review; select no winner in TASK-067.
+- Reason: The data support different clocks/reporting visibility, service-versus-energy cross-currents, and profile-over-ladder arguments, but none yet carries the full final story without scientific and owner judgment. Land-cover direction remains unresolved, disaster-loss continuity/per-capita claims are unsupported, and climate causality is unavailable.

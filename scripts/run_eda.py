@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -29,6 +30,8 @@ from analysis.eda.divergence import (  # noqa: E402
 )
 from analysis.eda.drivers import build_country_drivers, build_country_story_labels  # noqa: E402
 from analysis.eda.indicator_forensics import build_indicator_forensics_tables  # noqa: E402
+from analysis.eda.regional_figures import render_regional_research_atlas  # noqa: E402
+from analysis.eda.regional_patterns import build_regional_tables  # noqa: E402
 from analysis.eda.sensitivity import build_rank_volatility, build_weight_sensitivity  # noqa: E402
 from analysis.eda.spatial_patterns import build_spatial_pattern_tables  # noqa: E402
 from analysis.eda.trends import build_outlook_interpretation, build_trend_profiles  # noqa: E402
@@ -46,6 +49,10 @@ DEFAULT_TABLE_DIR = ROOT / "artifacts" / "tables"
 DEFAULT_FIGURE_DIR = ROOT / "artifacts" / "figures"
 DEFAULT_SUMMARY = ROOT / "artifacts" / "provenance" / "eda_summary.json"
 DEFAULT_DIVERGENCE_SUMMARY = ROOT / "artifacts" / "provenance" / "divergence_summary.json"
+DEFAULT_GEOGRAPHIES = ROOT / "data" / "processed" / "app" / "geographies.json"
+DEFAULT_LAND_CONTEXT = ROOT / "data" / "processed" / "app" / "pacific_land_context.geojson"
+REGIONAL_RUN_ID = "2026-07-14__0000__task-068-regional-eda__678a645"
+DEFAULT_RUN_DIR = ROOT / "artifacts" / "logs" / "runs" / REGIONAL_RUN_ID
 
 
 def parse_args() -> argparse.Namespace:
@@ -59,12 +66,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--indicator-trace", type=Path, default=DEFAULT_INDICATOR_TRACE)
     parser.add_argument("--trend-diagnostics", type=Path, default=DEFAULT_TREND_DIAGNOSTICS)
     parser.add_argument("--outlook", type=Path, default=DEFAULT_OUTLOOK)
+    parser.add_argument("--geographies", type=Path, default=DEFAULT_GEOGRAPHIES)
+    parser.add_argument("--land-context", type=Path, default=DEFAULT_LAND_CONTEXT)
     parser.add_argument("--table-dir", type=Path, default=DEFAULT_TABLE_DIR)
     parser.add_argument("--figure-dir", type=Path, default=DEFAULT_FIGURE_DIR)
     parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY)
     parser.add_argument(
         "--divergence-summary-output", type=Path, default=DEFAULT_DIVERGENCE_SUMMARY
     )
+    parser.add_argument("--run-dir", type=Path, default=DEFAULT_RUN_DIR)
     return parser.parse_args()
 
 
@@ -79,10 +89,13 @@ def run_eda(
     indicator_trace_path: Path,
     trend_diagnostics_path: Path,
     outlook_path: Path,
+    geographies_path: Path,
+    land_context_path: Path,
     table_dir: Path,
     figure_dir: Path,
     summary_output: Path,
     divergence_summary_output: Path,
+    run_dir: Path,
 ) -> dict[str, object]:
     if not config_path.exists():
         raise FileNotFoundError(f"EDA config not found: {config_path}")
@@ -95,6 +108,8 @@ def run_eda(
     indicator_trace = pd.read_csv(indicator_trace_path)
     trend_diagnostics = pd.read_csv(trend_diagnostics_path)
     outlook = pd.read_csv(outlook_path)
+    geographies = json.loads(geographies_path.read_text(encoding="utf-8"))
+    land_context = json.loads(land_context_path.read_text(encoding="utf-8"))
 
     baseline_observations = select_baseline_observations(observations)
     profile_slug_column = "slug" if "slug" in dataset_profile.columns else "dataset_slug"
@@ -146,18 +161,32 @@ def run_eda(
         monitoring_gap=monitoring_gap,
     )
     candidate_tables = build_candidate_tables(observations, geography_context)
-    output_tables = tables | divergence_tables | candidate_tables
+    regional_tables = build_regional_tables(
+        observations,
+        index,
+        indicator_trace,
+        coverage_by_geography,
+        monitoring_gap,
+    )
+    output_tables = tables | divergence_tables | candidate_tables | regional_tables
 
     table_dir.mkdir(parents=True, exist_ok=True)
     for file_name, table in output_tables.items():
         table.to_csv(table_dir / file_name, index=False)
 
-    figure_paths = render_candidate_research_atlas(
+    candidate_figure_paths = render_candidate_research_atlas(
         observations,
         geography_context,
         candidate_tables["eda_candidate_story_signals.csv"],
         figure_dir,
     )
+    regional_figure_paths = render_regional_research_atlas(
+        regional_tables,
+        geographies,
+        land_context,
+        figure_dir,
+    )
+    figure_paths = candidate_figure_paths | regional_figure_paths
 
     summary = build_summary(
         config_path=config_path,
@@ -169,11 +198,14 @@ def run_eda(
         indicator_trace_path=indicator_trace_path,
         trend_diagnostics_path=trend_diagnostics_path,
         outlook_path=outlook_path,
+        geographies_path=geographies_path,
+        land_context_path=land_context_path,
         table_dir=table_dir,
         tables=output_tables,
         figure_paths=figure_paths,
         summary_output=summary_output,
         divergence_summary_output=divergence_summary_output,
+        run_dir=run_dir,
     )
     summary_output.parent.mkdir(parents=True, exist_ok=True)
     summary_output.write_text(
@@ -203,6 +235,54 @@ def run_eda(
         json.dumps(divergence_summary, indent=2, ensure_ascii=True) + "\n",
         encoding="utf-8",
     )
+    cluster_stability = regional_tables["eda_regional_cluster_stability.csv"]
+    crosscurrents = regional_tables["eda_regional_crosscurrents.csv"]
+    relationships = regional_tables["eda_regional_pairwise_relationships.csv"]
+    write_run_bundle(
+        run_dir,
+        config_path=config_path,
+        input_paths={
+            "dataset_profile": dataset_profile_path,
+            "geography_context": geography_context_path,
+            "geography_lookup": lookup_path,
+            "observations": observations_path,
+            "gap_index": index_path,
+            "indicator_trace": indicator_trace_path,
+            "trend_diagnostics": trend_diagnostics_path,
+            "outlook": outlook_path,
+            "geographies": geographies_path,
+            "land_context": land_context_path,
+        },
+        output_paths={
+            **{name: table_dir / name for name in sorted(regional_tables)},
+            **regional_figure_paths,
+            "eda_summary.json": summary_output,
+        },
+        metrics={
+            "geography_count": int(index["geo_code"].nunique()),
+            "water_renewable_overlap_count": int(crosscurrents["complete_overlap"].sum()),
+            "crosscurrent_quadrant_counts": (
+                crosscurrents.loc[crosscurrents["complete_overlap"], "quadrant"]
+                .value_counts()
+                .sort_index()
+                .to_dict()
+            ),
+            "relationship_status_counts": (
+                relationships["relationship_status"].value_counts().sort_index().to_dict()
+            ),
+            "minimum_leave_one_spearman": float(
+                cluster_stability["minimum_leave_one_spearman"].iloc[0]
+            ),
+            "overall_ordering_decision": str(
+                cluster_stability["overall_ordering_decision"].iloc[0]
+            ),
+            "public_grouping_decision": str(
+                cluster_stability["public_grouping_decision"].iloc[0]
+            ),
+            "regional_table_count": len(regional_tables),
+            "regional_figure_count": len(regional_figure_paths),
+        },
+    )
     return summary
 
 
@@ -217,11 +297,14 @@ def build_summary(
     indicator_trace_path: Path,
     trend_diagnostics_path: Path,
     outlook_path: Path,
+    geographies_path: Path,
+    land_context_path: Path,
     table_dir: Path,
     tables: dict[str, pd.DataFrame],
     figure_paths: dict[str, Path],
     summary_output: Path,
     divergence_summary_output: Path,
+    run_dir: Path,
 ) -> dict[str, object]:
     coverage = tables["eda_data_coverage.csv"]
     coverage_by_geography = tables["eda_coverage_by_geography.csv"]
@@ -266,7 +349,7 @@ def build_summary(
     return {
         "schema_version": 1,
         "pipeline_task": "TASK-009",
-        "status": "candidate_visual_research_ready",
+        "status": "regional_visual_research_ready",
         "pipeline_tasks": [
             "TASK-009",
             "TASK-011",
@@ -278,6 +361,7 @@ def build_summary(
             "TASK-017",
             "TASK-019",
             "TASK-067",
+            "TASK-068",
         ],
         "config": relative_path(config_path),
         "inputs": {
@@ -289,12 +373,15 @@ def build_summary(
             "indicator_trace": relative_path(indicator_trace_path),
             "trend_diagnostics": relative_path(trend_diagnostics_path),
             "outlook": relative_path(outlook_path),
+            "geographies": relative_path(geographies_path),
+            "land_context": relative_path(land_context_path),
         },
         "outputs": {file_name: relative_path(table_dir / file_name) for file_name in sorted(tables)}
         | {file_name: relative_path(path) for file_name, path in sorted(figure_paths.items())}
         | {
             "summary": relative_path(summary_output),
             "divergence_summary": relative_path(divergence_summary_output),
+            "regional_run_bundle": relative_path(run_dir),
         },
         "row_counts": {file_name: int(len(table)) for file_name, table in sorted(tables.items())},
         "coverage": {
@@ -387,7 +474,7 @@ def build_summary(
         "candidate_analysis": {
             "dataset_count": int(candidate_coverage["dataset_slug"].nunique()),
             "row_count": int(candidate_coverage["row_count"].sum()),
-            "figure_count": len(figure_paths),
+            "figure_count": sum(name.startswith("eda_candidate_") for name in figure_paths),
             "comparability_judgments": (
                 candidate_comparability["comparability_judgment"]
                 .value_counts()
@@ -399,6 +486,7 @@ def build_summary(
             ),
             "selected_story": None,
         },
+        "regional_analysis": _regional_summary(tables, figure_paths, run_dir),
         "caveats": [
             "This is descriptive EDA, not causal inference.",
             "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -423,11 +511,141 @@ def build_summary(
             "Candidate raw magnitudes remain separate and are not summed into a score.",
             "Missing direct-loss years are reporting gaps, not zero-loss years.",
             (
-                "TASK-067 story auditions are provisional research boards; TASK-068 "
-                "selects or rejects them."
+                "TASK-067 and TASK-068 research plates are decision inputs; TASK-069 "
+                "selects, revises, or rejects the regional story."
             ),
+            "Condition heatmap percentiles are display/order only and are never averaged.",
+            "Condition missingness is not imputed; absence is a value only in visibility views.",
+            "Regional clustering is exploratory seriation only and emits no public groups.",
+            "Regional maps use equal-presence centroids and generalized land context only.",
         ],
     }
+
+
+def _regional_summary(
+    tables: dict[str, pd.DataFrame], figure_paths: dict[str, Path], run_dir: Path
+) -> dict[str, object]:
+    matrix = tables["eda_regional_feature_matrix.csv"]
+    crosscurrents = tables["eda_regional_crosscurrents.csv"]
+    relationships = tables["eda_regional_pairwise_relationships.csv"]
+    stability = tables["eda_regional_cluster_stability.csv"]
+    condition = matrix[matrix["lane"].eq("measured_condition")]
+    visibility = matrix[matrix["lane"].eq("evidence_visibility")]
+    return {
+        "geography_count": int(matrix["geo_code"].nunique()),
+        "condition_feature_count": int(condition["feature_id"].nunique()),
+        "condition_missing_cell_count": int((~condition["present"]).sum()),
+        "visibility_feature_count": int(visibility["feature_id"].nunique()),
+        "water_renewable_overlap_count": int(crosscurrents["complete_overlap"].sum()),
+        "crosscurrent_quadrant_counts": (
+            crosscurrents.loc[crosscurrents["complete_overlap"], "quadrant"]
+            .value_counts()
+            .sort_index()
+            .to_dict()
+        ),
+        "relationship_count": int(len(relationships)),
+        "relationship_status_counts": (
+            relationships["relationship_status"].value_counts().sort_index().to_dict()
+        ),
+        "minimum_leave_one_spearman": float(stability["minimum_leave_one_spearman"].iloc[0]),
+        "overall_ordering_decision": str(stability["overall_ordering_decision"].iloc[0]),
+        "public_grouping_decision": str(stability["public_grouping_decision"].iloc[0]),
+        "figure_count": sum(name.startswith("eda_regional_") for name in figure_paths),
+        "run_bundle": relative_path(run_dir),
+        "selected_story": None,
+    }
+
+
+def write_run_bundle(
+    run_dir: Path,
+    *,
+    config_path: Path,
+    input_paths: dict[str, Path],
+    output_paths: dict[str, Path],
+    metrics: dict[str, object],
+) -> dict[str, Path]:
+    """Write the deterministic seven-file TASK-068 research run bundle."""
+
+    run_dir.mkdir(parents=True, exist_ok=True)
+    paths = {
+        name: run_dir / name
+        for name in (
+            "meta.json",
+            "config.yaml",
+            "seeds.json",
+            "inputs.json",
+            "outputs.json",
+            "metrics.json",
+            "notes.md",
+        )
+    }
+    paths["config.yaml"].write_bytes(config_path.read_bytes())
+    _write_json(
+        paths["meta.json"],
+        {
+            "schema_version": 1,
+            "run_id": run_dir.name,
+            "task": "TASK-068",
+            "base_git_shortsha": "678a645",
+            "purpose": "Regional cross-current and evidence-visibility EDA",
+            "status": "research_artifacts_built_for_review",
+            "bundle_file_count": 7,
+        },
+    )
+    _write_json(
+        paths["seeds.json"],
+        {
+            "random_seed": None,
+            "randomized_methods": [],
+            "deterministic_methods": [
+                "stable mergesort ordering",
+                "average-linkage hierarchical seriation",
+                "pairwise shared-feature RMS distance without imputation",
+            ],
+        },
+    )
+    _write_json(paths["inputs.json"], _file_manifest(input_paths))
+    _write_json(paths["outputs.json"], _file_manifest(output_paths))
+    _write_json(paths["metrics.json"], metrics)
+    paths["notes.md"].write_text(
+        "# TASK-068 regional EDA run notes\n\n"
+        "This deterministic bundle records descriptive research outputs, not a final story, "
+        "causal analysis, preparedness assessment, public cluster model, or app-data change.\n\n"
+        "- Condition values remain missing where no reviewed value exists; no imputation is used.\n"
+        "- Evidence absence is encoded only in the separately constructed visibility lane.\n"
+        "- Within-indicator percentiles support heatmap display and ordering only; they are not "
+        "averaged into a score.\n"
+        "- Direct loss is reporting visibility only; land-cover direction is withheld; population "
+        "is published projection/estimate context.\n"
+        "- Monitoring, power, and fisheries fields are partial proxies, not complete preparedness "
+        "or readiness measures.\n"
+        "- Four dependency-warned relationships include direct and transitive score lineage; "
+        "none is independent confirmation.\n"
+        "- Hierarchical ordering is exploratory seriation; public grouping is rejected.\n"
+        "- Maps use equal-presence centroids and generalized Natural Earth land context only.\n",
+        encoding="utf-8",
+    )
+    return paths
+
+
+def _file_manifest(paths: dict[str, Path]) -> dict[str, object]:
+    return {
+        "files": {
+            name: {
+                "path": relative_path(path),
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "bytes": path.stat().st_size,
+            }
+            for name, path in sorted(paths.items())
+        }
+    }
+
+
+def _write_json(path: Path, payload: object) -> None:
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=True) + "\n",
+        encoding="utf-8",
+    )
 
 
 def relative_path(path: Path) -> str:
@@ -453,20 +671,24 @@ def main() -> int:
         indicator_trace_path=resolve_path(args.indicator_trace),
         trend_diagnostics_path=resolve_path(args.trend_diagnostics),
         outlook_path=resolve_path(args.outlook),
+        geographies_path=resolve_path(args.geographies),
+        land_context_path=resolve_path(args.land_context),
         table_dir=resolve_path(args.table_dir),
         figure_dir=resolve_path(args.figure_dir),
         summary_output=resolve_path(args.summary_output),
         divergence_summary_output=resolve_path(args.divergence_summary_output),
+        run_dir=resolve_path(args.run_dir),
     )
     print(
         f"Built EDA tables: outputs={len(summary['row_counts'])}, "
         f"geographies={summary['coverage']['geography_count']}, "
-        f"candidate_figures={summary['candidate_analysis']['figure_count']}"
+        f"regional_figures={summary['regional_analysis']['figure_count']}"
     )
     print(f"Wrote summary: {relative_path(resolve_path(args.summary_output))}")
     print(
         f"Wrote divergence summary: {relative_path(resolve_path(args.divergence_summary_output))}"
     )
+    print(f"Wrote regional run bundle: {relative_path(resolve_path(args.run_dir))}")
     return 0
 
 

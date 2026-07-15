@@ -1,0 +1,64 @@
+{
+  "files": {
+    "eda_regional_cluster_stability.csv": {
+      "bytes": 8059,
+      "path": "artifacts/tables/eda_regional_cluster_stability.csv",
+      "sha256": "b3ce69bf187c66d56b0e3f1b47e8f8c3666f36a007061e956b851753c665cf28"
+    },
+    "eda_regional_condition_heatmap.png": {
+      "bytes": 315712,
+      "path": "artifacts/figures/eda_regional_condition_heatmap.png",
+      "sha256": "bfeee58c16eb6eb4710167dcd23e312b32f988089461b5d8638bb29367dfda1f"
+    },
+    "eda_regional_crosscurrents.csv": {
+      "bytes": 7250,
+      "path": "artifacts/tables/eda_regional_crosscurrents.csv",
+      "sha256": "a5f598f0dc457c73e5f95ea1b62ed1b1a936a829b1ea5b1106c7b5d5453ab5a1"
+    },
+    "eda_regional_crosscurrents.png": {
+      "bytes": 182088,
+      "path": "artifacts/figures/eda_regional_crosscurrents.png",
+      "sha256": "eaf6f98f6c272c64170e252df77f94f11222590b1681dd1eb84d4ff36cf29d37"
+    },
+    "eda_regional_distribution_summary.csv": {
+      "bytes": 6718,
+      "path": "artifacts/tables/eda_regional_distribution_summary.csv",
+      "sha256": "5cb63f0432e99c9e654217602ae4417a940aa21a2e3592f57589b834de111243"
+    },
+    "eda_regional_distributions.png": {
+      "bytes": 276121,
+      "path": "artifacts/figures/eda_regional_distributions.png",
+      "sha256": "a4bb964bda097b9844c7d3df43ebf55678f8ff6e6de868a2df2ef7a6f608bb78"
+    },
+    "eda_regional_feature_matrix.csv": {
+      "bytes": 308844,
+      "path": "artifacts/tables/eda_regional_feature_matrix.csv",
+      "sha256": "3edec5dc1ef31f09050a5b481475374589b7d6742f2a9d94103b3caa4735ffa5"
+    },
+    "eda_regional_maps.png": {
+      "bytes": 448740,
+      "path": "artifacts/figures/eda_regional_maps.png",
+      "sha256": "9597321e6060119cba61de3ca16c3d48cccbd681904bc374b6df5cab30605811"
+    },
+    "eda_regional_pairwise_relationships.csv": {
+      "bytes": 25829,
+      "path": "artifacts/tables/eda_regional_pairwise_relationships.csv",
+      "sha256": "c07726be54c7ad2c69491f3100a72677f778fd527dc929c4873b2bc2a79dbc14"
+    },
+    "eda_regional_relationships.png": {
+      "bytes": 421623,
+      "path": "artifacts/figures/eda_regional_relationships.png",
+      "sha256": "99fc1d047c332cb00a607521249dee3115245463bd35aec482a97193c799984d"
+    },
+    "eda_regional_visibility_heatmap.png": {
+      "bytes": 323319,
+      "path": "artifacts/figures/eda_regional_visibility_heatmap.png",
+      "sha256": "d54a4df1ab01a0c650c8433c4f4af858b84798c1a426982c73d1fd2e797fec53"
+    },
+    "eda_summary.json": {
+      "bytes": 11293,
+      "path": "artifacts/provenance/eda_summary.json",
+      "sha256": "fbe61a0f3aca5dba5457deac0fa5a4bab083df39301dbf8a87a78c641f76900a"
+    }
+  }
+}

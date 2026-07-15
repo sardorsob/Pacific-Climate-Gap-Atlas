@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner reopened the final competition story, approved a data-first expansion, and accepted the `TASK-066` processing plus `TASK-067` candidate research passes. The owner also approved a regional two-act working direction—regional cross-currents followed by unequal evidence visibility, then release into the existing explorer—but requested deeper complete-region EDA before final selection. `TASK-068` now owns that test. No final story is selected until `TASK-069`.
+The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner reopened the final competition story, approved a data-first expansion, and accepted the `TASK-066` processing plus `TASK-067` candidate research passes. `TASK-068` has now completed the deeper complete-region EDA for the owner-approved regional two-act working direction—regional cross-currents followed by unequal evidence visibility, then release into the existing explorer. The artifacts support continued review of that direction, but do not select a final story; `TASK-069` owns that decision.
 
 ## Current EDA Outputs
 
@@ -34,14 +34,26 @@ The runner writes:
 - `artifacts/tables/eda_candidate_dataset_coverage.csv`
 - `artifacts/tables/eda_candidate_comparability.csv`
 - `artifacts/tables/eda_candidate_story_signals.csv`
+- `artifacts/tables/eda_regional_feature_matrix.csv`
+- `artifacts/tables/eda_regional_distribution_summary.csv`
+- `artifacts/tables/eda_regional_crosscurrents.csv`
+- `artifacts/tables/eda_regional_pairwise_relationships.csv`
+- `artifacts/tables/eda_regional_cluster_stability.csv`
 - `artifacts/figures/eda_candidate_coverage_alignment.png`
 - `artifacts/figures/eda_candidate_distributions.png`
 - `artifacts/figures/eda_candidate_trends.png`
 - `artifacts/figures/eda_candidate_named_place_contrasts.png`
 - `artifacts/figures/eda_candidate_reporting_visibility.png`
 - `artifacts/figures/eda_candidate_story_auditions.png`
+- `artifacts/figures/eda_regional_distributions.png`
+- `artifacts/figures/eda_regional_crosscurrents.png`
+- `artifacts/figures/eda_regional_condition_heatmap.png`
+- `artifacts/figures/eda_regional_visibility_heatmap.png`
+- `artifacts/figures/eda_regional_relationships.png`
+- `artifacts/figures/eda_regional_maps.png`
 - `artifacts/provenance/eda_summary.json`
 - `artifacts/provenance/divergence_summary.json`
+- `artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645/`
 
 ## Early Signals
 
@@ -68,13 +80,14 @@ The runner writes:
 - A single candidate progress ladder is contradicted. Latest water and renewable within-indicator ranks correlate -0.43, raw magnitudes have different meanings, and the candidate set supplies neither population-size denominators for loss-per-capita nor a causal identification design.
 - The owner selected a regional synthesis as the working hypothesis for `TASK-068`: cross-currents supply the concrete first act, unequal evidence visibility supplies the second act, and the existing island-by-island explorer remains the coda. This is not yet a final claim chain or app contract.
 
-## TASK-068 Regional EDA Questions
+## TASK-068 Regional EDA Findings
 
-- Are Papua New Guinea and Samoa illustrative of a wider water/renewable cross-current, or are they visually attractive exceptions? The current 19-place overlap has seven water-up/renewable-down, six both-up, three both-down, and three water-down/renewable-up trajectories; TASK-068 must reproduce and contextualize that complete distribution in tracked artifacts.
-- Which relationships survive pairwise overlap, year-basis, and dependency review? Monitoring versus capacity is circular when monitoring already contributes to the derived capacity score and must be flagged rather than promoted as confirmation.
-- Does a measured-condition heatmap retain a useful ordering under leave-one-indicator sensitivity? If not, the order remains a research convenience and no groups are named.
-- Does an independently built visibility heatmap reveal reporting patterns without allowing missingness to define measured-condition similarity?
-- Does geography materially change the interpretation? Static research maps use the existing equal-presence centroids and Natural Earth visual context only; they do not imply reviewed island boundaries or population-weighted area.
+- The all-place water/renewable cross-current is real as a descriptive distribution, not as one uniform regional trajectory. Among the 19 geographies with both endpoint changes, seven are water-up/renewable-down, six both-up, three both-down, and three water-down/renewable-up. Papua New Guinea and Samoa are therefore strong examples of the largest quadrant, not the whole Pacific.
+- The feature matrix keeps 22 geographies across 13 measured-condition features and 14 independently constructed evidence-visibility features. It preserves 21 missing condition cells and 31 absent visibility cells without imputation, retains raw values beside within-indicator display percentiles, and records unit, year, denominator, source-row hash, source, and caveat.
+- Pairwise diagnostics report 36 relationships: 32 descriptive and four with direct or transitive derived-score dependency warnings. Adaptation gap versus pressure is rho 0.2490 at n=22, gap versus capacity is rho -0.7414 at n=22, gap versus latest monitoring count is rho -0.7927 at n=18, and capacity versus latest monitoring count is rho 0.8469 at n=18. These are not independent confirmations: monitoring feeds capacity, which in turn feeds the gap score.
+- Measured-condition ordering is not stable enough to name regional groups. Leave-one-feature position correlations fall to -0.6962 with a maximum 20-place shift, so the heatmap order remains an exploratory seriation and public grouping is explicitly rejected. Evidence visibility has its own independent ordering and cannot define measured-condition similarity.
+- The six regional plates retain all 22 geographies or explicitly mark missingness, disclose differing time bases and denominators, and use equal-size centroid marks over quiet Natural Earth context. They are research surfaces, not reviewed boundaries, population-weighted maps, or final scenes.
+- `selected_story` remains null. TASK-068 supplies decision evidence for `TASK-069`; it does not approve the two-act working direction, change the title/index/default layer, or modify the app.
 
 ## Caveats
 
@@ -91,12 +104,12 @@ The runner writes:
 - Driver labels are useful for exploration and app copy drafts, not final scientific claims.
 - JSD compares normalized evidence profiles. It does not explain causality, lived experience, full adaptation readiness, vulnerability, or policy need. Sparse or missing data can create misleading similarity and must stay visible. KL is not required for public UI interpretation.
 - Candidate comparisons stay within indicators. Their raw values are never summed, averaged across measures, or added to the Adaptation Gap Index.
-- The TASK-067 figures are research surfaces, not final publication scenes. Their headlines, illustrative place labels, and visual forms remain subject to complete-region testing in TASK-068 and final owner/scientific review in TASK-069.
+- The TASK-067 and TASK-068 figures are research surfaces, not final publication scenes. Their headlines, illustrative place labels, and visual forms remain subject to final owner/scientific review in TASK-069.
 
 ## Next Priorities
 
-1. Run `TASK-068` as an artifact-first complete-region audit: distributions, all-place water/renewable changes, separate condition/visibility heatmaps, pairwise relationships with overlap/dependency flags, cluster sensitivity, and centroid-map small multiples.
-2. Keep measured-condition ordering separate from evidence-visibility ordering; do not impute, name preparedness clusters, or interpret coverage as outcomes.
-3. In `TASK-069`, accept, revise, or reject the regional two-act working direction using the TASK-067 and TASK-068 evidence together.
+1. In `TASK-069`, accept, revise, or reject the regional two-act working direction using the TASK-067 and TASK-068 evidence together.
+2. Keep the complete cross-current distribution visible and reject any narrative that turns the largest seven-place quadrant into a single Pacific trajectory.
+3. Preserve the separation of measured condition and evidence visibility; do not publish the unstable heatmap order as clusters or describe coverage/monitoring as preparedness.
 4. Do not rewrite the app, title, index prominence, or storyboard until the owner selects a narrative in `TASK-069`; `TASK-071` owns the later roadmap.
 5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.

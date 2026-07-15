@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pipeline_task": "TASK-009",
-  "status": "candidate_visual_research_ready",
+  "status": "regional_visual_research_ready",
   "pipeline_tasks": [
     "TASK-009",
     "TASK-011",
@@ -12,7 +12,8 @@
     "TASK-016",
     "TASK-017",
     "TASK-019",
-    "TASK-067"
+    "TASK-067",
+    "TASK-068"
   ],
   "config": "configs/eda.yml",
   "inputs": {
@@ -23,7 +24,9 @@
     "gap_index": "artifacts/tables/adaptation_gap_index.csv",
     "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
     "trend_diagnostics": "artifacts/tables/climate_trend_diagnostics.csv",
-    "outlook": "artifacts/tables/adaptation_gap_outlook.csv"
+    "outlook": "artifacts/tables/adaptation_gap_outlook.csv",
+    "geographies": "data/processed/app/geographies.json",
+    "land_context": "data/processed/app/pacific_land_context.geojson"
   },
   "outputs": {
     "eda_candidate_comparability.csv": "artifacts/tables/eda_candidate_comparability.csv",
@@ -41,6 +44,11 @@
     "eda_outlook_interpretation.csv": "artifacts/tables/eda_outlook_interpretation.csv",
     "eda_pairwise_jsd.csv": "artifacts/tables/eda_pairwise_jsd.csv",
     "eda_rank_volatility.csv": "artifacts/tables/eda_rank_volatility.csv",
+    "eda_regional_cluster_stability.csv": "artifacts/tables/eda_regional_cluster_stability.csv",
+    "eda_regional_crosscurrents.csv": "artifacts/tables/eda_regional_crosscurrents.csv",
+    "eda_regional_distribution_summary.csv": "artifacts/tables/eda_regional_distribution_summary.csv",
+    "eda_regional_feature_matrix.csv": "artifacts/tables/eda_regional_feature_matrix.csv",
+    "eda_regional_pairwise_relationships.csv": "artifacts/tables/eda_regional_pairwise_relationships.csv",
     "eda_similarity_neighbors.csv": "artifacts/tables/eda_similarity_neighbors.csv",
     "eda_spatial_typologies.csv": "artifacts/tables/eda_spatial_typologies.csv",
     "eda_subregion_comparisons.csv": "artifacts/tables/eda_subregion_comparisons.csv",
@@ -52,8 +60,15 @@
     "eda_candidate_reporting_visibility.png": "artifacts/figures/eda_candidate_reporting_visibility.png",
     "eda_candidate_story_auditions.png": "artifacts/figures/eda_candidate_story_auditions.png",
     "eda_candidate_trends.png": "artifacts/figures/eda_candidate_trends.png",
+    "eda_regional_condition_heatmap.png": "artifacts/figures/eda_regional_condition_heatmap.png",
+    "eda_regional_crosscurrents.png": "artifacts/figures/eda_regional_crosscurrents.png",
+    "eda_regional_distributions.png": "artifacts/figures/eda_regional_distributions.png",
+    "eda_regional_maps.png": "artifacts/figures/eda_regional_maps.png",
+    "eda_regional_relationships.png": "artifacts/figures/eda_regional_relationships.png",
+    "eda_regional_visibility_heatmap.png": "artifacts/figures/eda_regional_visibility_heatmap.png",
     "summary": "artifacts/provenance/eda_summary.json",
-    "divergence_summary": "artifacts/provenance/divergence_summary.json"
+    "divergence_summary": "artifacts/provenance/divergence_summary.json",
+    "regional_run_bundle": "artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645"
   },
   "row_counts": {
     "eda_candidate_comparability.csv": 5,
@@ -71,6 +86,11 @@
     "eda_outlook_interpretation.csv": 88,
     "eda_pairwise_jsd.csv": 231,
     "eda_rank_volatility.csv": 22,
+    "eda_regional_cluster_stability.csv": 14,
+    "eda_regional_crosscurrents.csv": 22,
+    "eda_regional_distribution_summary.csv": 13,
+    "eda_regional_feature_matrix.csv": 594,
+    "eda_regional_pairwise_relationships.csv": 36,
     "eda_similarity_neighbors.csv": 66,
     "eda_spatial_typologies.csv": 22,
     "eda_subregion_comparisons.csv": 3,
@@ -197,6 +217,30 @@
     },
     "selected_story": null
   },
+  "regional_analysis": {
+    "geography_count": 22,
+    "condition_feature_count": 13,
+    "condition_missing_cell_count": 21,
+    "visibility_feature_count": 14,
+    "water_renewable_overlap_count": 19,
+    "crosscurrent_quadrant_counts": {
+      "both_down": 3,
+      "both_up": 6,
+      "water_down_renewable_up": 3,
+      "water_up_renewable_down": 7
+    },
+    "relationship_count": 36,
+    "relationship_status_counts": {
+      "reported_descriptive": 32,
+      "reported_with_dependency_warning": 4
+    },
+    "minimum_leave_one_spearman": -0.6962,
+    "overall_ordering_decision": "reject_stable_regional_structure",
+    "public_grouping_decision": "reject_public_grouping",
+    "figure_count": 6,
+    "run_bundle": "artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645",
+    "selected_story": null
+  },
   "caveats": [
     "This is descriptive EDA, not causal inference.",
     "Current GIS geometry is centroid fallback until a boundary source is added.",
@@ -214,6 +258,10 @@
     "JSD nearest neighbors are selected-geography diagnostics, not clusters or ranks.",
     "Candidate raw magnitudes remain separate and are not summed into a score.",
     "Missing direct-loss years are reporting gaps, not zero-loss years.",
-    "TASK-067 story auditions are provisional research boards; TASK-068 selects or rejects them."
+    "TASK-067 and TASK-068 research plates are decision inputs; TASK-069 selects, revises, or rejects the regional story.",
+    "Condition heatmap percentiles are display/order only and are never averaged.",
+    "Condition missingness is not imputed; absence is a value only in visibility views.",
+    "Regional clustering is exploratory seriation only and emits no public groups.",
+    "Regional maps use equal-presence centroids and generalized land context only."
   ]
 }

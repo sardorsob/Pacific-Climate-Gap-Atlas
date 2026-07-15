@@ -1,0 +1,19 @@
+{
+  "crosscurrent_quadrant_counts": {
+    "both_down": 3,
+    "both_up": 6,
+    "water_down_renewable_up": 3,
+    "water_up_renewable_down": 7
+  },
+  "geography_count": 22,
+  "minimum_leave_one_spearman": -0.6962,
+  "overall_ordering_decision": "reject_stable_regional_structure",
+  "public_grouping_decision": "reject_public_grouping",
+  "regional_figure_count": 6,
+  "regional_table_count": 5,
+  "relationship_status_counts": {
+    "reported_descriptive": 32,
+    "reported_with_dependency_warning": 4
+  },
+  "water_renewable_overlap_count": 19
+}

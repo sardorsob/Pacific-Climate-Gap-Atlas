@@ -1,0 +1,54 @@
+{
+  "files": {
+    "dataset_profile": {
+      "bytes": 22016,
+      "path": "artifacts/tables/dataset_profile.csv",
+      "sha256": "c6120c9771f8084513da495433c7952b9b963b1279e66a6552625dde036cbac8"
+    },
+    "gap_index": {
+      "bytes": 3607,
+      "path": "artifacts/tables/adaptation_gap_index.csv",
+      "sha256": "a9793e722ff29c1169dc36bbb002ee1a7c8c5a754722ff9549a3300b3282d51b"
+    },
+    "geographies": {
+      "bytes": 230692,
+      "path": "data/processed/app/geographies.json",
+      "sha256": "ad753473c87d4ed84643e533cd01c8c18ba980678b4d71f62c6198c06d0a34bd"
+    },
+    "geography_context": {
+      "bytes": 8159,
+      "path": "data/external/geography_context.csv",
+      "sha256": "1bde594a73e1b8351b8b12dfc1e0b5dbcc95143f9c129ad8ef07ece7fe47fe7c"
+    },
+    "geography_lookup": {
+      "bytes": 12061,
+      "path": "data/processed/geography_lookup.csv",
+      "sha256": "4b664bc71706162927284b1412b99d65709963aa7e0563bc4db52c6eba715546"
+    },
+    "indicator_trace": {
+      "bytes": 37639,
+      "path": "artifacts/tables/adaptation_gap_indicator_trace.csv",
+      "sha256": "9e693690584f82c5e860ce0298602daee7910e602083f93574c8dcd6f874df48"
+    },
+    "land_context": {
+      "bytes": 1563219,
+      "path": "data/processed/app/pacific_land_context.geojson",
+      "sha256": "07584700c159316c5b7c451013b36cb9bdd513f347a1373cc7e270924f497b61"
+    },
+    "observations": {
+      "bytes": 11491309,
+      "path": "data/processed/official_observations.csv",
+      "sha256": "6f5aad5714f987b366ddb5f249fb1d932c8ade3d981cb48ecaf65ffb915cc15b"
+    },
+    "outlook": {
+      "bytes": 13450,
+      "path": "artifacts/tables/adaptation_gap_outlook.csv",
+      "sha256": "4da73fd7d1e93bb79a77e53dd3b8a2384c6d0f282671579b8a558c612109391a"
+    },
+    "trend_diagnostics": {
+      "bytes": 13359,
+      "path": "artifacts/tables/climate_trend_diagnostics.csv",
+      "sha256": "f1c136db61362b4b1b1df16b6e7d59ceba7d96651661766ec9d4beda6e400245"
+    }
+  }
+}

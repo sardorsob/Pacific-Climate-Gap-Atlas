@@ -64,4 +64,15 @@ Do not delete failed or rejected runs. Mark them as rejected and explain why.
 - Decision: Accept the research atlas. The owner selected a regional synthesis of cross-currents plus unequal evidence visibility as the working hypothesis for a new TASK-068 regional test; TASK-069 retains final selection.
 - Reason: The data support different clocks/reporting visibility, service-versus-energy cross-currents, and profile-over-ladder arguments, but none alone carries the full final story. The regional synthesis is promising enough to test, not approved strongly enough to publish. Land-cover direction remains unresolved, disaster-loss continuity/per-capita claims are unsupported, and climate causality is unavailable.
 
-No TASK-068 experiment is recorded yet. Its planned run becomes an experiment entry only after the deterministic tables, figures, hashes, and run bundle exist; planning must not be mistaken for an analytical result.
+## 2026-07-14__0000__task-068-regional-eda__678a645
+- Task: TASK-068
+- Purpose: Test whether a complete-region cross-current plus unequal-evidence-visibility working direction survives distribution, relationship, missingness, geographic, and ordering-sensitivity review.
+- Config: `configs/eda.yml`.
+- Data version: `data/processed/official_observations.csv` from TASK-066 plus the TASK-003 index/trace, established EDA coverage/monitoring tables, 22 app geographies, and Pacific land context.
+- Split: Not applicable; descriptive complete-region exploration and sensitivity analysis, not prediction.
+- Method/model: Separate 22 x 13 measured-condition and 22 x 14 evidence-visibility matrices; raw values plus within-indicator research percentiles; no imputation; all-place endpoint quadrants; pairwise-complete Spearman diagnostics with minimum n=8 and dependency flags; NaN-aware average-linkage seriation with 13 leave-one-feature checks; equal-size centroid maps.
+- Primary metric: Whether the complete distribution supports further review of the regional working direction without hiding missingness, circularity, or unstable grouping.
+- Secondary metrics: 19 water/renewable overlaps; quadrant counts 7/6/3/3; 36 pairwise relationships with 32 descriptive and four dependency-warned; 21 missing condition cells; minimum leave-one position rho -0.6962; maximum position shift 20; six inspected research plates.
+- Artifacts: Five `eda_regional_*.csv` tables, six `eda_regional_*.png` figures, refreshed `artifacts/provenance/eda_summary.json`, and the seven-file deterministic run bundle.
+- Decision: Accept the regional evidence package for TASK-069 review; reject stable regional grouping and retain `selected_story: null`.
+- Reason: The largest quadrant is water-up/renewable-down but covers only seven of 19 overlapping geographies, so it can support illustrative cross-currents but not one uniform Pacific trajectory. Evidence visibility is independently legible, while condition seriation is too unstable to name groups. Four direct/transitive derived-score relationships remain warnings, not confirmation; this includes gap versus monitoring because monitoring feeds capacity and capacity feeds the gap score. No app, public data, title, index, or scene changed.

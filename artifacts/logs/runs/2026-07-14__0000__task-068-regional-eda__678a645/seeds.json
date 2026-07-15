@@ -1,0 +1,9 @@
+{
+  "deterministic_methods": [
+    "stable mergesort ordering",
+    "average-linkage hierarchical seriation",
+    "pairwise shared-feature RMS distance without imputation"
+  ],
+  "random_seed": null,
+  "randomized_methods": []
+}

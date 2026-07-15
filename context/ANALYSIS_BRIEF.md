@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner has reopened the final competition story and approved a data-first expansion before narrative selection. `TASK-065` completed acquisition and profiling; `TASK-066` processed the five accepted candidates without changing the baseline index; and the `TASK-067` Builder pass has produced reproducible comparison tables, a static visual research atlas, and three rough evidence-board story auditions. Both Builder tasks remain in owner review. No final story is selected until `TASK-068`.
+The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner reopened the final competition story, approved a data-first expansion, and accepted the `TASK-066` processing plus `TASK-067` candidate research passes. The owner also approved a regional two-act working direction—regional cross-currents followed by unequal evidence visibility, then release into the existing explorer—but requested deeper complete-region EDA before final selection. `TASK-068` now owns that test. No final story is selected until `TASK-069`.
 
 ## Current EDA Outputs
 
@@ -66,7 +66,15 @@ The runner writes:
 - Eight of 22 latest projected population-growth rates are negative in 2025. All 792 rows are flagged `E` and cite `Population projections (PDH.Stat)`, so this is published estimated/projection context—not observed realized population change, population size, or vulnerability.
 - The land-cover index is retained only as weak research evidence. Latest 2022 values range from Samoa 51.4 to Solomon Islands 133.3, and Vanuatu falls from a published 668.4 in 1992 to 104.7 in 2022; without resolved source direction and baseline semantics, high/low and movement cannot be labelled better/worse.
 - A single candidate progress ladder is contradicted. Latest water and renewable within-indicator ranks correlate -0.43, raw magnitudes have different meanings, and the candidate set supplies neither population-size denominators for loss-per-capita nor a causal identification design.
-- Three provisional auditions remain open for `TASK-068`: different reporting clocks/visibility; service and energy cross-currents; and profiles instead of a single rank. The contact sheet declares no winner, and no audition is wired into the app or current scene copy.
+- The owner selected a regional synthesis as the working hypothesis for `TASK-068`: cross-currents supply the concrete first act, unequal evidence visibility supplies the second act, and the existing island-by-island explorer remains the coda. This is not yet a final claim chain or app contract.
+
+## TASK-068 Regional EDA Questions
+
+- Are Papua New Guinea and Samoa illustrative of a wider water/renewable cross-current, or are they visually attractive exceptions? The current 19-place overlap has seven water-up/renewable-down, six both-up, three both-down, and three water-down/renewable-up trajectories; TASK-068 must reproduce and contextualize that complete distribution in tracked artifacts.
+- Which relationships survive pairwise overlap, year-basis, and dependency review? Monitoring versus capacity is circular when monitoring already contributes to the derived capacity score and must be flagged rather than promoted as confirmation.
+- Does a measured-condition heatmap retain a useful ordering under leave-one-indicator sensitivity? If not, the order remains a research convenience and no groups are named.
+- Does an independently built visibility heatmap reveal reporting patterns without allowing missingness to define measured-condition similarity?
+- Does geography materially change the interpretation? Static research maps use the existing equal-presence centroids and Natural Earth visual context only; they do not imply reviewed island boundaries or population-weighted area.
 
 ## Caveats
 
@@ -83,11 +91,12 @@ The runner writes:
 - Driver labels are useful for exploration and app copy drafts, not final scientific claims.
 - JSD compares normalized evidence profiles. It does not explain causality, lived experience, full adaptation readiness, vulnerability, or policy need. Sparse or missing data can create misleading similarity and must stay visible. KL is not required for public UI interpretation.
 - Candidate comparisons stay within indicators. Their raw values are never summed, averaged across measures, or added to the Adaptation Gap Index.
-- The TASK-067 figures are research surfaces, not final publication scenes. Their headlines, named places, and visual forms remain subject to owner/scientific review in TASK-068.
+- The TASK-067 figures are research surfaces, not final publication scenes. Their headlines, illustrative place labels, and visual forms remain subject to complete-region testing in TASK-068 and final owner/scientific review in TASK-069.
 
 ## Next Priorities
 
-1. Complete owner QA for `TASK-066` and `TASK-067`; both Builder passes remain `in-review` rather than self-approved.
-2. In `TASK-068`, scientifically review, merge, reject, or select among the three evidence-board auditions. Keep the exact claim chain, named rows, comparison limits, and rejected alternatives visible.
-3. Do not rewrite the app, title, index prominence, or storyboard until the owner selects a narrative in `TASK-068`.
-4. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.
+1. Run `TASK-068` as an artifact-first complete-region audit: distributions, all-place water/renewable changes, separate condition/visibility heatmaps, pairwise relationships with overlap/dependency flags, cluster sensitivity, and centroid-map small multiples.
+2. Keep measured-condition ordering separate from evidence-visibility ordering; do not impute, name preparedness clusters, or interpret coverage as outcomes.
+3. In `TASK-069`, accept, revise, or reject the regional two-act working direction using the TASK-067 and TASK-068 evidence together.
+4. Do not rewrite the app, title, index prominence, or storyboard until the owner selects a narrative in `TASK-069`; `TASK-071` owns the later roadmap.
+5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.

@@ -30,6 +30,17 @@
 - Indicator outliers should be compared within the same dataset and unit only.
 - Missing monitoring rows are reporting gaps unless a reviewed external source confirms infrastructure absence.
 
+## TASK-068 Regional EDA Assumptions
+
+- The Pacific region is the analytical subject. A named geography may illustrate a complete-distribution result, but it may not replace the regional field or become the default protagonist.
+- Within-indicator percentiles are acceptable for research ordering and heatmap display only. They are not a new composite, score, or cross-unit measure.
+- Measured condition and evidence visibility answer different questions and must use separate matrices, ordering, labels, and caveats.
+- No missing measured condition is imputed. Absence may be encoded only in the visibility lane, where absence itself is the declared analytical subject.
+- Hierarchical ordering is a deterministic visual seriation, not proof of natural clusters. Leave-one-indicator instability requires rejection of group labels rather than a more elaborate clustering method.
+- Reporting coverage, monitoring counts, power generation, and fisheries measures are partial proxies. They do not establish emergency preparedness, infrastructure adequacy, adaptation readiness, or lived vulnerability.
+- Pairwise relationships are descriptive and non-causal. Sample size, latest-year basis, and dependency warnings must remain adjacent, especially when a derived score contains one of the compared inputs.
+- Research maps use equal-presence centroid marks and generalized land context. They do not imply official boundaries, island area, population weight, or spatial interpolation.
+
 ## Evidence Fingerprint Assumptions
 
 - Evidence-profile similarity compares official-data-derived vectors, not full lived climate risk or adaptation readiness.

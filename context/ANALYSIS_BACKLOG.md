@@ -6,7 +6,7 @@ This file records the EDA and GIS lanes that built the atlas evidence base and r
 
 ## Current Status
 
-Completed analysis lanes cover the original nine-dataset evidence base. `TASK-065` completed the six-candidate acquisition/profile gate, `TASK-066` completed its five-candidate processing Builder pass, and `TASK-067` completed its comparability/story EDA Builder pass. TASK-066 and TASK-067 remain in owner review. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. `TASK-068` is the next scientific/owner story-selection gate; `TASK-069` updates the storyboard and implementation roadmap only after that gate.
+Completed analysis lanes cover the original nine-dataset evidence base. `TASK-065` completed the six-candidate acquisition/profile gate, and owner QA accepted the `TASK-066` five-candidate processing plus `TASK-067` comparability/story EDA passes. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The owner approved a regional two-act working hypothesis and requested `TASK-068` as a deeper complete-region EDA gate. `TASK-069` selects the final story only after that evidence review; `TASK-071` updates the storyboard and implementation roadmap.
 
 ## Principles
 
@@ -17,6 +17,8 @@ Completed analysis lanes cover the original nine-dataset evidence base. `TASK-06
 - Save reportable outputs under `artifacts/` with stable names.
 - Preserve caveats when scores depend on sparse data, proxy indicators, centroid geometry, or generalized visual land context.
 - Treat GIS claims carefully while scored geometry is centroid fallback and Natural Earth is visual context rather than official boundaries.
+- Keep measured-condition and evidence-visibility matrices separate. Data absence may organize a visibility view, but it must not silently define condition similarity.
+- Treat hierarchical clustering as exploratory row ordering unless stability evidence supports more; never publish preparedness classes or natural island groups from 22 geographies.
 
 ## Analysis Lanes
 
@@ -280,24 +282,45 @@ Use reproducible static Matplotlib figures by default. Add Plotly only if linked
 
 This task does not select a final narrative, write final scene copy, or add app layers.
 
-Builder result: all five datasets received a judgment; three tables, five analytical figures, and one three-audition contact sheet are reproducible from the EDA runner. Four hypotheses are supported, one weak, one contradicted, and two unavailable. Direct loss is restricted to reporting visibility, land-cover direction is withheld, and no candidate composite or winner was declared. Owner QA remains required.
+Builder result: all five datasets received a judgment; three tables, five analytical figures, and one three-audition contact sheet are reproducible from the EDA runner. Four hypotheses are supported, one weak, one contradicted, and two unavailable. Direct loss is restricted to reporting visibility, land-cover direction is withheld, and no candidate composite or winner was declared. Independent re-review and owner QA accepted the pass on 2026-07-14.
 
-### TASK-068: Scientific Story Selection Gate
+### TASK-068: Regional Pattern And Evidence-Visibility EDA
+
+Question: Does the owner-approved regional two-act direction describe the complete Pacific evidence, or does it depend on a few selected examples or unstable analytical ordering?
+
+Required artifact set:
+- complete within-indicator distribution summaries and plate
+- all-geography water/renewable first-to-latest cross-current table and plate
+- measured-condition feature matrix plus cluster-ordered heatmap
+- separately constructed evidence-visibility matrix plus cluster-ordered heatmap
+- pairwise Spearman table/plate with overlap, years, and derived-input dependency warnings
+- equal-presence centroid-map small multiples for selected conditions and visibility
+- leave-one-indicator ordering sensitivity and explicit rejection state
+- one deterministic file-based run bundle under `artifacts/logs/runs/<run_id>/`
+
+Required boundaries:
+- all 22 geographies remain visible or explicitly missing
+- no imputation, cross-unit average, new score, causal claim, readiness class, public cluster label, or app wiring
+- direct loss remains reporting visibility only; land-cover direction remains withheld; population remains projection/estimate context
+- highlighted islands are illustrative labels selected after complete-distribution review, never the regional scope
+- Matplotlib plus the existing centroid/land context is the default; SciPy may provide hierarchical ordering; Plotly/GeoPandas require a demonstrated analytical need
+
+### TASK-069: Scientific Story Selection Gate
 
 Question: Which story is strongest after the expanded-data audit, and what claims must be rejected?
 
-Input: the reviewed TASK-067 research atlas, story-signal table, and three evidence-board auditions. TASK-068 may reject or merge an audition, but it must not bypass the evidence review with a new unsupported concept.
+Input: the reviewed TASK-067 research atlas, TASK-068 regional artifacts/run bundle, and owner-approved working spine. TASK-069 may accept, revise, or reject the two-act direction, but it must not bypass the evidence review with a new unsupported concept.
 
 Compare at minimum:
-- climate signal -> recorded impact/service condition -> response system -> unknowns
-- where the climate-observation record goes quiet
-- why the current evidence cannot support a single Pacific ranking
+- Act I: a region moving in different directions
+- Act II: a region seen with unequal clarity
+- Coda: release into the existing island-by-island explorer
 
 Selection criteria:
 - important Pacific problem or opportunity
 - intuitive one-sentence problem statement
 - source-backed and non-causal claim chain
-- meaningful named-place evidence
+- meaningful regional evidence with illustrative, non-protagonist place labels
 - visual fit with the existing fullscreen map/figure system
 - honest missingness, units, denominators, and time basis
 - owner approval before storyboard implementation
@@ -310,6 +333,6 @@ Selection criteria:
 - Evidence fingerprint divergence has run and selected-neighbor fields are in the public app contract. Do not add a second fingerprint payload or global similarity surface without a new task.
 - The Dataviz Inspiration audit is complete and should inform visual critique immediately. It does not require new data artifacts.
 - Acquisition and processing may be planned together but must run sequentially so failed candidates do not enter the processed contract.
-- Candidate-specific EDA can run in parallel after `TASK-066` only when outputs and files do not overlap; the synthesis remains one reviewed `TASK-067` result.
-- `context/ARTISTIC_REDESIGN_BRIEF.md` remains the visual-system baseline, not the final story source, until `TASK-068` is approved.
+- Candidate-specific EDA is complete. TASK-068 condition, visibility, mapping, and relationship transformations may be developed independently only when their output files do not overlap; the final runner, run bundle, and interpretation remain one reviewed result.
+- `context/ARTISTIC_REDESIGN_BRIEF.md` remains the visual-system baseline, not the final story source, until `TASK-069` is approved.
 - TASK-019 remains selected-place exploration evidence rather than an assumed narrative spine.

@@ -61,5 +61,7 @@ Do not delete failed or rejected runs. Mark them as rejected and explain why.
 - Primary metric: Whether every candidate receives a defensible comparison judgment and every audition has a traceable claim chain plus visible rejection risk.
 - Secondary metrics: 5 candidate datasets, 22 total geographies, 39/168 direct-loss geography-years, latest-year spreads, within-indicator endpoint changes, and supported/weak/contradicted/unavailable hypothesis counts.
 - Artifacts: Three `eda_candidate_*.csv` tables, five analytical `eda_candidate_*.png` figures, one `eda_candidate_story_auditions.png` contact sheet, and refreshed `artifacts/provenance/eda_summary.json`.
-- Decision: Retain all three auditions for TASK-068 review; select no winner in TASK-067.
-- Reason: The data support different clocks/reporting visibility, service-versus-energy cross-currents, and profile-over-ladder arguments, but none yet carries the full final story without scientific and owner judgment. Land-cover direction remains unresolved, disaster-loss continuity/per-capita claims are unsupported, and climate causality is unavailable.
+- Decision: Accept the research atlas. The owner selected a regional synthesis of cross-currents plus unequal evidence visibility as the working hypothesis for a new TASK-068 regional test; TASK-069 retains final selection.
+- Reason: The data support different clocks/reporting visibility, service-versus-energy cross-currents, and profile-over-ladder arguments, but none alone carries the full final story. The regional synthesis is promising enough to test, not approved strongly enough to publish. Land-cover direction remains unresolved, disaster-loss continuity/per-capita claims are unsupported, and climate causality is unavailable.
+
+No TASK-068 experiment is recorded yet. Its planned run becomes an experiment entry only after the deterministic tables, figures, hashes, and run bundle exist; planning must not be mistaken for an analytical result.

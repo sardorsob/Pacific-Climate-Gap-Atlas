@@ -268,16 +268,30 @@ Reopen the competition narrative while preserving the implemented visual system 
 
 The first candidate set is population growth, renewable-energy share, safely managed drinking water, crop yield, direct disaster economic loss, and the climate-altering land-cover index. This is a research shortlist, not a promise to use every dataset. Candidates may be rejected for weak coverage, unclear units or denominators, incompatible time periods, ambiguous source semantics, or inability to support a responsible non-causal claim.
 
-`TASK-065` through `TASK-069` implement the sequence: profile -> process -> explore -> select story -> rewrite roadmap. The current Adaptation Gap Index, product title, Nauru/Tuvalu comparison, premise, and five-scene order remain functional but provisional. No candidate becomes a score input automatically.
+The sequence is profile (`TASK-065`) -> process (`TASK-066`) -> candidate exploration (`TASK-067`) -> deeper regional evidence test (`TASK-068`) -> select story (`TASK-069`) -> rewrite roadmap (`TASK-071`). The completed unrelated repository cleanup remains `TASK-070`. The current Adaptation Gap Index, product title, Nauru/Tuvalu comparison, premise, and five-scene order remain functional but provisional. No candidate becomes a score input automatically.
 
 Reason: the owner prefers building the narrative from explored evidence rather than choosing a compelling concept first and searching for confirming data. This also prevents a broader dataset inventory from becoming an unfocused dashboard or a new composite score without scientific justification.
 
 ## 2026-07-13: Use A Visual Research Atlas Before Selecting The Story
 
-Keep the approved `TASK-065 -> TASK-066 -> TASK-067 -> TASK-068 -> TASK-069` sequence and strengthen `TASK-067` instead of creating more task files. After candidate processing, TASK-067 will first generate reproducible coverage/alignment, distribution, trend, and named-place comparison figures. It will then compose one contact sheet with three rough evidence-board narrative auditions using only supported findings. TASK-068 remains the scientific and owner selection gate.
+Keep the approved data-first sequence and strengthen `TASK-067` instead of creating more task files. After candidate processing, TASK-067 will first generate reproducible coverage/alignment, distribution, trend, and named-place comparison figures. It will then compose one contact sheet with three rough evidence-board narrative auditions using only supported findings. The later regional test and selection gates may be added inside the existing task ledger when owner review requires them.
 
 Use static Matplotlib figures by default. Plotly is optional only when linked interaction materially changes the analytical judgment. Do not add GeoPandas or imply polygon precision while the scored geography contract remains centroid fallback. No research figure or audition is final scene copy, an app layer, or approval to change the index.
 
 Reason: tables establish correctness, but visual exploration makes distributions, temporal mismatches, named-place contrasts, and narrative tension easier to inspect. Separating the research atlas from story selection lets the project pursue a stronger and more human story without promoting a dramatic but incomparable pattern.
 
-Implementation result: TASK-067 generated the five analytical figures, three evidence tables, and one three-audition contact sheet with Matplotlib only. The auditions are different clocks/reporting visibility, service-energy cross-currents, and profiles instead of a ladder. No winner, app layer, score change, or final scene copy was declared; TASK-068 remains the decision gate.
+Implementation result: TASK-067 generated the five analytical figures, three evidence tables, and one three-audition contact sheet with Matplotlib only. The auditions are different clocks/reporting visibility, service-energy cross-currents, and profiles instead of a ladder. No winner, app layer, score change, or final scene copy was declared.
+
+## 2026-07-14: Test A Regional Two-Act Story Before Selecting It
+
+Use the owner-approved working spine—not yet final scene copy—as the next research hypothesis:
+
+1. **A region moving in different directions.** Begin with complete Pacific distributions and trajectories, testing whether water/renewable cross-currents and other within-indicator evidence describe a regional field rather than a few attractive examples.
+2. **A region seen with unequal clarity.** Change the encoding to official-data coverage, reporting gaps, and time mismatch while keeping evidence visibility distinct from measured condition and from emergency preparedness.
+3. **Explore the islands.** Let guided annotations recede into the existing full-region explorer without assigning one global verdict.
+
+Add `TASK-068` as an artifact-first regional EDA gate. It must produce separate condition and visibility heatmaps, complete distributions, all-place cross-currents, relationship/dependency diagnostics, ordering sensitivity, and centroid-map research plates without modifying the app. Move final scientific/owner selection to `TASK-069` and the post-approval roadmap to `TASK-071`; retain completed `TASK-070` under its historical cleanup identity.
+
+Reject three shortcuts: choosing Papua New Guinea, Samoa, or another island as the product protagonist; treating reporting coverage as preparedness; and publishing cluster labels merely because a heatmap ordering looks coherent. Named places may be illustrative only after the complete distribution is visible, and unstable ordering must be recorded as a negative result.
+
+Reason: the existing interface already supplies strong regional exploration and visual drama. The missing piece is a plain-language claim chain that survives complete-region evidence. A two-act movement/visibility structure connects lived conditions to the limits of the official record, while the extra EDA gate prevents that artistic structure from outrunning the data.

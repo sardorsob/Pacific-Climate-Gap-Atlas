@@ -2,7 +2,7 @@
 
 ## Status
 
-The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the design but has reopened the final narrative. The five-scene evidence contract and its copy remain the current implementation, not an approved future storyboard. `TASK-065` is complete; the `TASK-066` processing and `TASK-067` visual-research Builder passes are complete and in owner review; `TASK-068` scientific/owner selection must complete before narrative implementation resumes.
+The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the current map, interaction, fullscreen evidence stages, and Explore handoff but considers the story weak. TASK-066 and TASK-067 are owner-accepted. The owner approved a regional two-act working direction for TASK-068 evidence testing; TASK-069 scientific/owner selection must complete before narrative implementation resumes. The five-scene evidence contract and its copy remain the functioning implementation, not the approved future storyboard.
 
 Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is approved and done; `TASK-059` through `TASK-064` form the repair batch.
 
@@ -28,7 +28,7 @@ Preserve during research:
 - native document scroll, one canonical scene observer, reduced motion, and accessible controls;
 - generated-data-only evidence and panel-only JSD.
 
-Treat as provisional until `TASK-068`:
+Treat as provisional until `TASK-069`:
 
 - product and narrative titles;
 - the Adaptation Gap Index as the opening or primary layer;
@@ -37,7 +37,17 @@ Treat as provisional until `TASK-068`:
 - the claim that uneven general dataset coverage is the main Pacific story;
 - any signal -> impact -> response sequence suggested before the candidate datasets pass comparability review.
 
-Do not modify the app to preview speculative datasets or story copy. TASK-067 now provides a reproducible five-figure research atlas and one contact sheet comparing three rough evidence-board auditions. These boards reuse an editorial fullscreen vocabulary only as research surfaces; their claims, exemplars, and order remain provisional. TASK-068 selects, merges, or rejects them before code or generated concept art is commissioned.
+Do not modify the app to preview speculative datasets or story copy. TASK-067 provides the first research atlas; TASK-068 adds complete-region distributions, cross-currents, condition/visibility heatmaps, relationship diagnostics, cluster sensitivity, and centroid maps. These plates reuse an editorial fullscreen vocabulary only as research surfaces. TASK-069 accepts, revises, or rejects the regional two-act working direction before code or generated concept art is commissioned.
+
+## 2026-07-14 Regional Two-Act Working Composition
+
+Preserve the existing fullscreen stage and island explorer, but test a new reading path:
+
+- **Act I: movement.** The full regional field appears first. Distributions and trajectories reveal that essential-service access, energy transition, climate signals, and response-related proxies do not travel as one line of progress. Illustrative labels emerge from the field rather than replacing it.
+- **Act II: visibility.** The same field changes encoding to show which conditions are well observed, thinly recorded, differently dated, or absent from the official record. Missingness is a limit on sight, not an outcome or readiness class.
+- **Coda: agency.** Story annotations recede; the current interaction system returns intact so the reader can select any geography, inspect sources/caveats, and explore without a global verdict.
+
+TASK-068 research plates may borrow this staging rhythm, but they are not scene mockups. The final number of scenes, transitions, title, and layer sequence belong to TASK-071 after TASK-069 approval.
 
 ## 2026-07-11 Fullscreen Stage Revision
 

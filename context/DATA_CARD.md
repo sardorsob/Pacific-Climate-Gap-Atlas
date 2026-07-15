@@ -225,9 +225,17 @@ Manual raw-to-processed traces reproduced the strongest descriptive cross-curren
 
 The direct-loss source has 35 `USD` rows and four `USD_MILLIONS` rows. The analysis converts only the four explicitly marked million-unit rows. Its 39 returned records cover 12 geographies and 23.2% of possible geography-years in 2007–2020; blank years are absence of returned records, not evidence of no disaster or no loss.
 
-The three contact-sheet auditions—different clocks/visibility, progress cross-currents, and profiles instead of a ladder—are provisional research alternatives. `TASK-067` does not choose one, combine the candidates into a score, or change public app data. `TASK-068` owns scientific review and owner selection.
+The three contact-sheet auditions—different clocks/visibility, progress cross-currents, and profiles instead of a ladder—are provisional research alternatives. `TASK-067` does not choose one, combine the candidates into a score, or change public app data. The owner accepted this research pass and chose a regional synthesis as a working hypothesis; `TASK-068` tests it and `TASK-069` owns final scientific/owner selection.
 
 Pipeline boundary: the existing nine-dataset coverage/driver/JSD lane is rebuilt from baseline observations only. Candidate rows feed only the new candidate tables and figures. This keeps the already app-wired similarity artifacts byte-stable while the expanded 14-dataset lookup can still report broad research coverage.
+
+## TASK-068 Planned Regional EDA Contract
+
+The next EDA pass uses the same 16,410-row processed evidence base and does not add a dataset, score, public field, or story scene. It will write five reviewed tables and six static research plates covering complete within-indicator distributions, water/renewable cross-currents, measured-condition ordering, separately constructed evidence visibility, pairwise relationships, ordering sensitivity, and equal-presence centroid maps.
+
+The measured-condition matrix may use within-indicator percentiles only to place unlike measures on a shared research display. Those percentiles are not averaged into a score and missing cells are not imputed. The evidence-visibility matrix is constructed independently from coverage/reporting fields; an absent observation can be a visibility value there, but it cannot determine measured-condition similarity. Hierarchical clustering supplies exploratory row order only, with leave-one-indicator sensitivity and an explicit rejection state. It does not create preparedness classes, natural island groups, vulnerability categories, or policy recommendations.
+
+The planned run bundle under `artifacts/logs/runs/<run_id>/` records configuration, seeds, inputs, outputs, metrics, and notes for the EDA execution. Direct loss remains reporting visibility only; land-cover direction remains withheld; population remains published projection/estimate context; and centroid/Natural Earth geometry remains visual orientation rather than reviewed boundaries. These outputs become a decision input for `TASK-069`, not final publication scenes.
 
 ## TASK-019 Divergence Artifacts
 

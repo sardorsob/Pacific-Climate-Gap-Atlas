@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning fullscreen atlas. The owner likes the visual system but has reopened the competition narrative. Preserve the composition and interaction system during `TASK-065`–`TASK-068`; treat the current title, premise, exemplar pair, layer priority, and scene claims as provisional. `context/ARTISTIC_REDESIGN_BRIEF.md` records the visual baseline and data-first hold.
+Status: semantic design brief for the functioning fullscreen atlas. The owner likes the map, interaction, fullscreen composition, and Explore handoff but has reopened the competition narrative. Preserve that system through TASK-068 research and TASK-069 selection. Treat the current title, premise, exemplar pair, layer priority, and scene claims as provisional. `context/ARTISTIC_REDESIGN_BRIEF.md` records the visual baseline and owner-approved regional two-act working direction.
 
 Design skill basis:
 
@@ -27,7 +27,7 @@ First-build concept status:
 
 Current concept status:
 
-- Narrative and semantic direction: reopened pending expanded-data EDA and `TASK-068` approval.
+- Narrative and semantic direction: regional two-act working hypothesis pending TASK-068 complete-region EDA and TASK-069 approval.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
@@ -35,7 +35,7 @@ Current concept status:
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
 - Implementation: `TASK-059` through `TASK-063` are approved and done. `TASK-064` passed the automated, responsive, interaction, and screenshot gates and remains `in-review` for owner visual acceptance; `TASK-057` remains `needs-fix` until that decision.
 
-The current app remains the behavioral and visual baseline. No new visual work should preview speculative candidate data. After `TASK-068`, reuse the fullscreen stage where it still serves the approved evidence and revise only the claims, figures, exemplars, or layers the data decision requires.
+The current app remains the behavioral and visual baseline. No app visual work should preview speculative candidate data. After TASK-069, reuse the fullscreen stage where it still serves the approved evidence and revise only the claims, figures, illustrative labels, or layers the data decision requires. TASK-068 creates static research plates only.
 
 ## Fullscreen Stage Layout Revision
 

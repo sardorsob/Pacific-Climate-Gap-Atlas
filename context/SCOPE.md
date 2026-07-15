@@ -5,6 +5,7 @@
 - Build an exploratory GIS-first website for the Pacific Adaptation Gap Atlas.
 - Use official Pacific Dataviz Challenge 2026 datasets as the core evidence base.
 - Expand the current nine-dataset baseline with a small, profiled set of additional official datasets before selecting the final competition narrative.
+- Test the owner-approved regional two-act working direction with reproducible distributions, cross-current comparisons, separate condition/visibility heatmaps, dependency-aware relationships, cluster sensitivity, and centroid-map small multiples before final story selection.
 - Produce a reproducible Python pipeline for dataset profiling, normalization, index construction, and app-ready exports.
 - Create a transparent Adaptation Gap Index with visible missingness and caveats.
 - Add an optional Adaptation Gap Outlook layer if the baseline projection passes data and evaluation gates.
@@ -55,7 +56,7 @@ Processing and visual comparability review precede narrative selection. Acceptan
 
 The app should open on the map. A short intro can exist, but the first screen must be the exploratory atlas experience.
 
-The current fullscreen map/figure system remains the visual baseline during data discovery. Guided copy, exemplar places, layer priority, the product title, and the role of the Adaptation Gap Index are provisional until `TASK-068` passes owner/scientific review. Do not modify the app narrative merely because a dataset has been acquired.
+The current fullscreen map/figure system remains the visual baseline during data discovery. Guided copy, illustrative place labels, layer priority, the product title, and the role of the Adaptation Gap Index are provisional until `TASK-069` passes owner/scientific review. `TASK-068` produces research artifacts only. Do not modify the app narrative merely because a dataset has been acquired or an exploratory ordering looks dramatic.
 
 Core interactions:
 

@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the owner has reopened the final competition story. The visual system is valued; the narrative is not locked. `TASK-065` completed acquisition, `TASK-066` completed the accepted-candidate processing Builder pass, and `TASK-067` completed the visual research atlas plus three rough evidence-board auditions. Both Builder passes remain in owner review. No current scene, exemplar, title, index role, or research audition should be treated as the next implementation contract until `TASK-068` selects, merges, or rejects the alternatives. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
+Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the final competition story is not locked. The owner accepted `TASK-066` processing and `TASK-067` visual research, then approved a regional two-act working direction for deeper testing: conditions move in different directions across the Pacific; the official record sees those conditions with unequal clarity; the story then releases into the existing island explorer. `TASK-068` tests that direction across the complete evidence field. `TASK-069` owns final scientific/owner selection. No current title, exemplar, index role, research plate, or working act is an app implementation contract yet. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
 
 Source basis:
 
@@ -24,7 +24,7 @@ Source basis:
 
 The project will not finalize a stronger story and then search for data that confirms it. It will first expand the official-data evidence base, test comparability and named-place patterns, and select the narrative that survives that review.
 
-Provisional story hypotheses to test, not approved directions:
+Historical story hypotheses tested in TASK-067:
 
 1. **From signal to recorded condition to response** — trace how climate signals, recorded impacts or essential-service conditions, response systems, and unknowns differ by place.
 2. **Where the climate record goes quiet** — center monitoring and reporting visibility without equating missing official rows with missing infrastructure or local knowledge.
@@ -47,21 +47,33 @@ The next story must:
 - earn its exemplar places from `TASK-067`, not inherit Nauru/Tuvalu automatically;
 - emerge from the reviewed TASK-067 figures and story-signal table rather than from a preferred visual motif;
 - compete against two meaningfully different evidence-board auditions before owner selection;
-- obtain owner approval in `TASK-068` before scene copy or app behavior changes.
+- obtain final owner/scientific approval in `TASK-069` before scene copy or app behavior changes.
 
 The current fullscreen stage, equal-presence marks, enlarged comparison, readable rank field, native scroll, accessibility behavior, and Explore handoff are reusable. Their existing claims and ordering are not protected from revision.
 
-TASK-067 leaves three evidence-board directions open for TASK-068:
+TASK-067 left three evidence-board directions open:
 
 1. **Different clocks / reporting visibility** — temporal mismatch and sparse official reporting become the argument, anchored by only 39 direct-loss records across 12 geographies and 23.2% of possible geography-years. Risk: a metadata story may feel distant from lived conditions.
 2. **Service and energy cross-currents** — Papua New Guinea and Samoa show safely managed water rising while renewable-energy share falls, with each measure kept on its own axis. Risk: descriptive movement cannot be presented as climate or policy causality.
 3. **Profiles instead of a ladder** — named places change position across separate within-indicator views, contradicting one coherent progress rank. Risk: the profile matrix must never become another composite score.
 
-No direction is selected. Land-cover semantics, loss-per-capita comparison, and climate attribution remain unavailable or withheld, and the existing index-first story remains one more provisional alternative rather than the default winner.
+The owner subsequently chose a regional synthesis for TASK-068 testing rather than one board in isolation. Land-cover semantics, loss-per-capita comparison, climate attribution, preparedness classification, and a new composite remain unavailable or withheld.
+
+## 2026-07-14 Owner-Approved Working Direction
+
+The story subject is the Pacific region, not one island. Named geographies may provide brief, evidence-earned annotations, but all available places remain visible and no single place becomes the protagonist.
+
+Working spine:
+
+1. **Act I — A region moving in different directions.** Show the complete regional distribution and trajectories. Safely managed drinking-water access and renewable-energy share provide the first concrete cross-current to test, alongside selected climate, stress, and response-related evidence that remains within its own units.
+2. **Act II — A region seen with unequal clarity.** Reveal reporting coverage, monitoring visibility, missingness, and time mismatch as limits on what the official record can support. This act must not equate data coverage or monitoring counts with emergency preparedness.
+3. **Coda — Explore the islands.** The guided story recedes into the existing interactive atlas so readers can select any geography, inspect its evidence profile and sources, and see unknowns rather than inherit a verdict.
+
+TASK-068 must test whether this spine holds across all geographies, whether illustrative labels are representative, and whether any cluster ordering is stable enough even for research display. TASK-069 may accept, revise, or reject the spine. No scene count, title, copy, layer priority, or app behavior changes before that gate.
 
 ## Narrative Decision
 
-The decision below describes the implemented baseline and is suspended as the final competition-story decision until `TASK-068`.
+The decision below describes the implemented baseline and is suspended as the final competition-story decision until `TASK-069`.
 
 The atlas should use the broader Adaptation Gap frame as the spine, with official-data visibility and monitoring gaps as the signature diagnostic interaction.
 

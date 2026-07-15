@@ -2,13 +2,13 @@
 
 ## Current Discovery Question
 
-Which additional official 2026 datasets can support a concrete, defensible Pacific climate story, and what do they reveal after coverage, units, denominators, time alignment, missingness, and causal limits are examined?
+Across the Pacific region, which measured conditions move together or in cross-currents, and how does unequal official-data visibility limit what can responsibly be said about those patterns?
 
 ## Implemented Baseline Question
 
 Where are Pacific island countries facing the largest mismatch between intensifying climate signals and the systems available to monitor, absorb, or respond to those changes?
 
-This remains the question implemented in the current app. It is provisional because the present capacity side relies on sparse proxies and unnormalized absolute counts, while most rank positions are sensitive to indicator choice. `TASK-068` will decide whether to retain, narrow, or replace it after expanded-data EDA.
+This remains the question implemented in the current app. It is provisional because the present capacity side relies on sparse proxies and unnormalized absolute counts, while most rank positions are sensitive to indicator choice. `TASK-068` will test a complete-region alternative through deeper EDA; `TASK-069` will decide whether to retain, narrow, or replace the implemented question.
 
 ## Decision Value
 
@@ -50,3 +50,5 @@ A public, map-first interactive atlas that lets a user select a Pacific geograph
 - Overfitting an index to look dramatic rather than defensible.
 - Choosing a strong-sounding story first and using only the datasets that confirm it.
 - Adding official datasets merely to increase breadth or create another composite score.
+- Treating official-data coverage, monitoring counts, or exploratory clusters as proof of emergency preparedness.
+- Letting missingness silently define measured-condition clusters or highlighting one island as if it were the regional story.

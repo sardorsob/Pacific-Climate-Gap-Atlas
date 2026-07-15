@@ -6,7 +6,7 @@ This file records the EDA and GIS lanes that built the atlas evidence base and r
 
 ## Current Status
 
-Completed analysis lanes cover the original nine-dataset evidence base. `TASK-065` completed the six-candidate acquisition/profile gate, and owner QA accepted the `TASK-066` five-candidate processing plus `TASK-067` comparability/story EDA passes. The current story remains visually implemented, but its central Adaptation Gap claim is no longer assumed to be the strongest competition narrative. The owner approved a regional two-act working hypothesis and requested `TASK-068` as a deeper complete-region EDA gate. `TASK-069` selects the final story only after that evidence review; `TASK-071` updates the storyboard and implementation roadmap.
+All planned analysis lanes are complete. `TASK-065` through `TASK-068` acquired, processed, and tested the candidate evidence, and `TASK-069` accepted the regional movement -> evidence visibility -> exploration story. The next work is application design/data wiring under `TASK-072` through `TASK-077`; no additional EDA or notebook lane is planned.
 
 ## Principles
 
@@ -325,6 +325,8 @@ Selection criteria:
 - honest missingness, units, denominators, and time basis
 - owner approval before storyboard implementation
 
+Outcome: approved. Keep all 22 geographies visible; show the 19 complete water/renewable comparisons across the 7/6/3/3 direction split; retain Guam, Pitcairn, and Tokelau as incomplete; then show the separate 14-position visibility record before returning to the existing explorer. The Adaptation Gap Index is optional Explore evidence, not the guided title or default.
+
 ## Parallelization Plan
 
 - Coverage/data desert and GIS enrichment can run in parallel.
@@ -333,6 +335,6 @@ Selection criteria:
 - Evidence fingerprint divergence has run and selected-neighbor fields are in the public app contract. Do not add a second fingerprint payload or global similarity surface without a new task.
 - The Dataviz Inspiration audit is complete and should inform visual critique immediately. It does not require new data artifacts.
 - Acquisition and processing may be planned together but must run sequentially so failed candidates do not enter the processed contract.
-- Candidate-specific EDA is complete. TASK-068 condition, visibility, mapping, and relationship transformations may be developed independently only when their output files do not overlap; the final runner, run bundle, and interpretation remain one reviewed result.
-- `context/ARTISTIC_REDESIGN_BRIEF.md` remains the visual-system baseline, not the final story source, until `TASK-069` is approved.
+- Candidate-specific and regional EDA are complete. Do not add more analysis unless implementation QA exposes a concrete traceability or comparability defect.
+- `context/ARTISTIC_REDESIGN_BRIEF.md` is now both the visual-system baseline and the approved story source.
 - TASK-019 remains selected-place exploration evidence rather than an assumed narrative spine.

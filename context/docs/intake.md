@@ -10,7 +10,7 @@ Competition judges, Pacific climate/development readers, students, journalists, 
 
 ## Smallest Useful Version
 
-Map-first atlas with country/territory selection, adaptation gap score, pillar cards, source coverage, and methodology notes.
+Map-first atlas with a short regional movement/visibility story, country/territory selection, optional adaptation-gap evidence, source coverage, and methodology notes.
 
 ## Stack
 
@@ -25,6 +25,8 @@ Operational forecasts, private data, user accounts, live dashboards, and unsuppo
 ## Expected Screens / Modules
 
 - Atlas map
+- Regional movement field
+- Evidence-visibility field
 - Layer controls
 - Country detail panel
 - Methodology/source drawer

@@ -2,13 +2,13 @@
 
 ## Immediate Next Step
 
-Review `TASK-068`, the completed deeper regional EDA gate, then use `TASK-069` to accept, revise, or reject the two-act working hypothesis. The package preserves all 22 geographies, reports the 19-place water/renewable distribution, separates condition from visibility, flags four direct/transitive derived-score relationships, rejects stable grouping, and leaves `selected_story: null`. Keep the index, public app data, scene copy, and current visual system unchanged. `TASK-064` remains in owner review and `TASK-057` remains `needs-fix`; do not resume story implementation, deployment, or submission.
+Start `TASK-072` transition keyframes and `TASK-073` minimum story-data export in isolated worktrees. Preserve the accepted application shell and use the same 22 geography identities throughout. Builders do not edit shared task/log files; the Orchestrator serializes acceptance updates and separate commits. Do not start `TASK-074` until the owner approves the keyframes; do not deploy or submit while `TASK-057` remains `needs-fix`.
 
 ## Next Build Step
 
-The approved chain is `TASK-065` acquisition -> `TASK-066` processing -> `TASK-067` candidate atlas -> `TASK-068` regional evidence test -> `TASK-069` story selection -> `TASK-071` roadmap. `TASK-070` remains completed repository-cleanup history. Use existing context files; do not create per-task Markdown.
+The approved chain is `TASK-072` concept approval + `TASK-073` data export in isolated worktrees -> serialized acceptance/commits -> `TASK-074` scene/copy/URL contract -> `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. Use existing context files; do not create per-task Markdown.
 
-The fullscreen composition remains the preferred visual system. The existing premise, five evidence scenes, Nauru/Tuvalu comparison, title, and index-first narrative are provisional. JSD remains selected-place panel evidence only unless a future approved story explicitly changes that contract.
+The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff are protected. Replace the existing premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, title, and index-first default. JSD remains selected-place panel evidence only.
 
 ## Current Evidence Snapshot
 
@@ -22,10 +22,16 @@ The fullscreen composition remains the preferred visual system. The existing pre
 - The app map now uses MapLibre with Natural Earth land context under centroid point features. Official/selectable boundary polygons are not joined and should not be implied in copy or design.
 - The Dataviz Inspiration audit favors full-bleed map, selected-anchor, compact evidence-strip, direct-label, and evidence-bearing-motion patterns. Treat references as principle studies only.
 - `TASK-049` approved the generated desktop/mobile concept frames and locked the evidence-mark direction before implementation. Codex retains evidence/claims QA, staging, and commit responsibility; commits never receive assistant co-author trailers.
-- `TASK-066` is owner-accepted. It processes the five accepted candidates into 16,410 rows across 14 datasets and leaves crop yield absent. Generic JSON metadata retains SDMX disaggregation without bespoke schemas; candidate content hashes match the validated manifest; the original nine row hashes remain stable; and the serialized 22-row gap index plus 182-row trace are unchanged. No public app or story file consumes candidate data.
+- `TASK-066` is owner-accepted. It processes the five accepted candidates into 16,410 rows across 14 datasets and leaves crop yield absent. Generic JSON metadata retains SDMX disaggregation without bespoke schemas; candidate content hashes match the validated manifest; the original nine row hashes remain stable; and the serialized 22-row gap index plus 182-row trace are unchanged. The current public app still omits candidate fields; TASK-073 will export only the approved water/renewable endpoint and visibility contract without changing the score.
 - `TASK-067` is owner-accepted. It records one comparison judgment per candidate and eight story hypotheses: four supported, one weak, one contradicted, and two unavailable. The figures expose different reporting clocks, within-indicator distributions/trends, named-place profiles, sparse loss reporting, and three non-selected auditions. Strongest trace: PG/WS water rises while renewable share falls; weakest: land-cover values reproduce but direction/baseline semantics remain unresolved. Direct loss remains a 39-row reporting record, not a zero-filled trend.
-- `TASK-068` is in review. Its 19 overlapping water/renewable trajectories split 7/6/3/3 across the four movement quadrants; the 594-cell matrix preserves 21 missing condition cells and 31 absent visibility cells without imputation. Thirty-six relationships include four dependency-warned comparisons; gap versus monitoring is now explicitly transitive through capacity. Leave-one-feature ordering falls to rho -0.6962, so public grouping is rejected. Six full-size plates and the seven-file deterministic bundle passed Builder QA; `selected_story` remains null.
+- `TASK-068` is accepted. Its 19 overlapping water/renewable endpoint comparisons split 7/6/3/3 across the four movement quadrants; the 594-cell research matrix preserves 21 missing condition cells and 31 absent visibility cells without imputation. Thirty-six relationships include four dependency-warned comparisons; gap versus monitoring is explicitly transitive through capacity. Leave-one-feature ordering falls to rho -0.6962, so public grouping is rejected. The generated evidence-gate provenance correctly retains `selected_story: null`; `TASK-069` records the later context decision.
 - `TASK-070` removed unused notebook/Kaggle/Hugging Face/report/interim scaffolding, empty analysis packages, unused artifact lanes, empty fixtures, and redundant markers. Only the explicitly justified empty figure and run-bundle lanes remain; do not recreate removed scaffolding without a concrete task.
+
+## 2026-07-15
+
+- Owner accepted the current visual and interaction system as the application baseline, closing `TASK-064`; `TASK-057` stays open only for the replacement narrative and final owner QA.
+- Independent scientific review accepted `TASK-068`, and `TASK-069` selected the bounded regional movement -> visibility -> exploration story. Public title becomes **Pacific Climate Evidence Atlas**; the index is optional caveated Explore evidence, not the guided default.
+- `TASK-071` consolidated the active briefs and added the six-task `TASK-072`–`TASK-077` roadmap without standalone task files. Only `TASK-072` and `TASK-073` are parallel-safe; later tasks share state, marks, application integration, and CSS ownership.
 
 ## 2026-07-14
 

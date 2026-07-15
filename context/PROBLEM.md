@@ -1,14 +1,14 @@
 # Problem
 
-## Current Discovery Question
+## Approved Public Question
 
-Across the Pacific region, which measured conditions move together or in cross-currents, and how does unequal official-data visibility limit what can responsibly be said about those patterns?
+How have safely managed drinking-water access and renewable-energy share changed across Pacific places, and where does uneven official-data coverage limit the comparison?
 
 ## Implemented Baseline Question
 
 Where are Pacific island countries facing the largest mismatch between intensifying climate signals and the systems available to monitor, absorb, or respond to those changes?
 
-This remains the question implemented in the current app. It is provisional because the present capacity side relies on sparse proxies and unnormalized absolute counts, while most rank positions are sensitive to indicator choice. `TASK-068` will test a complete-region alternative through deeper EDA; `TASK-069` will decide whether to retain, narrow, or replace the implemented question.
+This remains the question implemented in the current app until the narrative retrofit lands. It is no longer the approved guided question because the present capacity side relies on sparse proxies and unnormalized absolute counts, while most rank positions are sensitive to indicator choice. The index remains available only as a caveated optional Explore layer.
 
 ## Decision Value
 
@@ -23,7 +23,14 @@ The final dataviz should help policymakers, journalists, students, and local adv
 
 ## Smallest Useful Deliverable
 
-A public, map-first interactive atlas that lets a user select a Pacific geography and compare:
+A public, map-first interactive atlas that first shows:
+
+- all 22 Pacific geographies with equal visual presence
+- the 19 complete first-to-latest water/renewable comparisons, plus three explicit missing cases
+- the four observed direction combinations without reducing them to one Pacific trajectory
+- separately constructed official-data visibility without calling it preparedness or record quality
+
+The story then returns the reader to the existing explorer to inspect:
 
 - climate signal
 - observed stress
@@ -52,3 +59,6 @@ A public, map-first interactive atlas that lets a user select a Pacific geograph
 - Adding official datasets merely to increase breadth or create another composite score.
 - Treating official-data coverage, monitoring counts, or exploratory clusters as proof of emergency preparedness.
 - Letting missingness silently define measured-condition clusters or highlighting one island as if it were the regional story.
+- Keeping an Adaptation Gap title or index-first opening after the guided evidence has moved to water/renewable change and official-data visibility.
+- Treating first-to-latest endpoint change as a continuous trajectory.
+- Summing visibility fields into a quality, readiness, vulnerability, or need score.

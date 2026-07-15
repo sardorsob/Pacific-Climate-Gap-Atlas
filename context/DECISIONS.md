@@ -295,3 +295,41 @@ Add `TASK-068` as an artifact-first regional EDA gate. It must produce separate 
 Reject three shortcuts: choosing Papua New Guinea, Samoa, or another island as the product protagonist; treating reporting coverage as preparedness; and publishing cluster labels merely because a heatmap ordering looks coherent. Named places may be illustrative only after the complete distribution is visible, and unstable ordering must be recorded as a negative result.
 
 Reason: the existing interface already supplies strong regional exploration and visual drama. The missing piece is a plain-language claim chain that survives complete-region evidence. A two-act movement/visibility structure connects lived conditions to the limits of the official record, while the extra EDA gate prevents that artistic structure from outrunning the data.
+
+## 2026-07-15: Accept The Regional Movement And Visibility Story
+
+Accept the TASK-069 story after complete-region review:
+
+1. Keep all 22 Pacific geographies visible.
+2. Show 19 complete water/renewable first-to-latest comparisons across all four direction combinations: 7 water up / renewable share down, 6 both up, 3 both down, and 3 water down / renewable share up.
+3. Keep Guam, Pitcairn, and Tokelau visible as incomplete comparisons.
+4. Re-encode the same marks through the separately constructed 14-position visibility record: 277 present and 31 absent cells, with 6–14 represented datasets per geography.
+5. Return the reader to the existing island-by-island explorer without a global verdict.
+
+Reject a uniform Pacific trajectory, a single-island protagonist, preparedness-from-coverage, stable cluster labels, and an index-led opening. First-to-latest endpoints are descriptive and non-causal. Dataset presence is not record quality, preparedness, local knowledge, vulnerability, need, or an outcome.
+
+Reason: the 19 complete comparisons occupy every quadrant, so the evidence supports regional divergence rather than one direction. The separate visibility matrix makes the limits of comparison concrete without turning missingness into a condition or score.
+
+## 2026-07-15: Preserve The Application And Replace Only The Guided Layer
+
+Treat the current MapLibre map, 22 evidence marks, fullscreen stage, native scroll, one scene observer, controls, selected-place panel, methods/sources, URL/history, touch/keyboard/reduced-motion behavior, and Explore handoff as a hard implementation constraint.
+
+Replace only the public title, guided premise/order/copy, guided default state, story data fields, regional evidence layouts, and transitions. Delete old guided-only comparison/rank components only after the replacement is integrated and references are proven absent.
+
+Reason: owner review accepts the design and functionality. The weakness is the story. Reusing the application preserves the strongest work and makes the artistic idea legible through continuity: the same marks move from map to comparison to record and back.
+
+## 2026-07-15: Retire The Adaptation Gap Title From The Guided Story
+
+Use **Pacific Climate Evidence Atlas** as the approved public title and **How conditions and official records differ across 22 Pacific places** as the direct subtitle. Keep the Adaptation Gap Index only as an optional caveated Explore layer. The guided handoff returns to a neutral map state rather than silently restoring the index as a verdict.
+
+“The Shape of What We Know” remains historical design language and may inform the visibility act internally, but it is not the public hook. The old Nauru/Tuvalu comparison and rank-band ending are superseded.
+
+Reason: the selected Acts I–II do not validate or center the current index. Keeping an Adaptation Gap product title or index-first default would promise a different story than the evidence supports.
+
+## 2026-07-15: Use One Small Retrofit Batch
+
+Plan `TASK-072` through `TASK-077` in the existing task ledger. Transition keyframes and app-data export may run concurrently only in isolated worktrees; their shared status/log updates and task commits are serialized by the Orchestrator. Scene implementation, regional evidence layout, integration, deletion, and QA run sequentially because they share scene state, evidence marks, `App.tsx`, and stage CSS.
+
+Add no per-task Markdown files, new renderer, chart library, animation dependency, router, state manager, map source, boundary layer, composite score, clustering surface, or speculative abstraction.
+
+Reason: Ponytail review and the implementation audit found a clear existing seam: generated geography records -> `atlasData.ts` -> `SCENES`/`App.tsx` -> `MapOverlay`/story figure -> the current handoff. Extending that seam is smaller and safer than a parallel visualization system.

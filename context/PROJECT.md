@@ -2,21 +2,21 @@
 
 ## Current Phase
 
-The fullscreen repair is implemented and verified through the `TASK-064` QA Maker gate. The owner likes the visual and interaction system but has reopened the competition narrative. `TASK-065` completed acquisition/profile review; `TASK-066` processed the five accepted candidates without changing the baseline index; and `TASK-067` built and passed owner review for a static research atlas plus three evidence-board auditions. The owner approved a regional two-act working direction—conditions moving in different directions, then unequal evidence visibility, then release into the existing explorer—but requested one deeper regional EDA gate before final selection. `TASK-068` now tests that direction across all geographies; `TASK-069` performs final scientific/owner selection; `TASK-071` only then rewrites the roadmap. Completed unrelated `TASK-070` remains repository-cleanup history. `TASK-064` remains `in-review`; `TASK-057` remains `needs-fix`; no story implementation or submission work should begin from the provisional storyboard. Competition deadline: August 31, 2026.
+The existing fullscreen map, evidence marks, controls, selected-place panel, URL/history behavior, accessibility, and Explore handoff are the approved application baseline. `TASK-064` is accepted for that visual and interaction work. `TASK-065` through `TASK-068` completed the data-first research sequence, and `TASK-069` accepted a regional movement -> evidence visibility -> exploration story after scientific and owner review. `TASK-071` records the bounded implementation roadmap. The next batch is `TASK-072` through `TASK-077`: approve transition keyframes, export the minimum story data, replace the guided copy/state, implement both acts with the same 22 marks, reconnect the unchanged explorer, and run final QA. `TASK-057` remains `needs-fix` until that narrative retrofit passes owner review. Competition deadline: August 31, 2026.
 
 ## Status
 
 The repository has a committed workflow scaffold, official dataset contracts, a reproducible processed data pipeline, a draft Adaptation Gap Index baseline, an app-optional Adaptation Gap Outlook baseline, enriched app-ready JSON/GeoJSON, script-first EDA outputs, TASK-019 evidence-fingerprint divergence artifacts, story/design briefs, reference audits, and a functioning React/Vite scroll-led atlas wired to generated public data.
 
-The current implementation uses a fullscreen premise plus five native-scroll guided scenes, fixed-size evidence portraits, panel-only JSD neighbors, and dependency-free URL state/history for meaningful map states. The sticky map owns the premise and scenes 1–3; opaque stage shells give scenes 4–5 the viewport; one reachable sticky chrome contains toolbar/progress controls; and the same 22 marks return to the explorer. The consolidated design source of truth is `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The current implementation still uses the earlier fullscreen premise plus five native-scroll guided scenes. It remains the behavioral baseline while the guided narrative is replaced. The approved next experience keeps the same React/Vite/MapLibre shell and the same 22 equal-presence marks, moves them from geography into a regional water/renewable cross-current field, rearranges them into an evidence-visibility field, and returns them to the existing explorer. No new map engine, dashboard shell, router, animation library, or visualization dependency is planned. The consolidated design source of truth is `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
-## Working Title
+## Approved Public Title
 
-The Pacific Adaptation Gap Atlas
+Pacific Climate Evidence Atlas
 
 ## Current Thesis
 
-The implemented thesis remains a functioning baseline, not the locked competition story. The owner-approved working thesis is regional: the Pacific is moving in different directions, and those conditions are not seen with equal clarity in the official record. This is a hypothesis for `TASK-068`, not final scene copy. `TASK-069` may accept, revise, or reject it after complete-region distributions, relationships, mappings, and cluster-sensitivity evidence are reviewed.
+Official records across 22 Pacific geographies show no single shared path in safely managed drinking-water access and renewable-energy share. Nineteen places can be compared on both measures, and their first-to-latest changes occupy all four direction combinations. The official record is also uneven: three places lack one or both Act-I measures, and broader dataset presence varies by geography. The guided story shows those two facts separately, then returns the reader to the existing island-by-island explorer without a global verdict.
 
 ## Feature Table
 
@@ -51,18 +51,22 @@ The implemented thesis remains a functioning baseline, not the locked competitio
 | Post-TASK-039 iteration audit | done | `TASK-040` fixed explainer state, `TASK-041` humanized/single-sourced JSD similarity text, and `TASK-042` cleaned legend, stale compare code, and selected fallback mark behavior |
 | Post-TASK-042 design direction | done | `TASK-043` completed presence marks, `TASK-044` completed evidence-bearing motion, `TASK-045` completed chrome/type cleanup, `TASK-046` completed guided-story tightening, and `TASK-047` completed selected-only similarity arcs |
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
-| Artistic redesign contract | owner review | `TASK-059`–`TASK-063` are done; `TASK-064` passed the QA Maker matrix and remains `in-review` for owner visual/accessibility acceptance |
-| Data-first narrative discovery | active | `TASK-067` is owner-accepted; `TASK-068` adds the approved deeper regional distribution, cross-current, heatmap, relationship, clustering-sensitivity, and centroid-map audit; `TASK-069` selects the final two-act story; `TASK-071` updates the storyboard and roadmap only after approval |
+| Artistic redesign contract | approved baseline | `TASK-059`–`TASK-064` established the fullscreen stage, readable figures, native scroll, stable URL state, and Explore handoff that the next narrative must reuse |
+| Data-first narrative discovery | done | `TASK-065`–`TASK-068` acquired, processed, and tested the expanded evidence; `TASK-069` accepted the regional movement -> visibility -> exploration claim chain |
+| Narrative retrofit roadmap | planned | `TASK-071` defines `TASK-072`–`TASK-077`; transition concepts and app-data export may start in isolated worktrees while the Orchestrator serializes ledger/log commits; remaining work is sequential because it shares the evidence-mark stage and scene state |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
-| Simplification and readiness | needs-fix | `TASK-056` is accepted; `TASK-057` automated gates passed, but owner visual QA found opening-clarity and scene-scale failures now split into `TASK-058` through `TASK-064` |
+| Simplification and readiness | needs-fix | `TASK-056` is accepted and `TASK-064` closed the scene-scale issue; `TASK-057` stays open only for the replacement narrative and final owner QA in `TASK-077` |
 | Shareable URL state | verified locally | `mode`, `scene`, `layer`, `view`, `place`, and `outlook` parse/serialize safely with guarded history updates, app-owned reload scroll restoration, and no router |
 | App bundle budget | verified locally | JS 1,024,043 bytes; CSS 94,829 bytes; caps 1,050,000 and 95,000 bytes |
 
 ## Last Session Notes
 
+- Accepted the evidence-backed regional story after TASK-068: 22 places remain visible; 19 complete water/renewable comparisons split 7/6/3/3 across the four direction combinations; Guam, Pitcairn, and Tokelau remain explicitly missing; the same marks then expose separately constructed evidence visibility before returning to Explore.
+- Preserved the existing application as a hard constraint. The map, marks, fullscreen stages, controls, panel, methods/sources, URL/history, accessibility, and exploration behavior are reused. The old guided copy, Nauru/Tuvalu comparison, rank-band ending, Adaptation Gap title, and index-first default are not.
+- Added the minimal `TASK-072`–`TASK-077` roadmap. `TASK-072` transition concepts and `TASK-073` data export can run in isolated worktrees while final task/log updates are serialized; scene, figure, and integration work remain sequential because they share scene state, `MapOverlay`, and stage CSS; `TASK-077` owns final owner QA and readiness reconciliation.
 - Approved structure: context-first monorepo.
-- Approved headline: broader adaptation gap, with monitoring as one diagnostic layer.
+- Historical headline decision, now superseded: broader adaptation gap, with monitoring as one diagnostic layer. The Adaptation Gap Index remains optional Explore evidence.
 - Copied reference workflow kits into ignored local context paths.
 - Completed `TASK-001` live dataset profiling and contracts for nine priority official datasets.
 - Completed `TASK-002` processed data pipeline with local raw-cache support.
@@ -99,7 +103,7 @@ The implemented thesis remains a functioning baseline, not the locked competitio
 - Completed `TASK-042`: the island-glow legend no longer teaches dots, dead compare-mode code is gone, and selected centroid fallback marks remain visible until island marks replace them. Post-TASK-039 audit follow-up is now closed.
 - Completed `TASK-047` selected-only JSD neighbor arcs: selected geographies can show restrained dashed arcs to their generated nearest evidence-profile neighbors in free exploration or the guided fingerprint beat, with mobile simplified to one arc and no arcs in coverage, uncertainty, outlook, or no-selection states. The post-TASK-042 design direction group is complete.
 - Completed a second full repository, context, implementation, story, and live-layout audit on 2026-07-09. The review found a semantic correctness issue in `included_indicator_count`, competing nested-scroll/observer state, mobile scene clipping, repeated uncertainty explanation, physical implications from JSD arcs, overloaded mark grammar, redundant runtime products/dependencies, and stale documentation.
-- Approved **The Shape of What We Know** as the next narrative identity while keeping **The Pacific Adaptation Gap Atlas** as the product title. The target story has five scenes: reveal equal-presence marks, expose breaks in the record, separate pressure from visible capacity, compare Nauru and Tuvalu, and rearrange marks into rank bands before returning to exploration.
-- Added `TASK-048` through `TASK-057` and three completed implementation plans. Owner QA later returned the rail composition to `needs-fix`; `TASK-058` defined the fullscreen correction, `TASK-059` through `TASK-063` are done, and `TASK-064` is in owner-gated review.
+- Historical narrative decision, now superseded: **The Shape of What We Know** kept **The Pacific Adaptation Gap Atlas** as the product title and used a five-scene evidence sequence. Its fixed marks, fullscreen stage, and explorer remain useful; its title and guided claims do not.
+- Added `TASK-048` through `TASK-057` and three completed implementation plans. Owner QA later returned the rail composition to `needs-fix`; `TASK-058` defined the fullscreen correction, and `TASK-059` through `TASK-064` are now accepted as the application baseline.
 - Implemented `TASK-048` in the Python index, EDA drivers/divergence layer, app exporter, static contract validator, React adapter, map-size encoding, legend, and selected-place panel. Regenerated index/EDA/app artifacts sequentially.
 - Completed the `TASK-057` URL/history and hydration follow-ups. Local automated release gates passed (60 Python tests, 34 frontend tests, contracts/artifacts/statuses/secrets, build, budget, whitespace); final built assets are JS 1,022,289 bytes and CSS 93,895 bytes under 1,050,000/95,000 caps. Browser-use verified copied-scene URL restoration, invalid fallback, explicit pushes, passive replacement, and Back/Forward. Owner visual QA then failed the opening clarity and scene-4/5 scale, so deployment and submission remain blocked behind `TASK-058`–`TASK-064`.

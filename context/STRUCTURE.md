@@ -23,9 +23,9 @@
 - `context/TASKS.md`: executable task blocks.
 - `context/ANALYSIS_BACKLOG.md`: deeper GIS/data-science analysis lanes before visual design.
 - `context/ANALYSIS_BRIEF.md`: living summary of EDA outputs, early signals, and caveats.
-- `context/STORY_BRIEF.md`: final TASK-018 narrative contract, storyboard beats, exemplars, and caveats.
-- `context/DESIGN_BRIEF.md`: final TASK-018 map-first visual and interaction contract for design/build.
-- `context/ARTISTIC_REDESIGN_BRIEF.md`: approved 2026-07-09 next-direction contract for “The Shape of What We Know,” including five scenes, evidence marks, motion, mobile, simplification, and growth.
+- `context/STORY_BRIEF.md`: approved regional movement -> evidence visibility -> exploration narrative, historical story decisions, and caveat contract.
+- `context/DESIGN_BRIEF.md`: map-first visual and interaction contract, protected application boundary, and regional retrofit layer inventory.
+- `context/ARTISTIC_REDESIGN_BRIEF.md`: active storyboard, copy, evidence, motion, responsive, ethical, and implementation contract for `TASK-072` through `TASK-077`.
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`: live reference audit for map, climate, environmental, selected-geography, evidence-strip, and guided-tour interaction patterns.
 - `context/WINNER_SCROLL_TOUR_AUDIT.md`: Pacific Dataviz winner audit and scroll-led hybrid recommendation.
 - `context/INFORMATION_DIVERGENCE_PLAN.md`: analysis-ready JSD evidence-fingerprint layer scope and interface notes.
@@ -34,7 +34,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: implementation and analysis plans retained for traceability. Completed redesign plans cover `TASK-048` through `TASK-057`; `tasks-059-064-fullscreen-story-stage-implementation-plan.md` is the single active plan for the approved repair batch.
+- `context/plans/`: completed implementation and analysis plans retained for traceability. The active `TASK-072` through `TASK-077` retrofit plan lives directly in `context/TASKS.md`; do not add per-task Markdown.
 
 ## Analysis
 
@@ -83,6 +83,11 @@
 - `artifacts/tables/eda_trend_profiles.csv`: trend diagnostic summaries by geography.
 - `artifacts/tables/eda_outlook_interpretation.csv`: outlook movement and display guidance by geography, scenario, and horizon.
 - `artifacts/tables/eda_monitoring_gap.csv`: monitoring proxy coverage compared with adaptation-gap scores, pressure/capacity ranks, GIS story quadrants, and reporting caveats.
+- `artifacts/tables/eda_candidate_*.csv`: accepted-candidate comparability and story-signal research tables.
+- `artifacts/tables/eda_regional_*.csv`: reviewed regional distributions, cross-currents, feature/visibility matrix, pairwise relationships, and rejected ordering-stability results.
+- `artifacts/figures/eda_candidate_*.png`: candidate research atlas and three-audition contact sheet; analytical input, not app art.
+- `artifacts/figures/eda_regional_*.png`: six complete-region research plates; analytical input, not app art.
+- `artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645/`: deterministic regional EDA run bundle.
 - `artifacts/provenance/dataset_pipeline_summary.json`: processed pipeline provenance, row counts, and source hashes.
 - `artifacts/provenance/gap_index_summary.json`: index method summary, score counts, and top/bottom geography review set.
 - `artifacts/provenance/outlook_summary.json`: outlook metrics, caveats, inputs, and outputs.

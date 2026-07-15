@@ -2,29 +2,31 @@
 
 ## Product Frame
 
-The Pacific Adaptation Gap Atlas is a map-first exploratory tool. It should feel like a GIS project with a strong analytical spine, not a dashboard pasted onto a map.
+The Pacific Climate Evidence Atlas is a map-first exploratory tool. It should feel like a GIS project with a strong analytical spine, not a dashboard pasted onto a map.
 
-The approved next narrative identity is **The Shape of What We Know**. The governing argument is that official records illuminate the Pacific unevenly and those gaps limit what the atlas can responsibly compare, rank, and conclude. See `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The approved guided argument is direct: safely managed drinking-water access and renewable-energy share have changed in different directions across Pacific places, and uneven official-data coverage limits the comparison. See `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
 ## Main User Flow
 
-Current path:
+Approved path:
 
-1. User lands in the five-scene native-scroll atlas with the map visible.
-2. Guided mode changes the same map state used by the explorer.
-3. Explore mode reveals layer controls, detail panel, and source/method access.
-4. User selects a geography in exploration to inspect score, pressure, visible capacity, monitoring, rank uncertainty, trace rows, and panel-only JSD neighbors.
+1. User lands on the existing full-basin map with all 22 geography marks visible.
+2. The same marks rearrange into the 19 complete water/renewable comparisons while Guam, Pitcairn, and Tokelau remain visible as incomplete.
+3. The same marks reorganize into a separate 14-position official-data visibility field.
+4. Guided annotation recedes and the accepted explorer returns with layer controls, detail panel, sources, methods, optional index/outlook, and panel-only JSD neighbors.
 
-Current story:
+Current implementation boundary:
 
-1. User moves through five native-scroll scenes: reveal, subtract, separate, compare, and rearrange.
-2. The same 22 marks return to geographic position before the Explore freely handoff.
-3. Exploration preserves the scientific depth but removes guided JSD and physical similarity connectors.
+1. Preserve the existing MapLibre map, fixed-presence marks, fullscreen stage, native scroll, one observer, URL/history, controls, panel, and accessibility behavior.
+2. Replace the old title, premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, and index-first default.
+3. Use one shared regional evidence figure with movement and visibility modes; add no new renderer, chart framework, router, state manager, or animation dependency.
 
 ## Main Visual Pattern
 
 - fixed-presence centroid-anchored evidence portraits until a reviewed boundary source is chosen
-- inner score field, eight score-input positions, separate context tick, monitoring edge, and quiet selection bloom
+- stable geography identity carried from map to regional fields and back
+- separate signed water and renewable-share axes with direct quadrant counts
+- 14 ordered evidence-visibility positions with non-color missingness
 - direct country/territory selection
 - compact trace, rank-volatility, monitoring, and optional trend snippets in the side panel
 - visible missing-data state
@@ -32,18 +34,19 @@ Current story:
 - full-bleed map-first composition with compact edge controls, following the Dataviz Inspiration audit as principle guidance
 - selected geography as an anchor for any future evidence-fingerprint comparison
 - direct labels and compact evidence strips for scroll-guided story moments
-- five-scene native-scroll default path, with free exploration preserved after the guided story
+- four-scene native-scroll contract plus a separate free-exploration handoff
 - selected-place evidence-fingerprint neighbors in the panel only; similarity map wiring and physical connectors are out of scope
 
-## Current Story Inputs
+## Approved Story Inputs
 
-- Primary high-gap story labels: PN, NR, AS, WF, and TV.
-- Priority monitoring-gap candidates: PN, NR, AS, and WF.
-- AS and WF have missing monitoring rows, so the design copy should frame them as reporting gaps unless externally verified.
+- All 22 places remain visible; 19 have both Act-I measures and three are explicit incomplete cases.
+- Direction counts are 7 water up / renewable down, 6 both up, 3 both down, and 3 water down / renewable up.
+- Visibility uses 14 positions per geography: 277 present and 31 absent cells, with 6–14 represented datasets per place.
+- Direct-loss presence covers 12/22 places, monitoring and power 18/22, water 19/22, and renewable share 20/22.
 - Outlook layers are optional stress-test context and should follow `eda_outlook_interpretation.csv` display recommendations.
 - Rankings are fragile for most geographies; avoid interfaces that imply a definitive leaderboard.
 - The Dataviz Inspiration audit reinforces map-first, selected-anchor, evidence-strip, direct-label, and evidence-bearing-motion patterns. It should not be used to copy any reference project's visual identity.
-- `TASK-048` must correct the current score-input/context count ambiguity before the new evidence mark is implemented.
+- Dataset presence is not evidence quality, preparedness, infrastructure, local knowledge, vulnerability, need, or an outcome.
 
 ## Tone
 

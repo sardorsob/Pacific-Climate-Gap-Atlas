@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: semantic design brief for the functioning fullscreen atlas. The owner likes the map, interaction, fullscreen composition, and Explore handoff but has reopened the competition narrative. Preserve that system through TASK-068 research and TASK-069 selection. Treat the current title, premise, exemplar pair, layer priority, and scene claims as provisional. `context/ARTISTIC_REDESIGN_BRIEF.md` records the visual baseline and owner-approved regional two-act working direction.
+Status: semantic design brief for the approved narrative retrofit. The owner has accepted the existing map, interaction, fullscreen composition, and Explore handoff as the application baseline. `TASK-069` accepted the regional movement -> evidence visibility -> exploration story; `TASK-071` defines the bounded `TASK-072`–`TASK-077` implementation sequence. `context/ARTISTIC_REDESIGN_BRIEF.md` is the active story and visual contract.
 
 Design skill basis:
 
@@ -27,33 +27,50 @@ First-build concept status:
 
 Current concept status:
 
-- Narrative and semantic direction: regional two-act working hypothesis pending TASK-068 complete-region EDA and TASK-069 approval.
+- Narrative and semantic direction: regional two-act story approved after TASK-068/TASK-069 review.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
 - Fullscreen stage concepts: cataloged under `artifacts/design/task-058/`.
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
-- Implementation: `TASK-059` through `TASK-063` are approved and done. `TASK-064` passed the automated, responsive, interaction, and screenshot gates and remains `in-review` for owner visual acceptance; `TASK-057` remains `needs-fix` until that decision.
+- Implementation: `TASK-059` through `TASK-064` are the approved fullscreen/application baseline. `TASK-057` remains `needs-fix` only until the replacement narrative passes `TASK-077` owner QA.
 
-The current app remains the behavioral and visual baseline. No app visual work should preview speculative candidate data. After TASK-069, reuse the fullscreen stage where it still serves the approved evidence and revise only the claims, figures, illustrative labels, or layers the data decision requires. TASK-068 creates static research plates only.
+The current app remains the behavioral and visual baseline. Reuse the fullscreen stage, MapLibre map, marks, controls, panel, URL/history, observer, native scroll, accessibility, and Explore handoff. Change only the minimum generated story fields, guided copy/state, two regional evidence layouts, transition continuity, and guided-only components made obsolete by the new story.
 
 ## Fullscreen Stage Layout Revision
 
 The map no longer has to remain the largest surface in every guided scene. Visual ownership follows the evidence:
 
-- `map-immersive`: premise and scenes 1–3 use a full-viewport map with large captions over safe ocean space;
-- `figure-takeover`: scene 4 expands Nauru/Tuvalu into a full-screen aligned comparison and scene 5 expands the 22 rank bands into a full-screen interval field;
+- `map-immersive`: the premise and 22-place orientation use a full-viewport map with large captions over safe ocean space;
+- `figure-takeover`: the cross-current field and evidence-visibility field own the usable viewport;
 - `explore`: the same marks return to geography and the existing atlas controls become available.
 
 This revision removes the 30rem/28rem rail and 330px rank-chart caps as target constraints. It preserves native scroll, one observer-owned active state, shared evidence marks, URL state, keyboard navigation, reduced motion, and panel-only JSD. See `context/ARTISTIC_REDESIGN_BRIEF.md` for the complete contract.
 
-The rank-sensitivity takeover now uses an unordered HTML interval field rather than the miniature SVG: all geography names remain full and alphabetically ordered, bands share the exact 1–22 scale, Marshall Islands 4–19 remains highlighted, and portrait completion stays in normal page flow with a sticky title/axis. After the progress-control repair, the toolbar and progress row form one reachable sticky chrome region; the rank header clears its measured 132px mobile and 120px desktop height in both orientations.
+The old Nauru/Tuvalu and rank-sensitivity takeovers remain implementation history and may be deleted once the replacement fields are integrated and tests prove no runtime reference remains. The toolbar and progress row remain one reachable sticky chrome region; new dense fields must clear it in desktop, portrait, and landscape layouts.
 
-The transition pass preserves continuity through stable `data-code` identity and the existing evidence marks rather than a cross-DOM animation engine. One observer owns both scene activation and the separate return handoff. The handoff and Explore action deterministically restore adaptation gap, default view, no selection, and no outlook; scrolling back reapplies the last scene's canonical state. Programmatic progress and keyboard jumps are immediate, and one pending requested index protects rapid input from observer-lagged React state until pointer/wheel/touch returns ownership to manual navigation. CSS still handles short text arrival and the shared 560ms evidence/chamber recession, while reduced motion resolves every animated element directly to its static final state.
+The transition pass preserves continuity through stable `data-code` identity and the existing evidence marks rather than a cross-DOM animation engine. One observer owns both scene activation and the separate return handoff. The handoff and first Explore action use explicit `view=overview`: achromatic marks, overview copy, no pressed score control, no selection, and no outlook. Choosing gap, pressure, or capacity returns to `view=default`; Adaptation Gap is never silently restored as the story's verdict. Scrolling back reapplies the last scene's canonical state. Programmatic progress and keyboard jumps remain immediate, and the existing requested-index guard protects rapid input until pointer/wheel/touch returns ownership to manual navigation. CSS still handles short text arrival and the shared 560ms evidence/field transition, while reduced motion resolves every animated element directly to its static final state.
 
-## Approved Next Direction: The Shape Of What We Know
+## Approved Regional Retrofit
 
-The next design is governed by one idea:
+The public title is **Pacific Climate Evidence Atlas** with the direct subtitle **How conditions and official records differ across 22 Pacific places.** The reading path is map -> cross-current field -> evidence-visibility field -> map. The same 22 equal-presence marks carry the story.
+
+Visual layer inventory:
+
+| Layer | Analytical job | Primary form | Mobile path | QA invariant |
+| --- | --- | --- | --- | --- |
+| Pacific orientation | Geography | Existing MapLibre/Natural Earth map with 22 neutral evidence marks | Full-width first viewport; fewer direct labels | 22 marks and 22 accessible geography controls remain present |
+| Different directions | Time-change comparison | Full-viewport signed two-axis cross-current field with four quadrant counts and an incomplete rail | One full-width field; direct counts and tap/focus details; no hover-only values | 19 complete + 3 incomplete; counts 7/6/3/3; separate percentage-point axes |
+| Unequal visibility | Missingness and record coverage | Full-viewport 22-by-14 evidence field anchored by the same marks | Normal document flow or approved compact arrangement; no nested chart scroll | 277 present + 31 absent; no imputation, composite, quality label, or hidden geography |
+| Explore | Lookup and investigation | Existing map, controls, panel, trace rows, methods, optional index/outlook/JSD | Existing single-panel/bottom-sheet flow | Existing functionality and URL/history return intact; neutral handoff default |
+
+The keyframes for desktop, portrait, and mobile landscape are a hard gate in `TASK-072`. They must use the live app as the page context, keep labels and values data-bound, preserve source/caveat placement, and show the reduced-motion still frames. Generated concepts are composition references only; no generated value, island shape, boundary, or label becomes implementation data.
+
+No new renderer is needed. Use the existing React, SVG, CSS, and MapLibre ownership. Add no D3, Canvas, WebGL, chart framework, FLIP/shared-element library, router, or state manager.
+
+## Historical Implemented Direction: The Shape Of What We Know
+
+The currently implemented guided design is governed by the idea below. It is superseded as a public narrative by the approved regional retrofit, but its evidence-mark, fullscreen, native-scroll, accessibility, and panel-only JSD decisions remain reusable:
 
 > Official records illuminate the Pacific unevenly. Those gaps change what the atlas can responsibly compare, rank, and conclude.
 
@@ -72,7 +89,7 @@ The major design decisions are:
 
 TASK-049 locks the evidence-mark values: 44px circular evidence portraits with a 20px inner field and eight 5px radial ticks; score-input order is sea-surface temperature, surface temperature, rainfall, sea level, directly affected persons, monitoring network, power generation, fisheries management; the detached context tick sits at 4:30; reporting edges are continuous, open-dash, or broken-dot; motion uses 560ms with `cubic-bezier(0.22, 1, 0.36, 1)`; and the type stacks remain Georgia plus the system sans stack. Its 28rem desktop copy cap and universal 46svh mobile map are historical rail values superseded by TASK-058 stage ownership. All concept frames remain composition studies and never override generated data values.
 
-`context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older sections below describe enduring constraints; the active story uses five scenes, native document scroll, fixed evidence marks, and panel-only JSD.
+`context/ARTISTIC_REDESIGN_BRIEF.md` is the complete design source of truth. The older implementation remains documented where useful, but the active target uses four guided scenes plus a separate handoff, native document scroll, fixed evidence marks, two regional evidence modes, and panel-only JSD.
 
 ## External Inspiration Guardrails
 
@@ -98,7 +115,7 @@ Patterns to avoid:
 
 ## Design Objective
 
-Build a map-first guided atlas that lets readers inspect where current official climate-pressure, observed-stress, adaptation-capacity, monitoring, and missingness signals appear most out of balance across 22 Pacific geographies.
+Build a map-first guided atlas that shows how safely managed drinking-water access and renewable-energy share changed in different directions across Pacific places, then shows how unequal official-data visibility limits that comparison.
 
 The app should feel like a careful GIS tool with a guided scroll story path. It should not feel like a landing page, generic dashboard, leaderboard, or decorative scrollytelling essay.
 
@@ -106,13 +123,13 @@ The app should feel like a careful GIS tool with a guided scroll story path. It 
 
 Primary analytical job:
 
-- Geography and comparison: show where gap, pressure, capacity, monitoring visibility, and uncertainty differ across Pacific geographies.
+- Time change and regional comparison: show the 19 complete water/renewable endpoint comparisons across four direction combinations while keeping all 22 places visible.
 
 Secondary analytical jobs:
 
-- Uncertainty: show rank fragility and evidence density.
+- Missingness: show the separate 14-position visibility record without converting presence into a quality or preparedness score.
 - Similarity: show which official-data evidence profiles resemble a selected geography, using `TASK-019` artifacts.
-- Missingness: distinguish visible monitoring, reported zero, and missing monitoring rows.
+- Explore: preserve optional gap, pressure, capacity, uncertainty, outlook, and panel-only JSD inspection after the guided story.
 - Decomposition: show why a selected geography scores the way it does.
 - Guided explanation: use scroll-driven story beats to walk users through the story without hiding exploration.
 
@@ -142,6 +159,8 @@ Every visible score, label, and caveat should trace to one of these sources:
 
 | Visual Surface | Primary Source | Evidence Status |
 | --- | --- | --- |
+| Water/renewable cross-current | `eda_regional_crosscurrents.csv`, generated `regional_story` geography fields | separate first-to-latest percentage-point endpoint comparisons |
+| Evidence-visibility field | `eda_regional_feature_matrix.csv`, generated `regional_story.visibility` positions | dataset presence/missingness, not quality or preparedness |
 | Gap score | `data/processed/app/geographies.json`, `artifacts/tables/adaptation_gap_index.csv` | modeled comparative screen |
 | Pressure/capacity scores | `data/processed/app/geographies.json` | modeled comparative screen |
 | Indicator detail | `data/processed/app/country_details.json` | measured/latest official rows plus derived scores |
@@ -165,23 +184,23 @@ No visual element may imply:
 
 ## First View
 
-The first screen should be the atlas itself, with the guided scroll rail acting as the default reading path.
+The first screen is the atlas itself, with the native guided scroll path over the full-basin map.
 
 Large screen first load:
 
 - Full-bleed Pacific map.
-- Adaptation gap layer active.
-- Small top-left title block with one-line thesis.
-- Layer control visible but restrained.
-- Legend visible and useful.
+- Explicit `overview` view with 22 achromatic evidence marks and no pressed score control.
+- Small top-left title block with the direct subtitle.
+- Layer controls available but visually subordinate until Explore.
+- A compact orientation key rather than an Adaptation Gap legend.
 - Source/method access visible.
 - Detail panel collapsed until selection or scroll-tour step.
-- Caveat visible under active layer title: "Comparative screen, not a ranking of need. Most ranks are fragile."
+- Caveat visible near the premise: endpoints use separate clocks and do not explain causes.
 
 Mobile first load:
 
 - Map visible in the top portion of the viewport.
-- Active layer title and caveat visible above or over the map.
+- Overview title and premise caveat visible above or over the map.
 - Bottom sheet collapsed to a compact handle with layer state.
 - Legend accessible through a chip, not occupying the whole first screen.
 - Main map appears before deep controls.
@@ -259,17 +278,23 @@ Hover/focus state:
 - Mobile must use tap/selection, not hover.
 - Keyboard focus must reach points through list or step-through controls if direct map keyboard navigation is impractical.
 
-## Layer Hierarchy
+## Explore Layer Hierarchy
 
-### Default Layer
+### Default Explore View
 
-Adaptation gap score:
+Regional overview:
+
+- State: `view=overview`, no selected geography, no outlook, and no pressed score control.
+- Purpose: preserve geographic orientation and reader agency after the guided story.
+- Encoding: achromatic equal-presence marks; no score is visually active.
+
+### Optional Score Layers
+
+Adaptation gap:
 
 - Field: `adaptation_gap_score`.
-- Purpose: thesis entry point.
-- Caveat: comparative screen, not rank of need.
-
-### Primary Comparison Layers
+- Purpose: optional caveated exploration of the existing comparative screen.
+- Caveat: not a rank of need, vulnerability, or readiness.
 
 Climate pressure:
 
@@ -282,13 +307,13 @@ Visible capacity:
 - Purpose: expose the other side of the gap.
 - Caveat: capacity is a proxy from official datasets, not full readiness.
 
-### Signature Overlay
+### Visibility Overlay
 
 Monitoring/data visibility:
 
 - Source: `eda_monitoring_gap.csv`.
 - Key fields: `monitoring_reporting_status`, `monitoring_coverage_tier`, `monitoring_quadrant`, `story_priority`, `missing_reporting_caveat`, `proxy_caveat`.
-- Purpose: show where high apparent gaps intersect reported-zero or missing monitoring records.
+- Purpose: inspect reported-zero or missing monitoring records without calling them infrastructure absence or preparedness.
 
 ### Secondary Layers
 
@@ -373,21 +398,19 @@ Panel rules:
 
 ## Guided Tour
 
-The tour is the default first-reading path and always leaves the map visible. It behaves like a scroll-led atlas mode, not a separate article above the atlas.
+The tour is the default first-reading path. It behaves like a scroll-led atlas mode, not a separate article above the atlas. The map remains visible for the premise/orientation; the two regional fields receive the viewport when comparison or visibility is the active question.
 
 The free-explore atlas remains available through a persistent "Explore freely" control and as the final state after the guided path.
 
-Accepted scroll-tour steps:
+Approved target steps:
 
-1. Open on the gap.
-2. Pull pressure and capacity apart.
-3. Anchor NR and contrast TV so high gap is not conflated with data silence.
-4. Open "Where the Data Goes Quiet" and surface PN, NR, AS, WF.
-5. Show rank fragility with MH or another high-movement example.
-6. Show evidence fingerprints only as selected-place nearest-neighbor detail, not as a shipped global map layer.
-7. Explore freely with current map state carried into the full controls.
+1. What the records show.
+2. Twenty-two Pacific places.
+3. Different directions.
+4. Unequal visibility.
+5. Return the marks to `overview` and hand off to Explore freely.
 
-Next-redesign replacement:
+Implemented sequence being replaced:
 
 1. What the map can see.
 2. Where the record breaks.
@@ -396,25 +419,28 @@ Next-redesign replacement:
 5. The order does not hold still.
 6. Return the marks to geography and hand off to Explore freely.
 
-JSD does not receive a guided scene in the replacement. Exact neighbors remain selected-place panel evidence in free exploration.
+JSD does not receive a guided scene. Exact neighbors remain selected-place panel evidence in free exploration.
 
 Tour controls:
 
-- Scroll rail plus stepper with next/back and skip.
+- Existing sticky progress controls plus native document scroll and keyboard navigation.
 - Persistent "Explore freely" escape hatch.
-- Each step names the active layer and evidence source.
+- Each step names the claim, evidence source, and necessary caveat.
 - Reduced-motion mode should use immediate state changes, not animated transitions.
 - Keyboard navigation should advance/reverse beats without requiring scroll wheel precision.
 
 ## Color Role Ledger
 
-These are roles, not final locked colors. Claude should make this beautiful, but not by breaking the roles.
+These are semantic roles, not final locked colors. TASK-072 may refine them without changing their meaning.
 
 | Role | Purpose | Draft Direction | Notes |
 | --- | --- | --- | --- |
 | Ocean / map context | orientation | deep muted blue-green or charcoal ocean | quiet enough for points and labels |
 | Land / context geometry | orientation | low-contrast neutral | do not compete with points |
-| Gap magnitude | ordered score | warm sequential ramp | avoid alarm-red dominance |
+| Overview | geographic identity | achromatic mineral/slate field | no active score implication |
+| Water change | signed percentage-point change | clear Pacific blue with direct axis labels | keep its own zero line and years |
+| Renewable-share change | signed percentage-point change | sea-glass green with direct axis labels | keep its own zero line and years |
+| Gap magnitude | optional ordered Explore score | warm sequential ramp | avoid alarm-red dominance; never guided default |
 | Pressure magnitude | ordered score | cool blue sequential ramp | distinct from gap |
 | Capacity magnitude | ordered score | green or teal sequential ramp | do not imply "safe" without caveat |
 | Missing/reporting status | data quality state | stroke, dash, hatch, shape | separate from score color |
@@ -512,12 +538,12 @@ Mobile structure:
 - Legend collapses into a chip or short expandable key.
 - Tour stepper docks above bottom sheet or inside sheet header.
 
-Next-redesign mobile replacement:
+Approved regional mobile replacement:
 
 - Use a sticky map around 42–48svh during geographic scenes.
 - Put story sections in normal document flow so dense comparisons cannot be covered by fixed controls.
 - Use a compact exploration toolbar after the handoff; keep the country-detail sheet separate from guided scene copy.
-- Render Nauru/Tuvalu and rank bands as vertically complete static/stepped figures at narrow widths.
+- Render cross-current and visibility fields as vertically complete static/stepped figures at narrow widths, with all 22 identities and explicit incomplete/missing states.
 
 Mobile interaction:
 
@@ -542,12 +568,12 @@ Minimum shareable state:
 - active layer,
 - selected geography,
 - active scene,
-- coverage/uncertainty view,
+- overview/default/coverage/uncertainty view,
 - outlook on/off and horizon if implemented.
 
 The back button should not trap users inside panels or tour states.
 
-`TASK-057` now provides dependency-free query parsing/serialization and Back/Forward behavior for the functioning five-scene redesign, including guided/explore mode, scene, layer, view, place, and outlook state. No divergence map mode or subregion filter is part of that contract.
+`TASK-057` provides dependency-free query parsing/serialization and Back/Forward behavior for the functioning five-scene baseline, including guided/explore mode, scene, layer, view, place, and outlook state. TASK-074 replaces scene IDs and adds `view=overview` without adding a router or query key; TASK-076 makes that state visually neutral. No divergence map mode or subregion filter is part of the contract.
 
 ## Accessibility Contract
 
@@ -595,6 +621,9 @@ The drawer is not allowed to be the only place where load-bearing caveats appear
 
 | UI Surface | Data File | Required Fields |
 | --- | --- | --- |
+| Regional movement field | `app/public/data/geographies.json` | nested `regional_story` water/renewable first/latest years, signed changes, overlap flag, quadrant |
+| Regional visibility field | same | 14 ordered `regional_story.visibility` positions with feature ID, label, role, presence, latest year |
+| Neutral overview | same | `geo_code`, `name`, centroid, stable evidence-mark fields; no score encoding active |
 | Gap map | `app/public/data/geographies.json` | `geo_code`, `name`, `adaptation_gap_score`, `score_input_indicator_count`, `context_indicator_count`, `trace_indicator_count`, `score_input_presence`, `score_status` |
 | Pressure/capacity map | same | `climate_pressure_score`, `capacity_score` |
 | Centroid geometry | same | `centroid.lon`, `centroid.lat`, `geometry_status` |
@@ -605,25 +634,27 @@ The drawer is not allowed to be the only place where load-bearing caveats appear
 | Subregion filter | `eda_spatial_typologies.csv`, `eda_subregion_comparisons.csv` | `subregion`, typology, counts, caveats |
 | Outlook | `eda_outlook_interpretation.csv`, nested `outlook` in app data | `display_recommendation`, `target_year`, `scenario`, projected scores, caveats |
 
-Implementation should eventually package EDA-derived story tables into app-ready JSON rather than fetching CSVs directly from `artifacts/`.
+TASK-073 packages the approved regional fields into app-ready JSON; runtime code must not fetch research CSVs directly from `artifacts/`.
 
 ## Component Inventory
 
-Likely React components:
+Protected or planned React components:
 
 - `AtlasMap`
 - `atlasMapModel`
+- `MapOverlay`
+- `EvidenceMark`
 - `LayerControls`
-- `Legend`
+- `MapLegend`
 - `CountryPanel`
 - `IndicatorTrace`
 - `RankChip`
-- `FingerprintPreview`
 - `MissingnessKey`
 - `MethodDrawer`
-- `StoryRail`
-- `StoryBeat`
-- `BeatProgress`
+- `StoryScrolly`
+- `StoryScene`
+- `SceneProgress`
+- `RegionalEvidenceScene`
 - `SubregionFilter`
 - `OutlookToggle`
 - `SourceNote`
@@ -631,7 +662,7 @@ Likely React components:
 Renderer ownership:
 
 - The current app uses MapLibre for the map canvas, Natural Earth land context, generated centroid point source, and graticule lines. React overlays still own direct labels, hatching/dashed monitoring cues, selected brackets, graticule labels, and accessible geography hit targets.
-- React owns controls, panel, legend, drawer, story rail, beat state, and source/caveat copy.
+- React owns controls, panel, legend, drawer, native-scroll story state, regional evidence fields, and source/caveat copy.
 - Labels and caveats should remain editable HTML/SVG overlays, not raster text.
 
 ## Motion Contract
@@ -640,18 +671,18 @@ Allowed motion:
 
 - short layer cross-fades,
 - selected-point emphasis,
-- tour step transitions,
-- optional uncertainty re-encoding transition.
-- optional selected-anchor similarity re-encoding transition.
+- map-to-field rearrangement and field-to-map return,
+- visibility-position reveal,
+- optional Explore uncertainty or selected-anchor re-encoding.
 
 TASK-044 added the first evidence-bearing motion pass: native MapLibre paint transitions for layer re-encodes, selected-mark focus, priority emphasis, and anchored-land texture, plus subtle selected-camera focus. Reduced-motion mode collapses map motion to zero and disables the added CSS transitions. Decorative ocean shimmer, alarm pulses, and rising-water metaphors remain out unless a matching data layer makes them honest.
 
 Motion verb:
 
-- reveal,
-- compare,
-- focus,
-- re-encode.
+- locate,
+- rearrange,
+- expose,
+- return.
 
 Shipmap is the reference for evidence-bearing motion: movement is acceptable only when each moving state represents a unit, time step, transition, or selected comparison that the reader can explain.
 
@@ -667,9 +698,9 @@ Reduced motion:
 - replace transitions with immediate state changes,
 - preserve all labels and caveats.
 
-## Visual Concept Prompts For Claude
+## Historical Visual Concept Prompts For Claude
 
-Claude should create or revise visual concepts after reading `STORY_BRIEF.md`, this design brief, `DATAVIZ_INSPIRATION_AUDIT.md`, and `WINNER_SCROLL_TOUR_AUDIT.md`.
+The prompts below document the earlier Adaptation Gap concept phase and must not be used for `TASK-072`. New keyframes follow the approved regional retrofit above and the active contract in `ARTISTIC_REDESIGN_BRIEF.md`.
 
 ### Large-Screen Concept Prompt
 
@@ -683,7 +714,7 @@ Design a mobile portrait concept for the same atlas at 390px width. The map must
 
 Design a mobile landscape concept only if the map controls or scroll-tour rail need more horizontal room. Preserve the map as the dominant surface, keep the bottom or side sheet compact, and show how touch targets remain usable without hiding caveats.
 
-## Claude Visual Review Criteria
+## Historical Claude Visual Review Criteria
 
 Approve a visual concept only if:
 
@@ -718,14 +749,17 @@ Before claiming the app design is implemented:
 - mobile portrait screenshot preserves the story and caveats,
 - color contrast passes text and meaningful-mark checks,
 - color-deficiency check preserves score/missingness distinction,
-- all ranks show rank range or uncertainty,
-- every score has trace/source access,
+- the movement field reproduces 19 complete + 3 incomplete and 7/6/3/3,
+- the visibility field reproduces 277 present + 31 absent across 14 positions,
+- separate water/renewable axes show units and years,
+- overview renders no active score or pressed score control,
+- every optional score retains trace/source access,
 - evidence-fingerprint similarity, if enabled, has a visible anchor geography and caveat,
 - monitoring missingness copy uses the correct reporting-gap language,
 - source drawer is reachable by keyboard,
 - controls are usable at 360px width,
 - reduced-motion mode keeps all tour beats,
-- static screenshot of default view still communicates the thesis.
+- static screenshots of overview, movement, visibility, and Explore communicate the thesis without animation.
 
 ## Out Of Scope For V1 Design
 
@@ -740,4 +774,4 @@ Before claiming the app design is implemented:
 
 ## Final Design Principle
 
-The design should make uncertainty useful. The atlas wins if readers understand not only where the adaptation gap appears wide, but also where the official record is strong, thin, missing, fragile, or caveated.
+The design succeeds if readers understand two things without learning an index first: Pacific places have not moved in one shared direction, and the official record does not show every place equally. Exploration can then expose the Adaptation Gap Index and other caveated evidence without turning any one layer into a verdict.

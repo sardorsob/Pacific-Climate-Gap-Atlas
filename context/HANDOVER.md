@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-063`, `TASK-065` through `TASK-067`, and `TASK-070` are complete. `TASK-068` is in review after completing its deeper complete-region EDA gate; `TASK-064` remains in owner review and `TASK-057` remains `needs-fix`. The regional package records five reviewed tables, six research plates, and one deterministic bundle without changing the baseline index, public app, or story. `TASK-069` makes the final story decision; `TASK-071` rewrites the roadmap after approval.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-071` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. `TASK-068` passed independent scientific review, `TASK-069` accepted the regional movement -> evidence visibility -> exploration story, and `TASK-071` records the six-task retrofit roadmap. `TASK-072` and `TASK-073` are the next parallel-safe tasks.
 
-The current app remains the functioning behavioral/scientific baseline. Its fullscreen composition, evidence marks, comparison/rank takeovers, native scroll, accessibility behavior, and Explore handoff should be preserved during research. Its title, opening thesis, exemplars, scene order, and Adaptation Gap Index prominence are provisional until `TASK-069`. QA screenshots live under `artifacts/design/task-064/`; concept boards remain composition-only.
+The current app remains the accepted behavioral baseline. Preserve its fullscreen composition, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Replace the title, opening thesis, guided exemplars, scene order, comparison/rank takeovers, and index-first default. QA screenshots live under `artifacts/design/task-064/`; future keyframes remain composition-only until implemented.
 
 ## How To Validate The Scaffold
 
@@ -70,14 +70,14 @@ This writes `data/processed/app/pacific_land_context.geojson`, mirrors it to `ap
 python scripts/run_eda.py --config configs/eda.yml
 ```
 
-This writes the script-first EDA tables under `artifacts/tables/`, records `artifacts/provenance/eda_summary.json`, and produces the TASK-067 accepted-candidate atlas plus the TASK-068 five-table/six-plate regional package. It also writes the deterministic TASK-068 bundle at `artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645/` and includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, monitoring-gap GIS story priorities, and TASK-019 Evidence Fingerprint Divergence outputs. Read `context/ANALYSIS_BRIEF.md`, `context/DATA_CARD.md`, and `context/EXPERIMENTS.md` before TASK-069 review; none of these figures is final scene art.
+This writes the script-first EDA tables under `artifacts/tables/`, records `artifacts/provenance/eda_summary.json`, and produces the TASK-067 accepted-candidate atlas plus the TASK-068 five-table/six-plate regional package. It also writes the deterministic TASK-068 bundle at `artifacts/logs/runs/2026-07-14__0000__task-068-regional-eda__678a645/` and includes coverage deep dives, indicator forensics, country story labels, rank volatility, trend profiles, monitoring-gap GIS story priorities, and TASK-019 Evidence Fingerprint Divergence outputs. Read `context/ANALYSIS_BRIEF.md`, `context/DATA_CARD.md`, and `context/EXPERIMENTS.md` when implementing the approved scenes; none of the research figures is final scene art.
 
 ## Next Recommended Work
 
-1. Review the complete TASK-068 distribution, pairwise dependency warnings, separate condition/visibility matrices, rejected grouping result, centroid maps, and deterministic run bundle.
-2. Use `TASK-069` to accept, revise, or reject the two-act regional hypothesis from the combined TASK-067/TASK-068 evidence. Only then may `TASK-071` rewrite the storyboard and create implementation tasks.
-3. Keep the current index, app, title, and scene copy unchanged until that selection. The EDA summary deliberately retains `selected_story: null`.
-4. Keep `TASK-064` in owner review and `TASK-057` in `needs-fix`; do not deploy or submit a story that has been reopened.
+1. Run `TASK-072` concept/keyframe approval and `TASK-073` minimum story-data export in isolated worktrees. Neither task may rewrite the app shell or edit shared status/log files; the Orchestrator serializes their acceptance updates and separate commits.
+2. After owner approval of the keyframes, run `TASK-074` for the four stable guided scene IDs/copy/URL fallback, then `TASK-075` for one shared movement/visibility regional figure.
+3. Run `TASK-076` to connect the two acts to the preserved explorer and delete old guided-only components only after reference checks pass.
+4. Run `TASK-077` as the independent scientific, interaction, accessibility, responsive, and owner-taste gate. Only a passing result may close `TASK-057` or support deployment/submission.
 
 ## Known Caveats
 
@@ -86,8 +86,8 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
 - The current gap varies more with its visible-capacity proxies than with its climate-pressure side, and those capacity inputs include unnormalized station counts, total power generation, and fisheries-measure counts. Treat the index as provisional evidence, not the final story verdict.
-- The candidate expansion is research scope only. Population, renewable energy, water, disaster loss, and land cover are processed for TASK-067 but do not enter the score, public app data, or guided story. Crop yield remains rejected and processing-disabled.
-- TASK-067 compares candidate values only within indicators. Direct loss is reporting visibility only, blank loss years are not zero, population growth is not population size, and the land-cover index direction/baseline remains unresolved. The regional synthesis is a TASK-068 test hypothesis, not a selected narrative; TASK-069 owns that decision.
+- The candidate expansion does not enter the Adaptation Gap score. The current app payload still omits candidate fields, but TASK-069 selected water/renewable endpoint changes plus dataset presence for the replacement guided story; TASK-073 will export only that narrow reviewed contract. Population and land-cover values remain research-only, direct loss remains visibility-only, and crop yield remains rejected and processing-disabled.
+- TASK-067 compares candidate values only within indicators. Direct loss is reporting visibility only, blank loss years are not zero, population growth is not population size, and the land-cover index direction/baseline remains unresolved. TASK-069 selected the regional synthesis only within the bounds recorded in the approved story brief.
 - TASK-068 keeps condition and visibility matrices separate, preserves missing cells, flags derived-input circularity, and rejects stable grouping after leave-one-feature position rho falls to -0.6962. Coverage or monitoring must not be described as emergency preparedness.
 - `TASK-048` corrected the former `included_indicator_count` ambiguity. Production app data now exposes score-input, context-only, and total trace counts plus eight ordered score-input presence positions. Do not regress to the retired field when building the new evidence glyph.
 - The outlook baseline is app-optional. Only include it in the interface with visible caveats and row-level notes.

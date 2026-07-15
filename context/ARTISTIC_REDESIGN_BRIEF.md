@@ -2,25 +2,25 @@
 
 ## Status
 
-The 2026-07-11 fullscreen story-stage remains the visual and interaction baseline. The owner likes the current map, interaction, fullscreen evidence stages, and Explore handoff but considers the story weak. TASK-066 and TASK-067 are owner-accepted. The owner approved a regional two-act working direction for TASK-068 evidence testing; TASK-069 scientific/owner selection must complete before narrative implementation resumes. The five-scene evidence contract and its copy remain the functioning implementation, not the approved future storyboard.
+The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, and `TASK-069` accepted the movement -> evidence visibility -> exploration story. The current five-scene index-led sequence remains functional only until `TASK-072` through `TASK-077` replace the guided layer. The application itself is preserved.
 
-Owner review of the functioning `TASK-057` app found that the opening does not explain the project strongly enough and that scenes 4 and 5 render primary evidence too small. `TASK-057` is therefore `needs-fix`; `TASK-058` is approved and done; `TASK-059` through `TASK-064` form the repair batch.
+Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved and earned acceptance for the fullscreen scale and interaction system. `TASK-057` remains `needs-fix` only because the approved regional narrative has not yet replaced the old guided story.
 
-Working title:
+Approved public title:
 
-> The Pacific Adaptation Gap Atlas
+> Pacific Climate Evidence Atlas
 
-Narrative identity:
+Direct subtitle:
 
-> The Shape of What We Know
+> How conditions and official records differ across 22 Pacific places.
 
-Public-facing thesis candidate:
+Public-facing thesis:
 
-> The shape of what the official record can—and cannot—see.
+> Official records show different changes across Pacific places, and they do not show every place equally.
 
-## 2026-07-12 Data-First Hold
+## 2026-07-15 Approved Retrofit Boundary
 
-Preserve during research:
+Preserve:
 
 - the fullscreen map/figure ownership model;
 - equal-presence evidence marks and non-color missingness cues;
@@ -28,35 +28,34 @@ Preserve during research:
 - native document scroll, one canonical scene observer, reduced motion, and accessible controls;
 - generated-data-only evidence and panel-only JSD.
 
-Treat as provisional until `TASK-069`:
+Replace in the guided experience:
 
-- product and narrative titles;
-- the Adaptation Gap Index as the opening or primary layer;
+- the Adaptation Gap public title and index-first opening/default;
 - the premise and five-scene order;
-- Nauru/Tuvalu as the comparison pair;
-- the claim that uneven general dataset coverage is the main Pacific story;
-- any signal -> impact -> response sequence suggested before the candidate datasets pass comparability review.
+- Nauru/Tuvalu as the guided comparison pair;
+- the pressure/capacity split and rank-band ending;
+- slogan-like narrative language that asks style to carry the claim.
 
-Do not modify the app to preview speculative datasets or story copy. TASK-067 provides the first research atlas; TASK-068 adds complete-region distributions, cross-currents, condition/visibility heatmaps, relationship diagnostics, cluster sensitivity, and centroid maps. These plates reuse an editorial fullscreen vocabulary only as research surfaces. TASK-069 accepts, revises, or rejects the regional two-act working direction before code or generated concept art is commissioned.
+The retrofit may add only the minimum traceable story fields, scene states, evidence layouts, copy, and CSS required by the approved sequence. It may delete old guided-only components after they are unreferenced. It must not replace MapLibre, the explorer, panel, controls, URL contract, observer model, or accessibility behavior.
 
-## 2026-07-14 Regional Two-Act Working Composition
+## 2026-07-15 Regional Two-Act Composition
 
 Preserve the existing fullscreen stage and island explorer, but test a new reading path:
 
-- **Act I: movement.** The full regional field appears first. Distributions and trajectories reveal that essential-service access, energy transition, climate signals, and response-related proxies do not travel as one line of progress. Illustrative labels emerge from the field rather than replacing it.
-- **Act II: visibility.** The same field changes encoding to show which conditions are well observed, thinly recorded, differently dated, or absent from the official record. Missingness is a limit on sight, not an outcome or readiness class.
-- **Coda: agency.** Story annotations recede; the current interaction system returns intact so the reader can select any geography, inspect sources/caveats, and explore without a global verdict.
+- **Act I: different directions.** The full regional field appears first. Nineteen complete water/renewable endpoint comparisons occupy all four direction combinations; Guam, Pitcairn, and Tokelau remain visible as incomplete. Illustrative labels emerge only after the full field is legible.
+- **Act II: unequal visibility.** The same marks reorganize around the separately constructed 14-position visibility record. Missingness and different clocks limit comparison; they do not define outcomes, readiness, evidence quality, or local knowledge.
+- **Coda: agency.** Story annotations recede into an achromatic `overview` map with all 22 marks, no selection, and no outlook. The current interaction system returns intact; no score layer is presented as active until the reader chooses one.
 
-TASK-068 research plates may borrow this staging rhythm, but they are not scene mockups. The final number of scenes, transitions, title, and layer sequence belong to TASK-071 after TASK-069 approval.
+The artistic idea is continuity, not ornament: geography becomes comparison, comparison becomes a record, and the record returns to geography. The same 22 marks carry that change. Motion verbs are locate, rearrange, expose, and return. Every frame must still make sense without motion.
 
-## 2026-07-11 Fullscreen Stage Revision
+## 2026-07-11 Fullscreen Stage Revision (Preserved Layout History)
 
 The approved composition is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for editorial evidence chambers.
 
-- Add one full-screen premise prologue before the five evidence scenes.
-- Let the map own the full viewport for the prologue and scenes 1–3.
-- Let the Nauru/Tuvalu comparison own the viewport in scene 4.
-- Let the 22-row interval field own the viewport in scene 5.
+- Keep one full-screen premise prologue before the evidence sequence.
+- Let the map own the full viewport whenever geography is the active question.
+- Let a regional comparison field own the viewport when position and direction are the active question.
+- Let the evidence-visibility field own the viewport when the official record is the active question.
 - Return the same 22 evidence marks to geography for Explore.
 - Keep native document scroll and one observer-owned active state; do not add scrolljacking or nested overflow.
 
@@ -68,17 +67,22 @@ The evidence grammar, fixed-presence marks, five evidence operations, panel-only
 
 The historical pre-redesign app was scientifically careful, visually competent, and technically healthy. Its limitation was editorial: it read as a polished sequence of GIS features rather than one inevitable argument. Seven beats repeatedly explained the interface, while the strongest original idea—uneven official visibility—did not fully govern the marks, scene order, layout, and motion.
 
-The redesign should make one argument through every layer of the experience:
+The retrofit should make one argument through every layer of the experience:
 
-> Official records illuminate the Pacific unevenly. Those gaps in the record change what the atlas can responsibly compare, rank, and conclude.
+> Pacific places do not move along one shared line, and the official record does not show every place equally.
 
-The adaptation-gap score remains the entry point, but the evidence behind it becomes the protagonist. The redesign is not a cosmetic reskin. It is a simplification of the story, a clarification of the data grammar, and a more artistic way to show absence without turning it into decoration.
+The map and the 22 places remain the entry point. The Adaptation Gap Index moves to optional Explore evidence. The retrofit is a story and encoding change, not a cosmetic reskin or application rebuild.
 
 ## Evidence And Ethics Lock
 
 The redesign must preserve these facts and limits:
 
 - The dataset contains 22 Pacific geographies.
+- The water/renewable comparison has 19 complete geographies and three incomplete geographies: Guam, Pitcairn, and Tokelau.
+- The 19 complete first-to-latest comparisons split 7 water up / renewable share down, 6 both up, 3 both down, and 3 water down / renewable share up.
+- The evidence-visibility matrix contains 14 ordered positions for each geography, with 277 present cells and 31 absent cells; geography totals range from 6 to 14.
+- First-to-latest endpoints are not continuous trajectories. Water and renewable-share changes keep separate percentage-point axes, denominators, years, and caveats.
+- Dataset presence is not evidence quality, preparedness, infrastructure, local knowledge, vulnerability, need, or an observed outcome.
 - The Adaptation Gap Index is a comparative screen, not a ranking of need, vulnerability, readiness, or funding priority.
 - The score is built from eight possible score-input datasets: four climate-signal datasets, one observed-stress dataset, and three visible-capacity datasets.
 - Greenhouse-gas emissions per capita is responsibility context only. It must never be counted or drawn as a score input.
@@ -88,6 +92,7 @@ The redesign must preserve these facts and limits:
 - Rank bands are sensitivity diagnostics, not probability intervals.
 - JSD compares normalized official-data profiles. It does not imply physical connection, causality, shared vulnerability, lived experience, or shared policy need.
 - Outlook outputs remain optional method/stress-test context, not forecasts.
+- The TASK-068 seriation is unstable and cannot support public clusters, regional types, or policy groupings.
 - Deeper Pacific cultural visual language requires Pacific co-design. Do not appropriate Indigenous navigation, weaving, tattoo, or other cultural motifs as decorative interface language.
 
 ## What Stays, What Changes
@@ -97,21 +102,20 @@ The redesign must preserve these facts and limits:
 - A full-basin Pacific map visible from the first viewport.
 - Guided reading followed by a clear `Explore freely` handoff.
 - Direct access to sources, methods, trace rows, and caveats.
-- Nauru and Tuvalu as the central paired example.
 - Reported-zero and missing-row monitoring as distinct visual and verbal states.
-- Pressure, visible capacity, monitoring visibility, and rank fragility as the core evidence families.
+- Water change, renewable-share change, dataset presence, monitoring visibility, and traceable missingness as the guided evidence families.
 - A selected-place panel organized around score, the two sides of the score, and what the record shows.
 - Guaranteed-size geography marks so atolls do not disappear at basin scale.
 - Reduced-motion support, keyboard navigation, touch targets, and non-color missingness cues.
 
 ### Reframe
 
-- The redesign replaces the historical seven-beat tour with five scenes and a short handoff.
+- The redesign replaces the historical index-led tour with one premise, a regional orientation, two evidence acts, and a short handoff.
 - Replace evidence-size circles with fixed-presence evidence marks. Thin evidence should look interrupted, not physically unimportant.
 - Make monitoring and score-input availability part of the primary mark grammar instead of secondary prose.
-- Use one motion verb per scene: reveal, subtract, separate, compare, rearrange, return.
+- Use one motion verb per scene: locate, rearrange, expose, return.
 - Use native document scroll with a sticky map instead of a nested story-rail scroller.
-- Let the Nauru/Tuvalu comparison and rank interval view temporarily become composed editorial figures rather than forcing every claim to remain a map layer.
+- Let the cross-current and visibility views temporarily become composed editorial fields rather than forcing every claim to remain geographic.
 
 ### Retire Or Move
 
@@ -166,126 +170,91 @@ Missing evidence should be visible as interruption. It should not make the geogr
 - Mobile labels are fewer and may use one compact collision-aware list or leaders rather than all exemplar names at once.
 - Selection is a quiet bloom, not another data ring.
 
-## Premise And Five-Scene Storyboard
+## Approved Storyboard
 
-The story uses one premise plus five evidence scenes. Each evidence scene keeps one claim, one visual operation, one necessary caveat, and one evidence source line. Copy should sound spoken and precise, not like a slogan generator.
+The story uses one premise, one regional orientation, two evidence acts, and the existing handoff. Every scene has one claim, one visual operation, one necessary caveat, and one source line. Public copy is direct and concrete. The artistic character comes from the same 22 marks changing position and meaning without losing identity.
 
-### Premise: What This Atlas Is Asking
+### Premise: What The Records Show
 
-The map fills the first viewport. No opaque story rail, legend wall, or method-control cluster competes with the premise.
+The existing map fills the first viewport. No opaque rail, legend wall, or method-control cluster competes with the opening.
 
-> Climate pressure is not the same as adaptation capacity.
+> Across the Pacific, safely managed drinking-water access and renewable-energy share have changed in different ways.
 
-> Across 22 Pacific places, official records show both unevenly. This atlas maps the gap between them—and makes the missing evidence visible.
+> Official records let us compare 19 of 22 places on both measures. They also leave gaps that limit the comparison.
 
-Caveat: visible capacity is what the available official datasets can show, not full readiness or lived adaptive capacity.
+Caveat: these are first-to-latest percentage-point endpoints on separate clocks. They do not show a continuous trajectory or explain why the changes occurred.
 
-The premise is one stable, linkable scene. Its text appears over safe ocean space and leaves when the next scene becomes active. Native page scroll remains the only scroll owner.
+Evidence: `eda_regional_crosscurrents.csv` and generated geography records.
 
-### Scene 1: What The Map Can See
-
-Claim:
-
-> Twenty-two Pacific places appear here. But they do not appear with equal clarity.
-
-Visual state:
-
-- Reveal all 22 evidence marks in geographic position.
-- Begin with the common structure of the marks before emphasizing score color.
-- Let the viewer register that every place occupies equal visual presence.
-
-Motion verb: reveal.
-
-Evidence: `adaptation_gap_index.csv`, generated geography records.
-
-Caveat: the atlas compares what official data can show; it does not rank who needs help most.
-
-### Scene 2: Where The Record Breaks
+### Scene 1: Twenty-Two Pacific Places
 
 Claim:
 
-> Some places are difficult to read before we even begin comparing them.
+> This story covers 22 Pacific places. Each one stays visible throughout.
 
 Visual state:
 
-- Recede score color.
-- Bring missing score-input cuts and monitoring edges forward.
-- Directly annotate Pitcairn and Nauru as `reports 0` and American Samoa and Wallis and Futuna as `no processed rows`.
-- Keep the two monitoring conditions visually distinct without relying on color.
+- Show all 22 evidence marks in geographic position over the existing Pacific map.
+- Use neutral fields rather than the Adaptation Gap ramp.
+- Introduce the mark as identity and evidence presence, not as importance or rank.
 
-Motion verb: subtract.
+Motion verb: locate.
 
-Evidence: `eda_monitoring_gap.csv`, indicator trace.
+Evidence: generated geography records and centroid map context.
 
-Caveat: thin records describe official visibility, not conditions on the ground.
+Caveat: Natural Earth land is visual context; each selectable record remains centroid-based, not a reviewed boundary polygon.
 
-### Scene 3: The Gap Has Two Sides
+### Scene 2: Different Directions
 
 Claim:
 
-> The gap is not one number. It is the distance between what pressure shows and what capacity records can show.
+> The 19 complete comparisons do not form one line of progress or decline.
 
 Visual state:
 
-- Open each evidence mark into paired pressure and visible-capacity arcs or lobes.
-- Preserve the geography anchor while showing the separation between the two sides.
-- Let the negative space between the sides carry the concept of mismatch.
-
-Motion verb: separate.
-
-Evidence: climate-pressure and capacity scores plus score-input trace rows.
-
-Caveat: visible capacity is an official-data proxy, not full readiness or lived adaptive capacity.
-
-### Scene 4: Similar Scores, Different Records
-
-Claim:
-
-> Nauru and Tuvalu arrive at similar-looking scores through different records.
-
-Visual state:
-
-- Let the map recede to a quiet locator or disappear.
-- Enlarge two evidence portraits into a viewport-scale editorial comparison.
-- Compare gap, pressure, visible capacity, monitoring state, score-input completeness, and rank band.
-- Use aligned fields so differences are perceptual, not buried in prose.
-- Show both portraits together on desktop/landscape and in consecutive full-width reading order on portrait mobile; do not require swiping.
-
-Motion verb: compare.
-
-Evidence: geography records, `eda_monitoring_gap.csv`, `eda_rank_volatility.csv`.
-
-Caveat: this is a comparison of official evidence, not a claim that either place’s lived reality is summarized by the score.
-
-### Scene 5: The Order Does Not Hold Still
-
-Claim:
-
-> Change one ingredient, and most of the order moves.
-
-Visual state:
-
-- Replace the map with a viewport-scale rank-band field while preserving geography identity.
-- Highlight Marshall Islands’ 4–19 span and the broad pattern: 19 of 22 geographies are labeled fragile under the current leave-one-indicator diagnostic.
-- Do not display a definitive ordered leaderboard behind the bands.
-- Give every geography at least a 13px label and roughly 26–30px desktop row height. On portrait mobile, use normal page height with a sticky title/axis and no nested chart scroll.
+- Move the same geography marks from map position into a full-viewport cross-current field.
+- Keep water change and renewable-share change on separate signed percentage-point axes with visible zero lines.
+- Print the four quadrant counts: 7, 6, 3, and 3.
+- Keep Guam, Pitcairn, and Tokelau in an explicit incomplete-comparison rail rather than dropping or zeroing them.
+- Annotate at most a few evidence-earned places after the complete field is visible. Papua New Guinea and Samoa may illustrate the largest quadrant but may not become protagonists.
 
 Motion verb: rearrange.
 
-Evidence: `eda_rank_volatility.csv`.
+Evidence: `eda_regional_crosscurrents.csv`.
 
-Caveat: the bands show sensitivity to analytical choices; they are not confidence intervals.
+Caveat: endpoints and latest years differ. Water access and renewable share have different denominators and neither change is attributed to climate or policy causes.
 
-### Handoff: Return To The Pacific
+### Scene 3: Unequal Visibility
 
-Closing claim:
+Claim:
 
-> This map cannot tell us who needs help most. It can show us where to look—and where the record asks us to look harder.
+> The official record is also uneven. Some places have many of the reviewed datasets; others have fewer.
 
 Visual state:
 
-- Return the same marks from the interval field to geographic position.
-- Restore restrained gap color and exploration controls.
+- Reorganize the same 22 marks into a full-viewport evidence field using 14 stable ordered positions per geography.
+- Show every present and absent position; do not collapse the row into a visibility score.
+- Directly label the concrete coverage facts: direct loss 12/22, monitoring 18/22, power 18/22, water 19/22, renewable share 20/22.
+- Preserve non-color missingness and distinguish a missing row from a reported zero where the source supports that distinction.
+- Keep the field readable on mobile through normal document flow or an approved compact arrangement; do not add a nested chart scroller.
+
+Motion verb: expose.
+
+Evidence: the `evidence_visibility` lane of `eda_regional_feature_matrix.csv` and source trace rows.
+
+Caveat: dataset presence means a reviewed official record exists. It does not measure record quality, preparedness, infrastructure, local knowledge, vulnerability, or need.
+
+### Handoff: Explore The Places
+
+Closing claim:
+
+> Select a place to inspect the data, sources, and gaps behind it.
+
+Visual state:
+
+- Return the same marks to geographic position.
+- Restore the existing exploration controls, selected-place panel, sources/methods, optional Adaptation Gap and outlook layers, and panel-only JSD neighbors.
+- Use explicit `view=overview` at handoff and first Explore entry: neutral marks, overview copy, no selection/outlook, and no pressed score control. Choosing gap, pressure, or capacity returns to `view=default`. Do not reset the reader into the Adaptation Gap layer as a verdict.
 - Offer one clear `Explore freely` action.
 
 Motion verb: return.
@@ -294,8 +263,8 @@ Motion verb: return.
 
 The guided experience has three ownership modes:
 
-1. `map-immersive`: premise and scenes 1–3. The map fills the viewport; scene copy overlays safe ocean space with a restrained contrast veil and no card-heavy rail.
-2. `figure-takeover`: scenes 4–5. The active figure owns approximately 80–90vw and the usable viewport height; the map is absent or reduced to a quiet locator.
+1. `map-immersive`: premise and regional orientation. The map fills the viewport; scene copy overlays safe ocean space with a restrained contrast veil and no card-heavy rail.
+2. `figure-takeover`: different directions and unequal visibility. The active regional field owns approximately 80–90vw and the usable viewport height; the map is absent or reduced to quiet context.
 3. `explore`: after the handoff. Story chrome leaves, the map owns the viewport, and the existing exploration controls return.
 
 Shared rules:
@@ -304,10 +273,10 @@ Shared rules:
 - Each scene is a normal document section with a stable `id` and approximately one viewport of breathing room.
 - One `IntersectionObserver` owns the canonical active scene.
 - Progress controls call `scrollIntoView` only; they never write a competing active state.
-- On portrait mobile, keep one claim per viewport-scale step, stack the scene-4 portraits in full-width reading order, and let scene 5 grow vertically in document flow.
-- On landscape mobile, let the scene-5 interval field fill the screen.
+- On portrait mobile, keep one claim per viewport-scale step and let dense evidence rows grow vertically in normal document flow.
+- On landscape mobile, let the active regional field fill the screen.
 - Use fewer direct map labels and compact exploration controls on mobile.
-- Test 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800, and landscape mobile for scene 5.
+- Test 1440×900, 1280×800, 1024×768, 430×932, 390×844, 360×800, and landscape mobile for both regional fields.
 
 ## Motion And Transition Contract
 
@@ -315,7 +284,7 @@ Motion is explanatory punctuation. It must never become ambient atmosphere.
 
 - Preserve 560ms `cubic-bezier(0.22, 1, 0.36, 1)` for evidence transformations.
 - Use 180–240ms opacity/translate transitions for scene text.
-- Use one restrained 450–600ms chamber arrival/recession for scenes 4 and 5.
+- Use one restrained 450–600ms field arrival/recession for the cross-current and visibility takeovers.
 - Transitions must be interruptible and converge on the most recent scene state.
 - Morph marks already on screen instead of fading the entire canvas to black and replacing it.
 - Use camera motion only when a scene names a place whose location matters.
@@ -323,7 +292,7 @@ Motion is explanatory punctuation. It must never become ambient atmosphere.
 - `prefers-reduced-motion: reduce` produces immediate state changes or a static equivalent, not merely shorter animation.
 - Progress navigation, scrolling, browser history, and keyboard navigation must all converge on one scene-state controller.
 
-Implementation interpretation for the repair batch: reuse the same evidence-mark component and stable geography codes across map, comparison, and interval forms; animate marks and chambers with native CSS; do not add a cross-DOM FLIP/shared-element engine. This preserves recognizable mark identity while keeping native scroll, interruptibility, reduced motion, and the no-new-dependency constraint. `TASK-064` must expose this interpretation in owner QA rather than treating it as silently approved motion fidelity.
+Implementation interpretation for the retrofit: reuse the same evidence-mark component and stable geography codes across map, cross-current, visibility, and return forms; animate marks and fields with native CSS; do not add a cross-DOM FLIP/shared-element engine. The map-to-field change should read as one constellation being reorganized even if the final renderer uses the existing component in separate stage ownership. `TASK-072` keyframes lock that continuity before code, and `TASK-077` verifies the reduced-motion/static equivalent.
 
 ## Art Direction
 
@@ -334,9 +303,9 @@ Color roles:
 - Ocean: near-black Pacific blue.
 - Land and cartographic texture: subdued slate/blue-gray, visible enough for orientation but secondary to evidence marks.
 - Paper/chrome: warm mineral white used sparingly.
-- Adaptation gap: coral to oxidized terracotta.
-- Climate pressure: clear Pacific blue.
-- Visible capacity: sea-glass green.
+- Water change: clear Pacific blue with direct axis labeling.
+- Renewable-share change: sea-glass green with direct axis labeling.
+- Optional Adaptation Gap Explore layer: coral to oxidized terracotta; never the guided default.
 - Missingness: open cuts, broken strokes, unlit positions, and texture—not a separate alarm color.
 - Selection: pale bloom or crisp light emphasis, not a data-colored ring.
 
@@ -360,7 +329,7 @@ Free exploration should preserve the scientific depth without carrying all of it
 
 Keep:
 
-- gap, pressure, visible-capacity, monitoring-visibility, and rank-fragility controls;
+- the current gap, pressure, visible-capacity, monitoring-visibility, rank-fragility, and outlook controls as optional exploration tools;
 - selected geography detail and indicator trace;
 - selected-place JSD nearest neighbors in the panel;
 - sources, method, geometry caveat, and optional outlook stress-test access.
@@ -374,16 +343,18 @@ Simplify:
 - no automatic fit that hides the wider Pacific unless a scene explicitly focuses on a named place;
 - shareable URL state for mode, scene or layer, selected geography, and optional outlook state.
 
-## Growth Path
+## Implementation Path
 
-The completed first redesign grew the atlas through evidence correction, native scroll, fixed-presence marks, composed figures, exploration simplification, URL state, and release checks. The fullscreen repair proceeded in this order:
+The approved retrofit is intentionally small:
 
-1. `TASK-059`: added and validated the premise plus revised scene copy.
-2. `TASK-060`: replaced the grid rail with the fullscreen native-scroll composition.
-3. `TASK-061`: promoted Nauru/Tuvalu into the scene-4 takeover with stable identity, aligned full-scale portraits, no selection bloom, and portrait-only stacking.
-4. `TASK-062`: promoted rank sensitivity into the scene-5 interval field.
-5. `TASK-063`: connected evidence-bearing transitions and the Explore handoff.
-6. `TASK-064`: completed the automated and screenshot matrix and remains `in-review` for owner visual acceptance. `TASK-057` remains `needs-fix` until that decision.
+1. `TASK-072`: approve desktop, portrait, and landscape keyframes for map -> cross-current -> visibility -> map continuity, using the live app as the composition baseline.
+2. `TASK-073`: add the minimum traceable regional-story fields to generated app data.
+3. `TASK-074`: replace the guided scene/copy/URL contract while preserving the scroll and state architecture.
+4. `TASK-075`: build one regional evidence field with movement and visibility modes, reusing the evidence mark and native SVG/CSS.
+5. `TASK-076`: integrate both modes, return to the unchanged explorer, and delete only guided components proven unused.
+6. `TASK-077`: run independent scientific, interaction, accessibility, responsive, URL/history, bundle, and owner QA; reconcile `TASK-057` only after acceptance.
+
+`TASK-072` and `TASK-073` may run concurrently only in isolated worktrees. Their status/log updates and separate no-co-author commits are serialized by the Orchestrator. Later tasks are sequential because they share the scene contract, evidence marks, `App.tsx`, and stage CSS. No per-task Markdown files are required; the task ledger is the implementation plan.
 
 Future possibilities only after the core redesign works:
 
@@ -397,13 +368,16 @@ Future possibilities only after the core redesign works:
 The redesign succeeds when:
 
 - a first-time reader can state the thesis after the premise without remembering interface mechanics;
-- the score-input/context distinction is correct in generated data, marks, copy, and legend;
+- a nontechnical reader can distinguish water change, renewable-share change, and evidence visibility without being taught a score;
 - every one of 22 places remains visible at basin scale;
+- the 19 complete comparisons and three incomplete cases remain visible, with 7/6/3/3 quadrant counts reproduced from generated data;
+- all 14 visibility positions per geography remain traceable, with 277 present and 31 absent cells and no composite visibility score;
 - missing evidence is legible as a break in a stable structure;
 - reported zero and missing row are distinguishable in colorblind and monochrome review;
-- Nauru/Tuvalu and Marshall Islands each receive a readable viewport-scale scene without turning the app into a leaderboard;
+- the cross-current and visibility fields receive enough space for direct labels and remain readable on every target viewport;
 - progress controls never fight scroll state;
 - mobile scenes are not covered by fixed controls;
 - reduced-motion users receive an equivalent static story;
 - exploration remains powerful but quieter than the narrative;
+- the explorer returns intact and the optional Adaptation Gap layer remains clearly caveated rather than silently restored as the default;
 - the final experience feels original because its form grows from the evidence, not because it borrows a visual motif.

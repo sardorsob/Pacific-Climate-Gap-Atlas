@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: the implemented **The Shape of What We Know** sequence remains the functioning app baseline, but the final competition story is not locked. The owner accepted `TASK-066` processing and `TASK-067` visual research, then approved a regional two-act working direction for deeper testing: conditions move in different directions across the Pacific; the official record sees those conditions with unequal clarity; the story then releases into the existing island explorer. `TASK-068` tests that direction across the complete evidence field. `TASK-069` owns final scientific/owner selection. No current title, exemplar, index role, research plate, or working act is an app implementation contract yet. The existing five-scene material below remains implementation history and a reusable visual/evidence vocabulary.
+Status: `TASK-069` accepted the regional movement -> evidence visibility -> exploration story after the complete-region `TASK-068` review. The implemented **The Shape of What We Know** sequence remains the functioning app baseline only until `TASK-072` through `TASK-077` replace its guided layer. Preserve the current map, 22 equal-presence marks, fullscreen stage, controls, selected-place panel, sources/methods, URL/history, accessibility, and Explore handoff. Supersede the old Adaptation Gap title, index-first opening/default, Nauru/Tuvalu guided comparison, and rank-band ending.
 
 Source basis:
 
@@ -30,7 +30,7 @@ Historical story hypotheses tested in TASK-067:
 2. **Where the climate record goes quiet** — center monitoring and reporting visibility without equating missing official rows with missing infrastructure or local knowledge.
 3. **The map that cannot rank the Pacific** — use the current score as an object of examination and show where units, denominators, missingness, and analytical choices make a single order irresponsible.
 
-Candidate artistic language remains provisional:
+The following artistic language was provisional during research and is retained as historical input:
 
 - many climate stories, uneven lines of sight;
 - each geography as an unfinished evidence portrait;
@@ -47,7 +47,7 @@ The next story must:
 - earn its exemplar places from `TASK-067`, not inherit Nauru/Tuvalu automatically;
 - emerge from the reviewed TASK-067 figures and story-signal table rather than from a preferred visual motif;
 - compete against two meaningfully different evidence-board auditions before owner selection;
-- obtain final owner/scientific approval in `TASK-069` before scene copy or app behavior changes.
+- obtain final owner/scientific approval in `TASK-069` before scene copy or app behavior changes. This gate passed on 2026-07-15.
 
 The current fullscreen stage, equal-presence marks, enlarged comparison, readable rank field, native scroll, accessibility behavior, and Explore handoff are reusable. Their existing claims and ordering are not protected from revision.
 
@@ -59,21 +59,42 @@ TASK-067 left three evidence-board directions open:
 
 The owner subsequently chose a regional synthesis for TASK-068 testing rather than one board in isolation. Land-cover semantics, loss-per-capita comparison, climate attribution, preparedness classification, and a new composite remain unavailable or withheld.
 
-## 2026-07-14 Owner-Approved Working Direction
+## 2026-07-15 Approved Regional Story
 
 The story subject is the Pacific region, not one island. Named geographies may provide brief, evidence-earned annotations, but all available places remain visible and no single place becomes the protagonist.
 
-Working spine:
+Public title:
 
-1. **Act I — A region moving in different directions.** Show the complete regional distribution and trajectories. Safely managed drinking-water access and renewable-energy share provide the first concrete cross-current to test, alongside selected climate, stress, and response-related evidence that remains within its own units.
-2. **Act II — A region seen with unequal clarity.** Reveal reporting coverage, monitoring visibility, missingness, and time mismatch as limits on what the official record can support. This act must not equate data coverage or monitoring counts with emergency preparedness.
+> Pacific Climate Evidence Atlas
+
+Direct subtitle:
+
+> How conditions and official records differ across 22 Pacific places.
+
+Approved problem statement:
+
+> Official records across 22 Pacific geographies show no single shared path in safely managed drinking-water access and renewable-energy share, and uneven coverage means three places cannot be compared on both measures.
+
+Approved spine:
+
+1. **Act I — Different directions.** Keep all 22 places visible. Among the 19 with both measures, first-to-latest changes split into 7 water up / renewable share down, 6 both up, 3 both down, and 3 water down / renewable share up. Guam, Pitcairn, and Tokelau remain visible as incomplete comparisons. No quadrant is presented as the Pacific trajectory.
+2. **Act II — Unequal visibility.** Re-encode the same 22 marks with the separately constructed 14-position visibility record: 277 present cells and 31 absent cells, with 6–14 represented datasets per geography. Direct-loss records cover 12 of 22 places, monitoring and power 18, water 19, and renewable share 20. Presence means an official record was reviewed, not that the record is complete, high quality, current, or representative of local knowledge.
 3. **Coda — Explore the islands.** The guided story recedes into the existing interactive atlas so readers can select any geography, inspect its evidence profile and sources, and see unknowns rather than inherit a verdict.
 
-TASK-068 must test whether this spine holds across all geographies, whether illustrative labels are representative, and whether any cluster ordering is stable enough even for research display. TASK-069 may accept, revise, or reject the spine. No scene count, title, copy, layer priority, or app behavior changes before that gate.
+The Adaptation Gap Index remains an optional caveated Explore layer. It is not the guided spine, opening default, or supporting evidence for either act. The old product title, Nauru/Tuvalu comparison, and rank-band ending are historical after the retrofit. “The Shape of What We Know” may describe the visibility act internally, but it is not the public hook.
 
-## Narrative Decision
+Required reading rules:
 
-The decision below describes the implemented baseline and is suspended as the final competition-story decision until `TASK-069`.
+- Act I shows first-to-latest endpoints, not continuous trajectories.
+- Water and renewable measures keep separate axes, denominators, units, and clocks.
+- Neither measure is evidence of climate or policy causation.
+- Missing rows are not zeros, absent infrastructure, absent events, low readiness, or low need.
+- The condition and visibility views remain separate; no combined score or public cluster is allowed.
+- Papua New Guinea and Samoa may be annotated only after the full field appears. They illustrate the largest quadrant; they do not represent the region.
+
+## Historical Narrative Decision
+
+The decision below describes the implemented baseline and is superseded by the 2026-07-15 approved regional story. Keep it only until the old guided components are retired so the current app can still be interpreted during the transition.
 
 The atlas should use the broader Adaptation Gap frame as the spine, with official-data visibility and monitoring gaps as the signature diagnostic interaction.
 
@@ -99,7 +120,7 @@ Historical baseline through `TASK-047`:
 - JSD/evidence-profile similarity remains a late guided beat because it helps explain official-data profile shape after the reader has already seen gap, thin records, the formula, one concrete place contrast, and rank fragility. It remains selected-anchored and must not become a global similarity leaderboard.
 - `TASK-047` adds dashed selected-only neighbor arcs in the guided fingerprint beat and free exploration. The arcs mean official-data profile similarity only; the panel remains the authoritative place for exact JSD values and caveats.
 
-Current guided contract after the `TASK-059` Builder pass:
+Implemented guided contract being replaced after the `TASK-059` Builder pass:
 
 - `SCENES` contains exactly six ordered scene IDs: the stable premise `what-this-atlas-is-asking`, followed by `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
 - The premise uses the map-immersive stage and the approved opening claim/caveat. The next three scenes remain map-immersive; the comparison and rank-band scenes declare figure-takeover ownership for the following layout tasks.
@@ -107,9 +128,9 @@ Current guided contract after the `TASK-059` Builder pass:
 - Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
 - Guided fingerprint content, the seven-beat method/uncertainty repetition, and the static `FingerprintPreview` figure are retired. JSD remains selected-place panel evidence in exploration until TASK-055 removes map connectors.
 
-## Approved Next Narrative: The Shape Of What We Know
+## Historical Redesign Narrative: The Shape Of What We Know
 
-The next version keeps the product title **The Pacific Adaptation Gap Atlas** and gives the narrative a clearer identity:
+This is the currently implemented redesign narrative. It is superseded for the next implementation batch by the approved regional story above:
 
 > The Shape of What We Know
 
@@ -141,7 +162,7 @@ Story simplifications:
 
 The full copy, visual, layout, motion, mobile, and ethical contract lives in `context/ARTISTIC_REDESIGN_BRIEF.md`.
 
-## Story Contract
+## Historical Implemented Story Contract
 
 One-sentence claim:
 
@@ -200,13 +221,13 @@ What the visual will deliberately not imply:
 - It will not treat subregions as cultural or political boundaries.
 - It will not claim that similar evidence fingerprints mean the same vulnerability, lived experience, or policy need.
 
-## Why This Story Wins
+## Historical Rationale For The Implemented Story
 
 The story has a clear visual hook: the map shows both the apparent gap and the uneven visibility of the official record. The monitoring/data-visibility view turns missingness and monitoring uncertainty into something readers can inspect instead of something hidden in a footnote.
 
 The story is also honest about the evidence. The rank-volatility table labels 19 of 22 geographies fragile and 3 sensitive under leave-one-indicator stress tests. A leaderboard would overclaim. A guided atlas that exposes rank movement, indicator counts, and reporting status is more defensible and more distinctive.
 
-## Interaction Pattern Update
+## Reusable Interaction Pattern From The Historical Story
 
 The Dataviz Inspiration audit reinforces the story direction:
 
@@ -218,7 +239,7 @@ The Dataviz Inspiration audit reinforces the story direction:
 
 The 2026-06-30 winner audit in `context/WINNER_SCROLL_TOUR_AUDIT.md` changes the interaction recommendation: keep the explorer, but lead with scroll. Recent custom winners use vertical pacing to earn attention before deeper interaction. The atlas should do the same without becoming a decorative article.
 
-## Story Confidence
+## Historical Story Confidence
 
 High confidence:
 
@@ -240,7 +261,7 @@ Low confidence or optional:
 - Boundary polygons should wait for source selection and licensing review.
 - Expanded datasets or non-official overlays should not change the baseline story without a separate methodology review.
 
-## Main Arc And Supporting Roles
+## Historical Main Arc And Supporting Roles
 
 Main spine:
 
@@ -331,9 +352,11 @@ The following beat descriptions document the retired pre-redesign story and rema
 - Caveat placement: active layer caveat remains visible.
 - Takeaway: the scroll story teaches the map; the atlas then lets readers ask their own follow-up questions.
 
-## Layer Priority
+## Historical Index-Led Layer Priority
 
-Default first layer:
+This section documents the currently implemented Explore/guided baseline. It does not define the approved opening or guided default.
+
+Historical default first layer:
 
 - Adaptation gap score. It is the thesis and the entry point.
 
@@ -366,7 +389,7 @@ Do not show in V1:
 - Withheld outlook rows as normal marks.
 - JSD/KL as causal clusters, natural regions, or policy-need groups.
 
-## Exemplar Geographies
+## Historical Index-Led Exemplar Geographies
 
 | Geography | Role In Story | Evidence | Confidence | Required Caveat |
 | --- | --- | --- | --- | --- |
@@ -394,6 +417,9 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 | Outlook | Stress-test interpretation, not forecast. |
 | Responsibility context | Context only, not a score driver or blame ranking. |
 | Map geometry | Natural Earth land context is visual only; scores and selections use centroid fallback, not official boundary geometry. |
+| Water/renewable cross-current | First-to-latest percentage-point endpoints on separate clocks; descriptive context, not a causal or continuous trajectory. |
+| Evidence visibility | Dataset presence shows a reviewed official record exists; it is not record quality, preparedness, local knowledge, need, or conditions on the ground. |
+| Incomplete Act-I comparison | Guam, Pitcairn, and Tokelau stay visible as missing overlap; missing is not zero or no change. |
 
 ## Claims We Will Not Make
 
@@ -405,16 +431,21 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 - "Emissions context proves blame or responsibility at the geography level."
 - "A lower relative gap means a place is safe."
 - "The map shows exact island boundaries."
+- "The Pacific is moving in one direction."
+- "Water access changed because renewable-energy share changed," or the reverse.
+- "Papua New Guinea or Samoa represents the Pacific."
+- "More represented datasets means better preparedness or a higher-quality record."
+- "The heatmap reveals stable regional clusters."
 
 ## Remaining Product Decisions
 
-1. `TASK-048` corrected score-input versus context-only counting before the evidence glyph was designed against production data.
-2. `TASK-049` approved the evidence-mark grammar before the frontend redesign began; `TASK-058` supersedes its rail dimensions after owner visual QA.
-3. The palette, evidence-mark silhouette, context-tick position, type stacks, and 560ms evidence motion remain locked from `TASK-049`; fullscreen stage ownership and responsive scene scale come from `TASK-058`.
-4. Outlook remains app-optional and outside the guided five-scene spine.
-5. Official scored-geography boundary polygons require a separate source/license/geopolitical review and are not part of `TASK-048` through `TASK-064`.
-6. Pacific-language localization and local/community knowledge layers require human review and consent-based collaboration; they are growth paths, not implied scope.
+1. `TASK-072` must approve desktop, portrait, and landscape transition keyframes against the live application before visual implementation.
+2. `TASK-073` exports only the minimum water/renewable endpoint and 14-position visibility fields; it does not publish the complete research matrix or create a score.
+3. `TASK-074` replaces only the guided scene/copy/URL contract while preserving native scroll and one active-scene observer.
+4. `TASK-075` and `TASK-076` reuse the existing evidence marks and fullscreen stage for the two acts and the return to Explore; the old guided comparison/rank components may be deleted only when unreferenced.
+5. Outlook, Adaptation Gap, JSD neighbors, and existing detail layers remain optional Explore evidence and are not part of the guided claim chain.
+6. Official boundary polygons, localization, and local/community knowledge layers remain separate work requiring source, licence, geopolitical, and consent review.
 
 ## Handoff To Design
 
-The design should preserve the broader adaptation-gap spine, map-first first view, reported-zero versus missing-row distinction, Nauru/Tuvalu contrast, rank-fragility treatment, evidence contract, and selected-geography panel for JSD. For the next implementation, follow `context/ARTISTIC_REDESIGN_BRIEF.md` and the single batch plan for `TASK-059` through `TASK-064`; do not extend either the retired seven-beat rail or the undersized 28rem five-scene rail.
+The design should preserve the existing map-first application, equal-presence evidence marks, fullscreen ownership, reported-zero versus missing-row distinction, evidence contract, and selected-geography panel for JSD. Replace only the guided narrative and its data encodings. Follow `context/ARTISTIC_REDESIGN_BRIEF.md` and `TASK-072` through `TASK-077`; do not rebuild the explorer, reuse the old index-led guided figures, or add one Markdown file per task.

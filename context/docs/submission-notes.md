@@ -10,11 +10,11 @@ Climate change.
 
 ## Working Title
 
-The Pacific Adaptation Gap Atlas.
+Pacific Climate Evidence Atlas.
 
-Narrative identity for the approved redesign: **The Shape of What We Know**.
+Direct subtitle: **How conditions and official records differ across 22 Pacific places.**
 
-Readiness note (2026-07-12): `TASK-057` shareable-state, history, hydration, and budget checks passed, but owner visual QA returned the release gate to `needs-fix`. The owner approved `TASK-058`'s fullscreen-stage correction; `TASK-059` through `TASK-063` are done, and `TASK-064` passed automated, responsive, interaction, accessibility, and screenshot gates but remains `in-review` for owner visual acceptance. Deployment, sensitive wording, AI disclosure, final human visual/accessibility review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
+Readiness note (2026-07-15): the owner accepted the current fullscreen map, evidence marks, interaction system, and explorer as the application baseline. `TASK-069` accepted the regional movement -> evidence visibility -> exploration story, and `TASK-071` organized its implementation as `TASK-072` through `TASK-077`. `TASK-057` remains `needs-fix` until that replacement narrative passes final owner QA. Deployment, sensitive wording, AI disclosure, final human visual/accessibility review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
 
 ## Submission Requirements To Track
 
@@ -28,11 +28,11 @@ Readiness note (2026-07-12): `TASK-057` shareable-state, history, hydration, and
 | App bundle budget | satisfied locally | `python scripts/check_app_bundle_budget.py`; JS 1,024,043 bytes; CSS 94,829 bytes | Re-run after deployment/build environment changes |
 | English or French dataviz/explanations | satisfied | Current app and docs are English | Final typo pass |
 | AI-assisted work disclosure | needs owner wording | Progress log records AI tools; workflow keeps human/orchestrator review | Approve final disclosure text |
-| Final accessibility/mobile review | owner review pending | `TASK-064` Maker captured 25 frames across six target sizes plus 844x390, verified 44px mobile/progress targets, visible focus, reading order, reduced motion, redundant monitoring/rank encodings, and zero overflow | Owner visual, keyboard, mobile, and color-deficiency sign-off |
+| Final accessibility/mobile review | owner review pending | `TASK-064` accepted the application baseline; `TASK-077` will repeat the matrix against the replacement narrative | Owner visual, keyboard, mobile, and color-deficiency sign-off |
 
 ## Draft Description
 
-A GIS-first atlas that helps readers explore where Pacific climate signals, observed stress, and adaptation-capacity proxies appear most out of balance.
+A regional atlas that shows how safely managed drinking-water access and renewable-energy share have moved in different directions across Pacific places, then makes the uneven official record behind comparison visible before opening into island-by-island exploration.
 
 ## Source Evidence Bundle
 
@@ -55,4 +55,4 @@ Build with `npm run app:build`, preview with `npm run app:preview`, and deploy t
 
 ## Current Analysis State
 
-The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, and JSD nearest-neighbor evidence. `TASK-064` verified the fullscreen premise plus five-scene app locally and remains `in-review`; final submission copy should follow `context/ARTISTIC_REDESIGN_BRIEF.md` after the owner completes visual/accessibility review and deployment actions.
+The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, JSD nearest-neighbor evidence, and the reviewed regional movement/visibility package. `TASK-064` verified the current fullscreen app locally and is accepted as the application baseline. Final submission copy must follow `context/ARTISTIC_REDESIGN_BRIEF.md` only after `TASK-072` through `TASK-077`, owner visual/accessibility review, and deployment actions are complete.

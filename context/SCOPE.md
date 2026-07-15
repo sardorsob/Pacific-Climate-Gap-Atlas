@@ -2,10 +2,12 @@
 
 ## In Scope
 
-- Build an exploratory GIS-first website for the Pacific Adaptation Gap Atlas.
+- Build an exploratory GIS-first website for the Pacific Climate Evidence Atlas.
 - Use official Pacific Dataviz Challenge 2026 datasets as the core evidence base.
 - Expand the current nine-dataset baseline with a small, profiled set of additional official datasets before selecting the final competition narrative.
-- Test the owner-approved regional two-act working direction with reproducible distributions, cross-current comparisons, separate condition/visibility heatmaps, dependency-aware relationships, cluster sensitivity, and centroid-map small multiples before final story selection.
+- Preserve the completed regional EDA evidence gate: distributions, cross-current comparisons, separate condition/visibility heatmaps, dependency-aware relationships, rejected cluster stability, and centroid-map small multiples.
+- Implement the accepted movement -> evidence visibility -> exploration story by reusing the existing fullscreen MapLibre application and the same 22 equal-presence evidence marks.
+- Export only the minimum traceable water/renewable endpoint-change and 14-position visibility fields required by the guided story; keep the measures separate and preserve missingness.
 - Produce a reproducible Python pipeline for dataset profiling, normalization, index construction, and app-ready exports.
 - Create a transparent Adaptation Gap Index with visible missingness and caveats.
 - Add an optional Adaptation Gap Outlook layer if the baseline projection passes data and evaluation gates.
@@ -19,6 +21,9 @@
 - Private, proprietary, or non-public datasets.
 - Heavy supervised ML without a defensible target label and split strategy.
 - Claims that divergence or similarity proves shared vulnerability, shared policy need, causal mechanisms, or natural clusters.
+- A replacement map engine, dashboard shell, router, state manager, animation library, chart framework, or speculative component system for the narrative retrofit.
+- A new movement, visibility, readiness, vulnerability, or evidence-quality score.
+- A single-island protagonist, stable regional cluster labels, or a Pacific-wide progress/decline trajectory.
 - Real-time data updates unless a simple cached static refresh is enough.
 - User accounts, authentication, comments, or collaborative editing.
 
@@ -50,13 +55,13 @@ Rejected from processing:
 
 - aggregate crop yield, because the item-level inspection showed that the aggregate hides crop composition across 78 items and mixed production types/units
 
-Processing and visual comparability review precede narrative selection. Acceptance for processing does not make a candidate a score input, app layer, story claim, or causal explanation. A candidate may still be excluded from an audition for weak overlap, incompatible units, ambiguous semantics, poor year alignment, lack of a defensible denominator, or inability to support a non-causal claim.
+Processing and visual comparability review are complete. Safely managed drinking-water access and renewable-energy share are accepted only as separate Act-I context measures. Their first-to-latest percentage-point changes are never averaged, scored, attributed to climate or policy, or added to the Adaptation Gap Index. Direct-loss presence is visibility-only; land-cover direction remains withheld; aggregate crop yield remains rejected.
 
 ## App Scope
 
-The app should open on the map. A short intro can exist, but the first screen must be the exploratory atlas experience.
+The app should open on the existing full-basin map. The guided opening may occupy the first viewport, but the map and the 22 equal-presence marks remain visible immediately.
 
-The current fullscreen map/figure system remains the visual baseline during data discovery. Guided copy, illustrative place labels, layer priority, the product title, and the role of the Adaptation Gap Index are provisional until `TASK-069` passes owner/scientific review. `TASK-068` produces research artifacts only. Do not modify the app narrative merely because a dataset has been acquired or an exploratory ordering looks dramatic.
+The current fullscreen map/figure system is the approved visual and interaction baseline. The guided story changes; the application does not. Preserve MapLibre, native document scroll, one canonical scene observer, evidence marks, selected-place detail, controls, methods/sources, URL/history, touch/keyboard/reduced-motion behavior, and the Explore handoff. The Adaptation Gap Index remains an optional caveated Explore layer, not the guided title, default, or evidence for Acts I–II.
 
 Core interactions:
 
@@ -66,6 +71,8 @@ Core interactions:
 - country detail panel
 - source/methodology drawer
 - mobile-friendly single-panel flow
+- regional water/renewable cross-current field with all 22 places and three explicit incomplete cases
+- separately constructed evidence-visibility field with 14 ordered positions per geography and no composite visibility score
 
 ## Verification Scope
 

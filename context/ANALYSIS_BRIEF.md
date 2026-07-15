@@ -2,7 +2,7 @@
 
 ## Status
 
-The project completed the original nine-dataset analysis sprint and has a functioning visual atlas baseline. The owner reopened the final competition story, approved a data-first expansion, and accepted the `TASK-066` processing plus `TASK-067` candidate research passes. `TASK-068` has now completed the deeper complete-region EDA for the owner-approved regional two-act working direction—regional cross-currents followed by unequal evidence visibility, then release into the existing explorer. The artifacts support continued review of that direction, but do not select a final story; `TASK-069` owns that decision.
+The project completed the original nine-dataset sprint, the candidate expansion, and the deeper complete-region EDA. `TASK-069` accepted the regional movement -> evidence visibility -> exploration story. The research figures remain analytical inputs rather than scene mockups; `TASK-072` owns transition keyframes and `TASK-073` owns the minimum app-data export.
 
 ## Current EDA Outputs
 
@@ -78,7 +78,7 @@ The runner writes:
 - Eight of 22 latest projected population-growth rates are negative in 2025. All 792 rows are flagged `E` and cite `Population projections (PDH.Stat)`, so this is published estimated/projection context—not observed realized population change, population size, or vulnerability.
 - The land-cover index is retained only as weak research evidence. Latest 2022 values range from Samoa 51.4 to Solomon Islands 133.3, and Vanuatu falls from a published 668.4 in 1992 to 104.7 in 2022; without resolved source direction and baseline semantics, high/low and movement cannot be labelled better/worse.
 - A single candidate progress ladder is contradicted. Latest water and renewable within-indicator ranks correlate -0.43, raw magnitudes have different meanings, and the candidate set supplies neither population-size denominators for loss-per-capita nor a causal identification design.
-- The owner selected a regional synthesis as the working hypothesis for `TASK-068`: cross-currents supply the concrete first act, unequal evidence visibility supplies the second act, and the existing island-by-island explorer remains the coda. This is not yet a final claim chain or app contract.
+- The regional synthesis passed TASK-068/TASK-069 review: cross-currents supply the concrete first act, unequal evidence visibility supplies the second act, and the existing island-by-island explorer remains the coda.
 
 ## TASK-068 Regional EDA Findings
 
@@ -87,7 +87,7 @@ The runner writes:
 - Pairwise diagnostics report 36 relationships: 32 descriptive and four with direct or transitive derived-score dependency warnings. Adaptation gap versus pressure is rho 0.2490 at n=22, gap versus capacity is rho -0.7414 at n=22, gap versus latest monitoring count is rho -0.7927 at n=18, and capacity versus latest monitoring count is rho 0.8469 at n=18. These are not independent confirmations: monitoring feeds capacity, which in turn feeds the gap score.
 - Measured-condition ordering is not stable enough to name regional groups. Leave-one-feature position correlations fall to -0.6962 with a maximum 20-place shift, so the heatmap order remains an exploratory seriation and public grouping is explicitly rejected. Evidence visibility has its own independent ordering and cannot define measured-condition similarity.
 - The six regional plates retain all 22 geographies or explicitly mark missingness, disclose differing time bases and denominators, and use equal-size centroid marks over quiet Natural Earth context. They are research surfaces, not reviewed boundaries, population-weighted maps, or final scenes.
-- `selected_story` remains null. TASK-068 supplies decision evidence for `TASK-069`; it does not approve the two-act working direction, change the title/index/default layer, or modify the app.
+- `selected_story` remains null inside the TASK-068 generated provenance because that run records the evidence gate, not the later context decision. TASK-069 is the durable selection record. Do not edit generated EDA provenance by hand.
 
 ## Caveats
 
@@ -104,12 +104,12 @@ The runner writes:
 - Driver labels are useful for exploration and app copy drafts, not final scientific claims.
 - JSD compares normalized evidence profiles. It does not explain causality, lived experience, full adaptation readiness, vulnerability, or policy need. Sparse or missing data can create misleading similarity and must stay visible. KL is not required for public UI interpretation.
 - Candidate comparisons stay within indicators. Their raw values are never summed, averaged across measures, or added to the Adaptation Gap Index.
-- The TASK-067 and TASK-068 figures are research surfaces, not final publication scenes. Their headlines, illustrative place labels, and visual forms remain subject to final owner/scientific review in TASK-069.
+- The TASK-067 and TASK-068 figures are research surfaces, not final publication scenes. Their evidence contracts are approved; their final responsive composition belongs to TASK-072/TASK-075.
 
 ## Next Priorities
 
-1. In `TASK-069`, accept, revise, or reject the regional two-act working direction using the TASK-067 and TASK-068 evidence together.
-2. Keep the complete cross-current distribution visible and reject any narrative that turns the largest seven-place quadrant into a single Pacific trajectory.
+1. Run `TASK-072` transition-keyframe approval and `TASK-073` app-data export in parallel.
+2. Keep the complete cross-current distribution visible and reject any implementation that turns the largest seven-place quadrant into a single Pacific trajectory.
 3. Preserve the separation of measured condition and evidence visibility; do not publish the unstable heatmap order as clusters or describe coverage/monitoring as preparedness.
-4. Do not rewrite the app, title, index prominence, or storyboard until the owner selects a narrative in `TASK-069`; `TASK-071` owns the later roadmap.
-5. Preserve outlook and JSD as secondary, caveated evidence unless the approved expanded-data story gives either a new defensible role.
+4. Keep outlook, the Adaptation Gap Index, rank fragility, and JSD as secondary caveated Explore evidence rather than guided claims.
+5. Re-run source-to-mark traces and the complete responsive/accessibility matrix in `TASK-077` before reconciling readiness.

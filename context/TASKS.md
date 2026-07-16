@@ -1726,11 +1726,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Scene order/copy matches the approved brief; every claim has nearby evidence and caveat; old Nauru/Tuvalu, pressure/capacity, rank-band, Adaptation Gap opening, and AI-like slogan copy are absent; `overview` round-trips through URL/state tests; new/retired/invalid URLs behave deterministically; no new query key, router, observer, or state writer.
 - Verification commands: npm --prefix app run test -- scenes.test.ts urlState.test.ts sceneState.test.ts StoryScrolly.test.tsx StoryScene.test.tsx; npm --prefix app run build; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Cold-read the premise and acts with a nontechnical reader; copy/paste every new and retired scene URL; verify the text can be understood without seeing internal task names or research jargon.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Builder RED/GREEN captured eight missing-contract failures plus an invalid inherited-key URL regression. The focused 16-test scene/state/story suite and production build pass. Self-review found no scroll, observer, state-writer, router, query-key, CSS, or later-task UI change. Independent editorial/state review approved the exact four-scene order, separate handoff, plain source-backed 22/19/3, 7/6/3/3, and 277/31 claims, explicit `view=overview`, deterministic retired/invalid URL handling, lean `Map` fallback, and unchanged visual/scroll architecture.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Created by TASK-071. Begins only after owner approval of TASK-072 composition and scene count.
-- Status: pending
+- Attempt log: Created by TASK-071. Begins only after owner approval of TASK-072 composition and scene count. 2026-07-15: TASK-074 moved pending -> in-progress after TASK-072 owner approval. The Builder replaced the six retired scenes with the approved four-scene regional contract, added explicit `view=overview`, mapped every retired scene and invalid ID to a safe canonical state, preserved the existing scroll/navigation system, and moved TASK-074 in-progress -> in-review. Independent editorial/state review approved the frozen patch; TASK-074 moved in-review -> done and unlocked TASK-075.
+- Status: done
 
 ## TASK-075
 - Phase: frontend-visualization

@@ -10,9 +10,7 @@ type StorySceneProps = {
 
 export function StoryScene({ scene, index, total, children }: StorySceneProps) {
   const premise = scene.visual === "premise";
-  const eyebrow = premise
-    ? "What this atlas is asking"
-    : `Scene ${index} of ${total - 1} · ${scene.short}`;
+  const eyebrow = premise ? scene.short : `Scene ${index} of ${total - 1} · ${scene.short}`;
 
   return (
     <article className="story-scene__content">

@@ -20,9 +20,9 @@ describe("fullscreen story shell", () => {
     expect(html).toContain('data-active-visual="premise"');
     expect(html).toContain('class="story-handoff"');
     expect(html).toContain('data-story-handoff="true"');
-    expect(html).toContain('id="what-this-atlas-is-asking"');
+    expect(html).toContain('id="what-the-records-show"');
     expect(html).toContain('data-stage-mode="map-immersive"');
-    expect(html).toContain('id="similar-scores-different-records"');
+    expect(html).toContain('id="different-directions"');
     expect(html).toContain('data-stage-mode="figure-takeover"');
   });
 

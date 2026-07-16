@@ -1,7 +1,7 @@
 import type { ScoreKey } from "./encoding";
 import type { ViewMode } from "./types";
 
-export type SceneVisual = "premise" | "presence" | "missingness" | "split" | "comparison" | "rank-bands";
+export type SceneVisual = "premise" | "presence" | "movement" | "visibility" | "comparison";
 export type SceneStage = "map-immersive" | "figure-takeover";
 
 export type Scene = {
@@ -22,75 +22,52 @@ export type Scene = {
 
 export const SCENES: Scene[] = [
   {
-    id: "what-this-atlas-is-asking",
-    short: "The question",
-    title: "Climate pressure is not the same as adaptation capacity.",
-    claim: "Across 22 Pacific places, official records show both unevenly. This atlas maps the gap between them—and makes the missing evidence visible.",
-    caveat: "Visible capacity is what the available official datasets can show, not full readiness or lived adaptive capacity.",
-    source: "adaptation_gap_index.csv; generated geography records",
+    id: "what-the-records-show",
+    short: "What the records show",
+    title: "Across the Pacific, safely managed drinking-water access and renewable-energy share have changed in different ways.",
+    claim: "Official records provide 19 complete comparisons across 22 Pacific places. They also leave gaps that limit the comparison.",
+    caveat: "These figures compare the first and latest available values. The years differ, and the figures do not show what happened between those dates or why they changed.",
+    source: "eda_regional_crosscurrents.csv; generated geography records",
     visual: "premise",
     stage: "map-immersive",
-    state: { score: "gap", view: "default", selected: null },
+    state: { score: "gap", view: "overview", selected: null },
   },
   {
-    id: "what-the-map-can-see",
-    short: "What the map can see",
-    title: "Twenty-two places. Uneven light.",
-    claim: "Twenty-two Pacific places appear here, but they do not appear with equal clarity. The map compares what the official record can show; it does not rank who needs help most.",
-    caveat: "Every mark keeps the same footprint. Thin evidence is an interruption in the record, not a smaller place.",
-    source: "adaptation_gap_index.csv; generated geography records",
+    id: "twenty-two-pacific-places",
+    short: "Twenty-two places",
+    title: "This story covers 22 Pacific places.",
+    claim: "Each place stays visible throughout. Guam, Pitcairn, and Tokelau remain visible even though their comparisons are incomplete.",
+    caveat: "Natural Earth land is visual context. Each selectable record is a centroid point, not a reviewed boundary.",
+    source: "generated geography records; centroid map context",
     visual: "presence",
     stage: "map-immersive",
-    state: { score: "gap", view: "default", selected: null },
+    state: { score: "gap", view: "overview", selected: null },
   },
   {
-    id: "where-the-record-breaks",
-    short: "Where the record breaks",
-    title: "Some places are difficult to read before we compare them.",
-    claim: "The evidence record breaks unevenly. Some score inputs are missing, some monitoring rows report zero, and some monitoring rows are not present at all.",
-    caveat: "Thin records describe official visibility, not conditions on the ground. A reported zero is not the same as a missing row.",
-    source: "eda_monitoring_gap.csv; adaptation_gap_indicator_trace.csv",
-    visual: "missingness",
-    stage: "map-immersive",
-    state: { score: "gap", view: "coverage", selected: null },
-  },
-  {
-    id: "the-gap-has-two-sides",
-    short: "The gap has two sides",
-    title: "The gap is the distance between two records.",
-    claim: "Climate pressure and visible capacity are different sides of the same comparison. The gap is what appears between what pressure shows and what capacity datasets can show.",
-    caveat: "Visible capacity is an official-data proxy, not full readiness or lived adaptive capacity.",
-    source: "eda_country_drivers.csv; adaptation_gap_indicator_trace.csv",
-    visual: "split",
-    stage: "map-immersive",
-    state: { score: "pressure", view: "default", selected: null },
-  },
-  {
-    id: "similar-scores-different-records",
-    short: "Nauru / Tuvalu",
-    title: "Similar scores. Different records.",
-    claim: "Nauru and Tuvalu arrive at similar-looking scores through different records. Align the evidence portraits and the difference becomes easier to see.",
-    caveat: "This compares official evidence, not either place's full lived reality. Similarity is not physical connection or shared policy need.",
-    source: "generated geography records; eda_monitoring_gap.csv; eda_rank_volatility.csv",
-    visual: "comparison",
+    id: "different-directions",
+    short: "Different directions",
+    title: "The 19 complete comparisons split four ways.",
+    claim: "Safely managed drinking-water access rose while renewable-energy share fell in 7 places; both rose in 6; both fell in 3; and water fell while renewable share rose in 3.",
+    caveat: "Both changes are measured in percentage points, but the measures have different meanings and denominators, and their first and latest years differ. The records do not show why the values changed.",
+    source: "eda_regional_crosscurrents.csv",
+    visual: "movement",
     stage: "figure-takeover",
-    state: { score: "gap", view: "default", selected: "NR" },
+    state: { score: "gap", view: "overview", selected: null },
   },
   {
-    id: "the-order-does-not-hold-still",
-    short: "The order moves",
-    title: "Change one ingredient, and most of the order moves.",
-    claim: "Leave out one indicator and the ranking rearranges itself. Nineteen of 22 places are labeled fragile, and Marshall Islands can span ranks 4–19.",
-    caveat: "These bands show sensitivity to analytical choices. They are not confidence intervals or a definitive leaderboard.",
-    source: "eda_rank_volatility.csv",
-    visual: "rank-bands",
+    id: "unequal-visibility",
+    short: "Unequal visibility",
+    title: "The official record is uneven across the 22 places.",
+    claim: "Across 14 reviewed datasets, 277 place-and-dataset entries are present and 31 are absent. Direct loss is present for 12 places; monitoring and power for 18 each; water for 19; and renewable share for 20.",
+    caveat: "A present dataset means a reviewed official record exists. It does not show what conditions are like in a place.",
+    source: "eda_regional_feature_matrix.csv (evidence_visibility); source trace rows",
+    visual: "visibility",
     stage: "figure-takeover",
-    state: { score: "gap", view: "uncertainty", selected: "MH" },
+    state: { score: "gap", view: "overview", selected: null },
   },
 ];
 
 /** Stable scene ids used by the shareable URL contract. */
 export const SCENE_IDS = SCENES.map((scene) => scene.id);
 
-export const HANDOFF_COPY =
-  "The evidence has a shape, and now the map is yours. Explore freely, keep the caveats close, and ask what the record can support.";
+export const HANDOFF_COPY = "Select a place to inspect the data, sources, and gaps behind it.";

@@ -25,6 +25,13 @@ const baseGeo: Geo = {
   contextCount: 0,
   traceCount: 6,
   scoreInputPresence: [],
+  regionalStory: {
+    water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    completeOverlap: false,
+    quadrant: "missing_overlap",
+    visibility: [],
+  },
   reportingStatus: "reported_zero_latest_count",
   monitoringCount: 0,
   latestMonitoringYear: 2024,

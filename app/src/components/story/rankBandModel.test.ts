@@ -17,6 +17,13 @@ function makeGeo(code: string, min: number, max: number, robustness: Geo["robust
     contextCount: 0,
     traceCount: 8,
     scoreInputPresence: [],
+    regionalStory: {
+      water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+      renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+      completeOverlap: false,
+      quadrant: "missing_overlap",
+      visibility: [],
+    },
     reportingStatus: "reported_positive_latest_count",
     monitoringCount: 1,
     latestMonitoringYear: 2024,

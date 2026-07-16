@@ -14,6 +14,28 @@ export type ScoreInputPresence = {
   present: boolean;
 };
 
+export type RegionalStoryMeasure = {
+  firstYear: number | null;
+  latestYear: number | null;
+  changePercentagePoints: number | null;
+};
+
+export type RegionalVisibilityPosition = {
+  featureId: string;
+  label: string;
+  role: string;
+  present: boolean;
+  latestYear: number | null;
+};
+
+export type RegionalStory = {
+  water: RegionalStoryMeasure;
+  renewable: RegionalStoryMeasure;
+  completeOverlap: boolean;
+  quadrant: string;
+  visibility: RegionalVisibilityPosition[];
+};
+
 export type Geo = {
   code: string;
   name: string;
@@ -28,6 +50,7 @@ export type Geo = {
   contextCount: number;
   traceCount: number;
   scoreInputPresence: ScoreInputPresence[];
+  regionalStory: RegionalStory;
   reportingStatus: ReportingStatus;
   monitoringCount: number | null;
   latestMonitoringYear: number | null;
@@ -78,6 +101,28 @@ type AppScoreInputPresence = {
   present?: boolean;
 };
 
+type AppRegionalStoryMeasure = {
+  first_year?: number | null;
+  latest_year?: number | null;
+  change_percentage_points?: number | null;
+};
+
+type AppRegionalVisibilityPosition = {
+  feature_id?: string;
+  label?: string;
+  role?: string;
+  present?: boolean;
+  latest_year?: number | null;
+};
+
+type AppRegionalStory = {
+  water?: AppRegionalStoryMeasure;
+  renewable?: AppRegionalStoryMeasure;
+  complete_overlap?: boolean;
+  quadrant?: string;
+  visibility?: AppRegionalVisibilityPosition[];
+};
+
 type AppGeography = {
   geo_code: string;
   name: string;
@@ -89,6 +134,7 @@ type AppGeography = {
   context_indicator_count: number | null;
   trace_indicator_count: number | null;
   score_input_presence?: AppScoreInputPresence[];
+  regional_story?: AppRegionalStory;
   outlook_2030_flat_gap_score: number | null;
   monitoring?: {
     reporting_status?: string;
@@ -220,6 +266,7 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     contextCount: asNumber(record.context_indicator_count),
     traceCount: asNumber(record.trace_indicator_count),
     scoreInputPresence: formatScoreInputPresence(record.score_input_presence),
+    regionalStory: formatRegionalStory(record.regional_story),
     reportingStatus,
     monitoringCount: reportingStatus === "missing_monitoring_dataset_row"
       ? null
@@ -239,6 +286,27 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     similarityNeighbors: formatSimilarityNeighbors(record.similarity_neighbors),
     outlook2030Flat: asNumber(record.outlook_2030_flat_gap_score),
     outlookDisplay,
+  };
+}
+
+function formatRegionalStory(story: AppRegionalStory | undefined): RegionalStory {
+  const formatMeasure = (measure: AppRegionalStoryMeasure | undefined): RegionalStoryMeasure => ({
+    firstYear: asNullableNumber(measure?.first_year),
+    latestYear: asNullableNumber(measure?.latest_year),
+    changePercentagePoints: asNullableNumber(measure?.change_percentage_points),
+  });
+  return {
+    water: formatMeasure(story?.water),
+    renewable: formatMeasure(story?.renewable),
+    completeOverlap: story?.complete_overlap === true,
+    quadrant: story?.quadrant ?? "missing_overlap",
+    visibility: (story?.visibility ?? []).map((position) => ({
+      featureId: position.feature_id ?? "",
+      label: position.label ?? "Official dataset",
+      role: position.role ?? "reporting_presence",
+      present: position.present === true,
+      latestYear: asNullableNumber(position.latest_year),
+    })),
   };
 }
 

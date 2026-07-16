@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from typing import Any
 
 import pandas as pd
-
 
 GEOGRAPHY_REFERENCE: dict[str, dict[str, float | str]] = {
     "AS": {"name": "American Samoa", "lon": -170.7, "lat": -14.3},
@@ -43,6 +43,8 @@ SOURCE_REFS = {
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
     "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
     "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+    "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+    "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv",
 }
 
 SCORE_INPUT_PILLAR_ORDER = {
@@ -64,6 +66,8 @@ def build_geography_records(
     outlook_display: pd.DataFrame | None = None,
     similarity_neighbors: pd.DataFrame | None = None,
     trace: pd.DataFrame | None = None,
+    regional_crosscurrents: pd.DataFrame | None = None,
+    regional_feature_matrix: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     """Join score, coverage, centroid, and outlook fields into app geography records."""
 
@@ -76,6 +80,8 @@ def build_geography_records(
     outlook_display_by_geo = _build_outlook_display_lookup(outlook_display)
     similarity_by_geo = _build_similarity_lookup(similarity_neighbors)
     score_input_presence_by_geo = build_score_input_presence(trace)
+    regional_crosscurrents_by_geo = _lookup_by_geo(regional_crosscurrents)
+    visibility_by_geo = _build_regional_visibility_lookup(regional_feature_matrix)
     records: list[dict[str, Any]] = []
 
     for row in index.sort_values("geo_code", kind="mergesort").to_dict(orient="records"):
@@ -120,11 +126,40 @@ def build_geography_records(
             "context": _build_context_payload(spatial_by_geo.get(geo_code, {})),
             "outlook_display": outlook_display_by_geo.get(geo_code, {}),
             "similarity_neighbors": similarity_by_geo.get(geo_code, []),
+            "regional_story": _build_regional_story_payload(
+                regional_crosscurrents_by_geo.get(geo_code, {}),
+                visibility_by_geo.get(geo_code, []),
+            ),
             "source_refs": SOURCE_REFS.copy(),
         }
         records.append(record)
 
     return records
+
+
+def summarize_regional_story(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize the exported regional-story contract for provenance."""
+
+    stories = [record.get("regional_story", {}) for record in records]
+    complete = [story for story in stories if story.get("complete_overlap") is True]
+    visibility = [position for story in stories for position in story.get("visibility", [])]
+    return {
+        "geography_count": len(records),
+        "complete_comparison_count": len(complete),
+        "incomplete_geo_codes": sorted(
+            str(record["geo_code"])
+            for record in records
+            if record.get("regional_story", {}).get("complete_overlap") is not True
+        ),
+        "quadrant_counts": dict(
+            sorted(Counter(str(story.get("quadrant")) for story in complete).items())
+        ),
+        "visibility_positions_per_geography": sorted(
+            {len(story.get("visibility", [])) for story in stories}
+        ),
+        "visibility_present_count": sum(position.get("present") is True for position in visibility),
+        "visibility_absent_count": sum(position.get("present") is False for position in visibility),
+    }
 
 
 def build_geographies_payload(records: list[dict[str, Any]]) -> dict[str, Any]:
@@ -165,6 +200,69 @@ def build_score_input_presence(trace: pd.DataFrame | None) -> dict[str, list[dic
             for row in universe.itertuples(index=False)
         ]
         for geo_code in geographies
+    }
+
+
+def _build_regional_visibility_lookup(
+    feature_matrix: pd.DataFrame | None,
+) -> dict[str, list[dict[str, Any]]]:
+    fields = {
+        "geo_code",
+        "feature_order",
+        "feature_id",
+        "feature_label",
+        "feature_role",
+        "present",
+        "latest_year",
+    }
+    if (
+        feature_matrix is None
+        or feature_matrix.empty
+        or not fields.issubset(feature_matrix.columns)
+    ):
+        return {}
+
+    visibility = feature_matrix
+    if "lane" in visibility.columns:
+        visibility = visibility[visibility["lane"] == "evidence_visibility"]
+
+    lookup: dict[str, list[dict[str, Any]]] = {}
+    for row in visibility.sort_values(
+        ["geo_code", "feature_order"], kind="mergesort"
+    ).to_dict(orient="records"):
+        lookup.setdefault(str(row["geo_code"]), []).append(
+            {
+                "feature_id": _clean_text(row.get("feature_id")),
+                "label": _clean_text(row.get("feature_label")),
+                "role": _clean_text(row.get("feature_role")),
+                "present": _bool(row.get("present")),
+                "latest_year": _nullable_int(row.get("latest_year")),
+            }
+        )
+    return lookup
+
+
+def _build_regional_story_payload(
+    crosscurrent: dict[str, Any], visibility: list[dict[str, Any]]
+) -> dict[str, Any]:
+    return {
+        "water": {
+            "first_year": _nullable_int(crosscurrent.get("water_first_year")),
+            "latest_year": _nullable_int(crosscurrent.get("water_latest_year")),
+            "change_percentage_points": _nullable_float(
+                crosscurrent.get("water_change_percentage_points")
+            ),
+        },
+        "renewable": {
+            "first_year": _nullable_int(crosscurrent.get("renewable_first_year")),
+            "latest_year": _nullable_int(crosscurrent.get("renewable_latest_year")),
+            "change_percentage_points": _nullable_float(
+                crosscurrent.get("renewable_change_percentage_points")
+            ),
+        },
+        "complete_overlap": _bool(crosscurrent.get("complete_overlap")),
+        "quadrant": _clean_text(crosscurrent.get("quadrant")),
+        "visibility": visibility,
     }
 
 

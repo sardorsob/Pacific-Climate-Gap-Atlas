@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import shutil
 import sys
+from pathlib import Path
 
 import pandas as pd
 
@@ -14,8 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from analysis.preprocessing.app_data import build_geographies_payload, build_geography_records  # noqa: E402
-
+from analysis.preprocessing.app_data import (  # noqa: E402
+    build_geographies_payload,
+    build_geography_records,
+    summarize_regional_story,
+)
 
 DEFAULT_INDEX = ROOT / "artifacts" / "tables" / "adaptation_gap_index.csv"
 DEFAULT_TRACE = ROOT / "artifacts" / "tables" / "adaptation_gap_indicator_trace.csv"
@@ -27,6 +30,12 @@ DEFAULT_COUNTRY_STORY = ROOT / "artifacts" / "tables" / "eda_country_story_label
 DEFAULT_SPATIAL_TYPOLOGIES = ROOT / "artifacts" / "tables" / "eda_spatial_typologies.csv"
 DEFAULT_OUTLOOK_INTERPRETATION = ROOT / "artifacts" / "tables" / "eda_outlook_interpretation.csv"
 DEFAULT_SIMILARITY_NEIGHBORS = ROOT / "artifacts" / "tables" / "eda_similarity_neighbors.csv"
+DEFAULT_REGIONAL_CROSSCURRENTS = (
+    ROOT / "artifacts" / "tables" / "eda_regional_crosscurrents.csv"
+)
+DEFAULT_REGIONAL_FEATURE_MATRIX = (
+    ROOT / "artifacts" / "tables" / "eda_regional_feature_matrix.csv"
+)
 DEFAULT_PROCESSED_APP_DIR = ROOT / "data" / "processed" / "app"
 DEFAULT_PUBLIC_DATA_DIR = ROOT / "app" / "public" / "data"
 DEFAULT_SUMMARY_OUTPUT = ROOT / "artifacts" / "provenance" / "app_data_summary.json"
@@ -44,6 +53,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--spatial-typologies", type=Path, default=DEFAULT_SPATIAL_TYPOLOGIES)
     parser.add_argument("--outlook-interpretation", type=Path, default=DEFAULT_OUTLOOK_INTERPRETATION)
     parser.add_argument("--similarity-neighbors", type=Path, default=DEFAULT_SIMILARITY_NEIGHBORS)
+    parser.add_argument(
+        "--regional-crosscurrents", type=Path, default=DEFAULT_REGIONAL_CROSSCURRENTS
+    )
+    parser.add_argument(
+        "--regional-feature-matrix", type=Path, default=DEFAULT_REGIONAL_FEATURE_MATRIX
+    )
     parser.add_argument("--processed-app-dir", type=Path, default=DEFAULT_PROCESSED_APP_DIR)
     parser.add_argument("--public-data-dir", type=Path, default=DEFAULT_PUBLIC_DATA_DIR)
     parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY_OUTPUT)
@@ -62,6 +77,8 @@ def export_app_data(
     spatial_typologies_path: Path,
     outlook_interpretation_path: Path,
     similarity_neighbors_path: Path,
+    regional_crosscurrents_path: Path,
+    regional_feature_matrix_path: Path,
     processed_app_dir: Path,
     public_data_dir: Path,
     summary_output: Path,
@@ -76,6 +93,8 @@ def export_app_data(
     spatial_typologies = pd.read_csv(spatial_typologies_path)
     outlook_interpretation = pd.read_csv(outlook_interpretation_path)
     similarity_neighbors = pd.read_csv(similarity_neighbors_path)
+    regional_crosscurrents = pd.read_csv(regional_crosscurrents_path)
+    regional_feature_matrix = pd.read_csv(regional_feature_matrix_path)
 
     records = build_geography_records(
         index=index,
@@ -88,6 +107,8 @@ def export_app_data(
         outlook_display=outlook_interpretation,
         similarity_neighbors=similarity_neighbors,
         trace=trace,
+        regional_crosscurrents=regional_crosscurrents,
+        regional_feature_matrix=regional_feature_matrix,
     )
     geographies_payload = build_geographies_payload(records)
     country_details_payload = build_country_details_payload(records, trace=trace)
@@ -125,6 +146,8 @@ def export_app_data(
             "spatial_typologies": spatial_typologies_path.relative_to(ROOT).as_posix(),
             "outlook_interpretation": outlook_interpretation_path.relative_to(ROOT).as_posix(),
             "similarity_neighbors": similarity_neighbors_path.relative_to(ROOT).as_posix(),
+            "regional_crosscurrents": regional_crosscurrents_path.relative_to(ROOT).as_posix(),
+            "regional_feature_matrix": regional_feature_matrix_path.relative_to(ROOT).as_posix(),
         },
         "geometry_policy": "centroid_fallback_until_boundary_join",
         "evidence_count_contract": {
@@ -132,6 +155,7 @@ def export_app_data(
             "context_indicator_count": "context-only inputs; currently maximum 1",
             "trace_indicator_count": "all trace datasets",
         },
+        "regional_story_contract": summarize_regional_story(records),
         "summary_output": summary_output.relative_to(ROOT).as_posix(),
     }
     write_json(summary_output, summary)
@@ -223,6 +247,16 @@ def main() -> int:
         if not args.similarity_neighbors.is_absolute()
         else args.similarity_neighbors
     )
+    regional_crosscurrents_path = (
+        ROOT / args.regional_crosscurrents
+        if not args.regional_crosscurrents.is_absolute()
+        else args.regional_crosscurrents
+    )
+    regional_feature_matrix_path = (
+        ROOT / args.regional_feature_matrix
+        if not args.regional_feature_matrix.is_absolute()
+        else args.regional_feature_matrix
+    )
     processed_app_dir = (
         ROOT / args.processed_app_dir
         if not args.processed_app_dir.is_absolute()
@@ -246,6 +280,8 @@ def main() -> int:
         spatial_typologies_path=spatial_typologies_path,
         outlook_interpretation_path=outlook_interpretation_path,
         similarity_neighbors_path=similarity_neighbors_path,
+        regional_crosscurrents_path=regional_crosscurrents_path,
+        regional_feature_matrix_path=regional_feature_matrix_path,
         processed_app_dir=processed_app_dir,
         public_data_dir=public_data_dir,
         summary_output=summary_output,

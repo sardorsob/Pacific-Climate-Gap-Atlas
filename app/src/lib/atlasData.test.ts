@@ -1,7 +1,88 @@
 import { describe, expect, it } from "vitest";
+import generatedGeographies from "../../public/data/geographies.json";
 import { adaptGeographiesPayload } from "./atlasData";
 
 describe("atlas data adapter", () => {
+  it("adapts the generated regional story contract", () => {
+    const geos = adaptGeographiesPayload(generatedGeographies);
+    const papuaNewGuinea = geos.find((geo) => geo.code === "PG")!;
+    const guam = geos.find((geo) => geo.code === "GU")!;
+
+    expect(geos).toHaveLength(22);
+    expect(geos.filter((geo) => geo.regionalStory.completeOverlap)).toHaveLength(19);
+    expect(papuaNewGuinea.regionalStory).toMatchObject({
+      water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 18.49 },
+      renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -15.6 },
+      completeOverlap: true,
+      quadrant: "water_up_renewable_down",
+    });
+    expect(guam.regionalStory.water).toEqual({
+      firstYear: null,
+      latestYear: null,
+      changePercentagePoints: null,
+    });
+    expect(geos.every((geo) => geo.regionalStory.visibility.length === 14)).toBe(true);
+    expect(
+      geos.flatMap((geo) => geo.regionalStory.visibility)
+        .filter((position) => position.present),
+    ).toHaveLength(277);
+  });
+
+  it("adapts the regional story without coercing missing movement to zero", () => {
+    const [geo] = adaptGeographiesPayload({
+      geographies: [
+        {
+          geo_code: "GU",
+          name: "Guam",
+          centroid: { lon: 144.8, lat: 13.4 },
+          adaptation_gap_score: 50,
+          climate_pressure_score: 50,
+          capacity_score: 50,
+          score_input_indicator_count: 8,
+          context_indicator_count: 1,
+          trace_indicator_count: 9,
+          score_input_presence: [],
+          outlook_2030_flat_gap_score: null,
+          regional_story: {
+            water: {
+              first_year: null,
+              latest_year: null,
+              change_percentage_points: null,
+            },
+            renewable: {
+              first_year: 2000,
+              latest_year: 2022,
+              change_percentage_points: 6.11,
+            },
+            complete_overlap: false,
+            quadrant: "missing_overlap",
+            visibility: Array.from({ length: 14 }, (_, index) => ({
+              feature_id: `feature-${String(index + 1).padStart(2, "0")}`,
+              label: `Feature ${index + 1}`,
+              role: "reporting_presence",
+              present: index > 0,
+              latest_year: index === 4 ? 2026 : null,
+            })),
+          },
+        },
+      ],
+    });
+
+    expect(geo.regionalStory).toEqual({
+      water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+      renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 6.11 },
+      completeOverlap: false,
+      quadrant: "missing_overlap",
+      visibility: Array.from({ length: 14 }, (_, index) => ({
+        featureId: `feature-${String(index + 1).padStart(2, "0")}`,
+        label: `Feature ${index + 1}`,
+        role: "reporting_presence",
+        present: index > 0,
+        latestYear: index === 4 ? 2026 : null,
+      })),
+    });
+  });
+
   it("joins indicator trace rows from country details", () => {
     const [geo] = adaptGeographiesPayload(
       {

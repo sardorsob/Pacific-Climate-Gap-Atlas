@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+import copy
 import io
 import json
 import tempfile
@@ -43,6 +44,7 @@ class AppDataValidationTests(unittest.TestCase):
             del broken_geographies["geographies"][0]["rank"]["rank_range"]
             del broken_geographies["geographies"][0]["story"]["story_label"]
             del broken_geographies["geographies"][0]["context"]["subregion"]
+            del broken_geographies["geographies"][0]["regional_story"]
             _write_json(processed / "geographies.json", broken_geographies)
             _write_json(processed / "country_details.json", _valid_country_details())
             _write_auxiliary_app_files(processed)
@@ -56,6 +58,54 @@ class AppDataValidationTests(unittest.TestCase):
             self.assertIn("geographies[0].rank missing required field: rank_range", errors)
             self.assertIn("geographies[0].story missing required field: story_label", errors)
             self.assertIn("geographies[0].context missing required field: subregion", errors)
+            self.assertIn("geographies[0] missing required field: regional_story", errors)
+
+    def test_validate_root_reports_regional_story_count_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "data" / "processed" / "app"
+            public = root / "app" / "public" / "data"
+            processed.mkdir(parents=True)
+            public.mkdir(parents=True)
+
+            broken_geographies = _valid_geographies()
+            broken_geographies["geographies"][0]["regional_story"]["complete_overlap"] = False
+            broken_geographies["geographies"][0]["regional_story"]["quadrant"] = "missing_overlap"
+            broken_geographies["geographies"][1]["regional_story"]["visibility"][13][
+                "present"
+            ] = False
+            _write_json(processed / "geographies.json", broken_geographies)
+            _write_json(processed / "country_details.json", _valid_country_details())
+            _write_auxiliary_app_files(processed)
+            _copy_public_app_files(processed, public)
+
+            errors = validate_data_contracts.validate_root(root)
+
+            self.assertIn("regional_story complete comparison count must be 19; found 18", errors)
+            self.assertIn("regional_story visibility present count must be 277; found 276", errors)
+
+    def test_validate_root_reports_country_detail_regional_story_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "data" / "processed" / "app"
+            public = root / "app" / "public" / "data"
+            processed.mkdir(parents=True)
+            public.mkdir(parents=True)
+
+            geographies = _valid_geographies()
+            country_details = _valid_country_details()
+            country_details["details"]["FJ"]["regional_story"]["quadrant"] = "both_up"
+            _write_json(processed / "geographies.json", geographies)
+            _write_json(processed / "country_details.json", country_details)
+            _write_auxiliary_app_files(processed)
+            _copy_public_app_files(processed, public)
+
+            errors = validate_data_contracts.validate_root(root)
+
+            self.assertIn(
+                "country_details.json.details.FJ regional_story does not match geographies.json",
+                errors,
+            )
 
     def test_validate_root_reports_missing_score_input_presence_fields(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -114,7 +164,7 @@ class AppDataValidationTests(unittest.TestCase):
 
 
 def _valid_geographies() -> dict[str, object]:
-    return {
+    base = {
         "schema_version": "2.0",
         "geographies": [
             {
@@ -142,6 +192,8 @@ def _valid_geographies() -> dict[str, object]:
                 "source_refs": {
                     "index": "data/processed/gap_index.csv",
                     "indicator_trace": "data/processed/indicator_trace.csv",
+                    "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+                    "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv",
                 },
                 "monitoring": {
                     "reporting_status": "reported_positive_latest_count",
@@ -186,13 +238,75 @@ def _valid_geographies() -> dict[str, object]:
                         }
                     }
                 },
+                "regional_story": {},
             }
         ],
     }
+    geography = base["geographies"][0]
+    codes = [
+        "AS", "CK", "FJ", "FM", "GU", "KI", "MH", "MP", "NC", "NR", "NU",
+        "PF", "PG", "PN", "PW", "SB", "TK", "TO", "TV", "VU", "WF", "WS",
+    ]
+    incomplete = {"GU", "PN", "TK"}
+    complete_quadrants = (
+        ["water_up_renewable_down"] * 7
+        + ["both_up"] * 6
+        + ["both_down"] * 3
+        + ["water_down_renewable_up"] * 3
+    )
+    absent_counts = [8, 5, 4, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1] + [0] * 9
+    quadrant_index = 0
+    geographies = []
+    for index, code in enumerate(codes):
+        record = copy.deepcopy(geography)
+        record["geo_code"] = code
+        record["geography_code"] = code
+        record["name"] = code
+        record["geography_name"] = code
+        complete = code not in incomplete
+        quadrant = complete_quadrants[quadrant_index] if complete else "missing_overlap"
+        quadrant_index += int(complete)
+        record["regional_story"] = {
+            "water": {
+                "first_year": 2000 if complete else None,
+                "latest_year": 2022 if complete else None,
+                "change_percentage_points": 1.0 if complete else None,
+            },
+            "renewable": {
+                "first_year": 2000,
+                "latest_year": 2022,
+                "change_percentage_points": -1.0,
+            },
+            "complete_overlap": complete,
+            "quadrant": quadrant,
+            "visibility": [
+                {
+                    "feature_id": f"feature-{feature_order:02d}",
+                    "label": f"Feature {feature_order}",
+                    "role": "reporting_presence",
+                    "present": feature_order > absent_counts[index],
+                    "latest_year": 2026 if feature_order == 5 else None,
+                }
+                for feature_order in range(1, 15)
+            ],
+        }
+        geographies.append(record)
+    base["geographies"] = geographies
+    return base
 
 
 def _valid_country_details() -> dict[str, object]:
-    return {"schema_version": 2, "details": {"FJ": {"indicators": []}}}
+    geographies = _valid_geographies()["geographies"]
+    return {
+        "schema_version": 2,
+        "details": {
+            record["geo_code"]: {
+                "regional_story": copy.deepcopy(record["regional_story"]),
+                "indicators": [],
+            }
+            for record in geographies
+        },
+    }
 
 
 def _write_json(path: Path, payload: dict[str, object]) -> None:

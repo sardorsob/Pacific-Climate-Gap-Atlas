@@ -23,6 +23,13 @@ const geo = {
     pillar: "climate_signal" as const,
     present: index < 3,
   })),
+  regionalStory: {
+    water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    completeOverlap: false,
+    quadrant: "missing_overlap",
+    visibility: [],
+  },
   reportingStatus: "reported_zero_latest_count" as const,
   monitoringCount: 0,
   latestMonitoringYear: 2024,

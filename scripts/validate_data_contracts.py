@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from pathlib import Path
 
 PUBLIC_APP_FILES = (
@@ -31,9 +32,15 @@ REQUIRED_GEOGRAPHY_FIELDS = (
     "story",
     "context",
     "outlook_display",
+    "regional_story",
 )
 REQUIRED_CENTROID_FIELDS = ("lon", "lat")
-REQUIRED_SOURCE_REF_FIELDS = ("index", "indicator_trace")
+REQUIRED_SOURCE_REF_FIELDS = (
+    "index",
+    "indicator_trace",
+    "regional_crosscurrents",
+    "regional_feature_matrix",
+)
 REQUIRED_MONITORING_FIELDS = (
     "reporting_status",
     "latest_value",
@@ -74,6 +81,24 @@ REQUIRED_SCORE_INPUT_PRESENCE_FIELDS = (
     "present",
 )
 SCORE_INPUT_PILLARS = {"climate_signal", "observed_stress", "adaptation_capacity"}
+REQUIRED_REGIONAL_STORY_FIELDS = (
+    "water",
+    "renewable",
+    "complete_overlap",
+    "quadrant",
+    "visibility",
+)
+REQUIRED_REGIONAL_MEASURE_FIELDS = ("first_year", "latest_year", "change_percentage_points")
+REQUIRED_VISIBILITY_FIELDS = ("feature_id", "label", "role", "present", "latest_year")
+REGIONAL_QUADRANT_COUNTS = {
+    "water_up_renewable_down": 7,
+    "both_up": 6,
+    "both_down": 3,
+    "water_down_renewable_up": 3,
+}
+INCOMPLETE_REGIONAL_GEOS = {"GU", "PN", "TK"}
+
+
 def validate_root(root: Path | str = Path(".")) -> list[str]:
     base = Path(root)
     errors: list[str] = []
@@ -85,6 +110,8 @@ def validate_root(root: Path | str = Path(".")) -> list[str]:
         errors.extend(_validate_geographies(geographies))
     if country_details is not None:
         errors.extend(_validate_country_details(country_details))
+    if geographies is not None and country_details is not None:
+        errors.extend(_validate_regional_story_mirrors(geographies, country_details))
 
     for file_name in PUBLIC_APP_FILES:
         errors.extend(
@@ -173,6 +200,117 @@ def _validate_geographies(payload: object) -> list[str]:
         if "outlook_display" in geography and not isinstance(outlook_display, dict):
             errors.append(f"{label}.outlook_display must be an object")
 
+    errors.extend(_validate_regional_story_contract(geographies))
+    return errors
+
+
+def _validate_regional_story_contract(geographies: list[object]) -> list[str]:
+    errors: list[str] = []
+    stories: list[tuple[str, dict[str, object]]] = []
+    expected_feature_ids: list[object] | None = None
+
+    if len(geographies) != 22:
+        errors.append(f"regional_story geography count must be 22; found {len(geographies)}")
+
+    for index, geography in enumerate(geographies):
+        if not isinstance(geography, dict):
+            continue
+        label = f"geographies[{index}].regional_story"
+        story = geography.get("regional_story")
+        if not isinstance(story, dict):
+            if "regional_story" in geography:
+                errors.append(f"{label} must be an object")
+            continue
+
+        errors.extend(_require_fields(story, REQUIRED_REGIONAL_STORY_FIELDS, label))
+        for measure_name in ("water", "renewable"):
+            errors.extend(
+                _validate_nested_object(
+                    story,
+                    measure_name,
+                    REQUIRED_REGIONAL_MEASURE_FIELDS,
+                    f"{label}.{measure_name}",
+                )
+            )
+
+        if "complete_overlap" in story and not isinstance(story["complete_overlap"], bool):
+            errors.append(f"{label}.complete_overlap must be boolean")
+
+        quadrant = story.get("quadrant")
+        valid_quadrants = set(REGIONAL_QUADRANT_COUNTS) | {"missing_overlap"}
+        if quadrant not in valid_quadrants:
+            errors.append(f"{label}.quadrant has invalid value: {quadrant}")
+
+        visibility = story.get("visibility")
+        if not isinstance(visibility, list):
+            if "visibility" in story:
+                errors.append(f"{label}.visibility must be an array")
+            continue
+        if len(visibility) != 14:
+            errors.append(f"{label}.visibility must contain 14 positions; found {len(visibility)}")
+
+        feature_ids: list[object] = []
+        for position, item in enumerate(visibility):
+            item_label = f"{label}.visibility[{position}]"
+            if not isinstance(item, dict):
+                errors.append(f"{item_label} must be an object")
+                continue
+            errors.extend(_require_fields(item, REQUIRED_VISIBILITY_FIELDS, item_label))
+            feature_ids.append(item.get("feature_id"))
+            if "present" in item and not isinstance(item["present"], bool):
+                errors.append(f"{item_label}.present must be boolean")
+            latest_year = item.get("latest_year")
+            if latest_year is not None and not isinstance(latest_year, int):
+                errors.append(f"{item_label}.latest_year must be integer or null")
+
+        if len(set(feature_ids)) != len(feature_ids):
+            errors.append(f"{label}.visibility feature IDs must be unique")
+        if expected_feature_ids is None and len(feature_ids) == 14:
+            expected_feature_ids = feature_ids
+        elif expected_feature_ids is not None and feature_ids != expected_feature_ids:
+            errors.append(f"{label}.visibility feature order differs from the stable contract")
+
+        stories.append((str(geography.get("geo_code", "")), story))
+
+    complete = [
+        (geo_code, story)
+        for geo_code, story in stories
+        if story.get("complete_overlap") is True
+    ]
+    if len(complete) != 19:
+        errors.append(f"regional_story complete comparison count must be 19; found {len(complete)}")
+
+    incomplete_codes = {
+        geo_code
+        for geo_code, story in stories
+        if story.get("complete_overlap") is False
+    }
+    if incomplete_codes != INCOMPLETE_REGIONAL_GEOS:
+        errors.append(
+            "regional_story incomplete geography codes must be GU, PN, TK; found "
+            + ", ".join(sorted(incomplete_codes))
+        )
+
+    quadrant_counts = Counter(story.get("quadrant") for _, story in complete)
+    if dict(quadrant_counts) != REGIONAL_QUADRANT_COUNTS:
+        errors.append(
+            f"regional_story quadrant counts must be {REGIONAL_QUADRANT_COUNTS}; "
+            f"found {dict(quadrant_counts)}"
+        )
+
+    visibility = [
+        position
+        for _, story in stories
+        for position in story.get("visibility", [])
+        if isinstance(position, dict)
+    ]
+    present_count = sum(position.get("present") is True for position in visibility)
+    absent_count = sum(position.get("present") is False for position in visibility)
+    if present_count != 277:
+        errors.append(f"regional_story visibility present count must be 277; found {present_count}")
+    if absent_count != 31:
+        errors.append(f"regional_story visibility absent count must be 31; found {absent_count}")
+
     return errors
 
 
@@ -213,7 +351,42 @@ def _validate_country_details(payload: object) -> list[str]:
     errors.extend(_require_fields(payload, ("schema_version", "details"), "country_details.json"))
     if "details" in payload and not isinstance(payload["details"], dict):
         errors.append("country_details.json.details must be an object")
+    elif isinstance(payload.get("details"), dict):
+        for geo_code, detail in payload["details"].items():
+            if not isinstance(detail, dict):
+                errors.append(f"country_details.json.details.{geo_code} must be an object")
+            elif "regional_story" not in detail:
+                errors.append(
+                    f"country_details.json.details.{geo_code} "
+                    "missing required field: regional_story"
+                )
 
+    return errors
+
+
+def _validate_regional_story_mirrors(
+    geographies_payload: object, country_details_payload: object
+) -> list[str]:
+    if not isinstance(geographies_payload, dict) or not isinstance(country_details_payload, dict):
+        return []
+    geographies = geographies_payload.get("geographies")
+    details = country_details_payload.get("details")
+    if not isinstance(geographies, list) or not isinstance(details, dict):
+        return []
+
+    errors: list[str] = []
+    for geography in geographies:
+        if not isinstance(geography, dict):
+            continue
+        geo_code = geography.get("geo_code")
+        detail = details.get(geo_code) if isinstance(geo_code, str) else None
+        if isinstance(detail, dict) and detail.get("regional_story") != geography.get(
+            "regional_story"
+        ):
+            errors.append(
+                f"country_details.json.details.{geo_code} regional_story does not match "
+                "geographies.json"
+            )
     return errors
 
 

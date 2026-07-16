@@ -19,13 +19,35 @@
     "country_story": "artifacts/tables/eda_country_story_labels.csv",
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
     "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+    "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+    "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
   },
   "geometry_policy": "centroid_fallback_until_boundary_join",
   "evidence_count_contract": {
     "score_input_indicator_count": "score inputs only; maximum 8",
     "context_indicator_count": "context-only inputs; currently maximum 1",
     "trace_indicator_count": "all trace datasets"
+  },
+  "regional_story_contract": {
+    "geography_count": 22,
+    "complete_comparison_count": 19,
+    "incomplete_geo_codes": [
+      "GU",
+      "PN",
+      "TK"
+    ],
+    "quadrant_counts": {
+      "both_down": 3,
+      "both_up": 6,
+      "water_down_renewable_up": 3,
+      "water_up_renewable_down": 7
+    },
+    "visibility_positions_per_geography": [
+      14
+    ],
+    "visibility_present_count": 277,
+    "visibility_absent_count": 31
   },
   "summary_output": "artifacts/provenance/app_data_summary.json"
 }

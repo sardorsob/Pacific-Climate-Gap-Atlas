@@ -6,10 +6,135 @@ import pandas as pd
 
 from analysis.preprocessing.app_data import (
     build_geography_records,
+    summarize_regional_story,
 )
 
 
 class AppDataExportTests(unittest.TestCase):
+    def test_summarize_regional_story_reports_exact_contract_counts(self) -> None:
+        records = [
+            {
+                "geo_code": "FJ",
+                "regional_story": {
+                    "complete_overlap": True,
+                    "quadrant": "water_up_renewable_down",
+                    "visibility": [{"present": True}, {"present": False}],
+                },
+            },
+            {
+                "geo_code": "GU",
+                "regional_story": {
+                    "complete_overlap": False,
+                    "quadrant": "missing_overlap",
+                    "visibility": [{"present": True}, {"present": True}],
+                },
+            },
+        ]
+
+        self.assertEqual(
+            summarize_regional_story(records),
+            {
+                "geography_count": 2,
+                "complete_comparison_count": 1,
+                "incomplete_geo_codes": ["GU"],
+                "quadrant_counts": {"water_up_renewable_down": 1},
+                "visibility_positions_per_geography": [2],
+                "visibility_present_count": 3,
+                "visibility_absent_count": 1,
+            },
+        )
+
+    def test_build_geography_records_exports_regional_story_evidence(self) -> None:
+        index = pd.DataFrame(
+            [
+                {"geo_code": "FJ", "score_status": "scored"},
+                {"geo_code": "GU", "score_status": "scored"},
+            ]
+        )
+        crosscurrents = pd.DataFrame(
+            [
+                {
+                    "geo_code": "FJ",
+                    "water_first_year": 2000,
+                    "water_latest_year": 2022,
+                    "water_change_percentage_points": 0.67,
+                    "renewable_first_year": 2000,
+                    "renewable_latest_year": 2022,
+                    "renewable_change_percentage_points": -23.39,
+                    "complete_overlap": True,
+                    "quadrant": "water_up_renewable_down",
+                },
+                {
+                    "geo_code": "GU",
+                    "water_first_year": None,
+                    "water_latest_year": None,
+                    "water_change_percentage_points": None,
+                    "renewable_first_year": 2000,
+                    "renewable_latest_year": 2022,
+                    "renewable_change_percentage_points": 6.11,
+                    "complete_overlap": False,
+                    "quadrant": "missing_overlap",
+                },
+            ]
+        )
+        visibility = pd.DataFrame(
+            [
+                {
+                    "lane": "evidence_visibility",
+                    "geo_code": geo_code,
+                    "feature_order": feature_order,
+                    "feature_id": f"feature-{feature_order:02d}",
+                    "feature_label": f"Feature {feature_order}",
+                    "feature_role": "reporting_presence",
+                    "present": not (geo_code == "GU" and feature_order == 1),
+                    "latest_year": 2026 if feature_order == 5 else None,
+                }
+                for geo_code in ("FJ", "GU")
+                for feature_order in reversed(range(1, 15))
+            ]
+        )
+
+        records = build_geography_records(
+            index=index,
+            lookup=pd.DataFrame([{"geo_code": "FJ"}, {"geo_code": "GU"}]),
+            outlook=pd.DataFrame([]),
+            regional_crosscurrents=crosscurrents,
+            regional_feature_matrix=visibility,
+        )
+
+        fiji, guam = records
+        self.assertEqual(
+            fiji["regional_story"],
+            {
+                "water": {
+                    "first_year": 2000,
+                    "latest_year": 2022,
+                    "change_percentage_points": 0.67,
+                },
+                "renewable": {
+                    "first_year": 2000,
+                    "latest_year": 2022,
+                    "change_percentage_points": -23.39,
+                },
+                "complete_overlap": True,
+                "quadrant": "water_up_renewable_down",
+                "visibility": [
+                    {
+                        "feature_id": f"feature-{feature_order:02d}",
+                        "label": f"Feature {feature_order}",
+                        "role": "reporting_presence",
+                        "present": True,
+                        "latest_year": 2026 if feature_order == 5 else None,
+                    }
+                    for feature_order in range(1, 15)
+                ],
+            },
+        )
+        self.assertIsNone(guam["regional_story"]["water"]["first_year"])
+        self.assertIsNone(guam["regional_story"]["water"]["change_percentage_points"])
+        self.assertFalse(guam["regional_story"]["complete_overlap"])
+        self.assertFalse(guam["regional_story"]["visibility"][0]["present"])
+
     def test_build_geography_records_exports_score_input_presence_and_counts(self) -> None:
         index = pd.DataFrame(
             [

@@ -75,11 +75,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 7,
-      "row_count": 563,
+      "dataset_count": 11,
+      "row_count": 675,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters population-growth proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -220,6 +220,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2021,
+          "change_percentage_points": 9.27
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.49
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -230,7 +344,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -306,11 +422,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 8,
-      "row_count": 603,
+      "dataset_count": 12,
+      "row_count": 716,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -455,6 +571,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.11
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -0.76
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -465,7 +695,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -541,11 +773,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 706,
+      "dataset_count": 14,
+      "row_count": 826,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -690,6 +922,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.67
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -23.39
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -700,7 +1046,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -776,11 +1124,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 667,
+      "dataset_count": 14,
+      "row_count": 781,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -925,6 +1273,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2020,
+          "change_percentage_points": -0.98
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.78
+        },
+        "complete_overlap": true,
+        "quadrant": "water_down_renewable_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -935,7 +1397,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -1011,11 +1475,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 8,
-      "row_count": 581,
+      "dataset_count": 11,
+      "row_count": 671,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -1160,6 +1624,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": null,
+          "latest_year": null,
+          "change_percentage_points": null
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 6.11
+        },
+        "complete_overlap": false,
+        "quadrant": "missing_overlap",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1170,7 +1748,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -1246,11 +1826,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 660,
+      "dataset_count": 14,
+      "row_count": 775,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -1395,6 +1975,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 14.8
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -12.87
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1405,7 +2099,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -1481,11 +2177,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 665,
+      "dataset_count": 14,
+      "row_count": 780,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -1630,6 +2326,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2001,
+          "latest_year": 2022,
+          "change_percentage_points": -3.79
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -7.89
+        },
+        "complete_overlap": true,
+        "quadrant": "both_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1640,7 +2450,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -1716,11 +2528,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 7,
-      "row_count": 536,
+      "dataset_count": 11,
+      "row_count": 649,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters population-growth proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -1861,6 +2673,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 8.61
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.69
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -1871,7 +2797,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -1947,11 +2875,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 673,
+      "dataset_count": 14,
+      "row_count": 787,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -2096,6 +3024,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 9.83
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 2.06
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2106,7 +3148,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -2182,11 +3226,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 742,
+      "dataset_count": 13,
+      "row_count": 853,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -2331,6 +3375,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2020,
+          "change_percentage_points": 1.92
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 1.75
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2341,7 +3499,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -2417,11 +3577,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 8,
-      "row_count": 657,
+      "dataset_count": 12,
+      "row_count": 770,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -2566,6 +3726,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -2.23
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 2.2
+        },
+        "complete_overlap": true,
+        "quadrant": "water_down_renewable_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2576,7 +3850,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -2652,11 +3928,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 656,
+      "dataset_count": 14,
+      "row_count": 771,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -2801,6 +4077,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -10.22
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2023,
+          "change_percentage_points": 0.42
+        },
+        "complete_overlap": true,
+        "quadrant": "water_down_renewable_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -2811,7 +4201,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -2887,11 +4279,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 673,
+      "dataset_count": 14,
+      "row_count": 790,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -3036,6 +4428,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 18.49
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -15.6
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3046,7 +4552,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -3122,11 +4630,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 4,
-      "row_count": 408,
+      "dataset_count": 6,
+      "row_count": 475,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-surface-temperature-anomalies meteorological-monitoring-network rainfall-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-surface-temperature-anomalies meteorological-monitoring-network population-growth rainfall-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -3271,6 +4779,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": null,
+          "latest_year": null,
+          "change_percentage_points": null
+        },
+        "renewable": {
+          "first_year": null,
+          "latest_year": null,
+          "change_percentage_points": null
+        },
+        "complete_overlap": false,
+        "quadrant": "missing_overlap",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3281,7 +4903,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -3357,11 +4981,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 647,
+      "dataset_count": 14,
+      "row_count": 762,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -3506,6 +5130,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.21
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.58
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3516,7 +5254,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -3592,11 +5332,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 678,
+      "dataset_count": 14,
+      "row_count": 794,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -3741,6 +5481,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2021,
+          "change_percentage_points": -11.23
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -5.18
+        },
+        "complete_overlap": true,
+        "quadrant": "both_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3751,7 +5605,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -3827,11 +5683,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 8,
-      "row_count": 518,
+      "dataset_count": 10,
+      "row_count": 584,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation rainfall-anomalies sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -3976,6 +5832,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": null,
+          "latest_year": null,
+          "change_percentage_points": null
+        },
+        "renewable": {
+          "first_year": null,
+          "latest_year": null,
+          "change_percentage_points": null
+        },
+        "complete_overlap": false,
+        "quadrant": "missing_overlap",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -3986,7 +5956,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -4062,11 +6034,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 730,
+      "dataset_count": 14,
+      "row_count": 848,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -4211,6 +6183,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.67
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -0.4
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -4221,7 +6307,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -4297,11 +6385,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 721,
+      "dataset_count": 13,
+      "row_count": 834,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -4446,6 +6534,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 0.45
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 5.48
+        },
+        "complete_overlap": true,
+        "quadrant": "both_up",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -4456,7 +6658,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -4532,11 +6736,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 709,
+      "dataset_count": 14,
+      "row_count": 828,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -4681,6 +6885,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 7.96
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -21.93
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -4691,7 +7009,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -4767,11 +7087,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 6,
-      "row_count": 480,
+      "dataset_count": 10,
+      "row_count": 593,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies number-of-directly-affected-persons-attributed-to-disasters population-growth proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -4912,6 +7232,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -0.27
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -0.51
+        },
+        "complete_overlap": true,
+        "quadrant": "both_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": false,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -4922,7 +7356,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     },
     {
@@ -4998,11 +7434,11 @@
         }
       ],
       "missingness_flag": false,
-      "dataset_count": 9,
-      "row_count": 734,
+      "dataset_count": 14,
+      "row_count": 848,
       "first_year": 1850,
       "last_year": 2026,
-      "datasets": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters power-generation rainfall-anomalies sea-level-anomalies",
+      "datasets": "climate-altering-land-cover-index direct-disaster-economic-loss fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements greenhouse-gas-emissions-per-capita mean-sea-surface-temperature-anomalies mean-surface-temperature-anomalies meteorological-monitoring-network number-of-directly-affected-persons-attributed-to-disasters population-growth power-generation proportion-of-population-using-safely-managed-drinking-water-services rainfall-anomalies renewable-energy-share-in-the-total-final-energy-consumption sea-level-anomalies",
       "outlook": {
         "2030": {
           "capacity_flat": {
@@ -5147,6 +7583,120 @@
           "neighbor_caveat": "Similarity means official-data profiles look alike under this method; it does not mean the places share the same vulnerability, lived experience, or policy need."
         }
       ],
+      "regional_story": {
+        "water": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": 11.98
+        },
+        "renewable": {
+          "first_year": 2000,
+          "latest_year": 2022,
+          "change_percentage_points": -27.94
+        },
+        "complete_overlap": true,
+        "quadrant": "water_up_renewable_down",
+        "visibility": [
+          {
+            "feature_id": "fisheries-management-measures-in-place-and-multilateral-and-bilateral-fisheries-management-arrangements",
+            "label": "Fisheries management measures in place and multilateral and bilateral fisheries management arrangements",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "greenhouse-gas-emissions-per-capita",
+            "label": "Greenhouse gas emissions per capita",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-sea-surface-temperature-anomalies",
+            "label": "Mean sea surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "mean-surface-temperature-anomalies",
+            "label": "Mean surface temperature anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "meteorological-monitoring-network",
+            "label": "Meteorological monitoring network",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": 2026
+          },
+          {
+            "feature_id": "number-of-directly-affected-persons-attributed-to-disasters",
+            "label": "Number of directly affected persons attributed to disasters",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "power-generation",
+            "label": "Power generation",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "rainfall-anomalies",
+            "label": "Rainfall anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "sea-level-anomalies",
+            "label": "Sea level anomalies",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "population-growth",
+            "label": "Projected population growth",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "renewable-energy-share-in-the-total-final-energy-consumption",
+            "label": "Renewable energy share",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "proportion-of-population-using-safely-managed-drinking-water-services",
+            "label": "Safely managed drinking water",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "direct-disaster-economic-loss",
+            "label": "Recorded direct disaster loss",
+            "role": "reporting_visibility_only",
+            "present": true,
+            "latest_year": null
+          },
+          {
+            "feature_id": "climate-altering-land-cover-index",
+            "label": "Climate-altering land-cover index",
+            "role": "reporting_presence",
+            "present": true,
+            "latest_year": null
+          }
+        ]
+      },
       "source_refs": {
         "index": "artifacts/tables/adaptation_gap_index.csv",
         "indicator_trace": "artifacts/tables/adaptation_gap_indicator_trace.csv",
@@ -5157,7 +7707,9 @@
         "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
         "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
         "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+        "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+        "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+        "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
       }
     }
   ],
@@ -5171,6 +7723,8 @@
     "country_story_labels": "artifacts/tables/eda_country_story_labels.csv",
     "spatial_typologies": "artifacts/tables/eda_spatial_typologies.csv",
     "outlook_interpretation": "artifacts/tables/eda_outlook_interpretation.csv",
-    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv"
+    "similarity_neighbors": "artifacts/tables/eda_similarity_neighbors.csv",
+    "regional_crosscurrents": "artifacts/tables/eda_regional_crosscurrents.csv",
+    "regional_feature_matrix": "artifacts/tables/eda_regional_feature_matrix.csv"
   }
 }

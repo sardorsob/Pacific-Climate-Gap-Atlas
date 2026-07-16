@@ -25,6 +25,13 @@ function makeGeo(overrides: Partial<Geo> = {}): Geo {
       pillar: "climate_signal" as const,
       present: index < 5,
     })),
+    regionalStory: {
+      water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+      renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+      completeOverlap: false,
+      quadrant: "missing_overlap",
+      visibility: [],
+    },
     reportingStatus: "reported_positive_latest_count",
     monitoringCount: 2,
     latestMonitoringYear: 2024,

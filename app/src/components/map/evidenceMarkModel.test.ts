@@ -21,6 +21,13 @@ const geo = {
     pillar: index < 3 ? "climate_signal" : index < 5 ? "observed_stress" : "adaptation_capacity",
     present: index < 5,
   })),
+  regionalStory: {
+    water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+    completeOverlap: false,
+    quadrant: "missing_overlap",
+    visibility: [],
+  },
   reportingStatus: "reported_positive_latest_count",
   monitoringCount: 2,
   latestMonitoringYear: 2024,

@@ -28,7 +28,7 @@ First-build concept status:
 Current concept status:
 
 - Narrative and semantic direction: regional two-act story approved after TASK-068/TASK-069 review.
-- TASK-072 transition keyframes: exact-data large-screen, mobile-portrait, and mobile-landscape boards rendered and awaiting owner approval; no app implementation has begun from them.
+- TASK-072 transition keyframes: owner approved for composition, story flow, responsive layout, and mark continuity. The current implemented app remains authoritative for palette, typography, controls, panels, map treatment, evidence marks, spacing character, and interaction language.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
@@ -69,7 +69,7 @@ The keyframes for desktop, portrait, and mobile landscape are a hard gate in `TA
 
 No new renderer is needed. Use the existing React, SVG, CSS, and MapLibre ownership. Add no D3, Canvas, WebGL, chart framework, FLIP/shared-element library, router, or state manager.
 
-### TASK-072 Semantic Design Contract (Pending Owner Approval)
+### TASK-072 Semantic Design Contract (Owner Approved)
 
 Review references:
 
@@ -79,7 +79,7 @@ Review references:
 | Mobile portrait | `artifacts/design/task-072/mobile-portrait-keyframes.png` (2220×1247) | four sibling 520×1125 frames based on 390×844 |
 | Mobile landscape | `artifacts/design/task-072/mobile-landscape-keyframes.png` (4188×590) | four sibling 1012×468 frames based on 844×390 |
 
-The governing artifact family is a four-state scrollytelling keyframe sequence, not a dashboard. Map and Explore reuse the TASK-064 dark application surface; the cross-current and visibility states take over the usable viewport on mineral paper. The stable geography code and neutral sunburst/anchor glyph are the continuity keys: the glyph repeats at the centroid, cross-current point, and visibility row header. No generated imagery is an implementation asset: the required image-generation pass informed composition only, while the tracked boards use repository data and current screenshot context.
+The governing artifact family is a four-state scrollytelling keyframe sequence, not a dashboard. The stable geography code and neutral sunburst/anchor glyph are the continuity keys: the glyph repeats at the centroid, cross-current point, and visibility row header. The boards govern composition and evidence hierarchy only: implement all four states with the current app's existing color tokens, typography, controls, panels, map treatment, evidence-mark styling, spacing character, and interaction language. Do not reproduce the boards' mineral-paper color treatment or any generated visual discrepancy. No generated imagery is an implementation asset: the required image-generation pass informed composition only, while the tracked boards use repository data and current screenshot context.
 
 Label-safe areas and hierarchy:
 

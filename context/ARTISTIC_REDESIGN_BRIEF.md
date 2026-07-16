@@ -48,7 +48,7 @@ Preserve the existing fullscreen stage and island explorer, but test a new readi
 
 The artistic idea is continuity, not ornament: geography becomes comparison, comparison becomes a record, and the record returns to geography. The same 22 marks carry that change. Motion verbs are locate, rearrange, expose, and return. Every frame must still make sense without motion.
 
-## TASK-072 Transition Keyframes (Pending Owner Approval)
+## TASK-072 Transition Keyframes (Owner Approved)
 
 Three exact-data composite boards now translate the approved story into the accepted TASK-064 application shell:
 
@@ -56,7 +56,9 @@ Three exact-data composite boards now translate the approved story into the acce
 - `artifacts/design/task-072/mobile-portrait-keyframes.png` — 2220×1247; four sibling 520×1125 portrait frames based on the 390×844 target.
 - `artifacts/design/task-072/mobile-landscape-keyframes.png` — 4188×590; four sibling 1012×468 landscape frames based on the 844×390 target.
 
-Approval status: **pending owner review**. These boards are the TASK-072 review artifacts, not permission to begin TASK-074 implementation.
+Approval status: **owner approved on 2026-07-15** for layout, story flow, responsive composition, and mark continuity. The approval unlocks TASK-074 implementation.
+
+The current implemented application—not the raster boards—is the visual-identity authority. Preserve its existing palette, typography, map treatment, evidence-mark styling, controls, panels, spacing character, and interaction language. The boards may change layout, copy, figure ownership, and transitions, but their mineral-paper surfaces, generated styling discrepancies, and incidental colors are not implementation targets.
 
 The boards lock one composition: a quiet dark map locates 22 equal-presence marks, a mineral-paper cross-current field rearranges the same stable codes, a mineral-paper 22×14 field exposes record visibility, and the current dark explorer receives the marks again in neutral `overview`. Large screen gives each state the full figure area. Portrait gives one claim and one full evidence state per screen-height step; the 22×14 field grows vertically without a nested scroller. Landscape uses a claim column beside the wide field rather than cropping the portrait or shrinking the desktop frame.
 

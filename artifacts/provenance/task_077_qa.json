@@ -1,6 +1,6 @@
 {
   "task": "TASK-077",
-  "status": "in-review",
+  "status": "done",
   "source_commit": "8c1c9667e9aee146f7ed0119d756bae57846e2f4",
   "visual_identity_authority": "current implemented application",
   "core_screenshot_matrix": {
@@ -70,7 +70,9 @@
     "osv_npm_audit": "5 development-tool vulnerabilities across esbuild/Vite/Vitest: 3 moderate; 1 high; 1 critical"
   },
   "owner_gate": {
-    "task_077_owner_accepted": false,
+    "task_077_owner_accepted": true,
+    "accepted_on": "2026-07-16",
+    "release_findings_disposition": "deferred to TASK-057",
     "task_057_status": "needs-fix",
     "deployment_or_submission_claimed": false
   }

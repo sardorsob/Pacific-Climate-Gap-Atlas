@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-076` are complete. `TASK-077` completed local scientific, browser, responsive, interaction, accessibility, error, and artifact QA and is `in-review` for owner acceptance plus disposition of pre-existing release findings. `TASK-057` remains `needs-fix`; no deployment/submission readiness is claimed.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-077` are complete. The owner accepted the final regional narrative, preserved visual identity, interaction behavior, and TASK-077 QA matrix on 2026-07-16. `TASK-057` remains `needs-fix` for pre-existing release findings; no deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The final local replacement matrix lives under `artifacts/design/task-077/`, with evidence and gate results in `artifacts/tables/task_077_evidence_trace.csv` and `artifacts/provenance/task_077_qa.json`. The concept boards remain composition references, not the app's visual identity.
 
@@ -74,9 +74,9 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Owner-review the TASK-077 screenshot matrix and live app for story clarity, artistic judgment, and preserved UI identity.
-2. Decide whether to repair, waive with rationale, or separately schedule the pre-existing Ruff, local-script Semgrep, and development-tool audit findings recorded in `artifacts/provenance/task_077_qa.json`.
-3. Keep `TASK-057` at `needs-fix` and do not claim deployment/submission readiness until both decisions are recorded.
+1. Decide whether to repair or waive with rationale the pre-existing Ruff, local-script Semgrep, and development-tool audit findings recorded in `artifacts/provenance/task_077_qa.json`.
+2. Keep `TASK-057` at `needs-fix` and do not claim deployment/submission readiness until that release decision is recorded.
+3. After the release findings are resolved, complete deployment, public-URL durability, final disclosure, and submission-form actions.
 
 ## Known Caveats
 

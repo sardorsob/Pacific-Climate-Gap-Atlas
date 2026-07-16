@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Owner-review the settled TASK-077 matrix and live app. The local scientific, story, interaction, responsive, accessibility, error, build, and data gates are recorded; do not deploy or submit while `TASK-057` remains `needs-fix` and the owner has not dispositioned the pre-existing lint/static-analysis/development-dependency findings.
+TASK-077 and the TASK-072–TASK-077 narrative batch are owner-accepted. Decide how to repair or waive with rationale the pre-existing lint, local-script static-analysis, and development-dependency findings under `TASK-057`; do not deploy or submit while that task remains `needs-fix`.
 
 ## Next Build Step
 
-`TASK-077` returned and rechecked one factual TASK-074 copy repair and one TASK-076 Methods/source repair, then completed the final local matrix. The evidence is `artifacts/design/task-077/` (42 PNGs), `artifacts/tables/task_077_evidence_trace.csv`, and `artifacts/provenance/task_077_qa.json`. Full frontend 60/60, Python 96/96, production build, bundle (94,411-byte CSS; 1,029,959-byte JS), data/artifact/status/secret/compile, and whitespace gates pass. Owner acceptance and the pre-existing release findings are the remaining decisions. Use existing context files; do not create tracked per-task Markdown.
+`TASK-077` returned and rechecked one factual TASK-074 copy repair and one TASK-076 Methods/source repair, then completed the owner-accepted final local matrix. The evidence is `artifacts/design/task-077/` (42 PNGs), `artifacts/tables/task_077_evidence_trace.csv`, and `artifacts/provenance/task_077_qa.json`. Full frontend 60/60, Python 96/96, production build, bundle (94,411-byte CSS; 1,029,959-byte JS), data/artifact/status/secret/compile, and whitespace gates pass. The pre-existing release findings remain under TASK-057. Use existing context files; do not create tracked per-task Markdown.
 
 The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff remain protected. Verify map -> movement -> visibility -> map continuity; slow/rapid progress and keyboard input; overview/score/overlay/outlook transitions; place panel and methods; copied/retired URLs, reload, and Back/Forward; desktop, portrait, landscape, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only.
 

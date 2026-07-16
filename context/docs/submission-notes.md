@@ -14,7 +14,7 @@ Pacific Climate Evidence Atlas.
 
 Direct subtitle: **How conditions and official records differ across 22 Pacific places.**
 
-Readiness note (2026-07-15): the owner accepted the current fullscreen map, evidence marks, interaction system, and explorer as the application baseline. `TASK-074` through `TASK-076` now implement the accepted regional movement -> evidence visibility -> exploration story without replacing that UI identity. `TASK-077` has completed its local scientific and browser matrix and remains `in-review` for owner taste/visual acceptance plus disposition of pre-existing lint, local-script static-analysis, and development-dependency findings. `TASK-057` remains `needs-fix`. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
+Readiness note (2026-07-16): the owner accepted the current fullscreen map, evidence marks, interaction system, explorer, regional movement -> evidence visibility -> exploration story, and TASK-077 scientific/browser matrix. `TASK-072` through `TASK-077` are done without replacing the approved UI identity. `TASK-057` remains `needs-fix` for pre-existing lint, local-script static-analysis, and development-dependency findings. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted or deployed until those external actions occur.
 
 ## Submission Requirements To Track
 
@@ -28,7 +28,7 @@ Readiness note (2026-07-15): the owner accepted the current fullscreen map, evid
 | App bundle budget | satisfied locally | `python scripts/check_app_bundle_budget.py`; JS 1,029,959 bytes; CSS 94,411 bytes | Re-run after deployment/build environment changes |
 | English or French dataviz/explanations | satisfied | Current app and docs are English | Final typo pass |
 | AI-assisted work disclosure | needs owner wording | Progress log records AI tools; workflow keeps human/orchestrator review | Approve final disclosure text |
-| Final accessibility/mobile review | local matrix complete; owner review pending | `artifacts/design/task-077/`, `artifacts/provenance/task_077_qa.json` | Owner visual, keyboard, mobile, and color-deficiency sign-off |
+| Final accessibility/mobile review | satisfied locally; owner accepted | `artifacts/design/task-077/`, `artifacts/provenance/task_077_qa.json` | Recheck the deployed host before submission |
 
 ## Draft Description
 
@@ -55,4 +55,4 @@ Build with `npm run app:build`, preview with `npm run app:preview`, and deploy t
 
 ## Current Analysis State
 
-The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, JSD nearest-neighbor evidence, and the reviewed regional movement/visibility package. `TASK-064` remains the accepted application/UI baseline; `TASK-074` through `TASK-076` replaced only its guided narrative, and `TASK-077` recorded the local release matrix. Final submission copy must follow `context/ARTISTIC_REDESIGN_BRIEF.md` only after owner visual/accessibility acceptance, outstanding release-gate disposition, and deployment actions are complete.
+The project has script-first EDA outputs for indicator forensics, country story labels, spatial typologies, trend/outlook display guidance, rank volatility, monitoring-gap GIS priorities, JSD nearest-neighbor evidence, and the reviewed regional movement/visibility package. `TASK-064` remains the accepted application/UI baseline; `TASK-074` through `TASK-076` replaced only its guided narrative, and owner-accepted `TASK-077` records the local release matrix. Final submission copy must follow `context/ARTISTIC_REDESIGN_BRIEF.md`; outstanding TASK-057 release-gate disposition and deployment actions are still required.

@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: `TASK-074` through `TASK-076` implement the `TASK-069` regional movement -> evidence visibility -> exploration story, and `TASK-077` has moved the result to owner review. The old **The Shape of What We Know** guided sequence, Adaptation Gap title/index-first opening, Nauru/Tuvalu comparison, and rank-band ending are retired. The current map, 22 equal-presence marks, fullscreen stage, palette/type/control language, selected-place panel, sources/methods, URL/history, accessibility, and Explore handoff remain the visual and behavioral authority.
+Status: `TASK-074` through `TASK-077` implement, verify, and owner-accept the `TASK-069` regional movement -> evidence visibility -> exploration story. The old **The Shape of What We Know** guided sequence, Adaptation Gap title/index-first opening, Nauru/Tuvalu comparison, and rank-band ending are retired. The current map, 22 equal-presence marks, fullscreen stage, palette/type/control language, selected-place panel, sources/methods, URL/history, accessibility, and Explore handoff remain the visual and behavioral authority.
 
 Source basis:
 

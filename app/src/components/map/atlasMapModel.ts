@@ -72,6 +72,11 @@ export type GraticuleFeatureCollection = {
 };
 
 const MAP_MOTION_MS = 560;
+const OVERVIEW_FILL = "#64777f";
+const OVERVIEW_STROKE = "#d4dde2";
+// Render-only sentinel that makes every overview land outline solid. It does
+// not mutate or reinterpret the geography's source reporting status.
+const OVERVIEW_RENDERING_STATUS: ReportingStatus = "reported_positive_latest_count";
 
 export function mapMotionDuration(reducedMotion: boolean): number {
   return reducedMotion ? 0 : MAP_MOTION_MS;
@@ -165,14 +170,18 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
   return {
     type: "FeatureCollection",
     features: geos.map((geo) => {
+      const overview = state.viewMode === "overview";
       const isSelected = geo.code === state.selectedCode;
       const isPriority = state.viewMode === "coverage" && state.priorityCodes.includes(geo.code);
-      const withheld = state.outlookOn && geo.outlookDisplay === "withhold";
+      const withheld = !overview && state.outlookOn && geo.outlookDisplay === "withhold";
       const dimmed =
         (hasSelection && !isSelected) ||
         (state.viewMode === "coverage" && !isPriority && geo.storyPriority > 3);
       const scoreValue = scoreValueFor(geo, state, withheld);
-      const paint = markerPaintFor(geo.reportingStatus);
+      const paint = overview
+        ? { strokeColor: OVERVIEW_STROKE, strokeDasharray: null, hatch: false }
+        : markerPaintFor(geo.reportingStatus);
+      const reportingStatus = overview ? OVERVIEW_RENDERING_STATUS : geo.reportingStatus;
 
       return {
         type: "Feature",
@@ -185,7 +194,7 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
           name: geo.name,
           storyLabel: geo.storyLabel,
           scoreValue,
-          fillColor: markerFillFor(geo, state),
+          fillColor: overview ? OVERVIEW_FILL : markerFillFor(geo, state),
           strokeColor: withheld ? "#9fb4bf" : paint.strokeColor,
           radius: PRESENCE_RADIUS,
           opacity: dimmed ? 0.32 : 1,
@@ -193,8 +202,8 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
           priority: isPriority,
           dimmed,
           withheld,
-          reportingStatus: geo.reportingStatus,
-          ringVariant: ringVariant(geo.reportingStatus),
+          reportingStatus,
+          ringVariant: ringVariant(reportingStatus),
           strokeDasharray: withheld ? [1, 2] : paint.strokeDasharray,
           hatch: paint.hatch,
           geometryStatus: "centroid_fallback",
@@ -205,6 +214,7 @@ export function buildAtlasFeatureCollection(geos: Geo[], state: AtlasMapState): 
 }
 
 function scoreValueFor(geo: Geo, state: AtlasMapState, withheld: boolean): number | null {
+  if (state.viewMode === "overview") return null;
   if (withheld) return null;
   if (state.outlookOn) return geo.outlook2030Flat;
   if (state.viewMode === "uncertainty") return geo.rankRange;
@@ -213,6 +223,7 @@ function scoreValueFor(geo: Geo, state: AtlasMapState, withheld: boolean): numbe
 }
 
 function markerFillFor(geo: Geo, state: AtlasMapState): string {
+  if (state.viewMode === "overview") return OVERVIEW_FILL;
   if (state.outlookOn) {
     if (geo.outlookDisplay === "withhold") return "transparent";
     return scoreColor("gap", geo.outlook2030Flat);

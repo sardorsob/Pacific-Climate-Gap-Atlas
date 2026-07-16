@@ -36,6 +36,22 @@ const SCORE_TITLES: Record<ScoreKey, string> = {
 };
 
 export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) {
+  if (viewMode === "overview") {
+    return (
+      <section className="legend" aria-label="Map legend">
+        <h2 className="legend__title">Regional overview</h2>
+        <div className="legend__block">
+          <span className="legend__label">Stable place identity</span>
+          <div className="legend__portrait-key">
+            <EvidenceMark model={LEGEND_MARK} neutral label="Neutral overview mark" size={44} />
+            <span>Each neutral mark identifies one selectable Pacific place. All 22 marks use the same encoding until a layer is chosen.</span>
+          </div>
+        </div>
+        <p className="legend__note">Island texture is grouped by nearest centroid; it is not an official boundary.</p>
+      </section>
+    );
+  }
+
   const fillTitle = outlookOn
     ? "2030 stress-test gap (low to high)"
     : viewMode === "uncertainty"

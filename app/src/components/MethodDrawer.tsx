@@ -11,6 +11,11 @@ const DATASETS = [
   "Power generation",
   "Fisheries management measures",
   "GHG emissions per capita (responsibility context)",
+  "Projected population growth",
+  "Renewable energy share",
+  "Safely managed drinking water",
+  "Recorded direct disaster loss (reporting visibility only)",
+  "Climate-altering land-cover index",
 ];
 
 const WONT = [
@@ -78,9 +83,28 @@ export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => 
         <section className="drawer__section">
           <h3>Thesis</h3>
           <p>
-            Across 22 Pacific geographies, climate pressure and visible adaptation capacity are
-            unevenly matched, and so is the official data behind the comparison. This atlas maps where
-            the gap looks widest and is honest about where the record falls silent.
+            How conditions and official records differ across 22 Pacific places. Official records
+            show different changes across Pacific places, and they do not show every place equally.
+          </p>
+        </section>
+
+        <section className="drawer__section">
+          <h3>Guided Act I: movement</h3>
+          <p>
+            Act I compares first-to-latest values within each place for safely managed drinking water
+            and renewable energy share, expressed as separate percentage-point changes. Each measure
+            keeps its own meaning, denominator, and reporting clock. The endpoint comparisons are
+            descriptive and non-causal; they do not explain why values changed.
+          </p>
+        </section>
+
+        <section className="drawer__section">
+          <h3>Guided Act II: visibility</h3>
+          <p>
+            Act II shows whether each of 14 reviewed official datasets has a returned record for each
+            place. Presence is not completeness, quality, currency, infrastructure, conditions, or
+            local knowledge. Missing recorded direct disaster loss means no reviewed returned row; it
+            does not mean zero loss.
           </p>
         </section>
 

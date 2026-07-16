@@ -101,7 +101,7 @@ export function MapOverlay({ geos, project, selectedCode, activeScore, sceneVisu
             const feature = featureByCode.get(geo.code);
             return (
               <g key={`status-${geo.code}`} data-code={geo.code}>
-                <EvidenceMark x={point.x - 22} y={point.y - 22} size={44} model={buildEvidenceMark(geo, { scoreKey: activeScore, selected: geo.code === selectedCode })} scoreFill={feature?.properties.fillColor} decorative className="map-evidence-mark" />
+                <EvidenceMark x={point.x - 22} y={point.y - 22} size={44} model={buildEvidenceMark(geo, { scoreKey: activeScore, selected: geo.code === selectedCode })} scoreFill={feature?.properties.fillColor} neutral={viewMode === "overview"} dataCode={geo.code} decorative className="map-evidence-mark" />
               </g>
             );
           })}
@@ -142,10 +142,13 @@ export function MapOverlay({ geos, project, selectedCode, activeScore, sceneVisu
           if (!point) return null;
           const r = PRESENCE_RADIUS + 10;
           const dimmed = (hasSelection && geo.code !== selectedCode) || (viewMode === "coverage" && !priorityCodes.includes(geo.code) && geo.storyPriority > 3);
-          return <button key={`hit-${geo.code}`} type="button" className="map-a11y-point" style={{ left: point.x, top: point.y, width: Math.max(44, r * 2), height: Math.max(44, r * 2) }} aria-label={`${geo.name}. ${geo.storyLabel}. Rank moves ${geo.rankMin} to ${geo.rankMax}.`} aria-pressed={geo.code === selectedCode} data-dimmed={dimmed ? "true" : "false"} onClick={() => onSelect(geo.code)} />;
+          const hitLabel = viewMode === "overview"
+            ? `${geo.name}. Neutral overview mark. Select to inspect this place.`
+            : `${geo.name}. ${geo.storyLabel}. Rank moves ${geo.rankMin} to ${geo.rankMax}.`;
+          return <button key={`hit-${geo.code}`} type="button" className="map-a11y-point" style={{ left: point.x, top: point.y, width: Math.max(44, r * 2), height: Math.max(44, r * 2) }} aria-label={hitLabel} aria-pressed={geo.code === selectedCode} data-dimmed={dimmed ? "true" : "false"} onClick={() => onSelect(geo.code)} />;
         })}
       </div>
-      <p className="map-note">Natural Earth island texture is grouped by nearest centroid. Scored geographies are not boundary polygons.</p>
+      <p className="map-note">Natural Earth island texture is grouped by nearest centroid. Selectable place records are centroid points, not boundary polygons.</p>
     </>
   );
 }

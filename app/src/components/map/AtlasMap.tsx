@@ -56,7 +56,9 @@ export function AtlasMap({
       <div ref={containerRef} className="maplibre-canvas" aria-hidden="true" />
       <p className="sr-only">
         Map of 22 Pacific geographies shown as presence marks over Natural Earth land context.
-        Active layer: {activeLayerLabel}. The map is a comparative screen, not a definitive ranking.
+        Active layer: {activeLayerLabel}. {viewMode === "overview"
+          ? "All 22 places use the same neutral mark until a layer is chosen."
+          : "The map is a comparative screen, not a definitive ranking."}
       </p>
       <MapOverlay
         geos={geos}

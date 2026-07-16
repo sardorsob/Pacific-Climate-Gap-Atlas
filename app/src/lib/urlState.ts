@@ -62,6 +62,11 @@ export function parseAtlasUrl(input: string, geographyCodes: readonly string[]):
     : (sceneValue && RETIRED_SCENE_FALLBACKS.get(sceneValue)) ?? DEFAULT_ATLAS_URL_STATE.scene;
   const guidedFallback = mode === "guided" && sceneValue !== null && !approvedScene;
   const canonicalScene = SCENES.find((item) => item.id === scene) ?? SCENES[0];
+  const view = guidedFallback
+    ? canonicalScene.state.view ?? DEFAULT_ATLAS_URL_STATE.view
+    : viewValue && VIEWS.has(viewValue as ViewMode)
+      ? (viewValue as ViewMode)
+      : DEFAULT_ATLAS_URL_STATE.view;
 
   return {
     mode,
@@ -71,17 +76,13 @@ export function parseAtlasUrl(input: string, geographyCodes: readonly string[]):
       : layerValue && LAYERS.has(layerValue as ScoreKey)
         ? (layerValue as ScoreKey)
         : DEFAULT_ATLAS_URL_STATE.layer,
-    view: guidedFallback
-      ? canonicalScene.state.view ?? DEFAULT_ATLAS_URL_STATE.view
-      : viewValue && VIEWS.has(viewValue as ViewMode)
-        ? (viewValue as ViewMode)
-        : DEFAULT_ATLAS_URL_STATE.view,
+    view,
     place: guidedFallback
       ? canonicalScene.state.selected ?? DEFAULT_ATLAS_URL_STATE.place
       : placeValue && geographyCodes.includes(placeValue)
         ? placeValue
         : DEFAULT_ATLAS_URL_STATE.place,
-    outlook: guidedFallback ? false : params.get("outlook") === "1",
+    outlook: guidedFallback || view === "overview" ? false : params.get("outlook") === "1",
   };
 }
 

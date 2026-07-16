@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-073` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. The owner approved the TASK-072 transition boards as a layout/story contract while retaining the current app's UI identity, and accepted the reviewed TASK-073 minimum app-data contract. TASK-074 is the next sequential implementation task.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-076` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. The owner approved the TASK-072 transition boards as a layout/story contract while retaining the current app's UI identity, and TASK-073 through TASK-076 delivered and independently reviewed the minimum story data, four-scene contract, shared regional field, neutral overview, preserved explorer integration, and obsolete-guided-code deletion. TASK-077 is the next and only implementation-batch gate.
 
-The current app remains the accepted behavioral baseline. Preserve its fullscreen composition, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Replace the title, opening thesis, guided exemplars, scene order, comparison/rank takeovers, and index-first default. QA screenshots live under `artifacts/design/task-064/`; future keyframes remain composition-only until implemented.
+The current app now implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. QA screenshots from the accepted baseline live under `artifacts/design/task-064/`; TASK-077 must capture the final replacement matrix without treating the concept boards as a new visual identity.
 
 ## How To Validate The Scaffold
 
@@ -74,10 +74,9 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Owner-review the revised `TASK-072` large-screen, portrait, and landscape boards plus the tested `TASK-073` generated contract. Do not start application implementation before the keyframe gate closes.
-2. After owner approval of the keyframes, run `TASK-074` for the four stable guided scene IDs/copy/URL fallback, then `TASK-075` for one shared movement/visibility regional figure.
-3. Run `TASK-076` to connect the two acts to the preserved explorer and delete old guided-only components only after reference checks pass.
-4. Run `TASK-077` as the independent scientific, interaction, accessibility, responsive, and owner-taste gate. Only a passing result may close `TASK-057` or support deployment/submission.
+1. Run `TASK-077` as the independent scientific, interaction, accessibility, responsive, and owner-taste gate over the accepted TASK-074 through TASK-076 implementation.
+2. Return any defect to its owning task; do not turn the release gate into an unbounded polish pass.
+3. Keep `TASK-057` at `needs-fix` and do not claim deployment/submission readiness until the owner accepts the final matrix.
 
 ## Known Caveats
 

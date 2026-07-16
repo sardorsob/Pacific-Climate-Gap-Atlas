@@ -2,13 +2,13 @@
 
 ## Immediate Next Step
 
-Integrate the independently approved `TASK-075` movement/visibility field through the existing `App.tsx` seam in `TASK-076`, implement neutral overview/exploration state, and remove only guided code proven unused by reference search. Preserve the current implemented app as the visual-identity authority. Do not deploy or submit while `TASK-057` remains `needs-fix`.
+Run `TASK-077` as an independent read-only narrative, scientific, interaction, accessibility, responsive, and release review of the `TASK-076` integration. Return defects to their owning task; do not deploy or submit while `TASK-057` remains `needs-fix`.
 
 ## Next Build Step
 
-The remaining chain is `TASK-076` application integration -> `TASK-077` final QA. TASK-075 is independently approved and done. Use existing context files; do not create tracked per-task Markdown.
+`TASK-076` is complete after independent frozen-diff approval and root live Brave/WebGL QA of the movement/visibility field, neutral overview/exploration state, public climate-evidence title/thesis, current-app visual identity, and reference-proven guided-code deletion. Full frontend 58/58, production build, bundle (94,411-byte CSS; 1,028,815-byte JS), data/status/secret, retired-reference, and whitespace gates pass. `TASK-077` now owns the complete Browser Use matrix and final independent evidence/copy/accessibility/owner review. Use existing context files; do not create tracked per-task Markdown.
 
-The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff are protected. Replace the existing premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, title, and index-first default. JSD remains selected-place panel evidence only.
+The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff remain protected. Verify map -> movement -> visibility -> map continuity; slow/rapid progress and keyboard input; overview/score/overlay/outlook transitions; place panel and methods; copied/retired URLs, reload, and Back/Forward; desktop, portrait, landscape, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only.
 
 ## Current Evidence Snapshot
 

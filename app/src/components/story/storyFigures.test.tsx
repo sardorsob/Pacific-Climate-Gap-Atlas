@@ -1,121 +1,12 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
-import type { Geo } from "../../lib/atlasData";
 import { adaptGeographiesPayload } from "../../lib/atlasData";
-import { PlaceComparisonScene } from "./PlaceComparisonScene";
-import { PressureCapacityScene } from "./PressureCapacityScene";
-import { RankBandScene } from "./RankBandScene";
 import { RegionalEvidenceScene } from "./RegionalEvidenceScene";
 
-function makeGeo(overrides: Partial<Geo> = {}): Geo {
-  return {
-    code: "NR",
-    name: "Nauru",
-    subregion: "Micronesia",
-    status: "Country",
-    lon: 166.93,
-    lat: -0.53,
-    gap: 62,
-    pressure: 54,
-    capacity: 38,
-    scoreInputCount: 5,
-    contextCount: 1,
-    traceCount: 6,
-    scoreInputPresence: Array.from({ length: 8 }, (_, index) => ({
-      datasetSlug: `input-${index}`,
-      datasetName: `Input ${index}`,
-      pillar: "climate_signal" as const,
-      present: index < 5,
-    })),
-    regionalStory: {
-      water: { firstYear: null, latestYear: null, changePercentagePoints: null },
-      renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
-      completeOverlap: false,
-      quadrant: "missing_overlap",
-      visibility: [],
-    },
-    reportingStatus: "reported_positive_latest_count",
-    monitoringCount: 2,
-    latestMonitoringYear: 2024,
-    storyPriority: 1,
-    rankMin: 2,
-    rankMax: 8,
-    rankRange: 6,
-    robustness: "sensitive",
-    storyLabel: "High gap, thin monitoring",
-    topPressure: [],
-    topCapacity: [],
-    indicatorRows: [],
-    similarityNeighbors: [],
-    outlook2030Flat: 64,
-    outlookDisplay: "show_with_strong_caveat",
-    ...overrides,
-  };
-}
-
-const nauru = makeGeo();
-const tuvalu = makeGeo({
-  code: "TV",
-  name: "Tuvalu",
-  lon: 179.2,
-  lat: -8.5,
-  gap: 68,
-  pressure: 66,
-  capacity: 41,
-  scoreInputCount: 3,
-  contextCount: 0,
-  traceCount: 3,
-  reportingStatus: "reported_zero_latest_count",
-  monitoringCount: 0,
-});
 const regionalGeos = adaptGeographiesPayload(generatedGeographies);
 
 describe("story figures", () => {
-  it("renders aligned Nauru and Tuvalu evidence portraits", () => {
-    const html = renderToStaticMarkup(<PlaceComparisonScene nauru={nauru} tuvalu={tuvalu} />);
-
-    expect(html).toContain("Nauru");
-    expect(html).toContain("Tuvalu");
-    expect(html).toContain("Reported zero");
-    expect(html).toContain("Reported monitoring");
-    expect(html).toContain("Score inputs");
-    expect(html).toContain("Rank band");
-    expect(html).toContain('data-stage-figure="comparison"');
-    expect(html).toContain('data-code="NR"');
-    expect(html).toContain('data-code="TV"');
-    expect((html.match(/<figure class="evidence-portrait/g) ?? []).length).toBe(2);
-    expect(html).not.toContain('data-selected="true"');
-    expect(html).not.toContain("JSD");
-  });
-
-  it("labels capacity as visible capacity", () => {
-    const html = renderToStaticMarkup(<PressureCapacityScene geos={[nauru, tuvalu]} />);
-
-    expect(html).toContain("Climate pressure");
-    expect(html).toContain("Visible capacity");
-    expect((html.match(/class="pressure-capacity-figure__lobe /g) ?? []).length).toBe(4);
-    expect((html.match(/evidence-mark/g) ?? []).length).toBeGreaterThan(1);
-    expect(html).not.toContain("Adaptation readiness");
-  });
-
-  it("shows rank bands as sensitivity intervals and highlights Marshall Islands", () => {
-    const marshall = makeGeo({ code: "MH", name: "Marshall Islands", rankMin: 4, rankMax: 19, rankRange: 15, robustness: "fragile" });
-    const html = renderToStaticMarkup(<RankBandScene geos={[marshall, nauru]} reducedMotion />);
-
-    expect(html).toContain("Marshall Islands");
-    expect(html).toContain("4–19");
-    expect(html).toContain("Sensitivity bands, not a fixed scoreboard");
-    expect(html).toContain('data-stage-figure="rank-bands"');
-    expect(html).toContain('data-motion-mode="static"');
-    expect(html).toContain('data-code="MH"');
-    expect(html).toContain('class="rank-band-figure__rows"');
-    expect(html).toContain('style="--rank-start:');
-    expect(html).toContain("not confidence intervals");
-    expect(html).not.toContain("<svg");
-    expect(html).not.toContain("midpoint");
-  });
-
   it("renders the complete signed movement field with an explicit incomplete rail", () => {
     const html = renderToStaticMarkup(<RegionalEvidenceScene geos={regionalGeos} mode="movement" />);
 

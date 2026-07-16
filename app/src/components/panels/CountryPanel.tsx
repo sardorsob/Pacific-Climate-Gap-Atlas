@@ -63,13 +63,12 @@ export function CountryPanel({ geo, onClose, onOpenMethod }: CountryPanelProps) 
   if (!geo) {
     return (
       <aside className="panel panel--intro" aria-label="Atlas detail panel">
-        <p className="eyebrow">Pacific Adaptation Gap Atlas</p>
+        <p className="eyebrow">Pacific Climate Evidence Atlas</p>
         <h1 className="panel__thesis">
-          Where climate pressure and visible capacity are unevenly matched - and so is the official data behind the comparison.
+          How conditions and official records differ across 22 Pacific places.
         </h1>
         <p className="panel__lede">
-          Tap any island mark to open a place: its score, how far the rank slides, what the monitoring
-          record shows, and the official rows behind every number.
+          Select a place to inspect its data, sources, gaps, and optional score evidence.
         </p>
         <p className="panel__hint">Concept for review - not final, not approved.</p>
         <button type="button" className="link-btn" onClick={onOpenMethod}>

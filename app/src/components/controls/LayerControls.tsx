@@ -42,7 +42,13 @@ export function LayerControls({
             </button>
           ))}
         </div>
-        <p className="controls__caveat">{outlookOn ? "Stress-test interpretation, not a forecast." : activeLayer.caveat}</p>
+        <p className="controls__caveat">{
+          viewMode === "overview"
+            ? "Overview is neutral. Choose a score layer to color the marks."
+            : outlookOn
+              ? "Stress-test interpretation, not a forecast."
+              : activeLayer.caveat
+        }</p>
       </div>
 
       <div className="controls__group">
@@ -51,7 +57,7 @@ export function LayerControls({
           type="button"
           className="controls__toggle"
           aria-pressed={viewMode === "coverage"}
-          onClick={() => onViewMode(viewMode === "coverage" ? "default" : "coverage")}
+          onClick={() => onViewMode(viewMode === "coverage" ? "overview" : "coverage")}
         >
           <EyeOff aria-hidden="true" size={16} />
           Where the data goes quiet
@@ -60,7 +66,7 @@ export function LayerControls({
           type="button"
           className="controls__toggle"
           aria-pressed={viewMode === "uncertainty"}
-          onClick={() => onViewMode(viewMode === "uncertainty" ? "default" : "uncertainty")}
+          onClick={() => onViewMode(viewMode === "uncertainty" ? "overview" : "uncertainty")}
         >
           <Shuffle aria-hidden="true" size={16} />
           Rank uncertainty

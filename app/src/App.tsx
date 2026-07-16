@@ -6,9 +6,7 @@ import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
 import { DataQuietCallout } from "./components/panels/DataQuietCallout";
 import { MethodDrawer } from "./components/MethodDrawer";
-import { PlaceComparisonScene } from "./components/story/PlaceComparisonScene";
-import { PressureCapacityScene } from "./components/story/PressureCapacityScene";
-import { RankBandScene } from "./components/story/RankBandScene";
+import { RegionalEvidenceScene } from "./components/story/RegionalEvidenceScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
 import { HANDOFF_COPY, SCENES } from "./lib/scenes";
 import { atlasLayers } from "./lib/layers";
@@ -65,7 +63,7 @@ export function App() {
   const [historyHydrationRevision, setHistoryHydrationRevision] = useState(0);
 
   const [activeScore, setActiveScore] = useState<ScoreKey>("gap");
-  const [viewMode, setViewMode] = useState<ViewMode>("default");
+  const [viewMode, setViewMode] = useState<ViewMode>("overview");
   const [outlookOn, setOutlookOn] = useState(false);
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -128,9 +126,11 @@ export function App() {
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
 
-  const meta = outlookOn
-    ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
-    : viewMode === "coverage"
+  const meta = viewMode === "overview"
+    ? { title: "Regional overview", caveat: "How conditions and official records differ across 22 Pacific places." }
+    : outlookOn
+      ? { title: "Outlook - 2030 stress test", caveat: "Stress-test interpretation, not a forecast." }
+      : viewMode === "coverage"
       ? { title: "Where the data goes quiet", caveat: "A reporting gap is not proof that infrastructure is absent." }
       : viewMode === "uncertainty"
         ? { title: "Rank uncertainty", caveat: "Shown so the gap map cannot be read as a fixed scoreboard." }
@@ -188,7 +188,7 @@ export function App() {
   if (geos.length === 0) {
     return (
       <div className="app-state" role="status">
-        <p className="eyebrow">Pacific Adaptation Gap Atlas</p>
+        <p className="eyebrow">Pacific Climate Evidence Atlas</p>
         <h1>Loading atlas data...</h1>
       </div>
     );
@@ -242,15 +242,16 @@ export function App() {
   const handleToggleOutlook = () => {
     const next = !outlookOn;
     setOutlookOn(next);
-    if (next) setViewMode("default");
-    commitUrlState("pushState", { outlook: next, view: next ? "default" : viewMode });
+    setViewMode(next ? "default" : "overview");
+    commitUrlState("pushState", { outlook: next, view: next ? "default" : "overview" });
   };
 
   const closePanel = () => {
     setSelectedCode(null);
     setSheetExpanded(false);
-    if (viewMode === "coverage") setViewMode("default");
-    commitUrlState("pushState", { place: null, view: viewMode === "coverage" ? "default" : viewMode });
+    const nextView = viewMode === "coverage" || viewMode === "uncertainty" ? "overview" : viewMode;
+    setViewMode(nextView);
+    commitUrlState("pushState", { place: null, view: nextView });
   };
 
   const handleSceneChange = (nextIndex: number) => {
@@ -283,7 +284,7 @@ export function App() {
 
   const handleHandoffActive = () => {
     setActiveScore("gap");
-    setViewMode("default");
+    setViewMode("overview");
     setOutlookOn(false);
     setSelectedCode(null);
   };
@@ -292,14 +293,14 @@ export function App() {
     sceneScrollRequestRef.current += 1;
     skipInitialSceneObservationRef.current = false;
     setActiveScore("gap");
-    setViewMode("default");
+    setViewMode("overview");
     setOutlookOn(false);
     setSelectedCode(null);
     setMode("explore");
     commitUrlState("pushState", {
       mode: "explore",
       layer: "gap",
-      view: "default",
+      view: "overview",
       place: null,
       outlook: false,
     });
@@ -311,32 +312,22 @@ export function App() {
     setSceneIndex(0);
     setMode("guided");
     setActiveScore("gap");
-    setViewMode("default");
+    setViewMode("overview");
     setOutlookOn(false);
     setSelectedCode(null);
     commitUrlState("pushState", {
       mode: "guided",
       scene: SCENES[0].id,
       layer: "gap",
-      view: "default",
+      view: "overview",
       place: null,
       outlook: false,
     });
   };
 
-  const storyNauru = getGeo(geos, "NR") ?? geos[0];
-  const storyTuvalu = getGeo(geos, "TV") ?? geos[1] ?? geos[0];
   const renderStoryFigure = (scene: (typeof SCENES)[number]) => {
-    if (!storyNauru || !storyTuvalu) return null;
-    if (scene.id === "the-gap-has-two-sides") {
-      return <PressureCapacityScene geos={[storyNauru, storyTuvalu]} />;
-    }
-    if (scene.id === "similar-scores-different-records") {
-      return <PlaceComparisonScene nauru={storyNauru} tuvalu={storyTuvalu} />;
-    }
-    if (scene.id === "the-order-does-not-hold-still") {
-      return <RankBandScene geos={geos} />;
-    }
+    if (scene.visual === "movement") return <RegionalEvidenceScene geos={geos} mode="movement" />;
+    if (scene.visual === "visibility") return <RegionalEvidenceScene geos={geos} mode="visibility" />;
     return null;
   };
 
@@ -371,7 +362,7 @@ export function App() {
           outlookOn={outlookOn}
           selectedCode={selectedCode}
           priorityCodes={priorityCodes}
-          focusSelection={mode === "guided" && SCENES[sceneIndex]?.visual === "comparison"}
+          focusSelection={false}
           panelOpen={panelOpen}
           panelExpanded={sheetExpanded}
               onSelect={handleSelect}
@@ -381,7 +372,7 @@ export function App() {
 
         <header className="map-header">
           <p className="map-header__wordmark">
-            <Compass aria-hidden="true" size={15} /> Pacific Adaptation Gap Atlas
+            <Compass aria-hidden="true" size={15} /> Pacific Climate Evidence Atlas
           </p>
           <p className="map-header__layer">
             {meta.title}

@@ -69,6 +69,67 @@ describe("atlas map model", () => {
     expect(new Set(collection.features.map((feature) => feature.properties.code)).size).toBe(22);
   });
 
+  it("makes overview map and land paint model-independent and scoreless", () => {
+    const divergentGeos = [
+      baseGeo,
+      {
+        ...baseGeo,
+        code: "TV",
+        gap: 3,
+        pressure: 97,
+        capacity: 88,
+        scoreInputCount: 1,
+        contextCount: 1,
+        reportingStatus: "missing_monitoring_dataset_row" as const,
+        rankRange: 15,
+        storyPriority: 1 as const,
+        outlook2030Flat: 99,
+        outlookDisplay: "withhold" as const,
+      },
+    ];
+    const collection = buildAtlasFeatureCollection(divergentGeos, {
+      activeScore: "capacity",
+      viewMode: "overview",
+      outlookOn: true,
+      selectedCode: null,
+      priorityCodes: ["NR", "TV"],
+    });
+    const properties = collection.features.map((feature) => feature.properties);
+
+    expect(properties[0]).toMatchObject({
+      scoreValue: null,
+      priority: false,
+      withheld: false,
+      dimmed: false,
+      opacity: 1,
+      strokeDasharray: null,
+      hatch: false,
+    });
+    for (const key of [
+      "scoreValue",
+      "fillColor",
+      "strokeColor",
+      "radius",
+      "opacity",
+      "priority",
+      "dimmed",
+      "withheld",
+      "reportingStatus",
+      "ringVariant",
+      "strokeDasharray",
+      "hatch",
+    ] as const) {
+      expect(properties[1][key]).toEqual(properties[0][key]);
+    }
+    expect(properties[0].fillColor).not.toBe("transparent");
+    expect(properties[0].reportingStatus).toBe(properties[1].reportingStatus);
+    expect(properties[0].ringVariant).toBe(properties[1].ringVariant);
+    expect(divergentGeos.map((geo) => geo.reportingStatus)).toEqual([
+      "reported_zero_latest_count",
+      "missing_monitoring_dataset_row",
+    ]);
+  });
+
   it("keeps reporting states and selected emphasis during refactor", () => {
     const selected = buildAtlasFeatureCollection(defaultGeos, { ...defaultOptions, selectedCode: "NR" });
     expect(selected.features.find((feature) => feature.properties.code === "NR")?.properties)

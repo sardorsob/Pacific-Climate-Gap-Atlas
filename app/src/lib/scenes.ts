@@ -1,7 +1,7 @@
 import type { ScoreKey } from "./encoding";
 import type { ViewMode } from "./types";
 
-export type SceneVisual = "premise" | "presence" | "movement" | "visibility" | "comparison";
+export type SceneVisual = "premise" | "presence" | "movement" | "visibility";
 export type SceneStage = "map-immersive" | "figure-takeover";
 
 export type Scene = {

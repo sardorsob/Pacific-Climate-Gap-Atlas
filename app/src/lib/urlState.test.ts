@@ -75,6 +75,14 @@ describe("atlas URL state", () => {
     ).toBe("?view=overview");
   });
 
+  it("keeps outlook dormant when a copied URL requests neutral overview", () => {
+    expect(parseAtlasUrl("?mode=explore&view=overview&outlook=1", ["NR"])).toMatchObject({
+      mode: "explore",
+      view: "overview",
+      outlook: false,
+    });
+  });
+
   it("keeps copied-scene hydration in control of reload scrolling", () => {
     const history: Pick<History, "scrollRestoration"> = { scrollRestoration: "auto" };
 

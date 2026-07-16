@@ -1,0 +1,9 @@
+claim,source_path,source_fields,generated_path,generated_fields,render_selector,reproduced_value,result
+complete comparison population,artifacts/tables/eda_regional_crosscurrents.csv,geo_code|complete_overlap,app/public/data/geographies.json,regional_story.complete_overlap,"[data-stage-figure=regional-movement] [data-region-kind]","22 total; 19 complete; GU/PN/TK incomplete",pass
+four movement directions,artifacts/tables/eda_regional_crosscurrents.csv,quadrant,app/public/data/geographies.json,regional_story.quadrant,.regional-evidence__quadrants,7/6/3/3,pass
+visibility matrix,artifacts/tables/eda_regional_feature_matrix.csv,feature_order|feature_id|present,app/public/data/geographies.json,regional_story.visibility[],"[data-visibility-cell]","22x14=308; 277 present; 31 absent",pass
+direct coverage facts,artifacts/tables/eda_regional_feature_matrix.csv,feature_id|present,app/public/data/geographies.json,visibility[].featureId|present,.regional-evidence__coverage,"12/18/18/19/20",pass
+missing comparisons,artifacts/tables/eda_regional_crosscurrents.csv,missing_overlap,app/public/data/geographies.json,regional_story measure nulls,"[data-region-kind=incomplete]","GU/PN/TK remain visible; no zero fill",pass
+role and year meaning,artifacts/tables/eda_regional_feature_matrix.csv,feature_role|latest_year,app/public/data/geographies.json,visibility[].role|latest_year,"[data-role] and cell aria-label","286 reporting_presence; 22 reporting_visibility_only direct-loss cells; unavailable year explicit",pass
+public mirrors,data/processed/app/geographies.json,full bytes,app/public/data/geographies.json,full bytes,n/a,byte-identical,pass
+country-detail mirrors,data/processed/app/country_details.json,regional_story,app/public/data/country_details.json,regional_story,selected-place data,0 mismatches,pass

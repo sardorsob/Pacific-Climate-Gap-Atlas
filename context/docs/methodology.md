@@ -1,5 +1,21 @@
 # Methodology
 
+## Guided Regional Story
+
+The public guided story uses two descriptive methods that remain separate from the optional Adaptation Gap Index.
+
+### Act I: first-to-latest change
+
+For safely managed drinking-water access and renewable-energy share, the analysis keeps the first and latest available official value within each geography and subtracts the first from the latest. Both outputs are percentage-point changes, but the measures have different meanings and denominators and their first/latest years can differ. A place enters the signed two-axis field only when both changes are available; Guam, Pitcairn, and Tokelau stay visible as incomplete comparisons.
+
+These endpoints do not describe a continuous trajectory and do not show that one measure caused the other to change. The accepted table is `artifacts/tables/eda_regional_crosscurrents.csv`; the generated app fields preserve each measure's first year, latest year, and signed change separately.
+
+### Act II: official-record visibility
+
+The visibility field checks whether a reviewed row exists for each of 22 geographies across 14 processed official datasets. This produces 308 place-and-dataset positions: 277 present and 31 absent. Presence means a reviewed official record was returned; it does not mean the record is complete, current, high quality, representative of local knowledge, or evidence of infrastructure or conditions. Recorded direct disaster loss is visibility-only, and a missing row is not zero loss.
+
+The accepted table is `artifacts/tables/eda_regional_feature_matrix.csv` with `lane=evidence_visibility`. Generated app records preserve feature order, role, presence, and latest-year availability; these fields do not enter the Adaptation Gap Index.
+
 ## Baseline Adaptation Gap Index
 
 The baseline Adaptation Gap Index is a comparative screen, not an absolute risk measure. It is designed to help readers find places where climate pressure signals appear high relative to available adaptation-capacity proxies.

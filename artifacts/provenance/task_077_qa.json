@@ -1,0 +1,77 @@
+{
+  "task": "TASK-077",
+  "status": "in-review",
+  "source_commit": "8c1c9667e9aee146f7ed0119d756bae57846e2f4",
+  "visual_identity_authority": "current implemented application",
+  "core_screenshot_matrix": {
+    "directory": "artifacts/design/task-077",
+    "states": ["premise", "presence", "movement", "visibility", "explore"],
+    "viewports": ["1440x900", "1280x800", "1024x768", "430x932", "390x844", "360x800", "844x390"],
+    "expected_pngs": 35,
+    "captured_pngs": 35,
+    "settled_after_transition": true
+  },
+  "supplementary_screenshots": [
+    "methods-1280x800.png",
+    "data-error-1280x800.png",
+    "visibility-deuteranopia-1280x800.png",
+    "movement-reduced-motion-1280x800.png",
+    "movement-200pct-1280x800.png",
+    "visibility-200pct-1280x800.png",
+    "explore-200pct-1280x800.png"
+  ],
+  "scientific_trace": {
+    "reviewed_to_generated_mismatches": 0,
+    "generated_to_country_detail_mismatches": 0,
+    "public_mirrors_byte_identical": true,
+    "places": 22,
+    "complete_comparisons": 19,
+    "incomplete_codes": ["GU", "PN", "TK"],
+    "quadrant_counts": [7, 6, 3, 3],
+    "visibility_positions": 14,
+    "visibility_cells": 308,
+    "present_cells": 277,
+    "absent_cells": 31,
+    "coverage_counts": [12, 18, 18, 19, 20]
+  },
+  "browser_qa": {
+    "horizontal_overflow_failures": 0,
+    "mobile_mark_targets_px": 44,
+    "mobile_control_targets_px": 44,
+    "keyboard_focus_outline_px": 3,
+    "rapid_navigation_repetitions": 2,
+    "reduced_motion_transition": "0s",
+    "reduced_motion_animation": "none",
+    "deuteranopia_shape_redundancy": true,
+    "effective_200_percent_css_viewport": "640x400 at DPR 2",
+    "generated_data_error_role": "alert",
+    "neutral_explore_pressed_scores": 0
+  },
+  "automated_gates": {
+    "python_tests": "96/96 pass",
+    "frontend_tests": "60/60 pass",
+    "data_contracts": "pass",
+    "required_artifacts": "78 paths pass before TASK-077 additions",
+    "task_statuses": "78 statuses pass",
+    "secrets": "pass",
+    "compileall": "pass",
+    "production_build": "pass",
+    "bundle_budget": {
+      "js_bytes": 1029959,
+      "js_limit": 1050000,
+      "css_bytes": 94411,
+      "css_limit": 95000
+    },
+    "whitespace": "pass"
+  },
+  "unresolved_pre_existing_gates": {
+    "ruff": "96 findings: E501 60; I001 30; B007 2; UP038 2; UP035 1; B905 1",
+    "semgrep": "2 dynamic-URL findings in trusted local ingestion/build scripts: analysis/io/sdmx.py and scripts/build_land_context.py",
+    "osv_npm_audit": "5 development-tool vulnerabilities across esbuild/Vite/Vitest: 3 moderate; 1 high; 1 critical"
+  },
+  "owner_gate": {
+    "task_077_owner_accepted": false,
+    "task_057_status": "needs-fix",
+    "deployment_or_submission_claimed": false
+  }
+}

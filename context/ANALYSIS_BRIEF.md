@@ -108,8 +108,8 @@ The runner writes:
 
 ## Next Priorities
 
-1. Run `TASK-072` transition-keyframe approval and `TASK-073` app-data export in parallel.
-2. Keep the complete cross-current distribution visible and reject any implementation that turns the largest seven-place quadrant into a single Pacific trajectory.
+1. Owner-review the settled `TASK-077` screenshot matrix while keeping the current application UI—not the concept boards—as the visual-identity authority.
+2. Keep the complete cross-current distribution visible and reject any reading that turns the largest seven-place quadrant into a single Pacific trajectory.
 3. Preserve the separation of measured condition and evidence visibility; do not publish the unstable heatmap order as clusters or describe coverage/monitoring as preparedness.
 4. Keep outlook, the Adaptation Gap Index, rank fragility, and JSD as secondary caveated Explore evidence rather than guided claims.
-5. Re-run source-to-mark traces and the complete responsive/accessibility matrix in `TASK-077` before reconciling readiness.
+5. Resolve or explicitly disposition the pre-existing lint, local-script static-analysis, and development-dependency audit findings before release readiness is reclaimed.

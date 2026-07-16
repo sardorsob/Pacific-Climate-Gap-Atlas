@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Owner-review `TASK-072` and `TASK-073`. The three revised transition boards passed independent visual/accessibility QA, and the generated regional-story contract passed independent scientific/data QA; both tasks remain `in-review`. Do not start `TASK-074` until the owner approves the keyframes, and do not deploy or submit while `TASK-057` remains `needs-fix`.
+Start `TASK-074` with the owner-approved composition and the tested TASK-073 regional-story contract. Preserve the current implemented app's color scheme, typography, controls, panels, map/mark styling, spacing character, and interaction language; the boards govern layout and story flow only. Do not deploy or submit while `TASK-057` remains `needs-fix`.
 
 ## Next Build Step
 
-After owner approval, the remaining chain is `TASK-074` scene/copy/URL contract -> `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. Use existing context files; do not create per-task Markdown.
+The remaining chain is `TASK-074` scene/copy/URL contract -> `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. Use existing context files; do not create per-task Markdown.
 
 The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff are protected. Replace the existing premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, title, and index-first default. JSD remains selected-place panel evidence only.
 

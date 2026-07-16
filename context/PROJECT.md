@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The existing fullscreen map, evidence marks, controls, selected-place panel, URL/history behavior, accessibility, and Explore handoff are the approved application baseline. `TASK-064` is accepted for that visual and interaction work. `TASK-065` through `TASK-068` completed the data-first research sequence, and `TASK-069` accepted a regional movement -> evidence visibility -> exploration story after scientific and owner review. `TASK-071` records the bounded implementation roadmap. The next batch is `TASK-072` through `TASK-077`: approve transition keyframes, export the minimum story data, replace the guided copy/state, implement both acts with the same 22 marks, reconnect the unchanged explorer, and run final QA. `TASK-057` remains `needs-fix` until that narrative retrofit passes owner review. Competition deadline: August 31, 2026.
+The existing fullscreen map, evidence marks, controls, selected-place panel, URL/history behavior, accessibility, and Explore handoff are the approved application baseline. `TASK-064` is accepted for that visual and interaction work. `TASK-065` through `TASK-068` completed the data-first research sequence, and `TASK-069` accepted a regional movement -> evidence visibility -> exploration story after scientific and owner review. `TASK-071` records the bounded implementation roadmap; the owner has now accepted the TASK-072 transition layouts and TASK-073 minimum story-data contract. The remaining sequence is TASK-074 through TASK-077: replace the guided copy/state, implement both acts with the same 22 marks, reconnect the unchanged explorer, and run final QA. The current implemented app remains the visual-identity authority. `TASK-057` remains `needs-fix` until that narrative retrofit passes owner review. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -53,12 +53,12 @@ Official records across 22 Pacific geographies show no single shared path in saf
 | Mockup revision sprint | done | `TASK-021`, `TASK-022`, `TASK-023`, and `TASK-024` are complete; their durable outcomes now inform `TASK-025` through `TASK-028` |
 | Artistic redesign contract | approved baseline | `TASK-059`–`TASK-064` established the fullscreen stage, readable figures, native scroll, stable URL state, and Explore handoff that the next narrative must reuse |
 | Data-first narrative discovery | done | `TASK-065`–`TASK-068` acquired, processed, and tested the expanded evidence; `TASK-069` accepted the regional movement -> visibility -> exploration claim chain |
-| Narrative retrofit roadmap | planned | `TASK-071` defines `TASK-072`–`TASK-077`; transition concepts and app-data export may start in isolated worktrees while the Orchestrator serializes ledger/log commits; remaining work is sequential because it shares the evidence-mark stage and scene state |
+| Narrative retrofit roadmap | in progress | `TASK-072` and `TASK-073` are owner-accepted; `TASK-074`–`TASK-077` remain sequential because they share the evidence-mark stage, scene state, and integration CSS |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | needs-fix | `TASK-056` is accepted and `TASK-064` closed the scene-scale issue; `TASK-057` stays open only for the replacement narrative and final owner QA in `TASK-077` |
 | Shareable URL state | verified locally | `mode`, `scene`, `layer`, `view`, `place`, and `outlook` parse/serialize safely with guarded history updates, app-owned reload scroll restoration, and no router |
-| App bundle budget | verified locally | JS 1,024,043 bytes; CSS 94,829 bytes; caps 1,050,000 and 95,000 bytes |
+| App bundle budget | verified locally | JS 1,024,662 bytes; CSS 94,829 bytes; caps 1,050,000 and 95,000 bytes |
 
 ## Last Session Notes
 

@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-071` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. `TASK-068` passed independent scientific review, `TASK-069` accepted the regional movement -> evidence visibility -> exploration story, and `TASK-071` records the six-task retrofit roadmap. `TASK-072` transition boards and the `TASK-073` minimum app-data contract are implemented, independently approved for owner QA, and remain `in-review`.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-073` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. The owner approved the TASK-072 transition boards as a layout/story contract while retaining the current app's UI identity, and accepted the reviewed TASK-073 minimum app-data contract. TASK-074 is the next sequential implementation task.
 
 The current app remains the accepted behavioral baseline. Preserve its fullscreen composition, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Replace the title, opening thesis, guided exemplars, scene order, comparison/rank takeovers, and index-first default. QA screenshots live under `artifacts/design/task-064/`; future keyframes remain composition-only until implemented.
 

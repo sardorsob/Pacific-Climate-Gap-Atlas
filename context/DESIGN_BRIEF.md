@@ -28,6 +28,7 @@ First-build concept status:
 Current concept status:
 
 - Narrative and semantic direction: regional two-act story approved after TASK-068/TASK-069 review.
+- TASK-072 transition keyframes: exact-data large-screen, mobile-portrait, and mobile-landscape boards rendered and awaiting owner approval; no app implementation has begun from them.
 - Desktop evidence-mark/scene frames: approved in `context/design-concepts/task-049-concept-review.md`.
 - Mobile portrait frames: approved in the same concept review; the map remains a sibling surface, not a covered background.
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
@@ -67,6 +68,41 @@ Visual layer inventory:
 The keyframes for desktop, portrait, and mobile landscape are a hard gate in `TASK-072`. They must use the live app as the page context, keep labels and values data-bound, preserve source/caveat placement, and show the reduced-motion still frames. Generated concepts are composition references only; no generated value, island shape, boundary, or label becomes implementation data.
 
 No new renderer is needed. Use the existing React, SVG, CSS, and MapLibre ownership. Add no D3, Canvas, WebGL, chart framework, FLIP/shared-element library, router, or state manager.
+
+### TASK-072 Semantic Design Contract (Pending Owner Approval)
+
+Review references:
+
+| Surface | Board | Semantic viewport represented |
+| --- | --- | --- |
+| Large screen | `artifacts/design/task-072/large-screen-keyframes.png` (5260×922) | four 1280×800 frames in reading order |
+| Mobile portrait | `artifacts/design/task-072/mobile-portrait-keyframes.png` (2220×1247) | four sibling 520×1125 frames based on 390×844 |
+| Mobile landscape | `artifacts/design/task-072/mobile-landscape-keyframes.png` (4188×590) | four sibling 1012×468 frames based on 844×390 |
+
+The governing artifact family is a four-state scrollytelling keyframe sequence, not a dashboard. Map and Explore reuse the TASK-064 dark application surface; the cross-current and visibility states take over the usable viewport on mineral paper. The stable geography code and neutral sunburst/anchor glyph are the continuity keys: the glyph repeats at the centroid, cross-current point, and visibility row header. No generated imagery is an implementation asset: the required image-generation pass informed composition only, while the tracked boards use repository data and current screenshot context.
+
+Label-safe areas and hierarchy:
+
+- Large-screen map and overview keep the claim in the upper-left safe area and leave the basin field dominant; optional Explore controls stay compact at the upper-right.
+- Large-screen figure states reserve the upper band for the claim and evidence lock, the center for the full field, and the lower band for caveat and source.
+- Portrait keeps the claim first, the main evidence immediately below it, the visibility key after the matrix, and caveat/source at the bottom of the same static state. No controls or prose stack precedes the main figure.
+- Landscape places the concise claim at left and gives the remaining width to the active field. It is a sibling composition, not a crop, and it does not ask the reader to rotate.
+- Essential identities, quadrant counts, visibility cells, coverage facts, caveats, and sources are always visible; hover may add detail later but never supplies the base claim.
+- Cross-current codes use collision-resolved offsets and leader lines where the measured points cluster near zero; landscape axes, incomplete rail, caveat, and source remain legible at the represented 844×390 target.
+
+Locked evidence and fallback contract:
+
+- 22 map identities; 19 complete comparisons and GU/PN/TK incomplete; 7/6/3/3 quadrants.
+- Cross-current axes remain separate signed percentage-point changes for safely managed drinking water and renewable-energy share, with zero lines and endpoint/clock caveat.
+- Visibility remains 22×14 with 277 present and 31 absent; direct loss 12/22, monitoring 18/22, power 18/22, water 19/22, and renewable share 20/22 are directly labeled.
+- Missing visibility uses an open crossed cell in addition to color. Presence is never renamed quality, preparedness, infrastructure, local knowledge, vulnerability, or need.
+- Every frame is a complete reduced-motion/static state. Normal motion may only locate, rearrange, expose, or return the stable marks; reduced motion resolves immediately.
+- The handoff returns `view=overview`, no selected place/outlook, and no pressed score layer. Existing optional Explore layers remain available after explicit choice.
+- Map and overview show only neutral anchor glyphs: no legacy score fill, rank numeral, active-score legend, or duplicate screenshot constellation survives into the concept.
+
+Each PNG records source hashes plus `source_snapshot_commit: f0c6e2e`. The full `geographies.json` hash is deliberately an immutable generation-time snapshot. TASK-073 additively regenerates that file, so post-integration bytes may differ without invalidating the approved composition; TASK-077 rechecks values against the then-current generated contract.
+
+Renderer and state ownership remain unchanged from the retrofit plan: React/SVG/CSS owns the two evidence fields and labels, MapLibre owns the geographic surface, and the existing observer/URL/history system owns scene state. Exact spacing, collision offsets, and breakpoint values may change during TASK-075/TASK-076 only if semantic fidelity to the approved board is preserved.
 
 ## Historical Implemented Direction: The Shape Of What We Know
 

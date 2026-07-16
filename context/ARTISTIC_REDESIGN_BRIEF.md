@@ -48,6 +48,39 @@ Preserve the existing fullscreen stage and island explorer, but test a new readi
 
 The artistic idea is continuity, not ornament: geography becomes comparison, comparison becomes a record, and the record returns to geography. The same 22 marks carry that change. Motion verbs are locate, rearrange, expose, and return. Every frame must still make sense without motion.
 
+## TASK-072 Transition Keyframes (Pending Owner Approval)
+
+Three exact-data composite boards now translate the approved story into the accepted TASK-064 application shell:
+
+- `artifacts/design/task-072/large-screen-keyframes.png` — 5260×922; four 1280×800 semantic viewport frames.
+- `artifacts/design/task-072/mobile-portrait-keyframes.png` — 2220×1247; four sibling 520×1125 portrait frames based on the 390×844 target.
+- `artifacts/design/task-072/mobile-landscape-keyframes.png` — 4188×590; four sibling 1012×468 landscape frames based on the 844×390 target.
+
+Approval status: **pending owner review**. These boards are the TASK-072 review artifacts, not permission to begin TASK-074 implementation.
+
+The boards lock one composition: a quiet dark map locates 22 equal-presence marks, a mineral-paper cross-current field rearranges the same stable codes, a mineral-paper 22×14 field exposes record visibility, and the current dark explorer receives the marks again in neutral `overview`. Large screen gives each state the full figure area. Portrait gives one claim and one full evidence state per screen-height step; the 22×14 field grows vertically without a nested scroller. Landscape uses a claim column beside the wide field rather than cropping the portrait or shrinking the desktop frame.
+
+The rendered evidence is bound directly to `eda_regional_crosscurrents.csv`, the `evidence_visibility` lane of `eda_regional_feature_matrix.csv`, and `app/public/data/geographies.json`. The PNG metadata records the source hashes, evidence lock, and `source_snapshot_commit: f0c6e2e`. The full `geographies.json` hash is an immutable generation-time snapshot; TASK-073 additively regenerates that file, so the recorded hash is not expected to match post-integration bytes. The boards reproduce 22 identities, 19 complete comparisons plus Guam/Pitcairn/Tokelau as incomplete, quadrant counts 7/6/3/3, 14 stable visibility positions, and 277 present/31 absent cells. Missing cells use an outlined square with a diagonal cross, so the distinction survives grayscale. Exact axes, units, coverage facts, caveats, and source notes remain visible without hover.
+
+The neutral sunburst/anchor glyph persists at each centroid, each cross-current point, and each visibility row header. Cross-current codes use collision-resolved offsets and leader lines around the dense near-zero field. Map and overview frames contain no score fill, rank numeral, active-score legend, or duplicate raster constellation; the handoff is visibly neutral before any Explore layer is chosen.
+
+The TASK-064 screenshots supplied the chrome, palette, safe-area proportions, and unchanged Explore context. A single image-generation pass explored mark continuity and viewport ownership only; it was not tracked and no generated label, value, boundary, island shape, source, or pixel appears in the three review boards. The tracked compositions were rendered programmatically from repository data and screenshots.
+
+Locked after owner approval:
+
+- reading order and ownership: map -> cross-current -> visibility -> neutral overview/map;
+- the same geography codes and equal-presence marks across all four states;
+- the same sunburst/anchor glyph at the map centroid, cross-current point, and visibility row header;
+- dark map / mineral figure / mineral figure / dark map rhythm;
+- direct claim above or beside the evidence, with the figure never reduced to a card;
+- an explicit incomplete rail in the cross-current state;
+- all 14 visibility positions, non-color missingness, and five direct coverage facts;
+- source and caveat in a persistent lower band;
+- complete static frames; reduced motion snaps directly to each frame without losing evidence;
+- portrait and landscape as sibling layouts, with no nested figure scroll.
+
+Flexible during implementation: exact pixel spacing, final font token sizes, collision-aware code-label offsets, SVG geometry, and breakpoint mechanics, provided they preserve the locked hierarchy and every evidence invariant.
+
 ## 2026-07-11 Fullscreen Stage Revision (Preserved Layout History)
 
 The approved composition is **One Constellation on an Elastic Stage**, with restrained tidal arrival/recession for editorial evidence chambers.

@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-071` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. `TASK-068` passed independent scientific review, `TASK-069` accepted the regional movement -> evidence visibility -> exploration story, and `TASK-071` records the six-task retrofit roadmap. `TASK-072` and `TASK-073` are the next parallel-safe tasks.
+The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-071` are complete; `TASK-057` remains `needs-fix` only as the final narrative-readiness gate. `TASK-068` passed independent scientific review, `TASK-069` accepted the regional movement -> evidence visibility -> exploration story, and `TASK-071` records the six-task retrofit roadmap. `TASK-072` transition boards and the `TASK-073` minimum app-data contract are implemented, independently approved for owner QA, and remain `in-review`.
 
 The current app remains the accepted behavioral baseline. Preserve its fullscreen composition, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Replace the title, opening thesis, guided exemplars, scene order, comparison/rank takeovers, and index-first default. QA screenshots live under `artifacts/design/task-064/`; future keyframes remain composition-only until implemented.
 
@@ -74,7 +74,7 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Run `TASK-072` concept/keyframe approval and `TASK-073` minimum story-data export in isolated worktrees. Neither task may rewrite the app shell or edit shared status/log files; the Orchestrator serializes their acceptance updates and separate commits.
+1. Owner-review the revised `TASK-072` large-screen, portrait, and landscape boards plus the tested `TASK-073` generated contract. Do not start application implementation before the keyframe gate closes.
 2. After owner approval of the keyframes, run `TASK-074` for the four stable guided scene IDs/copy/URL fallback, then `TASK-075` for one shared movement/visibility regional figure.
 3. Run `TASK-076` to connect the two acts to the preserved explorer and delete old guided-only components only after reference checks pass.
 4. Run `TASK-077` as the independent scientific, interaction, accessibility, responsive, and owner-taste gate. Only a passing result may close `TASK-057` or support deployment/submission.
@@ -86,7 +86,7 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.
 - The gap index is a draft comparative baseline. The app must show indicator counts, trace details, and methodology caveats near the score.
 - The current gap varies more with its visible-capacity proxies than with its climate-pressure side, and those capacity inputs include unnormalized station counts, total power generation, and fisheries-measure counts. Treat the index as provisional evidence, not the final story verdict.
-- The candidate expansion does not enter the Adaptation Gap score. The current app payload still omits candidate fields, but TASK-069 selected water/renewable endpoint changes plus dataset presence for the replacement guided story; TASK-073 will export only that narrow reviewed contract. Population and land-cover values remain research-only, direct loss remains visibility-only, and crop yield remains rejected and processing-disabled.
+- The candidate expansion does not enter the Adaptation Gap score. TASK-073 exports only the reviewed water/renewable endpoint changes plus 14-position dataset presence needed by the replacement guided story. Population and land-cover values remain research-only, direct loss remains visibility-only, and crop yield remains rejected and processing-disabled.
 - TASK-067 compares candidate values only within indicators. Direct loss is reporting visibility only, blank loss years are not zero, population growth is not population size, and the land-cover index direction/baseline remains unresolved. TASK-069 selected the regional synthesis only within the bounds recorded in the approved story brief.
 - TASK-068 keeps condition and visibility matrices separate, preserves missing cells, flags derived-input circularity, and rejects stable grouping after leave-one-feature position rho falls to -0.6962. Coverage or monitoring must not be described as emergency preparedness.
 - `TASK-048` corrected the former `included_indicator_count` ambiguity. Production app data now exposes score-input, context-only, and total trace counts plus eight ordered score-input presence positions. Do not regress to the retired field when building the new evidence glyph.

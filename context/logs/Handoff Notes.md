@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Start `TASK-072` transition keyframes and `TASK-073` minimum story-data export in isolated worktrees. Preserve the accepted application shell and use the same 22 geography identities throughout. Builders do not edit shared task/log files; the Orchestrator serializes acceptance updates and separate commits. Do not start `TASK-074` until the owner approves the keyframes; do not deploy or submit while `TASK-057` remains `needs-fix`.
+Owner-review `TASK-072` and `TASK-073`. The three revised transition boards passed independent visual/accessibility QA, and the generated regional-story contract passed independent scientific/data QA; both tasks remain `in-review`. Do not start `TASK-074` until the owner approves the keyframes, and do not deploy or submit while `TASK-057` remains `needs-fix`.
 
 ## Next Build Step
 
-The approved chain is `TASK-072` concept approval + `TASK-073` data export in isolated worktrees -> serialized acceptance/commits -> `TASK-074` scene/copy/URL contract -> `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. Use existing context files; do not create per-task Markdown.
+After owner approval, the remaining chain is `TASK-074` scene/copy/URL contract -> `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. Use existing context files; do not create per-task Markdown.
 
 The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff are protected. Replace the existing premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, title, and index-first default. JSD remains selected-place panel evidence only.
 

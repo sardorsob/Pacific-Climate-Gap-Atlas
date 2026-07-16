@@ -8,6 +8,8 @@ type EvidenceMarkProps = {
   decorative?: boolean;
   scoreFill?: string;
   className?: string;
+  neutral?: boolean;
+  dataCode?: string;
   x?: number;
   y?: number;
 };
@@ -35,13 +37,52 @@ export function EvidenceMark({
   decorative = false,
   scoreFill = "#e8895a",
   className = "",
+  neutral = false,
+  dataCode,
   x,
   y,
 }: EvidenceMarkProps) {
-  const edge = edgeProps(model.reportingEdge);
   const ariaProps = decorative
     ? { "aria-hidden": true as const }
     : { role: "img" as const, "aria-label": label ?? "Evidence portrait" };
+
+  if (neutral) {
+    return (
+      <svg
+        {...ariaProps}
+        className={`evidence-mark evidence-mark--neutral ${className}`.trim()}
+        width={size}
+        height={size}
+        x={x}
+        y={y}
+        viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
+        focusable="false"
+        data-scoreless="true"
+        data-code={dataCode}
+        style={{ "--evidence-score": "var(--accent-2)" } as CSSProperties}
+      >
+        <circle className="evidence-mark__edge evidence-mark__edge--neutral" cx="22" cy="22" r="19" strokeLinecap="round" />
+        <circle className="evidence-mark__field" cx="22" cy="22" r="10" fill="var(--accent-2)">
+          <title>{label ?? "Stable geography identity"}</title>
+        </circle>
+        <g className="evidence-mark__anchor-rays">
+          {Array.from({ length: 8 }, (_, index) => (
+            <line
+              key={index}
+              className="evidence-mark__tick evidence-mark__anchor-ray"
+              x1="22"
+              y1="2.5"
+              x2="22"
+              y2="7"
+              transform={`rotate(${index * 45} 22 22)`}
+            />
+          ))}
+        </g>
+      </svg>
+    );
+  }
+
+  const edge = edgeProps(model.reportingEdge);
 
   return (
     <svg
@@ -55,6 +96,7 @@ export function EvidenceMark({
       focusable="false"
       data-selected={model.selected ? "true" : "false"}
       data-reporting-edge={model.reportingEdge}
+      data-code={dataCode}
       style={{ "--evidence-score": scoreFill } as CSSProperties}
     >
       {model.selected && <circle className="evidence-mark__bloom" cx="22" cy="22" r="21" />}

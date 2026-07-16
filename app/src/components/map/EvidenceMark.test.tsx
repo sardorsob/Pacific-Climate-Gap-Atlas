@@ -64,4 +64,41 @@ describe("EvidenceMark", () => {
     expect(html).toContain('data-reporting-edge="open-dash"');
     expect(html).toContain('data-selected="true"');
   });
+
+  it("adds a neutral stable identity without changing the default score mark", () => {
+    const model = buildEvidenceMark(geo, { scoreKey: "gap", selected: false });
+    const defaultHtml = renderToStaticMarkup(<EvidenceMark model={model} />);
+    const neutralHtml = renderToStaticMarkup(
+      <EvidenceMark model={model} neutral dataCode="TV" label="Tuvalu stable identity" />,
+    );
+    const divergentNeutralHtml = renderToStaticMarkup(
+      <EvidenceMark
+        model={{
+          ...model,
+          score: 1,
+          selected: true,
+          reportingEdge: "solid",
+          inputs: model.inputs.map((input) => ({ ...input, present: !input.present })),
+          context: { ...model.context, present: true },
+        }}
+        neutral
+        dataCode="TV"
+        label="Tuvalu stable identity"
+      />,
+    );
+
+    expect(defaultHtml).toContain('class="evidence-mark__score"');
+    expect(defaultHtml).not.toContain('data-scoreless="true"');
+    expect(neutralHtml).toContain('data-code="TV"');
+    expect(neutralHtml).toContain('data-scoreless="true"');
+    expect(neutralHtml).toContain('class="evidence-mark evidence-mark--neutral"');
+    expect(neutralHtml).not.toContain('class="evidence-mark__score"');
+    expect(neutralHtml).not.toContain("data-reporting-edge");
+    expect(neutralHtml).not.toContain("data-selected");
+    expect(neutralHtml).not.toContain("data-kind");
+    expect(neutralHtml).not.toContain("data-present");
+    expect(neutralHtml).not.toContain("evidence-mark__context");
+    expect((neutralHtml.match(/class="evidence-mark__tick evidence-mark__anchor-ray"/g) ?? [])).toHaveLength(8);
+    expect(divergentNeutralHtml).toBe(neutralHtml);
+  });
 });

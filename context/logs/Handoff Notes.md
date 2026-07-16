@@ -2,11 +2,11 @@
 
 ## Immediate Next Step
 
-Build and independently review `TASK-075`'s shared movement/visibility evidence field against the approved generated contract. Preserve the current implemented app's color scheme, typography, controls, panels, map/mark styling, spacing character, and interaction language; the boards govern layout and story flow only. Do not deploy or submit while `TASK-057` remains `needs-fix`.
+Integrate the independently approved `TASK-075` movement/visibility field through the existing `App.tsx` seam in `TASK-076`, implement neutral overview/exploration state, and remove only guided code proven unused by reference search. Preserve the current implemented app as the visual-identity authority. Do not deploy or submit while `TASK-057` remains `needs-fix`.
 
 ## Next Build Step
 
-The remaining build chain is `TASK-075` shared regional figure -> `TASK-076` application integration -> `TASK-077` final QA. `TASK-074` is independently approved and done. Use existing context files; do not create per-task Markdown.
+The remaining chain is `TASK-076` application integration -> `TASK-077` final QA. TASK-075 is independently approved and done. Use existing context files; do not create tracked per-task Markdown.
 
 The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff are protected. Replace the existing premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, title, and index-first default. JSD remains selected-place panel evidence only.
 

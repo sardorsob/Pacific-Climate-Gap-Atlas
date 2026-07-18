@@ -333,3 +333,25 @@ Plan `TASK-072` through `TASK-077` in the existing task ledger. Transition keyfr
 Add no per-task Markdown files, new renderer, chart library, animation dependency, router, state manager, map source, boundary layer, composite score, clustering surface, or speculative abstraction.
 
 Reason: Ponytail review and the implementation audit found a clear existing seam: generated geography records -> `atlasData.ts` -> `SCENES`/`App.tsx` -> `MapOverlay`/story figure -> the current handoff. Extending that seam is smaller and safer than a parallel visualization system.
+
+## 2026-07-17: Make Explorer Drill-Down Reversible Without New Navigation Machinery
+
+Reuse the existing `viewMode`, `selectedCode`, sheet state, and dependency-free URL adapter behind one shared panel-navigation row. A diagnostic child shows contextual Back plus Close; ordinary place detail shows Close only. Back clears the selection and restores the diagnostic parent. Evidence-view entry and ordinary place selection push history. Diagnostic child selection, Back, and Close replace the current entry so an earlier diagnostic root does not immediately reopen after dismissal.
+
+Do not add a router, reducer, navigation stack, breadcrumb system, or duplicated local close handlers.
+
+Reason: the current state already retains the parent diagnostic view while a selected place is open. The failure is missing interaction affordance and dismissal semantics, not missing architecture.
+
+## 2026-07-17: Continue The Regional Story Inside Place Detail
+
+Begin each selected-place panel with the existing water-change, renewable-share-change, year-window, null, and 14-position visibility fields. Keep the optional index score and trace evidence below that summary. Place the different-clocks, descriptive/non-causal, and presence-is-not-preparedness caveat beside the values.
+
+Do not change the pipeline, calculate a new score, or promote coverage to a condition or readiness measure.
+
+Reason: the guided acts now teach regional movement and unequal official visibility, but the current panel abandons those concepts at the exact moment the reader begins local exploration. Reusing reviewed generated fields makes the handoff coherent and defensible.
+
+## 2026-07-17: Use Responsive Sibling Controls Instead Of Hidden Mobile Overflow
+
+Keep the existing desktop dock. On mobile portrait, show complete score and evidence-view sibling rows; on mobile landscape, use one compact row with shorter visible labels and full accessible names. Make the handoff CTA content-width and remove temporary review copy.
+
+Reason: primary actions should advertise themselves. Unmarked horizontal overflow makes the evidence views functionally invisible, while a stretched handoff button gives a secondary transition disproportionate visual weight.

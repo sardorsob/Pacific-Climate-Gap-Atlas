@@ -125,7 +125,7 @@ Implemented guided contract being replaced after the `TASK-059` Builder pass:
 - `SCENES` contains exactly six ordered scene IDs: the stable premise `what-this-atlas-is-asking`, followed by `what-the-map-can-see`, `where-the-record-breaks`, `the-gap-has-two-sides`, `similar-scores-different-records`, and `the-order-does-not-hold-still`.
 - The premise uses the map-immersive stage and the approved opening claim/caveat. The next three scenes remain map-immersive; the comparison and rank-band scenes declare figure-takeover ownership for the following layout tasks.
 - The comparison takeover uses the same real Nauru/Tuvalu fields in two aligned, unselected evidence portraits: paired on desktop and landscape, then consecutive full-width portraits in portrait reading order with no swipe or nested scroll.
-- Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore freely` action.
+- Each scene owns one claim, caveat, source line, visual operation, and canonical map state. The handoff copy sits outside the scene list and precedes the `Explore the map` action.
 - Guided fingerprint content, the seven-beat method/uncertainty repetition, and the static `FingerprintPreview` figure are retired. JSD remains selected-place panel evidence in exploration until TASK-055 removes map connectors.
 
 ## Historical Redesign Narrative: The Shape Of What We Know
@@ -437,15 +437,28 @@ WF, Wallis and Futuna, should remain available as a second reporting-gap example
 - "More represented datasets means better preparedness or a higher-quality record."
 - "The heatmap reveals stable regional clusters."
 
-## Remaining Product Decisions
+## Implemented Product Decisions
 
-1. `TASK-072` must approve desktop, portrait, and landscape transition keyframes against the live application before visual implementation.
+1. `TASK-072` approved desktop, portrait, and landscape transition keyframes against the live application before visual implementation.
 2. `TASK-073` exports only the minimum water/renewable endpoint and 14-position visibility fields; it does not publish the complete research matrix or create a score.
-3. `TASK-074` replaces only the guided scene/copy/URL contract while preserving native scroll and one active-scene observer.
-4. `TASK-075` and `TASK-076` reuse the existing evidence marks and fullscreen stage for the two acts and the return to Explore; the old guided comparison/rank components may be deleted only when unreferenced.
+3. `TASK-074` replaced only the guided scene/copy/URL contract while preserving native scroll and one active-scene observer.
+4. `TASK-075` and `TASK-076` reused the existing evidence marks and fullscreen stage for the two acts and the return to Explore; old guided comparison/rank components were deleted only after becoming unreferenced.
 5. Outlook, Adaptation Gap, JSD neighbors, and existing detail layers remain optional Explore evidence and are not part of the guided claim chain.
 6. Official boundary polygons, localization, and local/community knowledge layers remain separate work requiring source, licence, geopolitical, and consent review.
 
-## Handoff To Design
+## Implemented Design Boundary
 
 The design should preserve the existing map-first application, equal-presence evidence marks, fullscreen ownership, reported-zero versus missing-row distinction, evidence contract, and selected-geography panel for JSD. Replace only the guided narrative and its data encodings. Follow `context/ARTISTIC_REDESIGN_BRIEF.md` and `TASK-072` through `TASK-077`; do not rebuild the explorer, reuse the old index-led guided figures, or add one Markdown file per task.
+
+## Coda: Exploration Continues The Two Acts
+
+The guided story ends, but its evidence vocabulary should not disappear. The Explore handoff uses the plain action **Explore the map** and returns the same 22 marks to geography. Selecting a place then begins with that place's drinking-water change, renewable-energy-share change, comparable years, and represented official datasets out of 14 before showing the optional Adaptation Gap score and trace evidence.
+
+The reading path is visible and reversible:
+
+1. regional map;
+2. chosen evidence view;
+3. selected-place detail;
+4. Back to the evidence view or Close to the neutral map.
+
+This coda is not a third guided act and does not assign a local verdict. It lets the reader test the regional story place by place while keeping the same caveats: different clocks, descriptive endpoints, incomplete comparisons, and presence that does not stand for quality, preparedness, need, or conditions on the ground.

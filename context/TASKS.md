@@ -1334,6 +1334,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - QA notes: Implementation and hydration follow-ups completed the automated and URL-state portion of the gate. Added dependency-free `mode`, `scene`, `layer`, `view`, `place`, and `outlook` query state with sanitization, passive scene `replaceState`, explicit action `pushState`, guarded `popstate` application, hydration revision ordering, and deferred copied-scene restoration; no router or runtime dependency was added. Added URL round-trip/invalid-input tests and a bundle checker test; accepted TASK-056 baseline was JS 1,018,827 bytes and CSS 93,895 bytes. Final build is JS 1,022,289 bytes and CSS 93,895 bytes under 1,050,000/95,000 caps. Automated verification passed: Python discovery 60/60, frontend 34/34, data contracts, required artifacts, task statuses, secret scan, build, budget, and whitespace. Browser-use verified copied-scene URL restoration with deferred scroll, default first-scroll canonicalization, invalid fallback, Explore/layer/place push, passive replacement, and Back/Forward.
 
   Owner visual QA on 2026-07-11 failed two acceptance conditions: the opening story does not communicate the project premise clearly enough, and the 30rem/28rem rail plus 330px rank-figure cap makes scenes 4 and 5 too small for comfortable reading. This is an `in-review -> needs-fix` transition. The correction is cataloged in `TASK-058` and implemented through `TASK-059`–`TASK-064`; deployment and submission remain out of scope until the repaired owner matrix passes.
+
+  The fullscreen and narrative repairs later passed TASK-059–TASK-077, but TASK-057 remains `needs-fix` for the pre-existing Ruff, trusted-local-script Semgrep, and development-tool vulnerability findings recorded by TASK-077. Owner Explorer testing on 2026-07-17 opened the separate TASK-078–TASK-082 UX batch for reversible drill-down, dismissal history, responsive controls, handoff sizing, temporary-copy removal, and place-level evidence continuity. TASK-082 must pass before TASK-057 resumes; the UX plan does not itself resolve or waive the release findings.
 - Attempts: 3
 - Max attempts: 4
 - Attempt log: 2026-07-09: Created as the final integration and readiness gate for the artistic redesign sequence. 2026-07-11: Implemented URL state/history and bundle budget with TDD; ran automated gates and local browser-use URL/history smoke. Follow-ups fixed hydration revision ordering and copied-scene URL preservation with deferred scroll. 2026-07-11 owner visual QA rejected the opening clarity and scene-4/5 scale; repair work was decomposed into TASK-058–064 before another attempt.
@@ -1804,3 +1806,118 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Created by TASK-071 as the single closing gate. It has no planned production-code ownership. 2026-07-15: TASK-077 moved pending -> in-progress after TASK-076 independent approval. Root retained the browser/artifact/owner-handoff lane while fresh read-only agents received the scientific trace/cold-read and automated/security lanes. Scientific review returned one TASK-074 copy defect and one TASK-076 source/method defect; each was repaired with a failing test first, amended into its owning commit, and rechecked. Root completed the 42-PNG and live interaction/accessibility matrix. Passing product/data/build gates and unresolved pre-existing release checks are recorded in `artifacts/provenance/task_077_qa.json`; TASK-077 moved in-progress -> in-review for owner decision without changing TASK-057 or claiming readiness. 2026-07-16: The owner accepted the final app and matrix. TASK-077 moved in-review -> done; the pre-existing release findings remain assigned to TASK-057 and no deployment/submission claim was added.
 - Status: done
+
+## TASK-078
+- Phase: ux-design
+- Title: Lock the reversible Explorer UX contract and implementation batch
+- Depends on: TASK-077
+- Assigned agent: UX Planner; owner review required
+- Contract refs: context/DESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DECISIONS.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: app/public/data/geographies.json, app/src/data/atlasData.ts
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Converts concrete owner QA findings into one small, reviewable interaction contract before production code changes.
+- Functional notes: Audit the handoff CTA, parent/child panel navigation, dismissal/history semantics, narrow-screen control access, stale review chrome, and selected-place evidence continuity. Compare a local-patch approach, a router/state-machine approach, and reuse of the existing state/URL seams. Approve the smallest coherent direction and document explicit Back/Close results, responsive layouts, protected visual identity, scope exclusions, evidence copy, and acceptance matrix. Add one batch implementation plan rather than one Markdown file per task.
+- Statistical notes: Selected-place planning may expose only reviewed generated water/renewable endpoint, year-window, null, and 14-position visibility values. Dataset presence remains distinct from quality, completeness, preparedness, need, vulnerability, and condition.
+- Edge cases: Diagnostic root versus child, ordinary selected place, direct copied child URL, browser Back after dismissal, 360px portrait, 844x390 landscape, 200% zoom, reduced motion, offline/error state, null regional measures, and stale temporary copy.
+- Files to create/modify: context/DESIGN_BRIEF.md; context/STORY_BRIEF.md; context/DECISIONS.md; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/memory/*; context/logs/*; context/docs/submission-notes.md; create one context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Artifacts to produce: approved state/interaction table, responsive-control contract, data/caveat contract, bounded task batch, and detailed TDD plan
+- Acceptance criteria: Owner can review one unambiguous Back/Close/state contract; visual identity and data semantics are protected; alternatives and exclusions are explicit; TASK-079 through TASK-082 have legal dependencies, verification gates, commit boundaries, and no overlapping ownership ambiguity; all context validators pass.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; rg -n "T[B]D|T[O]DO|P[L]ACEHOLDER|to be deci[d]ed" context/DESIGN_BRIEF.md context/STORY_BRIEF.md context/DECISIONS.md context/TASKS.md context/PROJECT.md context/HANDOVER.md context/plans/tasks-079-082-explorer-ux-implementation-plan.md; git diff --check
+- Manual QA: Read the state table from the perspective of a first-time desktop, portrait, and landscape user; confirm Back and Close never have the same hidden meaning; confirm no proposed field or claim exceeds the existing generated contract.
+- QA notes: Planning audit reproduced the oversized handoff action, absent diagnostic-child Back path, inconsistent dismissal/history behavior, primary mobile controls beyond unmarked overflow, stale review notice, and missing regional evidence in place detail. Three implementation directions were compared. Reusing existing state and URL seams with one shared panel-navigation row was selected because it fixes the interaction contract without adding navigation machinery or changing the accepted visual system.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-17: TASK-078 moved pending -> in-progress for the owner-requested UX planning pass. The approved direction was recorded across the existing context ledgers and one batch implementation plan; no production code, data, or browser-visible automation changed. TASK-078 moved in-progress -> in-review for owner approval before TASK-079 begins.
+- Status: in-review
+
+## TASK-079
+- Phase: ux-navigation
+- Title: Add reversible panel navigation and correct URL dismissal semantics
+- Depends on: TASK-078
+- Assigned agent: Frontend Interaction Builder; independent state reviewer
+- Contract refs: context/DESIGN_BRIEF.md, context/DECISIONS.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: existing App state and app/src/lib/urlState.ts
+- Scientific refs: none; interaction-only task
+- User value / decision value: Lets readers inspect a place inside Data coverage or Rank ranges, return to the parent explanation, or close the path without restarting the Explorer.
+- Functional notes: Add one shared sticky panel-navigation row inside the existing panel dock. Diagnostic children show contextual Back and Close; ordinary selected places and diagnostic roots show Close. Reuse `viewMode`, `selectedCode`, sheet state, and the current query adapter. Parent restoration and dismissal clear only the necessary state. Evidence-view entry and ordinary place selection use `pushState`; diagnostic child selection, Back, and Close use `replaceState` so no diagnostic-root entry sits immediately behind a dismissed child. Remove duplicate close ownership from `CountryPanel`. Do not add a router, reducer, navigation stack, dependency, breadcrumb trail, or global reset.
+- Statistical notes: No data or claim changes.
+- Edge cases: Overview/default/outlook selection, diagnostic root, diagnostic child, copied child URL, reload, invalid URL, repeated Back/Close, browser Back/Forward, focus return, mobile collapsed/expanded sheet, keyboard-only use, and data-error state.
+- Files to create/modify: create app/src/components/panels/ExplorerPanelNav.tsx and focused test; app/src/App.tsx and integration tests; app/src/components/panels/CountryPanel.tsx and test; app/src/lib/urlState.test.ts if dismissal coverage belongs there; panel-navigation section of app/src/styles/base.css
+- Artifacts to produce: tested state-transition matrix and implementation screenshots for root, child, Back, and Close states
+- Acceptance criteria: Every panel path has visible Close; diagnostic children have correctly labelled Back; Back restores the exact parent without changing the map encoding; Close reaches the specified terminal state; the next browser Back does not reopen the dismissed path; direct child URLs restore; focus and 44px controls pass; no new runtime dependency or state abstraction is added.
+- Verification commands: npm --prefix app run test -- ExplorerPanelNav.test.tsx CountryPanel.test.tsx App.test.tsx urlState.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Exercise overview -> place -> Close; Data coverage -> place -> Back -> Close; Rank ranges -> place -> Back -> Close; copied child URLs; browser Back/Forward; keyboard focus; collapsed/expanded mobile sheet.
+- QA notes: Pending implementation and independent review.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created by TASK-078. It owns Explorer panel state/navigation and dismissal history only.
+- Status: pending
+
+## TASK-080
+- Phase: ux-layout
+- Title: Repair the handoff action and responsive Explorer control hierarchy
+- Depends on: TASK-079
+- Assigned agent: Responsive UI Builder; independent accessibility reviewer
+- Contract refs: context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: none; presentation-only task
+- Scientific refs: none; no claim changes
+- User value / decision value: Makes the transition into Explore feel intentional and ensures every primary score/evidence action is visible on small screens.
+- Functional notes: Change the handoff label to `Explore the map`, make the action content-width with a 44px minimum target, remove the stale `Concept for review` notice and equivalent temporary copy, and replace unmarked mobile control overflow with sibling layouts. Portrait uses two complete action rows: three scores, then Data coverage, Rank ranges, and 2030 stress test. Landscape uses one compact row with shorter visible labels and complete accessible names. Reuse existing tokens and components; do not restyle the palette, type, map, marks, panels, story, or desktop identity.
+- Statistical notes: Existing layer and outlook semantics/caveats stay unchanged.
+- Edge cases: 360/390/430px portrait, 844x390 landscape, long accessible labels, text zoom/200% zoom, safe areas, open panel dock, source/method dialog, focus rings, touch target size, reduced motion, and no-JavaScript/data-error copy.
+- Files to create/modify: app/src/components/story/StoryScrolly.tsx and focused test; app/src/components/controls/LayerControls.tsx and focused test; app/src/App.tsx only for stale review chrome; app/src/styles/base.css; app/src/lib/publicCopy.ts only if the stale string is centralized
+- Artifacts to produce: desktop, portrait, and landscape handoff/control screenshots plus measured overflow/touch-target results
+- Acceptance criteria: Handoff CTA is intrinsic-width and at least 44px high; temporary review copy is absent; all six primary actions are visible without horizontal scrolling at target widths; full accessible names remain; no collision with map/panel/safe areas; approved visual identity is unchanged; tests/build/budget pass.
+- Verification commands: npm --prefix app run test -- StoryScrolly.test.tsx LayerControls.test.tsx App.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Inspect 1440x900, 1024x768, 430x932, 390x844, 360x800, and 844x390 with controls, place panel, evidence views, 200% zoom, keyboard focus, and reduced motion.
+- QA notes: Pending implementation and independent review.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created by TASK-078. It begins after TASK-079 because both touch the shared panel/control dock and responsive CSS.
+- Status: pending
+
+## TASK-081
+- Phase: ux-story
+- Title: Continue the regional evidence story inside selected-place detail
+- Depends on: TASK-080
+- Assigned agent: Evidence Panel Builder; independent scientific/copy reviewer
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: app/public/data/geographies.json nested `regional_story`; app/src/data/atlasData.ts `Geo.regionalStory`
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Lets readers carry the two regional acts into place-by-place exploration without learning a new visual or interpreting the optional index as the only local story.
+- Functional notes: Add a compact regional-record section at the start of `CountryPanel`. Show signed drinking-water and renewable-share percentage-point changes with first/latest years, explicit unavailable language for null comparisons, and represented dataset count out of 14. Keep the optional Adaptation Gap score and trace/JSD content below it. Use the existing `regionalStory` object and current typography/surfaces. Add no pipeline field, score, fetch, chart dependency, or new panel.
+- Statistical notes: Preserve signs, percentage-point units, separate measure clocks, null semantics, and fixed 14-position count. Copy must say descriptive/non-causal and must not equate dataset presence with quality, completeness, preparedness, vulnerability, need, conditions, or local knowledge.
+- Edge cases: Positive, negative, zero, and null changes; different first/latest years; Guam, Pitcairn, and Tokelau incomplete comparisons; 6/14 and 14/14 visibility extremes; long geography names; narrow/expanded sheet; screen-reader reading order; reported zero versus missing row.
+- Files to create/modify: app/src/components/panels/CountryPanel.tsx and focused tests; the country-panel section of app/src/styles/base.css; app/src/data/atlasData.ts only if a type-level test exposes a missing existing declaration
+- Artifacts to produce: source-to-panel trace and screenshots for complete, incomplete, minimum-visibility, and maximum-visibility place records
+- Acceptance criteria: Rendered values match generated JSON; signed values and years are readable; null is never zero/no-change; visibility count is out of 14; caveats remain adjacent; score/trace/JSD behavior is unchanged; keyboard/mobile/200% zoom pass; no pipeline or dependency change.
+- Verification commands: npm --prefix app run test -- CountryPanel.test.tsx atlasData.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/validate_data_contracts.py; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare at least one positive, negative, zero if present, incomplete, 6/14, and 14/14 record against generated JSON; inspect desktop, portrait, landscape, keyboard order, and screen-reader text.
+- QA notes: Pending implementation and independent scientific/copy review.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created by TASK-078. It follows the navigation/layout repair so the new section inherits the final shared panel shell and responsive contract.
+- Status: pending
+
+## TASK-082
+- Phase: ux-release-qa
+- Title: Verify the Explorer UX revision across state, responsive, accessibility, evidence, and release gates
+- Depends on: TASK-079, TASK-080, TASK-081
+- Assigned agent: Independent UX/Scientific QA; owner final review
+- Contract refs: context/AGENTS.md, context/DESIGN_BRIEF.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md, context/docs/submission-notes.md
+- Data refs: generated app data and rendered place summaries
+- Scientific refs: context/ANALYSIS_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Proves the Explorer repair is understandable, reversible, responsive, accurate, and consistent with the accepted story before release-readiness work resumes.
+- Functional notes: Begin read-only. Run the full state/URL/history matrix, seven viewports, keyboard/focus/touch, 200% zoom, reduced motion, offline/error, source/method, direct URL, bundle, test, data, and security gates. Capture settled screenshots and a machine-readable QA record under the existing artifact structure. Return defects to TASK-079, TASK-080, or TASK-081 rather than hiding product fixes inside QA. Use quiet/headless or in-app inspection only; do not open visible external Brave/Chrome tabs in front of the owner.
+- Statistical notes: Trace representative positive/negative/incomplete water-renewable records and 6–14 visibility counts from generated JSON to panel text. Confirm no causal, quality, preparedness, vulnerability, need, forecast, boundary, or local-knowledge claim entered the revision.
+- Edge cases: Diagnostic root/child/Back/Close, browser Back after dismissal, copied child URL, all six primary controls, expanded/collapsed sheet, seven target viewports, touch, keyboard, focus return, 200% zoom, reduced motion, color deficiency, offline/data error, and repeated rapid input.
+- Files to create/modify: artifacts/design/task-082/*; artifacts/provenance/task_082_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/*; context/docs/submission-notes.md; production/tests only when a defect is returned to its owning task
+- Artifacts to produce: state-transition evidence, seven-viewport screenshot matrix, data/source trace, accessibility results, exact automated gate results, and owner decision
+- Acceptance criteria: TASK-079 through TASK-081 acceptance contracts pass; screenshots show no hidden/overlapping primary action; Back/Close/history/direct URLs are deterministic; panel evidence matches generated data and caveats; tests/build/budget/contracts/artifacts/status/secrets/lint/compile/whitespace/security gates are recorded truthfully; owner accepts the repaired Explorer. Only after this gate passes may TASK-057 resume its separate `needs-fix` release path.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
+- Manual QA: Exercise the complete state and viewport matrices; compare source JSON to rendered text; cold-read the Explorer handoff and selected-place section; verify source/method access, focus order, touch targets, Back/Forward, no visible external browser windows, and the approved visual identity.
+- QA notes: Pending implementation, independent evidence collection, and owner review.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Created by TASK-078 as the single closing UX gate. It has no planned production-code ownership.
+- Status: pending

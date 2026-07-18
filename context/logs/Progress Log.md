@@ -1,5 +1,9 @@
 # Progress Log
 
+## 2026-07-17
+
+- Completed the owner-requested Explorer UX planning pass and moved `TASK-078` to `in-review`. Source and prior-artifact inspection reproduced six bounded problems: the handoff CTA stretches across its grid, diagnostic child detail has no contextual Back, dismissal pushes history and can reopen stale content, primary mobile evidence controls rely on unmarked overflow, temporary review copy remains, and selected-place detail does not continue the reviewed regional water/renewable/visibility story. Compared local patches, new navigation machinery, and reuse of current App/URL state; chose the current-state seam with one shared panel-navigation row. Added TASK-079–TASK-082 and one detailed TDD implementation plan with separate commit boundaries, seven-viewport/state/evidence QA, protected visual identity, quiet browser-inspection rules, and no data/router/dependency expansion. No production app, data, score, generated artifact, or external browser window changed in this planning task. (AI tools used: Codex, Superpowers brainstorming/writing-plans/verification guidance, Ponytail, data-visualization design guidance.)
+
 ## 2026-07-16
 
 - Owner accepted `TASK-077` and the complete `TASK-072`–`TASK-077` narrative retrofit. The accepted implementation preserves the current app's dark-ocean palette, typography, map/mark treatment, controls, panels, interaction language, and explorer while replacing the guided story and evidence layout. Fresh merged-result tests passed Python 96/96 and frontend 60/60. The pre-existing Ruff, local-script Semgrep, and development-tool findings remain explicitly deferred to `TASK-057`; no deployment or submission claim was added. (AI tools used: Codex, Superpowers finishing-a-development-branch.)

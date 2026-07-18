@@ -24,7 +24,7 @@ Reusable patterns:
 - compact evidence strips in country panels,
 - direct labels and leader lines for guided claims,
 - scroll-led default path with the map as sticky evidence surface,
-- "Explore freely" escape hatch into the current atlas controls,
+- a plain, content-width "Explore the map" handoff into the current atlas controls,
 - motion only when it reveals, compares, focuses, or re-encodes evidence.
 
 Avoid copying reference identities, palettes, layouts, or iconic stripe treatments.
@@ -65,6 +65,14 @@ Root QA accepted `TASK-055` on 2026-07-10. JSD is panel-only: keep the complete 
 Owner-approved `TASK-058` supersedes the `TASK-049` rail dimensions without superseding its evidence grammar. For the next build, read `context/ARTISTIC_REDESIGN_BRIEF.md`: use One Constellation on an Elastic Stage, keep the map fullscreen for the premise and scenes 1–3, promote scenes 4 and 5 to fullscreen evidence takeovers, and return the same 22 marks to geography for Explore. Preserve one native scroll owner, stable URL state, reduced-motion equivalents, fixed-presence marks, and panel-only JSD. The generated `TASK-058` boards are composition references only.
 
 `TASK-064` adds one reachability rule to that pattern: controls placed before fullscreen scroll sections need a sticky owner of their own. Keep the existing toolbar and `SceneProgress` inside one conditional sticky chrome region, keep progress targets at least 44px, and measure rank-heading offsets against the complete chrome in desktop, portrait, and landscape. Do not rely on an offscreen DOM control or automation-forced click as evidence of user reachability.
+
+## Reversible Explorer Drill-Down
+
+Reuse existing state before adding navigation machinery. In this app, `viewMode` is the diagnostic parent and `selectedCode` is the selected-place child. A diagnostic child gets **Back to data coverage/rank ranges** plus **Close**; ordinary detail and diagnostic roots get Close. Back restores the parent. Close ends the panel path. A diagnostic child replaces its parent URL entry, and Back/Close replace that child entry, so browser Back does not immediately reopen dismissed diagnostic content.
+
+On narrow screens, primary sibling actions must all advertise themselves. Use two complete rows in portrait and one compact row in landscape; do not hide primary evidence views behind unmarked horizontal overflow. Keep full accessible names when visible labels shorten. This is a layout rule, not permission to replace the accepted palette, typography, map, marks, panels, or story.
+
+Selected-place detail should continue the guided evidence vocabulary before optional index evidence: existing water change, renewable-share change, separate years, explicit null state, and represented count out of 14. Keep different-clock, descriptive/non-causal, and presence-is-not-preparedness caveats adjacent.
 
 ## Delegated Mockup Revision
 

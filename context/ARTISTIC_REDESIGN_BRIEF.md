@@ -2,9 +2,9 @@
 
 ## Status
 
-The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, and `TASK-069` accepted the movement -> evidence visibility -> exploration story. The current five-scene index-led sequence remains functional only until `TASK-072` through `TASK-077` replace the guided layer. The application itself is preserved.
+The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, `TASK-069` accepted the movement -> evidence visibility -> exploration story, and `TASK-072` through `TASK-077` implemented and verified the four-scene guided layer plus handoff. The application and its visual identity are preserved.
 
-Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved and earned acceptance for the fullscreen scale and interaction system. `TASK-057` remains `needs-fix` only because the approved regional narrative has not yet replaced the old guided story.
+Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved the fullscreen scale and interaction system, and `TASK-072` through `TASK-077` replaced the narrative. A later 2026-07-17 Explorer audit is planned under `TASK-078` through `TASK-082`; `TASK-057` separately remains `needs-fix` for pre-existing release findings.
 
 Approved public title:
 
@@ -135,7 +135,7 @@ The redesign must preserve these facts and limits:
 ### Preserve
 
 - A full-basin Pacific map visible from the first viewport.
-- Guided reading followed by a clear `Explore freely` handoff.
+- Guided reading followed by one clear, content-width `Explore the map` handoff.
 - Direct access to sources, methods, trace rows, and caveats.
 - Reported-zero and missing-row monitoring as distinct visual and verbal states.
 - Water change, renewable-share change, dataset presence, monitoring visibility, and traceable missingness as the guided evidence families.
@@ -290,7 +290,7 @@ Visual state:
 - Return the same marks to geographic position.
 - Restore the existing exploration controls, selected-place panel, sources/methods, optional Adaptation Gap and outlook layers, and panel-only JSD neighbors.
 - Use explicit `view=overview` at handoff and first Explore entry: neutral marks, overview copy, no selection/outlook, and no pressed score control. Choosing gap, pressure, or capacity returns to `view=default`. Do not reset the reader into the Adaptation Gap layer as a verdict.
-- Offer one clear `Explore freely` action.
+- Offer one clear `Explore the map` action.
 
 Motion verb: return.
 
@@ -377,6 +377,20 @@ Simplify:
 - calmer selection camera behavior;
 - no automatic fit that hides the wider Pacific unless a scene explicitly focuses on a named place;
 - shareable URL state for mode, scene or layer, selected geography, and optional outlook state.
+
+### 2026-07-17 Explorer UX Boundary
+
+Keep the same Explorer and visual system, but make its hierarchy reversible and visible:
+
+- one shared panel-navigation row owns Back, Close, and mobile expand/collapse;
+- diagnostic child detail has contextual **Back to data coverage** or **Back to rank ranges**;
+- Close ends the current panel path, while Back restores the parent explanation;
+- dismissal replaces URL history so browser Back does not immediately reopen the dismissed surface;
+- portrait shows complete score and evidence-view rows; landscape shows one complete compact row;
+- selected-place detail starts with existing water/renewable/year/14-position evidence before the optional score;
+- temporary review copy is removed.
+
+This repair may not introduce a router, reducer, navigation stack, new data field, new score, new dependency, or visual reskin. The accepted palette, typography, map, evidence marks, story, and panels remain authoritative. Search, copy-link UI, saved places, and global reset remain outside the first repair.
 
 ## Implementation Path
 

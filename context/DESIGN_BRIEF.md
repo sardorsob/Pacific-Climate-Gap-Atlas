@@ -811,3 +811,93 @@ Before claiming the app design is implemented:
 ## Final Design Principle
 
 The design succeeds if readers understand two things without learning an index first: Pacific places have not moved in one shared direction, and the official record does not show every place equally. Exploration can then expose the Adaptation Gap Index and other caveated evidence without turning any one layer into a verdict.
+
+## Explorer UX Revision: Reversible Evidence Exploration
+
+Owner QA on 2026-07-17 accepted the guided story and visual identity but found four Explorer problems that interrupt the handoff:
+
+1. The final handoff action stretches across the story grid and reads as an oversized banner rather than a deliberate button.
+2. Selecting a place inside **Data coverage** or **Rank ranges** replaces the parent explanation without a way to return to it.
+3. Closing a diagnostic detail currently returns to a different state and can leave a history entry that immediately reopens the dismissed panel.
+4. At narrow widths, the two score groups remain visible while primary evidence-view controls can sit beyond unmarked horizontal overflow.
+
+The selected-place panel also stops the new regional story too early. Water, renewable-energy share, and the 14-position official-record visibility evidence already exist in the generated geography contract, but the panel does not surface them.
+
+### Alternatives Considered
+
+| Direction | Benefit | Cost | Decision |
+| --- | --- | --- | --- |
+| Patch each close button and breakpoint locally | Smallest initial diff | Duplicates navigation logic and leaves inconsistent browser history | Reject |
+| Add a router, reducer, or navigation stack | Formal state transitions | New machinery for states the app already owns; higher migration and bundle cost | Reject |
+| Reuse `viewMode`, `selectedCode`, and the URL adapter behind one shared panel-navigation row | One behavior contract, direct-link support, no dependency | Requires focused App and panel integration tests | Approve |
+
+### Interaction Hierarchy
+
+The Explorer keeps its existing map, visual identity, score layers, evidence views, source/method access, and URL model. The revision changes only how a user moves through the existing states and what a selected place summarizes.
+
+| Current state | Visible navigation | Back result | Close result |
+| --- | --- | --- | --- |
+| Neutral or score view + selected place | Close | Not shown | Clear selection; preserve the current map view |
+| Data coverage root | Close | Not shown | Return to neutral overview |
+| Rank ranges root | Close | Not shown | Return to neutral overview |
+| Data coverage + selected place | Back to data coverage; Close | Clear selection; restore the parent data-coverage panel | Clear selection and return to neutral overview |
+| Rank ranges + selected place | Back to rank ranges; Close | Clear selection; restore the parent rank-ranges panel | Clear selection and return to neutral overview |
+
+Back is contextual: it restores the immediately visible parent evidence explanation. Close is terminal for the current panel path. These meanings must remain distinct in text, focus order, URL state, and tests.
+
+Entering an evidence view and selecting an ordinary place remain explicit `pushState` actions. Selecting a place from Data coverage or Rank ranges is an intra-panel drill-down and uses `replaceState`; the visible Back control reconstructs the parent from the retained `viewMode`. Back and Close also use `replaceState`. This prevents an earlier diagnostic-root entry from sitting immediately behind a dismissed child while preserving copied URLs and ordinary Back/Forward traversal.
+
+### Shared Panel Navigation
+
+Use one sticky navigation row inside the existing panel dock:
+
+- show **Back to data coverage** or **Back to rank ranges** only for diagnostic child details;
+- always expose a labelled **Close** control;
+- keep the existing expand/collapse handle reachable on mobile;
+- use the existing 44px minimum touch target, focus-ring, typography, surface, border, and color tokens;
+- move close ownership out of `CountryPanel` so parent and child surfaces cannot disagree;
+- return focus to the action that opened the dismissed surface when practical, without adding a focus-management library.
+
+Do not add breadcrumb trails, a global reset button, an app router, or a second state machine.
+
+### Responsive Control Contract
+
+Primary Explorer actions may not depend on unmarked horizontal scrolling.
+
+- **Desktop/tablet:** keep the current compact dock and existing visual hierarchy.
+- **Mobile portrait:** render two complete 44px action rows. Row one contains the three score layers. Row two contains Data coverage, Rank ranges, and the 2030 stress test.
+- **Mobile landscape:** render one compact row with shorter visible labels while accessible names retain the full meaning.
+- At 360px, every primary action must be visible, keyboard/touch reachable, and free of overlap with the map, panel dock, or system-safe area.
+
+The handoff action becomes content-width, uses the plain label **Explore the map**, and remains at least 44px high. Remove the stale desktop-only **Concept for review** notice and any equivalent temporary review copy.
+
+### Place-Level Evidence Continuation
+
+The selected-place panel begins with a concise regional-record summary before the optional Adaptation Gap score:
+
+- signed drinking-water change in percentage points with its first/latest years;
+- signed renewable-energy-share change in percentage points with its first/latest years;
+- explicit **Unavailable for a comparable period** language when either measure is null;
+- represented dataset count out of the fixed 14-position visibility record;
+- the adjacent caveat that the measures use different clocks, the comparison is descriptive and non-causal, and dataset presence is not quality, completeness, preparedness, vulnerability, need, or a local-knowledge substitute.
+
+Use the existing nested `regionalStory` fields. Do not add a data pipeline, new score, new endpoint calculation, or new app-data field for this revision.
+
+### Scope Boundaries
+
+The first revision deliberately excludes search, copy-link UI, global reset, saved places, a new navigation dependency, a new design system, and any palette/type/map/mark restyling. Search and copy-link may be reconsidered only if the owner QA matrix still shows a concrete navigation problem after the core repair.
+
+### Acceptance Contract
+
+The revision is complete only when:
+
+- the handoff button reads as a normal action at all target widths;
+- every open panel state has a visible Close action;
+- diagnostic child details have a visible, correctly labelled Back action;
+- Back restores the exact parent evidence view and Close returns to the correct terminal state;
+- dismissal does not reopen the same panel on the next browser Back action;
+- copied diagnostic-child URLs restore deterministically;
+- all six primary Explorer actions are visible at 360px portrait and 844x390 landscape;
+- country summaries reproduce existing generated water, renewable, year, null, and visibility fields without changing their meaning;
+- keyboard, focus, touch, 200% zoom, reduced-motion, offline/error, and seven-viewport checks pass;
+- the approved palette, typography, map, evidence marks, story, panels, and interaction language remain visually authoritative.

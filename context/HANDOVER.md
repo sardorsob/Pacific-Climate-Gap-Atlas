@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is initialized as a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-077` are complete. The owner accepted the final regional narrative, preserved visual identity, interaction behavior, and TASK-077 QA matrix on 2026-07-16. `TASK-057` remains `needs-fix` for pre-existing release findings; no deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-056` and `TASK-058` through `TASK-077` are complete. The owner accepted the regional narrative and visual identity on 2026-07-16, then opened a bounded Explorer usability repair on 2026-07-17. `TASK-078` is `in-review`; `TASK-079` through `TASK-082` are pending. `TASK-057` remains separately `needs-fix` for pre-existing release findings. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The final local replacement matrix lives under `artifacts/design/task-077/`, with evidence and gate results in `artifacts/tables/task_077_evidence_trace.csv` and `artifacts/provenance/task_077_qa.json`. The concept boards remain composition references, not the app's visual identity.
 
@@ -74,12 +74,17 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Decide whether to repair or waive with rationale the pre-existing Ruff, local-script Semgrep, and development-tool audit findings recorded in `artifacts/provenance/task_077_qa.json`.
-2. Keep `TASK-057` at `needs-fix` and do not claim deployment/submission readiness until that release decision is recorded.
-3. After the release findings are resolved, complete deployment, public-URL durability, final disclosure, and submission-form actions.
+1. Review and approve `TASK-078` and the single batch plan at `context/plans/tasks-079-082-explorer-ux-implementation-plan.md`.
+2. Implement `TASK-079` panel navigation/history, `TASK-080` handoff/responsive controls, and `TASK-081` place-level regional evidence as separate TDD commits.
+3. Run `TASK-082` as an independent seven-viewport, state/history, accessibility, and evidence gate. Use quiet/headless or in-app inspection only; do not open visible external browser tabs.
+4. Keep `TASK-057` at `needs-fix` until the UX gate is accepted and the pre-existing Ruff, local-script Semgrep, and development-tool findings are separately repaired or waived with rationale.
+5. Only after both tracks close, complete deployment, public-URL durability, final disclosure, and submission-form actions.
 
 ## Known Caveats
 
+- The accepted visual/story baseline is not being redesigned. TASK-079–TASK-082 may change panel navigation, handoff sizing/wording, responsive control placement, temporary copy, and selected-place evidence order only.
+- Diagnostic drill-down currently has no contextual Back path; Close/history behavior can reopen or reset unexpectedly; mobile evidence controls can sit beyond unmarked horizontal overflow; and the place panel omits reviewed regional water/renewable/visibility fields. These are planned defects, not accepted behavior.
+- `Geo.regionalStory` already contains the required measures and 14 visibility positions. TASK-081 must reuse them and preserve null/different-clock/presence caveats; no pipeline field or score is authorized.
 - In a fresh checkout, install app and Python dependencies before rebuilding. The local working copy has previously run the Vite build successfully.
 - The saved v2 SDMX routes currently return `422`; the fetch helper records that failure and retries through the documented stable Pacific Data Hub endpoint, with PowerShell retained only as a final Windows transport fallback.
 - Raw official CSV cache files under `data/raw/official/` are ignored by Git.

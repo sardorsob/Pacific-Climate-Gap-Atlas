@@ -2,13 +2,19 @@
 
 ## Immediate Next Step
 
-TASK-077 and the TASK-072–TASK-077 narrative batch are owner-accepted. Decide how to repair or waive with rationale the pre-existing lint, local-script static-analysis, and development-dependency findings under `TASK-057`; do not deploy or submit while that task remains `needs-fix`.
+Review `TASK-078` and `context/plans/tasks-079-082-explorer-ux-implementation-plan.md`. After approval, implement TASK-079 panel navigation/history, TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. Do not deploy or submit while TASK-057 remains `needs-fix`.
 
 ## Next Build Step
 
-`TASK-077` returned and rechecked one factual TASK-074 copy repair and one TASK-076 Methods/source repair, then completed the owner-accepted final local matrix. The evidence is `artifacts/design/task-077/` (42 PNGs), `artifacts/tables/task_077_evidence_trace.csv`, and `artifacts/provenance/task_077_qa.json`. Full frontend 60/60, Python 96/96, production build, bundle (94,411-byte CSS; 1,029,959-byte JS), data/artifact/status/secret/compile, and whitespace gates pass. The pre-existing release findings remain under TASK-057. Use existing context files; do not create tracked per-task Markdown.
+The 2026-07-17 plan preserves the accepted app and changes only six bounded surfaces: shared contextual Back/terminal Close, dismissal `replaceState`, intrinsic **Explore the map** CTA, complete portrait/landscape control layouts, removal of temporary review copy, and an existing-data regional summary before the optional score. The exact state, responsive, TDD, evidence, and commit contract is in the one batch plan. Use existing context files; do not create tracked per-task Markdown.
 
-The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, controls, selected-place panel, methods/sources, URL/history, accessibility, and Explore handoff remain protected. Verify map -> movement -> visibility -> map continuity; slow/rapid progress and keyboard input; overview/score/overlay/outlook transitions; place panel and methods; copied/retired URLs, reload, and Back/Forward; desktop, portrait, landscape, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only.
+The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, palette, typography, map, evidence marks, methods/sources, and guided story remain protected. TASK-082 must verify map -> movement -> visibility -> map continuity plus the new panel state matrix, all six primary mobile actions, copied child URLs, Back/Forward after dismissal, place evidence, seven viewports, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only. Browser inspection must remain quiet/headless or in-app; never foreground external Brave/Chrome tabs.
+
+## 2026-07-17
+
+- Owner testing accepted the current story and visual design but found an oversized handoff action, no return path from diagnostic child detail, confusing Close/history behavior, hidden narrow-screen evidence controls, and missing regional evidence in selected-place detail.
+- Compared local patches, a router/state machine, and reuse of the current App/URL seams. Approved the third direction: one shared panel-navigation row, contextual Back, terminal Close, history replacement on dismissal, CSS-only sibling mobile layouts, and existing `Geo.regionalStory` fields.
+- Added TASK-078–TASK-082 and one batch TDD plan. TASK-078 is `in-review`; no production app, data, score, generated artifact, or visual identity changed. TASK-057 remains a separate `needs-fix` release track.
 
 ## Current Evidence Snapshot
 

@@ -14,7 +14,7 @@ Pacific Climate Evidence Atlas.
 
 Direct subtitle: **How conditions and official records differ across 22 Pacific places.**
 
-Readiness note (2026-07-17): the owner accepts the fullscreen map, evidence marks, visual identity, and regional movement -> evidence visibility -> exploration story. A focused Explorer usability repair is now planned under `TASK-078`–`TASK-082` for reversible diagnostic navigation, dismissal history, responsive controls, handoff sizing, temporary copy, and place-level evidence continuity. `TASK-057` also remains `needs-fix` for pre-existing lint, local-script static-analysis, and development-dependency findings. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted or deployed until both UX and release gates close.
+Readiness note (2026-07-18): the owner accepts the fullscreen map, evidence marks, visual identity, regional movement -> evidence visibility -> exploration story, and TASK-078 Explorer UX contract. TASK-079–TASK-082 remain open for reversible diagnostic navigation, dismissal history, responsive controls, handoff sizing, temporary copy, place-level evidence continuity, and final QA. `TASK-057` also remains `needs-fix` for pre-existing lint, local-script static-analysis, and development-dependency findings. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted or deployed until both UX and release gates close.
 
 ## Submission Requirements To Track
 

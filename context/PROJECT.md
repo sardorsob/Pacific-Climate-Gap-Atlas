@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-The existing fullscreen map, evidence marks, story, palette, typography, and map treatment remain the approved application baseline and visual-identity authority. `TASK-077` received owner acceptance on 2026-07-16. A focused owner Explorer audit on 2026-07-17 then found an oversized handoff action, non-reversible diagnostic drill-down, dismissal/history friction, hidden narrow-screen evidence controls, stale review copy, and a selected-place panel that does not yet continue the regional water/renewable/visibility story. `TASK-078` is `in-review` for the bounded UX contract; `TASK-079` through `TASK-082` are pending implementation and independent QA. `TASK-057` remains separately `needs-fix` for pre-existing lint, local-script static-analysis, and development-dependency findings. Deployment/submission are not claimed. Competition deadline: August 31, 2026.
+The existing fullscreen map, evidence marks, story, palette, typography, and map treatment remain the approved application baseline and visual-identity authority. `TASK-077` received owner acceptance on 2026-07-16. A focused owner Explorer audit on 2026-07-17 then found an oversized handoff action, non-reversible diagnostic drill-down, dismissal/history friction, hidden narrow-screen evidence controls, stale review copy, and a selected-place panel that does not yet continue the regional water/renewable/visibility story. The owner approved the bounded `TASK-078` UX contract on 2026-07-18; `TASK-079` through `TASK-082` are pending implementation and independent QA. `TASK-057` remains separately `needs-fix` for pre-existing lint, local-script static-analysis, and development-dependency findings. Deployment/submission are not claimed. Competition deadline: August 31, 2026.
 
 ## Status
 
@@ -54,7 +54,7 @@ Official records across 22 Pacific geographies show no single shared path in saf
 | Artistic redesign contract | approved baseline | `TASK-059`–`TASK-064` established the fullscreen stage, readable figures, native scroll, stable URL state, and Explore handoff that the next narrative must reuse |
 | Data-first narrative discovery | done | `TASK-065`–`TASK-068` acquired, processed, and tested the expanded evidence; `TASK-069` accepted the regional movement -> visibility -> exploration claim chain |
 | Narrative retrofit roadmap | done | `TASK-072`–`TASK-077` are complete and owner accepted; pre-existing release findings remain isolated under `TASK-057` |
-| Explorer UX revision | planned; owner review | `TASK-078` locks shared Back/Close/history, responsive-control, handoff, and place-evidence contracts; `TASK-079`–`TASK-082` implement and verify them without changing the approved visual identity |
+| Explorer UX revision | contract approved; implementation pending | `TASK-078` locks shared Back/Close/history, responsive-control, handoff, and place-evidence contracts; `TASK-079`–`TASK-082` implement and verify them without changing the approved visual identity |
 | Evidence semantics correction | done | `TASK-048` separates the eight score inputs from responsibility-context and total trace rows in generated data, EDA, validation, and app copy; independent QA accepted the contract |
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | needs-fix | `TASK-057` stays open for the pre-existing Ruff, local-script Semgrep, and development-dependency audit findings recorded by `TASK-077` |
@@ -63,6 +63,7 @@ Official records across 22 Pacific geographies show no single shared path in saf
 
 ## Last Session Notes
 
+- Owner approved TASK-078's complete UX contract and planning dates on 2026-07-18. TASK-078 is done; TASK-079 is the next implementation task.
 - Planned the 2026-07-17 Explorer UX revision after owner testing. The approved direction reuses `viewMode`, `selectedCode`, sheet state, and the URL adapter behind one shared panel-navigation row; uses contextual Back versus terminal Close; replaces dismissal history entries; shows all primary controls in portrait/landscape sibling layouts; makes the handoff CTA content-width; removes stale review copy; and continues existing regional evidence inside selected-place detail. No app code, data, score, palette, typography, map, or evidence mark changed in this planning pass.
 - Added `TASK-078` through `TASK-082` and one batch plan at `context/plans/tasks-079-082-explorer-ux-implementation-plan.md`. Implementation remains sequential because navigation, dock layout, and panel evidence share `App.tsx`, `CountryPanel`, and responsive CSS. TASK-082 is the independent owner QA gate; only afterward may the separate TASK-057 release path resume.
 - Owner accepted TASK-077 and the complete TASK-072–TASK-077 narrative retrofit on 2026-07-16 after reviewing the current app. The final state preserves the approved UI identity and closes the story/layout batch; TASK-057 separately retains the pre-existing release findings.

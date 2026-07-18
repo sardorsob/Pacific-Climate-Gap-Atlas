@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-Review `TASK-078` and `context/plans/tasks-079-082-explorer-ux-implementation-plan.md`. After approval, implement TASK-079 panel navigation/history, TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. Do not deploy or submit while TASK-057 remains `needs-fix`.
+Implement TASK-079 panel navigation/history, TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. TASK-078 is owner-approved and done. Do not deploy or submit while TASK-057 remains `needs-fix`.
+
+## 2026-07-18
+
+- Owner approved TASK-078's UX contract and planning dates. TASK-078 moved in-review -> done and unlocked TASK-079; no production code or data changed in the approval update.
 
 ## Next Build Step
 

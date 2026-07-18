@@ -1,5 +1,9 @@
 # Progress Log
 
+## 2026-07-18
+
+- Owner approved the full TASK-078 Explorer UX contract and planning dates. TASK-078 moved in-review -> done and TASK-079 is unlocked. The approval update changes context only; production app/data implementation begins in TASK-079. (AI tools used: Codex, Superpowers execution/TDD/verification guidance, Ponytail.)
+
 ## 2026-07-17
 
 - Completed the owner-requested Explorer UX planning pass and moved `TASK-078` to `in-review`. Source and prior-artifact inspection reproduced six bounded problems: the handoff CTA stretches across its grid, diagnostic child detail has no contextual Back, dismissal pushes history and can reopen stale content, primary mobile evidence controls rely on unmarked overflow, temporary review copy remains, and selected-place detail does not continue the reviewed regional water/renewable/visibility story. Compared local patches, new navigation machinery, and reuse of current App/URL state; chose the current-state seam with one shared panel-navigation row. Added TASK-079–TASK-082 and one detailed TDD implementation plan with separate commit boundaries, seven-viewport/state/evidence QA, protected visual identity, quiet browser-inspection rules, and no data/router/dependency expansion. No production app, data, score, generated artifact, or external browser window changed in this planning task. (AI tools used: Codex, Superpowers brainstorming/writing-plans/verification guidance, Ponytail, data-visualization design guidance.)

@@ -1922,6 +1922,29 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Attempt log: 2026-07-18: TASK-082 returned the scanner finding and TASK-083 was created at pending, then moved pending -> in-progress for a test-first repair. The verified two-finding Semgrep RED led to one literal-marker helper with no abstraction or dependency. Focused/full tests, build, budget, task-status, secret, whitespace, and official Semgrep gates passed; TASK-083 moved in-progress -> in-review for independent review. Independent review found no issues, passed specification compliance and task quality, and moved TASK-083 in-review -> done.
 - Status: done
 
+## TASK-084
+- Phase: ux-release-qa-fix
+- Title: Remove dynamic regular expression from Explorer control tests
+- Depends on: TASK-080; defect returned by the TASK-082 release gate
+- Assigned agent: Test Fix Builder; independent reviewer
+- Contract refs: context/AGENTS.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: none; test-only repair
+- Scientific refs: none; no data or claim changes
+- User value / decision value: Preserves the exact Explorer control hierarchy and pressed-state tests while removing the remaining test-only scanner finding before the release gate closes.
+- Functional notes: Replace the parameterized regular expression in the `buttonText` helper with deterministic literal-marker `indexOf`/`lastIndexOf`/`slice` bounds. Locate the accessible label, enclosing button, and content bounds; fail explicitly when markers are missing or invalid. Preserve exact score/evidence group counts, visible-label separation, and all six pressed-state checks. Do not change production code, TASK-080 behavior, dependencies, or TASK-082 artifacts.
+- Statistical notes: No data, score, claim, or rendered-copy changes.
+- Edge cases: Missing accessible label, missing enclosing button, missing content bounds, invalid marker order, and labels containing regular-expression metacharacters.
+- Files to create/modify: app/src/components/controls/LayerControls.test.tsx; context/TASKS.md
+- Artifacts to produce: focused/full test and official Semgrep evidence recorded in this task ledger; no new visual artifact
+- Acceptance criteria: Official focused Semgrep auto rules report zero findings in `LayerControls.test.tsx`, down from the one finding returned by TASK-082; the full repository reports exactly the two pre-existing trusted-local-script `urllib` findings; exact group counts, visible-label separation, and all-six pressed-state tests remain intact; focused and full frontend tests, build, bundle budget, 85 task statuses, secret, and whitespace gates pass; no production file changes.
+- Verification commands: npm --prefix app run test -- LayerControls.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; semgrep scan --config auto app/src/components/controls/LayerControls.test.tsx; semgrep scan --config auto; git diff --check
+- Manual QA: Inspect literal marker bounds and failure branch; confirm exact score/evidence group assertions, visible labels, and all six pressed-state assertions remain; confirm the diff contains no production file.
+- QA notes: The TASK-082 scanner gate reproduced one `detect-non-literal-regexp` finding at the caller-parameterized `buttonText` helper. The bounded repair replaces only that dynamic regular expression with deterministic literal markers and explicit missing/invalid-bound failure while retaining the established assertions. Focused LayerControls tests pass 2/2, the full frontend passes 79/79, build and bundle budgets pass at 1,031,807-byte JS and 94,920-byte CSS, and the 85-status, secret, and whitespace gates pass. Official Semgrep auto rules report zero findings in `LayerControls.test.tsx`; the full repository retains exactly the two pre-existing trusted-local-script `urllib` findings. No production, data, design, or QA artifact changed. Independent read-only review found no issue, passed specification compliance and task quality, and confirmed TASK-080 is untouched.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-18: TASK-082 returned the scanner finding and TASK-084 was created at pending, then moved pending -> in-progress for a test-first repair. The verified one-finding Semgrep RED led to the smallest literal-marker extraction with no production or dependency change. Focused/full tests, build, budget, 85-status, secret, whitespace, and official focused/full Semgrep gates passed; TASK-084 moved in-progress -> in-review. Independent read-only review found no issues, passed specification compliance and task quality, and moved TASK-084 in-review -> done.
+- Status: done
+
 ## TASK-082
 - Phase: ux-release-qa
 - Title: Verify the Explorer UX revision across state, responsive, accessibility, evidence, and release gates

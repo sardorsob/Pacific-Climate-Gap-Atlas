@@ -31,9 +31,25 @@ function controlGroups(html: string) {
 }
 
 function buttonText(group: string, accessibleName: string) {
-  const escapedName = accessibleName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const inner = group.match(new RegExp(`<button[^>]*aria-label="${escapedName}"[^>]*>([\\s\\S]*?)<\\/button>`))?.[1] ?? "";
-  return inner.replace(/<[^>]+>/g, "").trim();
+  const label = `aria-label="${accessibleName}"`;
+  const labelStart = group.indexOf(label);
+  const buttonStart = group.lastIndexOf("<button", labelStart);
+  const contentStart = group.indexOf(">", buttonStart);
+  const contentEnd = group.indexOf("</button>", contentStart);
+
+  if (
+    labelStart < 0 ||
+    buttonStart < 0 ||
+    contentStart < 0 ||
+    contentEnd < 0 ||
+    buttonStart > labelStart ||
+    labelStart + label.length > contentStart ||
+    contentStart > contentEnd
+  ) {
+    throw new Error(`Could not find button content for ${accessibleName}`);
+  }
+
+  return group.slice(contentStart + 1, contentEnd).replace(/<[^>]+>/g, "").trim();
 }
 
 describe("LayerControls", () => {

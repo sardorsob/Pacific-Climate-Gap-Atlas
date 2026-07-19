@@ -2,20 +2,21 @@
 
 ## Immediate Next Step
 
-TASK-079 through TASK-081 product work is complete and independently approved. Run TASK-082 as the final UX/evidence/release QA commit; do not deploy or submit while TASK-057 remains `needs-fix`.
+TASK-079 through TASK-081 product work and TASK-083 through TASK-085 returned repairs are complete and independently approved. TASK-082 product QA passed and is `in-review` for owner acceptance; do not deploy or submit while TASK-057 remains `needs-fix`.
 
 ## 2026-07-18
 
+- TASK-082 passed 164/164 strict-headless checks with 43 frames across history, seven viewports, accessibility/failure modes, source-to-panel evidence, cold read, and story-to-map continuity. Owner acceptance remains pending; the task is not done.
 - TASK-081 is done. The selected-place panel now continues the regional water/renewable/visibility story before the optional score, with exact signs/clocks/nulls, 6/14–14/14 record presence, and adjacent scientific caveats. Five frames and a 52-check strict-headless trace passed final scientific/copy review and unlocked TASK-082.
 - TASK-080 is done. The handoff is intrinsic-width, all six controls remain visible in complete portrait/landscape layouts, temporary copy is gone, and expanded landscape legend/header/control chrome no longer overlaps. Seven frames and a 68-check strict-headless matrix include a DPR-1 640x400 CSS reflow case; final independent review passed and unlocked TASK-081.
 - TASK-079 is done. Contextual Back and terminal Close now have deterministic URL/history/focus behavior; five screenshots and a strict-headless 21-check matrix cover root, child, Back, Close, and collapsed mobile behavior. Final independent review passed without findings and unlocked TASK-080.
 - Owner approved TASK-078's UX contract and planning dates. TASK-078 moved in-review -> done and unlocked TASK-079; no production code or data changed in the approval update.
 
-## Next Build Step
+## Completed Explorer UX Scope And Contract
 
-The 2026-07-17 plan preserves the accepted app and changes only six bounded surfaces: shared contextual Back/terminal Close, dismissal `replaceState`, intrinsic **Explore the map** CTA, complete portrait/landscape control layouts, removal of temporary review copy, and an existing-data regional summary before the optional score. The exact state, responsive, TDD, evidence, and commit contract is in the one batch plan. Use existing context files; do not create tracked per-task Markdown.
+The completed Explorer UX work preserved the accepted app and changed only six bounded surfaces: shared contextual Back/terminal Close, dismissal `replaceState`, intrinsic **Explore the map** CTA, complete portrait/landscape control layouts, removal of temporary review copy, and an existing-data regional summary before the optional score. The exact state, responsive, TDD, evidence, and commit contract remains in the one batch plan. Existing context files hold the durable record; no tracked per-task Markdown was added.
 
-The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, palette, typography, map, evidence marks, methods/sources, and guided story remain protected. TASK-082 must verify map -> movement -> visibility -> map continuity plus the new panel state matrix, all six primary mobile actions, copied child URLs, Back/Forward after dismissal, place evidence, seven viewports, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only. Browser inspection must remain quiet/headless or in-app; never foreground external Brave/Chrome tabs.
+The fullscreen composition, native scrolling, one scene observer, 22 equal-presence marks, palette, typography, map, evidence marks, methods/sources, and guided story remain protected. TASK-082 verified map -> movement -> visibility -> map continuity plus the panel state matrix, all six primary mobile actions, copied child URLs, Back/Forward after dismissal, place evidence, seven viewports, zoom, reduced motion, and offline/error states. JSD remains selected-place panel evidence only. Any later browser inspection must remain quiet/headless or in-app; never foreground external Brave/Chrome tabs.
 
 ## 2026-07-17
 

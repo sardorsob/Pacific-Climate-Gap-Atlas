@@ -1,0 +1,158 @@
+{
+  "task": "TASK-082",
+  "tested_from_head": "d12d378",
+  "reviewed_commits": {
+    "TASK-079": "5bb0107",
+    "TASK-080": "eadc94e",
+    "TASK-081": "c086442",
+    "TASK-083": "1dcb39f",
+    "TASK-084": "3a0ba3b",
+    "TASK-085": "d12d378"
+  },
+  "method": {
+    "runner": "Playwright",
+    "browser": "Brave",
+    "headless": true,
+    "quiet": true,
+    "rendering": "SwiftShader",
+    "base_url": "http://127.0.0.1:5174/",
+    "final_uninterrupted_result": "164/164 assertions passed",
+    "console_policy": "Zero page errors and zero non-favicon failed responses; the known empty favicon request is excluded."
+  },
+  "automated_gates": {
+    "python_tests": { "command": "python -m unittest discover -s tests -t . -v", "exit": 0, "result": "96/96; Ran 96 tests in 3.262s; OK" },
+    "data_contracts": { "command": "python scripts/validate_data_contracts.py", "exit": 0, "result": "PASS app data contracts" },
+    "required_artifacts": { "command": "python scripts/check_required_artifacts.py", "exit": 0, "result": "78 paths" },
+    "task_statuses": { "command": "python scripts/validate_task_statuses.py", "exit": 0, "result": "86 statuses" },
+    "secrets": { "command": "python scripts/check_secrets.py", "exit": 0, "result": "pass" },
+    "ruff": {
+      "command": "ruff check analysis scripts tests",
+      "exit": 1,
+      "findings": 96,
+      "breakdown": { "E501": 60, "I001": 30, "B007": 2, "UP038": 2, "UP035": 1, "B905": 1 },
+      "fixable": 32,
+      "unsafe_fixes_available": 4,
+      "owner": "TASK-057"
+    },
+    "compileall": { "command": "python -m compileall -q analysis scripts tests", "exit": 0, "result": "no output" },
+    "frontend_tests": { "command": "npm --prefix app run test", "exit": 0, "result": "80/80 across 17 files" },
+    "build": {
+      "command": "npm --prefix app run build",
+      "exit": 0,
+      "modules": 1605,
+      "advisory": "Some chunks are larger than 500 kB after minification; Vite suggests dynamic import, manualChunks, or chunkSizeWarningLimit."
+    },
+    "bundle_budget": {
+      "command": "python scripts/check_app_bundle_budget.py",
+      "exit": 0,
+      "javascript": { "bytes": 1031807, "limit": 1050000 },
+      "css": { "bytes": 94920, "limit": 95000 }
+    },
+    "semgrep": {
+      "command": "semgrep scan --config auto",
+      "exit": 0,
+      "targets": 230,
+      "rules": 504,
+      "findings": [
+        { "rule": "dynamic-urllib-use-detected", "path": "analysis/io/sdmx.py", "line": 35 },
+        { "rule": "dynamic-urllib-use-detected", "path": "scripts/build_land_context.py", "line": 150 }
+      ],
+      "owner": "TASK-057"
+    },
+    "osv": {
+      "command": "osv-scanner scan source -r .",
+      "exit": 1,
+      "lockfile": "app/package-lock.json",
+      "dependency_scope": "The vulnerable vite 5.4.21 and esbuild 0.21.5 copies are transitive under vitest 2.1.9 and vite-node; the top-level production build uses vite 6.4.3 and esbuild 0.25.12.",
+      "findings": [
+        { "package": "esbuild", "current": "0.21.5", "fixed": "0.25.0", "id": "GHSA-67mh-4wv8-2f99", "severity": "medium", "cvss": 5.3 },
+        { "package": "vite", "current": "5.4.21", "fixed": "6.4.2", "id": "GHSA-4w7w-66w2-5vf9", "severity": "medium", "cvss": 6.3 },
+        { "package": "vite", "current": "5.4.21", "fixed": "6.4.3", "id": "GHSA-fx2h-pf6j-xcff", "severity": "high", "cvss": 8.2 },
+        { "package": "vite", "current": "5.4.21", "fixed": "6.4.3", "id": "GHSA-v6wh-96g9-6wx3", "severity": "medium", "cvss": 5.5 },
+        { "package": "vitest", "current": "2.1.9", "fixed": "3.2.6", "id": "GHSA-5xrq-8626-4rwp", "severity": "critical", "cvss": 9.8 }
+      ],
+      "owner": "TASK-057"
+    },
+    "diff_check": { "command": "git diff --check", "exit": 0, "result": "pass" }
+  },
+  "state_history": [
+    { "path": "overview -> place -> Close", "result": "selection clears; overview remains", "terminal_url": "/?mode=explore&view=overview" },
+    { "path": "pressure score -> place -> Close", "result": "selection clears; pressure remains", "terminal_url": "/?mode=explore&layer=pressure&view=default" },
+    { "path": "coverage root -> Close", "result": "neutral overview", "terminal_url": "/?mode=explore&view=overview" },
+    { "path": "coverage root -> PN -> Back", "result": "exact coverage parent; Close focused", "terminal_url": "/?mode=explore&view=coverage" },
+    { "path": "coverage child -> Close", "result": "neutral overview; coverage control focused", "terminal_url": "/?mode=explore&view=overview" },
+    { "path": "rank root -> Close", "result": "neutral overview", "terminal_url": "/?mode=explore&view=overview" },
+    { "path": "rank root -> MH -> Back", "result": "exact rank parent; Close focused", "terminal_url": "/?mode=explore&view=uncertainty" },
+    { "path": "rank child -> Close", "result": "neutral overview; rank control focused", "terminal_url": "/?mode=explore&view=overview" },
+    { "path": "copied coverage/PG child -> reload -> Back", "result": "exact coverage parent without error", "terminal_url": "/?mode=explore&view=coverage" },
+    { "path": "pressure -> PG -> browser Back -> Forward", "result": "deterministic parent/child restoration; no loop", "child_url": "/?mode=explore&layer=pressure&view=default&place=PG" },
+    { "path": "rapid sheet toggles -> Back -> Close", "repetitions": 2, "result": "deterministic neutral overview" }
+  ],
+  "viewport_matrix": [
+    { "viewport": "1440x900", "document": "1440/1440", "controls": "250/250", "panel": "399/399", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "1280x800", "document": "1280/1280", "controls": "250/250", "panel": "399/399", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "1024x768", "document": "1024/1024", "controls": "250/250", "panel": "399/399", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "430x932", "document": "430/430", "controls": "408/408", "panel": "430/430", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "390x844", "document": "390/390", "controls": "368/368", "panel": "390/390", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "360x800", "document": "360/360", "controls": "338/338", "panel": "360/360", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" },
+    { "viewport": "844x390", "document": "844/844", "controls": "822/822", "panel": "844/844", "visible_controls": 6, "min_target_px": 44, "handoff_px": "117.47x44" }
+  ],
+  "screenshots": {
+    "count": 43,
+    "core_matrix": {
+      "path_contract": "artifacts/design/task-082/{state}-{viewport}.png",
+      "states": ["handoff", "explore", "coverage-root", "coverage-child", "place"],
+      "viewports": ["1440x900", "1280x800", "1024x768", "430x932", "390x844", "360x800", "844x390"]
+    },
+    "supplements": [
+      "artifacts/design/task-082/rank-root-844x390.png",
+      "artifacts/design/task-082/rank-child-844x390.png",
+      "artifacts/design/task-082/methods-844x390.png",
+      "artifacts/design/task-082/legend-panel-landscape-844x390.png",
+      "artifacts/design/task-082/reflow-200pct-640x400.png",
+      "artifacts/design/task-082/movement-reduced-motion-390x844.png",
+      "artifacts/design/task-082/coverage-deuteranopia-390x844.png",
+      "artifacts/design/task-082/generated-data-error-1024x768.png"
+    ]
+  },
+  "accessibility_and_failure": {
+    "focus": "Visible 3px solid outline; DOM order is 22 map marks, Guided/Methods, three scores, then three evidence views; panel Back/Close and Methods focus restoration pass.",
+    "landscape_overlap_area_px": 0,
+    "reflow_200_percent": { "method": "DPR 1 at 640x400 CSS pixels", "document": "640/640", "panel": "640/640" },
+    "reduced_motion": { "story_content": "0s/none", "regional_evidence": "0s/none", "progress_dot": "0s/none" },
+    "deuteranopia": "Solid, open-dash, and broken-dot edges retain geometry plus text labels.",
+    "generated_data_error": { "role": "alert", "text": "Could not load the generated app data. Failed to fetch" },
+    "methods": "Dialog reachable; focus enters Close; Escape closes; trigger focus restored."
+  },
+  "evidence_trace": {
+    "source": "app/public/data/geographies.json regional_story -> app/src/data/atlasData.ts -> selected-place Regional record",
+    "records": {
+      "PG": { "water": [18.49, 2000, 2022], "renewable": [-15.60, 2000, 2022], "represented": 14 },
+      "WS": { "water": [11.98, 2000, 2022], "renewable": [-27.94, 2000, 2022], "represented": 14 },
+      "FM": { "water": [-0.98, 2000, 2020], "renewable": [0.78, 2000, 2022], "represented": 14 },
+      "MH": { "water": [-3.79, 2001, 2022], "renewable": [-7.89, 2000, 2022], "represented": 14 },
+      "GU": { "water": null, "renewable": [6.11, 2000, 2022], "represented": 11 },
+      "PN": { "water": null, "renewable": null, "represented": 6 },
+      "TK": { "water": null, "renewable": null, "represented": 10 },
+      "NR": { "water": [1.92, 2000, 2020], "renewable": [1.75, 2000, 2022], "represented": 13 }
+    },
+    "rendered_result": "Exact signed percentage-point values, separate clocks, null language, and 14-position counts match.",
+    "claim_boundary": "Adjacent copy is descriptive/non-causal and says presence does not establish quality, completeness, preparedness, vulnerability, need, conditions, or local knowledge."
+  },
+  "continuity": { "sequence": ["map premise", "different directions", "unequal visibility", "neutral Explore map"], "result": "pass" },
+  "cold_reader": {
+    "result": "The handoff invites place-by-place inspection of data, sources, and gaps; the local record carries signed water/renewable changes, years, and represented-dataset count into the place panel.",
+    "acceptable_paraphrase_supported": true,
+    "misleading_inference_found": false
+  },
+  "returned_defects": [
+    { "task": "TASK-083", "finding": "Two test-only non-literal App regular expressions", "result": "independently reviewed done" },
+    { "task": "TASK-084", "finding": "One test-only non-literal controls regular expression", "result": "independently reviewed done" },
+    { "task": "TASK-085", "finding": "Reduced-motion progress transition lost to later cascade order", "result": "independently reviewed done; full matrix restarted" }
+  ],
+  "task_057_relationship": "TASK-057 remains needs-fix for the 96 Ruff findings, two trusted-local-script Semgrep findings, five development-tool OSV findings, and build chunk advisory. TASK-082 does not resolve or waive them.",
+  "owner_gate": "pending owner review",
+  "task_status": "in-review",
+  "release_claim": false,
+  "deployment_claim": false
+}

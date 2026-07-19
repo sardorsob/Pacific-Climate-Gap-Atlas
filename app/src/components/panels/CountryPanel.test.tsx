@@ -3,6 +3,14 @@ import { describe, expect, it } from "vitest";
 import type { Geo } from "../../lib/atlasData";
 import { CountryPanel } from "./CountryPanel";
 
+const visibility = (represented: number) => Array.from({ length: 14 }, (_, index) => ({
+  featureId: `feature-${String(index + 1).padStart(2, "0")}`,
+  label: `Reviewed dataset ${index + 1}`,
+  role: "reporting_presence",
+  present: index < represented,
+  latestYear: index < represented ? 2022 : null,
+}));
+
 const geo = {
   code: "NR",
   name: "Nauru",
@@ -18,11 +26,11 @@ const geo = {
   traceCount: 9,
   scoreInputPresence: [],
   regionalStory: {
-    water: { firstYear: null, latestYear: null, changePercentagePoints: null },
-    renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
-    completeOverlap: false,
-    quadrant: "missing_overlap",
-    visibility: [],
+    water: { firstYear: 2000, latestYear: 2020, changePercentagePoints: 1.92 },
+    renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 1.75 },
+    completeOverlap: true,
+    quadrant: "both_up",
+    visibility: visibility(13),
   },
   reportingStatus: "reported_zero_latest_count",
   monitoringCount: 0,
@@ -81,5 +89,132 @@ describe("CountryPanel", () => {
     expect(html).toContain("<strong>8</strong> of 8 possible score inputs are present.");
     expect(html).toContain("1 context-only dataset");
     expect(html).not.toContain("of 9 indicators feed this score");
+  });
+
+  it("puts the regional record before the optional score with separate measure clocks", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+    );
+
+    expect(html).toContain("Regional record");
+    expect(html).toContain("Drinking water");
+    expect(html).toContain("+1.92 percentage points");
+    expect(html).toContain("2000 to 2020");
+    expect(html).toContain("Renewable energy share");
+    expect(html).toContain("+1.75 percentage points");
+    expect(html).toContain("2000 to 2022");
+    expect(html).toContain("13 of 14 reviewed datasets represented");
+    expect(html.indexOf("Regional record")).toBeLessThan(html.indexOf("/100 gap"));
+  });
+
+  it("preserves positive and negative signs for a complete cross-current", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={{
+          ...geo,
+          code: "PG",
+          name: "Papua New Guinea",
+          regionalStory: {
+            water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 18.49 },
+            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -15.6 },
+            completeOverlap: true,
+            quadrant: "water_up_renewable_down",
+            visibility: visibility(14),
+          },
+        }}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html).toContain("+18.49 percentage points");
+    expect(html).toContain("−15.60 percentage points");
+    expect(html).toContain("14 of 14 reviewed datasets represented");
+  });
+
+  it("keeps null comparisons unavailable and never presents their years or zero", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={{
+          ...geo,
+          code: "GU",
+          name: "Guam",
+          regionalStory: {
+            water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 6.11 },
+            completeOverlap: false,
+            quadrant: "missing_overlap",
+            visibility: visibility(11),
+          },
+        }}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html).toContain("Unavailable for a comparable period in the reviewed regional series");
+    expect(html).toContain("+6.11 percentage points");
+    expect(html).toContain("11 of 14 reviewed datasets represented");
+    expect(html).not.toContain("null");
+  });
+
+  it("shows the observed six-of-fourteen visibility minimum", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={{
+          ...geo,
+          code: "PN",
+          name: "Pitcairn",
+          regionalStory: {
+            water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+            renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
+            completeOverlap: false,
+            quadrant: "missing_overlap",
+            visibility: visibility(6),
+          },
+        }}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html).toContain("6 of 14 reviewed datasets represented");
+    expect(html.match(/Unavailable for a comparable period in the reviewed regional series/g) ?? []).toHaveLength(2);
+  });
+
+  it("formats both zero and negative zero as unsigned zero", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={{
+          ...geo,
+          regionalStory: {
+            water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 0 },
+            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -0 },
+            completeOverlap: true,
+            quadrant: "both_up",
+            visibility: visibility(14),
+          },
+        }}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html.match(/0.00 percentage points/g) ?? []).toHaveLength(2);
+    expect(html).not.toContain("+0.00 percentage points");
+    expect(html).not.toContain("−0.00 percentage points");
+  });
+
+  it("keeps the interpretation limits adjacent to the regional values", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+    );
+    const record = html.slice(html.indexOf("Regional record"), html.indexOf("score-block"));
+
+    expect(record).toContain("measures can use different clocks");
+    expect(record).toContain("descriptive and non-causal");
+    expect(record).toContain("quality");
+    expect(record).toContain("completeness");
+    expect(record).toContain("preparedness");
+    expect(record).toContain("vulnerability");
+    expect(record).toContain("need");
+    expect(record).toContain("condition");
+    expect(record).toContain("local knowledge");
   });
 });

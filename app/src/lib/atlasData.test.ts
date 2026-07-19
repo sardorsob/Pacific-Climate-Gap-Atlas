@@ -6,7 +6,11 @@ describe("atlas data adapter", () => {
   it("adapts the generated regional story contract", () => {
     const geos = adaptGeographiesPayload(generatedGeographies);
     const papuaNewGuinea = geos.find((geo) => geo.code === "PG")!;
+    const federatedStates = geos.find((geo) => geo.code === "FM")!;
+    const marshallIslands = geos.find((geo) => geo.code === "MH")!;
     const guam = geos.find((geo) => geo.code === "GU")!;
+    const pitcairn = geos.find((geo) => geo.code === "PN")!;
+    const nauru = geos.find((geo) => geo.code === "NR")!;
 
     expect(geos).toHaveLength(22);
     expect(geos.filter((geo) => geo.regionalStory.completeOverlap)).toHaveLength(19);
@@ -21,7 +25,21 @@ describe("atlas data adapter", () => {
       latestYear: null,
       changePercentagePoints: null,
     });
+    expect(federatedStates.regionalStory).toMatchObject({
+      water: { firstYear: 2000, latestYear: 2020, changePercentagePoints: -0.98 },
+      renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 0.78 },
+    });
+    expect(marshallIslands.regionalStory).toMatchObject({
+      water: { firstYear: 2001, latestYear: 2022, changePercentagePoints: -3.79 },
+      renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -7.89 },
+    });
+    expect(nauru.regionalStory).toMatchObject({
+      water: { firstYear: 2000, latestYear: 2020, changePercentagePoints: 1.92 },
+      renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 1.75 },
+    });
     expect(geos.every((geo) => geo.regionalStory.visibility.length === 14)).toBe(true);
+    expect(pitcairn.regionalStory.visibility.filter((position) => position.present)).toHaveLength(6);
+    expect(papuaNewGuinea.regionalStory.visibility.filter((position) => position.present)).toHaveLength(14);
     expect(
       geos.flatMap((geo) => geo.regionalStory.visibility)
         .filter((position) => position.present),

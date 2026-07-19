@@ -9,6 +9,58 @@ type CountryPanelProps = {
   onOpenMethod: () => void;
 };
 
+function signedPercentagePoints(value: number): string {
+  if (Object.is(value, -0) || value === 0) return "0.00 percentage points";
+  return `${value > 0 ? "+" : "−"}${Math.abs(value).toFixed(2)} percentage points`;
+}
+
+function RegionalMeasure({
+  label,
+  measure,
+}: {
+  label: string;
+  measure: Geo["regionalStory"]["water"];
+}) {
+  if (measure.changePercentagePoints === null) {
+    return (
+      <p className="panel__evidence">
+        <strong>{label}:</strong> Unavailable for a comparable period in the reviewed regional series
+      </p>
+    );
+  }
+
+  const years = measure.firstYear !== null && measure.latestYear !== null
+    ? `${measure.firstYear} to ${measure.latestYear}`
+    : null;
+  return (
+    <p className="panel__evidence">
+      <strong>{label}:</strong> {signedPercentagePoints(measure.changePercentagePoints)}
+      {years && <> · <small>{years}</small></>}
+    </p>
+  );
+}
+
+function RegionalRecordSummary({ geo }: { geo: Geo }) {
+  const represented = geo.regionalStory.visibility.filter((position) => position.present).length;
+  return (
+    <section className="panel__group" aria-labelledby="regional-record-heading">
+      <h2 className="panel__h" id="regional-record-heading">Regional record</h2>
+      <RegionalMeasure label="Drinking water" measure={geo.regionalStory.water} />
+      <RegionalMeasure label="Renewable energy share" measure={geo.regionalStory.renewable} />
+      <p className="panel__evidence">
+        <strong>{represented} of 14 reviewed datasets represented.</strong>
+      </p>
+      <div className="reporting reporting--warn">
+        <p className="reporting__caveat">
+          These measures can use different clocks. This comparison is descriptive and non-causal.
+          Dataset presence does not establish quality, completeness, preparedness, vulnerability,
+          need, conditions, or local knowledge.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function EvidenceStrip({ geo, tone }: { geo: Geo; tone: string }) {
   const monShort =
     geo.reportingStatus === "reported_positive_latest_count"
@@ -91,6 +143,8 @@ export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
       </div>
 
       <p className="panel__story">{geo.storyLabel}</p>
+
+      <RegionalRecordSummary geo={geo} />
 
       <div className="score-block">
         <div className="score-block__num">

@@ -1,0 +1,76 @@
+{
+  "task": "TASK-081",
+  "baseline_commit": "eadc94e6cbdf88d5909c31607a2e61ead75127f6",
+  "tested_worktree": "TASK-081 diff before its single commit",
+  "method": {
+    "runner": "Playwright",
+    "browser": "Brave",
+    "headless": true,
+    "quiet": true,
+    "base_url": "http://127.0.0.1:5175",
+    "rendering": "SwiftShader",
+    "console_policy": "No page errors or non-favicon failed responses."
+  },
+  "source_trace": {
+    "source": "app/public/data/geographies.json nested regional_story",
+    "rendered_records": {
+      "PG": { "water": [18.49, 2000, 2022], "renewable": [-15.60, 2000, 2022], "represented": 14 },
+      "FM": { "water": [-0.98, 2000, 2020], "renewable": [0.78, 2000, 2022], "represented": 14 },
+      "MH": { "water": [-3.79, 2001, 2022], "renewable": [-7.89, 2000, 2022], "represented": 14 },
+      "GU": { "water": null, "renewable": [6.11, 2000, 2022], "represented": 11 },
+      "PN": { "water": null, "renewable": null, "represented": 6 },
+      "NR": { "water": [1.92, 2000, 2020], "renewable": [1.75, 2000, 2022], "represented": 13 }
+    },
+    "null_rendering": "Unavailable for a comparable period in the reviewed regional series",
+    "zero_rendering": "Synthetic 0 and -0 fixture both render as 0.00 percentage points."
+  },
+  "viewports": [
+    { "width": 1440, "height": 900 },
+    { "width": 390, "height": 844 },
+    { "width": 844, "height": 390 },
+    { "width": 640, "height": 400, "device_scale_factor": 1, "purpose": "deterministic 1280x800 at 200 percent CSS reflow equivalent" }
+  ],
+  "screenshots": [
+    "artifacts/design/task-081/panel-complete-max-desktop-1440x900.png",
+    "artifacts/design/task-081/panel-min-collapsed-portrait-390x844.png",
+    "artifacts/design/task-081/panel-min-expanded-portrait-390x844.png",
+    "artifacts/design/task-081/panel-incomplete-landscape-844x390.png",
+    "artifacts/design/task-081/panel-reflow-200pct-640x400.png"
+  ],
+  "results": {
+    "passed_checks": 52,
+    "rendered_trace": "PG, FM, MH, GU, PN, and NR values, signs, independent years, nulls, and represented counts match generated JSON.",
+    "reading_order": "Regional record is the third panel child and precedes the optional score block for every traced place.",
+    "caveat_rendering": "These measures can use different clocks. This comparison is descriptive and non-causal. Dataset presence does not establish quality, completeness, preparedness, vulnerability, need, conditions, or local knowledge.",
+    "semantic_structure": "The regional summary is one labelled section with an h2; measures and adjacent caveat remain ordinary screen-reader text.",
+    "keyboard_order": "Close moves to the existing official-trace summary and then Methodology & sources; the new summary introduces no focus trap.",
+    "portrait_sheet": "390x844 begins collapsed, expands and collapses again; Toggle and Close each measure at least 44px high.",
+    "landscape_sheet": "844x390 expands; the complete regional section is visible inside panel bounds without document overflow.",
+    "reflow_200_percent": {
+      "method": "1280x800 at 200 percent is represented by a 640x400 CSS viewport at DPR 1.",
+      "document_client_width": 640,
+      "document_scroll_width": 640,
+      "panel_client_width": 640,
+      "panel_scroll_width": 640
+    },
+    "console_errors": 0
+  },
+  "automated_gates": {
+    "focused_frontend_tests": "13/13 pass",
+    "full_frontend_tests": "79/79 pass",
+    "production_build": "pass",
+    "data_contracts": "pass",
+    "bundle_budget": {
+      "css_bytes": 94920,
+      "css_limit": 95000,
+      "js_bytes": 1031807,
+      "js_limit": 1050000
+    },
+    "required_artifacts": "78 paths pass",
+    "task_statuses": "83 statuses pass",
+    "json": "pass",
+    "secrets": "pass",
+    "whitespace": "pass"
+  },
+  "review_gate": "Builder evidence complete; independent scientific/copy review remains required."
+}

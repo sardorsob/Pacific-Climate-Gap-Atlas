@@ -1945,6 +1945,29 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Attempt log: 2026-07-18: TASK-082 returned the scanner finding and TASK-084 was created at pending, then moved pending -> in-progress for a test-first repair. The verified one-finding Semgrep RED led to the smallest literal-marker extraction with no production or dependency change. Focused/full tests, build, budget, 85-status, secret, whitespace, and official focused/full Semgrep gates passed; TASK-084 moved in-progress -> in-review. Independent read-only review found no issues, passed specification compliance and task quality, and moved TASK-084 in-review -> done.
 - Status: done
 
+## TASK-085
+- Phase: ux-release-qa-fix
+- Title: Restore the reduced-motion override order for story progress
+- Depends on: TASK-080; defect returned by the TASK-082 release gate
+- Assigned agent: Accessibility Fix Builder; independent accessibility reviewer
+- Contract refs: context/AGENTS.md, context/DESIGN_BRIEF.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: none; CSS cascade repair
+- Scientific refs: none; no data or claim changes
+- User value / decision value: Ensures readers who request reduced motion receive the complete static story promised by the accepted visual and accessibility contract.
+- Functional notes: Move the existing shared reduced-motion media block after every story/progress transition declaration so its equal-specificity `.scene-progress__dot` override wins the cascade. Preserve every selector and declaration, ordinary-motion timing, the separate regional-evidence override, production structure, dependencies, and TASK-080 behavior. Do not duplicate selectors or add `!important`.
+- Statistical notes: No data, score, claim, or rendered-copy changes.
+- Edge cases: Reduced versus ordinary motion; panel dock, controls, story content, regional evidence, and progress dot; narrow 390x844 Explorer/story states; later equal-specificity transition declarations; source-order mutation.
+- Files to create/modify: app/src/styles/base.css; app/src/components/story/StoryScrolly.test.tsx; context/TASKS.md
+- Artifacts to produce: Focused source-order regression and strict-headless computed-style evidence recorded in this task ledger; no new visual artifact
+- Acceptance criteria: At 390x844 with `prefers-reduced-motion: reduce`, all relevant transition durations compute to 0s for panel dock, controls, story content, regional evidence, and progress dot; ordinary-motion timings remain present; the source-order test fails if the shared override moves before the progress-dot transition; focused and full frontend tests, build, bundle budget, 86 task statuses, secret, whitespace, and strict-headless gates pass; TASK-080 remains unchanged.
+- Verification commands: npm --prefix app run test -- StoryScrolly.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check; strict-headless 390x844 reduced/no-preference computed-style checks
+- Manual QA: In a quiet headless browser at 390x844, compare reduced and no-preference computed transition durations for panel dock, controls, story content, regional evidence, and the progress dot; confirm all motion collapses only under the reduced preference.
+- QA notes: TASK-082 reproduced the cascade defect at 390x844: story content and regional evidence computed to 0s, while the progress dot retained `0.22s, 0.22s` because its later equal-specificity transition rule followed the shared reduced-motion block. The focused source-order test failed first and passes after moving that existing block intact. Focused 6/6 and full 80/80 frontend tests pass; production build and bundle budget pass at 1,031,807-byte JS and 94,920-byte CSS; the 86-status, secret, and whitespace gates pass. Strict-headless Brave at 390x844 computes panel dock, controls, story content, regional evidence marks, and progress dots to `0s` under reduced motion, while ordinary motion remains `0.25s`, `0.25s`, `0.22s, 0.22s`, `0.56s, 0.56s`, and `0.22s, 0.22s`, respectively. Independent accessibility and Ponytail review found no correctness, accessibility, scope, or over-engineering issue; it independently reran the focused/full, build, budget, status, secret, and whitespace gates and confirmed the exact CSS move, ordinary-motion preservation, regression strength, clean commit boundary, and author-only history.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-18: TASK-082 returned the reduced-motion defect and TASK-085 was created at pending, then moved pending -> in-progress for a test-first source-order repair. The strict-headless RED isolated the progress dot, and the focused source-order RED protected the same cascade boundary. Builder moved the existing shared block after all story/progress transitions without changing its selectors or declarations; focused/full, build, budget, status, secret, whitespace, and reduced/no-preference headless gates passed, and TASK-085 moved in-progress -> in-review. Independent accessibility and Ponytail review found no issue, passed specification compliance and task quality, and moved TASK-085 in-review -> done.
+- Status: done
+
 ## TASK-082
 - Phase: ux-release-qa
 - Title: Verify the Explorer UX revision across state, responsive, accessibility, evidence, and release gates

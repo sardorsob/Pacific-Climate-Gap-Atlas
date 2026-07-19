@@ -1,7 +1,10 @@
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { SCENES } from "../../lib/scenes";
 import { isStoryNavigationControl, StoryScrolly } from "./StoryScrolly";
+
+const styles = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 
 const props = {
   scenes: SCENES,
@@ -59,5 +62,25 @@ describe("fullscreen story shell", () => {
 
     expect(isStoryNavigationControl(control)).toBe(true);
     expect(isStoryNavigationControl(section)).toBe(false);
+  });
+
+  it("keeps the reduced-motion override after story progress transitions", () => {
+    const progressTransition = styles.indexOf(
+      ".scene-progress__dot { width: 9px; height: 9px;",
+    );
+    const regionalEvidence = styles.indexOf(
+      "/* ---------- regional evidence field (TASK-075) ---------- */",
+    );
+    const reducedMotion = styles.indexOf(
+      "@media (prefers-reduced-motion: reduce) {",
+      progressTransition,
+    );
+
+    expect(progressTransition).toBeGreaterThan(-1);
+    expect(reducedMotion).toBeGreaterThan(progressTransition);
+    expect(regionalEvidence).toBeGreaterThan(reducedMotion);
+    expect(styles.slice(reducedMotion, regionalEvidence)).toContain(
+      ".scene-progress__dot { transition: none; }",
+    );
   });
 });

@@ -375,20 +375,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .legend-body { display: block !important; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .panel-dock, .dock--controls,
-  .map-a11y-point, .map-label__lead, .map-label__name, .map-label__tag,
-  .scene-progress__dot { transition: none; }
-  .story-scrolly__sections { scroll-behavior: auto; }
-  .evidence-mark, .evidence-mark *,
-  .story-scene, .story-scene *, .story-scrolly__top, .story-scrolly__top *,
-  .story-handoff, .story-handoff *, .maplibregl-canvas {
-    animation: none !important;
-    transition-duration: 0ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 /* ================= native document-scroll story ================= */
 .guided-atlas {
   position: relative;
@@ -479,6 +465,20 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .scene-progress__item[aria-current="step"] .scene-progress__dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(13, 104, 114, 0.2); }
 .scene-progress__item[aria-current="step"] { color: #f6f3eb; font-weight: 700; }
 .scene-progress__item span:last-child { font-size: 10.5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-dock, .dock--controls,
+  .map-a11y-point, .map-label__lead, .map-label__name, .map-label__tag,
+  .scene-progress__dot { transition: none; }
+  .story-scrolly__sections { scroll-behavior: auto; }
+  .evidence-mark, .evidence-mark *,
+  .story-scene, .story-scene *, .story-scrolly__top, .story-scrolly__top *,
+  .story-handoff, .story-handoff *, .maplibregl-canvas {
+    animation: none !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 .rank-examples { display: grid; gap: 7px; }
 .rank-example { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px; min-height: 38px; padding: 7px 10px; border: 1px solid var(--line); border-radius: var(--r-chip); background: var(--paper-2); cursor: pointer; text-align: left; }

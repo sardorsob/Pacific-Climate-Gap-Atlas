@@ -2,10 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-079 panel navigation/history is complete and independently approved. Implement TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. Do not deploy or submit while TASK-057 remains `needs-fix`.
+TASK-079 panel navigation/history and TASK-080 handoff/responsive controls are complete and independently approved. Implement TASK-081 place-level regional evidence and TASK-082 independent QA as separate commits. Do not deploy or submit while TASK-057 remains `needs-fix`.
 
 ## 2026-07-18
 
+- TASK-080 is done. The handoff is intrinsic-width, all six controls remain visible in complete portrait/landscape layouts, temporary copy is gone, and expanded landscape legend/header/control chrome no longer overlaps. Seven frames and a 68-check strict-headless matrix include a DPR-1 640x400 CSS reflow case; final independent review passed and unlocked TASK-081.
 - TASK-079 is done. Contextual Back and terminal Close now have deterministic URL/history/focus behavior; five screenshots and a strict-headless 21-check matrix cover root, child, Back, Close, and collapsed mobile behavior. Final independent review passed without findings and unlocked TASK-080.
 - Owner approved TASK-078's UX contract and planning dates. TASK-078 moved in-review -> done and unlocked TASK-079; no production code or data changed in the approval update.
 

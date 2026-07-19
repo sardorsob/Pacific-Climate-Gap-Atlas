@@ -142,8 +142,12 @@ export function StoryScrolly({
       >
         <p className="story-scene__eyebrow">Return to the Pacific</p>
         <p className="story-handoff__copy">{handoffCopy}</p>
-        <button type="button" className="ghost-btn ghost-btn--accent" onClick={onExplore}>
-          Explore freely
+        <button
+          type="button"
+          className="ghost-btn ghost-btn--accent story-handoff__action"
+          onClick={onExplore}
+        >
+          Explore the map
         </button>
       </section>
     </main>

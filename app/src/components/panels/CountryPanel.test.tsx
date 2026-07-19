@@ -45,6 +45,15 @@ const geo = {
 } satisfies Geo;
 
 describe("CountryPanel", () => {
+  it("keeps the empty panel free of temporary review copy", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={null} onOpenMethod={() => undefined} />,
+    );
+
+    expect(html).not.toContain("Concept for review");
+    expect(html).not.toContain("panel__hint");
+  });
+
   it("keeps the complete nearest-neighbor evidence in the panel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel

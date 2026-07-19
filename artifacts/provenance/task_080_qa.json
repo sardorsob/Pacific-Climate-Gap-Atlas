@@ -1,0 +1,81 @@
+{
+  "task": "TASK-080",
+  "baseline_commit": "5bb0107298d4e1cc79e0c05a17e0340d1b4066a2",
+  "tested_worktree": "TASK-080 diff before its single commit",
+  "method": {
+    "runner": "Playwright",
+    "browser": "Brave",
+    "headless": true,
+    "quiet": true,
+    "base_url": "http://127.0.0.1:5174",
+    "rendering": "SwiftShader",
+    "console_policy": "No page errors or non-favicon failed responses."
+  },
+  "viewports": [
+    { "width": 1440, "height": 900 },
+    { "width": 1024, "height": 768 },
+    { "width": 430, "height": 932 },
+    { "width": 390, "height": 844 },
+    { "width": 360, "height": 800 },
+    { "width": 844, "height": 390 },
+    { "width": 640, "height": 400, "device_scale_factor": 1, "purpose": "deterministic 1280x800 at 200 percent CSS reflow equivalent" }
+  ],
+  "screenshots": [
+    "artifacts/design/task-080/handoff-desktop-1440x900.png",
+    "artifacts/design/task-080/controls-desktop-1440x900.png",
+    "artifacts/design/task-080/controls-portrait-390x844.png",
+    "artifacts/design/task-080/controls-landscape-844x390.png",
+    "artifacts/design/task-080/legend-open-portrait-390x844.png",
+    "artifacts/design/task-080/legend-open-landscape-844x390.png",
+    "artifacts/design/task-080/controls-reflow-200pct-640x400.png"
+  ],
+  "results": {
+    "passed_checks": 68,
+    "handoff_action": { "label": "Explore the map", "width_px": 117.46875, "height_px": 44 },
+    "primary_actions": "All six actions are visible at every tested viewport; dock and control scrollWidth equal clientWidth.",
+    "minimum_target_height_px": 44,
+    "portrait_layout": "Two complete three-action rows at 430, 390, and 360 CSS pixels.",
+    "landscape_layout": "One complete six-action row at 844x390; the Explore header occupies the left half and the legend occupies the right half.",
+    "landscape_rectangles": {
+      "header": { "x": 10, "y": 10, "width": 407, "height": 145 },
+      "legend_toggle": { "x": 427, "y": 10, "width": 92.375, "height": 44 },
+      "legend_body_open": { "x": 427, "y": 62, "width": 407, "height": 136 },
+      "controls": { "x": 10, "y": 270, "width": 824, "height": 56 }
+    },
+    "reflow_200_percent": {
+      "method": "1280x800 at 200 percent is represented by a 640x400 CSS viewport at DPR 1.",
+      "inner_width": 640,
+      "inner_height": 400,
+      "document_client_width": 640,
+      "document_scroll_width": 640,
+      "controls_client_width": 618,
+      "controls_scroll_width": 618,
+      "minimum_target_height_px": 44,
+      "header": { "x": 10, "y": 10, "width": 305, "height": 158 },
+      "legend_toggle": { "x": 325, "y": 10, "width": 92.375, "height": 44 },
+      "legend_body_open": { "x": 325, "y": 62, "width": 305, "height": 148 },
+      "controls": { "x": 10, "y": 280, "width": 620, "height": 56 },
+      "pairwise_overlaps": 0
+    },
+    "panel": "The 390x844 evidence panel expands and collapses without hiding its navigation row.",
+    "legend": "Open portrait and landscape legend docks do not intersect the control dock.",
+    "keyboard_focus_outline_px": 3,
+    "reduced_motion_dock_transition": "0s",
+    "console_errors": 0
+  },
+  "automated_gates": {
+    "focused_frontend_tests": "20/20 pass",
+    "full_frontend_tests": "73/73 pass",
+    "production_build": "pass",
+    "bundle_budget": {
+      "css_bytes": 94920,
+      "css_limit": 95000,
+      "js_bytes": 1030258,
+      "js_limit": 1050000
+    },
+    "task_statuses": "83 statuses pass",
+    "secrets": "pass",
+    "whitespace": "pass"
+  },
+  "review_gate": "Builder evidence complete; independent accessibility review remains required."
+}

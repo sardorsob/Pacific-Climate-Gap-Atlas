@@ -68,7 +68,6 @@ export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
         <p className="panel__lede">
           Select a place to inspect its data, sources, gaps, and optional score evidence.
         </p>
-        <p className="panel__hint">Concept for review - not final, not approved.</p>
         <button type="button" className="link-btn" onClick={onOpenMethod}>
           Methodology &amp; sources
         </button>

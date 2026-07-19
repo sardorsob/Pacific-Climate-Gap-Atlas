@@ -421,7 +421,6 @@ export function App() {
               </button>
             </div>
           )}
-          <p className="map-header__concept">Concept for review - not final or approved.</p>
         </header>
 
         {controlsVisible && (

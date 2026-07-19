@@ -91,4 +91,9 @@ describe("regional story integration", () => {
     expect(appSource).not.toContain("Pacific Adaptation Gap Atlas");
     expect(documentShell).toContain("<title>Pacific Climate Evidence Atlas</title>");
   });
+
+  it("does not ship temporary review chrome", () => {
+    expect(appSource).not.toContain("Concept for review");
+    expect(appSource).not.toContain("map-header__concept");
+  });
 });

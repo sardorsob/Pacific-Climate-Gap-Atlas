@@ -45,6 +45,14 @@ describe("fullscreen story shell", () => {
     );
   });
 
+  it("hands the story off with a compact Explore the map action", () => {
+    const html = renderToStaticMarkup(<StoryScrolly {...props} index={3} />);
+    const action = html.match(/<button[^>]*story-handoff__action[^>]*>[\s\S]*?<\/button>/)?.[0] ?? "";
+
+    expect(action).toContain("Explore the map");
+    expect(action).not.toContain("Explore freely");
+  });
+
   it("identifies interactive controls that must keep their own key handling", () => {
     const control = { closest: () => ({}) } as unknown as EventTarget;
     const section = { closest: () => null } as unknown as EventTarget;

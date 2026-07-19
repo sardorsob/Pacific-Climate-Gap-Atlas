@@ -1,4 +1,3 @@
-import { EyeOff, Shuffle, TrendingUp } from "lucide-react";
 import type { AtlasLayer } from "../../lib/layers";
 import type { ScoreKey } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
@@ -51,35 +50,40 @@ export function LayerControls({
         }</p>
       </div>
 
-      <div className="controls__group">
-        <span className="controls__heading">Overlays</span>
-        <button
-          type="button"
-          className="controls__toggle"
-          aria-pressed={viewMode === "coverage"}
-          onClick={() => onViewMode(viewMode === "coverage" ? "overview" : "coverage")}
-        >
-          <EyeOff aria-hidden="true" size={16} />
-          Where the data goes quiet
-        </button>
-        <button
-          type="button"
-          className="controls__toggle"
-          aria-pressed={viewMode === "uncertainty"}
-          onClick={() => onViewMode(viewMode === "uncertainty" ? "overview" : "uncertainty")}
-        >
-          <Shuffle aria-hidden="true" size={16} />
-          Rank uncertainty
-        </button>
-        <button
-          type="button"
-          className="controls__toggle"
-          aria-pressed={outlookOn}
-          onClick={onToggleOutlook}
-        >
-          <TrendingUp aria-hidden="true" size={16} />
-          Outlook - stress test {outlookOn ? "(on)" : "(off)"}
-        </button>
+      <div className="controls__group" role="group" aria-label="Evidence views">
+        <span className="controls__heading">Evidence views</span>
+        <div className="controls__segment controls__segment--views">
+          <button
+            type="button"
+            className="controls__toggle"
+            aria-label="Data coverage: show where official records are missing or sparse"
+            title="Show where official records are missing or sparse."
+            aria-pressed={viewMode === "coverage"}
+            onClick={() => onViewMode(viewMode === "coverage" ? "overview" : "coverage")}
+          >
+            Data coverage
+          </button>
+          <button
+            type="button"
+            className="controls__toggle"
+            aria-label="Rank ranges: show uncertainty across valid indicator choices"
+            title="Show rank uncertainty across valid indicator choices."
+            aria-pressed={viewMode === "uncertainty"}
+            onClick={() => onViewMode(viewMode === "uncertainty" ? "overview" : "uncertainty")}
+          >
+            Rank ranges
+          </button>
+          <button
+            type="button"
+            className="controls__toggle"
+            aria-label="2030 stress test: explore a directional scenario, not a forecast"
+            title="Explore a directional 2030 stress test; this is not a forecast."
+            aria-pressed={outlookOn}
+            onClick={onToggleOutlook}
+          >
+            2030 stress test
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -9,9 +9,12 @@ const controlsSource = readFileSync(
 const documentShell = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 
 function sourceBlock(start: string, end: string) {
-  const match = appSource.match(new RegExp(`const ${start}[\\s\\S]*?(?=\\n  const ${end} =)`));
-  if (!match) throw new Error(`Could not find ${start} block`);
-  return match[0];
+  const startMarker = `const ${start} =`;
+  const endMarker = `\n  const ${end} =`;
+  const startIndex = appSource.indexOf(startMarker);
+  const endIndex = appSource.indexOf(endMarker, startIndex + startMarker.length);
+  if (startIndex < 0 || endIndex <= startIndex) throw new Error(`Could not find ${start} block`);
+  return appSource.slice(startIndex, endIndex);
 }
 
 describe("regional story integration", () => {

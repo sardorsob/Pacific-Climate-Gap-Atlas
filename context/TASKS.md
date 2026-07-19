@@ -1899,6 +1899,29 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Attempt log: Created by TASK-078. It follows the navigation/layout repair so the new section inherits the final shared panel shell and responsive contract. 2026-07-18: TASK-080 passed independent review and unlocked TASK-081; Builder moved TASK-081 pending -> in-progress for a test-first regional-record panel pass. Failing panel tests first covered signed values, separate clocks, nulls, visibility extremes, reading order, zero/negative-zero, and caveats. The smallest implementation reuses only `Geo.regionalStory` and existing panel classes; no stylesheet or data contract changed. Automated and strict-headless evidence passed, and TASK-081 moved in-progress -> in-review for independent scientific/copy review. Independent review passed specification compliance but moved TASK-081 in-review -> needs-fix for one overgeneralized clock sentence, an incomplete unsigned-zero assertion, and a redundant inline numeral style; Builder moved needs-fix -> in-progress for the bounded repair. The clock-copy test failed first, then the accurate conditional wording passed; the zero test now rejects both signs, the redundant style is deleted, fresh automated and 52/52 headless evidence pass, and TASK-081 moved in-progress -> in-review for independent re-review. Final independent re-review found no issues, passed specification compliance and task quality, and moved TASK-081 in-review -> done; TASK-082 is unlocked.
 - Status: done
 
+## TASK-083
+- Phase: ux-release-qa-fix
+- Title: Remove dynamic regular expression from App transition tests
+- Depends on: TASK-079; defect returned by the TASK-082 release gate
+- Assigned agent: Test Fix Builder; independent reviewer
+- Contract refs: context/AGENTS.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: none; test-only repair
+- Scientific refs: none; no data or claim changes
+- User value / decision value: Keeps the mutation-resistant transition tests while removing a release-scanner finding before the Explorer QA gate closes.
+- Functional notes: Replace the parameterized regular expression in the App source-block helper with deterministic literal-marker `indexOf`/`slice` bounds. Preserve exact handler fencing and explicit failure on missing or invalid markers. Do not change production code, TASK-079 behavior, dependencies, or TASK-080 through TASK-082 artifacts.
+- Statistical notes: No data, score, claim, or rendered-copy changes.
+- Edge cases: Missing start marker, missing end marker, invalid marker order, and exact separation between adjacent App handlers.
+- Files to create/modify: app/src/App.test.tsx; context/TASKS.md
+- Artifacts to produce: focused/full test and official Semgrep evidence recorded in this task ledger; no new visual artifact
+- Acceptance criteria: Official Semgrep auto rules report zero findings in `App.test.tsx`, down from the two findings returned by TASK-082; handler fencing remains intact; focused and full frontend tests, build, bundle budget, task-status, secret, and whitespace gates pass; no production file changes.
+- Verification commands: npm --prefix app run test -- App.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; semgrep scan --config auto app/src/App.test.tsx; semgrep scan --config auto; git diff --check
+- Manual QA: Inspect the helper bounds and the fenced `handleSelect`, `handleViewMode`, `returnToDiagnostic`, `dismissPanel`, and `panelContent` assertions; confirm the diff contains no production file.
+- QA notes: TASK-082 reproduced two `detect-non-literal-regexp` findings at the caller-parameterized `sourceBlock` helper. The smallest test-only repair uses deterministic literal markers with `indexOf`/`slice` and still throws when a marker is missing or the end bound is invalid. Focused App tests pass 10/10, the full frontend passes 79/79, build and bundle budgets pass at 1,031,807-byte JS and 94,920-byte CSS, and task-status, secret, and whitespace gates pass. Official Semgrep auto rules report zero findings in `App.test.tsx`; the full repository retains exactly three separately owned findings: two existing dynamic-URL audits and TASK-080's test-only dynamic regular expression. No production, data, design, or QA artifact changed. Independent review found no issues and passed specification compliance and task quality.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-18: TASK-082 returned the scanner finding and TASK-083 was created at pending, then moved pending -> in-progress for a test-first repair. The verified two-finding Semgrep RED led to one literal-marker helper with no abstraction or dependency. Focused/full tests, build, budget, task-status, secret, whitespace, and official Semgrep gates passed; TASK-083 moved in-progress -> in-review for independent review. Independent review found no issues, passed specification compliance and task quality, and moved TASK-083 in-review -> done.
+- Status: done
+
 ## TASK-082
 - Phase: ux-release-qa
 - Title: Verify the Explorer UX revision across state, responsive, accessibility, evidence, and release gates

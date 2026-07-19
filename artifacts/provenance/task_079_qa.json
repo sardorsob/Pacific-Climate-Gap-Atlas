@@ -1,0 +1,31 @@
+{
+  "task": "TASK-079",
+  "behavior_tested_from_commit": "1100d8f4533a151462fb08c62a9b0c81aa15f757",
+  "method": {
+    "runner": "Playwright",
+    "browser": "Brave",
+    "headless": true,
+    "quiet": true,
+    "base_url": "http://127.0.0.1:5173",
+    "console_policy": "No console errors after excluding the pre-existing favicon.ico 404."
+  },
+  "viewports": [
+    { "width": 1280, "height": 800 },
+    { "width": 390, "height": 844 }
+  ],
+  "screenshots": [
+    "artifacts/design/task-079/coverage-root.png",
+    "artifacts/design/task-079/coverage-child.png",
+    "artifacts/design/task-079/coverage-back-root.png",
+    "artifacts/design/task-079/mobile-collapsed-child.png",
+    "artifacts/design/task-079/coverage-close-overview.png"
+  ],
+  "results": {
+    "passed_checks": 21,
+    "ordinary_selection_close_history": "push selection; Close replaces the detail entry; browser Back does not reopen the place.",
+    "coverage_and_rank_history": "diagnostic child replaces its root; Back restores the parent; Close reaches overview; browser Back skips dismissed coverage.",
+    "terminal_overview": "Desktop diagnostic Close screenshot confirms the overview terminal state with no panel dock.",
+    "focus": "ordinary Close returns focus to the selected map control; coverage Back focuses Close.",
+    "mobile": "copied coverage child starts collapsed; Back, Toggle, and Close are visible 44px targets; expand and Back restore the expanded coverage parent."
+  }
+}

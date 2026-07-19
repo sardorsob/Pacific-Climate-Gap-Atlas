@@ -2,10 +2,11 @@
 
 ## Immediate Next Step
 
-Implement TASK-079 panel navigation/history, TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. TASK-078 is owner-approved and done. Do not deploy or submit while TASK-057 remains `needs-fix`.
+TASK-079 panel navigation/history is complete and independently approved. Implement TASK-080 handoff/responsive controls, TASK-081 place-level regional evidence, and TASK-082 independent QA as separate commits. Do not deploy or submit while TASK-057 remains `needs-fix`.
 
 ## 2026-07-18
 
+- TASK-079 is done. Contextual Back and terminal Close now have deterministic URL/history/focus behavior; five screenshots and a strict-headless 21-check matrix cover root, child, Back, Close, and collapsed mobile behavior. Final independent review passed without findings and unlocked TASK-080.
 - Owner approved TASK-078's UX contract and planning dates. TASK-078 moved in-review -> done and unlocked TASK-079; no production code or data changed in the approval update.
 
 ## Next Build Step

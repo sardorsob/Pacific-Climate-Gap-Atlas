@@ -8,7 +8,61 @@ const controlsSource = readFileSync(
 );
 const documentShell = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 
+function sourceBlock(start: string, end: string) {
+  const match = appSource.match(new RegExp(`const ${start}[\\s\\S]*?(?=\\n  const ${end} =)`));
+  if (!match) throw new Error(`Could not find ${start} block`);
+  return match[0];
+}
+
 describe("regional story integration", () => {
+  it("fences selection history to handleSelect and evidence entry to handleViewMode", () => {
+    const handleSelect = sourceBlock("handleSelect", "handleScore");
+    const handleViewMode = sourceBlock("handleViewMode", "handleToggleOutlook");
+
+    expect(handleSelect).toContain('const diagnosticView = viewMode === "coverage" || viewMode === "uncertainty"');
+    expect(handleSelect).toContain('commitUrlState(diagnosticView ? "replaceState" : "pushState", { place: code })');
+    expect(handleSelect).not.toContain("setViewMode");
+    expect(handleViewMode).toContain('commitUrlState("pushState", { view: m, place: nextPlace, outlook: nextOutlook })');
+  });
+
+  it("fences Back to the exact parent-only transition", () => {
+    const returnToDiagnostic = sourceBlock("returnToDiagnostic", "dismissPanel");
+
+    expect(returnToDiagnostic).toContain("setSelectedCode(null)");
+    expect(returnToDiagnostic).toContain("setSheetExpanded(true)");
+    expect(returnToDiagnostic).toContain('commitUrlState("replaceState", { place: null, view: viewMode })');
+    expect(returnToDiagnostic).not.toContain("setViewMode");
+    expect(returnToDiagnostic).not.toContain("setOutlookOn");
+  });
+
+  it("fences Close to diagnostic overview replacement", () => {
+    const dismissPanel = sourceBlock("dismissPanel", "handleSceneChange");
+
+    expect(dismissPanel).toContain('const diagnosticView = viewMode === "coverage" || viewMode === "uncertainty"');
+    expect(dismissPanel).toContain("setSelectedCode(null)");
+    expect(dismissPanel).toContain("setSheetExpanded(false)");
+    expect(dismissPanel).toContain('const nextView = diagnosticView ? "overview" : viewMode');
+    expect(dismissPanel).toContain("setViewMode(nextView)");
+    expect(dismissPanel).toContain('commitUrlState("replaceState", {');
+    expect(dismissPanel).toContain("place: null");
+    expect(dismissPanel).toContain("view: nextView");
+    expect(dismissPanel).toContain('outlook: nextView === "overview" ? false : outlookOn');
+  });
+
+  it("fences CountryPanel JSX to navigation-owned Close", () => {
+    const panelContent = sourceBlock("panelContent", "shellClass");
+    const countryPanel = panelContent.match(/<CountryPanel[\s\S]*?\/>/)?.[0] ?? "";
+
+    expect(appSource).toContain('from "./components/panels/ExplorerPanelNav"');
+    expect(appSource).toContain("<ExplorerPanelNav");
+    expect(countryPanel).toMatch(/^<CountryPanel\s+geo=\{selectedGeo\}\s+onOpenMethod=\{\(\) => setDrawerOpen\(true\)\}\s*\/>$/);
+  });
+
+  it("restores panel and map focus without a separate focus manager", () => {
+    expect(appSource).toMatch(/const focusPanelClose[\s\S]*?requestAnimationFrame[\s\S]*?\.panel-nav__close/);
+    expect(appSource).toContain('?? document.querySelector<HTMLButtonElement>(".map-a11y-point")');
+  });
+
   it("routes only movement and visibility through the shared regional figure", () => {
     expect(appSource).toContain('from "./components/story/RegionalEvidenceScene"');
     expect(appSource).toMatch(/scene\.visual === "movement"[\s\S]*mode="movement"/);

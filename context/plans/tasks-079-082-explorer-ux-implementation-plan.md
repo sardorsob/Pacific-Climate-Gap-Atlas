@@ -46,7 +46,7 @@
 
 ---
 
-## TASK-079: Reversible Panel Navigation And URL Dismissal
+## Task 079 (TASK-079): Reversible Panel Navigation And URL Dismissal
 
 ### Step 1: Record the exact state matrix in failing tests
 
@@ -241,7 +241,7 @@ git commit -m "feat(app): TASK-079 add reversible panel navigation"
 
 ---
 
-## TASK-080: Handoff And Responsive Control Hierarchy
+## Task 080 (TASK-080): Handoff And Responsive Control Hierarchy
 
 ### Step 1: Write failing handoff and control-group tests
 
@@ -352,7 +352,7 @@ git commit -m "fix(app): TASK-080 repair explorer control hierarchy"
 
 ---
 
-## TASK-081: Regional Evidence In Selected-Place Detail
+## Task 081 (TASK-081): Regional Evidence In Selected-Place Detail
 
 ### Step 1: Expand the panel fixtures and write failing evidence tests
 
@@ -450,7 +450,7 @@ git commit -m "feat(app): TASK-081 add regional evidence to place detail"
 
 ---
 
-## TASK-082: Independent UX, Evidence, And Release QA
+## Task 082 (TASK-082): Independent UX, Evidence, And Release QA
 
 ### Step 1: Freeze scope and begin read-only
 

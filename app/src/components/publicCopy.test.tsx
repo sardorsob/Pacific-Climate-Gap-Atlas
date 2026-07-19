@@ -45,7 +45,7 @@ describe("public opening copy", () => {
 
   it("opens the empty detail panel with the approved atlas title and thesis", () => {
     const html = renderToStaticMarkup(
-      <CountryPanel geo={null} onClose={() => undefined} onOpenMethod={() => undefined} />,
+      <CountryPanel geo={null} onOpenMethod={() => undefined} />,
     );
 
     expect(html).toContain("Pacific Climate Evidence Atlas");

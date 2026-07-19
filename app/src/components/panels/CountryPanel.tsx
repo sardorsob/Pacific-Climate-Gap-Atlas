@@ -1,4 +1,3 @@
-import { X } from "lucide-react";
 import type { Geo } from "../../lib/atlasData";
 import { reportingCaveat, reportingLabel } from "../../lib/encoding";
 import { RankChip } from "../RankChip";
@@ -7,7 +6,6 @@ const JSD_CAVEAT = "Similarity describes official-data profile shape only. It do
 
 type CountryPanelProps = {
   geo: Geo | null;
-  onClose: () => void;
   onOpenMethod: () => void;
 };
 
@@ -59,7 +57,7 @@ function PillarBar({ label, value, kind, caveat }: { label: string; value: numbe
   );
 }
 
-export function CountryPanel({ geo, onClose, onOpenMethod }: CountryPanelProps) {
+export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
   if (!geo) {
     return (
       <aside className="panel panel--intro" aria-label="Atlas detail panel">
@@ -85,15 +83,12 @@ export function CountryPanel({ geo, onClose, onOpenMethod }: CountryPanelProps) 
   return (
     <aside className="panel" aria-label={`${geo.name} detail`}>
       {/* group 1: the score - name and story label lead, no header needed */}
-      <div className="panel__head">
+      <div>
         <div>
           <p className="eyebrow">{geo.subregion}</p>
           <h1 className="panel__name">{geo.name}</h1>
           <p className="panel__status">{geo.status}</p>
         </div>
-        <button type="button" className="icon-btn" aria-label="Close detail" onClick={onClose}>
-          <X aria-hidden="true" size={18} />
-        </button>
       </div>
 
       <p className="panel__story">{geo.storyLabel}</p>

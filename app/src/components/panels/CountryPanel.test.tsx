@@ -49,7 +49,6 @@ describe("CountryPanel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
-        onClose={() => undefined}
         onOpenMethod={() => undefined}
       />,
     );
@@ -66,7 +65,6 @@ describe("CountryPanel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
-        onClose={() => undefined}
         onOpenMethod={() => undefined}
       />,
     );

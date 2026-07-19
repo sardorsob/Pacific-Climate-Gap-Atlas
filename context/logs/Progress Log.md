@@ -2,6 +2,7 @@
 
 ## 2026-07-18
 
+- Completed TASK-079 reversible Explorer navigation after two bounded independent-review correction loops. One shared sticky row now owns contextual diagnostic Back, terminal Close, mobile expand/collapse, URL replacement, and focus restoration while reusing the existing App state and URL adapter. Five permanent screenshots and a strict-headless 21-check matrix cover diagnostic root/child/Back/Close and a collapsed 390x844 child; focused 20-test/full 68-test suites, build, budget, status, secret, and whitespace gates pass. Final review found no issues and passed specification compliance and task quality. (AI tools used: Codex, Superpowers subagent/TDD/debugging/verification/review workflows, Ponytail, Playwright with headless Brave, independent state reviewer.)
 - Owner approved the full TASK-078 Explorer UX contract and planning dates. TASK-078 moved in-review -> done and TASK-079 is unlocked. The approval update changes context only; production app/data implementation begins in TASK-079. (AI tools used: Codex, Superpowers execution/TDD/verification guidance, Ponytail.)
 
 ## 2026-07-17

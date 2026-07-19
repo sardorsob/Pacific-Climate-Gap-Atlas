@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { BookOpen, ChevronUp, Compass, Layers } from "lucide-react";
+import { BookOpen, Compass, Layers } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
 import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
 import { CountryPanel } from "./components/panels/CountryPanel";
 import { DataQuietCallout } from "./components/panels/DataQuietCallout";
+import { ExplorerPanelNav } from "./components/panels/ExplorerPanelNav";
 import { MethodDrawer } from "./components/MethodDrawer";
 import { RegionalEvidenceScene } from "./components/story/RegionalEvidenceScene";
 import { StoryScrolly } from "./components/story/StoryScrolly";
@@ -74,6 +75,7 @@ export function App() {
   const skipGuidedSyncRef = useRef(false);
   const skipInitialSceneObservationRef = useRef(false);
   const sceneScrollRequestRef = useRef(0);
+  const panelDockRef = useRef<HTMLElement>(null);
 
   const scheduleSceneScroll = (sceneId: string) => {
     if (typeof window === "undefined") return;
@@ -122,6 +124,10 @@ export function App() {
 
   const activeLayer = atlasLayers.find((l) => l.id === activeScore) ?? atlasLayers[0];
   const selectedGeo = selectedCode ? getGeo(geos, selectedCode) ?? null : null;
+  const diagnosticParent =
+    selectedGeo && (viewMode === "coverage" || viewMode === "uncertainty")
+      ? viewMode
+      : null;
   const priorityCodes = priorityOneCodes(geos);
   const panelOpen = mode === "explore" && (selectedGeo !== null || viewMode === "coverage" || viewMode === "uncertainty");
   const controlsVisible = mode === "explore";
@@ -212,7 +218,8 @@ export function App() {
   const handleSelect = (code: string) => {
     setSelectedCode(code);
     if (mode === "explore") setSheetExpanded(!isCompactViewport());
-    commitUrlState("pushState", { place: code });
+    const diagnosticView = viewMode === "coverage" || viewMode === "uncertainty";
+    commitUrlState(diagnosticView ? "replaceState" : "pushState", { place: code });
   };
 
   const handleScore = (id: ScoreKey) => {
@@ -246,12 +253,35 @@ export function App() {
     commitUrlState("pushState", { outlook: next, view: next ? "default" : "overview" });
   };
 
-  const closePanel = () => {
+  const focusPanelClose = () => {
+    window.requestAnimationFrame(() => {
+      panelDockRef.current?.querySelector<HTMLButtonElement>(".panel-nav__close")?.focus();
+    });
+  };
+
+  const returnToDiagnostic = () => {
+    setSelectedCode(null);
+    setSheetExpanded(true);
+    commitUrlState("replaceState", { place: null, view: viewMode });
+    focusPanelClose();
+  };
+
+  const dismissPanel = () => {
+    const diagnosticView = viewMode === "coverage" || viewMode === "uncertainty";
+    const selectedMapButton = document.querySelector<HTMLButtonElement>(".map-a11y-point[aria-pressed=\"true\"]");
+    const focusTarget = (diagnosticView
+      ? document.querySelector<HTMLButtonElement>(".controls__toggle[aria-pressed=\"true\"]")
+      : selectedMapButton) ?? document.querySelector<HTMLButtonElement>(".map-a11y-point");
+    focusTarget?.focus();
     setSelectedCode(null);
     setSheetExpanded(false);
-    const nextView = viewMode === "coverage" || viewMode === "uncertainty" ? "overview" : viewMode;
+    const nextView = diagnosticView ? "overview" : viewMode;
     setViewMode(nextView);
-    commitUrlState("pushState", { place: null, view: nextView });
+    commitUrlState("replaceState", {
+      place: null,
+      view: nextView,
+      outlook: nextView === "overview" ? false : outlookOn,
+    });
   };
 
   const handleSceneChange = (nextIndex: number) => {
@@ -339,7 +369,6 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
-        onClose={closePanel}
         onOpenMethod={() => setDrawerOpen(true)}
       />
     );
@@ -450,18 +479,18 @@ export function App() {
 
       {panelOpen && (
         <section
+          ref={panelDockRef}
           className={`panel-dock${sheetExpanded ? " panel-dock--open" : ""}`}
           aria-label="Detail"
         >
-          <button
-            type="button"
-            className="panel-dock__handle"
-            aria-expanded={sheetExpanded}
-            onClick={() => setSheetExpanded((v) => !v)}
-          >
-            <ChevronUp aria-hidden="true" size={16} />
-            {selectedGeo ? selectedGeo.name : viewMode === "coverage" ? "Where the data goes quiet" : "Details"}
-          </button>
+          <ExplorerPanelNav
+            title={selectedGeo?.name ?? (viewMode === "coverage" ? "Data coverage" : "Rank ranges")}
+            backLabel={diagnosticParent === "coverage" ? "Back to data coverage" : diagnosticParent === "uncertainty" ? "Back to rank ranges" : undefined}
+            expanded={sheetExpanded}
+            onBack={diagnosticParent ? returnToDiagnostic : undefined}
+            onClose={dismissPanel}
+            onToggleExpanded={() => setSheetExpanded((expanded) => !expanded)}
+          />
           <div className="panel-dock__body">{panelContent}</div>
         </section>
       )}

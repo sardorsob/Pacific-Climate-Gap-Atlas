@@ -52,7 +52,8 @@ function RegionalRecordSummary({ geo }: { geo: Geo }) {
       </p>
       <div className="reporting reporting--warn">
         <p className="reporting__caveat">
-          These measures can use different clocks. This comparison is descriptive and non-causal.
+          These measures can use different clocks. {geo.nonCausalCaveat
+            ?? "This comparison is descriptive and non-causal."}{" "}
           Dataset presence does not establish quality, completeness, preparedness, vulnerability,
           need, conditions, or local knowledge.
         </p>
@@ -138,7 +139,9 @@ export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
         <div>
           <p className="eyebrow">{geo.subregion}</p>
           <h1 className="panel__name">{geo.name}</h1>
-          <p className="panel__status">{geo.status}</p>
+          <p className="panel__status">
+            {geo.status}{geo.placeNote && <> · {geo.placeNote}</>}
+          </p>
         </div>
       </div>
 
@@ -153,8 +156,8 @@ export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
         </div>
         <RankChip geo={geo} />
         <p className="score-block__caveat">
-          A comparison screen, not a ranking of need. The band above is the honest way to read
-          this position.
+          {geo.rankCaveat
+            ?? "A comparison screen, not a ranking of need. The band above is the honest way to read this position."}
         </p>
       </div>
 
@@ -190,7 +193,9 @@ export function CountryPanel({ geo, onOpenMethod }: CountryPanelProps) {
         <h2 className="panel__h">What the record shows</h2>
         <div className={`reporting reporting--${reportingTone}`}>
           <p className="reporting__state">{reportingLabel(geo.reportingStatus)}</p>
-          <p className="reporting__caveat">{reportingCaveat(geo.reportingStatus)}</p>
+          <p className="reporting__caveat">
+            {geo.monitoringCaveat ?? reportingCaveat(geo.reportingStatus)}
+          </p>
         </div>
         <p className="panel__evidence">
           <strong>{geo.scoreInputCount}</strong> of 8 possible score inputs are present.

@@ -16,6 +16,7 @@ const geo = {
   name: "Nauru",
   subregion: "Micronesia",
   status: "Country",
+  placeNote: "single raised coral island",
   lon: 166.93,
   lat: -0.52,
   gap: 89,
@@ -33,6 +34,7 @@ const geo = {
     visibility: visibility(13),
   },
   reportingStatus: "reported_zero_latest_count",
+  monitoringCaveat: "Latest meteorological-monitoring-network row reports 0; verify source semantics before interpreting this as no monitoring infrastructure.",
   monitoringCount: 0,
   latestMonitoringYear: 2026,
   storyPriority: 1,
@@ -40,7 +42,9 @@ const geo = {
   rankMax: 7,
   rankRange: 6,
   robustness: "fragile",
+  rankCaveat: "Small sample stress test; rank movement frames uncertainty and should not be read as a definitive ranking.",
   storyLabel: "High gap with a reporting caveat.",
+  nonCausalCaveat: "Descriptive screen only; labels summarize available indicators and are not causal claims.",
   topPressure: ["Sea level (75.0)"],
   topCapacity: ["Monitoring (0.0)"],
   indicatorRows: [],
@@ -76,6 +80,41 @@ describe("CountryPanel", () => {
     expect(html).toContain("JSD 0.081");
     expect(html).toContain("official-data profile shape only");
     expect(html).toContain("physical connection, shared risk, lived experience, or shared policy need");
+  });
+
+  it("uses reviewed place, monitoring, rank, and non-causal language without duplication", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+    );
+
+    expect(html).toContain("Country · single raised coral island");
+    expect(html).toContain(geo.monitoringCaveat);
+    expect(html).toContain(geo.rankCaveat);
+    expect(html).toContain(geo.nonCausalCaveat);
+    expect(html.match(/meteorological-monitoring-network row reports 0/g) ?? []).toHaveLength(1);
+    expect(html.match(/not causal claims/g) ?? []).toHaveLength(1);
+    expect(html).not.toContain("The band above is the honest way to read this position");
+    expect(html).not.toContain("This comparison is descriptive and non-causal");
+  });
+
+  it("falls back to the established generic caveats when reviewed strings are absent", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel
+        geo={{
+          ...geo,
+          placeNote: null,
+          monitoringCaveat: null,
+          rankCaveat: null,
+          nonCausalCaveat: null,
+        }}
+        onOpenMethod={() => undefined}
+      />,
+    );
+
+    expect(html).toContain("Latest official monitoring row reports 0");
+    expect(html).toContain("The band above is the honest way to read this position");
+    expect(html).toContain("This comparison is descriptive and non-causal");
+    expect(html).not.toContain("single raised coral island");
   });
 
   it("labels score inputs separately from context-only trace data", () => {
@@ -208,7 +247,7 @@ describe("CountryPanel", () => {
     const record = html.slice(html.indexOf("Regional record"), html.indexOf("score-block"));
 
     expect(record).toContain("measures can use different clocks");
-    expect(record).toContain("descriptive and non-causal");
+    expect(record).toContain("not causal claims");
     expect(record).toContain("quality");
     expect(record).toContain("completeness");
     expect(record).toContain("preparedness");

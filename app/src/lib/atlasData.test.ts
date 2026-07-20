@@ -3,6 +3,27 @@ import generatedGeographies from "../../public/data/geographies.json";
 import { adaptGeographiesPayload } from "./atlasData";
 
 describe("atlas data adapter", () => {
+  it("adapts the four reviewed place-context strings for all 22 records", () => {
+    const geos = adaptGeographiesPayload(generatedGeographies);
+    const americanSamoa = geos.find((geo) => geo.code === "AS")!;
+    const nauru = geos.find((geo) => geo.code === "NR")!;
+    const pitcairn = geos.find((geo) => geo.code === "PN")!;
+
+    expect(geos).toHaveLength(22);
+    expect(geos.every((geo) => [
+      geo.placeNote,
+      geo.monitoringCaveat,
+      geo.rankCaveat,
+      geo.nonCausalCaveat,
+    ].every((value) => typeof value === "string" && value.trim().length > 0))).toBe(true);
+    expect(americanSamoa.monitoringCaveat).toContain(
+      "No meteorological-monitoring-network rows in processed observations",
+    );
+    expect(nauru.monitoringCaveat).toContain("Latest meteorological-monitoring-network row reports 0");
+    expect(pitcairn.placeNote).toBe("Pitcairn Henderson Ducie and Oeno island group");
+    expect(JSON.stringify(geos)).not.toContain("Review wording before publication");
+  });
+
   it("adapts the generated regional story contract", () => {
     const geos = adaptGeographiesPayload(generatedGeographies);
     const papuaNewGuinea = geos.find((geo) => geo.code === "PG")!;
@@ -98,6 +119,12 @@ describe("atlas data adapter", () => {
         present: index > 0,
         latestYear: index === 4 ? 2026 : null,
       })),
+    });
+    expect(geo).toMatchObject({
+      placeNote: null,
+      monitoringCaveat: null,
+      rankCaveat: null,
+      nonCausalCaveat: null,
     });
   });
 

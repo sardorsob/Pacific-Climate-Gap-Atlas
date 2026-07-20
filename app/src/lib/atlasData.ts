@@ -41,6 +41,7 @@ export type Geo = {
   name: string;
   subregion: string;
   status: string;
+  placeNote: string | null;
   lon: number;
   lat: number;
   gap: number;
@@ -54,12 +55,15 @@ export type Geo = {
   reportingStatus: ReportingStatus;
   monitoringCount: number | null;
   latestMonitoringYear: number | null;
+  monitoringCaveat: string | null;
   storyPriority: 1 | 2 | 3 | 4 | 5;
   rankMin: number;
   rankMax: number;
   rankRange: number;
   robustness: "stable" | "sensitive" | "fragile";
+  rankCaveat: string | null;
   storyLabel: string;
+  nonCausalCaveat: string | null;
   topPressure: string[];
   topCapacity: string[];
   indicatorRows: IndicatorRow[];
@@ -141,21 +145,25 @@ type AppGeography = {
     latest_value?: number | null;
     latest_year?: number | null;
     story_priority_rank?: number | null;
+    missing_reporting_caveat?: string | null;
   };
   rank?: {
     scenario_rank_min?: number | null;
     scenario_rank_max?: number | null;
     rank_range?: number | null;
     robustness_label?: string;
+    rank_caveat?: string | null;
   };
   story?: {
     story_label?: string;
+    non_causal_caveat?: string | null;
     top_pressure_signals?: AppSignal[];
     top_capacity_signals?: AppSignal[];
   };
   context?: {
     subregion?: string;
     political_status?: string;
+    island_group_or_region_note?: string | null;
     context_quality?: string;
   };
   similarity_neighbors?: AppSimilarityNeighbor[];
@@ -257,6 +265,7 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     name: record.name,
     subregion: record.context?.subregion ?? "Pacific",
     status: statusLabel(record.context?.political_status, record.context?.context_quality),
+    placeNote: record.context?.island_group_or_region_note?.trim() || null,
     lon: asNumber(record.centroid.lon),
     lat: asNumber(record.centroid.lat),
     gap: asNumber(record.adaptation_gap_score),
@@ -274,12 +283,15 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     latestMonitoringYear: reportingStatus === "missing_monitoring_dataset_row"
       ? null
       : asNullableNumber(record.monitoring?.latest_year),
+    monitoringCaveat: record.monitoring?.missing_reporting_caveat?.trim() || null,
     storyPriority: asStoryPriority(record.monitoring?.story_priority_rank),
     rankMin: asNumber(record.rank?.scenario_rank_min),
     rankMax: asNumber(record.rank?.scenario_rank_max),
     rankRange: asNumber(record.rank?.rank_range),
     robustness: asRobustness(record.rank?.robustness_label),
+    rankCaveat: record.rank?.rank_caveat?.trim() || null,
     storyLabel: record.story?.story_label || "Evidence profile available",
+    nonCausalCaveat: record.story?.non_causal_caveat?.trim() || null,
     topPressure: formatSignals(record.story?.top_pressure_signals),
     topCapacity: formatSignals(record.story?.top_capacity_signals),
     indicatorRows: formatIndicators(details?.indicators),

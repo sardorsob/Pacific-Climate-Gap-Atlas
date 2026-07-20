@@ -7,7 +7,6 @@ from typing import Any
 
 import pandas as pd
 
-
 HIGH_GAP_THRESHOLD = 66.0
 ELEVATED_GAP_THRESHOLD = 50.0
 HIGH_PRESSURE_THRESHOLD = 66.0

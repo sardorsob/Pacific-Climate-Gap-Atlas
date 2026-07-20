@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import argparse
-from datetime import UTC, datetime
 import json
-from pathlib import Path
 import sys
+from datetime import UTC, datetime
+from pathlib import Path
 
 import pandas as pd
 
@@ -29,7 +29,6 @@ from analysis.io.official_data import (  # noqa: E402
     read_validated_raw_cache,
 )
 from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa: E402
-
 
 DEFAULT_CONFIG = ROOT / "configs" / "datasets.yml"
 DEFAULT_OUTPUT = ROOT / "artifacts" / "tables" / "dataset_profile.csv"
@@ -83,7 +82,9 @@ def profile_priority_datasets(
     timeout: float,
     raw_dir: Path | None = None,
 ) -> list[DatasetProfile]:
-    inventory_path = ROOT / str(config.get("official_inventory", "research/official_datasets_2026.csv"))
+    inventory_path = ROOT / str(
+        config.get("official_inventory", "research/official_datasets_2026.csv")
+    )
     accept_header = str(config.get("api_accept_header", DEFAULT_ACCEPT_HEADER))
     inventory = {dataset.name: dataset for dataset in read_official_inventory(inventory_path)}
 
@@ -314,14 +315,17 @@ def main() -> int:
     args = parse_args()
     config_path = ROOT / args.config if not args.config.is_absolute() else args.config
     output_path = ROOT / args.output if not args.output.is_absolute() else args.output
-    contracts_dir = ROOT / args.contracts_dir if not args.contracts_dir.is_absolute() else args.contracts_dir
+    contracts_dir = (
+        ROOT / args.contracts_dir
+        if not args.contracts_dir.is_absolute()
+        else args.contracts_dir
+    )
     raw_dir = ROOT / args.raw_dir if not args.raw_dir.is_absolute() else args.raw_dir
 
     config = load_dataset_config(config_path)
     profiles = profile_priority_datasets(config=config, timeout=args.timeout, raw_dir=raw_dir)
-    generated_at_utc = args.generated_at or datetime.now(UTC).replace(microsecond=0).isoformat().replace(
-        "+00:00",
-        "Z",
+    generated_at_utc = args.generated_at or (
+        datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     )
 
     write_outputs(

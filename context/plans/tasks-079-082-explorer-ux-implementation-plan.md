@@ -558,7 +558,7 @@ Create `artifacts/provenance/task_082_qa.json` with:
 
 Update existing context/log files only. Do not create a Markdown file per QA slice.
 
-TASK-082 may move `pending -> in-progress -> in-review -> done` only after its product contract passes and the owner accepts the matrix. TASK-057 remains `needs-fix` until its pre-existing Ruff, Semgrep, and OSV release findings are separately handled and reverified.
+TASK-082 may move `pending -> in-progress -> in-review -> done` only after its product contract passes and the owner accepts the matrix. TASK-057 remained a separate release gate; its Ruff, Semgrep, and OSV findings were handled and reverified, and its independent Checker approved it on 2026-07-19. TASK-082 owner acceptance remains separate.
 
 Commit:
 

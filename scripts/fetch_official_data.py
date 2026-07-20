@@ -5,10 +5,10 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
-from io import StringIO
 import json
-from pathlib import Path
 import sys
+from io import StringIO
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -18,7 +18,6 @@ from analysis.io.dataset_config import load_dataset_config  # noqa: E402
 from analysis.io.dataset_profile import slugify  # noqa: E402
 from analysis.io.official_data import OfficialDataset, read_official_inventory  # noqa: E402
 from analysis.io.sdmx import DEFAULT_ACCEPT_HEADER, fetch_sdmx_csv_text  # noqa: E402
-
 
 DEFAULT_CONFIG = ROOT / "configs" / "datasets.yml"
 DEFAULT_RAW_DIR = ROOT / "data" / "raw" / "official"
@@ -49,7 +48,9 @@ def fetch_to_raw_cache(
     supplementary_names: list[str] | None = None,
 ) -> dict[str, object]:
     config = load_dataset_config(config_path)
-    inventory_path = ROOT / str(config.get("official_inventory", "research/official_datasets_2026.csv"))
+    inventory_path = ROOT / str(
+        config.get("official_inventory", "research/official_datasets_2026.csv")
+    )
     accept_header = str(config.get("api_accept_header", DEFAULT_ACCEPT_HEADER))
     inventory = {dataset.name: dataset for dataset in read_official_inventory(inventory_path)}
 
@@ -68,7 +69,9 @@ def fetch_to_raw_cache(
                     "slug": slugify(name),
                     "pillar": pillar,
                     "status": "missing_inventory_row",
-                    "caveat_notes": "Dataset is listed in config but not found in official inventory.",
+                    "caveat_notes": (
+                        "Dataset is listed in config but not found in official inventory."
+                    ),
                 }
             )
             continue
@@ -118,7 +121,10 @@ def fetch_to_raw_cache(
         ),
         "supplementary_datasets": supplementary_entries,
     }
-    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=True) + "\n",
+        encoding="utf-8",
+    )
     return manifest
 
 

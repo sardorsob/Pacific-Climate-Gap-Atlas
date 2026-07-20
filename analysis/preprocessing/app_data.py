@@ -187,7 +187,13 @@ def build_score_input_presence(trace: pd.DataFrame | None) -> dict[str, list[dic
         .assign(pillar_order=lambda frame: frame["pillar"].map(SCORE_INPUT_PILLAR_ORDER))
         .sort_values(["pillar_order", "dataset_name", "dataset_slug"], kind="mergesort")
     )
-    present = set(zip(inputs["geo_code"].astype(str), inputs["dataset_slug"].astype(str)))
+    present = set(
+        zip(
+            inputs["geo_code"].astype(str),
+            inputs["dataset_slug"].astype(str),
+            strict=False,
+        )
+    )
     geographies = sorted(trace["geo_code"].dropna().astype(str).unique())
     return {
         geo_code: [
@@ -361,12 +367,17 @@ def _build_outlook_display_lookup(
     return lookup
 
 
-def _build_similarity_lookup(similarity_neighbors: pd.DataFrame | None) -> dict[str, list[dict[str, Any]]]:
+def _build_similarity_lookup(
+    similarity_neighbors: pd.DataFrame | None,
+) -> dict[str, list[dict[str, Any]]]:
     lookup: dict[str, list[dict[str, Any]]] = {}
     if similarity_neighbors is None or similarity_neighbors.empty:
         return lookup
 
-    for row in similarity_neighbors.sort_values(["geo_code", "similarity_rank"], kind="mergesort").to_dict(orient="records"):
+    rows = similarity_neighbors.sort_values(
+        ["geo_code", "similarity_rank"], kind="mergesort"
+    ).to_dict(orient="records")
+    for row in rows:
         geo_code = str(row["geo_code"])
         lookup.setdefault(geo_code, []).append(
             {

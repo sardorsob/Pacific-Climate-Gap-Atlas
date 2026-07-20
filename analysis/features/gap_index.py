@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}
 SCORE_INPUT_PILLARS = PRESSURE_PILLARS | CAPACITY_PILLARS
@@ -54,14 +53,16 @@ def latest_indicator_snapshot(observations: pd.DataFrame) -> pd.DataFrame:
         kind="mergesort",
     )
     snapshot = frame.drop_duplicates(["dataset_slug", "geo_code"], keep="first")
-    return snapshot.sort_values(["dataset_slug", "geo_code"], kind="mergesort").reset_index(drop=True)
+    return snapshot.sort_values(["dataset_slug", "geo_code"], kind="mergesort").reset_index(
+        drop=True
+    )
 
 
 def build_indicator_trace(snapshot: pd.DataFrame) -> pd.DataFrame:
     """Score each latest indicator value against peer geographies."""
 
     scored_frames: list[pd.DataFrame] = []
-    for dataset_slug, group in snapshot.groupby("dataset_slug", sort=True):
+    for _dataset_slug, group in snapshot.groupby("dataset_slug", sort=True):
         scored = group.copy()
         scored["scoring_value"] = _scoring_value(scored)
         scored["indicator_score"] = percentile_rank(
@@ -148,7 +149,10 @@ def build_gap_index(observations: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFr
     index.loc[~scorable, "score_status"] = "insufficient_data"
     index["missingness_flag"] = ~scorable
 
-    return index[INDEX_COLUMNS].sort_values("geo_code", kind="mergesort").reset_index(drop=True), trace
+    return (
+        index[INDEX_COLUMNS].sort_values("geo_code", kind="mergesort").reset_index(drop=True),
+        trace,
+    )
 
 
 def _mean_score_for_pillars(

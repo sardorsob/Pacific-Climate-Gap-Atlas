@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import pandas as pd
 
-
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}
 REQUIRED_PILLARS = {"climate_signal", "adaptation_capacity"}

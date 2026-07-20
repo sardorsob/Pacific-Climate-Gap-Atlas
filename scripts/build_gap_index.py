@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 
@@ -14,7 +14,6 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from analysis.features.gap_index import build_gap_index  # noqa: E402
-
 
 DEFAULT_CONFIG = ROOT / "configs" / "gap_index.yml"
 DEFAULT_OBSERVATIONS = ROOT / "data" / "processed" / "official_observations.csv"
@@ -58,7 +57,10 @@ def build_outputs(
         trace_output=trace_output,
         config_path=config_path,
     )
-    summary_output.write_text(json.dumps(summary, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    summary_output.write_text(
+        json.dumps(summary, indent=2, ensure_ascii=True) + "\n",
+        encoding="utf-8",
+    )
     return summary
 
 
@@ -101,8 +103,10 @@ def build_summary(
         ].to_dict(orient="records"),
         "caveats": [
             "Scores are comparative percentile ranks within the available Pacific geographies.",
-            "The baseline uses latest available observations and equal weights within available pillars.",
-            "Anomaly datasets are scored by absolute anomaly magnitude while raw values remain in the trace.",
+            "The baseline uses latest available observations and equal weights within "
+            "available pillars.",
+            "Anomaly datasets are scored by absolute anomaly magnitude while raw values "
+            "remain in the trace.",
             "Directly affected persons are raw counts, not population-normalized exposure.",
             "Missing values are not imputed; geographies lacking required pillars are not scored.",
             "Capacity indicators are proxies, not a complete measure of adaptation readiness.",
@@ -116,8 +120,12 @@ def main() -> int:
     observations_path = (
         ROOT / args.observations if not args.observations.is_absolute() else args.observations
     )
-    index_output = ROOT / args.index_output if not args.index_output.is_absolute() else args.index_output
-    trace_output = ROOT / args.trace_output if not args.trace_output.is_absolute() else args.trace_output
+    index_output = (
+        ROOT / args.index_output if not args.index_output.is_absolute() else args.index_output
+    )
+    trace_output = (
+        ROOT / args.trace_output if not args.trace_output.is_absolute() else args.trace_output
+    )
     summary_output = (
         ROOT / args.summary_output if not args.summary_output.is_absolute() else args.summary_output
     )

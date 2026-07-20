@@ -53,8 +53,14 @@ class AppDataValidationTests(unittest.TestCase):
             errors = validate_data_contracts.validate_root(root)
 
             self.assertIn("geographies[0].centroid missing required field: lat", errors)
-            self.assertIn("geographies[0].source_refs missing required field: indicator_trace", errors)
-            self.assertIn("geographies[0].monitoring missing required field: reporting_status", errors)
+            self.assertIn(
+                "geographies[0].source_refs missing required field: indicator_trace",
+                errors,
+            )
+            self.assertIn(
+                "geographies[0].monitoring missing required field: reporting_status",
+                errors,
+            )
             self.assertIn("geographies[0].rank missing required field: rank_range", errors)
             self.assertIn("geographies[0].story missing required field: story_label", errors)
             self.assertIn("geographies[0].context missing required field: subregion", errors)

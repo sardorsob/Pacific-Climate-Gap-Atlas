@@ -14,7 +14,7 @@ Pacific Climate Evidence Atlas.
 
 Direct subtitle: **How conditions and official records differ across 22 Pacific places.**
 
-Readiness note (2026-07-18): the owner accepts the fullscreen map, evidence marks, visual identity, regional movement -> evidence visibility -> exploration story, and TASK-078 Explorer UX contract. TASK-079 through TASK-081 and returned repairs TASK-083 through TASK-085 are complete; TASK-082 passed its 164-check/43-frame product matrix and is `in-review` for owner acceptance. `TASK-057` remains `needs-fix` for the recorded Ruff, trusted-local-script Semgrep, development-tool OSV, and chunk findings. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted, deployed, or release-ready until the owner and TASK-057 gates close.
+Readiness note (2026-07-19): the owner accepts the fullscreen map, evidence marks, visual identity, regional movement -> evidence visibility -> exploration story, and TASK-078 Explorer UX contract. TASK-079 through TASK-081 and returned repairs TASK-083 through TASK-085 are complete. TASK-057 is done with zero Ruff, Semgrep, and OSV findings, a warning-free budgeted build, and independent Checker approval. TASK-082 passed its 164-check/43-frame product matrix and is `in-review` for owner acceptance. Deployment, sensitive wording, AI disclosure, final human review, and the submission form remain owner actions. Do not call the project submitted, deployed, or release-ready until the TASK-082 owner gate and external release actions close.
 
 ## Submission Requirements To Track
 
@@ -25,7 +25,7 @@ Readiness note (2026-07-18): the owner accepts the fullscreen map, evidence mark
 | Explain method and caveats | satisfied locally; owner read pending | `context/docs/methodology.md`, `context/MODEL_CARD.md`, repaired app Methods drawer | Final human read-through |
 | Public interactive URL remains accessible until at least 31 August 2029 | not started | Deploy `app/dist/` after `npm run app:build`; preview with `npm run app:preview` | Choose host, record URL here, confirm durability |
 | Shareable URL state and history | verified locally | `app/src/lib/urlState.ts`, `app/src/lib/urlState.test.ts`; browser smoke covered copied-scene restoration with deferred scroll, reload, Explore/layer/place push, scene replace, Back/Forward | Owner to recheck on deployed host |
-| App bundle budget | satisfied locally | `python scripts/check_app_bundle_budget.py`; JS 1,031,807 bytes; CSS 94,920 bytes | Re-run after deployment/build environment changes |
+| App bundle budget | satisfied locally | `python scripts/check_app_bundle_budget.py`; JS 1,031,807 bytes; CSS 94,920 bytes; Vite's advisory matches the enforced 1,050 kB JS cap | Re-run after deployment/build environment changes |
 | English or French dataviz/explanations | satisfied | Current app and docs are English | Final typo pass |
 | AI-assisted work disclosure | needs owner wording | Progress log records AI tools; workflow keeps human/orchestrator review | Approve final disclosure text |
 | Final accessibility/mobile review | independent product matrix passed; owner acceptance pending | `artifacts/design/task-082/`, `artifacts/provenance/task_082_qa.json`; 164/164 checks, 43 frames | Accept TASK-082, then recheck the deployed host |

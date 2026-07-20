@@ -7,7 +7,6 @@ from typing import Any
 
 import pandas as pd
 
-
 MONITORING_DATASET_SLUG = "meteorological-monitoring-network"
 HIGH_GAP_THRESHOLD = 66.0
 HIGH_PRESSURE_THRESHOLD = 66.0

@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts import build_land_context
 
@@ -21,7 +22,52 @@ class LandContextTests(unittest.TestCase):
             },
         }
 
-        self.assertTrue(build_land_context.feature_intersects_bounds(feature, build_land_context.PACIFIC_BOUNDS))
+        self.assertTrue(
+            build_land_context.feature_intersects_bounds(
+                feature,
+                build_land_context.PACIFIC_BOUNDS,
+            )
+        )
+
+    def test_source_download_rejects_a_caller_controlled_url(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source_path = Path(tmp) / "source.geojson"
+            with (
+                patch("scripts.build_land_context.urllib.request.urlopen") as transport,
+                self.assertRaisesRegex(ValueError, "approved Natural Earth source"),
+            ):
+                build_land_context.ensure_source(
+                    source_path,
+                    source_url="https://example.test/alternate.geojson",
+                )
+
+        transport.assert_not_called()
+
+    def test_source_download_uses_the_approved_natural_earth_url(self):
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return None
+
+            def read(self):
+                return b'{"type":"FeatureCollection","features":[]}'
+
+        with tempfile.TemporaryDirectory() as tmp:
+            source_path = Path(tmp) / "source.geojson"
+            with patch(
+                "scripts.build_land_context.urllib.request.urlopen",
+                return_value=Response(),
+            ) as transport:
+                build_land_context.ensure_source(source_path)
+
+            self.assertEqual(
+                source_path.read_bytes(),
+                b'{"type":"FeatureCollection","features":[]}',
+            )
+
+        transport.assert_called_once_with(build_land_context.SOURCE_URL, timeout=60)
 
     def test_build_land_context_filters_and_shifts_features(self):
         source = {
@@ -32,7 +78,9 @@ class LandContextTests(unittest.TestCase):
                     "properties": {"featurecla": "Land"},
                     "geometry": {
                         "type": "Polygon",
-                        "coordinates": [[[-171, -15], [-170, -15], [-170, -14], [-171, -14], [-171, -15]]],
+                        "coordinates": [
+                            [[-171, -15], [-170, -15], [-170, -14], [-171, -14], [-171, -15]]
+                        ],
                     },
                 },
                 {
@@ -72,7 +120,10 @@ class LandContextTests(unittest.TestCase):
 
         self.assertEqual(summary["features_written"], 1)
         self.assertEqual(output["features"][0]["geometry"]["coordinates"][0][0][0], 189)
-        self.assertEqual(output["features"][0]["properties"]["geometry_role"], "island_or_regional_land_context")
+        self.assertEqual(
+            output["features"][0]["properties"]["geometry_role"],
+            "island_or_regional_land_context",
+        )
         self.assertEqual(output["geometry_policy"], "natural_earth_visual_land_context")
         self.assertEqual(provenance["features_written"], 1)
         self.assertEqual(provenance["score_input_role"], "visual_context_only_not_score_input")

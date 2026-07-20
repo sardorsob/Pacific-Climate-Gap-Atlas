@@ -5,7 +5,6 @@ import json
 import unittest
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[2]
 CONTEXT_PATH = ROOT / "data" / "external" / "geography_context.csv"
 PROVENANCE_PATH = ROOT / "artifacts" / "provenance" / "geography_context_sources.json"

@@ -8,9 +8,10 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
-
 DEFAULT_ACCEPT_HEADER = "application/vnd.sdmx.data+csv;version=2.1"
+V2_SDMX_HOST = "stats-sdmx-disseminate.pacificdata.org"
 STABLE_SDMX_HOST = "stats-nsi-stable.pacificdata.org"
+TRUSTED_SDMX_HOSTS = frozenset({V2_SDMX_HOST, STABLE_SDMX_HOST})
 V2_DATAFLOW_PREFIX = "/rest/v2/data/dataflow/"
 
 
@@ -26,13 +27,27 @@ def fetch_sdmx_csv_text(
     """Fetch SDMX CSV text, using PowerShell fallback for picky Windows endpoint behavior."""
 
     requested_url = _requested_url or url
+    if not _is_trusted_sdmx_url(url):
+        return (
+            None,
+            "source_url_not_allowed",
+            "SDMX source URL must use a trusted HTTPS Pacific Data Hub endpoint.",
+            _fetch_provenance(
+                requested_url=requested_url,
+                effective_url=url,
+                initial_error_status=_initial_error_status,
+                fallback_note=_fallback_note,
+            ),
+        )
+
     headers = {
         "Accept": accept_header,
         "User-Agent": "pacific-climate-gap-atlas/0.1 dataset-pipeline",
     }
     request = Request(url, headers=headers)
     try:
-        with urlopen(request, timeout=timeout) as response:
+        # The URL is restricted to TRUSTED_SDMX_HOSTS immediately above.
+        with urlopen(request, timeout=timeout) as response:  # nosemgrep
             status_code = response.getcode()
             body = response.read()
             charset = response.headers.get_content_charset() or "utf-8"
@@ -51,14 +66,19 @@ def fetch_sdmx_csv_text(
                         "documented stable Pacific Data Hub endpoint."
                     ),
                 )
-            fallback_text = fetch_with_powershell(url=url, accept_header=accept_header, timeout=timeout)
+            fallback_text = fetch_with_powershell(
+                url=url,
+                accept_header=accept_header,
+                timeout=timeout,
+            )
             if fallback_text is not None:
                 return fallback_text, None, "", _fetch_provenance(
                     requested_url=requested_url,
                     effective_url=url,
                     initial_error_status="api_error_422",
                     fallback_note=(
-                        "Original request returned HTTP 422; PowerShell transport fallback succeeded."
+                        "Original request returned HTTP 422; PowerShell transport "
+                        "fallback succeeded."
                     ),
                 )
         return (
@@ -140,7 +160,7 @@ def stable_sdmx_url(url: str) -> str | None:
     """Translate a Pacific v2 dataflow URL to the documented stable data endpoint."""
 
     parts = urlsplit(url)
-    if parts.netloc != "stats-sdmx-disseminate.pacificdata.org" or not parts.path.startswith(
+    if parts.scheme != "https" or parts.netloc != V2_SDMX_HOST or not parts.path.startswith(
         V2_DATAFLOW_PREFIX
     ):
         return None
@@ -152,6 +172,21 @@ def stable_sdmx_url(url: str) -> str | None:
     agency, flow, version, key = path_parts
     stable_path = f"/rest/data/{agency},{flow},{version}/{key}/{agency}"
     return urlunsplit((parts.scheme, STABLE_SDMX_HOST, stable_path, parts.query, parts.fragment))
+
+
+def _is_trusted_sdmx_url(url: str) -> bool:
+    try:
+        parts = urlsplit(url)
+        port = parts.port
+    except ValueError:
+        return False
+    return (
+        parts.scheme == "https"
+        and parts.hostname in TRUSTED_SDMX_HOSTS
+        and parts.username is None
+        and parts.password is None
+        and port in {None, 443}
+    )
 
 
 def fetch_with_powershell(*, url: str, accept_header: str, timeout: float) -> str | None:

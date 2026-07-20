@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import hashlib
-from email.message import Message
 import json
+import unittest
+from email.message import Message
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 
@@ -91,12 +91,20 @@ class DatasetProfileTests(unittest.TestCase):
             sdmx_csv_api_url="https://example.test/api.csv",
             csv_text="GEO_PICT,TIME_PERIOD,OBS_VALUE,UNIT_MEASURE,SEX\nFJ,2022,12.5,PT,_T\nWS,2022,34.0,PERCENT,_T\n",
             candidate=True,
-            denominator="Total final energy consumption; denominator values are not included in the response.",
-            grain="One row per geography and year for the filtered indicator and fixed disaggregation.",
+            denominator=(
+                "Total final energy consumption; denominator values are not included in "
+                "the response."
+            ),
+            grain=(
+                "One row per geography and year for the filtered indicator and fixed "
+                "disaggregation."
+            ),
             source_semantics="Share of renewable energy in total final energy consumption.",
             licence="not stated in reviewed source metadata",
             processing_decision="accept_for_processing",
-            decision_reason="Comparable rate with explicit geography, year, value, and unit fields.",
+            decision_reason=(
+                "Comparable rate with explicit geography, year, value, and unit fields."
+            ),
         )
 
         contract = profile_to_contract(profile, generated_at_utc="2026-07-12T00:00:00Z")
@@ -149,7 +157,9 @@ class DatasetProfileTests(unittest.TestCase):
             self.assertEqual(entries[name]["candidate"], "true")
             self.assertIn(entries[name]["processing_decision"], {"accept_for_processing", "reject"})
             expected_enabled = (
-                "true" if entries[name]["processing_decision"] == "accept_for_processing" else "false"
+                "true"
+                if entries[name]["processing_decision"] == "accept_for_processing"
+                else "false"
             )
             self.assertEqual(entries[name]["processing_enabled"], expected_enabled)
             self.assertTrue(entries[name]["decision_reason"])
@@ -177,7 +187,10 @@ class DatasetProfileTests(unittest.TestCase):
             )
             raw_dir = root / "official"
             raw_dir.mkdir()
-            csv_text = "CLIMATE_CHANGE_INDICATORS,GEO_PICT,TIME_PERIOD,OBS_VALUE,UNIT_MEASURE\nSEA_LVL,FJ,2020,1.0,METER\n"
+            csv_text = (
+                "CLIMATE_CHANGE_INDICATORS,GEO_PICT,TIME_PERIOD,OBS_VALUE,UNIT_MEASURE\n"
+                "SEA_LVL,FJ,2020,1.0,METER\n"
+            )
             (raw_dir / "sea-level-anomalies.csv").write_text(csv_text, encoding="utf-8")
             (raw_dir / "crop-yield.csv").write_text(
                 csv_text.replace("SEA_LVL", "CROP_YIELD"),
@@ -244,7 +257,9 @@ class DatasetProfileTests(unittest.TestCase):
 
             with patch(
                 "scripts.profile_datasets.fetch_sdmx_csv_text",
-                side_effect=AssertionError("invalid manifested cache must not be profiled or fetched"),
+                side_effect=AssertionError(
+                    "invalid manifested cache must not be profiled or fetched"
+                ),
             ):
                 profiles = profile_priority_datasets(
                     config=load_dataset_config(config_path),
@@ -589,7 +604,10 @@ class DatasetProfileTests(unittest.TestCase):
 
         contract = profile_to_contract(profile, generated_at_utc="2026-07-12T00:00:00Z")
         self.assertEqual(contract["source"]["effective_sdmx_csv_api_url"], effective_url)
-        self.assertEqual(contract["source"]["source_content_sha256"], hashlib.sha256(csv_text.encode("utf-8")).hexdigest())
+        self.assertEqual(
+            contract["source"]["source_content_sha256"],
+            hashlib.sha256(csv_text.encode("utf-8")).hexdigest(),
+        )
         self.assertEqual(contract["source"]["fetch"]["initial_api_status"], "api_error_422")
         self.assertTrue(contract["source"]["fetch"]["fallback_used"])
 
@@ -638,6 +656,32 @@ class DatasetProfileTests(unittest.TestCase):
         self.assertTrue(provenance["fallback_used"])
         self.assertIn("documented stable", provenance["fallback_note"])
 
+    def test_sdmx_fetch_rejects_untrusted_urls_before_any_transport(self) -> None:
+        unsafe_urls = (
+            "http://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/SPC/test",
+            "https://example.test/rest/v2/data/dataflow/SPC/test",
+            "https://stats-sdmx-disseminate.pacificdata.org.example.test/rest/data/test",
+            "https://user:password@stats-sdmx-disseminate.pacificdata.org/rest/data/test",
+            "https://stats-sdmx-disseminate.pacificdata.org:8443/rest/data/test",
+            "https://stats-sdmx-disseminate.pacificdata.org:not-a-port/rest/data/test",
+            "file:///tmp/private.csv",
+        )
+
+        for url in unsafe_urls:
+            with (
+                self.subTest(url=url),
+                patch("analysis.io.sdmx.urlopen") as urllib_transport,
+                patch("analysis.io.sdmx.fetch_with_powershell") as powershell_transport,
+            ):
+                text, status, caveat, provenance = fetch_sdmx_csv_text(url=url, timeout=1)
+
+            self.assertIsNone(text)
+            self.assertEqual(status, "source_url_not_allowed")
+            self.assertIn("trusted HTTPS", caveat)
+            self.assertEqual(provenance["requested_url"], url)
+            urllib_transport.assert_not_called()
+            powershell_transport.assert_not_called()
+
     def test_stable_sdmx_url_preserves_flow_key_and_query(self) -> None:
         self.assertEqual(
             sdmx.stable_sdmx_url(
@@ -646,6 +690,12 @@ class DatasetProfileTests(unittest.TestCase):
             ),
             "https://stats-nsi-stable.pacificdata.org/rest/data/SPC,DF_CLIMATE_CHANGE,1.0/"
             "A.CROP_YIELD./SPC?dimensionAtObservation=AllDimensions",
+        )
+        self.assertIsNone(
+            sdmx.stable_sdmx_url(
+                "http://stats-sdmx-disseminate.pacificdata.org/rest/v2/data/dataflow/"
+                "SPC/DF_CLIMATE_CHANGE/1.0/A.CROP_YIELD."
+            )
         )
         self.assertIsNone(sdmx.stable_sdmx_url("https://example.test/not-an-sdmx-dataflow"))
 

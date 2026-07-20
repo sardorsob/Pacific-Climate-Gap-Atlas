@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import math
+from dataclasses import dataclass
 
 import pandas as pd
-
 
 CAPACITY_IMPROVEMENT_RATES = {
     "capacity_flat": {2030: 0.0, 2050: 0.0},
@@ -64,7 +63,10 @@ def fit_linear_trend(
         test = frame.iloc[-holdout_points:].copy()
         train_slope, train_intercept = _fit_slope_intercept(train["year"], train["scoring_value"])
         linear_predictions = train_intercept + train_slope * test["year"]
-        naive_predictions = pd.Series([train["scoring_value"].iloc[-1]] * len(test), index=test.index)
+        naive_predictions = pd.Series(
+            [train["scoring_value"].iloc[-1]] * len(test),
+            index=test.index,
+        )
         holdout_linear_mae = _mean_absolute_error(test["scoring_value"], linear_predictions)
         holdout_naive_mae = _mean_absolute_error(test["scoring_value"], naive_predictions)
 
@@ -184,7 +186,7 @@ def _score_projected_climate(diagnostics: pd.DataFrame, *, horizons: list[int]) 
         frame = frame.rename(columns={projection_column: "projected_value"})
         frame["horizon"] = horizon
         scored_frames: list[pd.DataFrame] = []
-        for dataset_slug, group in frame.groupby("dataset_slug", sort=True):
+        for _dataset_slug, group in frame.groupby("dataset_slug", sort=True):
             scored = group.copy()
             scored["indicator_projection_score"] = scored["projected_value"].rank(pct=True) * 100
             scored_frames.append(scored)

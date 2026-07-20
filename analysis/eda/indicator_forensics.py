@@ -6,7 +6,6 @@ from typing import Any
 
 import pandas as pd
 
-
 TRACE_COLUMNS = [
     "geo_code",
     "dataset_slug",

@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
-from io import StringIO
 import re
 import unicodedata
+from dataclasses import dataclass
+from io import StringIO
 
 import pandas as pd
-
 
 MISSING_TOKENS = {"", "nan", "none", "null", "na", "n/a"}
 NOT_STATED = "not stated"
@@ -191,7 +190,11 @@ def profile_frame(
     columns = [str(column) for column in frame.columns]
     row_count = int(len(frame))
     geography_column = _pick_column(columns, preferred=["GEO_PICT"], contains=["GEO"])
-    time_column = _pick_column(columns, preferred=["TIME_PERIOD", "TIME", "YEAR"], contains=["TIME", "YEAR"])
+    time_column = _pick_column(
+        columns,
+        preferred=["TIME_PERIOD", "TIME", "YEAR"],
+        contains=["TIME", "YEAR"],
+    )
     value_column = _pick_column(columns, preferred=["OBS_VALUE", "VALUE"], contains=["VALUE"])
     unit_column = _pick_column(columns, preferred=["UNIT_MEASURE"], contains=["UNIT"])
 

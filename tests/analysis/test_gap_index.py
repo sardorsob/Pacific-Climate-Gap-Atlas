@@ -4,8 +4,11 @@ import unittest
 
 import pandas as pd
 
-from analysis.features.gap_index import build_gap_index, latest_indicator_snapshot
-from analysis.features.gap_index import build_indicator_trace
+from analysis.features.gap_index import (
+    build_gap_index,
+    build_indicator_trace,
+    latest_indicator_snapshot,
+)
 
 
 class GapIndexTests(unittest.TestCase):
@@ -44,7 +47,14 @@ class GapIndexTests(unittest.TestCase):
             [
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10),
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "WS", 2023, 20),
-                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100),
+                _row(
+                    "power-generation",
+                    "Power generation",
+                    "adaptation_capacity",
+                    "FJ",
+                    2023,
+                    100,
+                ),
                 _row("power-generation", "Power generation", "adaptation_capacity", "WS", 2023, 10),
             ]
         )
@@ -65,7 +75,14 @@ class GapIndexTests(unittest.TestCase):
         observations = pd.DataFrame(
             [
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10),
-                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100),
+                _row(
+                    "power-generation",
+                    "Power generation",
+                    "adaptation_capacity",
+                    "FJ",
+                    2023,
+                    100,
+                ),
                 _row(
                     "greenhouse-gas-emissions-per-capita",
                     "GHG per capita",
@@ -89,7 +106,14 @@ class GapIndexTests(unittest.TestCase):
         baseline = pd.DataFrame(
             [
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10.0),
-                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100.0),
+                _row(
+                    "power-generation",
+                    "Power generation",
+                    "adaptation_capacity",
+                    "FJ",
+                    2023,
+                    100.0,
+                ),
                 _row(
                     "greenhouse-gas-emissions-per-capita",
                     "GHG per capita",
@@ -146,7 +170,14 @@ class GapIndexTests(unittest.TestCase):
             [
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "FJ", 2023, 10),
                 _row("sea-level-anomalies", "Sea level", "climate_signal", "WS", 2023, 20),
-                _row("power-generation", "Power generation", "adaptation_capacity", "FJ", 2023, 100),
+                _row(
+                    "power-generation",
+                    "Power generation",
+                    "adaptation_capacity",
+                    "FJ",
+                    2023,
+                    100,
+                ),
             ]
         )
 

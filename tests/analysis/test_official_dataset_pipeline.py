@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 import pandas as pd
 
@@ -12,7 +12,6 @@ from analysis.preprocessing.official_dataset import (
     build_pipeline_summary,
     normalize_official_frame,
 )
-
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -143,9 +142,24 @@ class OfficialDatasetPipelineTests(unittest.TestCase):
     def test_build_geography_lookup_counts_dataset_coverage(self) -> None:
         normalized = pd.DataFrame(
             [
-                {"dataset_slug": "sea-level", "dataset_name": "Sea level", "geo_code": "FJ", "year": 2020},
-                {"dataset_slug": "rainfall", "dataset_name": "Rainfall", "geo_code": "FJ", "year": 2021},
-                {"dataset_slug": "rainfall", "dataset_name": "Rainfall", "geo_code": "WS", "year": 2021},
+                {
+                    "dataset_slug": "sea-level",
+                    "dataset_name": "Sea level",
+                    "geo_code": "FJ",
+                    "year": 2020,
+                },
+                {
+                    "dataset_slug": "rainfall",
+                    "dataset_name": "Rainfall",
+                    "geo_code": "FJ",
+                    "year": 2021,
+                },
+                {
+                    "dataset_slug": "rainfall",
+                    "dataset_name": "Rainfall",
+                    "geo_code": "WS",
+                    "year": 2021,
+                },
             ]
         )
 

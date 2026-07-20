@@ -51,7 +51,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rank-volatility", type=Path, default=DEFAULT_RANK_VOLATILITY)
     parser.add_argument("--country-story", type=Path, default=DEFAULT_COUNTRY_STORY)
     parser.add_argument("--spatial-typologies", type=Path, default=DEFAULT_SPATIAL_TYPOLOGIES)
-    parser.add_argument("--outlook-interpretation", type=Path, default=DEFAULT_OUTLOOK_INTERPRETATION)
+    parser.add_argument(
+        "--outlook-interpretation",
+        type=Path,
+        default=DEFAULT_OUTLOOK_INTERPRETATION,
+    )
     parser.add_argument("--similarity-neighbors", type=Path, default=DEFAULT_SIMILARITY_NEIGHBORS)
     parser.add_argument(
         "--regional-crosscurrents", type=Path, default=DEFAULT_REGIONAL_CROSSCURRENTS
@@ -214,7 +218,11 @@ def nullable_text(value: object) -> str:
 def main() -> int:
     args = parse_args()
     index_path = ROOT / args.index if not args.index.is_absolute() else args.index
-    trace_path = ROOT / args.indicator_trace if not args.indicator_trace.is_absolute() else args.indicator_trace
+    trace_path = (
+        ROOT / args.indicator_trace
+        if not args.indicator_trace.is_absolute()
+        else args.indicator_trace
+    )
     lookup_path = (
         ROOT / args.geography_lookup
         if not args.geography_lookup.is_absolute()
@@ -263,7 +271,9 @@ def main() -> int:
         else args.processed_app_dir
     )
     public_data_dir = (
-        ROOT / args.public_data_dir if not args.public_data_dir.is_absolute() else args.public_data_dir
+        ROOT / args.public_data_dir
+        if not args.public_data_dir.is_absolute()
+        else args.public_data_dir
     )
     summary_output = (
         ROOT / args.summary_output if not args.summary_output.is_absolute() else args.summary_output

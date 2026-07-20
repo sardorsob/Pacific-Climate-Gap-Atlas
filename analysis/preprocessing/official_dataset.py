@@ -7,7 +7,6 @@ import json
 
 import pandas as pd
 
-
 NORMALIZED_COLUMNS = [
     "dataset_slug",
     "dataset_name",
@@ -47,7 +46,11 @@ def normalize_official_frame(
         preferred=["CLIMATE_CHANGE_INDICATORS", "INDICATOR"],
         contains=["INDICATOR"],
     )
-    unit_column = _pick_column(frame.columns.tolist(), preferred=["UNIT_MEASURE", "UNIT"], contains=["UNIT"])
+    unit_column = _pick_column(
+        frame.columns.tolist(),
+        preferred=["UNIT_MEASURE", "UNIT"],
+        contains=["UNIT"],
+    )
     source_metadata = _source_metadata(
         frame,
         excluded_columns={

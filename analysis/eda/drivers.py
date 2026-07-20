@@ -6,7 +6,6 @@ from typing import Any
 
 import pandas as pd
 
-
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}
 NON_CAUSAL_CAVEAT = (

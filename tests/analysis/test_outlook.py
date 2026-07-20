@@ -83,8 +83,13 @@ class OutlookTests(unittest.TestCase):
             horizons=[2030],
         )
 
-        self.assertEqual(set(outlook["scenario"]), {"capacity_flat", "capacity_gradual_improvement"})
-        ws_flat = outlook[(outlook["geo_code"] == "WS") & (outlook["scenario"] == "capacity_flat")].iloc[0]
+        self.assertEqual(
+            set(outlook["scenario"]),
+            {"capacity_flat", "capacity_gradual_improvement"},
+        )
+        ws_flat = outlook[
+            (outlook["geo_code"] == "WS") & (outlook["scenario"] == "capacity_flat")
+        ].iloc[0]
         self.assertEqual(ws_flat["trend_indicator_count"], 1)
         self.assertIn("linear trend did not beat naive", ws_flat["caveat_notes"])
         self.assertEqual(ws_flat["outlook_gap_score"], 100.0)

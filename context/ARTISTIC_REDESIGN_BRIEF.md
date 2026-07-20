@@ -4,7 +4,7 @@
 
 The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, `TASK-069` accepted the movement -> evidence visibility -> exploration story, and `TASK-072` through `TASK-077` implemented and verified the four-scene guided layer plus handoff. The application and its visual identity are preserved.
 
-Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved the fullscreen scale and interaction system, and `TASK-072` through `TASK-077` replaced the narrative. A later 2026-07-17 Explorer audit is planned under `TASK-078` through `TASK-082`; `TASK-057` separately remains `needs-fix` for pre-existing release findings.
+Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved the fullscreen scale and interaction system, `TASK-072` through `TASK-077` replaced the narrative, and `TASK-079` through `TASK-082` completed the later Explorer audit. `TASK-057` repaired its separate pre-existing release findings and passed independent review.
 
 Approved public title:
 

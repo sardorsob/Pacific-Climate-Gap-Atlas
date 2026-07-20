@@ -355,3 +355,11 @@ Reason: the guided acts now teach regional movement and unequal official visibil
 Keep the existing desktop dock. On mobile portrait, show complete score and evidence-view sibling rows; on mobile landscape, use one compact row with shorter visible labels and full accessible names. Make the handoff CTA content-width and remove temporary review copy.
 
 Reason: primary actions should advertise themselves. Unmarked horizontal overflow makes the evidence views functionally invisible, while a stretched handoff button gives a secondary transition disproportionate visual weight.
+
+## 2026-07-19: Keep Release Repairs At The Existing Trust And Budget Boundaries
+
+Validate every configured initial script source before transport: SDMX requests may use only HTTPS on the two exact Pacific Data Hub hosts without credentials or nonstandard ports, and land acquisition may use only the fixed HTTPS Natural Earth URL. Keep the PowerShell transport fallback behind the same SDMX guard. The standard-library transports may follow redirects, so this decision describes the configured initial-source boundary rather than claiming redirect-target pinning.
+
+Keep the opening MapLibre map synchronous. Measured manual and dynamic splitting retain the same roughly 803 kB MapLibre module and do not resolve Vite's generic 500 kB advisory. Set Vite's warning threshold to 1,050 kB so it matches the existing enforced 1,050,000-byte per-JavaScript-asset budget; the Python checker, not the advisory, remains the regression gate.
+
+Reason: these are local tracked acquisition scripts and a map-first static app. Explicit host/source guards and the existing asset budget close the verified release findings without a new HTTP layer, loading state, router, runtime dependency, or misleading claim that the bundle became smaller.

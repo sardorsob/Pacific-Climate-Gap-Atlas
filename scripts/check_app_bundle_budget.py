@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS_DIR = ROOT / "app" / "dist" / "assets"
 
@@ -28,7 +27,9 @@ def check_assets(assets_dir: Path) -> list[str]:
         limit = MAX_JS_BYTES if suffix == ".js" else MAX_CSS_BYTES
         print(f"{asset.relative_to(assets_dir)}: {size} bytes (limit {limit})")
         if size > limit:
-            errors.append(f"{asset.relative_to(assets_dir)} is {size} bytes, over {limit}-byte budget")
+            errors.append(
+                f"{asset.relative_to(assets_dir)} is {size} bytes, over {limit}-byte budget"
+            )
     return errors
 
 

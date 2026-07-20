@@ -34,7 +34,7 @@ Current concept status:
 - Historical 28rem rail implementation: complete through `TASK-057`, then returned `needs-fix` by owner visual QA.
 - Fullscreen stage concepts: cataloged under `artifacts/design/task-058/`.
 - Recommended synthesis: **One Constellation on an Elastic Stage**, using restrained tidal chamber transitions.
-- Implementation: `TASK-059` through `TASK-064` are the approved fullscreen/application baseline, and the replacement narrative passed `TASK-077` owner QA on 2026-07-16. `TASK-057` remains `needs-fix` only for the separately recorded pre-existing release findings.
+- Implementation: `TASK-059` through `TASK-064` are the approved fullscreen/application baseline, and the replacement narrative passed `TASK-077` owner QA on 2026-07-16. `TASK-057` repaired the separately recorded pre-existing release findings and passed independent review.
 
 The current app remains the behavioral and visual baseline. Reuse the fullscreen stage, MapLibre map, marks, controls, panel, URL/history, observer, native scroll, accessibility, and Explore handoff. Change only the minimum generated story fields, guided copy/state, two regional evidence layouts, transition continuity, and guided-only components made obsolete by the new story.
 

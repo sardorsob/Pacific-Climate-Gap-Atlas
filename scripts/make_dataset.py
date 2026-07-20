@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-from io import StringIO
 import json
-from pathlib import Path
 import sys
+from io import StringIO
+from pathlib import Path
 
 import pandas as pd
 
@@ -29,7 +29,6 @@ from analysis.preprocessing.official_dataset import (  # noqa: E402
     build_pipeline_summary,
     normalize_official_frame,
 )
-
 
 DEFAULT_CONFIG = ROOT / "configs" / "datasets.yml"
 DEFAULT_RAW_DIR = ROOT / "data" / "raw" / "official"
@@ -62,7 +61,9 @@ def build_processed_dataset(
     timeout: float,
 ) -> dict[str, object]:
     config = load_dataset_config(config_path)
-    inventory_path = ROOT / str(config.get("official_inventory", "research/official_datasets_2026.csv"))
+    inventory_path = ROOT / str(
+        config.get("official_inventory", "research/official_datasets_2026.csv")
+    )
     accept_header = str(config.get("api_accept_header", DEFAULT_ACCEPT_HEADER))
     inventory = {dataset.name: dataset for dataset in read_official_inventory(inventory_path)}
 
@@ -80,7 +81,9 @@ def build_processed_dataset(
                     "pillar": pillar,
                     "status": "missing_inventory_row",
                     "rows": 0,
-                    "caveat_notes": "Dataset is listed in config but not found in official inventory.",
+                    "caveat_notes": (
+                        "Dataset is listed in config but not found in official inventory."
+                    ),
                 }
             )
             continue
@@ -202,14 +205,20 @@ def main() -> int:
     args = parse_args()
     config_path = ROOT / args.config if not args.config.is_absolute() else args.config
     raw_dir = ROOT / args.raw_dir if not args.raw_dir.is_absolute() else args.raw_dir
-    observations_path = ROOT / args.observations if not args.observations.is_absolute() else args.observations
+    observations_path = (
+        ROOT / args.observations if not args.observations.is_absolute() else args.observations
+    )
     geography_lookup_path = (
         ROOT / args.geography_lookup
         if not args.geography_lookup.is_absolute()
         else args.geography_lookup
     )
-    app_summary_path = ROOT / args.app_summary if not args.app_summary.is_absolute() else args.app_summary
-    provenance_path = ROOT / args.provenance if not args.provenance.is_absolute() else args.provenance
+    app_summary_path = (
+        ROOT / args.app_summary if not args.app_summary.is_absolute() else args.app_summary
+    )
+    provenance_path = (
+        ROOT / args.provenance if not args.provenance.is_absolute() else args.provenance
+    )
 
     provenance = build_processed_dataset(
         config_path=config_path,

@@ -79,7 +79,7 @@ Removed runtime data products:
 - Consumes: the accepted `TASK-055` behavior and static data.
 - Produces: the same user-visible app with three runtime public data files, fewer dependencies, smaller ownership modules, and current living documentation.
 
-- [ ] **Step 1: Capture a fresh behavior and size baseline**
+- [x] **Step 1: Capture a fresh behavior and size baseline**
 
 Run:
 
@@ -93,7 +93,7 @@ du -sh app/public/data
 
 Record test counts, build chunk sizes, `AtlasMap.tsx` line count, and public-data directory size in the task attempt log. Do not claim preservation later without comparing to this baseline.
 
-- [ ] **Step 2: Prove the targeted dependencies are unused**
+- [x] **Step 2: Prove the targeted dependencies are unused**
 
 Run:
 
@@ -113,7 +113,7 @@ npm install --package-lock-only --ignore-scripts
 npm --prefix app install --package-lock-only --ignore-scripts
 ```
 
-- [ ] **Step 3: Add characterization tests before splitting `AtlasMap`**
+- [x] **Step 3: Add characterization tests before splitting `AtlasMap`**
 
 The tests must lock current pure behavior:
 
@@ -139,7 +139,7 @@ npm --prefix app run test -- atlasMapModel.test.ts
 
 Expected: tests pass before structural edits.
 
-- [ ] **Step 4: Split MapLibre lifecycle from React overlay**
+- [x] **Step 4: Split MapLibre lifecycle from React overlay**
 
 Move existing code without changing behavior:
 
@@ -170,7 +170,7 @@ type MapOverlayProps = {
 
 `AtlasMap.tsx` should compose the hook and overlay and retain only orchestration. Do not introduce context providers or a map service class.
 
-- [ ] **Step 5: Remove the misleading projection module**
+- [x] **Step 5: Remove the misleading projection module**
 
 Move `GRATICULE_LATS` and `GRATICULE_LONS` into `atlasMapModel.ts`, where their only active consumers live. Delete the unused equirectangular projection function and `app/src/lib/projection.ts`.
 
@@ -182,7 +182,7 @@ rg -n "lib/projection|projectPacific|DEFAULT_SELECTED" app/src
 
 Expected: no matches. Delete `DEFAULT_SELECTED` from `atlasData.ts` because selection starts as `null` and the constant has no consumer.
 
-- [ ] **Step 6: Delete static outputs the app never fetches**
+- [x] **Step 6: Delete static outputs the app never fetches**
 
 First prove runtime usage:
 
@@ -216,7 +216,7 @@ PUBLIC_APP_FILES = (
 
 Delete the six processed/public unused files with `apply_patch`; do not use a destructive wildcard command.
 
-- [ ] **Step 7: Regenerate and validate the reduced app-data surface**
+- [x] **Step 7: Regenerate and validate the reduced app-data surface**
 
 Run:
 
@@ -228,13 +228,13 @@ python -m unittest tests.analysis.test_app_data_export tests.analysis.test_app_d
 
 Expected: two generated JSON payloads plus the separately generated land-context GeoJSON; contract tests pass.
 
-- [ ] **Step 8: Archive stale design instructions and update living docs**
+- [x] **Step 8: Archive stale design instructions and update living docs**
 
 Move the Claude mockup instruction file to `context/archive/` with a top banner stating it is historical and superseded by `context/ARTISTIC_REDESIGN_BRIEF.md`. Archive only completed one-off plan files that are not required to execute `TASK-048` through `TASK-057` and are not referenced by living docs.
 
 Update `README.md`, `STRUCTURE.md`, `DATA_CARD.md`, `DESIGN_BRIEF.md`, architecture memory, and patterns memory so they list only the actual runtime files and current five-scene architecture. Use `rg` to remove stale statements about a seven-beat story, guided JSD, similarity arcs, and app consumption of the deleted GeoJSON/manifest files.
 
-- [ ] **Step 9: Run the full preservation gate**
+- [x] **Step 9: Run the full preservation gate**
 
 Run:
 
@@ -251,7 +251,7 @@ git diff --check
 
 Compare the new app test count and Python test count to the baseline. Compare bundle output and `du -sh app/public/data`. A lower source/data footprint is expected; no evidence surface may disappear.
 
-- [ ] **Step 10: Manual behavior comparison**
+- [x] **Step 10: Manual behavior comparison**
 
 Repeat the same desktop/mobile route used for the baseline:
 
@@ -265,7 +265,7 @@ Repeat the same desktop/mobile route used for the baseline:
 - methods and legend;
 - reduced motion.
 
-- [ ] **Step 11: Review and commit**
+- [x] **Step 11: Review and commit**
 
 After legal task transitions and recorded evidence:
 
@@ -299,7 +299,7 @@ git commit -m "refactor(repo): TASK-056 remove redundant atlas machinery"
 - Consumes: browser query parameters and current app state.
 - Produces: deterministic shareable URLs plus a final verified release/readiness record.
 
-- [ ] **Step 1: Write URL-state round-trip and sanitization tests**
+- [x] **Step 1: Write URL-state round-trip and sanitization tests**
 
 ```typescript
 import { describe, expect, it } from "vitest";
@@ -332,7 +332,7 @@ describe("atlas URL state", () => {
 });
 ```
 
-- [ ] **Step 2: Run the URL tests and confirm failure**
+- [x] **Step 2: Run the URL tests and confirm failure**
 
 Run:
 
@@ -342,7 +342,7 @@ npm --prefix app run test -- urlState.test.ts
 
 Expected: missing module failure.
 
-- [ ] **Step 3: Implement a dependency-free URL contract**
+- [x] **Step 3: Implement a dependency-free URL contract**
 
 Use query keys:
 
@@ -357,7 +357,7 @@ outlook=0|1
 
 Omit default values from serialization except `mode` when it improves link clarity. Parse with `URLSearchParams`; validate against literal sets and the loaded geography codes. The parser never throws on unknown input.
 
-- [ ] **Step 4: Integrate history without creating a state loop**
+- [x] **Step 4: Integrate history without creating a state loop**
 
 On initial data load, parse once and apply state. On user state changes, call `history.replaceState()` for passive scroll scene changes and `history.pushState()` for explicit mode, layer, view, or place actions. Handle `popstate` by parsing and applying without writing a new history entry.
 
@@ -369,7 +369,7 @@ const applyingHistoryRef = useRef(false);
 
 Set it while applying `popstate`, and skip URL writing during that state batch. Do not add a router.
 
-- [ ] **Step 5: Write and enforce a bundle budget**
+- [x] **Step 5: Write and enforce a bundle budget**
 
 Record the accepted `TASK-056` build output as the baseline in `scripts/check_app_bundle_budget.py`. The default thresholds are:
 
@@ -388,7 +388,7 @@ Add the root command:
 
 If the actual accepted `TASK-056` baseline is already above either threshold, set the threshold to baseline plus no more than 2%; record the exact reason in the task notes rather than silently weakening it.
 
-- [ ] **Step 6: Run automated final verification**
+- [x] **Step 6: Run automated final verification**
 
 Run:
 
@@ -406,7 +406,7 @@ git diff --check
 
 Expected: zero test failures, successful contract/artifact/status/secret checks, successful app build, assets within budget, and no whitespace errors.
 
-- [ ] **Step 7: Run the full visual and interaction QA matrix**
+- [x] **Step 7: Run the full visual and interaction QA matrix**
 
 Desktop: `1440 × 900`, `1280 × 800`, `1024 × 768`.
 
@@ -427,7 +427,7 @@ For every viewport verify:
 - screen-reader labels describe evidence marks without duplicating decorative SVG;
 - URL reload, copied URL, Back, and Forward restore expected state.
 
-- [ ] **Step 8: Run the evidence/claims QA matrix**
+- [x] **Step 8: Run the evidence/claims QA matrix**
 
 Spot-check:
 
@@ -445,7 +445,7 @@ Spot-check:
 
 Record exact source filenames and observed values in the QA notes.
 
-- [ ] **Step 9: Update handoff and submission readiness truthfully**
+- [x] **Step 9: Update handoff and submission readiness truthfully**
 
 Record:
 
@@ -456,13 +456,13 @@ Record:
 
 Do not call the project submitted or deployed unless the external action has happened.
 
-- [ ] **Step 10: Review and commit**
+- [x] **Step 10: Review and commit**
 
 After legal task transitions and fresh evidence:
 
 ```bash
 git add app scripts tests package.json context README.md
-git commit -m "feat(release): TASK-057 add shareable state and redesign QA"
+git commit -m "fix(release): TASK-057 close readiness findings"
 ```
 
 Inspect the commit body:
@@ -472,3 +472,15 @@ git log -1 --format=full
 ```
 
 Expected: no `Co-authored-by` trailer.
+
+### Final Repair Addendum (2026-07-19)
+
+Owner QA and the later TASK-077/TASK-082 gates preserved the accepted visual and interaction product while isolating four release findings here. The final attempt therefore adds no new product surface. It must:
+
+1. validate the initial SDMX and Natural Earth script sources before transport with focused RED/GREEN tests;
+2. clear the tracked Python Ruff surface without a formatter or unsafe bulk rewrite;
+3. replace the vulnerable Vitest 2 nested development tree and synchronize both lockfiles;
+4. reconcile Vite's chunk advisory with the existing hard bundle budget using measured MapLibre evidence; and
+5. finish with zero Ruff, Semgrep, and OSV findings plus the complete repository gate and an independent Checker.
+
+Final evidence: Python 99/99, frontend 80/80, Ruff zero, Semgrep zero across 231 tracked targets and 504 rules, OSV zero across both lockfiles, compile, data contracts, 78 required artifacts, status, secrets, build, 1,031,807-byte JavaScript, 94,920-byte CSS, budget, and whitespace all pass. No React application source, generated data, score, evidence semantics, story, layout, palette, or interaction changed. Independent Checker review approved the task without findings on 2026-07-19.

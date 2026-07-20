@@ -290,8 +290,13 @@ class AppDataExportTests(unittest.TestCase):
                     "story_label": "Lower gap: moderate pressure / high capacity",
                     "story_priority": "supporting",
                     "evidence_density_label": "broad indicator evidence",
-                    "top_pressure_signals": "Directly affected persons (71.4); Mean surface temperature anomalies (65.9)",
-                    "top_capacity_signals": "Fisheries management measures (75.0); Power generation (83.3)",
+                    "top_pressure_signals": (
+                        "Directly affected persons (71.4); Mean surface temperature "
+                        "anomalies (65.9)"
+                    ),
+                    "top_capacity_signals": (
+                        "Fisheries management measures (75.0); Power generation (83.3)"
+                    ),
                     "non_causal_caveat": "Descriptive screen only.",
                 }
             ]
@@ -357,7 +362,10 @@ class AppDataExportTests(unittest.TestCase):
         self.assertEqual(record["rank"]["scenario_rank_max"], 22)
         self.assertEqual(record["rank"]["rank_range"], 6)
         self.assertEqual(record["rank"]["robustness_label"], "fragile")
-        self.assertEqual(record["story"]["story_label"], "Lower gap: moderate pressure / high capacity")
+        self.assertEqual(
+            record["story"]["story_label"],
+            "Lower gap: moderate pressure / high capacity",
+        )
         self.assertEqual(record["story"]["evidence_density_label"], "broad indicator evidence")
         self.assertEqual(
             record["story"]["top_pressure_signals"][0],

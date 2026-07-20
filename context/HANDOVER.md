@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-056`, `TASK-058` through `TASK-081`, and repair tasks `TASK-083` through `TASK-085` are complete. The owner accepted the regional narrative and visual identity on 2026-07-16 and the bounded Explorer UX contract on 2026-07-18. `TASK-082` passed independent product QA and is `in-review` for owner acceptance. `TASK-057` remains separately `needs-fix` for pre-existing release findings. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-081` and repair tasks `TASK-083` through `TASK-085` are complete. The owner accepted the regional narrative and visual identity on 2026-07-16 and the bounded Explorer UX contract on 2026-07-18. `TASK-057` repaired the remaining release findings and passed independent review. `TASK-082` passed independent product QA and is `in-review` for owner acceptance. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The final local replacement matrix lives under `artifacts/design/task-077/`, with evidence and gate results in `artifacts/tables/task_077_evidence_trace.csv` and `artifacts/provenance/task_077_qa.json`. The concept boards remain composition references, not the app's visual identity.
 
@@ -74,9 +74,8 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Owner reviews the `TASK-082` 43-frame Explorer matrix and state/evidence record. Product QA passed; only owner acceptance can move the task from `in-review` to `done`.
-2. Keep `TASK-057` at `needs-fix` until the UX gate is accepted and the pre-existing Ruff, local-script Semgrep, and development-tool findings are separately repaired or waived with rationale.
-3. Only after both tracks close, complete deployment, public-URL durability, final disclosure, and submission-form actions.
+1. Owner reviews the `TASK-082` 43-frame Explorer matrix and state/evidence record. Product QA passed; only owner acceptance can move that task from `in-review` to `done`.
+2. After that owner gate closes, complete deployment, public-URL durability, final disclosure, and submission-form actions.
 
 ## Known Caveats
 

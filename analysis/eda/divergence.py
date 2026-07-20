@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from itertools import combinations
 import math
+from collections.abc import Iterable, Sequence
+from itertools import combinations
 from pathlib import Path
-from typing import Any, Iterable, Sequence
+from typing import Any
 
 import pandas as pd
-
 
 PRESSURE_PILLARS = {"climate_signal", "observed_stress"}
 CAPACITY_PILLARS = {"adaptation_capacity"}

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 
@@ -17,7 +17,6 @@ from analysis.modeling.outlook import (  # noqa: E402
     build_outlook_projection,
     make_climate_trend_diagnostics,
 )
-
 
 DEFAULT_CONFIG = ROOT / "configs" / "outlook.yml"
 DEFAULT_OBSERVATIONS = ROOT / "data" / "processed" / "official_observations.csv"
@@ -81,7 +80,10 @@ def run_outlook(
 
     diagnostics.to_csv(diagnostics_output, index=False)
     projection.to_csv(projection_output, index=False)
-    summary_output.write_text(json.dumps(summary, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    summary_output.write_text(
+        json.dumps(summary, indent=2, ensure_ascii=True) + "\n",
+        encoding="utf-8",
+    )
     (run_dir / "metrics.json").write_text(
         json.dumps(summary["metrics"], indent=2, ensure_ascii=True) + "\n",
         encoding="utf-8",
@@ -145,7 +147,8 @@ def build_summary(
             "Climate trends are simple linear baselines over available historical observations.",
             "Capacity scenarios use current capacity scores carried forward or modestly improved.",
             "The outlook is useful for exploration and communication, not operational forecasting.",
-            "Rows include caveat_notes and should not appear in the app without visible methodology.",
+            "Rows include caveat_notes and should not appear in the app without visible "
+            "methodology.",
         ],
     }
 
@@ -153,11 +156,17 @@ def build_summary(
 def build_metrics(*, diagnostics: pd.DataFrame, projection: pd.DataFrame) -> dict[str, object]:
     backtest = diagnostics[diagnostics["holdout_linear_mae"].notna()].copy()
     beats_naive = int(backtest["backtest_beats_naive"].eq(True).sum()) if not backtest.empty else 0
-    mean_linear_mae = None if backtest.empty else round(float(backtest["holdout_linear_mae"].mean()), 4)
-    mean_naive_mae = None if backtest.empty else round(float(backtest["holdout_naive_mae"].mean()), 4)
+    mean_linear_mae = (
+        None if backtest.empty else round(float(backtest["holdout_linear_mae"].mean()), 4)
+    )
+    mean_naive_mae = (
+        None if backtest.empty else round(float(backtest["holdout_naive_mae"].mean()), 4)
+    )
     return {
         "trend_series_count": int(len(diagnostics)),
-        "trend_geography_count": int(diagnostics["geo_code"].nunique()) if not diagnostics.empty else 0,
+        "trend_geography_count": (
+            int(diagnostics["geo_code"].nunique()) if not diagnostics.empty else 0
+        ),
         "projection_rows": int(len(projection)),
         "backtested_series_count": int(len(backtest)),
         "linear_beats_naive_count": beats_naive,

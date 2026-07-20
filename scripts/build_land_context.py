@@ -9,7 +9,6 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-
 SOURCE_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_land.geojson"
 SOURCE_PAGE = "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-land/"
 TERMS_URL = "https://www.naturalearthdata.com/about/terms-of-use/"
@@ -30,8 +29,8 @@ def _is_position(value: Any) -> bool:
     return (
         isinstance(value, list)
         and len(value) >= 2
-        and isinstance(value[0], (int, float))
-        and isinstance(value[1], (int, float))
+        and isinstance(value[0], int | float)
+        and isinstance(value[1], int | float)
     )
 
 
@@ -109,7 +108,12 @@ def _context_geometries(feature: dict[str, Any]) -> list[dict[str, Any]]:
     geometry = feature.get("geometry") or {}
     geometry_type = geometry.get("type")
     coordinates = geometry.get("coordinates")
-    candidates = [coordinates] if geometry_type == "Polygon" else coordinates if geometry_type == "MultiPolygon" else []
+    if geometry_type == "Polygon":
+        candidates = [coordinates]
+    elif geometry_type == "MultiPolygon":
+        candidates = coordinates
+    else:
+        candidates = []
     geometries = []
     for polygon in candidates or []:
         bbox = _polygon_bounds(polygon)
@@ -144,10 +148,13 @@ def _context_features(feature: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def ensure_source(source_path: Path, source_url: str = SOURCE_URL) -> None:
+    if source_url != SOURCE_URL:
+        raise ValueError("source_url must match the approved Natural Earth source")
     if source_path.exists():
         return
     source_path.parent.mkdir(parents=True, exist_ok=True)
-    with urllib.request.urlopen(source_url, timeout=60) as response:
+    # The exact HTTPS source is checked above before transport.
+    with urllib.request.urlopen(source_url, timeout=60) as response:  # nosemgrep
         source_path.write_bytes(response.read())
 
 
@@ -207,7 +214,8 @@ def build_land_context(
         },
         "caveats": [
             "Visual land context only; not a scored or selectable geography boundary layer.",
-            "Natural Earth 10m land is generalized and should not be used for territorial precision.",
+            "Natural Earth 10m land is generalized and should not be used for territorial "
+            "precision.",
             "Atlas scores and selections remain tied to generated centroid geography records.",
         ],
     }

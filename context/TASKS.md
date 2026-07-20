@@ -1996,3 +1996,118 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: Created by TASK-078 as the single closing UX gate. It has no planned production-code ownership. 2026-07-18: TASK-079 through TASK-081 passed independent review and unlocked TASK-082; QA moved TASK-082 pending -> in-progress, recorded the reviewed commit hashes, froze production scope, and began the state/history, seven-viewport, accessibility, evidence, and release matrix using strict-headless tooling only. The first release scan returned three test-only non-literal regular expressions to TASK-083/TASK-084; the first reduced-motion slice returned the progress-dot cascade defect to TASK-085. All three repairs passed independent review. QA restarted the complete matrix from `d12d378`, recorded the 164-check/43-frame evidence package and truthful release findings, then moved TASK-082 in-progress -> in-review for the required owner acceptance. Independent final review returned two P2 record-only gaps and moved TASK-082 in-review -> needs-fix; QA moved needs-fix -> in-progress, relabelled the completed handoff scope, added the verified `npm ls` dependency scope to OSV provenance, and moved in-progress -> in-review for record re-review. Independent re-review found no remaining finding. No product, test, screenshot, finding count, or owner-gate state changed.
 - Status: in-review
+
+## TASK-086
+- Phase: visual-refinement
+- Title: Protect premise legibility within the current atlas identity
+- Depends on: TASK-082
+- Assigned agent: Frontend Builder; independent visual/accessibility reviewer
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md
+- Data refs: app/src/styles/base.css, app/src/components/map/MapOverlay.tsx, app/src/components/map/EvidenceMark.tsx
+- Scientific refs: context/STORY_BRIEF.md
+- User value / decision value: The opening statement reads immediately without map labels or marks competing with it, while the accepted dark-ocean atlas still looks like the same application.
+- Functional notes: Begin with a failing presentation contract or measurable browser baseline. Reuse the existing data-scene-visual hooks to add only premise-scoped label suppression, restrained mark dimming where marks cross the copy-safe area, and a text-protection gradient built from existing ocean tokens. Add the missing explicit neutral-mark styling through the current EvidenceMark classes. Prefer a CSS-only repair; App.tsx or component markup may change only if a failing test proves the existing hooks cannot express the treatment. Preserve the current palette, typography, wordmark, header, map treatment, evidence-mark geometry, controls, and Explorer chrome. Do not add glass/cream/brass tokens, a serif-caps wordmark, a new material system, or a broad reskin.
+- Statistical notes: All 22 identities remain present and selectable where selection is enabled. No score, reporting status, data value, claim, label text, or missingness meaning changes. Premise dimming is visual hierarchy only and cannot vary by place data.
+- Edge cases: 1440x900, 1280x800, 390x844, 360x800, and 844x390; long headline wrapping; grayscale; 200% reflow; reduced motion; transition from premise to presence must restore ordinary labels and neutral marks.
+- Files to create/modify: app/src/styles/base.css; the smallest existing presentation test that can lock the scene scope; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: before/after premise and presence frames at desktop, portrait, and landscape in artifacts/design/task-086/; exact measurements in task QA notes
+- Acceptance criteria: No map label or high-contrast mark crosses the premise headline or caveat at the target viewports; the premise retains all 22 stable identities without suggesting that dimmed places are less important; labels and ordinary neutral-mark treatment return in the presence scene; grayscale and reduced-motion equivalents remain complete; focused/full tests, build, bundle budget, status, secrets, and whitespace pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare premise and presence at 1440x900, 390x844, and 844x390; inspect headline clearance, restoration on the next scene, grayscale, 200% reflow, and reduced motion using quiet/headless or in-app inspection only.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-087
+- Phase: visual-refinement
+- Title: Measure and refine act composition without shrinking the evidence
+- Depends on: TASK-086
+- Assigned agent: Frontend Builder; independent visualization/accessibility reviewer
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: app/src/styles/base.css, app/src/components/story/RegionalEvidenceScene.tsx
+- Scientific refs: context/STORY_BRIEF.md
+- User value / decision value: The cross-current and 22-by-14 visibility figures receive as much usable space as the viewport allows without repeating the earlier mistake of making primary evidence too small.
+- Functional notes: Record the current claim, figure, key, and page-owned overflow measurements before editing. At wide and landscape viewports, test the approved sibling-layout idea: a compact claim rail beside the evidence only when it increases usable figure area and preserves reading order. Keep portrait stacked. Prefer CSS over new markup; change RegionalEvidenceScene.tsx only if semantic source order cannot support the responsive layout. Native page flow is allowed and expected. Do not require the 308-cell ledger, key, caveat, and claim to fit inside 100svh; do not add nested scrolling, crop evidence, hide rows, abbreviate place identity, or reduce the matrix merely to satisfy a viewport-height target.
+- Statistical notes: Preserve 19 complete plus three incomplete movement cases, the 7/6/3/3 direction counts, all 22 visibility rows, all 14 positions, all 308 cells, 277 present and 31 absent states, five direct coverage facts, raw role/year semantics, and explicit caveats.
+- Edge cases: 1440x900, 1280x800, 1024x768, 430x932, 390x844, 360x800, and 844x390; 200% reflow; long visibility-key labels; page-owned vertical flow; no horizontal or nested overflow; screen-reader reading order.
+- Files to create/modify: app/src/styles/base.css; app/src/components/story/RegionalEvidenceScene.tsx only if the measured CSS-only path fails; app/src/components/story/storyFigures.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: measured before/after movement and visibility frames for all seven target viewports in artifacts/design/task-087/; measurement record in task QA notes
+- Acceptance criteria: The chosen layout measurably increases or preserves primary figure area at each target viewport; direct labels remain readable without zoom; no evidence invariant changes; page-owned vertical flow remains acceptable; horizontal and nested overflow remain zero; 200% reflow and screen-reader order pass; focused/full tests, build, bundle budget, status, secrets, and whitespace pass. If the claim-column experiment does not improve the measurements, retain the current layout and record that negative result instead of forcing a change.
+- Verification commands: npm --prefix app run test -- storyFigures.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare movement and visibility before/after across all seven viewports; verify the figure grows rather than shrinks, the whole matrix remains reachable in normal page scroll, the key stays discoverable, and landscape does not crop the claim or evidence.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-088
+- Phase: explorer-evidence-refinement
+- Title: Surface useful place context and exact record caveats
+- Depends on: TASK-082
+- Assigned agent: Data/UI Builder; independent scientific/copy reviewer
+- Contract refs: context/DESIGN_BRIEF.md, context/DATA_CARD.md
+- Data refs: app/public/data/geographies.json, app/public/data/country_details.json, app/src/lib/atlasData.ts
+- Scientific refs: context/docs/methodology.md, context/DATA_CARD.md
+- User value / decision value: Selected-place detail can describe the place and explain its exact reporting and rank limitations in the record's own reviewed language, without burying readers in database inventory.
+- Functional notes: Add only four nullable adapter fields already present in generated geographies: context.island_group_or_region_note, monitoring.missing_reporting_caveat, rank.rank_caveat, and story.non_causal_caveat. Render the place note near the name when present. Replace the corresponding generic monitoring, rank, and non-causal sentences only where a reviewed generated string exists; retain current encoding.ts copy as the fallback. Review all 22 public strings before rendering. Never render context.regional_context_caveat because it contains internal publication-review instructions. Do not surface dataset_count, row_count, first_year, last_year, evidence_density_label, monitoring_quadrant, or story_priority: the panel already exposes 14-position presence, eight score-input presence, trace rows, rank range, and exact measure clocks.
+- Statistical notes: Generated wording remains descriptive. A reported zero remains different from a missing monitoring row. Place context remains outside scoring and cannot imply a territorial boundary. Rank language remains a sensitivity diagnostic. Dataset presence remains distinct from quality, preparedness, vulnerability, need, conditions, or local knowledge.
+- Edge cases: Missing or blank fields; source-supported versus review-needed context; AS missing-row wording; NR reported-zero wording; PN place note; no duplicate caveat paragraphs; no internal review phrase; no source-data or generated-file modification.
+- Files to create/modify: app/src/lib/atlasData.ts; app/src/lib/atlasData.test.ts; app/src/components/panels/CountryPanel.tsx; app/src/components/panels/CountryPanel.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: all-22 surfaced-string audit recorded in task QA notes; selected-place frames for AS, NR, and PN in artifacts/design/task-088/
+- Acceptance criteria: AS clearly reads as a missing processed monitoring row, NR as a latest row reporting zero, and PN exposes its place note without turning it into a boundary claim; generated caveats replace rather than duplicate equivalent generic copy; absent fields fall back safely; no internal-review wording or raw inventory metadata ships; focused/full tests, build, bundle budget, data contracts, status, secrets, and whitespace pass.
+- Verification commands: npm --prefix app run test -- atlasData.test.ts CountryPanel.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/validate_data_contracts.py; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Review the adapted strings for all 22 places, then inspect AS, NR, and PN panels for hierarchy, duplication, wrapping, political/territorial overstatement, and accurate zero-versus-missing language.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-089
+- Phase: refinement-release-qa
+- Title: Verify the bounded visual and place-evidence refinement
+- Depends on: TASK-086, TASK-087, TASK-088
+- Assigned agent: Independent UX/scientific/accessibility QA; owner final review
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/docs/submission-notes.md
+- Data refs: generated app data and TASK-086 through TASK-088 rendered evidence
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Proves that the refinement improves the opening, figure scale, and selected-place explanation without changing the accepted identity, evidence meaning, or Explorer behavior.
+- Functional notes: Begin read-only against the reviewed TASK-086 through TASK-088 commits. Reuse the TASK-082 state/accessibility matrix and the TASK-077 seven-viewport story matrix, but capture only the affected premise, presence, movement, visibility, overview, and AS/NR/PN panel states. Compare before/after dimensions and legibility. Return defects to their owning task rather than fixing production code inside QA. Use quiet/headless or in-app inspection only; never open visible external Brave or Chrome windows in front of the owner.
+- Statistical notes: Recheck the 19+3 movement split, 7/6/3/3 counts, 22x14 visibility matrix, 277/31 cells, separate clocks, nulls, reported-zero versus missing-row wording, rank caveats, and presence-not-preparedness limits. Confirm no new environmental, causal, territorial, quality, or readiness meaning entered the visual treatment.
+- Edge cases: Seven target viewports; 200% reflow; grayscale/deuteranopia; reduced motion; keyboard/focus/touch; direct scene and place URLs; Back/Close/history; generated-data failure; page-owned vertical flow; no horizontal or nested overflow.
+- Files to create/modify: artifacts/design/task-089/*; artifacts/provenance/task_089_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only when a defect is returned to its owning task
+- Artifacts to produce: targeted before/after screenshot matrix, exact measurements, data/copy trace, accessibility results, automated gate results, and owner decision
+- Acceptance criteria: Premise hierarchy improves without losing place identity; act figures are no smaller and remain fully reachable; panel context/caveats match generated data; the accepted palette, typography, map, mark, control, and panel language remain intact; state/history/accessibility/reduced-motion/data/error gates pass; owner accepts the refinement. Only then may TASK-090 begin.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
+- Manual QA: Run the targeted story/Explorer matrix, cold-read premise and panel wording, verify exact before/after figure dimensions, inspect keyboard/touch/focus/reflow/reduced motion, and obtain owner acceptance without opening visible external browser tabs.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-090
+- Phase: future-concept-gate
+- Title: Explore a semantically safe maritime art direction
+- Depends on: TASK-089
+- Assigned agent: Design researcher; independent scientific/accessibility reviewer; owner concept gate
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/DATAVIZ_INSPIRATION_AUDIT.md
+- Data refs: the accepted TASK-089 screenshots and current application only; no new production data
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Tests whether the atlas can gain a more distinctive maritime character without confusing official-record visibility with ocean conditions, borrowing unsupported cultural motifs, or discarding the interface the owner already likes.
+- Functional notes: This is a concept-only task with no production-code authority. Produce three controlled directions against the same premise, visibility, and Explorer frames: restrained hydrographic chart furniture; atmospheric ocean depth/light; and a hybrid that evolves the existing dark-ocean atlas. Each direction must state what is decorative, what encodes data, how it behaves in grayscale and reduced motion, and what current identity elements remain. Compare any proposed glass, brass, cream, neatline, bathymetric, ripple, or sounding treatment instead of declaring it approved. Reuse current screenshots and generated facts; no new map source, renderer, dependency, or app branch. Owner selects, combines, or rejects the directions before any implementation tasks are created.
+- Statistical notes: Reporting status and dataset presence may not be encoded as live water, dead water, wave activity, calmness, depth, current, weather, sonar contact, or environmental condition. Coverage numerals, if auditioned, must be explicitly N-of-14 record visibility and cannot appear in score layers. No cultural navigation, weaving, tattoo, canoe, or Indigenous motif may be used without Pacific co-design and provenance.
+- Edge cases: Decorative linework mistaken for boundaries or measured bathymetry; sonar or military associations; data absence mistaken for physical absence; motion-sensitive users; grayscale; dense small-island regions; mobile portrait/landscape; visual continuity with selected-place panels and controls.
+- Files to create/modify: artifacts/design/task-090/*; context/ARTISTIC_REDESIGN_BRIEF.md; context/DECISIONS.md; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: one labeled comparison board across the three directions, individual desktop/portrait frames, a semantic-risk table, and an owner decision record
+- Acceptance criteria: Three visibly distinct but evidence-safe directions are reviewable against identical content; every decorative and data-bearing mark is labeled; no direction implies that record gaps are ocean conditions or uses unsupported cultural motifs; current versus proposed identity changes are explicit; accessibility and responsive implications are recorded; owner makes a documented selection or rejection. No production implementation is authorized by completion of the concepts alone.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Owner compares the three directions at desktop and portrait scale; scientific reviewer performs a preattentive-meaning audit; accessibility reviewer checks contrast, grayscale, reduced-motion equivalence, and small-screen noise.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending

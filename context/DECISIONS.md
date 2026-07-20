@@ -363,3 +363,13 @@ Validate every configured initial script source before transport: SDMX requests 
 Keep the opening MapLibre map synchronous. Measured manual and dynamic splitting retain the same roughly 803 kB MapLibre module and do not resolve Vite's generic 500 kB advisory. Set Vite's warning threshold to 1,050 kB so it matches the existing enforced 1,050,000-byte per-JavaScript-asset budget; the Python checker, not the advisory, remains the regression gate.
 
 Reason: these are local tracked acquisition scripts and a map-first static app. Explicit host/source guards and the existing asset budget close the verified release findings without a new HTTP layer, loading state, router, runtime dependency, or misleading claim that the bundle became smaller.
+
+## 2026-07-20: Refine First, Then Explore Maritime Identity
+
+Split the next work into two batches.
+
+The immediate `TASK-086` through `TASK-089` batch preserves the current application identity. It may protect the premise copy, improve the measured composition of the two act figures, and surface selected reviewed place context and caveats. The figure task may use a wide claim rail only when before/after measurements show that primary evidence stays the same size or grows. Native vertical page flow is not a defect, and the 22-by-14 record must not be compressed merely to fit one viewport.
+
+After that batch passes independent and owner review, `TASK-090` may explore three maritime directions as concepts only. No maritime production implementation is pre-approved. In particular, reject the proposed live-water/dead-water reporting metaphor and sonar-contact language because they can make record availability look like a physical ocean condition. Reject unproven bathymetry or boundary meaning and unsupported Pacific cultural motifs. Any eventual implementation tasks are created only after the owner selects a concept and its semantic-risk review passes.
+
+Reason: the Fable plan found real premise, composition, and place-context opportunities, but mixed them with a speculative reskin and a scientifically ambiguous water-state encoding. Separating refinement from concept exploration preserves the already accepted interface, produces a clean before/after gate, and lets the stronger maritime idea receive proper artistic attention instead of entering production through incidental CSS.

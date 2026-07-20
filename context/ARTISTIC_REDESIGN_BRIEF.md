@@ -48,6 +48,21 @@ Preserve the existing fullscreen stage and island explorer, but test a new readi
 
 The artistic idea is continuity, not ornament: geography becomes comparison, comparison becomes a record, and the record returns to geography. The same 22 marks carry that change. Motion verbs are locate, rearrange, expose, and return. Every frame must still make sense without motion.
 
+## 2026-07-20 Staged Refinement And Maritime Concept Gate
+
+The owner approved a small refinement batch before any broader maritime restyling:
+
+1. `TASK-086` protects premise copy from map-label and mark collisions using the existing scene hooks, ocean palette, typography, header, and evidence-mark system.
+2. `TASK-087` measures the two act figures before changing them. A claim rail is permitted only where it preserves or increases evidence size. Native page flow remains correct; fitting the complete 22-by-14 record into `100svh` is not a goal.
+3. `TASK-088` surfaces only reviewed place context and exact generated caveats that reduce ambiguity. It does not turn the place panel into a dataset inventory.
+4. `TASK-089` repeats the affected slices of the accepted story and Explorer QA matrices and requires owner acceptance.
+
+`TASK-086` and `TASK-088` may run concurrently after `TASK-082` owner acceptance because their production files do not overlap. `TASK-087` follows `TASK-086` because both own stage CSS. `TASK-089` follows all three implementations. Each task keeps its own test, review, and no-co-author commit boundary.
+
+The owner also wants to explore a stronger maritime art direction later. `TASK-090` is therefore a separate concept gate after `TASK-089`, not an implementation task. It compares three controlled directions against identical app content and records their semantic, accessibility, and responsive risks. No production task may call a maritime treatment approved until the owner selects a concept.
+
+The current visual identity remains authoritative throughout the refinement batch. The later concept study may question or evolve that identity, but it may not encode reporting gaps as calm, dead, live, deep, rough, or otherwise physical water; use sonar-contact or military language; imply measured bathymetry or boundaries through decorative linework; or borrow Pacific cultural navigation, weaving, tattoo, canoe, or Indigenous motifs without co-design and provenance.
+
 ## TASK-072 Transition Keyframes (Owner Approved)
 
 Three exact-data composite boards now translate the approved story into the accepted TASK-064 application shell:
@@ -404,6 +419,8 @@ The approved retrofit is intentionally small:
 6. `TASK-077`: run independent scientific, interaction, accessibility, responsive, URL/history, bundle, and owner QA; reconcile `TASK-057` only after acceptance.
 
 `TASK-072` and `TASK-073` may run concurrently only in isolated worktrees. Their status/log updates and separate no-co-author commits are serialized by the Orchestrator. Later tasks are sequential because they share the scene contract, evidence marks, `App.tsx`, and stage CSS. No per-task Markdown files are required; the task ledger is the implementation plan.
+
+The 2026-07-20 follow-up uses the same rule: `TASK-086` through `TASK-090` are fully specified in `context/TASKS.md`, so no separate per-task plan files are required.
 
 Future possibilities only after the core redesign works:
 

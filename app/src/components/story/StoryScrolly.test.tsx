@@ -83,4 +83,32 @@ describe("fullscreen story shell", () => {
       ".scene-progress__dot { transition: none; }",
     );
   });
+
+  it("scopes premise protection to the opening without reskinning Explore", () => {
+    const start = styles.indexOf(
+      "/* ---------- premise legibility (TASK-086) ---------- */",
+    );
+    const end = styles.indexOf(
+      "/* ---------- end premise legibility ---------- */",
+      start,
+    );
+
+    expect(start).toBeGreaterThan(-1);
+    expect(end).toBeGreaterThan(start);
+    const premiseRules = styles.slice(start, end);
+    expect(premiseRules).toContain(
+      '.map-overlay-svg[data-scene-visual="premise"]',
+    );
+    expect(premiseRules).toContain(".map-labels");
+    expect(premiseRules).toContain(".subregion-labels");
+    expect(premiseRules).toContain(".graticule-labels");
+    expect(premiseRules).toMatch(/\.map-labels[\s\S]{0,180}opacity:\s*0;/);
+    expect(premiseRules).toContain(
+      '.map-overlay-svg[data-scene-visual="premise"] .map-evidence-mark',
+    );
+    expect(premiseRules).toContain(
+      ".evidence-mark--neutral .evidence-mark__edge--neutral",
+    );
+    expect(premiseRules).not.toContain(".atlas-shell--explore");
+  });
 });

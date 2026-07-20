@@ -2,10 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-079 through TASK-081 product work and TASK-083 through TASK-085 returned repairs are complete and independently approved. TASK-057 is done after its final release repair and independent Checker. TASK-082 product QA passed and is `in-review` for owner acceptance; that owner gate is the immediate prerequisite for the new refinement batch. After it closes, TASK-086 premise work and TASK-088 place-context work may run in parallel, TASK-087 follows the shared CSS owner, and TASK-089 closes the batch. TASK-090 is a later maritime concept gate, not production implementation.
+TASK-079 through TASK-082 product and QA work and TASK-083 through TASK-085 returned repairs are complete and approved. TASK-057 is done after its final release repair and independent Checker. TASK-086 premise work and TASK-088 place-context work are now unlocked and may run in parallel; TASK-087 follows the shared CSS owner, and TASK-089 closes the batch. TASK-090 is a later maritime concept gate, not production implementation.
 
 ## 2026-07-20
 
+- Owner accepted TASK-082 after confirming its role as the completed Explorer QA gate. The 164-check/43-frame evidence remains unchanged; TASK-082 moved `in-review -> done` and unlocked TASK-086 and TASK-088 without a product or deployment change.
 - Owner approved the staged response to Fable's draft. TASK-086 through TASK-089 preserve the current palette, typography, map, marks, controls, panels, native scroll, and evidence meaning while addressing premise collisions, measuring rather than assuming figure-layout gains, and surfacing only selected reviewed place context/caveats. TASK-090 follows only after owner acceptance and compares three maritime concepts with explicit semantic and accessibility review. No task currently authorizes a broad reskin, water-state reporting metaphor, sonar treatment, false bathymetry/boundary meaning, or unsupported Pacific cultural motif.
 
 ## 2026-07-19

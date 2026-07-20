@@ -150,9 +150,9 @@
     { "task": "TASK-084", "finding": "One test-only non-literal controls regular expression", "result": "independently reviewed done" },
     { "task": "TASK-085", "finding": "Reduced-motion progress transition lost to later cascade order", "result": "independently reviewed done; full matrix restarted" }
   ],
-  "task_057_relationship": "TASK-057 remains needs-fix for the 96 Ruff findings, two trusted-local-script Semgrep findings, five development-tool OSV findings, and build chunk advisory. TASK-082 does not resolve or waive them.",
-  "owner_gate": "pending owner review",
-  "task_status": "in-review",
+  "task_057_relationship": "At tested_from_head d12d378, TASK-057 owned the 96 Ruff findings, two trusted-local-script Semgrep findings, five development-tool OSV findings, and build chunk advisory. TASK-057 later closed those separate findings in 6b562ba; TASK-082 did not resolve or waive them.",
+  "owner_gate": "accepted by owner on 2026-07-20",
+  "task_status": "done",
   "release_claim": false,
   "deployment_claim": false
 }

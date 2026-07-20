@@ -111,4 +111,8 @@ describe("fullscreen story shell", () => {
     );
     expect(premiseRules).not.toContain(".atlas-shell--explore");
   });
+
+  it("contains decorative edge geometry without creating page-width scroll", () => {
+    expect(styles).toMatch(/\.atlas-shell\s*\{[^}]*overflow-x:\s*clip;/);
+  });
 });

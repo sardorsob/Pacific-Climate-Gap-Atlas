@@ -79,7 +79,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- shell + map ---------- */
-.atlas-shell { position: relative; min-height: 100vh; overflow: visible; }
+.atlas-shell { position: relative; min-height: 100vh; overflow-x: clip; }
 .atlas-map-region { position: absolute; inset: 0; }
 .map-canvas { position: absolute; inset: 0; overflow: hidden; background: var(--ocean); }
 .maplibre-canvas { position: absolute; inset: 0; }

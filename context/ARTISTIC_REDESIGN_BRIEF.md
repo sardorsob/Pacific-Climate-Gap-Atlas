@@ -136,7 +136,19 @@ The approved story sequence and motion verbs remain **locate, rearrange, expose,
 
 Night Watch is an evolution of the accepted application, not authority to rebuild it. Keep the current map, 22 evidence marks, regional figures, native scroll, one active-scene observer, controls, selected-place panel, Methods and Sources, URL/history behavior, Explore handoff, generated-data contract, and public story. Implementation planning should first test a token-and-surface pass in the existing CSS/component seams. A new renderer, animation library, state system, map source, data field, score, bitmap substrate, or app branch requires separate evidence and approval.
 
-TASK-090 itself authorizes no production change. The written concept must pass independent semantic/accessibility review and owner review before the next task batch is finalized.
+TASK-090 itself authorized no production change. Independent semantic/accessibility review passed, and on 2026-07-23 the owner approved this written contract and the bounded implementation batch below.
+
+## 2026-07-23 Approved Night Watch Implementation Batch
+
+The retrofit is deliberately a surface evolution of the current application:
+
+1. `TASK-091` retunes and consolidates the existing CSS token/surface foundation. It must create bundle headroom from the 94,996-byte baseline rather than add a parallel theme system.
+2. `TASK-092` applies the foundation to premise, presence, movement, visibility, progress, and handoff while freezing public story, data, scene, observer, URL, and figure contracts.
+3. `TASK-093` carries the treatment through Explorer and removes any pre-existing data-dependent glow so selection remains a crisp, non-luminous outline.
+4. `TASK-094` measures and corrects only reproduced responsive, contrast, focus, grayscale, color-deficiency, reduced-motion, reflow, and overflow failures.
+5. `TASK-095` freezes production for independent regression and owner review. Defects return to their owning implementation task.
+
+All five tasks use existing components, MapLibre, native scroll, CSS, tests, and generated data. No task may add a renderer, theme provider, animation library, state system, route, map source, bitmap substrate, data field, runtime dependency, or public art-direction language. `TASK-091` through `TASK-094` share `base.css`, so Builders work sequentially; read-only audits and independent Checker passes may run in parallel. Each task retains its own QA and no-co-author commit boundary. The complete contracts live in `context/TASKS.md`; no per-task Markdown files are needed.
 
 ## TASK-072 Transition Keyframes (Owner Approved)
 

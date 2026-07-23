@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-089` are complete, including repair tasks `TASK-083` through `TASK-085`. The owner accepted the regional narrative and visual identity on 2026-07-16, the bounded Explorer UX contract on 2026-07-18, the TASK-082 product QA matrix on 2026-07-20, and the TASK-089 bounded refinement after live interaction review on 2026-07-23. `TASK-057` repaired the remaining release findings and passed independent review. TASK-090 has completed its three-direction concept pass, and the owner selected Night Watch subject to a UI-only illumination and evidence-safety contract. The written concept remains in review before implementation tasks are created. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-090` are complete. On 2026-07-23 the owner approved TASK-090's Night Watch contract after independent semantic/accessibility review. `TASK-091` through `TASK-095` are the active implementation and QA batch; all five are pending at this handoff. `TASK-057` repaired the remaining release findings and passed independent review. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The accepted replacement baseline lives under `artifacts/design/task-077/`; the current refinement review matrix lives under `artifacts/design/task-089/`, with exact measurements, scientific traces, gate results, and network-scanner limitations in `artifacts/provenance/task_089_qa.json`. TASK-090's three direction boards, responsive-continuation board, and comparison SVG live under `artifacts/design/task-090/`. They are visual concept references with schematic generated text and values, not production evidence or an implemented reskin.
 
@@ -74,10 +74,10 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Obtain owner review of TASK-090's written Night Watch contract after the independent semantic/accessibility review is reconciled.
-2. After that gate, create the smallest implementation batch in the existing task ledger. Start with shared low-light tokens/surfaces, then scene/chrome integration, responsive and reduced-motion refinement, and an independent regression/owner gate; do not create production tasks before the written contract is accepted.
-3. If the owner later requires fresh online Semgrep/OSV evidence, rerun those external queries only after destination-specific disclosure approval.
-4. Complete deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
+1. Build and independently review `TASK-091` as a replacement/consolidation pass against the 94,996-byte CSS baseline.
+2. Continue sequentially through guided story (`TASK-092`), Explorer (`TASK-093`), and measured responsive/accessibility refinement (`TASK-094`), committing each only after its Checker gate.
+3. Freeze production for `TASK-095`, run the final regression matrix, and obtain owner acceptance.
+4. Treat deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
 
 ## Known Caveats
 
@@ -85,7 +85,7 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 - TASK-079 through TASK-081 resolved diagnostic Back/Close/history, narrow-screen control overflow, and the place panel's missing regional water/renewable/visibility evidence. TASK-082 verified the combined product with 164/164 strict-headless assertions and 43 PNGs and received owner acceptance on 2026-07-20.
 - TASK-089 verified the bounded refinement with 362/362 headless assertions and 53 PNGs. Fresh external Semgrep and OSV calls were blocked by the managed environment; the provenance records the failed attempts, unchanged TASK-057 lock blobs/acquisition code, and frozen-diff security review without claiming an online pass.
 - TASK-086 through TASK-089 preserve the accepted visual identity. They protect premise copy, retain full-size evidence after rejecting a smaller composition, and surface reviewed place notes/caveats; they do not introduce a broad dark-glass or glass/cream/brass reskin.
-- TASK-090 is concept-only. Night Watch is the owner-selected direction, but its light is restricted to static UI frame/focus/readability roles. Geography marks, matrix cells, and missingness remain flat; reporting gaps may not appear as dead, calm, live, rough, deep, or otherwise physical water; sonar-contact language and unsupported Pacific cultural motifs are excluded. No maritime implementation task exists until the written concept passes review.
+- TASK-090 remains concept-only and is now done; TASK-091 through TASK-095 are the only authorized implementation path. Light is restricted to static UI frame/focus/readability roles. Geography marks, matrix cells, and missingness remain flat; reporting gaps may not appear as dead, calm, live, rough, deep, or otherwise physical water; sonar-contact language and unsupported Pacific cultural motifs remain excluded.
 - `Geo.regionalStory` remains the sole source for the new place summary; its null/different-clock/presence caveats, fixed 14-position denominator, and separation from score/preparedness claims are protected.
 - In a fresh checkout, install app and Python dependencies before rebuilding. The local working copy has previously run the Vite build successfully.
 - The saved v2 SDMX routes currently return `422`; the fetch helper records that failure and retries through the documented stable Pacific Data Hub endpoint, with PowerShell retained only as a final Windows transport fallback.

@@ -383,3 +383,11 @@ Bind the selection to a strict semantic rule: illumination belongs only to stati
 The Working Chart and Chart & Ledger remain recorded alternatives, not implementation directions. Do not import chart furniture or the paper-ledger metaphor by default. Generated concept text and values are schematic. Any implementation batch must preserve the current story/data/interaction architecture, use existing CSS and component seams first, and pass semantic, contrast, grayscale, reduced-motion, portrait, landscape, reflow, and owner gates before release.
 
 Reason: visual distinction is part of the project's value, and Night Watch best supplies it. Constraining where light may appear preserves that attraction without turning official-record visibility into an environmental or physical-ocean claim.
+
+## 2026-07-23: Authorize A Five-Task Night Watch Retrofit
+
+The owner approved the written TASK-090 contract and authorized `TASK-091` through `TASK-095`: shared budget-neutral surfaces, guided-story treatment, Explorer treatment, measured responsive/accessibility refinement, and frozen independent regression with an owner gate.
+
+Keep implementation sequential because all four production tasks converge on `app/src/styles/base.css`, which already builds to 94,996 of the 95,000-byte cap. Parallelize only read-only audits, non-overlapping test design, or independent review. Retune and delete existing rules before adding new ones. Remove the pre-existing data-dependent map glow during Explorer treatment; selection remains a crisp outline, while geography, movement, and visibility marks remain flat.
+
+Reason: this is the smallest implementation shape that can realize the selected atmosphere without creating a second theme system, conflicting stylesheet branches, or a visual metaphor that changes the evidence.

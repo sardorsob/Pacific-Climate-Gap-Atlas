@@ -2106,8 +2106,128 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Three visibly distinct but evidence-safe directions are reviewable against identical content; every decorative and data-bearing mark is labeled; no direction implies that record gaps are ocean conditions or uses unsupported cultural motifs; current versus proposed identity changes are explicit; accessibility and responsive implications are recorded; owner makes a documented selection or rejection. No production implementation is authorized by completion of the concepts alone.
 - Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Owner compares the three directions at desktop and portrait scale; scientific reviewer performs a preattentive-meaning audit; accessibility reviewer checks contrast, grayscale, reduced-motion equivalence, and small-screen noise.
-- QA notes: Three 1536x1024 boards compare The Working Chart, Night Watch, and Chart & Ledger against premise, visibility, Explorer, portrait, and landscape application states; `comparison-board.svg` records the equal-scale decision. The owner selected Night Watch for its stronger beauty and emotional pull. A focused responsive-continuation board then proves ordinary portrait and landscape page flow through the complete visibility record without nested figure scrolling, compression, or cropping. Generated labels, values, row slices, land shapes, and sources remain schematic; production stays code-bound to 22 rows, 14 positions, 308 cells, 277 present, and 31 absent. Independent scientific/accessibility review passed after the written contract restricted illumination to static UI frame/focus/readability roles, kept all data marks and missingness flat and non-glowing, preserved a tonally uniform map and pale literal visibility field, prohibited the board's amber callout rails/nodes from shipping, kept Night Watch as an internal name, and locked contrast, grayscale, reduced-motion, native-page-flow, current-identity, and no-cultural-motif rules. No production code, data, source, dependency, renderer, branch, or public copy changed. The written owner-review gate remains before implementation-task planning.
+- QA notes: Three 1536x1024 boards compare The Working Chart, Night Watch, and Chart & Ledger against premise, visibility, Explorer, portrait, and landscape application states; `comparison-board.svg` records the equal-scale decision. The owner selected Night Watch for its stronger beauty and emotional pull. A focused responsive-continuation board then proves ordinary portrait and landscape page flow through the complete 22-by-14 visibility record without nested figure scrolling, compression, or cropping. Generated labels, values, row slices, land shapes, and sources remain schematic; production stays code-bound to 22 rows, 14 positions, 308 cells, 277 present, and 31 absent. Independent scientific/accessibility review passed after the written contract restricted illumination to static UI frame/focus/readability roles, kept all data marks and missingness flat and non-glowing, preserved a tonally uniform map and pale literal visibility field, prohibited the board's amber callout rails/nodes from shipping, kept Night Watch as an internal name, and locked contrast, grayscale, reduced-motion, native-page-flow, current-identity, and no-cultural-motif rules. No production code, data, source, dependency, renderer, branch, or public copy changed. On 2026-07-23 the owner approved the written contract and authorized only the bounded TASK-091 through TASK-095 retrofit.
 - Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-07-23: TASK-090 moved pending -> in-progress after TASK-089 owner acceptance. The Design researcher audited the accepted TASK-089 frames and existing story/data/ethical contracts, then compared three controlled directions with the built-in image concept workflow. The owner first favored The Working Chart in the abstract, then selected Night Watch after viewing the actual boards because it was substantially more appealing. The Orchestrator converted that preference into a UI-only illumination contract, added a deterministic comparison board and focused responsive continuation artifact, and moved in-progress -> in-review after an independent semantic/accessibility reviewer returned a final pass. The generated raster boards remain composition studies only. Owner review of the written contract is the final TASK-090 gate; implementation work and successor tasks remain locked.
-- Status: in-review
+- Attempt log: 2026-07-23: TASK-090 moved pending -> in-progress after TASK-089 owner acceptance. The Design researcher audited the accepted TASK-089 frames and existing story/data/ethical contracts, then compared three controlled directions with the built-in image concept workflow. The owner first favored The Working Chart in the abstract, then selected Night Watch after viewing the actual boards because it was substantially more appealing. The Orchestrator converted that preference into a UI-only illumination contract, added a deterministic comparison board and focused responsive continuation artifact, and moved in-progress -> in-review after an independent semantic/accessibility reviewer returned a final pass. The generated raster boards remain composition studies only. The owner then approved the written contract and implementation boundary; TASK-090 moved in-review -> done without changing production code.
+- Status: done
+
+## TASK-091
+- Phase: maritime-visual-foundation
+- Title: Build the budget-neutral Night Watch foundation
+- Depends on: TASK-090
+- Assigned agent: UI Builder; independent visual/accessibility Checker
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/DECISIONS.md
+- Data refs: none; production data and generated artifacts remain byte-stable
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Establishes the selected low-light working surface before scene-specific or Explorer-specific treatment.
+- Functional notes: Reuse and consolidate the existing CSS tokens/classes. Define only dark chrome, mineral reading surface, teal UI-light, amber caveat, border, focus, and shadow roles. Keep the map solid and tonally uniform. Do not add a theme switch, component abstraction, asset, dependency, public copy, state, renderer, route, or data field. Delete duplicate/superseded CSS as needed to stay at or below 95,000 built bytes.
+- Statistical notes: Light has no data-encoding authority and cannot vary by geography, value, coverage, presence, absence, rank, or selection importance. Data marks stay flat and equal-presence.
+- Edge cases: Loading/error states; keyboard focus; dark chrome beside pale evidence; grayscale; contrast; the 94,996-byte CSS baseline.
+- Test cases: Add a focused CSS contract for approved token roles, crisp focus, a solid map host, and no blur/filter/gradient/animated luminance on data marks/cells; retain App and map-presentation regressions.
+- Files to create/modify: app/src/styles/base.css; app/src/components/story/StoryScrolly.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: guided-chrome, loading/error, and neutral-Explorer frames under artifacts/design/task-091/; contrast and built-size evidence in QA notes
+- Acceptance criteria: One coherent Night Watch foundation is visible; map/evidence meanings are unchanged; UI light and data marks are separated; normal text reaches 4.5:1 and large/UI boundaries 3:1; built CSS does not exceed the 94,996-byte starting point or the 95,000-byte cap; no behavior/data/copy/dependency/runtime-asset change ships; focused/full tests, build, bundle, status, secrets, and whitespace pass.
+- Verification commands: npm --prefix app run test -- StoryScrolly.test.tsx App.test.tsx mapPresentation.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless inspection at 1440x900 and 390x844; measure representative contrast pairs and confirm no data mark glows.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-092
+- Phase: maritime-guided-story
+- Title: Apply Night Watch to the guided story
+- Depends on: TASK-091
+- Assigned agent: Story UI Builder; independent visualization/scientific Checker
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/STORY_BRIEF.md, context/DESIGN_BRIEF.md
+- Data refs: app/public/data/geographies.json; current regional evidence model only
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Gives the locate -> rearrange -> expose -> return story the approved atmosphere without changing its claims.
+- Functional notes: Treat premise, presence, movement, visibility, progress chrome, and handoff through existing StoryScrolly/RegionalEvidenceScene/CSS seams. Keep movement and visibility pale, literal, full-scale reading surfaces. Use only static active-frame light. Preserve native scroll, scene IDs/order, observer, URL state, copy, and Explore handoff. Do not ship the concept board's amber rails/nodes or add an animation system.
+- Statistical notes: Preserve 22 places, 19 complete plus three incomplete comparisons, 7/6/3/3 quadrants, separate axes/clocks, and the 22x14/308/277/31 visibility record. Present/absent remains shape-redundant and non-glowing.
+- Edge cases: Premise label suppression; inactive scenes; direct scene URLs; rapid keyboard/progress input; portrait continuation; landscape scale; reduced motion; static capture.
+- Test cases: Retain exact evidence/source assertions and add focused CSS/markup checks that data marks/cells have no glow, rail, pulse, sweep, or ambient animation.
+- Files to create/modify: app/src/styles/base.css; app/src/components/story/StoryScrolly.test.tsx; app/src/components/story/storyFigures.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: premise, presence, movement, visibility, and handoff frames at desktop/portrait/landscape under artifacts/design/task-092/; figure dimensions and evidence trace in QA notes
+- Acceptance criteria: Guided states carry the Night Watch hierarchy; story/mechanics remain intact; primary figures do not shrink from TASK-089; exact 19+3, 7/6/3/3, 22x14, 308, and 277/31 pass; marks/cells remain flat and the map uniform; scroll/history/keyboard/progress/reduced-motion/focus/handoff pass; no renderer/dependency/data/runtime asset ships; all focused/full repository gates pass.
+- Verification commands: npm --prefix app run test -- StoryScrolly.test.tsx storyFigures.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_data_contracts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless comparison at 1440x900, 390x844, and 844x390; verify complete readable evidence, no nested scroller, and meaningful static frames.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-093
+- Phase: maritime-explorer
+- Title: Carry Night Watch through Explorer and overlays
+- Depends on: TASK-092
+- Assigned agent: Explorer UI Builder; independent UX/accessibility Checker
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/plans/tasks-079-082-explorer-ux-implementation-plan.md
+- Data refs: existing generated/public app data only
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Gives free exploration the same finished character without sacrificing accepted controls, evidence, or recovery paths.
+- Functional notes: Restyle existing header, controls, legend, callouts, panel navigation, selected-place panel, and Methods/Sources drawer through current classes/tokens. Remove the existing data-dependent MapLibre land-glow layer and blurred selected-presence halo; preserve data fill/reporting strokes and use a crisp non-luminous selection outline. Preserve map, panel order, Back/Close, history, URLs, score/evidence states, and 44px primary targets. No component rewrite or state system.
+- Statistical notes: Overview stays scoreless. Score, reporting, rank, visibility, outlook, null, and reported-zero semantics remain separately caveated. Light cannot become rank, coverage, completeness, preparedness, or alert encoding.
+- Edge cases: Overview; coverage/uncertainty roots and selected children; Back/Close; Methods focus trap; AS/NR/PN; loading/error; mobile sheet; legend; outlook warning.
+- Test cases: Reuse App/control/panel/map/public-copy tests; add only focused surface/focus assertions and a public-copy/generated-data diff check.
+- Files to create/modify: app/src/styles/base.css; app/src/components/map/useAtlasMap.ts; app/src/components/map/MapLegend.tsx; app/src/App.test.tsx; app/src/components/map/mapPresentation.test.tsx; app/src/components/panels/CountryPanel.test.tsx; app/src/components/panels/ExplorerPanelNav.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: overview, score, coverage, uncertainty, AS/NR/PN panel, Methods, error, and mobile-sheet frames under artifacts/design/task-093/; interaction/contrast trace in QA notes
+- Acceptance criteria: Explorer surfaces form one Night Watch family; map/mark geometry and all interaction behavior remain intact; overview and scientific distinctions remain exact; Back/Close/history/URL/focus/touch/dialog paths pass; primary targets remain at least 44px; no data-light meaning or public Night Watch terminology ships; all focused/full repository gates pass.
+- Verification commands: npm --prefix app run test -- App.test.tsx mapPresentation.test.tsx CountryPanel.test.tsx ExplorerPanelNav.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_data_contracts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless exercise of controls, selection, Back, Close, history, Methods, legend, and error states at 1440x900, 390x844, and 844x390.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-094
+- Phase: maritime-responsive-accessibility
+- Title: Refine Night Watch responsive and accessibility behavior
+- Depends on: TASK-093
+- Assigned agent: Responsive/accessibility Builder; independent accessibility/visualization Checker
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, TASK-090 contrast/reflow contract
+- Data refs: rendered production states from TASK-092 and TASK-093
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Ensures the atmosphere survives real screens and accessibility settings without hiding evidence or controls.
+- Functional notes: Measure the integrated retrofit, then make only reproduced corrections in existing CSS/tests. Evidence, source, caveat, and controls outrank decorative edge light. Keep page-owned vertical flow and zero horizontal/nested evidence overflow. No device-specific JavaScript, new breakpoint system, visual-regression dependency, or screenshot-only markup.
+- Statistical notes: Every movement point, quadrant, visibility row/cell, source, and caveat remains reachable. Grayscale and deuteranopia cannot collapse evidence distinctions.
+- Edge cases: 1440x900, 1280x800, 1024x768, 430x932, 390x844, 360x800, 844x390; 200% reflow; grayscale; deuteranopia; reduced motion; keyboard; touch; long keys; panel/drawer overflow.
+- Test cases: Protect reduced-motion order and 44px targets; measure zero page-horizontal/nested evidence overflow, unchanged figure area, 22 rows/308 cells, focus, overlap, and 4.5:1/3:1 contrast.
+- Files to create/modify: app/src/styles/base.css only for reproduced corrections; app/src/components/story/StoryScrolly.test.tsx; app/src/components/story/storyFigures.test.tsx; app/src/App.test.tsx; artifacts/design/task-094/*; artifacts/provenance/task_094_responsive_qa.json; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: seven-viewport guided/Explorer matrix plus grayscale, deuteranopia, reduced-motion, focus, and reflow frames; deterministic measurement JSON
+- Acceptance criteria: All viewports pass without overlap, page-horizontal overflow, nested evidence scrolling, cropped controls, or lost rows/cells; 200% reflow, grayscale, deuteranopia, reduced motion, focus, touch, and dialog/panel overflow pass; contrast meets TASK-090; evidence size/counts do not regress; bundle stays within cap; all full repository gates pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless Chromium only; compare the complete matrix with TASK-089 and TASK-090 without visible external browser tabs.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending
+
+## TASK-095
+- Phase: maritime-release-qa
+- Title: Verify the complete Night Watch retrofit
+- Depends on: TASK-094
+- Assigned agent: Independent UX/scientific/accessibility QA; owner final review
+- Contract refs: context/ARTISTIC_REDESIGN_BRIEF.md, context/DESIGN_BRIEF.md, context/docs/submission-notes.md
+- Data refs: frozen production app and generated/public data after TASK-094
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Proves the art direction improves atmosphere and continuity without weakening evidence, navigation, accessibility, or readiness.
+- Functional notes: Review frozen TASK-091 through TASK-094 commits. Reuse TASK-089/TASK-094 evidence and add only Night Watch-specific semantic/surface checks. Return defects to owning tasks; do not patch production inside QA. Owner visual/interaction acceptance remains required. Use quiet/headless or in-app inspection only.
+- Statistical notes: Reproduce 22, 19+3, 7/6/3/3, separate axes/clocks, 22x14/308/277/31, direct coverage facts, data parity, null/reported-zero distinctions, rank caveats, neutral overview, and presence-not-quality/preparedness limits. No light/texture/tone may imply an environmental or evidence value.
+- Edge cases: Full guided/Explorer paths; direct URLs and history; all panels/dialogs/errors; seven viewports; 200% reflow; grayscale/deuteranopia; reduced motion; keyboard/focus/touch; bundle caps.
+- Test cases: Full Python/frontend/contracts/artifacts/status/secrets/lint/compile/build/bundle/whitespace gates; quiet-headless matrix; source-to-render trace; contrast/metaphor audit; frozen-diff scope/security review; owner gate.
+- Files to create/modify: artifacts/design/task-095/*; artifacts/provenance/task_095_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only after a formal owning-task rejection
+- Artifacts to produce: final screenshots, measurements, semantic/evidence trace, accessibility results, automated gates, scanner limitations, and owner decision
+- Acceptance criteria: Production matches the Night Watch contract while retaining story/data/map/marks/figures/Explorer/state; evidence, semantic, accessibility, responsive, interaction, failure, and bundle gates pass; no dependency, remote runtime asset, data field, renderer, route, state system, or public surveillance/sonar language ships; security checks run or their exact limitation is recorded; owner accepts the result. Deployment/submission remain separate.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
+- Manual QA: Run the complete quiet/headless story/Explorer/accessibility/state/error matrix and obtain owner review without visible external browser tabs.
+- QA notes:
+- Attempts: 0
+- Max attempts: 3
+- Attempt log:
+- Status: pending

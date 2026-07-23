@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-079 through TASK-082 product and QA work and TASK-083 through TASK-085 returned repairs are complete and approved. TASK-057 is done after its final release repair and independent Checker. TASK-086 premise work and TASK-088 place-context work are now unlocked and may run in parallel; TASK-087 follows the shared CSS owner, and TASK-089 closes the batch. TASK-090 is a later maritime concept gate, not production implementation.
+TASK-086 through TASK-088 are complete. TASK-089 passed its frozen 362-check/53-frame QA Maker matrix and is `in-review` for the owner's visual and interaction acceptance; no production file changed in QA. TASK-090 remains locked and is a later three-direction maritime concept gate, not production implementation. If the owner requests fresh Semgrep/OSV evidence, obtain explicit destination-specific approval before the scanners contact their external services.
+
+## 2026-07-23
+
+- TASK-089 advanced `pending -> in-progress -> in-review` against production HEAD `4b182f6`. Quiet headless Chromium passed 362/362 assertions with no console errors or failed requests and captured 53 settled frames across the five affected states, seven viewports, AS/NR/PN panels, 200% reflow, grayscale, deuteranopia, reduced motion, Methods/focus, state/history, rapid keyboard input, story handoff, and generated-data failure. Exact 19+3, 7/6/3/3, 22x14, 308, 277/31, separate-clock, null, missing-row, and reported-zero traces match byte-identical generated/public data. Figures remain at 100% of TASK-087's baseline, page and evidence horizontal overflow stay zero, and the accepted identity remains intact. All local automated gates pass. Managed-network policy prevented fresh Semgrep/OSV queries; provenance records the attempts and the unchanged TASK-057 security inputs without claiming a fresh online result. Owner acceptance is pending and TASK-090 remains locked.
 
 ## 2026-07-20
 

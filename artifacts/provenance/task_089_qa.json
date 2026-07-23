@@ -1,0 +1,205 @@
+{
+  "task": "TASK-089",
+  "status": "in-review",
+  "tested_from_head": "4b182f6b13d6f2110504bd33ea4ce1ea9118e754",
+  "reviewed_commits": {
+    "TASK-086": "05b995a90451e765fc7f76c6347fd81a60c00cd1",
+    "TASK-087": "8c42f9aec8552896eacfe37c2f256da50af23731",
+    "TASK-088": "4b182f6b13d6f2110504bd33ea4ce1ea9118e754"
+  },
+  "method": {
+    "runner": "Playwright",
+    "browser": "bundled Chromium headless shell",
+    "headless": true,
+    "quiet": true,
+    "base_url": "http://127.0.0.1:5174/",
+    "assertions": {
+      "core": 238,
+      "panels": 99,
+      "supplements": 25,
+      "total": 362,
+      "failures": 0
+    },
+    "console_errors": 0,
+    "failed_requests": 0,
+    "screenshots": {
+      "directory": "artifacts/design/task-089",
+      "count": 53,
+      "settled_after_transition": true
+    }
+  },
+  "visual_identity": {
+    "result": "pass",
+    "authority": "the owner-accepted implemented application",
+    "protected_elements": [
+      "dark-ocean palette",
+      "serif/sans typography",
+      "MapLibre and Natural Earth map treatment",
+      "evidence-mark geometry",
+      "header and wordmark",
+      "score and evidence controls",
+      "legend",
+      "selected-place panel language"
+    ],
+    "diff_result": "No palette or typography token changed. TASK-086 added premise-scoped opacity only; TASK-087 added one shell containment rule after rejecting a smaller figure composition; TASK-088 reused existing panel classes.",
+    "before_references": [
+      "artifacts/design/task-077",
+      "artifacts/design/task-082",
+      "artifacts/design/task-086",
+      "artifacts/design/task-087",
+      "artifacts/design/task-088"
+    ]
+  },
+  "premise_and_presence": {
+    "result": "pass",
+    "premise_places": 22,
+    "premise_label_group_opacity": 0,
+    "premise_uniform_mark_opacity": 0.32,
+    "presence_label_group_opacity": 1,
+    "presence_mark_opacity": 1,
+    "interpretation": "The premise receives a uniform hierarchy treatment; it does not vary by place evidence or suggest that a dimmed place is less important. Stable place identity returns in the next scene."
+  },
+  "figure_measurements": [
+    {"viewport": "1440x900", "movement_px": "1296x432", "visibility_px": "1296x700"},
+    {"viewport": "1280x800", "movement_px": "1152x384", "visibility_px": "1152x700"},
+    {"viewport": "1024x768", "movement_px": "921.625x368.625", "visibility_px": "921.625x700"},
+    {"viewport": "430x932", "movement_px": "398x544", "visibility_px": "398x700"},
+    {"viewport": "390x844", "movement_px": "358x544", "visibility_px": "358x700"},
+    {"viewport": "360x800", "movement_px": "328x544", "visibility_px": "328x700"},
+    {"viewport": "844x390", "movement_px": "812x272", "visibility_px": "812x480"}
+  ],
+  "figure_comparison": {
+    "result": "pass",
+    "baseline": "TASK-087 recorded the same seven movement and visibility dimensions before testing its rejected sibling-rail experiment.",
+    "outcome": "Every accepted figure dimension is preserved at 100% of baseline; no evidence was shrunk, cropped, or placed in a nested scroller.",
+    "direct_label_fonts_px": {"movement_codes": 10, "visibility_rows": 10},
+    "horizontal_overflow_failures": 0,
+    "nested_evidence_scrollers": 0,
+    "vertical_flow": "page-owned"
+  },
+  "scientific_trace": {
+    "result": "pass",
+    "public_mirrors_byte_identical": true,
+    "places": 22,
+    "complete_comparisons": 19,
+    "incomplete_codes": ["GU", "PN", "TK"],
+    "quadrant_counts": {
+      "water_up_renewable_down": 7,
+      "both_up": 6,
+      "both_down": 3,
+      "water_down_renewable_up": 3
+    },
+    "visibility_positions_per_place": 14,
+    "visibility_cells": 308,
+    "present_cells": 277,
+    "absent_cells": 31,
+    "direct_coverage_facts": {
+      "recorded_direct_disaster_loss": 12,
+      "meteorological_monitoring_network": 18,
+      "power_generation": 18,
+      "safely_managed_drinking_water": 19,
+      "renewable_energy_share": 20
+    },
+    "claim_limits": [
+      "The two measures retain separate clocks, meanings, and denominators.",
+      "First-to-latest changes are descriptive and non-causal.",
+      "Dataset presence is not completeness, quality, currency, infrastructure, conditions, preparedness, vulnerability, need, or local knowledge.",
+      "Centroid points and Natural Earth texture are not reviewed territorial boundaries."
+    ]
+  },
+  "place_trace": {
+    "AS": {
+      "name": "American Samoa",
+      "place_note": "Samoan Islands including Tutuila Manua and Swains Island",
+      "monitoring_state": "No rows in processed data",
+      "monitoring_value": null,
+      "water": "+9.27 percentage points, 2000 to 2021",
+      "renewable": "+0.49 percentage points, 2000 to 2022",
+      "represented": "11 of 14",
+      "semantic_check": "missing row is described as a reporting gap, not confirmed absence"
+    },
+    "NR": {
+      "name": "Nauru",
+      "place_note": "single raised coral island",
+      "monitoring_state": "Latest row reports 0",
+      "monitoring_value": 0,
+      "water": "+1.92 percentage points, 2000 to 2020",
+      "renewable": "+1.75 percentage points, 2000 to 2022",
+      "represented": "13 of 14",
+      "semantic_check": "reported zero remains distinct from missing"
+    },
+    "PN": {
+      "name": "Pitcairn",
+      "place_note": "Pitcairn Henderson Ducie and Oeno island group",
+      "monitoring_state": "Latest row reports 0",
+      "monitoring_value": 0,
+      "water": null,
+      "renewable": null,
+      "represented": "6 of 14",
+      "semantic_check": "both unavailable measures remain null and place context is not presented as a boundary"
+    },
+    "rendered_viewports": ["1440x1200", "390x844", "844x390"],
+    "page_or_panel_overflow_failures": 0,
+    "internal_metadata_exposure": 0,
+    "duplicate_reviewed_caveats": 0
+  },
+  "interaction_and_accessibility": {
+    "result": "pass",
+    "target_viewports": ["1440x900", "1280x800", "1024x768", "430x932", "390x844", "360x800", "844x390"],
+    "minimum_visible_target_px": 44,
+    "focus_outline_px": 3,
+    "neutral_overview": {"marks": 22, "scoreless_marks": 22, "controls": 6, "selected": 0},
+    "methods_dialog": "dialog role, close-button initial focus, Escape dismissal, and trigger-focus restoration pass",
+    "state_history": [
+      "overview -> American Samoa -> Close restores overview and map focus",
+      "coverage -> Nauru -> Back restores coverage; Close restores neutral overview",
+      "rank uncertainty -> Nauru -> Back restores rank parent; Close restores neutral overview",
+      "pressure -> American Samoa -> browser Back/Forward restores parent/child deterministically",
+      "rapid guided keyboard input settles on the latest requested scene",
+      "story handoff enters neutral overview; browser Back restores the guided scene"
+    ],
+    "reduced_motion": "story content, evidence, and progress transitions resolve to 0s",
+    "grayscale": "premise hierarchy remains uniform and legible",
+    "deuteranopia": "solid, open-dash, and broken-dot reporting edges remain redundant with color",
+    "effective_200_percent_reflow": "640x400 CSS viewport; premise, movement, visibility, and Pitcairn panel have zero horizontal or nested evidence overflow",
+    "generated_data_failure": "role=alert with an explicit load-failure message"
+  },
+  "automated_gates": {
+    "python_tests": "99/99 pass",
+    "data_contracts": "pass",
+    "required_artifacts": "78 paths pass",
+    "task_statuses": "91 statuses pass while TASK-089 is in-progress",
+    "secrets": "pass",
+    "ruff": "zero findings",
+    "compileall": "pass",
+    "frontend_tests": "85/85 across 17 files",
+    "production_build": "pass; 1605 modules transformed",
+    "bundle_budget": {
+      "javascript_bytes": 1032366,
+      "javascript_limit": 1050000,
+      "css_bytes": 94996,
+      "css_limit": 95000
+    },
+    "diff_check": "pass"
+  },
+  "network_security_gates": {
+    "fresh_result": "not available in the managed sandbox",
+    "semgrep_attempt": "semgrep scan --config auto could not resolve semgrep.dev; an elevated retry was declined because it would contact an external service without destination-specific owner approval",
+    "osv_attempt": "osv-scanner found both lockfiles and 394 package records, but could not resolve api.osv.dev; an elevated retry was declined because it would send dependency metadata without destination-specific owner approval",
+    "non_network_evidence": {
+      "last_accepted_semgrep": "TASK-057 commit 6b562ba: 231 targets, 504 rules, zero findings",
+      "last_accepted_osv": "TASK-057 commit 6b562ba: both lockfiles, zero findings",
+      "root_lock_blob_unchanged": "8128b874c82a001bd8953db662ac64ef09d81104",
+      "app_lock_blob_unchanged": "0d8b580a2b1be4f4b80f9fa89e9159cdd18e6f5a",
+      "post_TASK_057_scope": "No analysis, script, or dependency file changed. The reviewed delta is bounded to CSS, data adaptation/panel rendering, and tests; frozen-diff review found no new transport, dynamic execution, HTML injection, credential, or dependency surface."
+    },
+    "fresh_online_pass_claimed": false
+  },
+  "qa_disposition": {
+    "production_defects_returned": 0,
+    "production_files_changed_by_TASK_089": 0,
+    "owner_gate": "pending owner visual and interaction review",
+    "TASK_090_unlocked": false,
+    "deployment_or_submission_claimed": false
+  }
+}

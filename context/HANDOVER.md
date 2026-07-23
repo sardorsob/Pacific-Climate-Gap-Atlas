@@ -2,9 +2,9 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-082` and repair tasks `TASK-083` through `TASK-085` are complete. The owner accepted the regional narrative and visual identity on 2026-07-16, the bounded Explorer UX contract on 2026-07-18, and the completed TASK-082 product QA matrix on 2026-07-20. `TASK-057` repaired the remaining release findings and passed independent review. The owner approved the next staged plan on 2026-07-20: `TASK-086` through `TASK-089` form a bounded refinement batch, while `TASK-090` is a later maritime concept gate rather than approved production work. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-088` are complete, including repair tasks `TASK-083` through `TASK-085`; `TASK-089` is `in-review`. The owner accepted the regional narrative and visual identity on 2026-07-16, the bounded Explorer UX contract on 2026-07-18, and the completed TASK-082 product QA matrix on 2026-07-20. `TASK-057` repaired the remaining release findings and passed independent review. The bounded TASK-086–TASK-088 refinement now protects premise legibility, preserves full-size evidence figures, and surfaces reviewed place caveats. TASK-089's frozen QA passed 362/362 headless checks with 53 frames on 2026-07-23 and now awaits owner visual/interaction acceptance. `TASK-090` remains a later maritime concept gate rather than approved production work. No deployment/submission readiness is claimed.
 
-The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The final local replacement matrix lives under `artifacts/design/task-077/`, with evidence and gate results in `artifacts/tables/task_077_evidence_trace.csv` and `artifacts/provenance/task_077_qa.json`. The concept boards remain composition references, not the app's visual identity.
+The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The accepted replacement baseline lives under `artifacts/design/task-077/`; the current refinement review matrix lives under `artifacts/design/task-089/`, with exact measurements, scientific traces, gate results, and network-scanner limitations in `artifacts/provenance/task_089_qa.json`. The concept boards remain composition references, not the app's visual identity.
 
 ## How To Validate The Scaffold
 
@@ -74,16 +74,17 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Start `TASK-086` premise work and `TASK-088` place-context work concurrently with isolated production ownership and separate commits.
-2. Complete `TASK-087` only after `TASK-086` because both can touch stage CSS, then run `TASK-089` as the independent and owner refinement gate.
-3. Start `TASK-090` only after `TASK-089` owner acceptance. It produces maritime concepts and a semantic-risk record, not production code; create implementation tasks only for a direction the owner later approves.
+1. Let the owner review TASK-089's current app and 53-frame matrix; only the owner may move it `in-review -> done` or return a concrete defect.
+2. If the owner requires fresh online Semgrep/OSV evidence, rerun those external queries only after destination-specific disclosure approval; the current record deliberately does not claim a fresh network scan.
+3. Start `TASK-090` only after `TASK-089` owner acceptance. It produces three maritime concepts and a semantic-risk record, not production code; create implementation tasks only for a direction the owner later approves.
 4. Complete deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
 
 ## Known Caveats
 
-- The accepted visual/story baseline is not being redesigned. TASK-079–TASK-082 may change panel navigation, handoff sizing/wording, responsive control placement, temporary copy, and selected-place evidence order only.
+- The accepted visual/story baseline was not redesigned. TASK-079–TASK-082 changed only panel navigation, handoff sizing/wording, responsive control placement, temporary copy, and selected-place evidence order.
 - TASK-079 through TASK-081 resolved diagnostic Back/Close/history, narrow-screen control overflow, and the place panel's missing regional water/renewable/visibility evidence. TASK-082 verified the combined product with 164/164 strict-headless assertions and 43 PNGs and received owner acceptance on 2026-07-20.
-- TASK-086 through TASK-089 preserve the accepted visual identity. They may protect premise copy, improve measured figure composition without shrinking evidence, and surface reviewed place notes/caveats. They may not introduce a broad dark-glass or glass/cream/brass reskin.
+- TASK-089 verified the bounded refinement with 362/362 headless assertions and 53 PNGs. Fresh external Semgrep and OSV calls were blocked by the managed environment; the provenance records the failed attempts, unchanged TASK-057 lock blobs/acquisition code, and frozen-diff security review without claiming an online pass.
+- TASK-086 through TASK-089 preserve the accepted visual identity. They protect premise copy, retain full-size evidence after rejecting a smaller composition, and surface reviewed place notes/caveats; they do not introduce a broad dark-glass or glass/cream/brass reskin.
 - TASK-090 is concept-only. Reporting gaps may not appear as dead, calm, live, rough, deep, or otherwise physical water; sonar-contact language and unsupported Pacific cultural motifs are excluded. No maritime implementation task exists until owner selection.
 - `Geo.regionalStory` remains the sole source for the new place summary; its null/different-clock/presence caveats, fixed 14-position denominator, and separation from score/preparedness claims are protected.
 - In a fresh checkout, install app and Python dependencies before rebuilding. The local working copy has previously run the Vite build successfully.

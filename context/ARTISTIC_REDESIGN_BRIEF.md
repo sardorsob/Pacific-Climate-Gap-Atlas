@@ -63,6 +63,81 @@ The owner also wants to explore a stronger maritime art direction later. `TASK-0
 
 The current visual identity remains authoritative throughout the refinement batch. The later concept study may question or evolve that identity, but it may not encode reporting gaps as calm, dead, live, deep, rough, or otherwise physical water; use sonar-contact or military language; imply measured bathymetry or boundaries through decorative linework; or borrow Pacific cultural navigation, weaving, tattoo, canoe, or Indigenous motifs without co-design and provenance.
 
+## 2026-07-23 TASK-090 Night Watch Direction (Owner Selected)
+
+TASK-090 compared three maritime directions against the same accepted premise, visibility, Explorer, portrait, and landscape states:
+
+1. **The Working Chart** keeps the application closest to its current form and adds restrained viewport neatlines, ruler ticks, registration marks, and marginal evidence notes. It is scientifically safe but comparatively dry and institutional.
+2. **Night Watch** creates a continuous low-light working surface with deep ocean blue, graphite chrome, restrained teal edge light, mineral evidence fields, and limited amber emphasis. The owner selected this direction because it has the strongest beauty, atmosphere, and human pull.
+3. **Chart & Ledger** gives the map-to-record transition a literal evidence-sheet metaphor. It clarifies the transfer of the same marks but changes the accepted application more heavily and risks turning the record into a paper prop.
+
+Review artifacts:
+
+- `artifacts/design/task-090/direction-01-working-chart.png`
+- `artifacts/design/task-090/direction-02-night-watch.png`
+- `artifacts/design/task-090/direction-03-chart-and-ledger.png`
+- `artifacts/design/task-090/comparison-board.svg`
+- `artifacts/design/task-090/responsive-visibility-flow.png`
+
+The raster boards are art-direction studies. Their generated small text, values, row order, land shapes, source notes, and incidental layout details are schematic and are not evidence or implementation requirements. The amber cross-frame line and glowing annotation nodes on the Night Watch board are concept-board callout rails only and may not ship. The responsive board is a responsive-continuation/layout proof: it demonstrates one ordinary page continuing through the complete record in both orientations, while its generated row labels, visible row slices, and tiny cells remain schematic. Production must render the exact code-bound 22 rows by 14 positions—308 cells, 277 present and 31 absent—without omission. Production values, labels, geography, sources, caveats, controls, and accessibility text remain editable and data-bound.
+
+### Selected Visual Thesis
+
+Night Watch should make the atlas feel like a calm scientific instrument used after dark, not like a simulation of the ocean. Its appeal comes from tonal continuity, controlled light, crisp typography, quiet depth between surfaces, and an interface that feels purpose-built for the Pacific evidence story. It must not use the ocean itself as a metaphor for whether a record exists.
+
+**Night Watch is an internal art-direction name, not proposed public copy.** Public labels should avoid *watch*, *scan*, *contact*, *signal*, *sounding*, and *beacon* where those words could introduce surveillance, monitoring, military, or sonar meaning.
+
+The analytical job remains unchanged: a map-anchored explanatory story moves from 22 Pacific places to a two-measure regional comparison, then to a literal 22-by-14 official-record visibility field, and finally to the existing place-by-place Explorer. Night Watch changes how that sequence feels, not what it claims.
+
+### Binding Evidence-Safety Contract
+
+| Element | Role | Locked meaning |
+| --- | --- | --- |
+| Geography and movement marks | data | Flat, crisp, equal-presence identities. No bloom, aura, pulse, or mark-size importance. |
+| Visibility circles and crossed squares | data | Literal present/absent official-record cells in the existing 14-position order. They never glow and remain non-color legible. |
+| Ocean/map field | orientation | Tonally uniform geographic context. No light, gradient, contour, texture, or motion may imply depth, water state, coverage, importance, risk, weather, or current. |
+| Teal illumination | decorative or interaction state | Static edge light on the viewport frame, active chrome, or keyboard/pointer focus only. It cannot vary with a geography's value, coverage, presence, absence, rank, or selection importance. |
+| Amber accent | caveat or restrained focus | Retains its existing warning/editorial role. It is not a route, current, connection, or value scale. |
+| Mineral evidence surface | reading surface | Keeps the movement and visibility evidence literal, high-contrast, sourceable, and printable. It is not paper, a physical ledger, or a completeness score. |
+| Natural Earth land | orientation | Remains visual context grouped by nearest centroid, not official boundary geometry. |
+
+Consequently, reject glowing island markers, glowing missing cells, light rays or lines between places, live/dead or calm/rough water, wave or ripple animation, bathymetric or sounding marks, sonar/radar language, vessel routes, military styling, compass roses, rope, brass, parchment, colonial expedition aesthetics, and unsupported Indigenous or Pacific cultural motifs.
+
+### Color, Type, And Surface Roles
+
+- Preserve the current near-black ocean blue as the primary field, off-white serif claims, system-sans interface text, teal evidence accent, amber caveat accent, and the existing circular evidence-mark silhouette.
+- Night Watch may deepen secondary chrome from pale mineral to graphite where contrast, focus, and control recognition remain at least as clear as the accepted app. It may not turn every panel into translucent glass or replace the visibility field with dark-on-dark cells.
+- The visibility scene keeps a pale mineral field by default. Movement may remain pale as well unless a later exact-data concept proves that a dark field preserves axes, dense labels, zero lines, incomplete cases, caveats, and grayscale reading better.
+- Light is sparse and local. One active frame edge is preferable to many glowing controls, shadows, or selected marks.
+- Generated texture is not required. CSS color, border, shadow, and existing SVG/HTML layers should be tested before any raster substrate or new asset is considered.
+
+### Story And Motion
+
+The approved story sequence and motion verbs remain **locate, rearrange, expose, return**. Night Watch may add one restrained UI-light handoff to show which surface owns the current scene, but the light does not travel across the map or follow data. There is no ambient loop.
+
+- Premise: the map stays visible and uniform behind the direct claim; no Explorer score controls enter the premise.
+- Movement: the existing 22 identities rearrange onto the separate water and renewable-share axes. Illumination may frame the active evidence surface, never the quadrants or points.
+- Visibility: the literal 22-by-14 field remains the brightest reading surface; present and absent cells keep their existing shape semantics.
+- Explorer: the deep map and compact controls return without changing URL, selection, history, panel, methods, or layer behavior.
+- Reduced motion: swap complete still states without cross-scene interpolation, shimmer, pulse, or moving light. Every accepted screenshot remains understandable as a static frame.
+
+### Responsive And Accessibility Contract
+
+- Large screen keeps the current full-stage hierarchy and evidence scale. Night Watch cannot shrink movement or visibility into dashboard cards.
+- Portrait keeps one claim and one complete evidence state in natural page flow. Secondary decorative edge light collapses before evidence, source, caveat, or controls do.
+- Landscape keeps the claim beside the evidence when that protects plot/matrix size and keeps header, legend, controls, and map from overlapping.
+- Essential values, presence/absence, sources, and caveats remain visible without hover. Touch and keyboard focus use crisp border/outline changes in addition to color or light.
+- Normal text targets at least 4.5:1 contrast; large text, UI boundaries, and meaningful non-text elements target at least 3:1. Fuzzy glow cannot supply the only focus boundary.
+- Grayscale must retain surface hierarchy, filled versus crossed cells, selected/focused state, and readable controls. Color-deficiency checks remain required even though no data meaning is added to the light.
+- The low-light treatment must pass normal contrast checks and an effective 200% reflow review; decorative shadow or bloom cannot reduce character-edge contrast.
+- Spotty-connection, data-error, and static-export states keep their current readable surfaces. Night Watch adds no remote imagery, map source, runtime effect, or asset dependency.
+
+### Current Identity Boundary
+
+Night Watch is an evolution of the accepted application, not authority to rebuild it. Keep the current map, 22 evidence marks, regional figures, native scroll, one active-scene observer, controls, selected-place panel, Methods and Sources, URL/history behavior, Explore handoff, generated-data contract, and public story. Implementation planning should first test a token-and-surface pass in the existing CSS/component seams. A new renderer, animation library, state system, map source, data field, score, bitmap substrate, or app branch requires separate evidence and approval.
+
+TASK-090 itself authorizes no production change. The written concept must pass independent semantic/accessibility review and owner review before the next task batch is finalized.
+
 ## TASK-072 Transition Keyframes (Owner Approved)
 
 Three exact-data composite boards now translate the approved story into the accepted TASK-064 application shell:

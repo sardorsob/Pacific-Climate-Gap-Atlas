@@ -373,3 +373,13 @@ The immediate `TASK-086` through `TASK-089` batch preserves the current applicat
 After that batch passes independent and owner review, `TASK-090` may explore three maritime directions as concepts only. No maritime production implementation is pre-approved. In particular, reject the proposed live-water/dead-water reporting metaphor and sonar-contact language because they can make record availability look like a physical ocean condition. Reject unproven bathymetry or boundary meaning and unsupported Pacific cultural motifs. Any eventual implementation tasks are created only after the owner selects a concept and its semantic-risk review passes.
 
 Reason: the Fable plan found real premise, composition, and place-context opportunities, but mixed them with a speculative reskin and a scientifically ambiguous water-state encoding. Separating refinement from concept exploration preserves the already accepted interface, produces a clean before/after gate, and lets the stronger maritime idea receive proper artistic attention instead of entering production through incidental CSS.
+
+## 2026-07-23: Select Night Watch With UI-Only Illumination
+
+Select the TASK-090 **Night Watch** direction for future implementation planning. The owner found it substantially more beautiful and visually compelling than The Working Chart and Chart & Ledger. Preserve that low-light atmosphere rather than retreating to the safer but drier chart treatment.
+
+Bind the selection to a strict semantic rule: illumination belongs only to static viewport edges, active chrome, reading regions, and accessible focus. Geography marks, movement points, visibility cells, and missingness symbols remain flat and non-glowing. The map stays tonally uniform; light, darkness, gradient, motion, or texture cannot encode depth, water condition, record presence, coverage, importance, risk, weather, or current. The pale literal visibility field and its filled/crossed non-color grammar remain the default.
+
+The Working Chart and Chart & Ledger remain recorded alternatives, not implementation directions. Do not import chart furniture or the paper-ledger metaphor by default. Generated concept text and values are schematic. Any implementation batch must preserve the current story/data/interaction architecture, use existing CSS and component seams first, and pass semantic, contrast, grayscale, reduced-motion, portrait, landscape, reflow, and owner gates before release.
+
+Reason: visual distinction is part of the project's value, and Night Watch best supplies it. Constraining where light may appear preserves that attraction without turning official-record visibility into an environmental or physical-ocean claim.

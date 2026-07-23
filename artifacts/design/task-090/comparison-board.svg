@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="900" viewBox="0 0 2400 900" role="img" aria-labelledby="title description">
+  <title id="title">TASK-090 maritime art-direction comparison</title>
+  <desc id="description">Three equal-scale concept boards compare The Working Chart, Night Watch, and Chart and Ledger. Night Watch is selected subject to an evidence-safety contract.</desc>
+  <rect width="2400" height="900" fill="#f5f3ed"/>
+  <text x="40" y="56" fill="#071d2a" font-family="Georgia, serif" font-size="38" font-weight="700">Maritime art-direction audition</text>
+  <text x="40" y="88" fill="#52646d" font-family="system-ui, sans-serif" font-size="18">Identical premise, visibility, Explorer, portrait, and landscape states · owner decision 2026-07-23</text>
+
+  <g transform="translate(30 126)">
+    <rect width="760" height="710" rx="12" fill="#ffffff" stroke="#bdc7ca"/>
+    <text x="20" y="38" fill="#071d2a" font-family="system-ui, sans-serif" font-size="24" font-weight="700">1 · The Working Chart</text>
+    <image href="direction-01-working-chart.png" x="20" y="58" width="720" height="480" preserveAspectRatio="xMidYMid meet"/>
+    <text x="20" y="578" fill="#52646d" font-family="system-ui, sans-serif" font-size="17">Retains: current palette, type, map, marks, and controls</text>
+    <text x="20" y="610" fill="#52646d" font-family="system-ui, sans-serif" font-size="17">Adds: chart furniture and marginal evidence notes</text>
+    <text x="20" y="642" fill="#8c4e1b" font-family="system-ui, sans-serif" font-size="17">Decision: not selected; visually precise but comparatively dry</text>
+  </g>
+
+  <g transform="translate(820 126)">
+    <rect width="760" height="710" rx="12" fill="#071d2a" stroke="#1599a9" stroke-width="4"/>
+    <text x="20" y="38" fill="#f5f3ed" font-family="system-ui, sans-serif" font-size="24" font-weight="700">2 · Night Watch · Selected</text>
+    <image href="direction-02-night-watch.png" x="20" y="58" width="720" height="480" preserveAspectRatio="xMidYMid meet"/>
+    <text x="20" y="578" fill="#d5ddde" font-family="system-ui, sans-serif" font-size="17">Retains: accepted evidence grammar and story architecture</text>
+    <text x="20" y="610" fill="#d5ddde" font-family="system-ui, sans-serif" font-size="17">Adds: deep low-light chrome and static UI illumination</text>
+    <text x="20" y="642" fill="#f0a33c" font-family="system-ui, sans-serif" font-size="17">Lock: marks stay flat; light never encodes data or ocean state</text>
+  </g>
+
+  <g transform="translate(1610 126)">
+    <rect width="760" height="710" rx="12" fill="#ffffff" stroke="#bdc7ca"/>
+    <text x="20" y="38" fill="#071d2a" font-family="system-ui, sans-serif" font-size="24" font-weight="700">3 · Chart &amp; Ledger</text>
+    <image href="direction-03-chart-and-ledger.png" x="20" y="58" width="720" height="480" preserveAspectRatio="xMidYMid meet"/>
+    <text x="20" y="578" fill="#52646d" font-family="system-ui, sans-serif" font-size="17">Retains: dark map and mineral evidence surfaces</text>
+    <text x="20" y="610" fill="#52646d" font-family="system-ui, sans-serif" font-size="17">Adds: literal evidence sheets and a transfer metaphor</text>
+    <text x="20" y="642" fill="#8c4e1b" font-family="system-ui, sans-serif" font-size="17">Decision: not selected; paper metaphor changes too much</text>
+  </g>
+
+  <text x="40" y="874" fill="#52646d" font-family="system-ui, sans-serif" font-size="17">All generated labels and values are schematic. Production evidence remains editable, data-bound, sourced, and caveated.</text>
+</svg>

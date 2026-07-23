@@ -1,6 +1,6 @@
 {
   "task": "TASK-089",
-  "status": "in-review",
+  "status": "done",
   "tested_from_head": "4b182f6b13d6f2110504bd33ea4ce1ea9118e754",
   "reviewed_commits": {
     "TASK-086": "05b995a90451e765fc7f76c6347fd81a60c00cd1",
@@ -198,8 +198,8 @@
   "qa_disposition": {
     "production_defects_returned": 0,
     "production_files_changed_by_TASK_089": 0,
-    "owner_gate": "pending owner visual and interaction review",
-    "TASK_090_unlocked": false,
+    "owner_gate": "accepted by owner after live interaction review on 2026-07-23",
+    "TASK_090_unlocked": true,
     "deployment_or_submission_claimed": false
   }
 }

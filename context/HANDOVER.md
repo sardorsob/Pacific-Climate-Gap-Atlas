@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-088` are complete, including repair tasks `TASK-083` through `TASK-085`; `TASK-089` is `in-review`. The owner accepted the regional narrative and visual identity on 2026-07-16, the bounded Explorer UX contract on 2026-07-18, and the completed TASK-082 product QA matrix on 2026-07-20. `TASK-057` repaired the remaining release findings and passed independent review. The bounded TASK-086–TASK-088 refinement now protects premise legibility, preserves full-size evidence figures, and surfaces reviewed place caveats. TASK-089's frozen QA passed 362/362 headless checks with 53 frames on 2026-07-23 and now awaits owner visual/interaction acceptance. `TASK-090` remains a later maritime concept gate rather than approved production work. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-089` are complete, including repair tasks `TASK-083` through `TASK-085`. The owner accepted the regional narrative and visual identity on 2026-07-16, the bounded Explorer UX contract on 2026-07-18, the TASK-082 product QA matrix on 2026-07-20, and the TASK-089 bounded refinement after live interaction review on 2026-07-23. `TASK-057` repaired the remaining release findings and passed independent review. TASK-090 is now unlocked as a concept-only maritime brainstorm rather than approved production work. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The accepted replacement baseline lives under `artifacts/design/task-077/`; the current refinement review matrix lives under `artifacts/design/task-089/`, with exact measurements, scientific traces, gate results, and network-scanner limitations in `artifacts/provenance/task_089_qa.json`. The concept boards remain composition references, not the app's visual identity.
 
@@ -74,9 +74,9 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Let the owner review TASK-089's current app and 53-frame matrix; only the owner may move it `in-review -> done` or return a concrete defect.
-2. If the owner requires fresh online Semgrep/OSV evidence, rerun those external queries only after destination-specific disclosure approval; the current record deliberately does not claim a fresh network scan.
-3. Start `TASK-090` only after `TASK-089` owner acceptance. It produces three maritime concepts and a semantic-risk record, not production code; create implementation tasks only for a direction the owner later approves.
+1. Brainstorm TASK-090's three evidence-safe maritime directions against identical accepted screenshots and record the trade-offs in existing context files.
+2. Obtain owner concept approval before producing an implementation plan; TASK-090 itself authorizes no production code, new data, renderer, dependency, or app branch.
+3. If the owner later requires fresh online Semgrep/OSV evidence, rerun those external queries only after destination-specific disclosure approval.
 4. Complete deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
 
 ## Known Caveats

@@ -115,4 +115,32 @@ describe("fullscreen story shell", () => {
   it("contains decorative edge geometry without creating page-width scroll", () => {
     expect(styles).toMatch(/\.atlas-shell\s*\{[^}]*overflow-x:\s*clip;/);
   });
+
+  it("defines low-light chrome roles while keeping the map and evidence marks flat", () => {
+    const root = styles.match(/:root\s*\{([\s\S]*?)\}/)?.[1] ?? "";
+    const protectedRules = (styles.match(/[^{}]+\{[^{}]*\}/g) ?? [])
+      .filter((rule) => /\.map-evidence-mark|\.regional-evidence__movement-point|\.regional-evidence__cell|\[data-cell-state\]/.test(rule.split("{")[0]))
+      .join("\n");
+
+    expect(root).toContain("--ocean: #071923;");
+    expect(root).toContain("--paper: #f6f4ed;");
+    expect(root).toContain("--paper-2: #e9efed;");
+    expect(root).toContain("--chrome-bg: #102832;");
+    expect(root).toContain("--chrome-bg-soft: #17343e;");
+    expect(root).toContain("--chrome-ink: #eef6f3;");
+    expect(root).toContain("--ui-light: #66c8c5;");
+    expect(root).toContain("--focus-ring: #008386;");
+    expect(styles).toMatch(/\.controls, \.legend, \.map-header\s*\{[^}]*color:\s*var\(--chrome-ink\);[^}]*background:\s*var\(--chrome-bg\);/);
+    expect(styles).toMatch(/\.story-scrolly__top\s*\{[^}]*background:\s*var\(--chrome-bg\);/);
+    expect(styles).toMatch(/\.story-scene\[data-stage-mode="figure-takeover"\]\s*\{[^}]*background:\s*var\(--paper\);/);
+    expect(styles).toMatch(/\.regional-evidence__movement-plot\s*\{[^}]*background:\s*var\(--paper-2\);/);
+    expect(styles).toMatch(/:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--focus-ring\)/);
+    expect(styles).toMatch(/\.map-canvas\s*\{[^}]*background:\s*var\(--ocean\);/);
+    expect(styles).toMatch(/\.story-scene\[data-stage-mode="map-immersive"\]\s*\{[^}]*background:\s*linear-gradient\([^;}]+\) bottom\/100% calc\(100% - 72px\) no-repeat;/);
+    expect(styles).toMatch(/@media \(max-width: 880px\)[\s\S]*?\.story-scene\[data-stage-mode="map-immersive"\]\s*\{[^}]*background:\s*linear-gradient\(0deg,[^;}]+\);/);
+    expect(protectedRules).toContain(".map-evidence-mark");
+    expect(protectedRules).toContain(".regional-evidence__movement-point");
+    expect(protectedRules).toContain(".regional-evidence__cell");
+    expect(protectedRules).not.toMatch(/(?:background(?:-image)?\s*:[^;}]*gradient|(?:box-shadow|text-shadow|(?:-webkit-)?(?:backdrop-)?filter|animation(?:-[\w-]+)?|background-image)\s*:|transition(?:-property)?\s*:[^;}]*\b(?:all|background|color|fill|stroke|filter|shadow)\b|var\(--ui-light\))/i);
+  });
 });

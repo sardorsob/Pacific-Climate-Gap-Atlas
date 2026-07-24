@@ -7,6 +7,7 @@ const controlsSource = readFileSync(
   "utf8",
 );
 const documentShell = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+const baseCss = readFileSync(new URL("./styles/base.css", import.meta.url), "utf8");
 
 function sourceBlock(start: string, end: string) {
   const startMarker = `const ${start} =`;
@@ -98,5 +99,9 @@ describe("regional story integration", () => {
   it("does not ship temporary review chrome", () => {
     expect(appSource).not.toContain("Concept for review");
     expect(appSource).not.toContain("map-header__concept");
+  });
+
+  it("keeps the Methods close control touch-sized", () => {
+    expect(baseCss).toMatch(/\.icon-btn\s*\{[^}]*padding:\s*12px;/);
   });
 });

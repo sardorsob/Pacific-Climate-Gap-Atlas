@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-093` are complete. On 2026-07-23 the owner approved TASK-090's Night Watch contract, TASK-091 established its budget-neutral surface foundation, TASK-092 carried the hierarchy through the guided story, and TASK-093 completed the Explorer treatment while deleting the old glow machinery. `TASK-094` and owner-gated `TASK-095` are the remaining responsive/accessibility and final-QA work. `TASK-057` repaired the remaining release findings and passed independent review. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-094` are complete. On 2026-07-23 the owner approved TASK-090's Night Watch contract, TASK-091 established its budget-neutral surface foundation, TASK-092 carried the hierarchy through the guided story, TASK-093 completed the Explorer treatment while deleting the old glow machinery, and TASK-094 passed the integrated responsive/accessibility refinement. Owner-gated `TASK-095` is the remaining final-QA work. `TASK-057` repaired the earlier release findings and passed independent review. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The accepted replacement baseline lives under `artifacts/design/task-077/`; the current refinement review matrix lives under `artifacts/design/task-089/`, with exact measurements, scientific traces, gate results, and network-scanner limitations in `artifacts/provenance/task_089_qa.json`. TASK-090's three direction boards, responsive-continuation board, and comparison SVG live under `artifacts/design/task-090/`. They are visual concept references with schematic generated text and values, not production evidence or an implemented reskin.
 
@@ -74,9 +74,8 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 
 ## Next Recommended Work
 
-1. Run the measurement-first responsive/accessibility refinement in `TASK-094`, committing only reproduced fixes after its Checker gate.
-2. Freeze production for `TASK-095`, run the final regression matrix, and obtain owner acceptance.
-3. Treat deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
+1. Freeze production for `TASK-095`, run the final regression matrix, and obtain owner acceptance.
+2. Treat deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision.
 
 ## Known Caveats
 
@@ -88,6 +87,7 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 - TASK-091 is done. Its opaque graphite chrome, pale mineral reading surfaces, teal UI-light role, amber caveat role, and crisp focus outline passed independent review and six quiet headless frames. A first review caught desktop premise-gradient compositing over the header and a permissive source contract; the one-line 72px header-clear correction and strengthened test passed re-review. Built CSS is 94,949 bytes, 47 bytes below the starting baseline.
 - TASK-092 is done. A crisp 2px teal frame edge now separates pale figure ownership and the map-immersive handoff, while the active progress dot uses a hard outline instead of a soft shadow. Fifteen quiet frames preserve the exact TASK-089 movement/visibility dimensions at desktop, portrait, and landscape, with all 22x14/308/277/31 visibility facts intact. The portrait movement SVG leader has a pre-existing visible overhang but creates no document or nested-scroll overflow; TASK-094 owns the explicit measurement audit.
 - TASK-093 is done. The pre-existing data-dependent MapLibre land-glow layer, `glowOpacity` property, blur layer, motion target, and event plumbing are deleted. MapLibre and SVG selection are unfilled crisp outlines; graphite panel navigation, mineral reading surfaces, and a hard-edged Methods drawer now form one Explorer family. Twenty-two quiet frames pass state, focus, Back, compact sheet, loading/error, 44px target, and zero-overflow checks. The only copy change is the accurate legend phrase `crisp outline = selected place`.
+- TASK-094 is done. A 127-check/63-frame quiet matrix preserved every accepted figure size and evidence invariant across seven viewports, five-state effective 200% reflow, color-vision simulations, reduced motion, focus, touch sizing, and panel/drawer overflow. Measurement found and repaired only a 32px Methods close target and a reduced-motion selector-specificity miss. Built CSS is 94,987/95,000 bytes. The transparent portrait SVG canvas overhang and regional centroid/dock overlap are recorded without clipping evidence or introducing a new map interaction system.
 - `Geo.regionalStory` remains the sole source for the new place summary; its null/different-clock/presence caveats, fixed 14-position denominator, and separation from score/preparedness claims are protected.
 - In a fresh checkout, install app and Python dependencies before rebuilding. The local working copy has previously run the Vite build successfully.
 - The saved v2 SDMX routes currently return `422`; the fetch helper records that failure and retries through the documented stable Pacific Data Hub endpoint, with PowerShell retained only as a final Windows transport fallback.

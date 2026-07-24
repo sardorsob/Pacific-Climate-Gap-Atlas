@@ -1,0 +1,176 @@
+{
+  "task": "TASK-094",
+  "status": "done",
+  "tested_from_head": "e371d27eac8ca899eedb6867002bc49c7789d7f0",
+  "method": {
+    "runner": "Playwright with bundled Chromium headless shell",
+    "headless": true,
+    "quiet": true,
+    "visible_browser_opened": false,
+    "base_url": "http://127.0.0.1:5176/",
+    "assertions": {
+      "total": 127,
+      "passed": 127,
+      "failed": 0
+    },
+    "console_errors": 0,
+    "failed_requests": 0,
+    "screenshots": {
+      "directory": "artifacts/design/task-094",
+      "count": 63,
+      "settled_after_transition": true
+    }
+  },
+  "matrix": {
+    "viewports": [
+      "1440x900",
+      "1280x800",
+      "1024x768",
+      "430x932",
+      "390x844",
+      "360x800",
+      "844x390"
+    ],
+    "per_viewport_states": [
+      "premise",
+      "presence",
+      "movement",
+      "visibility",
+      "handoff",
+      "neutral Explorer",
+      "selected Pitcairn panel"
+    ],
+    "supplements": [
+      "640x400 effective 200% premise, movement, visibility, selected-panel, and Methods reflow",
+      "390x844 reduced-motion movement and Explorer",
+      "390x844 grayscale visibility",
+      "390x844 deuteranopia selected Explorer",
+      "390x844 keyboard focus and Methods drawer overflow",
+      "1440x900, 360x800, and 844x390 Methods drawer overflow"
+    ]
+  },
+  "figure_measurements": [
+    {"viewport": "1440x900", "movement_px": "1296x432", "visibility_px": "1296x700"},
+    {"viewport": "1280x800", "movement_px": "1152x384", "visibility_px": "1152x700"},
+    {"viewport": "1024x768", "movement_px": "921.625x368.625", "visibility_px": "921.625x700"},
+    {"viewport": "430x932", "movement_px": "398x544", "visibility_px": "398x700"},
+    {"viewport": "390x844", "movement_px": "358x544", "visibility_px": "358x700"},
+    {"viewport": "360x800", "movement_px": "328x544", "visibility_px": "328x700"},
+    {"viewport": "844x390", "movement_px": "812x272", "visibility_px": "812x480"}
+  ],
+  "responsive_results": {
+    "result": "pass",
+    "task_089_figure_dimensions_preserved": true,
+    "document_horizontal_overflow_failures": 0,
+    "nested_evidence_scrollers": 0,
+    "lost_movement_points": 0,
+    "lost_visibility_rows": 0,
+    "source_and_caveat_reachability_failures": 0,
+    "panel_horizontal_overflow_failures": 0,
+    "panel_vertical_reachability_failures": 0,
+    "minimum_visible_primary_target_px": 44,
+    "visible_non_map_center_hit_failures": 0,
+    "map_buttons_in_dom": 22,
+    "map_button_keyboard_focus_failures": 0,
+    "effective_200_percent_reflow": "pass at a 640x400 CSS viewport in five states including Methods",
+    "map_touch_observation": "At regional scale, nearby 44px centroid targets overlap each other and opaque existing docks cover some projected points. Dock-covered points are not visible touch controls; all 22 DOM buttons retain 44px geometry and keyboard focus. Center-hit assertions apply to visible non-map controls. Re-spacing map geography or changing z-order would cross the frozen map/mark interaction boundary, so the overlap is recorded rather than redesigned in TASK-094.",
+    "portrait_svg_leader_measurement": {
+      "430x932_right_overhang_px": 21.265625,
+      "390x844_right_overhang_px": 24.078125,
+      "360x800_right_overhang_px": 26.171875,
+      "computed_overflow": "visible",
+      "actual_nested_scroller": false,
+      "document_overflow": false,
+      "painted_point_or_label_lost": false,
+      "disposition": "Retain. The transparent 100px SVG leader canvas overhang is not a scrollbar or lost evidence; clipping it could crop evidence."
+    }
+  },
+  "scientific_trace": {
+    "result": "pass",
+    "complete_movement_comparisons": 19,
+    "incomplete_movement_comparisons": 3,
+    "movement_quadrants": [7, 6, 3, 3],
+    "visibility_rows": 22,
+    "visibility_positions_per_place": 14,
+    "visibility_cells": 308,
+    "present_cells": 277,
+    "absent_cells": 31,
+    "keys": 14,
+    "page_owned_vertical_flow": true
+  },
+  "accessibility_results": {
+    "result": "pass",
+    "keyboard_focus_outline_px": 3,
+    "methods_initial_focus": "Close drawer",
+    "methods_escape_dismissal": true,
+    "methods_trigger_focus_restored": true,
+    "drawer_width_px": {"client": 388, "scroll": 388},
+    "drawer_height_px": {"client": 844, "scroll": 1642},
+    "drawer_close_target_px": 44,
+    "drawer_matrix": {
+      "1440x900": {"client_width": 458, "scroll_width": 458, "client_height": 900, "scroll_height": 1495},
+      "360x800": {"client_width": 358, "scroll_width": 358, "client_height": 800, "scroll_height": 1733},
+      "844x390": {"client_width": 458, "scroll_width": 458, "client_height": 390, "scroll_height": 1495}
+    },
+    "reduced_motion": {
+      "story_content_transition": "0s",
+      "regional_evidence_transition": "0s",
+      "progress_dot_transition": "0s",
+      "map_label_leader_transition": "0s",
+      "panel_and_control_transitions": "0s",
+      "running_decorative_animations": 0,
+      "animations": "none"
+    },
+    "grayscale": {
+      "present_circles": 277,
+      "absent_crossed_squares": 31,
+      "geometry_preserved": true
+    },
+    "deuteranopia": {
+      "solid_edges": 16,
+      "open_dash_edges": 3,
+      "broken_dot_edges": 4,
+      "legend_labels_present": true,
+      "geometry_preserved": true
+    },
+    "contrast_ratios": {
+      "chrome_text_on_graphite": 13.93,
+      "figure_text_on_mineral_paper": 15.98,
+      "normal_text_threshold": 4.5,
+      "meaningful_boundary_threshold": 3.0
+    }
+  },
+  "automated_gates": {
+    "focused_red_green": "RED failed 2/20 on the 32px Methods close target and reduced-motion map-leader specificity; GREEN passed 20/20 after two one-line CSS corrections",
+    "frontend_tests": "91/91 pass across 17 files; focused 20/20 pass",
+    "data_contracts": "pass",
+    "required_artifacts": "78 paths pass",
+    "task_statuses": "96 statuses pass before the recorded in-review to done transition",
+    "secrets": "pass",
+    "production_build": "pass; 1605 modules transformed",
+    "bundle_budget": {
+      "javascript_bytes": 1031935,
+      "javascript_limit": 1050000,
+      "css_bytes": 94987,
+      "css_limit": 95000
+    },
+    "whitespace": "pass"
+  },
+  "scope": {
+    "production_files_changed": 1,
+    "test_files_changed": 2,
+    "data_or_copy_changed": false,
+    "dependency_or_runtime_asset_changed": false,
+    "reproduced_corrections": [
+      "Increase the existing Methods icon button padding from 6px to 12px so its 18px icon yields a measured 44x44 target.",
+      "Match the existing .map-labels .map-label__lead specificity inside the shared reduced-motion selector so its transition computes to 0s."
+    ],
+    "reason": "The final pass changed only the two reproduced accessibility seams and their focused contracts."
+  },
+  "qa_disposition": {
+    "production_defects_returned": 0,
+    "independent_checker": "SPEC PASS and QUALITY PASS; no minimum fixes remain",
+    "owner_gate": "TASK-095",
+    "deployment_or_submission_claimed": false
+  }
+}

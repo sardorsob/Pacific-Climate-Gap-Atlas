@@ -299,7 +299,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 
 .panel__actions { display: flex; flex-wrap: wrap; gap: 9px; }
 .link-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: var(--r-chip); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer; }
-.icon-btn { border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-chip); padding: 6px; cursor: pointer; color: var(--ink); display: inline-flex; }
+.icon-btn { border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-chip); padding: 12px; cursor: pointer; color: var(--ink); display: inline-flex; }
 
 /* ---------- data-quiet callout ---------- */
 .quiet-card { padding: 13px; border-radius: var(--r-card); border: 1px solid var(--line); display: grid; gap: 6px; }
@@ -462,7 +462,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 
 @media (prefers-reduced-motion: reduce) {
   .panel-dock, .dock--controls,
-  .map-a11y-point, .map-label__lead, .map-label__name, .map-label__tag,
+  .map-a11y-point, .map-labels .map-label__lead, .map-label__name, .map-label__tag,
   .scene-progress__dot { transition: none; }
   .story-scrolly__sections { scroll-behavior: auto; }
   .evidence-mark, .evidence-mark *,

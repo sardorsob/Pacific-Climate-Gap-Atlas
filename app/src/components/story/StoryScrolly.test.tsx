@@ -82,6 +82,9 @@ describe("fullscreen story shell", () => {
     expect(styles.slice(reducedMotion, regionalEvidence)).toContain(
       ".scene-progress__dot { transition: none; }",
     );
+    expect(styles.slice(reducedMotion, regionalEvidence)).toContain(
+      ".map-labels .map-label__lead, .map-label__name, .map-label__tag,",
+    );
   });
 
   it("scopes premise protection to the opening without reskinning Explore", () => {

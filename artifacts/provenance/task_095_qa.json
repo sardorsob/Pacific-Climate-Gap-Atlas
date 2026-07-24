@@ -1,0 +1,182 @@
+{
+  "task": "TASK-095",
+  "status": "in-review",
+  "tested_from_head": "098ab34ec25c49364866352d578b2ccc1e9b0ad1",
+  "reviewed_commits": {
+    "TASK-091": "6a9cda36631da729ee330e2dfef7f93415b789ff",
+    "TASK-092": "a3b12d19e701872e3f2b97ba667980536f4bc3b1",
+    "TASK-093": "e371d27eac8ca899eedb6867002bc49c7789d7f0",
+    "TASK-094": "098ab34ec25c49364866352d578b2ccc1e9b0ad1"
+  },
+  "production_freeze": {
+    "result": "pass",
+    "production_or_test_files_changed_by_TASK_095": 0,
+    "data_files_changed_by_TASK_095": 0,
+    "dependency_or_lock_files_changed_by_TASK_095": 0,
+    "defects_returned_to_owning_tasks": 0
+  },
+  "quiet_headless_qa": {
+    "runner": "Playwright with bundled Chromium headless shell",
+    "headless": true,
+    "quiet": true,
+    "visible_browser_opened": false,
+    "base_url": "http://127.0.0.1:5176/",
+    "assertions": {"total": 33, "passed": 33, "failed": 0},
+    "console_errors": 0,
+    "failed_requests": 0,
+    "screenshots": {
+      "directory": "artifacts/design/task-095",
+      "count": 20,
+      "settled_after_transition": true
+    },
+    "viewports": ["1440x900", "390x844", "844x390", "1024x768 failure states"],
+    "states": [
+      "premise",
+      "presence",
+      "movement",
+      "visibility",
+      "handoff",
+      "neutral Explorer",
+      "selected American Samoa",
+      "selected Nauru",
+      "selected Pitcairn",
+      "Methods",
+      "loading",
+      "generated-data error"
+    ]
+  },
+  "reused_responsive_accessibility_evidence": {
+    "source": "artifacts/provenance/task_094_responsive_qa.json",
+    "assertions": "127/127 pass",
+    "screenshots": 63,
+    "viewports": 7,
+    "effective_200_percent_reflow_states": 5,
+    "grayscale": "pass",
+    "deuteranopia": "pass",
+    "reduced_motion": "pass",
+    "minimum_visible_primary_target_px": 44,
+    "map_buttons_keyboard_focusable": "22/22",
+    "document_or_nested_evidence_overflow_failures": 0
+  },
+  "scientific_trace": {
+    "result": "pass",
+    "places": 22,
+    "movement": {
+      "complete": 19,
+      "incomplete": 3,
+      "quadrants": {
+        "water_up_renewable_down": 7,
+        "both_up": 6,
+        "both_down": 3,
+        "water_down_renewable_up": 3
+      },
+      "separate_clocks_and_denominators_visible": true,
+      "descriptive_non_causal_caveat_visible": true
+    },
+    "visibility": {
+      "places": 22,
+      "positions_per_place": 14,
+      "cells": 308,
+      "present": 277,
+      "absent": 31,
+      "direct_coverage_facts": {
+        "recorded_direct_disaster_loss": "12/22",
+        "meteorological_monitoring_network": "18/22",
+        "power_generation": "18/22",
+        "safely_managed_drinking_water": "19/22",
+        "renewable_energy_share": "20/22"
+      }
+    },
+    "place_semantics": {
+      "AS": "Missing monitoring row remains No rows in processed data and a reporting gap, never reported zero.",
+      "NR": "Latest monitoring row reports 0 with a source-semantics warning, never a missing row.",
+      "PN": "Water and renewable comparisons remain unavailable; the island-group note and reported-zero monitoring semantics remain separate."
+    },
+    "claim_limits": [
+      "Dataset presence is not quality, completeness, currency, infrastructure, conditions, preparedness, vulnerability, need, or local knowledge.",
+      "Scores and rank ranges are comparative screens, not rankings of need or causal explanations.",
+      "The 2030 view is a stress test, not a forecast.",
+      "Centroids and Natural Earth texture are not reviewed territorial boundaries."
+    ]
+  },
+  "data_parity": {
+    "result": "pass",
+    "geographies_sha256": "c094d7cbc4afd3deb532f256e8b6f2e9b2d78fd89f3920b72fb5c2da426a9855",
+    "country_details_sha256": "b113a898a2a63f4c2211bc23b448e5b40e0b78ad46b70ca647f6c3d1b0b093f3",
+    "pacific_land_context_sha256": "07584700c159316c5b7c451013b36cb9bdd513f347a1373cc7e270924f497b61",
+    "public_and_processed_copies_byte_identical": true
+  },
+  "night_watch_semantic_surface_review": {
+    "result": "pass",
+    "map_background": "rgb(7, 25, 35)",
+    "chrome_background": "rgb(16, 40, 50)",
+    "selected_mark": {"fill": "none", "stroke": "rgb(255, 255, 255)", "filter": "none", "animation": "none"},
+    "data_marks_and_cells_flat": true,
+    "ui_light_restricted_to_frame_focus_and_readability_roles": true,
+    "map_tonally_uniform": true,
+    "public_forbidden_terms_found": [],
+    "checked_forbidden_terms": ["Night Watch", "sonar", "surveillance", "radar sweep", "dead water", "calm water", "rough water"],
+    "unsupported_cultural_motif_added": false,
+    "remote_runtime_asset_added": false
+  },
+  "interaction_state_review": {
+    "result": "pass",
+    "handoff_to_neutral_explorer_and_browser_back": true,
+    "coverage_back_url": "?mode=explore&view=coverage",
+    "uncertainty_back_url": "?mode=explore&view=uncertainty",
+    "score_select_place_back_forward": true,
+    "guided_end_home_page_down": true,
+    "methods_initial_focus_and_escape_restoration": true,
+    "loading_status": true,
+    "generated_data_error_alert": true
+  },
+  "automated_gates": {
+    "python_tests": "99/99 pass",
+    "frontend_tests": "91/91 pass across 17 files",
+    "data_contracts": "pass",
+    "required_artifacts": "78 paths pass",
+    "task_statuses": "96 statuses pass before TASK-095 advanced from in-progress to in-review",
+    "secrets": "pass",
+    "ruff": "zero findings",
+    "compileall": "pass",
+    "production_build": "pass; 1605 modules transformed",
+    "bundle_budget": {
+      "javascript_bytes": 1031935,
+      "javascript_limit": 1050000,
+      "css_bytes": 94987,
+      "css_limit": 95000
+    },
+    "whitespace": "pass"
+  },
+  "security_review": {
+    "semgrep": {
+      "result": "pass",
+      "method": "Semgrep MCP local scan",
+      "version": "1.168.0",
+      "scope": "all eight app source/test/style files changed by TASK-091 through TASK-094",
+      "files_scanned": 8,
+      "findings": 0,
+      "errors": 0,
+      "skipped_rules": 0
+    },
+    "osv": {
+      "result": "not available in the managed sandbox",
+      "version": "2.4.0",
+      "local_discovery": "Both lockfiles were parsed; 196 app plus 198 root package records were found.",
+      "network_failure": "api.osv.dev DNS lookup failed after four retries.",
+      "elevated_retry": "Rejected because dependency metadata disclosure requires destination-specific owner approval.",
+      "fresh_online_pass_claimed": false,
+      "dependency_or_lock_diff_since_TASK_057": false,
+      "root_lock_sha256": "e259a024c3b7300bd3bac391a187c0710e7d9b1c432c504fe71d2e5e092bf934",
+      "app_lock_sha256": "da3d69b9badd7b2bafe7672246808c062d63f4104cde2656bc0db12ab1de385e"
+    },
+    "frozen_diff_review": "No transport, dependency, dynamic execution, HTML injection, credential, acquisition, or remote-runtime surface changed in TASK-091 through TASK-094."
+  },
+  "qa_disposition": {
+    "independent_checker": "SPEC PASS and QUALITY PASS; no minimum fixes remain",
+    "owner_visual_interaction_acceptance": "pending",
+    "eligible_status_after_checker": "in-review",
+    "eligible_for_done": false,
+    "deployment_or_submission_claimed": false
+  }
+}

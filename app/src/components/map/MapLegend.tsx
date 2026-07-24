@@ -80,7 +80,7 @@ export function MapLegend({ activeScore, viewMode, outlookOn }: MapLegendProps) 
         <span className="legend__label">Evidence portrait</span>
         <div className="legend__portrait-key">
           <EvidenceMark model={LEGEND_MARK} label="Example evidence portrait" size={44} scoreFill={rampStops(outlookOn ? "gap" : activeScore)[2]} />
-          <span>Inner field = active score. Eight fixed ticks = score inputs available; pale bloom = selected place.</span>
+          <span>Inner field = active score. Eight fixed ticks = score inputs available; crisp outline = selected place.</span>
         </div>
         <span className="legend__note">The detached tick is responsibility context only; it never feeds the score.</span>
       </div>

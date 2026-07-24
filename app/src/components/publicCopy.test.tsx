@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { MethodDrawer } from "./MethodDrawer";
+import { MapLegend } from "./map/MapLegend";
 import { CountryPanel } from "./panels/CountryPanel";
 
 describe("public opening copy", () => {
@@ -51,5 +52,15 @@ describe("public opening copy", () => {
     expect(html).toContain("Pacific Climate Evidence Atlas");
     expect(html).toContain("How conditions and official records differ across 22 Pacific places.");
     expect(html).not.toContain("Where climate pressure and visible capacity are unevenly matched");
+  });
+
+  it("changes only the selected-place legend phrase without exposing art direction", () => {
+    const html = renderToStaticMarkup(
+      <MapLegend activeScore="gap" viewMode="default" outlookOn={false} />,
+    );
+
+    expect(html).toContain("crisp outline = selected place");
+    expect(html).not.toContain("pale bloom = selected place");
+    expect(html).not.toMatch(/Night Watch|sonar|beacon|sounding/i);
   });
 });

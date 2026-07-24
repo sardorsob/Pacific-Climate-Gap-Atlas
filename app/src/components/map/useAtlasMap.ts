@@ -27,7 +27,6 @@ const LAND_SOURCE_ID = "pacific-land-context";
 const LAND_FILL_LAYER_ID = "pacific-land-context-fill";
 const LAND_LINE_LAYER_ID = "pacific-land-context-line";
 const LAND_MARK_FILL_LAYER_ID = "pacific-land-selected-fill";
-const LAND_MARK_GLOW_LAYER_ID = "pacific-land-selected-glow";
 const LAND_MARK_SOLID_LAYER_ID = "pacific-land-selected-line-solid";
 const LAND_MARK_ZERO_LAYER_ID = "pacific-land-selected-line-zero";
 const LAND_MARK_MISSING_LAYER_ID = "pacific-land-selected-line-missing";
@@ -40,10 +39,9 @@ const POINT_LAYER_ID = "atlas-centroid-points";
 const ANCHOR_FILTER: FilterSpecification = ["!=", "anchorCode", ""];
 const MOTION_TARGETS = [
   { layer: PRIORITY_LAYER_ID, paint: ["circle-radius", "circle-opacity", "circle-stroke-width"] },
-  { layer: SELECTED_PRESENCE_LAYER_ID, paint: ["circle-radius", "circle-opacity", "circle-color"] },
+  { layer: SELECTED_PRESENCE_LAYER_ID, paint: ["circle-radius", "circle-stroke-width"] },
   { layer: POINT_LAYER_ID, paint: ["circle-radius", "circle-color", "circle-opacity", "circle-stroke-color"] },
   { layer: LAND_MARK_FILL_LAYER_ID, paint: ["fill-color", "fill-opacity"] },
-  { layer: LAND_MARK_GLOW_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
   { layer: LAND_MARK_SOLID_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
   { layer: LAND_MARK_ZERO_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
   { layer: LAND_MARK_MISSING_LAYER_ID, paint: ["line-color", "line-width", "line-opacity"] },
@@ -100,7 +98,6 @@ function styleAnchoredLand(collection: GeoJSON.FeatureCollection | null, feature
           ...feature.properties,
           fillColor: props?.fillColor ?? "transparent",
           markOpacity: props ? Math.min(0.34, props.opacity * 0.42) : 0,
-          glowOpacity: props ? Math.min(0.28, props.opacity * 0.38) : 0,
           strokeColor: props?.strokeColor ?? "transparent",
           reportingStatus: props?.reportingStatus ?? null,
           selected: props?.selected ?? false,
@@ -137,7 +134,6 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
   if (!map.getLayer(LAND_FILL_LAYER_ID)) map.addLayer({ id: LAND_FILL_LAYER_ID, type: "fill", source: LAND_SOURCE_ID, paint: { "fill-color": "#173240", "fill-opacity": 0.74 } }, beforeId);
   if (!map.getLayer(LAND_LINE_LAYER_ID)) map.addLayer({ id: LAND_LINE_LAYER_ID, type: "line", source: LAND_SOURCE_ID, paint: { "line-color": "rgba(205, 226, 233, 0.18)", "line-width": 0.7 } }, beforeId);
   if (!map.getLayer(LAND_MARK_FILL_LAYER_ID)) map.addLayer({ id: LAND_MARK_FILL_LAYER_ID, type: "fill", source: LAND_SOURCE_ID, filter: ANCHOR_FILTER, paint: { "fill-color": ["get", "fillColor"], "fill-opacity": ["get", "markOpacity"] } }, beforeId);
-  if (!map.getLayer(LAND_MARK_GLOW_LAYER_ID)) map.addLayer({ id: LAND_MARK_GLOW_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: ANCHOR_FILTER, paint: { "line-color": ["get", "fillColor"], "line-width": ["case", ["==", ["get", "selected"], true], 6, 4], "line-blur": 1.4, "line-opacity": ["get", "glowOpacity"] } }, beforeId);
   if (!map.getLayer(LAND_MARK_SOLID_LAYER_ID)) map.addLayer({ id: LAND_MARK_SOLID_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("reported_positive_latest_count"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-opacity": ["get", "markOpacity"] } }, beforeId);
   if (!map.getLayer(LAND_MARK_ZERO_LAYER_ID)) map.addLayer({ id: LAND_MARK_ZERO_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("reported_zero_latest_count"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-dasharray": [2, 2], "line-opacity": ["get", "markOpacity"] } }, beforeId);
   if (!map.getLayer(LAND_MARK_MISSING_LAYER_ID)) map.addLayer({ id: LAND_MARK_MISSING_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("missing_monitoring_dataset_row"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-dasharray": [1, 2], "line-opacity": ["get", "markOpacity"] } }, beforeId);
@@ -153,7 +149,7 @@ function addGraticuleLayers(map: MapLibreMap) {
 function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, reducedMotion: boolean) {
   if (!map.getSource(MAP_SOURCE_ID)) map.addSource(MAP_SOURCE_ID, { type: "geojson", data: asGeoJson(collection) });
   if (!map.getLayer(PRIORITY_LAYER_ID)) map.addLayer({ id: PRIORITY_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, filter: ["==", ["get", "priority"], true], paint: { "circle-radius": ["+", ["get", "radius"], 9], "circle-color": "rgba(255, 213, 138, 0.03)", "circle-stroke-color": "#ffd58a", "circle-stroke-width": 2, "circle-opacity": ["get", "opacity"] } });
-  if (!map.getLayer(SELECTED_PRESENCE_LAYER_ID)) map.addLayer({ id: SELECTED_PRESENCE_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, filter: ["==", ["get", "selected"], true], paint: { "circle-radius": ["+", ["get", "radius"], 10], "circle-color": ["get", "fillColor"], "circle-opacity": 0, "circle-blur": 0.45, "circle-stroke-color": "rgba(255, 255, 255, 0.72)", "circle-stroke-width": 1.2 } });
+  if (!map.getLayer(SELECTED_PRESENCE_LAYER_ID)) map.addLayer({ id: SELECTED_PRESENCE_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, filter: ["==", ["get", "selected"], true], paint: { "circle-radius": ["+", ["get", "radius"], 10], "circle-color": "transparent", "circle-stroke-color": "#ffffff", "circle-stroke-width": 2 } });
   if (!map.getLayer(POINT_LAYER_ID)) map.addLayer({ id: POINT_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, paint: { "circle-radius": ["get", "radius"], "circle-color": ["get", "fillColor"], "circle-opacity": 0, "circle-stroke-color": "transparent", "circle-stroke-width": 0 } });
   syncMapMotion(map, reducedMotion);
 }
@@ -273,7 +269,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
     const handleLandClick = (event: MapLayerMouseEvent) => { const code = event.features?.[0]?.properties?.anchorCode; if (typeof code === "string") onSelectRef.current(code); };
     const handleLandEnter = () => { map.getCanvas().style.cursor = "pointer"; };
     const handleLandLeave = () => { map.getCanvas().style.cursor = ""; };
-    const layers = [LAND_MARK_FILL_LAYER_ID, LAND_MARK_GLOW_LAYER_ID, LAND_MARK_SOLID_LAYER_ID, LAND_MARK_ZERO_LAYER_ID, LAND_MARK_MISSING_LAYER_ID];
+    const layers = [LAND_MARK_FILL_LAYER_ID, LAND_MARK_SOLID_LAYER_ID, LAND_MARK_ZERO_LAYER_ID, LAND_MARK_MISSING_LAYER_ID];
     for (const layer of layers) { map.on("click", layer, handleLandClick); map.on("mouseenter", layer, handleLandEnter); map.on("mouseleave", layer, handleLandLeave); }
     return () => { for (const layer of layers) { map.off("click", layer, handleLandClick); map.off("mouseenter", layer, handleLandEnter); map.off("mouseleave", layer, handleLandLeave); } };
   }, [styledLand, mapReady]);

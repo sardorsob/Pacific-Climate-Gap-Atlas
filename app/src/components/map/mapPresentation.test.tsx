@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
@@ -7,6 +8,9 @@ import { atlasLayers } from "../../lib/layers";
 import { buildAtlasFeatureCollection } from "./atlasMapModel";
 import { MapLegend } from "./MapLegend";
 import { MapOverlay } from "./MapOverlay";
+
+const mapSource = readFileSync(new URL("./useAtlasMap.ts", import.meta.url), "utf8");
+const baseCss = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 
 describe("neutral overview presentation", () => {
   it("shows a scoreless overview legend without rank or reporting encodings", () => {
@@ -71,5 +75,29 @@ describe("neutral overview presentation", () => {
     expect(html).not.toContain("Rank moves");
     expect(html).toContain("Selectable place records are centroid points, not boundary polygons.");
     expect(html).not.toContain("Scored geographies");
+  });
+
+  it("uses crisp selection outlines and removes the data-dependent glow machinery", () => {
+    const selectedLayer = mapSource.match(/if \(!map\.getLayer\(SELECTED_PRESENCE_LAYER_ID\)\)[^\n]+/)?.[0] ?? "";
+
+    expect(mapSource).not.toContain("LAND_MARK_GLOW_LAYER_ID");
+    expect(mapSource).not.toContain("glowOpacity");
+    expect(mapSource).not.toContain('"line-blur"');
+    expect(mapSource).not.toContain('"circle-blur"');
+    expect(selectedLayer).toContain('"circle-color": "transparent"');
+    expect(selectedLayer).toContain('"circle-stroke-color": "#ffffff"');
+    expect(selectedLayer).toContain('"circle-stroke-width": 2');
+    expect(selectedLayer).not.toContain('"circle-opacity"');
+    expect(baseCss).toMatch(/\.evidence-mark__bloom\s*\{[^}]*fill:\s*none;[^}]*stroke:\s*#fff;[^}]*stroke-width:\s*1\.75;/);
+  });
+
+  it("keeps Explorer chrome graphite and reading, callout, and drawer surfaces mineral", () => {
+    expect(baseCss).toMatch(/\.controls, \.legend, \.map-header\s*\{[^}]*color:\s*var\(--chrome-ink\);[^}]*background:\s*var\(--chrome-bg\);/);
+    expect(baseCss).toMatch(/\.panel-dock\s*\{[^}]*background:\s*var\(--paper\);/);
+    expect(baseCss).toMatch(/\.panel-nav\s*\{[^}]*background:\s*var\(--chrome-bg\);[^}]*color:\s*var\(--chrome-ink\);/);
+    expect(baseCss).toMatch(/\.quiet-card--missing\s*\{[^}]*background:\s*var\(--paper-2\);/);
+    expect(baseCss).toMatch(/\.drawer\s*\{[^}]*background:\s*var\(--paper\);[^}]*border-left:\s*2px solid var\(--ui-light\);/);
+    expect(baseCss).toMatch(/\.app-state\s*\{[^}]*background:\s*var\(--ocean\);[^}]*color:\s*#f3f7f8;/);
+    expect(baseCss).toMatch(/\.outlook-banner\s*\{[^}]*background:\s*var\(--caveat-bg\);[^}]*color:\s*var\(--caveat-ink\);/);
   });
 });

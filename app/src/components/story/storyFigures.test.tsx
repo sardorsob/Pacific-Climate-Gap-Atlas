@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
@@ -5,6 +6,7 @@ import { adaptGeographiesPayload } from "../../lib/atlasData";
 import { RegionalEvidenceScene } from "./RegionalEvidenceScene";
 
 const regionalGeos = adaptGeographiesPayload(generatedGeographies);
+const styles = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 
 describe("story figures", () => {
   it("renders the complete signed movement field with an explicit incomplete rail", () => {
@@ -52,5 +54,22 @@ describe("story figures", () => {
     expect(html).toContain('data-visibility-cell="CK-meteorological-monitoring-network" data-cell-state="present" data-role="reporting_presence"');
     expect(html).toContain("Cook Islands — Meteorological monitoring network: present; role reporting presence; latest year 2026");
     expect(html).toContain('class="regional-evidence__cell regional-evidence__cell--absent"');
+  });
+
+  it("keeps the exact evidence geometry on pale flat surfaces with static UI-only scene light", () => {
+    const rules = styles.match(/[^{}]+\{[^{}]*\}/g) ?? [];
+    const rule = (selector: RegExp) => rules.filter((candidate) => selector.test(candidate.split("{")[0].trim())).join("\n");
+    const dataRules = rule(/\.map-evidence-mark|\.regional-evidence__movement-point|\.regional-evidence__cell|\[data-cell-state\]/);
+    const frameRules = rule(/\.story-scene\[data-stage-mode="figure-takeover"\]|\.story-handoff|\.scene-progress__item\[aria-current="step"\]/);
+
+    expect(rule(/\.story-scene\[data-stage-mode="figure-takeover"\]$/)).toMatch(/background:\s*var\(--paper\);[^}]*border-top:\s*2px solid var\(--ui-light\);/);
+    expect(rule(/\.regional-evidence__movement-plot$/)).toMatch(/height:\s*clamp\(20rem,\s*48svh,\s*28rem\);[^}]*background:\s*var\(--paper-2\);/);
+    expect(rule(/\.regional-evidence__visibility-row$/)).toMatch(/grid-template-columns:\s*minmax\(4\.5rem,\s*7rem\) repeat\(14,\s*minmax\(0,\s*1fr\)\);/);
+    expect(rule(/\.regional-evidence__cell$/)).toMatch(/width:\s*clamp\(9px,\s*1\.15vw,\s*14px\);[^}]*height:\s*clamp\(9px,\s*1\.15vw,\s*14px\);/);
+    expect(rule(/\.scene-progress__item\[aria-current="step"\] \.scene-progress__dot$/)).toMatch(/outline:\s*2px solid var\(--ui-light\);[^}]*outline-offset:\s*2px;/);
+    expect(rule(/\.story-handoff$/)).toMatch(/border-top:\s*2px solid var\(--ui-light\);/);
+    expect(dataRules).not.toMatch(/(?:box-shadow|text-shadow|(?:-webkit-)?(?:backdrop-)?filter|animation(?:-[\w-]+)?|background(?:-image)?\s*:[^;}]*gradient|var\(--ui-light\))/i);
+    expect(frameRules).not.toMatch(/var\(--caveat|#e9c98f|(?:pulse|sweep|ripple|shimmer)/i);
+    expect(styles).not.toMatch(/@keyframes\s+(?:pulse|sweep|ripple|shimmer)\b/i);
   });
 });

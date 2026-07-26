@@ -14,12 +14,14 @@ Approved path:
 2. The same marks rearrange into the 19 complete water/renewable comparisons while Guam, Pitcairn, and Tokelau remain visible as incomplete.
 3. The same marks reorganize into a separate 14-position official-data visibility field.
 4. Guided annotation recedes and the accepted explorer returns with layer controls, detail panel, sources, methods, optional index/outlook, and panel-only JSD neighbors.
+5. Selecting a place opens the same detail panel and shows three compact observed-record strips before the optional score: water change, renewable-share change, and reviewed datasets represented.
 
 Current implementation boundary:
 
 1. Preserve the existing MapLibre map, fixed-presence marks, fullscreen stage, native scroll, one observer, URL/history, controls, panel, and accessibility behavior.
 2. Replace the old title, premise, five guided scenes, Nauru/Tuvalu comparison, rank-band ending, and index-first default.
 3. Use one shared regional evidence figure with movement and visibility modes; add no new renderer, chart framework, router, state manager, or animation dependency.
+4. Implement the selected-place regional lens with one pure model and one plain React/SVG component over the already loaded `Geo[]`; replace the duplicate summary instead of adding a dashboard, tab system, or second drawer.
 
 ## Main Visual Pattern
 
@@ -36,6 +38,7 @@ Current implementation boundary:
 - direct labels and compact evidence strips for scroll-guided story moments
 - four-scene native-scroll contract plus a separate free-exploration handoff
 - selected-place evidence-fingerprint neighbors in the panel only; similarity map wiring and physical connectors are out of scope
+- selected-place observed dot/rug strips with exact selected values, neutral peer marks, a non-target regional median, and unavailable counts outside each independent scale
 
 ## Approved Story Inputs
 

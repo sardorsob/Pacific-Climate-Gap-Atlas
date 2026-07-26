@@ -2231,3 +2231,118 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: 2026-07-23: Final QA moved TASK-095 pending -> in-progress against frozen production commit `098ab34`. The pass reuses TASK-094's complete responsive evidence and adds Night Watch semantic/surface, full guided/Explorer/history/failure, source-to-render, repository-quality, frozen-diff, and security review. The first headless run exposed seven harness expectations rather than production failures: it counted the legend example as score evidence, required wording synonyms instead of the rendered claim, and expected optional default URL parameters. The corrected harness then passed 33/33 with 20 inspected frames and no production defect. Full repository gates and a scoped zero-finding Semgrep MCP scan passed; the OSV network limitation is recorded without claiming a pass. Independent Checker review returned SPEC PASS and QUALITY PASS. TASK-095 moved in-progress -> in-review with production/tests/data/dependencies frozen. Owner visual/interaction acceptance remains the sole gate before done.
 - Status: in-review
+
+## TASK-096
+- Phase: selected-place-lens-design
+- Title: Lock the inline regional-lens contract
+- Depends on: none
+- Assigned agent: Orchestrator; owner written-contract review
+- Contract refs: context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DECISIONS.md
+- Data refs: existing generated `Geo.regionalStory` records and the loaded 22-place `Geo[]` collection
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, TASK-068 regional EDA
+- User value / decision value: Defines a clean way for a reader to understand where a selected place sits within the Pacific record without opening a second dashboard or losing the map.
+- Functional notes: Record the owner-selected inline direction, reading order, desktop/mobile behavior, plot grammar, exact exclusions, source ownership, CSS budget boundary, and the TASK-097 through TASK-100 implementation sequence. Reuse existing context files; create no standalone task plan or per-task Markdown.
+- Statistical notes: The three surfaces are observed-record strips for water percentage-point change, renewable-share percentage-point change, and reviewed-dataset presence out of 14. The regional median is descriptive, metric domains remain independent, nulls stay outside scales, separate clocks remain visible, and visibility is not quality, completeness, preparedness, vulnerability, need, conditions, or local knowledge.
+- Edge cases: Selected measure unavailable; tied values; selected value at a domain endpoint; odd/even sample median; all values equal in a synthetic test; portrait/landscape panel widths; JSD kept separate from regional position.
+- Files to create/modify: context/PROJECT.md; context/SCOPE.md; context/DESIGN_BRIEF.md; context/ARTISTIC_REDESIGN_BRIEF.md; context/DECISIONS.md; context/TASKS.md; context/HANDOVER.md; context/docs/design.md; context/memory/architecture.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md
+- Artifacts to produce: durable written design and task contract only; concept imagery and browser scratch remain untracked composition studies
+- Acceptance criteria: The contract names one primary question, exact reading order, observed strip grammar, null/median/caveat behavior, accessible responsive behavior, implementation seam, exclusions, task dependencies, and budget target/ceiling; no production, test, generated/public data, dependency, or runtime asset changes; owner approves the written contract before implementation.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_required_artifacts.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Read the complete context diff for consistency, placeholders, unsupported claims, duplicate task files, stale next-step language, and accidental authorization of a dashboard or modeled distribution.
+- QA notes: The design review compared three directions: an inline regional lens, a two-state Place/Compare panel, and a wide comparison drawer. The owner selected the inline direction as substantially cleaner. A sibling-project audit showed a useful selected-record distribution pattern but also confirmed that its posterior treatment is not supported here. Repository/data inspection confirmed that all 22 current `Geo` records already carry the required regional-story measures and visibility positions; the core feature needs no data pipeline or export change. For Nauru, the inspected values are water +1.92 percentage points, renewable share +1.75 percentage points, and 13 of 14 reviewed datasets represented; regional ranges are −11.23 to +18.49 and −27.94 to +6.11 percentage points, with 19 and 20 applicable records respectively. Generated visual studies remain non-data-bearing and untracked. Ponytail review limited the proposed code shape to one pure model, one plain SVG component, one existing-panel integration, and no new dependency or state system. Self-review found no placeholder, task dependency, scope, data-count, or status contradiction after correction; task validation passes 101 statuses, required-artifact validation passes 78 paths, the secret scan passes, and `git diff --check` passes.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-07-25: TASK-096 moved `pending -> in-progress` during repository, sibling-pattern, data, panel, and responsive design review. The owner selected the inline regional lens from three equal-purpose alternatives and authorized context/task updates. The Orchestrator consolidated the approved design into existing context files, added the bounded successor batch, and moved `in-progress -> in-review` for written-contract approval. No production source, test, generated/public data, dependency, route, runtime asset, or tracked concept image changed.
+- Status: in-review
+
+## TASK-097
+- Phase: selected-place-lens-model
+- Title: Build the regional-position model
+- Depends on: TASK-096
+- Assigned agent: Data/visualization Builder; independent scientific review
+- Contract refs: TASK-096, context/DESIGN_BRIEF.md
+- Data refs: `app/src/lib/atlasData.ts`; generated/public `geographies.json`
+- Scientific refs: TASK-068 regional EDA and the selected-place semantic limits in context/DATA_CARD.md
+- User value / decision value: Produces exact, testable positions and summaries for the selected place before presentation code is added.
+- Functional notes: Under strict RED/GREEN TDD, create one pure model that accepts the loaded `Geo[]` and selected code and returns three strip models with applicable observations, honest extent, deterministic median, unavailable count, selected value, and deterministic collision lanes. Reuse normalized `Geo.regionalStory`; do not recompute or export source data.
+- Statistical notes: Water and renewable use signed first-to-latest percentage-point changes with independent extents. Visibility counts present positions out of the fixed 14. Nulls are excluded from extent and median and counted as unavailable; missing is never zero. Median behavior and scale padding must be deterministic and documented in tests.
+- Edge cases: Empty input; unknown selection; selected null; repeated values; negative/zero/positive values; one applicable value; equal-valued extent; input-order changes; exactly 22 current records.
+- Files to create/modify: app/src/components/panels/regionalPositionModel.ts; app/src/components/panels/regionalPositionModel.test.ts; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: exact all-22 metric/count audit in task QA notes; no new data artifact
+- Acceptance criteria: Pure deterministic output reproduces 19 water-comparable records plus 3 unavailable, 20 renewable-comparable records plus 2 unavailable, all 22 visibility counts, current min/max/median values, and exact selected states; input records remain unmodified; no new dependency, data field, pipeline, API, state, or renderer; focused/full frontend and repository gates pass.
+- Verification commands: npm --prefix app run test -- regionalPositionModel.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/validate_data_contracts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Independently trace AS, NR, PN, and at least one complete-overlap record from generated JSON through the model; review tie stacking and selected-null output.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-098
+- Phase: selected-place-lens-integration
+- Title: Integrate the inline regional lens into place detail
+- Depends on: TASK-097
+- Assigned agent: React visualization Builder; independent UX/accessibility review
+- Contract refs: TASK-096, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: TASK-097 model output and existing `Geo[]`
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Lets a reader see a selected place in regional context immediately while keeping the accepted map and one-panel exploration flow.
+- Functional notes: Pass the already loaded geographies into `CountryPanel`; add one plain React/SVG regional-lens component; replace `RegionalRecordSummary` and the duplicate prominent score/profile presentation with the approved reading order. Keep exact selected values visible, render flat neutral peer marks plus a crisp selected ring and labeled median tick, show unavailable counts outside scales, retain reviewed caveats and source access, compress Gap/Pressure/Capacity into one quiet line, and keep similar-profile records secondary and collapsed. Preserve Back, Close, sheet, URL/history, map selection, Methods, loading, and error behavior.
+- Statistical notes: Render only TASK-097 output. Never label the median as a target, compare independent strip units visually, infer conditions from missingness, or merge JSD profile similarity with observed regional position.
+- Edge cases: Selected null on one or two measures; long place names; domain endpoints; overlapping dots; selected record not found during loading/error transitions; no similarity neighbors; direct `place=<code>` URL.
+- Files to create/modify: app/src/App.tsx; app/src/App.test.tsx; app/src/components/panels/CountryPanel.tsx; app/src/components/panels/CountryPanel.test.tsx; app/src/components/panels/RegionalPositionLens.tsx; app/src/components/panels/RegionalPositionLens.test.tsx; app/src/components/publicCopy.test.tsx; app/src/styles/base.css; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: quiet/headless selected-place frames for complete, partially unavailable, reported-zero, and missing-row cases under `artifacts/design/task-098/`
+- Acceptance criteria: The existing panel becomes one coherent place-to-region reading path; selected values and unavailable counts are visible without hover; all 22 peer records remain accurately represented where applicable; the modeled score is subordinate; similar-profile content is collapsed and still reachable; map/panel/navigation behavior and accepted Night Watch identity remain intact; no new dependency, route, state system, data export, API, dashboard shell, or interactive peer-point cloud; tests/build/data/status/secret/whitespace gates pass.
+- Verification commands: npm --prefix app run test -- regionalPositionModel.test.ts RegionalPositionLens.test.tsx CountryPanel.test.tsx App.test.tsx publicCopy.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/validate_data_contracts.py; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless review of NR, AS, PN, and a complete-overlap place at 1440×900, 390×844, and 844×390; confirm exact labels, dot counts, caveat adjacency, collapsed similarity, panel flow, URL history, and zero horizontal overflow.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-099
+- Phase: selected-place-lens-refinement
+- Title: Refine the regional lens across responsive and accessible states
+- Depends on: TASK-098
+- Assigned agent: Responsive/accessibility Builder; independent visualization Checker
+- Contract refs: TASK-096, TASK-094 baseline, context/DESIGN_BRIEF.md
+- Data refs: frozen TASK-098 model and rendered output
+- Scientific refs: context/DATA_CARD.md
+- User value / decision value: Makes the new context readable and operable on real panel sizes without shrinking the map, hiding evidence, or creating a dense control surface.
+- Functional notes: Measure first across the accepted seven viewports, effective 200% reflow, compact/expanded sheet states, long labels, grayscale, deuteranopia, reduced motion, keyboard/focus, touch, loading, and error. Repair only reproduced failures through existing component/CSS seams. Default peer marks remain non-interactive; no hover dependency or dozens of tab stops. Delete/reuse replaced panel selectors before adding CSS.
+- Statistical notes: Preserve exact values, counts, domains, median labels, unavailable treatment, and independent units during every responsive change. Non-color selection and missingness cues must survive grayscale and color-deficiency review.
+- Edge cases: 320px-equivalent panel width; landscape sheet; 200% reflow; selected endpoint label collision; all-equal synthetic strip; missing selected value; focus returning after Methods/Close; reduced-motion state.
+- Files to create/modify: app/src/components/panels/RegionalPositionLens.tsx; app/src/components/panels/RegionalPositionLens.test.tsx; app/src/components/panels/CountryPanel.tsx; app/src/components/panels/CountryPanel.test.tsx; app/src/styles/base.css; scripts/check_app_bundle_budget.py only if the measured CSS target cannot be met and the reviewed ceiling is required; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: measured quiet/headless responsive/accessibility matrix under `artifacts/design/task-099/`; recorded pre/post JS/CSS bytes
+- Acceptance criteria: No page, panel, or strip horizontal overflow; selected value, endpoints, median, unavailable count, caveat, and source remain readable; all primary controls measure at least 44px; keyboard/focus/history/reduced-motion behavior remains correct; map and existing panel states do not regress; CSS targets 95,000 bytes and may rise only through an explicit measured checker-reviewed change up to 97,500 bytes; JavaScript remains within 1,050,000 bytes; full gates pass.
+- Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_data_contracts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quiet/headless seven-viewport matrix plus 200% reflow, grayscale, deuteranopia, reduced motion, keyboard/focus, touch targets, long labels, AS/NR/PN, panel collapse/expand/Close, and zero-overflow measurements.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-100
+- Phase: selected-place-lens-release-qa
+- Title: Verify the complete selected-place regional lens
+- Depends on: TASK-095, TASK-099
+- Assigned agent: Independent scientific/UX/accessibility QA; owner final review
+- Contract refs: TASK-096, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/docs/submission-notes.md
+- Data refs: frozen production app and generated/public data after TASK-099
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Proves that the place-level regional context is truthful, clear, responsive, and additive to the accepted atlas before public hosting or submission.
+- Functional notes: Freeze production and review TASK-097 through TASK-099. Reuse TASK-095/TASK-099 evidence, add source-to-render audits for all three strips, and return defects to their owning task rather than patching production inside QA. Owner visual/interaction acceptance remains required. Deployment, public-URL durability, and submission remain separate decisions.
+- Statistical notes: Reproduce all applicable/unavailable counts, metric extents, medians, selected values, fixed visibility denominator, null-versus-zero treatment, separate clocks, modeled-score separation, and JSD separation directly from generated/public data. Confirm no median-target, preparedness, quality, causal, territorial, water-condition, or local-knowledge claim entered the interface.
+- Edge cases: Full guided-to-Explorer handoff; direct place URLs and history; complete/null/reported-zero/missing-row records; all panel/dialog/error states; seven viewports; reflow; color independence; reduced motion; keyboard/focus/touch; bundle caps.
+- Files to create/modify: artifacts/design/task-100/*; artifacts/provenance/task_100_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only after a formal owning-task rejection
+- Artifacts to produce: final selected-place screenshot matrix, source-to-render trace, exact model/DOM counts, responsive/accessibility measurements, automated gates, security limitations, and owner decision
+- Acceptance criteria: The lens answers where a selected place sits in the observed regional record; data, nulls, medians, units, caveats, scores, and JSD remain correctly separated; map/story/panel/navigation/accessibility/failure behavior remains intact; no new dependency, renderer, route, state system, API, or dashboard shell ships; all repository gates and independent review pass; owner accepts the result. Only then may public-hosting readiness be claimed separately.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
+- Manual QA: Run the complete quiet/headless story/Explorer/panel/accessibility/state/error matrix and obtain owner review without visible external Brave or Chrome windows.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending

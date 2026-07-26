@@ -104,6 +104,51 @@ Each PNG records source hashes plus `source_snapshot_commit: f0c6e2e`. The full 
 
 Renderer and state ownership remain unchanged from the retrofit plan: React/SVG/CSS owns the two evidence fields and labels, MapLibre owns the geographic surface, and the existing observer/URL/history system owns scene state. Exact spacing, collision offsets, and breakpoint values may change during TASK-075/TASK-076 only if semantic fidelity to the approved board is preserved.
 
+## Selected-Place Regional Position Lens
+
+The owner selected the **inline regional lens** on 2026-07-25. It extends the regional story at the point where a reader chooses a place, without turning the side panel into a second dashboard or changing the accepted map, palette, typography, Night Watch surfaces, evidence marks, controls, or URL behavior.
+
+### Reading Order
+
+1. Place name, status, and the existing blunt reviewed place note.
+2. **Where [place] sits in the Pacific.**
+3. Three compact observed-record strips: safely managed drinking-water change, renewable-energy-share change, and reviewed datasets represented.
+4. The existing different-clocks and presence-is-not-quality/preparedness caveats beside the strips.
+5. One quiet, unboxed score line: Gap · Pressure · Capacity.
+6. Existing rank range, score-input presence, monitoring status, and source trace.
+7. Existing **Records with a similar shape** evidence-profile comparison, secondary and collapsed by default.
+
+The strips replace the current duplicate regional summary; they do not sit beneath it. The selected-place panel remains one native vertical reading surface. There are no Place/Compare tabs, second drawer, comparison workspace, dashboard grid, or new mode.
+
+### Strip-Plot Grammar
+
+- Use a deterministic observed dot/rug strip, not a histogram, density curve, posterior curve, or modeled distribution. The dataset contains 22 places and no posterior distribution.
+- Show every applicable place as a small flat neutral dot. Show the selected place as a crisp outlined teal ring whose meaning is also stated in accessible text.
+- Use deterministic collision stacking when values overlap. Do not jitter randomly or let stacking imply a third variable.
+- Show the regional median as a thin labeled reference tick and call it **regional median**. It is descriptive context, not a target, threshold, benchmark, or policy goal.
+- Keep the selected place's exact value visible without hover. Label direct axis endpoints. Use percentage points for both change strips and `of 14` for visibility.
+- Give each metric its own honest domain. Do not compare position or dot spacing across different strips as if the units were shared.
+- Keep nulls and incomplete records out of the numeric scale and report their count in an adjacent **unavailable** note. Never place missing values at zero.
+- Keep all explanatory labels, values, caveats, and sources in code-bound editable text. Concept-image values and shapes never become application data.
+
+### Interaction And Accessibility
+
+The map remains the place selector. The default strip marks are explanatory, not 66 new controls or tiny tap targets. The complete reading must work without hover. Optional focused detail may be added only if it is keyboard reachable, has a clear accessible name, and does not create a dense tab sequence.
+
+On desktop, the strips use the current panel width and flow beneath the place identity. On portrait and landscape mobile, they remain in the existing bottom sheet, recompute to available width, and continue in native vertical flow. No strip receives horizontal scrolling. Existing collapse, Close, Back, focus restoration, 44px control targets, and `place=<code>` URL/history behavior remain unchanged.
+
+### Semantic Boundaries
+
+The lens answers one question: **where does the selected place sit within the observed Pacific record?** It does not say why a value changed and does not infer preparedness, data quality, completeness, vulnerability, need, importance, environmental condition, or local knowledge. Water and renewable endpoints retain their separate clocks and descriptive/non-causal framing. Visibility remains a fixed 14-position presence count, not a score.
+
+The optional Gap, Pressure, and Capacity line remains clearly modeled and subordinate to the observed strips. JSD nearest neighbors continue to answer the different secondary question, **which official-data evidence profiles have a similar shape?** They remain panel-only, non-causal, non-geographic, and outside the regional-position strips.
+
+### Implementation Boundary
+
+Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Build one pure regional-position model and one plain React/SVG component, then replace `RegionalRecordSummary` inside `CountryPanel`. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
+
+The current built CSS is 94,987 of 95,000 bytes. Deleting/reusing the replaced summary styles is the first target and 95,000 remains the preferred cap. If a clean accessible implementation cannot fit, the only pre-authorized review range is a measured maximum of 97,500 bytes, with the JavaScript cap unchanged at 1,050,000 bytes. Any cap change must be explicit, measured, and accompanied by deletion/reuse evidence; minification tricks and obscured code are rejected.
+
 ## Historical Implemented Direction: The Shape Of What We Know
 
 The currently implemented guided design is governed by the idea below. It is superseded as a public narrative by the approved regional retrofit, but its evidence-mark, fullscreen, native-scroll, accessibility, and panel-only JSD decisions remain reusable:

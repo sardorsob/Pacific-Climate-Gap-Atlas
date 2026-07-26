@@ -7,6 +7,7 @@
 - Expand the current nine-dataset baseline with a small, profiled set of additional official datasets before selecting the final competition narrative.
 - Preserve the completed regional EDA evidence gate: distributions, cross-current comparisons, separate condition/visibility heatmaps, dependency-aware relationships, rejected cluster stability, and centroid-map small multiples.
 - Implement the accepted movement -> evidence visibility -> exploration story by reusing the existing fullscreen MapLibre application and the same 22 equal-presence evidence marks.
+- Extend selected-place detail with a compact observed-record lens showing where that place sits in the regional water-change, renewable-share-change, and 14-position visibility records, while keeping the existing map and single-panel flow.
 - Export only the minimum traceable water/renewable endpoint-change and 14-position visibility fields required by the guided story; keep the measures separate and preserve missingness.
 - Produce a reproducible Python pipeline for dataset profiling, normalization, index construction, and app-ready exports.
 - Create a transparent Adaptation Gap Index with visible missingness and caveats.
@@ -69,6 +70,7 @@ Core interactions:
 - optional evidence-fingerprint similarity comparison anchored on a selected geography
 - country/territory selection
 - country detail panel
+- selected-place regional-position strips using already loaded generated records, with nulls outside scales and descriptive medians
 - source/methodology drawer
 - mobile-friendly single-panel flow
 - regional water/renewable cross-current field with all 22 places and three explicit incomplete cases

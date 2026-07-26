@@ -2,7 +2,13 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and is now `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. Built CSS remains 94,987/95,000 bytes. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. The owner selected the inline regional lens for selected-place detail, and TASK-096 is now `in-review` for approval of the consolidated written contract. After TASK-096 closes, TASK-097 through TASK-099 provide the model, integration, and responsive/accessibility path; TASK-100 also waits for TASK-095 before final QA. Built CSS remains 94,987/95,000 bytes. Deployment and submission remain separate decisions.
+
+## 2026-07-25
+
+- Owner selected the **inline regional lens** over a Place/Compare tab treatment and a wide comparison drawer. The current map, one-panel flow, Night Watch identity, URL/history, sheet, controls, and source access remain binding. Three observed-record strips answer where the selected place sits for water change, renewable-share change, and reviewed-dataset presence. Neutral peers, one outlined teal selection, a descriptive median, exact selected value, direct endpoints, and off-scale unavailable counts form the approved grammar.
+- TASK-096 moved `pending -> in-progress -> in-review` after the design was consolidated into existing context files. TASK-097 builds one pure model from the loaded `Geo[]`; TASK-098 replaces the duplicate summary/profile prominence with one plain SVG lens and a quiet score line; TASK-099 owns measured responsive/accessibility/budget refinement; TASK-100 freezes production for independent and owner QA. The batch is sequential because the work converges on `CountryPanel` and `base.css`; no per-task Markdown was added.
+- The feature may not add a dashboard shell, tabs, second drawer, histogram/KDE/posterior curve, new data export, API, renderer, state system, or visualization dependency. Similar evidence-profile records remain secondary and collapsed. The preferred CSS cap stays 95,000 bytes; an explicit, measured, checker-reviewed maximum of 97,500 is the only permitted fallback, and the JavaScript cap remains 1,050,000.
 
 ## 2026-07-23
 

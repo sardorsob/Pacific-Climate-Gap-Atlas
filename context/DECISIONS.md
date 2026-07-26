@@ -391,3 +391,13 @@ The owner approved the written TASK-090 contract and authorized `TASK-091` throu
 Keep implementation sequential because all four production tasks converge on `app/src/styles/base.css`, which already builds to 94,996 of the 95,000-byte cap. Parallelize only read-only audits, non-overlapping test design, or independent review. Retune and delete existing rules before adding new ones. Remove the pre-existing data-dependent map glow during Explorer treatment; selection remains a crisp outline, while geography, movement, and visibility marks remain flat.
 
 Reason: this is the smallest implementation shape that can realize the selected atmosphere without creating a second theme system, conflicting stylesheet branches, or a visual metaphor that changes the evidence.
+
+## 2026-07-25: Use One Inline Observed-Record Lens In Place Detail
+
+Extend the existing selected-place panel with three compact observed dot/rug strips for water change, renewable-share change, and 14-position dataset presence. Keep the selected place explicit, show a descriptive regional median, keep unavailable records outside the numeric scale, and preserve independent units and clocks. Replace the current duplicate regional summary rather than stacking another section above it.
+
+Keep the map as the selector and the panel as one reading path. Similar evidence-profile records remain a collapsed secondary section. Do not add Place/Compare tabs, a second drawer, a dashboard grid, interactive peer-point clouds, a histogram or density curve, a posterior distribution, or a global comparison mode.
+
+Use the already loaded `Geo[]` and `Geo.regionalStory` fields through one pure model and one plain React/SVG component. No new data export, API, renderer, router, state manager, or visualization dependency is authorized. Prefer deletion and selector reuse to remain under the 95,000-byte CSS target; a measured 97,500-byte absolute ceiling may be proposed only if the clean accessible treatment cannot fit, while the 1,050,000-byte JavaScript cap remains fixed.
+
+Reason: the lens answers the primary reader question—where the selected place sits in the observed Pacific record—without copying an unsupported posterior treatment or turning the accepted atlas into a dashboard. It connects the regional story to place exploration with the smallest truthful visual form.

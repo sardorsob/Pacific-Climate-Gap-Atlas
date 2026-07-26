@@ -150,6 +150,22 @@ The retrofit is deliberately a surface evolution of the current application:
 
 All five tasks use existing components, MapLibre, native scroll, CSS, tests, and generated data. No task may add a renderer, theme provider, animation library, state system, route, map source, bitmap substrate, data field, runtime dependency, or public art-direction language. `TASK-091` through `TASK-094` share `base.css`, so Builders work sequentially; read-only audits and independent Checker passes may run in parallel. Each task retains its own QA and no-co-author commit boundary. The complete contracts live in `context/TASKS.md`; no per-task Markdown files are needed.
 
+## 2026-07-25 Inline Regional Lens For Selected Places
+
+The selected-place panel should continue the story rather than stop at a small pair of facts. The owner chose the cleanest of three directions: one inline regional lens inside the existing panel. The map remains the dominant surface, the panel remains a single reading path, and the current Night Watch color, type, surface, and interaction language stay intact.
+
+The artistic idea is restraint through context. When a reader selects a place, three narrow observed-record strips quietly reveal its position among Pacific records:
+
+- safely managed drinking-water first-to-latest change;
+- renewable-energy-share first-to-latest change;
+- reviewed datasets represented out of 14.
+
+Other places form a flat neutral field. The selected place is one crisp teal ring. A thin median tick gives regional context without becoming a target. Exact selected values remain printed, while unavailable records sit outside the scale as named counts. The image should feel like one place coming into focus within the same regional constellation, not a new analytics product opening over the map.
+
+This direction rejects tabs, a wide comparison drawer, card grids, radar or sonar language, glowing data marks, gradients that encode evidence, and a copied posterior/distribution treatment. It also rejects a second visual identity: the accepted graphite/mineral surfaces, direct typography, flat marks, amber caveats, and crisp focus treatment remain binding. Similar evidence-profile records stay secondary and collapsed; they answer a different question and do not become the visual center.
+
+On mobile the composition does not collapse into a horizontal scroller or miniature dashboard. The existing bottom sheet keeps one vertical reading order, the strips fit its measured width, all primary actions remain at least 44px, and the selected value and caveat remain readable without hover. The approved detailed grammar and implementation limits live in `context/DESIGN_BRIEF.md`; TASK-096 through TASK-100 are the only authorized planning path.
+
 ## TASK-072 Transition Keyframes (Owner Approved)
 
 Three exact-data composite boards now translate the approved story into the accepted TASK-064 application shell:

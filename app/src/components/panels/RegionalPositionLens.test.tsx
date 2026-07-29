@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
 import { adaptGeographiesPayload } from "../../lib/atlasData";
@@ -10,6 +11,10 @@ function renderLens(code: string, records = geos) {
   return renderToStaticMarkup(
     <RegionalPositionLens geo={records.find((geo) => geo.code === code)!} geos={records} />,
   );
+}
+
+function stripHtml(html: string, id: string) {
+  return html.match(new RegExp(`data-regional-strip="${id}"[\\s\\S]*?</section>`))?.[0] ?? "";
 }
 
 describe("RegionalPositionLens", () => {
@@ -37,27 +42,54 @@ describe("RegionalPositionLens", () => {
 
   it("keeps selected nulls outside the scale without a substitute ring", () => {
     const html = renderLens("PN");
+    const water = stripHtml(html, "water");
+    const renewable = stripHtml(html, "renewable");
+    const visibility = stripHtml(html, "visibility");
 
-    expect(html).toContain("Pitcairn unavailable for a comparable period in the reviewed regional series");
-    expect(html.match(/data-selected-mark/g) ?? []).toHaveLength(1);
-    expect(html.match(/data-unavailable-count/g) ?? []).toHaveLength(2);
+    expect(html).toContain("Selected: Pitcairn 6 of 14");
+    expect(water).toContain("3 unavailable");
+    expect(renewable).toContain("2 unavailable");
+    expect(water).not.toContain("data-selected-mark");
+    expect(renewable).not.toContain("data-selected-mark");
+    expect(visibility).toContain("data-selected-mark");
   });
 
   it("keeps peer marks non-interactive while exposing a concise accessible summary", () => {
     const html = renderLens("AS");
+    const water = stripHtml(html, "water");
 
-    expect(html).toContain('aria-label="Safely managed drinking-water change. Selected American Samoa');
+    expect(water).toMatch(/^data-regional-strip="water" role="img" aria-label="Safely managed drinking-water change. Selected American Samoa/);
+    expect(water).toContain('class="regional-lens__label" aria-hidden="true"');
+    expect(water).toContain('class="regional-lens__plot" viewBox="0 0 320 46" aria-hidden="true"');
+    expect(water).toContain('class="regional-lens__meta" aria-hidden="true"');
     expect(html).not.toMatch(/data-peer-mark[^>]*tabindex/);
     expect(html).not.toMatch(/data-median-tick[^>]*tabindex/);
   });
 
+  it("aligns observed endpoint labels to their independent padded scales", () => {
+    const html = renderLens("NR");
+    const waterXs = [...stripHtml(html, "water").matchAll(/<text x="([^"]+)"/g)].map(([, x]) => Number(x));
+    const visibilityXs = [...stripHtml(html, "visibility").matchAll(/<text x="([^"]+)"/g)].map(([, x]) => Number(x));
+
+    expect(waterXs[0]).toBeCloseTo(29.0909, 3);
+    expect(visibilityXs).toEqual([139.42857142857142, 304]);
+  });
+
+  it("keeps the selected ring unfilled", () => {
+    const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+
+    expect(css).toMatch(/\.regional-lens__selected\s*\{[^}]*fill:\s*none;/);
+  });
+
   it("keeps every tied peer and selected ring inside the strip viewBox", () => {
     const html = renderLens("NR");
-    const positions = [...html.matchAll(/data-(?:peer|selected)-mark[^>]*cy="([^"]+)"[^>]*r="([^"]+)"/g)]
-      .map(([, cy, radius]) => [Number(cy), Number(radius)]);
+    const positions = [...html.matchAll(/data-(?:peer|selected)-mark[^>]*cx="([^"]+)" cy="([^"]+)" r="([^"]+)"/g)]
+      .map(([, cx, cy, radius]) => [Number(cx), Number(cy), Number(radius)]);
 
     expect(positions).toHaveLength(64);
-    for (const [cy, radius] of positions) {
+    for (const [cx, cy, radius] of positions) {
+      expect(cx - radius).toBeGreaterThanOrEqual(0);
+      expect(cx + radius).toBeLessThanOrEqual(320);
       expect(cy - radius).toBeGreaterThanOrEqual(0);
       expect(cy + radius).toBeLessThanOrEqual(46);
     }

@@ -252,7 +252,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .regional-lens__plot { width: 100%; height: auto; overflow: visible; }
 .regional-lens__axis { stroke: var(--line); stroke-width: 1; }
 .regional-lens__peer { fill: #8aa0ab; }
-.regional-lens__selected { fill: var(--paper); stroke: var(--accent); stroke-width: 2; }
+.regional-lens__selected { fill: none; stroke: var(--accent); stroke-width: 2; }
 .regional-lens__median { stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 2 2; }
 .regional-lens__plot text { fill: var(--ink-soft); font: 9px var(--font-sans); }
 .regional-lens__meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; color: var(--ink-soft); font-size: 10px; }

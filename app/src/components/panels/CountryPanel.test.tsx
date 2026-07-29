@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import type { Geo } from "../../lib/atlasData";
+import generatedGeographies from "../../../public/data/geographies.json";
+import { adaptGeographiesPayload, type Geo } from "../../lib/atlasData";
 import { CountryPanel } from "./CountryPanel";
 
 const visibility = (represented: number) => Array.from({ length: 14 }, (_, index) => ({
@@ -55,6 +56,7 @@ const geo = {
   outlook2030Flat: 70,
   outlookDisplay: "show_with_strong_caveat",
 } satisfies Geo;
+const canonicalGeos = adaptGeographiesPayload(generatedGeographies);
 
 describe("CountryPanel", () => {
   it("keeps the empty panel free of temporary review copy", () => {
@@ -150,95 +152,107 @@ describe("CountryPanel", () => {
     expect(html.indexOf("Where Nauru sits in the Pacific")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
   });
 
-  it("keeps a selected record that is not in the canonical collection unavailable", () => {
+  it("places the existing source action immediately after the regional caveat", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
+    );
+
+    expect(html.indexOf("Methodology &amp; sources")).toBeGreaterThan(html.indexOf("local knowledge"));
+    expect(html.indexOf("Methodology &amp; sources")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
+  });
+
+  it("preserves positive and negative signs for a complete cross-current", () => {
+    const papuaNewGuinea = {
+      ...geo,
+      code: "PG",
+      name: "Papua New Guinea",
+      regionalStory: {
+        water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 18.49 },
+        renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -15.6 },
+        completeOverlap: true,
+        quadrant: "water_up_renewable_down",
+        visibility: visibility(14),
+      },
+    } satisfies Geo;
     const html = renderToStaticMarkup(
       <CountryPanel
-        geo={{
-          ...geo,
-          code: "PG",
-          name: "Papua New Guinea",
-          regionalStory: {
-            water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 18.49 },
-            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -15.6 },
-            completeOverlap: true,
-            quadrant: "water_up_renewable_down",
-            visibility: visibility(14),
-          },
-        }}
-        geos={[geo]}
+        geo={papuaNewGuinea}
+        geos={[papuaNewGuinea]}
         onOpenMethod={() => undefined}
       />,
     );
 
-    expect(html).toContain("Papua New Guinea unavailable for a comparable period in the reviewed regional series");
+    expect(html).toContain("+18.49 percentage points");
+    expect(html).toContain("−15.60 percentage points");
+    expect(html).toContain("Selected: Papua New Guinea 14 of 14");
   });
 
   it("keeps null comparisons unavailable and never presents their years or zero", () => {
+    const guam = {
+      ...geo,
+      code: "GU",
+      name: "Guam",
+      regionalStory: {
+        water: { firstYear: null, latestYear: null, changePercentagePoints: null },
+        renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 6.11 },
+        completeOverlap: false,
+        quadrant: "missing_overlap",
+        visibility: visibility(11),
+      },
+    } satisfies Geo;
     const html = renderToStaticMarkup(
       <CountryPanel
-        geo={{
-          ...geo,
-          code: "GU",
-          name: "Guam",
-          regionalStory: {
-            water: { firstYear: null, latestYear: null, changePercentagePoints: null },
-            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 6.11 },
-            completeOverlap: false,
-            quadrant: "missing_overlap",
-            visibility: visibility(11),
-          },
-        }}
-        geos={[geo]}
+        geo={guam}
+        geos={[guam]}
         onOpenMethod={() => undefined}
       />,
     );
 
     expect(html).toContain("Guam unavailable for a comparable period in the reviewed regional series");
-    expect(html).toContain("Guam unavailable for a comparable period in the reviewed regional series");
+    expect(html).toContain("Selected: Guam +6.11 percentage points");
+    expect(html).toContain("Selected: Guam 11 of 14");
     expect(html).not.toContain("null");
   });
 
   it("shows the observed six-of-fourteen visibility minimum", () => {
+    const pitcairn = canonicalGeos.find((candidate) => candidate.code === "PN")!;
     const html = renderToStaticMarkup(
       <CountryPanel
-        geo={{
-          ...geo,
-          code: "PN",
-          name: "Pitcairn",
-          regionalStory: {
-            water: { firstYear: null, latestYear: null, changePercentagePoints: null },
-            renewable: { firstYear: null, latestYear: null, changePercentagePoints: null },
-            completeOverlap: false,
-            quadrant: "missing_overlap",
-            visibility: visibility(6),
-          },
-        }}
-        geos={[geo]}
+        geo={pitcairn}
+        geos={canonicalGeos}
         onOpenMethod={() => undefined}
       />,
     );
+    const water = html.slice(html.indexOf('data-regional-strip="water"'), html.indexOf('data-regional-strip="renewable"'));
+    const renewable = html.slice(html.indexOf('data-regional-strip="renewable"'), html.indexOf('data-regional-strip="visibility"'));
 
-    expect(html.match(/Pitcairn unavailable for a comparable period in the reviewed regional series/g) ?? []).toHaveLength(6);
+    expect(html).toContain("Selected: Pitcairn 6 of 14");
+    expect(water).toContain("3 unavailable");
+    expect(renewable).toContain("2 unavailable");
+    expect(water).not.toContain("data-selected-mark");
+    expect(renewable).not.toContain("data-selected-mark");
   });
 
   it("formats both zero and negative zero as unsigned zero", () => {
+    const zeroes = {
+      ...geo,
+      regionalStory: {
+        water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 0 },
+        renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -0 },
+        completeOverlap: true,
+        quadrant: "both_up",
+        visibility: visibility(14),
+      },
+    } satisfies Geo;
     const html = renderToStaticMarkup(
       <CountryPanel
-        geo={{
-          ...geo,
-          regionalStory: {
-            water: { firstYear: 2000, latestYear: 2022, changePercentagePoints: 0 },
-            renewable: { firstYear: 2000, latestYear: 2022, changePercentagePoints: -0 },
-            completeOverlap: true,
-            quadrant: "both_up",
-            visibility: visibility(14),
-          },
-        }}
-        geos={[geo]}
+        geo={zeroes}
+        geos={[zeroes]}
         onOpenMethod={() => undefined}
       />,
     );
 
+    expect(html.match(/Selected: Nauru 0.00 percentage points/g) ?? []).toHaveLength(2);
     expect(html).not.toContain("+0.00 percentage points");
     expect(html).not.toContain("−0.00 percentage points");
   });

@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. The owner selected the inline regional lens for selected-place detail, and TASK-096 is now `in-review` for approval of the consolidated written contract. After TASK-096 closes, TASK-097 through TASK-099 provide the model, integration, and responsive/accessibility path; TASK-100 also waits for TASK-095 before final QA. Built CSS remains 94,987/95,000 bytes. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094 and TASK-096 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. TASK-097 through TASK-099 are now authorized for sequential model, integration, and responsive/accessibility work; TASK-100 also waits for TASK-095 before final QA. Built CSS remains 94,987/95,000 bytes. Deployment and submission remain separate decisions.
+
+## 2026-07-28
+
+- Owner approved TASK-096's written inline-regional-lens contract and authorized implementation through TASK-099. TASK-096 moved `in-review -> done` without a product, data, dependency, or artifact change; TASK-097 is the next implementation task.
 
 ## 2026-07-25
 

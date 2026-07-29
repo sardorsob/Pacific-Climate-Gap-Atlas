@@ -1,5 +1,9 @@
 # Progress Log
 
+## 2026-07-28
+
+- Owner approved the consolidated TASK-096 inline-regional-lens contract and authorized TASK-096 through TASK-099 execution. TASK-096 moved `in-review -> done`; TASK-097 is unlocked. This acceptance changes context status only: production code, tests, generated/public data, dependencies, runtime assets, and untracked concept studies remain unchanged.
+
 ## 2026-07-25
 
 - Compared three ways to add regional context after place selection: one inline lens in the existing panel, a two-state Place/Compare panel, and a wide comparison drawer. The owner selected the inline lens as the cleanest direction. The approved reading path keeps the place identity first, follows with water-change, renewable-share-change, and 14-position visibility strips, then keeps the modeled score, diagnostics, trace, and collapsed similar-profile records subordinate. The map remains the selector and primary surface.

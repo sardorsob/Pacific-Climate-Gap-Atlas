@@ -2,7 +2,7 @@
 
 ## Current State
 
-The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-094` are complete. On 2026-07-23 the owner approved TASK-090's Night Watch contract, TASK-091 established its budget-neutral surface foundation, TASK-092 carried the hierarchy through the guided story, TASK-093 completed the Explorer treatment while deleting the old glow machinery, and TASK-094 passed the integrated responsive/accessibility refinement. Frozen-production TASK-095 has passed automated and independent QA and remains `in-review` for owner visual/interaction acceptance. On 2026-07-25 the owner selected the inline regional lens for selected-place detail; its written TASK-096 contract is `in-review`, and TASK-097 through TASK-100 are pending. `TASK-057` repaired the earlier release findings and passed independent review. No deployment/submission readiness is claimed.
+The repository is a context-first GIS/data-science project. `TASK-001` through `TASK-094` and TASK-096 are complete. On 2026-07-23 the owner approved TASK-090's Night Watch contract, TASK-091 established its budget-neutral surface foundation, TASK-092 carried the hierarchy through the guided story, TASK-093 completed the Explorer treatment while deleting the old glow machinery, and TASK-094 passed the integrated responsive/accessibility refinement. Frozen-production TASK-095 has passed automated and independent QA and remains `in-review` for owner visual/interaction acceptance. On 2026-07-28 the owner approved the inline regional-lens contract; TASK-097 through TASK-100 are the authorized implementation and QA path. `TASK-057` repaired the earlier release findings and passed independent review. No deployment/submission readiness is claimed.
 
 The current app implements the approved regional story while preserving the accepted fullscreen composition, dark-ocean palette, typography, 22 evidence marks, native scroll, accessibility behavior, controls, selected-place panel, methods/sources, URL/history, and Explore handoff. Its four stable scenes are `what-the-records-show`, `twenty-two-pacific-places`, `different-directions`, and `unequal-visibility`; Explore starts in explicit neutral `view=overview`. The accepted replacement baseline lives under `artifacts/design/task-077/`; TASK-095's final frames and evidence live under `artifacts/design/task-095/` and `artifacts/provenance/task_095_qa.json`. TASK-090's boards under `artifacts/design/task-090/` remain schematic concept references; the shipped retrofit is the bounded, evidence-safe translation recorded by TASK-091 through TASK-094.
 
@@ -75,13 +75,13 @@ This writes the script-first EDA tables under `artifacts/tables/`, records `arti
 ## Next Recommended Work
 
 1. Have the owner complete TASK-095's live visual/interaction review; if accepted, record `in-review -> done` without changing the evidence package.
-2. Have the owner review the consolidated TASK-096 inline-regional-lens contract; if accepted, record `in-review -> done` before implementation.
-3. After TASK-096 closes, implement TASK-097 through TASK-099 sequentially. TASK-100 also waits for TASK-095 to close before frozen independent and owner QA.
+2. Implement TASK-097 through TASK-099 sequentially under the approved inline-regional-lens contract.
+3. TASK-100 also waits for TASK-095 to close before frozen independent and owner QA.
 4. Treat deployment, public-URL durability, final disclosure, and submission-form actions as a separate release decision after TASK-100.
 
 ## Known Caveats
 
-- TASK-096 is a context-only design gate. The selected inline regional lens uses three observed-record strips inside the existing place panel and does not authorize a dashboard shell, Place/Compare tabs, a second drawer, a histogram/KDE/posterior curve, interactive peer-point controls, new data output, or a dependency. TASK-097 through TASK-100 remain locked until owner approval.
+- TASK-096 is done and authorizes only the selected inline regional lens: three observed-record strips inside the existing place panel, with no dashboard shell, Place/Compare tabs, second drawer, histogram/KDE/posterior curve, interactive peer-point controls, new data output, or dependency.
 - The selected-place lens uses already loaded `Geo.regionalStory` fields. Water has 19 applicable and 3 unavailable records; renewable share has 20 applicable and 2 unavailable; visibility covers all 22 places on the fixed 14-position record. The regional median is descriptive, missing values stay off-scale, metric units/domains remain independent, and presence is not quality or preparedness.
 - Built CSS is already 94,987/95,000 bytes. The implementation must delete/reuse replaced panel styles first. The preferred cap remains 95,000; TASK-099 may propose an explicit measured ceiling no higher than 97,500 only if the clean accessible treatment cannot fit. The JavaScript cap remains 1,050,000.
 - The accepted visual/story baseline was not redesigned. TASK-079–TASK-082 changed only panel navigation, handoff sizing/wording, responsive control placement, temporary copy, and selected-place evidence order.

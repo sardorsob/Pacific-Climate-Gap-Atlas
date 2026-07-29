@@ -104,4 +104,8 @@ describe("regional story integration", () => {
   it("keeps the Methods close control touch-sized", () => {
     expect(baseCss).toMatch(/\.icon-btn\s*\{[^}]*padding:\s*12px;/);
   });
+
+  it("keeps every visible Explorer header action touch-sized", () => {
+    expect(baseCss).toMatch(/(?:^|\n)\.ghost-btn\s*\{[^}]*min-height:\s*44px;/);
+  });
 });

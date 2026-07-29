@@ -165,7 +165,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .map-header__caveat { display: block; margin-top: 3px; font: 500 11.5px var(--font-sans); }
 .map-header__actions { display: flex; gap: 7px; margin-top: 11px; }
 .ghost-btn {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 6px 10px;
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 10px;
   border: 1px solid var(--line); border-radius: var(--r-chip); background: var(--chrome-bg-soft);
   color: var(--chrome-ink); font-size: 12px; font-weight: 600; cursor: pointer;
 }
@@ -355,7 +355,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .panel-dock--open { transform: translateY(0); }
   .panel-nav { border-radius: 16px 16px 0 0; }
   .panel-nav__toggle { display: inline-flex; }
-  .story-scrolly .ghost-btn, .map-header .ghost-btn { min-height: 44px; }
   .panel { padding: 18px; }
   .panel__thesis { font-size: 21px; }
   .signals { grid-template-columns: 1fr 1fr; }

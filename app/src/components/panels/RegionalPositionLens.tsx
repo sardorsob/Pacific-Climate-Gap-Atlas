@@ -20,18 +20,21 @@ function position(value: number, [min, max]: [number, number]) {
   return 16 + ((value - min) / (max - min)) * 288;
 }
 
-function stripSummary(strip: RegionalPositionStrip, name: string) {
+function stripSummary(strip: RegionalPositionStrip, name: string, clock: string | null) {
   const selected = strip.selected.value === null
     ? `${name} unavailable for a comparable period in the reviewed regional series`
     : `Selected ${name} ${valueLabel(strip, strip.selected.value)}`;
+  const range = strip.extent
+    ? `observed range ${valueLabel(strip, strip.extent[0])} to ${valueLabel(strip, strip.extent[1])}`
+    : "no observed range";
   const median = strip.median === null ? "no regional median" : `regional median ${valueLabel(strip, strip.median)}`;
-  return `${METRICS[strip.id]}. ${selected}; ${median}; ${strip.applicable.length} applicable; ${strip.unavailableCount} unavailable.`;
+  return `${METRICS[strip.id]}. ${selected}; ${range}${clock ? `; reviewed clock ${clock}` : ""}; ${median}; ${strip.applicable.length} applicable; ${strip.unavailableCount} unavailable.`;
 }
 
 function Strip({ strip, name, clock }: { strip: RegionalPositionStrip; name: string; clock: string | null }) {
   const extent = strip.extent;
   const scale = strip.scaleExtent;
-  const summary = stripSummary(strip, name);
+  const summary = stripSummary(strip, name, clock);
   const selectedAvailable = strip.selected.state === "available" && strip.selected.value !== null;
 
   return (

@@ -14,7 +14,9 @@ function renderLens(code: string, records = geos) {
 }
 
 function stripHtml(html: string, id: string) {
-  return html.match(new RegExp(`data-regional-strip="${id}"[\\s\\S]*?</section>`))?.[0] ?? "";
+  const start = html.indexOf(`data-regional-strip="${id}"`);
+  const end = html.indexOf("</section>", start);
+  return start < 0 || end < 0 ? "" : html.slice(start, end + "</section>".length);
 }
 
 describe("RegionalPositionLens", () => {
@@ -35,9 +37,17 @@ describe("RegionalPositionLens", () => {
 
   it("keeps each selected change record's own reviewed clock visible", () => {
     const html = renderLens("NR");
+    const waterLabel = stripHtml(html, "water").match(/aria-label="([^"]+)"/)?.[1] ?? "";
+    const renewableLabel = stripHtml(html, "renewable").match(/aria-label="([^"]+)"/)?.[1] ?? "";
+    const visibilityLabel = stripHtml(html, "visibility").match(/aria-label="([^"]+)"/)?.[1] ?? "";
 
     expect(html).toContain("2000 to 2020");
     expect(html).toContain("2000 to 2022");
+    expect(waterLabel).toContain("observed range −11.23 percentage points to +18.49 percentage points");
+    expect(waterLabel).toContain("reviewed clock 2000 to 2020");
+    expect(renewableLabel).toContain("observed range −27.94 percentage points to +6.11 percentage points");
+    expect(renewableLabel).toContain("reviewed clock 2000 to 2022");
+    expect(visibilityLabel).toContain("observed range 6 of 14 to 14 of 14");
   });
 
   it("keeps selected nulls outside the scale without a substitute ring", () => {

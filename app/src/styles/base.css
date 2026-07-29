@@ -251,7 +251,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .regional-lens__label span { color: var(--ink-soft); text-align: right; }
 .regional-lens__plot { width: 100%; height: auto; overflow: visible; }
 .regional-lens__axis { stroke: var(--line); stroke-width: 1; }
-.regional-lens__peer { fill: #8aa0ab; }
+.regional-lens__peer { fill: var(--line); }
 .regional-lens__selected { fill: none; stroke: var(--accent); stroke-width: 2; }
 .regional-lens__median { stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 2 2; }
 .regional-lens__plot text { fill: var(--ink-soft); font: 9px var(--font-sans); }
@@ -295,7 +295,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .panel__fineprint { margin: 0; color: var(--caveat-ink); font-size: 11px; line-height: 1.35; }
 
 .panel__actions { display: flex; flex-wrap: wrap; gap: 9px; }
-.link-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: var(--r-chip); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.link-btn { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; padding: 9px 12px; border-radius: var(--r-chip); border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer; }
 .icon-btn { border: 1px solid var(--line); background: var(--paper); border-radius: var(--r-chip); padding: 12px; cursor: pointer; color: var(--ink); display: inline-flex; }
 
 /* ---------- data-quiet callout ---------- */

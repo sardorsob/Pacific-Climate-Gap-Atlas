@@ -81,6 +81,12 @@ describe("RegionalPositionLens", () => {
     expect(css).toMatch(/\.regional-lens__selected\s*\{[^}]*fill:\s*none;/);
   });
 
+  it("uses the existing 3:1 panel-boundary token for neutral peer marks", () => {
+    const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+
+    expect(css).toMatch(/\.regional-lens__peer\s*\{[^}]*fill:\s*var\(--line\);/);
+  });
+
   it("keeps every tied peer and selected ring inside the strip viewBox", () => {
     const html = renderLens("NR");
     const positions = [...html.matchAll(/data-(?:peer|selected)-mark[^>]*cx="([^"]+)" cy="([^"]+)" r="([^"]+)"/g)]

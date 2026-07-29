@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
 import { adaptGeographiesPayload, type Geo } from "../../lib/atlasData";
@@ -59,6 +60,12 @@ const geo = {
 const canonicalGeos = adaptGeographiesPayload(generatedGeographies);
 
 describe("CountryPanel", () => {
+  it("keeps the visible source action at the 44px minimum target", () => {
+    const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+
+    expect(css).toMatch(/\.link-btn\s*\{[^}]*min-height:\s*44px;/);
+  });
+
   it("keeps the empty panel free of temporary review copy", () => {
     const html = renderToStaticMarkup(
       <CountryPanel geo={null} geos={[]} onOpenMethod={() => undefined} />,

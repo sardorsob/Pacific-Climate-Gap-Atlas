@@ -59,21 +59,24 @@ const geo = {
 describe("CountryPanel", () => {
   it("keeps the empty panel free of temporary review copy", () => {
     const html = renderToStaticMarkup(
-      <CountryPanel geo={null} onOpenMethod={() => undefined} />,
+      <CountryPanel geo={null} geos={[]} onOpenMethod={() => undefined} />,
     );
 
     expect(html).not.toContain("Concept for review");
     expect(html).not.toContain("panel__hint");
   });
 
-  it("keeps the complete nearest-neighbor evidence in the panel", () => {
+  it("keeps similar-profile evidence collapsed by default", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
 
+    expect(html).toContain('<details class="panel-disclosure">');
+    expect(html).toContain("Records with a similar shape");
     expect(html).toContain("Northern Mariana Islands");
     expect(html).toContain("JSD 0.080");
     expect(html).toContain("Guam");
@@ -84,7 +87,7 @@ describe("CountryPanel", () => {
 
   it("uses reviewed place, monitoring, rank, and non-causal language without duplication", () => {
     const html = renderToStaticMarkup(
-      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+      <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
     );
 
     expect(html).toContain("Country · single raised coral island");
@@ -107,6 +110,7 @@ describe("CountryPanel", () => {
           rankCaveat: null,
           nonCausalCaveat: null,
         }}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
@@ -121,6 +125,7 @@ describe("CountryPanel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={geo}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
@@ -130,23 +135,22 @@ describe("CountryPanel", () => {
     expect(html).not.toContain("of 9 indicators feed this score");
   });
 
-  it("puts the regional record before the optional score with separate measure clocks", () => {
+  it("puts the regional lens before the quiet modeled score", () => {
     const html = renderToStaticMarkup(
-      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+      <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
     );
 
-    expect(html).toContain("Regional record");
-    expect(html).toContain("Drinking water");
+    expect(html).toContain("Where Nauru sits in the Pacific");
+    expect(html).toContain("Safely managed drinking-water change");
     expect(html).toContain("+1.92 percentage points");
-    expect(html).toContain("2000 to 2020");
-    expect(html).toContain("Renewable energy share");
+    expect(html).toContain("Renewable-energy-share change");
     expect(html).toContain("+1.75 percentage points");
-    expect(html).toContain("2000 to 2022");
-    expect(html).toContain("13 of 14 reviewed datasets represented");
-    expect(html.indexOf("Regional record")).toBeLessThan(html.indexOf("/100 gap"));
+    expect(html).toContain("Selected: Nauru 13 of 14");
+    expect(html).toContain("Gap 89 · Pressure 62 · Capacity 27");
+    expect(html.indexOf("Where Nauru sits in the Pacific")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
   });
 
-  it("preserves positive and negative signs for a complete cross-current", () => {
+  it("keeps a selected record that is not in the canonical collection unavailable", () => {
     const html = renderToStaticMarkup(
       <CountryPanel
         geo={{
@@ -161,13 +165,12 @@ describe("CountryPanel", () => {
             visibility: visibility(14),
           },
         }}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
 
-    expect(html).toContain("+18.49 percentage points");
-    expect(html).toContain("−15.60 percentage points");
-    expect(html).toContain("14 of 14 reviewed datasets represented");
+    expect(html).toContain("Papua New Guinea unavailable for a comparable period in the reviewed regional series");
   });
 
   it("keeps null comparisons unavailable and never presents their years or zero", () => {
@@ -185,13 +188,13 @@ describe("CountryPanel", () => {
             visibility: visibility(11),
           },
         }}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
 
-    expect(html).toContain("Unavailable for a comparable period in the reviewed regional series");
-    expect(html).toContain("+6.11 percentage points");
-    expect(html).toContain("11 of 14 reviewed datasets represented");
+    expect(html).toContain("Guam unavailable for a comparable period in the reviewed regional series");
+    expect(html).toContain("Guam unavailable for a comparable period in the reviewed regional series");
     expect(html).not.toContain("null");
   });
 
@@ -210,12 +213,12 @@ describe("CountryPanel", () => {
             visibility: visibility(6),
           },
         }}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
 
-    expect(html).toContain("6 of 14 reviewed datasets represented");
-    expect(html.match(/Unavailable for a comparable period in the reviewed regional series/g) ?? []).toHaveLength(2);
+    expect(html.match(/Pitcairn unavailable for a comparable period in the reviewed regional series/g) ?? []).toHaveLength(6);
   });
 
   it("formats both zero and negative zero as unsigned zero", () => {
@@ -231,20 +234,20 @@ describe("CountryPanel", () => {
             visibility: visibility(14),
           },
         }}
+        geos={[geo]}
         onOpenMethod={() => undefined}
       />,
     );
 
-    expect(html.match(/0.00 percentage points/g) ?? []).toHaveLength(2);
     expect(html).not.toContain("+0.00 percentage points");
     expect(html).not.toContain("−0.00 percentage points");
   });
 
-  it("keeps the interpretation limits adjacent to the regional values", () => {
+  it("keeps the interpretation limits adjacent to the regional lens", () => {
     const html = renderToStaticMarkup(
-      <CountryPanel geo={geo} onOpenMethod={() => undefined} />,
+      <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
     );
-    const record = html.slice(html.indexOf("Regional record"), html.indexOf("score-block"));
+    const record = html.slice(html.indexOf("Where Nauru sits in the Pacific"), html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
 
     expect(record).toContain("measures can use different clocks");
     expect(record).toContain("not causal claims");
@@ -255,5 +258,13 @@ describe("CountryPanel", () => {
     expect(record).toContain("need");
     expect(record).toContain("condition");
     expect(record).toContain("local knowledge");
+  });
+
+  it("omits the secondary disclosure when no similar profile is available", () => {
+    const html = renderToStaticMarkup(
+      <CountryPanel geo={{ ...geo, similarityNeighbors: [] }} geos={[geo]} onOpenMethod={() => undefined} />,
+    );
+
+    expect(html).not.toContain("Records with a similar shape");
   });
 });

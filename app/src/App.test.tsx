@@ -59,7 +59,7 @@ describe("regional story integration", () => {
 
     expect(appSource).toContain('from "./components/panels/ExplorerPanelNav"');
     expect(appSource).toContain("<ExplorerPanelNav");
-    expect(countryPanel).toMatch(/^<CountryPanel\s+geo=\{selectedGeo\}\s+onOpenMethod=\{\(\) => setDrawerOpen\(true\)\}\s*\/>$/);
+    expect(countryPanel).toMatch(/^<CountryPanel\s+geo=\{selectedGeo\}\s+geos=\{geos\}\s+onOpenMethod=\{\(\) => setDrawerOpen\(true\)\}\s*\/>$/);
   });
 
   it("restores panel and map focus without a separate focus manager", () => {

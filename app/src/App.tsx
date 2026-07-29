@@ -369,6 +369,7 @@ export function App() {
     ) : (
       <CountryPanel
         geo={selectedGeo}
+        geos={geos}
         onOpenMethod={() => setDrawerOpen(true)}
       />
     );

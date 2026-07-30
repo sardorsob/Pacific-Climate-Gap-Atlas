@@ -2,11 +2,12 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094 and TASK-096 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. TASK-097 through TASK-099 are now authorized for sequential model, integration, and responsive/accessibility work; TASK-100 also waits for TASK-095 before final QA. Built CSS remains 94,987/95,000 bytes. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094 and TASK-096 through TASK-099 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. TASK-100 waits for TASK-095 before frozen final QA. Final lens-batch assets are 1,033,799/1,050,000-byte JS and 94,930/95,000-byte CSS. Deployment and submission remain separate decisions.
 
 ## 2026-07-28
 
-- Owner approved TASK-096's written inline-regional-lens contract and authorized implementation through TASK-099. TASK-096 moved `in-review -> done` without a product, data, dependency, or artifact change; TASK-097 is the next implementation task.
+- Completed TASK-097 through TASK-099 with separate implementation/correction commits and independent task/batch review. The pure model preserves 19+3 water, 20+2 renewable, and 22-place visibility records; the existing selected-place panel renders one plain inline SVG lens with accessible exact values, endpoints, separate clocks, medians, and unavailable counts. TASK-099's corrected 24/24 matrix visibly covers all three strips in four color-deficiency frames, 44px non-map actions, reflow, motion, focus, history, loading/error, and zero overflow or unexpected console/network failures. The map, four-scene story, Night Watch palette, state/URL seams, data files, and dependencies remain unchanged. TASK-100 is the next lens gate after TASK-095 closes.
+- Owner approved TASK-096's written inline-regional-lens contract and authorized implementation through TASK-099. TASK-096 moved `in-review -> done` without a product, data, dependency, or artifact change and unlocked the now-complete TASK-097 model pass.
 
 ## 2026-07-25
 

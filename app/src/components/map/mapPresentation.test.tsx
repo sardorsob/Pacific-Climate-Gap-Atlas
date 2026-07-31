@@ -33,6 +33,7 @@ describe("neutral overview presentation", () => {
         outlookOn={false}
         selectedCode={null}
         priorityCodes={[]}
+        focusSelection={false}
         onSelect={() => undefined}
         activeLayerLabel="Gap"
       />,

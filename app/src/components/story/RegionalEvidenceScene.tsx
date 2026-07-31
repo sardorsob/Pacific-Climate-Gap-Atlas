@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Geo, RegionalStoryMeasure } from "../../lib/atlasData";
+import { signedChange } from "../../lib/encoding";
 import { EvidenceMark } from "../map/EvidenceMark";
 import { buildEvidenceMark } from "../map/evidenceMarkModel";
 import { buildRegionalEvidenceModel, type RegionalEvidenceModel } from "./regionalEvidenceModel";
@@ -24,10 +25,6 @@ const LABEL_OFFSETS: Record<string, readonly [number, number]> = {
   WF: [-26, 22],
 };
 
-function signed(value: number): string {
-  return `${value > 0 ? "+" : ""}${value.toFixed(2)}`;
-}
-
 function years(measure: RegionalStoryMeasure): string {
   return measure.firstYear === null || measure.latestYear === null
     ? "years unavailable"
@@ -37,13 +34,13 @@ function years(measure: RegionalStoryMeasure): string {
 function shortMeasure(label: string, measure: RegionalStoryMeasure): string {
   return measure.changePercentagePoints === null
     ? `${label} unavailable`
-    : `${label} ${signed(measure.changePercentagePoints)} pp, ${years(measure)}`;
+    : `${label} ${signedChange(measure.changePercentagePoints)} pp, ${years(measure)}`;
 }
 
 function fullMeasure(label: string, measure: RegionalStoryMeasure): string {
   return measure.changePercentagePoints === null
     ? `${label} unavailable`
-    : `${label} ${signed(measure.changePercentagePoints)} percentage points, ${years(measure)}`;
+    : `${label} ${signedChange(measure.changePercentagePoints)} percentage points, ${years(measure)}`;
 }
 
 function scale(value: number, domain: [number, number], reverse = false): number {
@@ -54,7 +51,7 @@ function scale(value: number, domain: [number, number], reverse = false): number
 }
 
 function tick(value: number): string {
-  return Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2);
+  return Number.isInteger(value) ? value.toFixed(0) : signedChange(value);
 }
 
 function readableRole(role: string): string {

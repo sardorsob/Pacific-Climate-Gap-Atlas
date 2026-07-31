@@ -1,4 +1,5 @@
 import type { Geo } from "../../lib/atlasData";
+import { signedChange } from "../../lib/encoding";
 import { buildRegionalPositionModel, type RegionalPositionStrip } from "./regionalPositionModel";
 
 const METRICS = {
@@ -7,13 +8,8 @@ const METRICS = {
   visibility: "Reviewed datasets represented",
 } as const;
 
-function signed(value: number) {
-  if (Object.is(value, -0) || value === 0) return "0.00";
-  return `${value > 0 ? "+" : "−"}${Math.abs(value).toFixed(2)}`;
-}
-
 function valueLabel(strip: RegionalPositionStrip, value: number) {
-  return strip.denominator ? `${value} of ${strip.denominator}` : `${signed(value)} percentage points`;
+  return strip.denominator ? `${value} of ${strip.denominator}` : `${signedChange(value)} percentage points`;
 }
 
 function position(value: number, [min, max]: [number, number]) {

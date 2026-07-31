@@ -7,6 +7,11 @@ import type { Geo, ReportingStatus } from "./atlasData";
 
 export type ScoreKey = "gap" | "pressure" | "capacity";
 
+export function signedChange(value: number): string {
+  if (Object.is(value, -0) || value === 0) return "0.00";
+  return `${value > 0 ? "+" : "−"}${Math.abs(value).toFixed(2)}`;
+}
+
 // Sequential ramps (light to dark) per score role.
 const RAMPS: Record<ScoreKey, string[]> = {
   // warm sand -> coral -> maroon (not alarm-red dominant)

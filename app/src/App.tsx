@@ -380,7 +380,6 @@ export function App() {
   return (
     <div
       className={shellClass}
-      data-scene-visual={mode === "guided" ? SCENES[sceneIndex]?.visual : undefined}
     >
       <div className="guided-atlas">
         <div className="guided-map">

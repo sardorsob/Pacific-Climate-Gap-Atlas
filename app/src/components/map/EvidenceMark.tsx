@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { EvidenceMarkModel } from "./evidenceMarkModel";
 
 type EvidenceMarkProps = {
@@ -59,7 +58,6 @@ export function EvidenceMark({
         focusable="false"
         data-scoreless="true"
         data-code={dataCode}
-        style={{ "--evidence-score": "var(--accent-2)" } as CSSProperties}
       >
         <circle className="evidence-mark__edge evidence-mark__edge--neutral" cx="22" cy="22" r="19" strokeLinecap="round" />
         <circle className="evidence-mark__field" cx="22" cy="22" r="10" fill="var(--accent-2)">
@@ -97,7 +95,6 @@ export function EvidenceMark({
       data-selected={model.selected ? "true" : "false"}
       data-reporting-edge={model.reportingEdge}
       data-code={dataCode}
-      style={{ "--evidence-score": scoreFill } as CSSProperties}
     >
       {model.selected && <circle className="evidence-mark__bloom" cx="22" cy="22" r="21" />}
       <circle

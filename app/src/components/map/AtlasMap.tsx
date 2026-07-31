@@ -14,7 +14,7 @@ type AtlasMapProps = {
   outlookOn: boolean;
   selectedCode: string | null;
   priorityCodes: string[];
-  focusSelection?: boolean;
+  focusSelection: boolean;
   panelOpen?: boolean;
   panelExpanded?: boolean;
   onSelect: (code: string) => void;
@@ -29,7 +29,7 @@ export function AtlasMap({
   outlookOn,
   selectedCode,
   priorityCodes,
-  focusSelection = true,
+  focusSelection,
   panelOpen = false,
   panelExpanded = false,
   onSelect,

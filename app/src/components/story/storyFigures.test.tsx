@@ -31,6 +31,9 @@ describe("story figures", () => {
     expect(html).toContain("Guam");
     expect(html).toContain("renewable +6.11 pp, 2000–2022");
     expect(html).toContain("American Samoa: safely managed drinking water +9.27 percentage points, 2000–2021; renewable energy share +0.49 percentage points, 2000–2022");
+    expect(html).toContain("Renewable energy share ranges from −27.94 to +5.48 percentage points");
+    expect(html).toContain("Safely managed drinking water ranges from −11.23 to +18.49 percentage points");
+    expect(html.replace(/style="[^"]*"/g, "")).not.toMatch(/(?:^|[ >"])-\d/);
   });
 
   it("renders all 308 visibility cells, the numbered key, and direct coverage facts", () => {

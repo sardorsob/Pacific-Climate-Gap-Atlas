@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094 and TASK-096 through TASK-099 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. The corrected TASK-101 through TASK-104 batch is pending owner approval; if approved, run it sequentially, starting with current-source review of all 22 political-status strings, then run TASK-100 after both that batch and TASK-095 close. Final lens-batch assets are 1,033,799-byte JS and 94,930-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094, TASK-096 through TASK-099, and TASK-101 through TASK-104 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. After that acceptance, run frozen TASK-100. Current built assets are 1,035,371-byte JS and 94,842-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+
+## 2026-07-30
+
+- Completed TASK-101 through TASK-104 with separate implementation, review-fix where required, independent review, and closure commits: TASK-101 `d7d5703`/`06da8fa`; TASK-102 `b04377c`/`12fabd1`/`1ec407e`; TASK-103 `704c276`/`d1ba654`/`8a61517`; TASK-104 `c2d42b5`/`a172f7a`. The batch source-reviewed all 22 political-status strings, made MapLibre startup/context-loss teardown re-entrancy safe, repaired live responsive control crossings, unified signed-change glyphs, and removed only proven-dead plumbing. Final gates pass Python 99/99, frontend 128/128, build, data contracts, 78 required artifacts, 105 legal task statuses, secrets, and whitespace. Quiet headless smoke verified both the intended in-region map failure fallback and the normal WebGL path at desktop/mobile with no horizontal overflow. New Caledonia's time-sensitive wording remains a pre-publication recheck.
 
 ## 2026-07-29
 

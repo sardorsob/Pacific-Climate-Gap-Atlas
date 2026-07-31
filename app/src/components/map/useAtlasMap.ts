@@ -120,10 +120,10 @@ function syncMapMotion(map: MapLibreMap, reducedMotion: boolean) {
   }
 }
 
-function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection | null, reducedMotion: boolean) {
-  if (!collection) return;
+function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection | null, reducedMotion: boolean, isCurrent: () => boolean) {
+  if (!collection || !isCurrent()) return;
   if (!map.isStyleLoaded()) {
-    window.setTimeout(() => syncLandContext(map, collection, reducedMotion), 50);
+    window.setTimeout(() => syncLandContext(map, collection, reducedMotion, isCurrent), 50);
     return;
   }
   const source = map.getSource(LAND_SOURCE_ID) as GeoJSONSource | undefined;
@@ -183,6 +183,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
   containerRef: RefObject<HTMLDivElement>;
   project: AtlasMapProjection;
   mapReady: boolean;
+  mapError: boolean;
 } {
   const { geos, atlasFeatures, selectedCode, focusSelection, panelOpen, panelExpanded, onSelect, reducedMotion: reducedMotionProp } = options;
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -192,6 +193,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
   const onSelectRef = useRef(onSelect);
   const reducedMotionRef = useRef(reducedMotion);
   const [mapReady, setMapReady] = useState(false);
+  const [mapError, setMapError] = useState(false);
   const [landContext, setLandContext] = useState<GeoJSON.FeatureCollection | null>(null);
   const [projectRevision, setProjectRevision] = useState(0);
   const mapLibreFeatures = useMemo(() => toMapLibreCollection(atlasFeatures), [atlasFeatures]);
@@ -216,51 +218,94 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
-    const map = new maplibregl.Map({ container: containerRef.current, style: PACIFIC_STYLE, center: [185, -7], zoom: 3.15, minZoom: 1.25, maxZoom: 7, attributionControl: false, renderWorldCopies: true, dragRotate: false, pitchWithRotate: false });
-    mapRef.current = map;
-    if (import.meta.env.DEV) (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
-    map.touchZoomRotate.disableRotation();
-    map.keyboard.disableRotation();
-    fitPacificCamera(map);
+    let map: MapLibreMap | null = null;
+    let canvas: HTMLCanvasElement | null = null;
+    let loaded = false;
+    let tornDown = false;
+    let projectionFrame: number | null = null;
     const handlePointClick = (event: MapLayerMouseEvent) => { const code = event.features?.[0]?.properties?.code; if (typeof code === "string") onSelectRef.current(code); };
-    const handlePointEnter = () => { map.getCanvas().style.cursor = "pointer"; };
-    const handlePointLeave = () => { map.getCanvas().style.cursor = ""; };
+    const handlePointEnter = () => { if (map) map.getCanvas().style.cursor = "pointer"; };
+    const handlePointLeave = () => { if (map) map.getCanvas().style.cursor = ""; };
     const refreshProjection = () => setProjectRevision((value) => value + 1);
-    const refitOnResize = () => { map.resize(); fitPacificCamera(map); refreshProjection(); };
-    const handleLoad = () => {
-      addGraticuleLayers(map);
-      syncLandContext(map, landContextRef.current, reducedMotionRef.current);
-      addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current);
-      map.on("click", POINT_LAYER_ID, handlePointClick);
-      map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
-      map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
-      setMapReady(true);
-      map.resize();
-      refreshProjection();
-      requestAnimationFrame(refreshProjection);
-    };
-    map.on("load", handleLoad);
-    map.on("move", refreshProjection);
-    map.on("resize", refreshProjection);
-    window.addEventListener("resize", refitOnResize);
-    return () => {
+    const refitOnResize = () => { if (map) { map.resize(); fitPacificCamera(map); refreshProjection(); } };
+    const teardown = () => {
+      if (tornDown) return;
+      tornDown = true;
       setMapReady(false);
+      window.removeEventListener("resize", refitOnResize);
+      canvas?.removeEventListener("webglcontextlost", handleContextLost);
+      if (projectionFrame !== null) cancelAnimationFrame(projectionFrame);
+      if (!map) {
+        mapRef.current = null;
+        return;
+      }
       map.off("load", handleLoad);
+      map.off("error", handleStartupError);
       map.off("move", refreshProjection);
       map.off("resize", refreshProjection);
-      window.removeEventListener("resize", refitOnResize);
       if (map.getLayer(POINT_LAYER_ID)) {
         map.off("click", POINT_LAYER_ID, handlePointClick);
         map.off("mouseenter", POINT_LAYER_ID, handlePointEnter);
         map.off("mouseleave", POINT_LAYER_ID, handlePointLeave);
       }
-      map.remove();
-      mapRef.current = null;
+      const currentMap = map;
+      if (mapRef.current === currentMap) mapRef.current = null;
+      try {
+        currentMap.remove();
+      } catch {}
     };
+    const failMap = () => {
+      setMapError(true);
+      teardown();
+    };
+    const handleStartupError = () => { if (!loaded) failMap(); };
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      failMap();
+    };
+    const handleLoad = () => {
+      if (!map) return;
+      try {
+        addGraticuleLayers(map);
+        syncLandContext(map, landContextRef.current, reducedMotionRef.current, () => mapRef.current === map && !tornDown);
+        addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current);
+        if (tornDown) return;
+        map.on("click", POINT_LAYER_ID, handlePointClick);
+        map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
+        map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
+        loaded = true;
+        map.off("error", handleStartupError);
+        map.resize();
+        if (tornDown) return;
+        setMapReady(true);
+        refreshProjection();
+        projectionFrame = requestAnimationFrame(refreshProjection);
+      } catch {
+        failMap();
+      }
+    };
+    try {
+      map = new maplibregl.Map({ container: containerRef.current, style: PACIFIC_STYLE, center: [185, -7], zoom: 3.15, minZoom: 1.25, maxZoom: 7, attributionControl: false, renderWorldCopies: true, dragRotate: false, pitchWithRotate: false });
+      mapRef.current = map;
+      if (import.meta.env.DEV) (window as unknown as { __atlasMap?: MapLibreMap }).__atlasMap = map;
+      canvas = map.getCanvas();
+      map.on("error", handleStartupError);
+      canvas.addEventListener("webglcontextlost", handleContextLost);
+      map.touchZoomRotate.disableRotation();
+      map.keyboard.disableRotation();
+      fitPacificCamera(map);
+      map.on("load", handleLoad);
+      map.on("move", refreshProjection);
+      map.on("resize", refreshProjection);
+      window.addEventListener("resize", refitOnResize);
+    } catch {
+      failMap();
+    }
+    return teardown;
   }, []);
 
   useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncAtlasSource(map, mapLibreFeatures); }, [mapLibreFeatures, mapReady]);
-  useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncLandContext(map, styledLand, reducedMotion); }, [styledLand, mapReady, reducedMotion]);
+  useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncLandContext(map, styledLand, reducedMotion, () => mapRef.current === map); }, [styledLand, mapReady, reducedMotion]);
   useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncMapMotion(map, reducedMotion); }, [mapReady, reducedMotion]);
 
   useEffect(() => {
@@ -271,7 +316,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
     const handleLandLeave = () => { map.getCanvas().style.cursor = ""; };
     const layers = [LAND_MARK_FILL_LAYER_ID, LAND_MARK_SOLID_LAYER_ID, LAND_MARK_ZERO_LAYER_ID, LAND_MARK_MISSING_LAYER_ID];
     for (const layer of layers) { map.on("click", layer, handleLandClick); map.on("mouseenter", layer, handleLandEnter); map.on("mouseleave", layer, handleLandLeave); }
-    return () => { for (const layer of layers) { map.off("click", layer, handleLandClick); map.off("mouseenter", layer, handleLandEnter); map.off("mouseleave", layer, handleLandLeave); } };
+    return () => { if (mapRef.current !== map) return; for (const layer of layers) { map.off("click", layer, handleLandClick); map.off("mouseenter", layer, handleLandEnter); map.off("mouseleave", layer, handleLandLeave); } };
   }, [styledLand, mapReady]);
 
   useEffect(() => {
@@ -294,5 +339,5 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
     return map ? projectMap(map, lon, lat) : null;
   }, [mapReady, projectRevision]);
 
-  return { containerRef, project, mapReady };
+  return { containerRef, project, mapReady, mapError };
 }

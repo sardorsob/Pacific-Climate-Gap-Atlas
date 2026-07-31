@@ -7,6 +7,7 @@ import {
   assignLandAnchors,
   markerPaintFor,
   mapMotionDuration,
+  mapStatusDescription,
   shouldReframeSelection,
   toMapLibreCollection,
 } from "./atlasMapModel";
@@ -67,6 +68,22 @@ const defaultOptions = {
 };
 
 describe("atlas map model", () => {
+  it("describes rendered map evidence in the normal state", () => {
+    expect(mapStatusDescription(false, "Gap", "default")).toBe(
+      "Map of 22 Pacific geographies shown as presence marks over Natural Earth land context. Active layer: Gap. The map is a comparative screen, not a definitive ranking.",
+    );
+  });
+
+  it("does not describe unrendered evidence when the map fails", () => {
+    const description = mapStatusDescription(true, "Gap", "default");
+
+    expect(description).toBe(
+      "Interactive map unavailable. No map evidence is displayed. Story, controls, place details, and Methods remain available.",
+    );
+    expect(description).not.toContain("22 Pacific geographies");
+    expect(description).not.toContain("Natural Earth");
+  });
+
   it("keeps 22 selectable evidence marks in the default collection", () => {
     const collection = buildAtlasFeatureCollection(defaultGeos, defaultOptions);
     expect(collection.features).toHaveLength(22);

@@ -82,6 +82,15 @@ export function mapMotionDuration(reducedMotion: boolean): number {
   return reducedMotion ? 0 : MAP_MOTION_MS;
 }
 
+export function mapStatusDescription(mapError: boolean, activeLayerLabel: string, viewMode: ViewMode): string {
+  if (mapError) {
+    return "Interactive map unavailable. No map evidence is displayed. Story, controls, place details, and Methods remain available.";
+  }
+  return `Map of 22 Pacific geographies shown as presence marks over Natural Earth land context. Active layer: ${activeLayerLabel}. ${viewMode === "overview"
+    ? "All 22 places use the same neutral mark until a layer is chosen."
+    : "The map is a comparative screen, not a definitive ranking."}`;
+}
+
 export function shouldReframeSelection({
   pointVisible,
   pointCoveredByPanel,

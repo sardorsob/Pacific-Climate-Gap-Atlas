@@ -3,7 +3,7 @@ import type { Geo } from "../../lib/atlasData";
 import type { ScoreKey } from "../../lib/encoding";
 import type { ViewMode } from "../../lib/types";
 import type { SceneVisual } from "../../lib/scenes";
-import { buildAtlasFeatureCollection, type AtlasFeatureCollection } from "./atlasMapModel";
+import { buildAtlasFeatureCollection, mapStatusDescription, type AtlasFeatureCollection } from "./atlasMapModel";
 import { MapOverlay } from "./MapOverlay";
 import { useAtlasMap } from "./useAtlasMap";
 
@@ -40,7 +40,7 @@ export function AtlasMap({
     () => buildAtlasFeatureCollection(geos, { activeScore, viewMode, outlookOn, selectedCode, priorityCodes }),
     [activeScore, geos, outlookOn, priorityCodes, selectedCode, viewMode],
   );
-  const { containerRef, project, mapReady } = useAtlasMap({
+  const { containerRef, project, mapReady, mapError } = useAtlasMap({
     geos,
     atlasFeatures,
     selectedCode,
@@ -53,25 +53,30 @@ export function AtlasMap({
 
   return (
     <div className="map-canvas" data-map-ready={mapReady ? "true" : "false"}>
-      <div ref={containerRef} className="maplibre-canvas" aria-hidden="true" />
-      <p className="sr-only">
-        Map of 22 Pacific geographies shown as presence marks over Natural Earth land context.
-        Active layer: {activeLayerLabel}. {viewMode === "overview"
-          ? "All 22 places use the same neutral mark until a layer is chosen."
-          : "The map is a comparative screen, not a definitive ranking."}
-      </p>
-      <MapOverlay
-        geos={geos}
-        project={project}
-        selectedCode={selectedCode}
-        activeScore={activeScore}
-        sceneVisual={sceneVisual}
-        onSelect={onSelect}
-        atlasFeatures={atlasFeatures}
-        viewMode={viewMode}
-        priorityCodes={priorityCodes}
-        activeLayerLabel={activeLayerLabel}
-      />
+      {mapError ? (
+        <div className="app-state" role="alert">
+          <p className="eyebrow">Map unavailable</p>
+          <h2>Could not start the interactive map.</h2>
+          <p className="sr-only">{mapStatusDescription(true, activeLayerLabel, viewMode)}</p>
+        </div>
+      ) : (
+        <>
+          <div ref={containerRef} className="maplibre-canvas" aria-hidden="true" />
+          <p className="sr-only">{mapStatusDescription(false, activeLayerLabel, viewMode)}</p>
+          <MapOverlay
+            geos={geos}
+            project={project}
+            selectedCode={selectedCode}
+            activeScore={activeScore}
+            sceneVisual={sceneVisual}
+            onSelect={onSelect}
+            atlasFeatures={atlasFeatures}
+            viewMode={viewMode}
+            priorityCodes={priorityCodes}
+            activeLayerLabel={activeLayerLabel}
+          />
+        </>
+      )}
     </div>
   );
 }

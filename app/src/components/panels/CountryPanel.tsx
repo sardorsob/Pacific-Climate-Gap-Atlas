@@ -46,6 +46,7 @@ export function CountryPanel({ geo, geos, onOpenMethod }: CountryPanelProps) {
         <p className="eyebrow">{geo.subregion}</p>
         <h1 className="panel__name">{geo.name}</h1>
         <p className="panel__status">{geo.status}{geo.placeNote && <> · {geo.placeNote}</>}</p>
+        <p className="panel__fineprint">Political status is descriptive context from cited public sources; it is not used in any score.</p>
       </div>
       <p className="panel__story">{geo.storyLabel}</p>
       <RegionalPositionLens geo={geo} geos={geos} />

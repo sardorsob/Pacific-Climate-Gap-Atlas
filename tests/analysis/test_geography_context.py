@@ -71,11 +71,19 @@ class GeographyContextArtifactTests(unittest.TestCase):
             for field in REQUIRED_SOURCE_FIELDS:
                 self.assertTrue(source.get(field), f"{source_key} missing {field}")
 
-    def test_sensitive_or_dynamic_statuses_are_marked_for_review(self) -> None:
+    def test_current_status_review_covers_all_rows_and_matches_public_labels(self) -> None:
         rows_by_code = {row["geo_code"]: row for row in _context_rows()}
+        review = _provenance()["political_status_review"]
+        decisions_by_code = {
+            decision["geo_code"]: decision for decision in review["decisions"]
+        }
 
-        for geo_code in ("CK", "NC", "NU", "PF", "TK"):
-            self.assertIn("needs_review", rows_by_code[geo_code]["context_quality"])
+        self.assertEqual(review["review_date"], "2026-07-30")
+        self.assertEqual(review["reviewed_geography_count"], 22)
+        self.assertEqual(set(decisions_by_code), set(rows_by_code))
+        for geo_code, row in rows_by_code.items():
+            self.assertTrue(row["context_quality"].startswith("source_supported"))
+            self.assertEqual(decisions_by_code[geo_code]["label"], row["political_status"])
 
 
 def _context_rows() -> list[dict[str, str]]:

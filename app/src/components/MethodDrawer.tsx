@@ -164,6 +164,13 @@ export function MethodDrawer({ open, onClose }: { open: boolean; onClose: () => 
         </section>
 
         <section className="drawer__section">
+          <h3>Context sources</h3>
+          <ul className="drawer__list">
+            <li>Political-status context: current UN, administering-government, and associated-state public sources; descriptive only and not a score input</li>
+          </ul>
+        </section>
+
+        <section className="drawer__section">
           <h3>Claims this atlas will not make</h3>
           <ul className="drawer__list">{WONT.map((d) => <li key={d}>{d}</li>)}</ul>
         </section>

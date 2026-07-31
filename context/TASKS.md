@@ -2365,11 +2365,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: Every public political-status string has a current source-review decision; no place displays an internal review marker; no status displays adapter-invented casing; one identical sourced provenance line appears for all 22 places; Methods names the status-context source family; status remains outside every score; no CSS byte is required; all repository gates pass.
 - Verification commands: python scripts/build_app_data.py; python scripts/validate_data_contracts.py; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Quiet/headless review of place=FJ, TK, CK, MP, PN, FM at 1440x900 and 375x812; confirm identical provenance wording and no bad wrap.
-- QA notes:
-- Attempts: 0
+- QA notes: Completed a dated authoritative-source review for all 22 records and recorded each decision in the provenance artifact. Strict RED first reproduced the adapter's invented review suffix/casing, missing fallback, and absent public attribution; GREEN returns reviewed source casing verbatim, uses the required defensive fallback, and adds the uniform panel sentence plus Methods source-family disclosure without CSS. The existing source-to-render pipeline was rebuilt through EDA and app-data generation; processed/public mirrors are byte-identical, and a boundary audit confirms every non-context geography field and score is unchanged. Quiet/headless QA passed all 12 required FJ/TK/CK/MP/PN/FM desktop and 375px cases: exact labels, identical attribution, no internal marker, no document/status overflow, and readable one- or two-line wrapping. Fresh verification passes Python 99/99, frontend 112/112, production build, data contracts, bundle budget, task statuses, secrets, and whitespace. New Caledonia's reviewed line states current legal status rather than the unfinished proposed transition and remains flagged in provenance for recheck before later publication.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Pending.
-- Status: pending
+- Attempt log: 2026-07-30: TASK-101 moved pending -> in-progress before source review. Attempt 1 reviewed all 22 political-status strings against current UN, administering-government, statutory, associated-state, and foreign-affairs sources; added the dated decision trace; rebuilt the existing source-to-render pipeline; captured strict adapter/copy RED failures; implemented the minimum adapter, panel, and Methods correction; and passed the required automated and quiet/headless QA gates. TASK-101 moved in-progress -> in-review for independent narrative/ethics review.
+- Status: in-review
 
 ## TASK-102
 - Phase: map-failure-resilience

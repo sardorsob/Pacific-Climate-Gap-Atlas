@@ -1,10 +1,14 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import generatedGeographies from "../../public/data/geographies.json";
+import { adaptGeographiesPayload } from "../lib/atlasData";
 import { MethodDrawer } from "./MethodDrawer";
 import { MapLegend } from "./map/MapLegend";
 import { CountryPanel } from "./panels/CountryPanel";
 
 describe("public opening copy", () => {
+  const geos = adaptGeographiesPayload(generatedGeographies);
+
   it("frames methods around the regional evidence thesis rather than an index-first default", () => {
     const html = renderToStaticMarkup(<MethodDrawer open onClose={() => undefined} />);
 
@@ -42,6 +46,19 @@ describe("public opening copy", () => {
     expect(html).toContain("whether each of 14 reviewed official datasets has a returned record");
     expect(html).toContain("Presence is not completeness, quality, currency, infrastructure, conditions, or local knowledge.");
     expect(html).toContain("does not mean zero loss");
+  });
+
+  it("attributes political-status context without implying that it feeds a score", () => {
+    const fiji = geos.find((geo) => geo.code === "FJ")!;
+    const panel = renderToStaticMarkup(
+      <CountryPanel geo={fiji} geos={geos} onOpenMethod={() => undefined} />,
+    );
+    const methods = renderToStaticMarkup(<MethodDrawer open onClose={() => undefined} />);
+
+    expect(panel).toContain(
+      "Political status is descriptive context from cited public sources; it is not used in any score.",
+    );
+    expect(methods).toContain("Political-status context");
   });
 
   it("opens the empty detail panel with the approved atlas title and thesis", () => {

@@ -1,128 +1,200 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "artifact": "data/external/geography_context.csv",
   "created_date": "2026-06-25",
+  "last_reviewed_date": "2026-07-30",
   "usage": {
     "score_input": false,
-    "description": "Descriptive GIS context only. These fields are not used as adaptation-gap score inputs."
+    "description": "Descriptive GIS and political-status context only. These fields are not used as adaptation-gap score inputs."
   },
   "sources": [
     {
       "source_key": "un_m49",
       "name": "United Nations Statistics Division M49 standard country or area codes and geographic regions",
       "url": "https://unstats.un.org/unsd/methodology/m49/",
-      "access_date": "2026-06-25",
-      "caveats": "Used for Pacific subregion labels and UN short-form country or area names. UNSD states that grouping assignments are for statistical convenience and do not imply political affiliation or legal status."
+      "access_date": "2026-07-30",
+      "caveats": "Used for Pacific subregion labels and UN short-form country or area names, not political status. UNSD states that groupings are for statistical convenience and do not imply political affiliation or legal status."
+    },
+    {
+      "source_key": "un_member_states",
+      "name": "United Nations - Member States",
+      "url": "https://www.un.org/en/about-us/member-states",
+      "access_date": "2026-07-30",
+      "caveats": "Used to support the high-level sovereign-state labels for Fiji, Kiribati, Nauru, Papua New Guinea, Samoa, Solomon Islands, Tonga, Tuvalu, and Vanuatu, and as supporting context for the three freely associated sovereign countries."
+    },
+    {
+      "source_key": "un_decolonization_nsgt",
+      "name": "United Nations and Decolonization - Non-Self-Governing Territories",
+      "url": "https://www.un.org/dppa/decolonization/nsgt",
+      "access_date": "2026-07-30",
+      "caveats": "Used to retain the separate UN Non-Self-Governing Territory context for American Samoa, French Polynesia, Guam, New Caledonia, Pitcairn, and Tokelau. Domestic administrative labels do not replace this UN context."
     },
     {
       "source_key": "us_doi_oia_as",
       "name": "U.S. Department of the Interior Office of Insular Affairs - American Samoa",
       "url": "https://www.doi.gov/oia/islands/american-samoa",
-      "access_date": "2026-06-25",
-      "caveats": "Used for high-level U.S. territory context. Local constitutional and citizenship details are summarized and should be reviewed before publication."
+      "access_date": "2026-07-30",
+      "caveats": "Used for the high-level U.S. territory label. The row does not attempt a full account of American Samoa's constitutional, self-determination, citizenship, or nationality context."
     },
     {
       "source_key": "us_doi_oia_guam",
       "name": "U.S. Department of the Interior Office of Insular Affairs - Guam",
       "url": "https://www.doi.gov/oia/islands/guam",
-      "access_date": "2026-06-25",
-      "caveats": "Used for high-level U.S. territory context. The table does not attempt a full constitutional-law summary."
+      "access_date": "2026-07-30",
+      "caveats": "Supporting administering-government context; 48 U.S.C. 1421a supplies the more precise unincorporated-territory wording."
     },
     {
       "source_key": "us_doi_oia_cnmi",
       "name": "U.S. Department of the Interior Office of Insular Affairs - Commonwealth of the Northern Mariana Islands",
       "url": "https://www.doi.gov/oia/islands/cnmi",
-      "access_date": "2026-06-25",
-      "caveats": "Used for high-level U.S. commonwealth territory context. The table does not attempt a full covenant-law summary."
+      "access_date": "2026-07-30",
+      "caveats": "Supporting administering-government context; the Covenant in 48 U.S.C. 1801 supplies the precise public label."
     },
     {
       "source_key": "us_doi_oia_fsm",
       "name": "U.S. Department of the Interior Office of Insular Affairs - Federated States of Micronesia",
       "url": "https://www.doi.gov/oia/islands/fsm",
-      "access_date": "2026-06-25",
-      "caveats": "Used for Compact of Free Association summary. Compact provisions are summarized at a high level only."
+      "access_date": "2026-07-30",
+      "caveats": "Supporting high-level Compact of Free Association context; 8 FAM 1306.1 supplies the reviewed sovereign-country wording."
     },
     {
       "source_key": "us_doi_oia_marshall_islands",
       "name": "U.S. Department of the Interior Office of Insular Affairs - The Marshall Islands",
       "url": "https://www.doi.gov/oia/islands/marshallislands",
-      "access_date": "2026-06-25",
-      "caveats": "Used for Compact of Free Association summary. Compact renewal details and defense provisions should be checked before publication."
+      "access_date": "2026-07-30",
+      "caveats": "Supporting high-level Compact of Free Association context; 8 FAM 1306.1 supplies the reviewed sovereign-country wording."
     },
     {
       "source_key": "us_doi_oia_palau",
       "name": "U.S. Department of the Interior Office of Insular Affairs - Republic of Palau",
       "url": "https://www.doi.gov/oia/islands/palau",
-      "access_date": "2026-06-25",
-      "caveats": "Used for Compact of Free Association summary. Compact provisions are summarized at a high level only."
+      "access_date": "2026-07-30",
+      "caveats": "Supporting high-level Compact of Free Association context; 8 FAM 1306.1 supplies the reviewed sovereign-country wording."
+    },
+    {
+      "source_key": "us_code_guam",
+      "name": "U.S. House Office of the Law Revision Counsel - 48 U.S.C. 1421a",
+      "url": "https://uscode.house.gov/view.xhtml?edition=prelim&num=0&req=granuleid%3AUSC-prelim-title48-section1421a",
+      "access_date": "2026-07-30",
+      "caveats": "Statutory source for Guam's unincorporated-territory label; the public line remains a short descriptive summary rather than a constitutional-law account."
+    },
+    {
+      "source_key": "us_code_cnmi",
+      "name": "U.S. House Office of the Law Revision Counsel - 48 U.S.C. 1801 and Covenant",
+      "url": "https://uscode.house.gov/view.xhtml?req=%28title%3A48+section%3A1801+edition%3Aprelim%29",
+      "access_date": "2026-07-30",
+      "caveats": "Statutory source for the self-governing commonwealth, political-union, and U.S.-sovereignty wording."
+    },
+    {
+      "source_key": "us_state_fam_fas",
+      "name": "U.S. Department of State Foreign Affairs Manual - 8 FAM 1306.1",
+      "url": "https://fam.state.gov/fam/08fam/08fam130601.html",
+      "access_date": "2026-07-30",
+      "caveats": "Used for the reviewed description of the Federated States of Micronesia, Marshall Islands, and Palau as sovereign countries in free association with the United States. Compact provisions are summarized at a high level only."
     },
     {
       "source_key": "nz_mfat_cook_islands",
       "name": "New Zealand Ministry of Foreign Affairs and Trade - Cook Islands",
       "url": "https://www.mfat.govt.nz/en/countries-and-regions/australia-and-pacific/cook-islands",
-      "access_date": "2026-06-25",
-      "caveats": "Used for free-association context. Cook Islands international personality and citizenship relationship are nuanced and flagged for review."
+      "access_date": "2026-07-30",
+      "caveats": "Used for self-government in free association with New Zealand. The public line does not summarize every constitutional, citizenship, or international-personality detail."
     },
     {
       "source_key": "nz_mfat_niue",
       "name": "New Zealand Ministry of Foreign Affairs and Trade - Niue",
       "url": "https://www.mfat.govt.nz/en/countries-and-regions/australia-and-pacific/niue",
-      "access_date": "2026-06-25",
-      "caveats": "Used for free-association context. Niue international personality and citizenship relationship are nuanced and flagged for review."
+      "access_date": "2026-07-30",
+      "caveats": "Used for self-government in free association with New Zealand. The public line does not summarize every constitutional, citizenship, or international-personality detail."
     },
     {
       "source_key": "nz_mfat_tokelau",
       "name": "New Zealand Ministry of Foreign Affairs and Trade - Tokelau",
       "url": "https://www.mfat.govt.nz/en/countries-and-regions/australia-and-pacific/tokelau",
-      "access_date": "2026-06-25",
-      "caveats": "Used for non-self-governing territory context. Tokelau governance is summarized at a high level only."
+      "access_date": "2026-07-30",
+      "caveats": "Used for the current non-self-governing territory within the Realm of New Zealand wording. The UN source independently records Tokelau's Non-Self-Governing Territory status."
     },
     {
       "source_key": "france_constitution",
       "name": "Legifrance - Constitution of 4 October 1958",
       "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000571356/",
-      "access_date": "2026-06-25",
-      "caveats": "Used for French constitutional context including overseas collectivities and New Caledonia transitional provisions. This table keeps French territory labels high level and flags sensitive cases for review."
+      "access_date": "2026-07-30",
+      "caveats": "Used for French constitutional context, including article 74 collectivities, and as supporting context for Wallis and Futuna."
     },
     {
       "source_key": "france_polynesia_statute",
-      "name": "Legifrance - Organic Law 2004-192 on the autonomy status of French Polynesia",
-      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000435515",
-      "access_date": "2026-06-25",
-      "caveats": "Used for French Polynesia overseas collectivity and overseas-country wording. UN non-self-governing context should be reviewed separately before publication."
+      "name": "Legifrance - Organic Law 2004-192 on the autonomy status of French Polynesia, article 1",
+      "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000038741644",
+      "access_date": "2026-07-30",
+      "caveats": "Used for French Polynesia's overseas-collectivity and overseas-country-within-the-Republic wording. The UN Non-Self-Governing Territory context is recorded separately."
     },
     {
-      "source_key": "pitcairn_government",
-      "name": "Government of the Pitcairn Islands - official website",
-      "url": "https://www.government.pn/",
-      "access_date": "2026-06-25",
-      "caveats": "Used for British Overseas Territory and island-group context. Governance details are summarized and should be reviewed against UK constitutional sources before publication."
+      "source_key": "france_overseas_wallis",
+      "name": "French Ministry for Overseas Territories - Wallis and Futuna",
+      "url": "https://www.outre-mer.gouv.fr/territoires/wallis-et-futuna",
+      "access_date": "2026-07-30",
+      "caveats": "Used with article 74 of the French Constitution for the high-level overseas-collectivity label. The row does not summarize Wallis and Futuna's customary institutions or full 1961 statutory framework."
     },
     {
-      "source_key": "state_independent_states",
-      "name": "U.S. Department of State - Independent States in the World",
-      "url": "https://www.state.gov/independent-states-in-the-world/",
-      "access_date": "2026-06-25",
-      "caveats": "Automated access returned a forbidden response during this task. Sovereign-state rows therefore use this as a follow-up review pointer and are marked needs_review_sovereign_status rather than precise legal determinations."
+      "source_key": "un_new_caledonia_2026",
+      "name": "United Nations Secretariat - Working paper on New Caledonia, A/AC.109/2026/11",
+      "url": "https://digitallibrary.un.org/record/4111245/files/A_AC.109_2026_11-EN.pdf",
+      "access_date": "2026-07-30",
+      "caveats": "Used for the current sui generis collectivity within the French Republic wording. The paper also records the proposed institutional transition; the public label does not present that proposal as implemented."
     },
     {
-      "source_key": "new_caledonia_current_status_review",
-      "name": "Le Monde - State of New Caledonia agreement coverage",
-      "url": "https://www.lemonde.fr/en/politics/article/2025/07/12/state-of-new-caledonia-created-in-hard-won-agreement-with-french-government_6743299_5.html",
-      "access_date": "2026-06-25",
-      "caveats": "Used only as a current-status review flag for New Caledonia. Not an official legal source. Confirm the latest French and New Caledonian legal position before publication."
+      "source_key": "france_senate_new_caledonia_2026",
+      "name": "French Senate - Constitutional bill concerning New Caledonia",
+      "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-constitutionnelle-relatif-a-la-nouvelle-caledonie.html",
+      "access_date": "2026-07-30",
+      "caveats": "Used to confirm that the proposed constitutional change remained unfinished at review time. Recheck before any later publication because this status is dynamic and politically sensitive."
+    },
+    {
+      "source_key": "uk_fcdo_pitcairn",
+      "name": "UK Foreign, Commonwealth and Development Office - Pitcairn Island travel advice",
+      "url": "https://www.gov.uk/foreign-travel-advice/pitcairn-island",
+      "access_date": "2026-07-30",
+      "caveats": "Used for the British Overseas Territory label. The UN Non-Self-Governing Territory context is recorded separately."
     }
   ],
+  "political_status_review": {
+    "review_date": "2026-07-30",
+    "reviewed_geography_count": 22,
+    "decision_rule": "Use short current public wording supported by authoritative UN, administering-government, associated-state, statutory, or foreign-affairs sources; keep domestic administrative and UN decolonization contexts distinct; do not expose workflow flags or treat proposed legal changes as implemented.",
+    "decisions": [
+      {"geo_code": "AS", "label": "U.S. territory", "source_keys": ["us_doi_oia_as", "un_decolonization_nsgt"]},
+      {"geo_code": "CK", "label": "Self-governing state in free association with New Zealand", "source_keys": ["nz_mfat_cook_islands"]},
+      {"geo_code": "FJ", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "FM", "label": "Sovereign country in free association with the United States", "source_keys": ["us_state_fam_fas", "un_member_states"]},
+      {"geo_code": "GU", "label": "Unincorporated U.S. territory", "source_keys": ["us_code_guam", "un_decolonization_nsgt"]},
+      {"geo_code": "KI", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "MH", "label": "Sovereign country in free association with the United States", "source_keys": ["us_state_fam_fas", "un_member_states"]},
+      {"geo_code": "MP", "label": "Self-governing U.S. commonwealth in political union with and under the sovereignty of the United States", "source_keys": ["us_code_cnmi"]},
+      {"geo_code": "NC", "label": "Sui generis collectivity within the French Republic", "source_keys": ["un_new_caledonia_2026", "france_senate_new_caledonia_2026", "un_decolonization_nsgt"]},
+      {"geo_code": "NR", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "NU", "label": "Self-governing state in free association with New Zealand", "source_keys": ["nz_mfat_niue"]},
+      {"geo_code": "PF", "label": "French overseas collectivity and overseas country within the Republic", "source_keys": ["france_polynesia_statute", "un_decolonization_nsgt"]},
+      {"geo_code": "PG", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "PN", "label": "British Overseas Territory", "source_keys": ["uk_fcdo_pitcairn", "un_decolonization_nsgt"]},
+      {"geo_code": "PW", "label": "Sovereign country in free association with the United States", "source_keys": ["us_state_fam_fas", "un_member_states"]},
+      {"geo_code": "SB", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "TK", "label": "Non-self-governing territory within the Realm of New Zealand", "source_keys": ["nz_mfat_tokelau", "un_decolonization_nsgt"]},
+      {"geo_code": "TO", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "TV", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "VU", "label": "Sovereign state", "source_keys": ["un_member_states"]},
+      {"geo_code": "WF", "label": "French overseas collectivity", "source_keys": ["france_overseas_wallis", "france_constitution"]},
+      {"geo_code": "WS", "label": "Sovereign state", "source_keys": ["un_member_states"]}
+    ]
+  },
   "artifact_caveats": [
-    "All rows are descriptive GIS context and must remain outside adaptation-gap scoring unless a future reviewed methodology explicitly changes that.",
-    "Pacific subregion labels follow UN M49 statistical groupings and should not be framed as cultural or political boundaries.",
-    "Sovereign-state rows use coarse public-status labels and are marked for review because the official country-status source could not be fetched by the automated browser.",
-    "Political-status language for free-associated states and non-self-governing or overseas territories is intentionally conservative and should be reviewed before public copy is finalized.",
+    "All rows are descriptive GIS context and remain outside adaptation-gap scoring.",
+    "Pacific subregion labels follow UN M49 statistical groupings and are not cultural or political boundaries.",
+    "Short public political-status labels do not exhaust constitutional, self-determination, citizenship, nationality, treaty, or decolonization context.",
+    "New Caledonia's status is dynamic and politically sensitive; the reviewed line states current legal status and does not treat the proposed transition as implemented.",
     "The table does not provide polygon boundaries or settle boundary-source choices."
   ],
   "review_recommendations": [
-    "Before polygon choropleths, choose and document an authoritative boundary source or keep centroid-only mapping.",
-    "Review New Caledonia and French Polynesia labels immediately before publication because status and self-determination context can be politically sensitive.",
+    "Recheck New Caledonia immediately before later publication because the constitutional process was unfinished on 2026-07-30.",
+    "Keep UN Non-Self-Governing Territory context distinct from domestic administrative wording for American Samoa, French Polynesia, Guam, New Caledonia, Pitcairn, and Tokelau.",
     "Use this table for grouping and explanatory context only; do not join it into score calculations."
   ]
 }

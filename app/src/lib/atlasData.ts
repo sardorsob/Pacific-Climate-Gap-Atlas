@@ -264,7 +264,7 @@ function adaptGeography(record: AppGeography, details?: DetailRecord): Geo {
     code: record.geo_code,
     name: record.name,
     subregion: record.context?.subregion ?? "Pacific",
-    status: statusLabel(record.context?.political_status, record.context?.context_quality),
+    status: statusLabel(record.context?.political_status),
     placeNote: record.context?.island_group_or_region_note?.trim() || null,
     lon: asNumber(record.centroid.lon),
     lat: asNumber(record.centroid.lat),
@@ -370,19 +370,8 @@ function formatSignals(signals: AppSignal[] | undefined): string[] {
   });
 }
 
-function statusLabel(status: string | undefined, quality: string | undefined): string {
-  if (!status) return "Status wording in review";
-  if (quality?.includes("needs_review") || status.toLowerCase().includes("territory")) {
-    return `${titleCase(status)} (wording in review)`;
-  }
-  return titleCase(status);
-}
-
-function titleCase(value: string): string {
-  return value
-    .split(" ")
-    .map((part) => (part.length > 0 ? `${part[0].toUpperCase()}${part.slice(1)}` : part))
-    .join(" ");
+function statusLabel(status: string | undefined): string {
+  return status?.trim() || "Political status unavailable";
 }
 
 function readableBand(value: string | undefined): string {

@@ -6,8 +6,12 @@ describe("atlas data adapter", () => {
   it("adapts the four reviewed place-context strings for all 22 records", () => {
     const geos = adaptGeographiesPayload(generatedGeographies);
     const americanSamoa = geos.find((geo) => geo.code === "AS")!;
+    const cookIslands = geos.find((geo) => geo.code === "CK")!;
+    const fiji = geos.find((geo) => geo.code === "FJ")!;
+    const northernMarianaIslands = geos.find((geo) => geo.code === "MP")!;
     const nauru = geos.find((geo) => geo.code === "NR")!;
     const pitcairn = geos.find((geo) => geo.code === "PN")!;
+    const tokelau = geos.find((geo) => geo.code === "TK")!;
 
     expect(geos).toHaveLength(22);
     expect(geos.every((geo) => [
@@ -22,6 +26,37 @@ describe("atlas data adapter", () => {
     expect(nauru.monitoringCaveat).toContain("Latest meteorological-monitoring-network row reports 0");
     expect(pitcairn.placeNote).toBe("Pitcairn Henderson Ducie and Oeno island group");
     expect(JSON.stringify(geos)).not.toContain("Review wording before publication");
+    expect(JSON.stringify(geos)).not.toContain("wording in review");
+    expect(fiji.status).toBe("Sovereign state");
+    expect(tokelau.status).toBe("Non-self-governing territory within the Realm of New Zealand");
+    expect(cookIslands.status).toBe("Self-governing state in free association with New Zealand");
+    expect(northernMarianaIslands.status).toBe(
+      "Self-governing U.S. commonwealth in political union with and under the sovereignty of the United States",
+    );
+    expect(pitcairn.status).toBe("British Overseas Territory");
+  });
+
+  it("uses the defensive political-status fallback only when source data is missing", () => {
+    const [geo] = adaptGeographiesPayload({
+      geographies: [
+        {
+          geo_code: "ZZ",
+          name: "Example place",
+          centroid: { lon: 0, lat: 0 },
+          adaptation_gap_score: 0,
+          climate_pressure_score: 0,
+          capacity_score: 0,
+          score_input_indicator_count: 0,
+          context_indicator_count: 0,
+          trace_indicator_count: 0,
+          score_input_presence: [],
+          outlook_2030_flat_gap_score: null,
+          context: { political_status: "" },
+        },
+      ],
+    });
+
+    expect(geo.status).toBe("Political status unavailable");
   });
 
   it("adapts the generated regional story contract", () => {

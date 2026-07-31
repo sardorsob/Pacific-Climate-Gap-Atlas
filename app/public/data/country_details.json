@@ -158,7 +158,7 @@
         "political_status": "U.S. territory",
         "island_group_or_region_note": "Samoan Islands including Tutuila Manua and Swains Island",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Review wording before publication for political sensitivity."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. U.S. territory is a high-level administrative label; the UN separately lists American Samoa as a Non-Self-Governing Territory."
       },
       "outlook_display": {
         "2030": {
@@ -585,10 +585,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "self-governing state in free association with New Zealand",
+        "political_status": "Self-governing state in free association with New Zealand",
         "island_group_or_region_note": "Northern and Southern Cook Islands",
-        "context_quality": "needs_review_free_association",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Free-association status has international-personality nuance and should be reviewed before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The label follows New Zealand MFAT and does not summarize every constitutional or international-personality detail."
       },
       "outlook_display": {
         "2030": {
@@ -1026,10 +1026,10 @@
       },
       "context": {
         "subregion": "Melanesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Fiji archipelago",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -1478,10 +1478,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "sovereign state in Compact of Free Association",
+        "political_status": "Sovereign country in free association with the United States",
         "island_group_or_region_note": "Caroline Islands including Yap Chuuk Pohnpei and Kosrae",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Compact relationship is summarized at high level."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The free-association relationship is summarized at a high level."
       },
       "outlook_display": {
         "2030": {
@@ -1930,10 +1930,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "U.S. territory",
+        "political_status": "Unincorporated U.S. territory",
         "island_group_or_region_note": "Mariana Islands",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Review wording before publication for political sensitivity."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The statutory label is high level; the UN separately lists Guam as a Non-Self-Governing Territory."
       },
       "outlook_display": {
         "2030": {
@@ -2371,10 +2371,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Gilbert Phoenix and Line Islands",
-        "context_quality": "needs_review_spatial_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. UN M49 assigns Kiribati to Micronesia though island groups span a broad central Pacific area."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership; UN M49 assigns Kiribati to Micronesia for statistical convenience."
       },
       "outlook_display": {
         "2030": {
@@ -2823,10 +2823,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "sovereign state in Compact of Free Association",
+        "political_status": "Sovereign country in free association with the United States",
         "island_group_or_region_note": "Ratak and Ralik chains",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Compact relationship is summarized at high level."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The free-association relationship is summarized at a high level."
       },
       "outlook_display": {
         "2030": {
@@ -3271,10 +3271,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "U.S. commonwealth territory",
+        "political_status": "Self-governing U.S. commonwealth in political union with and under the sovereignty of the United States",
         "island_group_or_region_note": "Mariana Islands north of Guam",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Review wording before publication for political sensitivity."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The label follows the Covenant and does not summarize every constitutional provision."
       },
       "outlook_display": {
         "2030": {
@@ -3701,10 +3701,10 @@
       },
       "context": {
         "subregion": "Melanesia",
-        "political_status": "French sui generis collectivity with status talks ongoing",
+        "political_status": "Sui generis collectivity within the French Republic",
         "island_group_or_region_note": "Grande Terre and Loyalty Islands",
-        "context_quality": "needs_review_sensitive_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. New Caledonia status is politically sensitive and has ongoing post-Noumea status negotiations."
+        "context_quality": "source_supported_sensitive_currentness",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. This is the current legal status; the proposed institutional transition remains unfinished and requires continuing source review."
       },
       "outlook_display": {
         "2030": {
@@ -4153,10 +4153,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "single raised coral island",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -4605,10 +4605,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "self-governing state in free association with New Zealand",
+        "political_status": "Self-governing state in free association with New Zealand",
         "island_group_or_region_note": "single raised coral island",
-        "context_quality": "needs_review_free_association",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Free-association status has international-personality nuance and should be reviewed before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The label follows New Zealand MFAT and does not summarize every constitutional or international-personality detail."
       },
       "outlook_display": {
         "2030": {
@@ -5048,8 +5048,8 @@
         "subregion": "Polynesia",
         "political_status": "French overseas collectivity and overseas country within the Republic",
         "island_group_or_region_note": "Society Tuamotu Gambier Marquesas and Austral archipelagos",
-        "context_quality": "needs_review_sensitive_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. French Polynesia status and UN non-self-governing context should be reviewed before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. French law supplies the domestic-status wording; the UN separately lists French Polynesia as a Non-Self-Governing Territory."
       },
       "outlook_display": {
         "2030": {
@@ -5498,10 +5498,10 @@
       },
       "context": {
         "subregion": "Melanesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Eastern New Guinea Bismarck Archipelago and Bougainville",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -5953,7 +5953,7 @@
         "political_status": "British Overseas Territory",
         "island_group_or_region_note": "Pitcairn Henderson Ducie and Oeno island group",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Small-population territory context should be reviewed before publication."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. GOV.UK supplies the administrative label; the UN separately lists Pitcairn as a Non-Self-Governing Territory."
       },
       "outlook_display": {
         "2030": {
@@ -6347,10 +6347,10 @@
       },
       "context": {
         "subregion": "Micronesia",
-        "political_status": "sovereign state in Compact of Free Association",
+        "political_status": "Sovereign country in free association with the United States",
         "island_group_or_region_note": "Palau archipelago in western Caroline Islands",
         "context_quality": "source_supported",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Compact relationship is summarized at high level."
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The free-association relationship is summarized at a high level."
       },
       "outlook_display": {
         "2030": {
@@ -6799,10 +6799,10 @@
       },
       "context": {
         "subregion": "Melanesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Solomon Islands archipelago",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -7251,10 +7251,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "non-self-governing territory of New Zealand",
+        "political_status": "Non-self-governing territory within the Realm of New Zealand",
         "island_group_or_region_note": "Atafu Nukunonu and Fakaofo atolls",
-        "context_quality": "needs_review_non_self_governing",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Tokelau is a non-self-governing territory and publication wording should stay precise."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. New Zealand MFAT supplies the Realm wording; the UN separately lists Tokelau as a Non-Self-Governing Territory."
       },
       "outlook_display": {
         "2030": {
@@ -7692,10 +7692,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Tongatapu Ha'apai Vava'u and Niuas island groups",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -8144,10 +8144,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "nine low-lying atolls and reef islands",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -8596,10 +8596,10 @@
       },
       "context": {
         "subregion": "Melanesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "New Hebrides archipelago",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {
@@ -9046,8 +9046,8 @@
         "subregion": "Polynesia",
         "political_status": "French overseas collectivity",
         "island_group_or_region_note": "Wallis Uvea Futuna and Alofi",
-        "context_quality": "source_supported_needs_review",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. French collectivity wording should be reviewed before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. The label is a high-level summary of Wallis and Futuna's status under article 74 of the French Constitution and its 1961 statute."
       },
       "outlook_display": {
         "2030": {
@@ -9463,10 +9463,10 @@
       },
       "context": {
         "subregion": "Polynesia",
-        "political_status": "sovereign state",
+        "political_status": "Sovereign state",
         "island_group_or_region_note": "Upolu and Savai'i",
-        "context_quality": "needs_review_sovereign_status",
-        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign-state label is coarse and should be reviewed against an official country-status source before publication."
+        "context_quality": "source_supported",
+        "regional_context_caveat": "Descriptive context only; not used in scoring. Sovereign state is a high-level label supported by current UN membership."
       },
       "outlook_display": {
         "2030": {

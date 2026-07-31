@@ -1,5 +1,9 @@
 # Progress Log
 
+- Advanced `TASK-101` attempt 1 to `in-review` after a dated 22-place authoritative-source audit, strict RED/GREEN adapter and public-copy correction, existing-pipeline rebuild, score-boundary audit, 12/12 quiet/headless responsive cases, and all required repository gates. New Caledonia's current label is source-supported but remains explicitly time-sensitive in provenance; no CSS, score, dependency, route, state, or renderer changed. (AI tools used: Codex, authoritative public sources, Ponytail, Superpowers systematic debugging/TDD/verification, Playwright headless Chromium.)
+
+- Started `TASK-101` attempt 1 with the required current-source review of all 22 political-status strings before any public-copy or adapter change. Scope remains the source CSV/provenance and generated mirrors when review changes them, the existing adapter/panel/Methods seams, focused strict RED/GREEN tests, and no CSS, score, visual, dependency, route, state, or renderer change. (AI tools used: Codex, authoritative public sources, Ponytail, Superpowers systematic debugging/TDD.)
+
 ## 2026-07-29
 
 - Reviewed Opus's hands-on QA findings and draft TASK-101 through TASK-104 against the current app, tests, geography-context provenance, bundle-checker history, and official 2026 Challenge rules. The four reproduced defects remain valid: 19/22 public political-status lines expose an internal review marker and adapter casing is wrong; synchronous WebGL failure lacks a safe app-level fallback; live crossing of the 880px breakpoint can collapse controls despite correct fresh loads; and the same signed values use two minus glyphs. Protected Night Watch contrast, the 22-by-14 visibility grammar, accepted figures, map identity, and regional lens remain outside the batch.

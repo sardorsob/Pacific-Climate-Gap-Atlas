@@ -2,7 +2,12 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094 and TASK-096 through TASK-099 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. TASK-100 waits for TASK-095 before frozen final QA. Final lens-batch assets are 1,033,799/1,050,000-byte JS and 94,930/95,000-byte CSS. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094 and TASK-096 through TASK-099 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. The corrected TASK-101 through TASK-104 batch is pending owner approval; if approved, run it sequentially, starting with current-source review of all 22 political-status strings, then run TASK-100 after both that batch and TASK-095 close. Final lens-batch assets are 1,033,799-byte JS and 94,930-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+
+## 2026-07-29
+
+- Registered and technically corrected the four-task manual-QA remediation batch without adding a standalone plan. TASK-101 now verifies politically sensitive source wording before removing internal markers; TASK-102 owns synchronous WebGL/startup/context-loss degradation with an explicit lifecycle seam and idempotent cleanup; TASK-103 owns the live 880px crossing and does not confuse dead-code cleanup with a contest byte requirement; TASK-104 unifies signed formatting and removes only verified-unused plumbing. TASK-100 depends on all four.
+- The 95,000-byte CSS threshold came from TASK-057's 93,895-byte baseline plus 1.18% slack. It is an internal raw-asset regression guard; the official 2026 rules give no interactive CSS or JavaScript byte maximum. Preserve measurement and explicit review, but do not sacrifice a truthful or accessible fix for the current 70-byte headroom. No app code, data, dependency, task status, or commit changed in this context-repair pass.
 
 ## 2026-07-28
 

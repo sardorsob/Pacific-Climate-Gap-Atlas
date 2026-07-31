@@ -147,7 +147,7 @@ The optional Gap, Pressure, and Capacity line remains clearly modeled and subord
 
 Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Build one pure regional-position model and one plain React/SVG component, then replace `RegionalRecordSummary` inside `CountryPanel`. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
 
-The current built CSS is 94,987 of 95,000 bytes. Deleting/reusing the replaced summary styles is the first target and 95,000 remains the preferred cap. If a clean accessible implementation cannot fit, the only pre-authorized review range is a measured maximum of 97,500 bytes, with the JavaScript cap unchanged at 1,050,000 bytes. Any cap change must be explicit, measured, and accompanied by deletion/reuse evidence; minification tricks and obscured code are rejected.
+The current built CSS is 94,930 bytes. The 95,000-byte value is a preferred internal regression target derived from an earlier measured baseline, not a Pacific DataViz Challenge rule. Delete and reuse styles when that leaves a clearer product, but do not weaken correctness, accessibility, or the approved composition to preserve a few raw bytes. If a clean change crosses 95,000 bytes, record raw and gzip deltas and update the checker plus active context explicitly; 97,500 bytes remains the provisional review threshold, not an external ceiling. The JavaScript regression target remains 1,050,000 bytes. Minification tricks and obscured code are rejected.
 
 ## Historical Implemented Direction: The Shape Of What We Know
 

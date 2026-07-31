@@ -117,6 +117,10 @@ describe("regional story integration", () => {
 
     expect(outsideDesktopCss).not.toMatch(/\.dock--controls\s*\{[^}]*transition:/);
     expect(desktopCss).toMatch(/\.dock--controls\s*\{[^}]*transition:\s*right 0\.25s ease;/);
-    expect(desktopCss.match(/\.atlas-shell--panel \.dock--controls\s*\{[^}]*\}/g)).toHaveLength(1);
+    const panelControlsRules = desktopCss.match(/\.atlas-shell--panel \.dock--controls\s*\{[^}]*\}/g) ?? [];
+    const [panelControlsRule] = panelControlsRules;
+
+    expect(panelControlsRules).toHaveLength(1);
+    expect(panelControlsRule).toContain("right: calc(var(--panel-w) + 18px);");
   });
 });

@@ -2414,9 +2414,9 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Quiet/headless live resize rather than reload, in both directions, with and without reduced motion. Record that breakpoint-crossing defects are structurally invisible to the existing fresh-load fixed-viewport harness; note the gap without rebuilding the harness.
 - QA notes: Strict source-contract RED/GREEN and quiet headless raw-CDP live-resize evidence are recorded in the ignored task report. Fresh fixed-width loads are structurally unable to exercise the reported crossing state.
-- Attempts: 0
+- Attempts: 2
 - Max attempts: 3
-- Attempt log: 2026-07-30: Moved the controls transition and panel-open offset into the existing desktop media block, deleted the redundant mobile offset and two unreferenced tokens, and added focused source-contract assertions. Quiet headless live-resize checks covered fresh 375/1440 baselines, panel open/closed, 1440 -> 375 -> 1440, 768x1024 -> 1024x768 -> 768x1024, and reduced motion in both directions; required repository gates passed.
+- Attempt log: 2026-07-30: Attempt 1 moved the controls transition and panel-open offset into the existing desktop media block, deleted the redundant mobile offset and two unreferenced tokens, and added focused source-contract assertions. Quiet headless live-resize checks covered fresh 375/1440 baselines, panel open/closed, 1440 -> 375 -> 1440, 768x1024 -> 1024x768 -> 768x1024, and reduced motion in both directions; required repository gates passed. Review moved TASK-103 in-review -> needs-fix because the selector-count assertion did not prove the desktop panel rule retained its offset declaration; attempt 2 moved needs-fix -> in-progress for that focused assertion only. Mutation RED and focused/full frontend, build, bundle, status, secret, and whitespace gates passed; no browser rerun was needed because production CSS did not change. Attempt 2 moved in-progress -> in-review.
 - Status: in-review
 
 ## TASK-104

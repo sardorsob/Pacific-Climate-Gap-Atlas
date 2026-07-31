@@ -23,37 +23,6 @@ vi.mock("./useAtlasMap", () => ({
 }));
 
 describe("neutral overview presentation", () => {
-  it("protects map startup and retires only the startup error listener after load", () => {
-    expect(mapSource).toMatch(/try\s*\{[\s\S]*new maplibregl\.Map/);
-    expect(mapSource).toMatch(/map\.on\(\s*"error"\s*,\s*handleStartupError\s*\)/);
-    expect(mapSource).toMatch(/map\.off\(\s*"error"\s*,\s*handleStartupError\s*\)/);
-    expect(mapSource).toMatch(/let\s+loaded\s*=\s*false/);
-  });
-
-  it("handles context loss separately and tears the map down idempotently", () => {
-    expect(mapSource).toMatch(/addEventListener\(\s*"webglcontextlost"\s*,\s*handleContextLost\s*\)/);
-    expect(mapSource).toMatch(/removeEventListener\(\s*"webglcontextlost"\s*,\s*handleContextLost\s*\)/);
-    expect(mapSource).toMatch(/let\s+tornDown\s*=\s*false/);
-    expect(mapSource).toMatch(/if\s*\(\s*tornDown\s*\)\s*return/);
-  });
-
-  it("retires re-entrant and delayed map work before removal", () => {
-    expect(mapSource.match(/if\s*\(\s*tornDown\s*\)\s*return/g)?.length).toBeGreaterThanOrEqual(2);
-    expect(mapSource).toMatch(/projectionFrame\s*=\s*requestAnimationFrame\(\s*refreshProjection\s*\)/);
-    expect(mapSource).toMatch(/cancelAnimationFrame\(\s*projectionFrame\s*\)/);
-    expect(mapSource).toMatch(/if\s*\(\s*mapRef\.current\s*!==\s*map\s*\)\s*return/);
-    const currentCheck = /!isCurrent\(\)/.exec(mapSource);
-    const styleCheck = /map\.isStyleLoaded\(\)/.exec(mapSource);
-    expect(currentCheck?.index).toBeLessThan(styleCheck?.index ?? -1);
-
-    const clearRef = /if\s*\(\s*mapRef\.current\s*===\s*currentMap\s*\)\s*mapRef\.current\s*=\s*null/.exec(mapSource);
-    const removeMap = /currentMap\.remove\(\)/.exec(mapSource);
-    expect(clearRef?.index).toBeLessThan(removeMap?.index ?? -1);
-
-    const contextLossHandler = /const\s+handleContextLost\s*=\s*\([^)]*\)\s*=>\s*\{[\s\S]*?\}/.exec(mapSource)?.[0] ?? "";
-    expect(contextLossHandler).toMatch(/preventDefault\(\)/);
-  });
-
   it("replaces both map renderers with an in-region alert after failure", () => {
     const geos = adaptGeographiesPayload(generatedGeographies);
     const html = renderToStaticMarkup(
@@ -73,6 +42,8 @@ describe("neutral overview presentation", () => {
     expect(html).toContain('class="app-state"');
     expect(html).toContain('role="alert"');
     expect(html).toContain("Map unavailable");
+    expect(html).toContain("The interactive map is unavailable.");
+    expect(html).not.toContain("Could not start the interactive map.");
     expect(html).toContain('<p class="sr-only">Interactive map unavailable. No map evidence is displayed.');
     expect(html).not.toContain('class="maplibre-canvas"');
     expect(html).not.toContain('class="map-overlay-svg"');

@@ -67,8 +67,9 @@ function selectedCameraForViewport(width: number, geo: Geo): { center: [number, 
   return { center: [shiftPacificLon(geo.lon), geo.lat], zoom: width < 520 ? base.zoom : Math.min(base.zoom + 0.2, 3.45) };
 }
 
-function fitPacificCamera(map: MapLibreMap, duration = 0) {
+function fitPacificCamera(map: MapLibreMap, duration = 0, isCurrent: () => boolean = () => true) {
   map.stop();
+  if (!isCurrent()) return;
   map.easeTo({ ...cameraForViewport(map.getContainer().clientWidth), duration });
 }
 
@@ -112,11 +113,15 @@ function syncAtlasSource(map: MapLibreMap, collection: AtlasFeatureCollection) {
   if (source) source.setData(asGeoJson(collection));
 }
 
-function syncMapMotion(map: MapLibreMap, reducedMotion: boolean) {
+function syncMapMotion(map: MapLibreMap, reducedMotion: boolean, isCurrent: () => boolean) {
   const transition = { duration: mapMotionDuration(reducedMotion), delay: 0 };
   for (const target of MOTION_TARGETS) {
+    if (!isCurrent()) return;
     if (!map.getLayer(target.layer)) continue;
-    for (const property of target.paint) map.setPaintProperty(target.layer, `${property}-transition`, transition);
+    for (const property of target.paint) {
+      if (!isCurrent()) return;
+      map.setPaintProperty(target.layer, `${property}-transition`, transition);
+    }
   }
 }
 
@@ -129,29 +134,44 @@ function syncLandContext(map: MapLibreMap, collection: GeoJSON.FeatureCollection
   const source = map.getSource(LAND_SOURCE_ID) as GeoJSONSource | undefined;
   if (source) source.setData(collection);
   else map.addSource(LAND_SOURCE_ID, { type: "geojson", data: collection });
+  if (!isCurrent()) return;
 
   const beforeId = map.getLayer(GRATICULE_LAYER_ID) ? GRATICULE_LAYER_ID : undefined;
   if (!map.getLayer(LAND_FILL_LAYER_ID)) map.addLayer({ id: LAND_FILL_LAYER_ID, type: "fill", source: LAND_SOURCE_ID, paint: { "fill-color": "#173240", "fill-opacity": 0.74 } }, beforeId);
+  if (!isCurrent()) return;
   if (!map.getLayer(LAND_LINE_LAYER_ID)) map.addLayer({ id: LAND_LINE_LAYER_ID, type: "line", source: LAND_SOURCE_ID, paint: { "line-color": "rgba(205, 226, 233, 0.18)", "line-width": 0.7 } }, beforeId);
+  if (!isCurrent()) return;
   if (!map.getLayer(LAND_MARK_FILL_LAYER_ID)) map.addLayer({ id: LAND_MARK_FILL_LAYER_ID, type: "fill", source: LAND_SOURCE_ID, filter: ANCHOR_FILTER, paint: { "fill-color": ["get", "fillColor"], "fill-opacity": ["get", "markOpacity"] } }, beforeId);
+  if (!isCurrent()) return;
   if (!map.getLayer(LAND_MARK_SOLID_LAYER_ID)) map.addLayer({ id: LAND_MARK_SOLID_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("reported_positive_latest_count"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-opacity": ["get", "markOpacity"] } }, beforeId);
+  if (!isCurrent()) return;
   if (!map.getLayer(LAND_MARK_ZERO_LAYER_ID)) map.addLayer({ id: LAND_MARK_ZERO_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("reported_zero_latest_count"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-dasharray": [2, 2], "line-opacity": ["get", "markOpacity"] } }, beforeId);
+  if (!isCurrent()) return;
   if (!map.getLayer(LAND_MARK_MISSING_LAYER_ID)) map.addLayer({ id: LAND_MARK_MISSING_LAYER_ID, type: "line", source: LAND_SOURCE_ID, filter: anchorStatusFilter("missing_monitoring_dataset_row"), paint: { "line-color": ["get", "strokeColor"], "line-width": ["case", ["==", ["get", "selected"], true], 2.2, 1.3], "line-dasharray": [1, 2], "line-opacity": ["get", "markOpacity"] } }, beforeId);
-  syncMapMotion(map, reducedMotion);
+  if (!isCurrent()) return;
+  syncMapMotion(map, reducedMotion, isCurrent);
 }
 
-function addGraticuleLayers(map: MapLibreMap) {
+function addGraticuleLayers(map: MapLibreMap, isCurrent: () => boolean) {
+  if (!isCurrent()) return;
   if (!map.getSource(GRATICULE_SOURCE_ID)) map.addSource(GRATICULE_SOURCE_ID, { type: "geojson", data: asGeoJson(buildGraticuleFeatureCollection()) });
+  if (!isCurrent()) return;
   if (!map.getLayer(GRATICULE_LAYER_ID)) map.addLayer({ id: GRATICULE_LAYER_ID, type: "line", source: GRATICULE_SOURCE_ID, filter: ["!=", ["get", "value"], 0], paint: { "line-color": "rgba(150, 190, 205, 0.16)", "line-width": 1 } });
+  if (!isCurrent()) return;
   if (!map.getLayer(GRATICULE_EQUATOR_LAYER_ID)) map.addLayer({ id: GRATICULE_EQUATOR_LAYER_ID, type: "line", source: GRATICULE_SOURCE_ID, filter: ["all", ["==", ["get", "kind"], "latitude"], ["==", ["get", "value"], 0]], paint: { "line-color": "rgba(150, 190, 205, 0.3)", "line-dasharray": [2, 5], "line-width": 1 } });
 }
 
-function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, reducedMotion: boolean) {
+function addAtlasLayers(map: MapLibreMap, collection: AtlasFeatureCollection, reducedMotion: boolean, isCurrent: () => boolean) {
+  if (!isCurrent()) return;
   if (!map.getSource(MAP_SOURCE_ID)) map.addSource(MAP_SOURCE_ID, { type: "geojson", data: asGeoJson(collection) });
+  if (!isCurrent()) return;
   if (!map.getLayer(PRIORITY_LAYER_ID)) map.addLayer({ id: PRIORITY_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, filter: ["==", ["get", "priority"], true], paint: { "circle-radius": ["+", ["get", "radius"], 9], "circle-color": "rgba(255, 213, 138, 0.03)", "circle-stroke-color": "#ffd58a", "circle-stroke-width": 2, "circle-opacity": ["get", "opacity"] } });
+  if (!isCurrent()) return;
   if (!map.getLayer(SELECTED_PRESENCE_LAYER_ID)) map.addLayer({ id: SELECTED_PRESENCE_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, filter: ["==", ["get", "selected"], true], paint: { "circle-radius": ["+", ["get", "radius"], 10], "circle-color": "transparent", "circle-stroke-color": "#ffffff", "circle-stroke-width": 2 } });
+  if (!isCurrent()) return;
   if (!map.getLayer(POINT_LAYER_ID)) map.addLayer({ id: POINT_LAYER_ID, type: "circle", source: MAP_SOURCE_ID, paint: { "circle-radius": ["get", "radius"], "circle-color": ["get", "fillColor"], "circle-opacity": 0, "circle-stroke-color": "transparent", "circle-stroke-width": 0 } });
-  syncMapMotion(map, reducedMotion);
+  if (!isCurrent()) return;
+  syncMapMotion(map, reducedMotion, isCurrent);
 }
 
 function projectMap(map: MapLibreMap, lon: number, lat: number): { x: number; y: number } {
@@ -221,13 +241,22 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
     let map: MapLibreMap | null = null;
     let canvas: HTMLCanvasElement | null = null;
     let loaded = false;
+    let failurePending = false;
     let tornDown = false;
+    let teardownQueued = false;
     let projectionFrame: number | null = null;
+    const isMapActive = () => Boolean(map && mapRef.current === map && !failurePending && !tornDown);
     const handlePointClick = (event: MapLayerMouseEvent) => { const code = event.features?.[0]?.properties?.code; if (typeof code === "string") onSelectRef.current(code); };
     const handlePointEnter = () => { if (map) map.getCanvas().style.cursor = "pointer"; };
     const handlePointLeave = () => { if (map) map.getCanvas().style.cursor = ""; };
     const refreshProjection = () => setProjectRevision((value) => value + 1);
-    const refitOnResize = () => { if (map) { map.resize(); fitPacificCamera(map); refreshProjection(); } };
+    const refitOnResize = () => {
+      if (!map || !isMapActive()) return;
+      map.resize();
+      if (!isMapActive()) return;
+      fitPacificCamera(map, 0, isMapActive);
+      if (isMapActive()) refreshProjection();
+    };
     const teardown = () => {
       if (tornDown) return;
       tornDown = true;
@@ -252,31 +281,49 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
       if (mapRef.current === currentMap) mapRef.current = null;
       try {
         currentMap.remove();
-      } catch {}
+      } catch (error) {
+        // Listener and ref retirement already succeeded; MapLibre removal is best-effort here.
+        if (import.meta.env.DEV) console.warn("MapLibre cleanup failed after map retirement.", error);
+      }
     };
-    const failMap = () => {
+    const failMap = (deferTeardown = false) => {
+      if (failurePending || tornDown) return;
+      failurePending = true;
       setMapError(true);
-      teardown();
+      if (mapRef.current === map) mapRef.current = null;
+      if (!deferTeardown) {
+        teardown();
+        return;
+      }
+      if (!teardownQueued) {
+        teardownQueued = true;
+        queueMicrotask(teardown);
+      }
     };
-    const handleStartupError = () => { if (!loaded) failMap(); };
+    const handleStartupError = () => { if (!loaded) failMap(true); };
     const handleContextLost = (event: Event) => {
       event.preventDefault();
-      failMap();
+      failMap(true);
     };
     const handleLoad = () => {
-      if (!map) return;
+      if (!map || !isMapActive()) return;
       try {
-        addGraticuleLayers(map);
-        syncLandContext(map, landContextRef.current, reducedMotionRef.current, () => mapRef.current === map && !tornDown);
-        addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current);
-        if (tornDown) return;
+        addGraticuleLayers(map, isMapActive);
+        if (!isMapActive()) return;
+        syncLandContext(map, landContextRef.current, reducedMotionRef.current, isMapActive);
+        if (!isMapActive()) return;
+        addAtlasLayers(map, mapLibreFeaturesRef.current, reducedMotionRef.current, isMapActive);
+        if (!isMapActive()) return;
         map.on("click", POINT_LAYER_ID, handlePointClick);
+        if (!isMapActive()) return;
         map.on("mouseenter", POINT_LAYER_ID, handlePointEnter);
+        if (!isMapActive()) return;
         map.on("mouseleave", POINT_LAYER_ID, handlePointLeave);
+        if (!isMapActive()) return;
+        map.resize();
+        if (!isMapActive()) return;
         loaded = true;
         map.off("error", handleStartupError);
-        map.resize();
-        if (tornDown) return;
         setMapReady(true);
         refreshProjection();
         projectionFrame = requestAnimationFrame(refreshProjection);
@@ -292,11 +339,17 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
       map.on("error", handleStartupError);
       canvas.addEventListener("webglcontextlost", handleContextLost);
       map.touchZoomRotate.disableRotation();
+      if (!isMapActive()) return teardown;
       map.keyboard.disableRotation();
-      fitPacificCamera(map);
+      if (!isMapActive()) return teardown;
+      fitPacificCamera(map, 0, isMapActive);
+      if (!isMapActive()) return teardown;
       map.on("load", handleLoad);
+      if (!isMapActive()) return teardown;
       map.on("move", refreshProjection);
+      if (!isMapActive()) return teardown;
       map.on("resize", refreshProjection);
+      if (!isMapActive()) return teardown;
       window.addEventListener("resize", refitOnResize);
     } catch {
       failMap();
@@ -306,7 +359,7 @@ export function useAtlasMap(options: UseAtlasMapOptions): {
 
   useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncAtlasSource(map, mapLibreFeatures); }, [mapLibreFeatures, mapReady]);
   useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncLandContext(map, styledLand, reducedMotion, () => mapRef.current === map); }, [styledLand, mapReady, reducedMotion]);
-  useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncMapMotion(map, reducedMotion); }, [mapReady, reducedMotion]);
+  useEffect(() => { const map = mapRef.current; if (!mapReady || !map) return; syncMapMotion(map, reducedMotion, () => mapRef.current === map); }, [mapReady, reducedMotion]);
 
   useEffect(() => {
     const map = mapRef.current;

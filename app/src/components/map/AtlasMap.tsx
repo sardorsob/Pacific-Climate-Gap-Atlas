@@ -56,7 +56,7 @@ export function AtlasMap({
       {mapError ? (
         <div className="app-state" role="alert">
           <p className="eyebrow">Map unavailable</p>
-          <h2>Could not start the interactive map.</h2>
+          <h2>The interactive map is unavailable.</h2>
           <p className="sr-only">{mapStatusDescription(true, activeLayerLabel, viewMode)}</p>
         </div>
       ) : (

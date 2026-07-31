@@ -108,4 +108,15 @@ describe("regional story integration", () => {
   it("keeps every visible Explorer header action touch-sized", () => {
     expect(baseCss).toMatch(/(?:^|\n)\.ghost-btn\s*\{[^}]*min-height:\s*44px;/);
   });
+
+  it("keeps the panel controls transition inside the desktop media block", () => {
+    const desktopStart = baseCss.indexOf("@media (min-width: 881px)");
+    const desktopEnd = baseCss.indexOf("/* ================= native document-scroll story ================= */", desktopStart);
+    const desktopCss = baseCss.slice(desktopStart, desktopEnd);
+    const outsideDesktopCss = `${baseCss.slice(0, desktopStart)}${baseCss.slice(desktopEnd)}`;
+
+    expect(outsideDesktopCss).not.toMatch(/\.dock--controls\s*\{[^}]*transition:/);
+    expect(desktopCss).toMatch(/\.dock--controls\s*\{[^}]*transition:\s*right 0\.25s ease;/);
+    expect(desktopCss.match(/\.atlas-shell--panel \.dock--controls\s*\{[^}]*\}/g)).toHaveLength(1);
+  });
 });

@@ -2413,11 +2413,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: During and after every breakpoint crossing the dock keeps `right: 10px` and roughly 355px width below 881px with all six controls at least 100px wide and 44px tall; the desktop panel-open slide still animates above 881px; reduced motion suppresses it in both directions; the build records its CSS delta without sacrificing the fix to the internal 95,000-byte target; all repository gates pass. This expected relocation/deletion should naturally reduce CSS, but a measured increase is reviewed on its merits rather than treated as a Challenge violation.
 - Verification commands: npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Quiet/headless live resize rather than reload, in both directions, with and without reduced motion. Record that breakpoint-crossing defects are structurally invisible to the existing fresh-load fixed-viewport harness; note the gap without rebuilding the harness.
-- QA notes:
+- QA notes: Strict source-contract RED/GREEN and quiet headless raw-CDP live-resize evidence are recorded in the ignored task report. Fresh fixed-width loads are structurally unable to exercise the reported crossing state.
 - Attempts: 0
 - Max attempts: 3
-- Attempt log: Pending.
-- Status: pending
+- Attempt log: 2026-07-30: Moved the controls transition and panel-open offset into the existing desktop media block, deleted the redundant mobile offset and two unreferenced tokens, and added focused source-contract assertions. Quiet headless live-resize checks covered fresh 375/1440 baselines, panel open/closed, 1440 -> 375 -> 1440, 768x1024 -> 1024x768 -> 768x1024, and reduced motion in both directions; required repository gates passed.
+- Status: in-review
 
 ## TASK-104
 - Phase: presentation-consistency

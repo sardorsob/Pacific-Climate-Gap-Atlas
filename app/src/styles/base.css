@@ -1,8 +1,6 @@
 :root {
   /* Color-role ledger (DESIGN_BRIEF.md). Roles, not decoration. */
   --ocean: #071923;
-  --ocean-2: #0d2633;
-  --graticule: rgba(150, 190, 205, 0.14);
   --ink: #0b1b22;
   --ink-soft: #4b6269;
   --paper: #f6f4ed;
@@ -146,9 +144,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 
 /* ---------- floating docks ---------- */
 .dock { position: absolute; z-index: 5; }
-.dock--controls { top: 18px; right: 18px; width: 252px; transition: right 0.25s ease; }
+.dock--controls { top: 18px; right: 18px; width: 252px; }
 .dock--legend { left: 18px; bottom: 40px; width: 286px; }
-.atlas-shell--panel .dock--controls { right: calc(var(--panel-w) + 18px); }
 
 .controls, .legend, .map-header { color: var(--chrome-ink); background: var(--chrome-bg); border: 1px solid var(--line); border-radius: var(--r-card); box-shadow: var(--chrome-shadow); }
 
@@ -328,7 +325,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
     top: auto; bottom: 116px; left: 10px; right: 10px; width: auto;
     height: 104px;
   }
-  .atlas-shell--panel .dock--controls { right: 10px; }
   .controls { grid-template-rows: repeat(2, 44px); gap: 4px; padding: 6px; }
   .controls__group { min-width: 0; }
   .controls__heading, .controls__caveat { display: none; }
@@ -363,6 +359,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 /* desktop: legend always visible regardless of toggle state */
 @media (min-width: 881px) {
   .legend-body { display: block !important; }
+  .dock--controls { transition: right 0.25s ease; }
+  .atlas-shell--panel .dock--controls { right: calc(var(--panel-w) + 18px); }
 }
 
 /* ================= native document-scroll story ================= */

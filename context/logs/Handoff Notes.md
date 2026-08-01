@@ -2,7 +2,15 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094, TASK-096 through TASK-099, and TASK-101 through TASK-104 are complete and accepted at their required gates. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. After that acceptance, run frozen TASK-100. Current built assets are 1,035,371-byte JS and 94,842-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+TASK-086 through TASK-094, TASK-096 through TASK-099, and TASK-101 through TASK-105 are complete and accepted at their required gates. TASK-105 adds one static waves favicon using the existing Night Watch palette and Vite public-asset seam, with no runtime or application redesign. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. After that acceptance, run frozen TASK-100. Current built assets are 1,035,371-byte JS and 94,842-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+
+## 2026-07-31
+
+- TASK-105 moved `in-review -> done` after independent re-review returned SPEC PASS / QUALITY PASS with no findings. Exact ordered geometry, task-note ownership, build publication, tab-scale legibility, minimality, and scope boundaries are accepted.
+- TASK-105 attempt 2 is back in independent review. TASK-100's note is restored, exact ordered wave geometry is mutation-tested, and all focused/full/build/publication/status/secret/whitespace gates pass without an asset or application change.
+- Independent review returned TASK-105 to a bounded second attempt: restore TASK-100's pending QA note, move favicon evidence under TASK-105, and pin the three approved Lucide path values with mutation-tested coverage. The accepted SVG and app behavior remain unchanged.
+- TASK-105 implementation is in independent review. Strict RED/GREEN, full frontend 129/129, production build, byte-identical public/dist SVG, unchanged bundle sizes, task-status, secret, whitespace, and quiet 16px/32px visual checks pass. No application surface or runtime code changed.
+- Owner approved TASK-105's simple waves favicon direction and requested planning, implementation, logs, and closure in one commit. The task is limited to one Lucide-derived standalone SVG, one `app/index.html` link, and one source-contract test. It may not change application UI, data, story, dependencies, or runtime behavior.
 
 ## 2026-07-30
 

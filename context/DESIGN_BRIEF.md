@@ -60,6 +60,12 @@ Recommended GitHub repository description:
 
 > Interactive atlas of changing water access, renewable-energy share, and uneven official data coverage across 22 Pacific places—built for the 2026 Pacific Dataviz Challenge.
 
+## Browser-Tab Identity Contract
+
+The browser favicon is a compact extension of the accepted Night Watch identity, not a new logo system. Use the existing Lucide `Waves` geometry as a standalone SVG with the atlas deep-ocean `#071923` ground and warm mineral `#f6f4ed` strokes. Rounded line caps and a restrained rounded-square field keep the mark legible at browser-tab scale without implying weather, disaster severity, currents, territorial boundaries, or a tourism brand.
+
+Implementation stays static and dependency-neutral: `app/public/favicon.svg` is linked once from `app/index.html` as `image/svg+xml`. Do not add a React component, runtime icon render, raster/favicon generator, manifest, alternate theme variants, animation, text, initials, or new package. The visible application palette, layout, marks, story, and interactions remain unchanged.
+
 ## Fullscreen Stage Layout Revision
 
 The map no longer has to remain the largest surface in every guided scene. Visual ownership follows the evidence:

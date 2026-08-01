@@ -8,6 +8,7 @@ const controlsSource = readFileSync(
 );
 const documentShell = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const baseCss = readFileSync(new URL("./styles/base.css", import.meta.url), "utf8");
+const faviconUrl = new URL("../public/favicon.svg", import.meta.url);
 
 function sourceBlock(start: string, end: string) {
   const startMarker = `const ${start} =`;
@@ -94,6 +95,21 @@ describe("regional story integration", () => {
     expect(appSource).toContain("How conditions and official records differ across 22 Pacific places.");
     expect(appSource).not.toContain("Pacific Adaptation Gap Atlas");
     expect(documentShell).toContain("<title>Pacific Climate Evidence Atlas</title>");
+  });
+
+  it("exposes the approved static Night Watch favicon before React starts", () => {
+    expect(documentShell).toContain('<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
+
+    const faviconSource = readFileSync(faviconUrl, "utf8");
+    expect(faviconSource).toContain('viewBox="0 0 32 32"');
+    expect(faviconSource).toContain('<rect width="32" height="32" rx="8" fill="#071923" />');
+    expect(faviconSource).toContain('stroke="#f6f4ed"');
+    expect([...faviconSource.matchAll(/<path d="([^"]+)" \/>/g)].map((match) => match[1])).toEqual([
+      "M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1",
+      "M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1",
+      "M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1",
+    ]);
+    expect(faviconSource).not.toMatch(/<(?:script|foreignObject)\b/i);
   });
 
   it("does not ship temporary review chrome", () => {

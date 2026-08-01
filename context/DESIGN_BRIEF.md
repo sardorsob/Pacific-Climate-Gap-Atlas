@@ -38,6 +38,28 @@ Current concept status:
 
 The current app remains the behavioral and visual baseline. Reuse the fullscreen stage, MapLibre map, marks, controls, panel, URL/history, observer, native scroll, accessibility, and Explore handoff. Change only the minimum generated story fields, guided copy/state, two regional evidence layouts, transition continuity, and guided-only components made obsolete by the new story.
 
+## Public README Editorial Contract
+
+The repository README uses a balanced research-portfolio structure with challenge judges as its first audience and technical reviewers as its second. It describes the finished atlas and its evidence, not the internal process used to build it.
+
+The public opening uses the title **Pacific Climate Evidence Atlas**, the subtitle **How conditions and official records differ across 22 Pacific places**, one direct paragraph explaining the 19 comparable records and uneven 22-place evidence field, the Pacific Dataviz Challenge link, and one current application image. A live-atlas link is added only after a public URL exists.
+
+The reading order is:
+
+1. title, direct thesis, Challenge link, and application image;
+2. the stable regional findings: 22 places, 19 complete water/renewable comparisons, the 7/6/3/3 directional split, and the 277-present/31-absent visibility field;
+3. the guided story: different directions, unequal visibility, then place-by-place exploration;
+4. exploratory capabilities, including selected-place evidence, sources, regional position, and the optional caveated Adaptation Gap Index;
+5. official data, descriptive methods, and interpretation limits;
+6. concise installation, reproduction, validation, and repository-structure guidance;
+7. Challenge attribution and source/provenance links.
+
+The README must not expose task identifiers, task status, owner-review state, implementation chronology, internal handoff language, temporary bundle targets, stale scene counts, or phrases such as “current frame” and “implemented phase.” It avoids badges and ornamental sections that do not help a judge understand or verify the work. It does not advertise unsupported causality, preparedness, vulnerability, data quality, territorial boundaries, or a definitive regional ranking. Stable scientific counts may appear; transient test counts and deployment claims may not.
+
+Recommended GitHub repository description:
+
+> Interactive atlas of changing water access, renewable-energy share, and uneven official data coverage across 22 Pacific places—built for the 2026 Pacific Dataviz Challenge.
+
 ## Fullscreen Stage Layout Revision
 
 The map no longer has to remain the largest surface in every guided scene. Visual ownership follows the evidence:

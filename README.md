@@ -1,205 +1,143 @@
-# Pacific Adaptation Gap Atlas
+# Pacific Climate Evidence Atlas
 
-An exploratory, map-first data visualization project for the **Pacific Dataviz Challenge 2026** climate-change theme.
+**How conditions and official records differ across 22 Pacific places.**
 
-Competition deadline: **August 31, 2026**
+Across the 19 places with comparable records, safely managed drinking-water access and renewable-energy share moved in four different directions. Across the wider 22-place field, the official record itself is uneven. This interactive atlas shows both, then lets readers inspect each place, its sources, and the gaps behind the comparison.
 
-## What This Project Is
+Built for the [2026 Pacific Dataviz Challenge](https://pacificdatavizchallenge.org/) climate theme.
 
-The Pacific Adaptation Gap Atlas is an interactive web atlas about climate adaptation signals across Pacific geographies. It combines official climate, stress, monitoring, and capacity datasets into a careful exploratory view of where climate pressure and visible adaptation capacity appear out of balance.
+![The atlas compares first-to-latest movement in safely managed drinking-water access and renewable-energy share across Pacific places.](artifacts/design/task-095/movement-1440x900.png)
 
-The project is being built as a web visualization because the strongest competition entries are interactive, visual, and story-driven. The intended final artifact is not a generic dashboard. It is a GIS-flavored atlas with a guided story path and exploratory map controls.
+## What the atlas shows
 
-## Core Question
+Regional summaries can suggest that the Pacific is moving along one shared path. The reviewed records do not support that simplification.
 
-> Where do official climate-pressure, observed-stress, adaptation-capacity, monitoring, and missingness signals appear most out of balance across Pacific geographies?
+Among the 19 places with both measures, first-to-latest changes divide into four groups:
 
-The atlas is designed to help readers inspect:
+| Safely managed drinking-water access | Renewable-energy share | Places |
+| --- | --- | ---: |
+| Increased | Decreased | 7 |
+| Increased | Increased | 6 |
+| Decreased | Decreased | 3 |
+| Decreased | Increased | 3 |
 
-- where the adaptation gap appears wide,
-- what is driving the gap,
-- where official evidence is strong or thin,
-- where monitoring rows report zero,
-- where monitoring rows are missing,
-- why rank order should be treated cautiously.
+Guam, Pitcairn, and Tokelau remain visible but do not have a complete comparison for both measures. The chart therefore presents several regional directions, not a single Pacific trajectory.
 
-The central story is not "who is worst." It is:
+The second part of the story asks a different question: what can the reviewed official data show? Across 22 places and 14 dataset positions, the atlas found 277 present positions and 31 absent positions. Coverage also differs sharply by subject: direct disaster-loss records appear for 12 of 22 places, monitoring-network and power-generation records for 18, safely managed drinking-water records for 19, and renewable-energy records for 20.
 
-> Across Pacific geographies, climate pressure and visible adaptation capacity are unevenly matched, and so is the official data behind the comparison.
+These are measures of reviewed record presence. They are not measures of data quality, local knowledge, infrastructure, readiness, need, or vulnerability.
 
-## Data
+## How to read the story
 
-The project uses official Pacific Dataviz Challenge 2026 datasets listed in:
+The guided experience has three movements:
 
-```text
-research/official_datasets_2026.csv
-```
+1. **Different directions.** All 22 places stay in view while the 19 complete comparisons separate according to their observed water and renewable-energy changes.
+2. **Unequal visibility.** The same regional field becomes a record-coverage view, making absent official rows visible instead of hiding them in a footnote.
+3. **Place-by-place exploration.** Readers can select any place, examine its regional position, trace the underlying evidence, change analytical layers, and open the source and method notes.
 
-Current priority dataset families include:
+The story deliberately keeps conditions and record visibility separate. It does not combine them into a new score or imply that missing data explains the observed changes.
 
-- sea-surface temperature anomalies,
-- surface temperature anomalies,
-- rainfall anomalies,
-- sea-level anomalies,
-- directly affected persons attributed to disasters,
-- meteorological monitoring network,
-- power generation,
-- fisheries management measures,
-- greenhouse gas emissions per capita as context only.
+## Explore the evidence
 
-Generated analysis and app-ready outputs live under:
+The map is both the storytelling surface and the exploratory interface. In Explore mode, readers can:
 
-```text
-artifacts/
-data/processed/
-app/public/data/
-```
+- select any of the 22 Pacific places without treating land area as a measure of importance;
+- compare a place with the observed regional distributions;
+- inspect indicator values, years, source links, and missingness;
+- switch among coverage, pressure, capacity, gap, rank-sensitivity, and outlook views;
+- compare the selected place with nearby evidence profiles based on record patterns, not geography or causality;
+- share a view through URL-encoded map and panel state;
+- use keyboard navigation, reduced-motion behavior, and responsive desktop or mobile layouts.
 
-Important caveats:
+The optional **Adaptation Gap Index** is an exploratory screen for comparing climate-pressure signals with available capacity proxies. It is not the opening argument and should not be read as a definitive ranking of need, preparedness, or vulnerability.
 
-- The Adaptation Gap Index is a comparative screen, not a definitive rank of need or vulnerability.
-- Current map geometry uses a MapLibre canvas with Natural Earth land context under centroid fallback points; scored geographies are not official boundary polygons.
-- Missing monitoring rows mean a reporting gap in the processed official data, not confirmed absence of infrastructure.
-- Outlook outputs are stress-test context, not forecasts.
+## Data and method
 
-## Repository Structure
+The project uses datasets published through the Pacific Data Hub and assembled for the challenge. The complete source inventory is in [`research/official_datasets_2026.csv`](research/official_datasets_2026.csv), and machine-readable contracts document the filters, grain, units, provenance, and limitations of each processed source in [`data/contracts/`](data/contracts/).
 
-```text
-research/      Challenge brief, dataset inventory, and prior-entry research
-context/       Project memory, story/design briefs, data cards, decisions, and handoff notes
-analysis/      Python analysis package for processing, scoring, modeling, and EDA
-scripts/       Reproducible command-line entry points
-configs/       Dataset, index, outlook, and EDA configuration
-data/          Raw cache, processed data, contracts, and app-ready exports
-artifacts/     Tables, provenance, figures, and run outputs
-app/           Vite/React/TypeScript atlas app and current mockup shell
-tests/         Python tests for analysis helpers
-```
+| View | Method | Responsible interpretation |
+| --- | --- | --- |
+| Water and renewable-energy movement | Keep the first and latest available value for each geography; calculate signed percentage-point change; display a place in the two-axis field only when both measures are present. | Endpoints are not continuous trajectories. The two indicators have different meanings, denominators, and time spans, and neither establishes causality. |
+| Official-record visibility | Check whether a reviewed row exists for every place across 14 processed datasets, producing 308 place-dataset positions. | Presence does not establish completeness, currency, quality, representativeness, or conditions on the ground. An absent row is not a zero. |
+| Adaptation Gap Index | Rank each latest available indicator within the observed Pacific field, average pressure and capacity proxies separately, then rescale their difference to 0–100. | A comparative screen whose result depends on available indicators, years, and equal-weight choices—not an absolute risk or needs assessment. |
+| Evidence-profile similarity | Compare selected-place record patterns with Jensen–Shannon divergence. | Similarity in the reviewed evidence profile does not mean geographic, cultural, causal, or policy similarity. |
+| Outlook | Fit simple trends where time-series coverage is sufficient and compare transparent capacity scenarios. | A stress test for exploration, not a forecast. |
 
-The most important project context files are:
+Detailed definitions and limitations are documented in the [methodology](context/docs/methodology.md), [data card](context/DATA_CARD.md), and [model card](context/MODEL_CARD.md). Generated summary counts are recorded in [`artifacts/provenance/app_data_summary.json`](artifacts/provenance/app_data_summary.json).
 
-```text
-context/STORY_BRIEF.md
-context/DESIGN_BRIEF.md
-context/ARTISTIC_REDESIGN_BRIEF.md
-context/DATA_CARD.md
-context/MODEL_CARD.md
-context/HANDOVER.md
-```
+## Interpretation limits
 
-## Install
+- First-to-latest comparisons can hide changes between their endpoints.
+- Years differ by place and indicator; the interface preserves them rather than implying a common observation date.
+- Missing official rows do not mean missing infrastructure, absent events, low readiness, or low need.
+- Capacity indicators are proxies and cannot represent the full range of local adaptation knowledge or action.
+- Rank order is sensitive to indicator availability and analytical choices.
+- Selectable records use centroids. Natural Earth land geometry provides visual context, not reviewed political or territorial boundaries.
 
-Python requirements are declared in `pyproject.toml`.
+## Run locally
 
-```powershell
+The application is a static React, TypeScript, Vite, and MapLibre project. It uses generated local data and requires no backend or API key.
+
+```bash
+git clone https://github.com/sardorsob/Pacific-Climate-Gap-Atlas.git
+cd Pacific-Climate-Gap-Atlas
 python -m pip install -e .
-```
-
-JavaScript dependencies are declared in the root workspace and app package files.
-
-```powershell
 npm install
-```
-
-## Validate The Repo
-
-```powershell
-python scripts/check_required_artifacts.py
-python scripts/validate_task_statuses.py
-python scripts/check_secrets.py
-```
-
-Equivalent npm shortcuts:
-
-```powershell
-npm run validate:artifacts
-npm run validate:tasks
-npm run check:secrets
-```
-
-## Rebuild Data Products
-
-Profile official datasets:
-
-```powershell
-python scripts/profile_datasets.py --config configs/datasets.yml
-```
-
-Build processed observations:
-
-```powershell
-python scripts/make_dataset.py --config configs/datasets.yml
-```
-
-Build the baseline adaptation gap index:
-
-```powershell
-python scripts/build_gap_index.py --config configs/gap_index.yml
-```
-
-Build the outlook stress test:
-
-```powershell
-python scripts/run_outlook.py --config configs/outlook.yml
-```
-
-Build app-ready data:
-
-```powershell
-python scripts/build_app_data.py
-python scripts/validate_data_contracts.py
-```
-
-Build the Pacific land-context basemap:
-
-```powershell
-python scripts/build_land_context.py
-```
-
-Run EDA:
-
-```powershell
-python scripts/run_eda.py --config configs/eda.yml
-```
-
-## Run The App
-
-Start the atlas mockup:
-
-```powershell
 npm run app:dev
 ```
 
-Build the app:
+Create and preview a production build:
 
-```powershell
+```bash
 npm run app:build
-```
-
-Preview the production build:
-
-```powershell
 npm run app:preview
 ```
 
-Deploy the static contents of `app/dist/` to the final host. Record the public URL in `context/docs/submission-notes.md` and keep it available through August 31, 2029.
+Vite writes the static production bundle to `app/dist/`.
 
-The current app is a five-scene guided atlas with generated data, MapLibre/Natural Earth map context, selected-place trace and panel-only JSD evidence, accessible exploration controls, and dependency-free shareable URL state. It is not yet the final competition submission; owner visual/accessibility review, deployment, and submission actions remain.
+## Reproduce the analysis
 
-The implemented phase is **The Shape of What We Know**, a five-scene artistic redesign that makes uneven official-data visibility the governing story. `TASK-048` through `TASK-056` are complete; `TASK-057` implementation and hydration follow-ups are complete and remain in review for the six-viewport human matrix. The full contract is in `context/ARTISTIC_REDESIGN_BRIEF.md`.
+The main data pipeline is script-based and configuration-driven:
 
-## Current Frame
+```bash
+python scripts/profile_datasets.py --config configs/datasets.yml
+python scripts/make_dataset.py --config configs/datasets.yml
+python scripts/build_gap_index.py --config configs/gap_index.yml
+python scripts/run_outlook.py --config configs/outlook.yml
+python scripts/run_eda.py --config configs/eda.yml
+python scripts/build_app_data.py
+python scripts/build_land_context.py
+python scripts/validate_data_contracts.py
+```
 
-Working title: **The Pacific Adaptation Gap Atlas**
+Run the repository checks:
 
-Target artifact: an interactive GIS-style web atlas for the Pacific Dataviz Challenge 2026.
+```bash
+python -m pytest -q
+npm --prefix app run test
+python scripts/check_required_artifacts.py
+python scripts/check_secrets.py
+```
 
-Primary experience:
+## Repository guide
 
-- five-scene native-scroll story over a full-bleed MapLibre Pacific map with visual land context,
-- persistent "Explore freely" handoff into the full atlas controls,
-- adaptation gap, pressure, capacity, monitoring/data visibility, and rank-fragility views,
-- selected geography detail panel,
-- selected-place Evidence Fingerprint nearest neighbors with exact JSD and caveats,
-- source and methodology drawer,
-- mobile-friendly bottom-sheet story and detail interaction.
+```text
+analysis/      Reusable Python processing, scoring, modeling, and EDA code
+app/           React, TypeScript, Vite, and MapLibre atlas
+artifacts/     Generated figures, tables, provenance, and design evidence
+configs/       Dataset, index, outlook, and EDA configuration
+context/       Research, methodology, data, model, story, and design documentation
+data/          Raw cache, processed observations, contracts, and app-ready exports
+research/      Challenge brief, official dataset inventory, and reference research
+scripts/       Reproducible command-line entry points
+tests/         Python tests for analytical helpers and data behavior
+```
+
+## Sources and attribution
+
+- Official statistical data: [Pacific Data Hub](https://pacificdata.org/) and the source links preserved in the project inventory and contracts.
+- Land context: [Natural Earth](https://www.naturalearthdata.com/), used for visual orientation.
+- Interactive mapping: [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/).
+- Competition: [Pacific Dataviz Challenge 2026](https://pacificdatavizchallenge.org/).
+
+The atlas is designed to make comparison possible without turning uncertainty into certainty. Its central claim is modest: Pacific conditions do not move in one direction, and the records used to describe them do not illuminate every place equally.

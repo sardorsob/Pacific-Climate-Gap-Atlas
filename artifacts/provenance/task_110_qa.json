@@ -1,0 +1,161 @@
+{
+  "task": "TASK-110",
+  "status": "in-review",
+  "tested_from_head": "069e811",
+  "production_commit": "bf5ebfa",
+  "reviewed_commits": {
+    "TASK-107": ["09c7cc0", "648503b"],
+    "TASK-108": ["fccc0d7", "e449619", "d57c54d"],
+    "TASK-109": ["1502a99", "83b52a1"],
+    "TASK-102_attempt_3": ["bf5ebfa", "069e811"]
+  },
+  "production_freeze": {
+    "task_110_product_test_data_dependency_changes": 0,
+    "returned_defect": "TASK-102 desktop selected-place map-failure layout",
+    "repair_owned_outside_task_110": true
+  },
+  "method": {
+    "date": "2026-08-02",
+    "runner": "Playwright with cached Chromium headless shell",
+    "headless": true,
+    "quiet": true,
+    "visible_browser_opened": false,
+    "usable_assertions": {
+      "reused_unchanged_scope": 721,
+      "fresh_after_task_102_repair": 81,
+      "total": 802,
+      "failed": 0,
+      "superseded_original_failure_assertion": 1
+    },
+    "cases": {
+      "original_place_viewport_cases": 63,
+      "fresh_repair_and_inactivity_cases": 16
+    },
+    "screenshots": {
+      "directory": "artifacts/design/task-110",
+      "count": 10,
+      "reused_unchanged": 9,
+      "fresh_corrected_failure": 1,
+      "all_visually_inspected": true
+    },
+    "console_errors": 0,
+    "page_errors": 0,
+    "failed_requests": 0
+  },
+  "reuse_justification": "The only production diff after the original frozen pass is TASK-102's one-rule desktop .app-state margin reservation. The reused 721 assertions and nine frames contain no failure-state .app-state surface; seven fresh normal-map cases also prove the selector is absent and inactive.",
+  "source_audit": {
+    "geographies_sha256": "d431884e6f7c61c59a5fa276bb66bde644dfaead47d4f867314f41882e461377",
+    "country_details_sha256": "1d1107d2343187386f062a3e7534962c26c1777738f410c2d8229e45a067d58d",
+    "land_context_sha256": "07584700c159316c5b7c451013b36cb9bdd513f347a1373cc7e270924f497b61",
+    "processed_public_pairs_byte_identical": true,
+    "places": 22,
+    "water": {
+      "recorded": 19,
+      "unavailable": 3,
+      "median": 0.67,
+      "range": [-11.23, 18.49],
+      "fiji_tonga_tie": 0.67
+    },
+    "renewable": {
+      "recorded": 20,
+      "unavailable": 2,
+      "median_display": 0.01,
+      "range": [-27.94, 6.11]
+    },
+    "visibility_groups": {
+      "6": ["PN"],
+      "10": ["TK", "WF"],
+      "11": ["AS", "GU", "MP"],
+      "12": ["CK", "NU"],
+      "13": ["NR", "TV"],
+      "14": ["FJ", "FM", "KI", "MH", "NC", "PF", "PG", "PW", "SB", "TO", "VU", "WS"]
+    },
+    "representative_source_to_dom": {
+      "NR": "water +1.92 (2000 to 2020); renewable +1.75 (2000 to 2022); visibility 13 of 14",
+      "PN": "water unavailable; renewable unavailable; visibility 6 of 14",
+      "GU": "water unavailable; renewable +6.11 (2000 to 2022); visibility 11 of 14",
+      "FJ": "water +0.67 (2000 to 2022); renewable -23.39 (2000 to 2022); visibility 14 of 14",
+      "TO": "water +0.67 (2000 to 2022); renewable -0.40 (2000 to 2022); visibility 14 of 14"
+    }
+  },
+  "matrix": {
+    "places": ["NR", "PN", "TK", "GU", "SB", "WS", "PG", "FJ", "TO"],
+    "viewports": ["360x800", "390x844", "430x932", "844x390", "1024x768", "1280x800", "1440x900"],
+    "interactions": ["pointer hover", "sticky touch", "keyboard arrows", "Escape", "blur", "outside pointer", "new selection", "Back", "Close"],
+    "states": ["selected values", "selected null", "ties", "200% reflow", "reduced motion", "grayscale", "deuteranopia", "map failure"],
+    "selection_url_history_projection_unchanged": true
+  },
+  "accessibility_and_visual": {
+    "selected_readout_first": true,
+    "independent_continuous_zero_and_median_references": true,
+    "visibility_groups_and_marks": "6 groups / 22 marks",
+    "visibility_median_omitted": true,
+    "inspection_live_regions": 3,
+    "touch_and_keyboard_bands_px": 44,
+    "overflow_failures": 0,
+    "contrast_reused_from_unchanged_tokens": {
+      "peer_boundary": 3.09,
+      "chrome": 13.93,
+      "mineral_text": 15.98
+    },
+    "color_and_motion_independence": true
+  },
+  "task_102_repair_verification": {
+    "selected_desktop_widths": [881, 1024, 1229, 1230, 1440],
+    "no_panel_widths": [1024, 1440],
+    "mobile_viewports": ["390x844", "844x390"],
+    "heading_panel_overlap_px": 0,
+    "centering_tolerance_px": 1,
+    "desktop_selected_margin_right_px": 400,
+    "mobile_margin_right_px": 0,
+    "corrected_frame_sha256": "326249de76da71543a010a3447a245426079b28dd9dc11dc5389ffd0197bc1ad"
+  },
+  "bundle": {
+    "gzip_command": "gzip -c",
+    "javascript_raw_bytes": 1042934,
+    "javascript_gzip_bytes": 292425,
+    "javascript_limit_bytes": 1050000,
+    "css_raw_bytes": 95474,
+    "css_gzip_bytes": 15787,
+    "css_limit_bytes": 97500,
+    "limits_are_internal_regression_guards": true
+  },
+  "automated_gates": {
+    "python -m unittest discover -s tests -t . -v": "100/100 passed",
+    "python scripts/validate_data_contracts.py": "pass",
+    "python scripts/check_required_artifacts.py": "78 paths passed",
+    "python scripts/validate_task_statuses.py": "111 statuses passed",
+    "python scripts/check_secrets.py": "pass",
+    "ruff check analysis scripts tests": "pass",
+    "python -m compileall -q analysis scripts tests": "pass",
+    "npm --prefix app run test": "135/135 passed",
+    "npm --prefix app run build": "pass",
+    "python scripts/check_app_bundle_budget.py": "pass",
+    "git diff --check": "pass"
+  },
+  "security_review": {
+    "command": "Semgrep MCP semgrep_scan",
+    "scope": ["CountryPanel.tsx", "RegionalPositionLens.tsx", "regionalPositionModel.ts", "base.css", "CountryPanel.test.tsx", "RegionalPositionLens.test.tsx", "regionalPositionModel.test.ts", "mapPresentation.test.tsx"],
+    "version": "1.168.0",
+    "findings": 0,
+    "errors": 0,
+    "skipped_rules": 0
+  },
+  "limitations": [
+    "Current source has no exactly-zero selected continuous observation; null-versus-zero remains covered by synthetic model/component tests and the full frontend suite.",
+    "MapLibre does not expose an application camera readout; all 22 projected positions plus stable selection, URL, and history are used as the camera-behavior proxy.",
+    "Grayscale and deuteranopia checks are CSS simulations, not assistive hardware tests.",
+    "Map failure is induced by returning null from canvas getContext; TASK-102 separately covers mid-session context loss.",
+    "Owner visual and interaction acceptance remains required; deployment and submission are not claimed."
+  ],
+  "independent_review": {
+    "scientific": "pass",
+    "visualization": "pass",
+    "responsive": "pass",
+    "interaction": "pass",
+    "accessibility": "pass",
+    "remaining_product_defects": 0,
+    "disposition": "ready for owner review"
+  },
+  "owner_review": "pending"
+}

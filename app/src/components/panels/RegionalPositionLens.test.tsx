@@ -3,7 +3,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import generatedGeographies from "../../../public/data/geographies.json";
 import { adaptGeographiesPayload } from "../../lib/atlasData";
-import { RegionalPositionLens } from "./RegionalPositionLens";
+import { RegionalPositionLens, visibilityGroupLabels } from "./RegionalPositionLens";
+import { buildRegionalPositionModel } from "./regionalPositionModel";
 
 const geos = adaptGeographiesPayload(generatedGeographies);
 
@@ -55,8 +56,8 @@ describe("RegionalPositionLens", () => {
     const water = stripHtml(html, "water");
 
     expect(html.match(/data-continuous-plot/g) ?? []).toHaveLength(2);
-    expect(html.match(/tabindex="0"/g) ?? []).toHaveLength(2);
-    expect(html.match(/aria-live="polite" aria-atomic="true"/g) ?? []).toHaveLength(2);
+    expect((water + stripHtml(html, "renewable")).match(/tabindex="0"/g) ?? []).toHaveLength(2);
+    expect((water + stripHtml(html, "renewable")).match(/aria-live="polite" aria-atomic="true"/g) ?? []).toHaveLength(2);
     expect(water).toContain('role="img" aria-label="Safely managed drinking-water change. Selected: American Samoa');
     expect(water).not.toMatch(/^data-regional-strip="water" role="group"/);
     expect(water).toContain('aria-describedby="water-inspector-instructions water-inspector"');
@@ -80,19 +81,49 @@ describe("RegionalPositionLens", () => {
     expect(visibility).toContain("data-selected-mark");
   });
 
-  it("keeps the visibility strip rendering unchanged for TASK-109", () => {
+  it("renders visibility as six ordered categorical groups with exact counts and marks", () => {
     const html = renderLens("NR");
     const visibility = stripHtml(html, "visibility");
-    const visibilityLabel = visibility.match(/aria-label="([^"]+)"/)?.[1] ?? "";
 
-    expect(visibility).toMatch(/^data-regional-strip="visibility" role="img" aria-label="Reviewed datasets represented\./);
-    expect(visibility).toContain('<div class="regional-lens__label" aria-hidden="true">');
-    expect(visibility).toContain('<svg class="regional-lens__plot" viewBox="0 0 320 46" aria-hidden="true">');
-    expect(visibility).toContain("Selected: Nauru 13 of 14");
-    expect(visibilityLabel).toContain("Selected Nauru 13 of 14");
-    expect(visibility).toContain("regional median 14 of 14");
-    expect(visibility).toContain("data-median-tick");
-    expect(visibility).not.toContain("data-continuous-plot");
+    expect([...visibility.matchAll(/data-visibility-group="(\d+)" data-group-count="(\d+)"/g)]
+      .map(([, value, count]) => [Number(value), Number(count)]))
+      .toEqual([[6, 1], [10, 2], [11, 3], [12, 2], [13, 2], [14, 12]]);
+    expect(visibility.match(/data-visibility-mark/g) ?? []).toHaveLength(22);
+    expect(visibility).toMatch(/data-selected-mark="true" data-selected-group="13"/);
+    expect(visibility).toContain('<strong class="regional-lens__value">13 of 14</strong>');
+    expect(visibility).toContain("12 of 22 places have all 14 reviewed datasets");
+  });
+
+  it("uses one inspectable tally without a visibility median or continuous axis", () => {
+    const html = renderLens("NR");
+    const visibility = stripHtml(html, "visibility");
+
+    expect(visibility.match(/data-visibility-tally/g) ?? []).toHaveLength(1);
+    expect(visibility.match(/tabindex="0"/g) ?? []).toHaveLength(1);
+    expect(visibility.match(/aria-live="polite" aria-atomic="true"/g) ?? []).toHaveLength(1);
+    expect(visibility).toContain('aria-describedby="visibility-inspector-instructions visibility-inspector"');
+    expect(visibility).toContain("Use Left and Right to inspect visibility groups; Escape clears inspection.");
+    expect(visibility).not.toMatch(/data-(?:continuous-)?median|regional median|data-zero-reference|regional-lens__axis|data-endpoint/);
+  });
+
+  it("keeps full group names accessible while truncating the long visible list", () => {
+    const visibility = buildRegionalPositionModel(geos, "FJ")[2];
+    const labels = visibilityGroupLabels(visibility.groups.at(-1)!);
+
+    expect(labels.visible).toBe("14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more");
+    expect(labels.full).toBe("14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa");
+    expect(labels.full).not.toContain("best");
+    expect(labels.full).not.toContain("complete");
+  });
+
+  it("keeps the accepted continuous-strip contract alongside the tally", () => {
+    const html = renderLens("PN");
+
+    expect(html.match(/data-continuous-plot/g) ?? []).toHaveLength(2);
+    expect(html.match(/data-continuous-median/g) ?? []).toHaveLength(2);
+    expect(html.match(/data-zero-reference/g) ?? []).toHaveLength(2);
+    expect(html).toContain("19 recorded · 3 unavailable");
+    expect(html).toContain("20 recorded · 2 unavailable");
   });
 
   it("keeps every peer and selected ring inside the larger continuous viewBox", () => {
@@ -138,6 +169,7 @@ describe("RegionalPositionLens", () => {
     expect(css).toMatch(/\.regional-lens__peer\s*\{[^}]*fill:\s*var\(--line\);/);
     expect(css).toMatch(/\.regional-lens__plot\s*\{[^}]*overflow:\s*visible;/);
     expect(css).toMatch(/\.regional-lens__plot--continuous\s*\{[^}]*max-width:\s*320px;[^}]*justify-self:\s*center;/);
-    expect(renderLens("NR").match(/class="regional-lens__hit-band"[^>]*height="44" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(2);
+    const continuous = stripHtml(renderLens("NR"), "water") + stripHtml(renderLens("NR"), "renewable");
+    expect(continuous.match(/class="regional-lens__hit-band"[^>]*height="44" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(2);
   });
 });

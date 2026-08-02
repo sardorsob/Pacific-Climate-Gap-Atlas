@@ -3,6 +3,7 @@ import type { Geo } from "../../lib/atlasData";
 import { signedChange } from "../../lib/encoding";
 import {
   buildRegionalPositionModel,
+  type RegionalPositionGroup,
   type RegionalPositionObservation,
   type RegionalPositionStrip,
 } from "./regionalPositionModel";
@@ -32,42 +33,134 @@ function stripSummary(strip: RegionalPositionStrip, name: string, clock: string 
   return `${METRICS[strip.id]}. ${selected}; ${range}${clock ? `; reviewed clock ${clock}` : ""}; ${median}; ${strip.applicable.length} applicable; ${strip.unavailableCount} unavailable.`;
 }
 
+function groupPosition(index: number) {
+  return 24 + index * 54.4;
+}
+
+function groupMarkPosition(groupIndex: number, observationIndex: number, count: number) {
+  const columns = Math.min(3, count);
+  return {
+    x: groupPosition(groupIndex) + (observationIndex % columns - (columns - 1) / 2) * 7,
+    y: 47 + Math.floor(observationIndex / columns) * 8,
+  };
+}
+
+export function visibilityGroupLabels(group: RegionalPositionGroup) {
+  const shown = group.observations.slice(0, 3).map(({ name }) => name).join(", ");
+  const hidden = group.observations.length - 3;
+  return {
+    full: `${group.value} of 14: ${group.observations.map(({ name }) => name).join(", ")}`,
+    visible: `${group.value} of 14: ${shown}${hidden > 0 ? ` +${hidden} more` : ""}`,
+  };
+}
+
 function VisibilityStrip({ strip, name }: { strip: RegionalPositionStrip; name: string }) {
-  const extent = strip.extent;
-  const scale = strip.scaleExtent;
-  const summary = stripSummary(strip, name, null);
-  const selectedAvailable = strip.selected.state === "available" && strip.selected.value !== null;
+  const plotRef = useRef<SVGSVGElement>(null);
+  const [inspected, setInspected] = useState<RegionalPositionGroup | null>(null);
+  const [sticky, setSticky] = useState(false);
+  const selectedGroup = strip.groups.find(({ value }) => value === strip.selected.value);
+  const selectedGroupIndex = selectedGroup ? strip.groups.indexOf(selectedGroup) : -1;
+  const selectedAvailable = strip.selected.state === "available" && selectedGroup !== undefined;
+  const inspectorId = "visibility-inspector";
+  const instructionsId = "visibility-inspector-instructions";
+  const fullVisibilityCount = strip.groups.find(({ value }) => value === 14)?.observations.length ?? 0;
+  const inspectedLabels = inspected ? visibilityGroupLabels(inspected) : null;
+  const summary = `${METRICS.visibility}. Selected ${name} ${strip.selected.value} of 14. ${strip.groups.length} exact groups contain ${strip.groups.map(({ value, observations }) => `${value} of 14: ${observations.length}`).join("; ")}.`;
+
+  const clearInspection = () => {
+    setInspected(null);
+    setSticky(false);
+  };
+
+  useEffect(clearInspection, [strip.selected.code]);
+
+  useEffect(() => {
+    const clearOutside = (event: globalThis.PointerEvent) => {
+      if (!plotRef.current?.contains(event.target as Node)) clearInspection();
+    };
+    document.addEventListener("pointerdown", clearOutside, true);
+    return () => document.removeEventListener("pointerdown", clearOutside, true);
+  }, []);
+
+  const groupAtPointer = (event: PointerEvent<SVGSVGElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width) * 320;
+    const index = Math.max(0, Math.min(strip.groups.length - 1, Math.round((x - 24) / 54.4)));
+    return strip.groups[index];
+  };
+
+  const inspectByKeyboard = (event: KeyboardEvent<SVGSVGElement>) => {
+    if (event.key === "Escape") {
+      clearInspection();
+      return;
+    }
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const inspectedIndex = inspected ? strip.groups.indexOf(inspected) : -1;
+    const start = inspectedIndex >= 0 ? inspectedIndex : selectedGroupIndex >= 0 ? selectedGroupIndex : direction > 0 ? -1 : strip.groups.length;
+    setInspected(strip.groups[Math.max(0, Math.min(strip.groups.length - 1, start + direction))]);
+    setSticky(false);
+  };
 
   return (
-    <section className="regional-lens__strip" data-regional-strip={strip.id} role="img" aria-label={summary}>
-      <div className="regional-lens__label" aria-hidden="true">
-        <strong>{METRICS[strip.id]}</strong>
-        <span>{selectedAvailable ? <>Selected: {name} {valueLabel(strip, strip.selected.value!)}</> : `${name} unavailable for a comparable period in the reviewed regional series`}</span>
+    <section className="regional-lens__strip regional-lens__strip--visibility" data-regional-strip={strip.id}>
+      <div className="regional-lens__head">
+        <h3 className="regional-lens__title">{METRICS.visibility}</h3>
+        <p className="regional-lens__readout">
+          <strong className="regional-lens__value">{strip.selected.value} of 14</strong>
+        </p>
       </div>
-      {extent && scale && (
-        <svg className="regional-lens__plot" viewBox="0 0 320 46" aria-hidden="true">
-          <line className="regional-lens__axis" x1="16" x2="304" y1="20" y2="20" aria-hidden="true" />
-          {strip.applicable.map((observation) => (
-            <circle
-              key={observation.code}
-              data-peer-mark
-              className="regional-lens__peer"
-              cx={position(observation.value, scale)}
-              cy={20 - observation.lane * 2}
-              r="2.8"
-              aria-hidden="true"
-            />
-          ))}
-          {strip.median !== null && <line data-median-tick className="regional-lens__median" x1={position(strip.median, scale)} x2={position(strip.median, scale)} y1="8" y2="32" aria-hidden="true" />}
-          {selectedAvailable && <circle data-selected-mark className="regional-lens__selected" cx={position(strip.selected.value!, scale)} cy={20 - (strip.applicable.find((observation) => observation.code === strip.selected.code)?.lane ?? 0) * 2} r="5" aria-hidden="true" />}
-          <text x={position(extent[0], scale)} y="44" textAnchor="start" aria-hidden="true">{valueLabel(strip, extent[0])}</text>
-          <text x={position(extent[1], scale)} y="44" textAnchor="end" aria-hidden="true">{valueLabel(strip, extent[1])}</text>
-        </svg>
-      )}
-      <p className="regional-lens__meta" aria-hidden="true">
-        {strip.median !== null && <span>regional median {valueLabel(strip, strip.median)}</span>}
-        <span>{strip.applicable.length} applicable</span>
-        {strip.unavailableCount > 0 && <span data-unavailable-count>{strip.unavailableCount} unavailable</span>}
+      <p className="regional-lens__fact">{fullVisibilityCount} of {strip.applicable.length} places have all 14 reviewed datasets</p>
+      <span id={instructionsId} className="sr-only">Use Left and Right to inspect visibility groups; Escape clears inspection.</span>
+      <svg
+        ref={plotRef}
+        data-visibility-tally
+        className="regional-lens__plot regional-lens__plot--visibility"
+        viewBox="0 0 320 82"
+        role="img"
+        aria-label={summary}
+        aria-describedby={`${instructionsId} ${inspectorId}`}
+        tabIndex={0}
+        focusable="true"
+        style={{ touchAction: "manipulation" }}
+        onKeyDown={inspectByKeyboard}
+        onBlur={clearInspection}
+        onPointerMove={(event) => {
+          if (event.pointerType !== "touch") setInspected(groupAtPointer(event));
+        }}
+        onPointerLeave={() => {
+          if (!sticky) setInspected(null);
+        }}
+        onPointerDown={(event) => {
+          if (event.pointerType === "touch") {
+            setInspected(groupAtPointer(event));
+            setSticky(true);
+          }
+        }}
+      >
+        <rect className="regional-lens__hit-band" x="0" y="34" width="320" height="44" fill="transparent" style={{ pointerEvents: "all" }} aria-hidden="true" />
+        {inspected && <rect data-inspection-group className="regional-lens__group-cursor" x={groupPosition(strip.groups.indexOf(inspected)) - 23} y="34" width="46" height="44" rx="4" aria-hidden="true" />}
+        {strip.groups.map((group, groupIndex) => (
+          <g key={group.value} data-visibility-group={group.value} data-group-count={group.observations.length} aria-hidden="true">
+            <text className="regional-lens__group-value" x={groupPosition(groupIndex)} y="12" textAnchor="middle">{group.value}</text>
+            <text className="regional-lens__group-count" x={groupPosition(groupIndex)} y="28" textAnchor="middle">{group.observations.length} {group.observations.length === 1 ? "place" : "places"}</text>
+            {group.observations.map((observation, observationIndex) => {
+              const point = groupMarkPosition(groupIndex, observationIndex, group.observations.length);
+              return <circle key={observation.code} data-visibility-mark className="regional-lens__peer" cx={point.x} cy={point.y} r="2.8" />;
+            })}
+          </g>
+        ))}
+        {selectedAvailable && (() => {
+          const observationIndex = selectedGroup.observations.findIndex(({ code }) => code === strip.selected.code);
+          const point = groupMarkPosition(selectedGroupIndex, observationIndex, selectedGroup.observations.length);
+          return <circle data-selected-mark data-selected-group={selectedGroup.value} className="regional-lens__selected" cx={point.x} cy={point.y} r="5" aria-hidden="true" />;
+        })()}
+      </svg>
+      <p id={inspectorId} className="regional-lens__meta regional-lens__inspector" aria-live="polite" aria-atomic="true">
+        {inspectedLabels ? (
+          <><span aria-hidden="true">{inspectedLabels.visible}</span><span className="sr-only">{inspectedLabels.full}</span></>
+        ) : `${strip.applicable.length} places across ${strip.groups.length} visibility groups`}
       </p>
     </section>
   );

@@ -154,7 +154,8 @@ describe("CountryPanel", () => {
     expect(html).toContain("+1.92 percentage points");
     expect(html).toContain("Renewable-energy-share change");
     expect(html).toContain("+1.75 percentage points");
-    expect(html).toContain("Selected: Nauru 13 of 14");
+    expect(html).toContain('<strong class="regional-lens__value">13 of 14</strong>');
+    expect(html).toContain("Selected Nauru 13 of 14");
     expect(html).toContain("Gap 89 · Pressure 62 · Capacity 27");
     expect(html.indexOf("Where Nauru sits in the Pacific")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
   });
@@ -191,7 +192,8 @@ describe("CountryPanel", () => {
 
     expect(html).toContain("+18.49 percentage points");
     expect(html).toContain("−15.60 percentage points");
-    expect(html).toContain("Selected: Papua New Guinea 14 of 14");
+    expect(html).toContain('<strong class="regional-lens__value">14 of 14</strong>');
+    expect(html).toContain("Selected Papua New Guinea 14 of 14");
   });
 
   it("keeps null comparisons unavailable and never presents their years or zero", () => {
@@ -217,7 +219,8 @@ describe("CountryPanel", () => {
 
     expect(html).toContain("Guam unavailable for a comparable period in the reviewed regional series");
     expect(html).toContain("Selected: Guam +6.11 percentage points");
-    expect(html).toContain("Selected: Guam 11 of 14");
+    expect(html).toContain('<strong class="regional-lens__value">11 of 14</strong>');
+    expect(html).toContain("Selected Guam 11 of 14");
     expect(html).not.toContain("null");
   });
 
@@ -233,7 +236,8 @@ describe("CountryPanel", () => {
     const water = html.slice(html.indexOf('data-regional-strip="water"'), html.indexOf('data-regional-strip="renewable"'));
     const renewable = html.slice(html.indexOf('data-regional-strip="renewable"'), html.indexOf('data-regional-strip="visibility"'));
 
-    expect(html).toContain("Selected: Pitcairn 6 of 14");
+    expect(html).toContain('<strong class="regional-lens__value">6 of 14</strong>');
+    expect(html).toContain("Selected Pitcairn 6 of 14");
     expect(water).toContain("3 unavailable");
     expect(renewable).toContain("2 unavailable");
     expect(water).not.toContain("data-selected-mark");

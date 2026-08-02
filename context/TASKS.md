@@ -2341,8 +2341,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The lens answers where a selected place sits in the observed regional record; data, nulls, medians, units, caveats, scores, and JSD remain correctly separated; map/story/panel/navigation/accessibility/failure behavior remains intact; no new dependency, renderer, route, state system, API, or dashboard shell ships; all repository gates and independent review pass; owner accepts the result. Only then may public-hosting readiness be claimed separately.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
 - Manual QA: Run the complete quiet/headless story/Explorer/panel/accessibility/state/error matrix and obtain owner review without visible external Brave or Chrome windows.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Strict RED failed 7/9 focused lens assertions while the unchanged visibility/bounds contracts and 8/8 model tests stayed green. Minimal GREEN passed 17/17 focused and 131/131 full frontend tests. Quiet cached-Chromium/SwiftShader QA passed NR, GU, PN, SB, WS, and PG at 1440x900, 390x844, and 844x390: two focus surfaces/live lines/zeroes/medians, bare endpoints, 47.71px minimum rendered hit band, zero horizontal overflow/runtime errors, hover/leave, sticky touch/outside tap, Left/Right, Escape, blur, selected-place reset, unavailable low/high entry, Fiji/Tonga tie order/clocks, and inspector URL/history/selection/camera immutability. Three bounded captures are under `artifacts/design/task-108/`. Production build passed; task-status (111), secret, and whitespace gates passed. The internal bundle diagnostic reports JS 1,040,365/1,050,000 bytes and CSS 95,049/95,000 bytes: versus frozen TASK-107, CSS is +207 raw/+54 gzip bytes and exceeds the explicitly non-product ceiling by 49 bytes. The readable existing-seam CSS was retained rather than contorting the interface around that diagnostic.
+- Attempts: 1
 - Max attempts: 3
 - Attempt log: Pending.
 - Status: pending
@@ -2536,8 +2536,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - QA notes: Pending.
 - Attempts: 0
 - Max attempts: 3
-- Attempt log: Pending.
-- Status: pending
+- Attempt log: 2026-08-02: TASK-108 moved `pending -> in-progress` after TASK-107 passed independent review. Scope is limited to the two continuous renderings, their focused tests, the existing regional-lens CSS section, and task/progress records; visibility's rendering stays unchanged until TASK-109. Strict RED/GREEN, full frontend/build verification, and the 18-case quiet headless matrix passed; the local bundle diagnostic alone reports the justified 49-byte CSS overage documented in QA notes. TASK-108 moved `in-progress -> in-review` for independent visualization/accessibility review.
+- Status: in-review
 
 ## TASK-109
 - Phase: selected-place-lens-visibility-tally

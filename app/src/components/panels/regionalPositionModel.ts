@@ -7,11 +7,19 @@ export type RegionalPositionObservation = {
   name: string;
   value: number;
   lane: number;
+  firstYear: number | null;
+  latestYear: number | null;
+};
+
+export type RegionalPositionGroup = {
+  value: number;
+  observations: RegionalPositionObservation[];
 };
 
 export type RegionalPositionStrip = {
   id: RegionalPositionStripId;
   applicable: RegionalPositionObservation[];
+  groups: RegionalPositionGroup[];
   extent: [number, number] | null;
   scaleExtent: [number, number] | null;
   median: number | null;
@@ -35,28 +43,36 @@ function collisionLane(index: number): number {
   return index % 2 ? -Math.ceil(index / 2) : index / 2;
 }
 
+type RegionalPositionValue = {
+  value: number | null;
+  firstYear: number | null;
+  latestYear: number | null;
+};
+
 function buildStrip(
   id: RegionalPositionStripId,
   geos: Geo[],
   selectedCode: string,
-  valueFor: (geo: Geo) => number | null,
+  valueFor: (geo: Geo) => RegionalPositionValue,
   denominator?: 14,
 ): RegionalPositionStrip {
   const selectedGeo = geos.find((geo) => geo.code === selectedCode);
-  const selectedValue = selectedGeo ? valueFor(selectedGeo) : null;
+  const selectedValue = selectedGeo ? valueFor(selectedGeo).value : null;
   const applicable = geos
     .flatMap((geo) => {
-      const value = valueFor(geo);
-      return value === null ? [] : [{ code: geo.code, name: geo.name, value, lane: 0 }];
+      const { value, firstYear, latestYear } = valueFor(geo);
+      return value === null ? [] : [{ code: geo.code, name: geo.name, value, lane: 0, firstYear, latestYear }];
     })
     .sort((a, b) => a.value - b.value || a.code.localeCompare(b.code));
 
+  const groups: RegionalPositionGroup[] = [];
   for (let index = 0; index < applicable.length;) {
     let end = index + 1;
     while (end < applicable.length && applicable[end].value === applicable[index].value) end += 1;
     for (let laneIndex = index; laneIndex < end; laneIndex += 1) {
       applicable[laneIndex].lane = collisionLane(laneIndex - index);
     }
+    groups.push({ value: applicable[index].value, observations: applicable.slice(index, end) });
     index = end;
   }
 
@@ -74,6 +90,7 @@ function buildStrip(
   return {
     id,
     applicable,
+    groups,
     extent,
     scaleExtent,
     median: median(values),
@@ -89,8 +106,20 @@ function buildStrip(
 
 export function buildRegionalPositionModel(geos: Geo[], selectedCode: string): RegionalPositionStrip[] {
   return [
-    buildStrip("water", geos, selectedCode, (geo) => geo.regionalStory.water.changePercentagePoints),
-    buildStrip("renewable", geos, selectedCode, (geo) => geo.regionalStory.renewable.changePercentagePoints),
-    buildStrip("visibility", geos, selectedCode, (geo) => geo.regionalStory.visibility.filter((position) => position.present).length, 14),
+    buildStrip("water", geos, selectedCode, (geo) => ({
+      value: geo.regionalStory.water.changePercentagePoints,
+      firstYear: geo.regionalStory.water.firstYear,
+      latestYear: geo.regionalStory.water.latestYear,
+    })),
+    buildStrip("renewable", geos, selectedCode, (geo) => ({
+      value: geo.regionalStory.renewable.changePercentagePoints,
+      firstYear: geo.regionalStory.renewable.firstYear,
+      latestYear: geo.regionalStory.renewable.latestYear,
+    })),
+    buildStrip("visibility", geos, selectedCode, (geo) => ({
+      value: geo.regionalStory.visibility.filter((position) => position.present).length,
+      firstYear: null,
+      latestYear: null,
+    }), 14),
   ];
 }

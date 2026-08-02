@@ -36,6 +36,10 @@ describe("regional position model", () => {
       selected: { code: "NR", value: 1.92, state: "available" },
     });
     expect(water.applicable).toHaveLength(19);
+    expect(water.applicable.find((observation) => observation.code === "NR")).toMatchObject({
+      firstYear: 2000,
+      latestYear: 2020,
+    });
     expect(renewable).toMatchObject({
       extent: [-27.94, 6.11],
       unavailableCount: 2,
@@ -52,6 +56,39 @@ describe("regional position model", () => {
       selected: { code: "NR", value: 13, state: "available" },
     });
     expect(visibility.applicable).toHaveLength(22);
+    expect(visibility.applicable.find((observation) => observation.code === "NR")).toMatchObject({
+      firstYear: null,
+      latestYear: null,
+    });
+  });
+
+  it("exposes source clocks and deterministic exact-value groups without creating a shared clock", () => {
+    const model = buildRegionalPositionModel(geos, "NR");
+    const water = strip(model, "water");
+    const renewable = strip(model, "renewable");
+    const visibility = strip(model, "visibility");
+
+    expect(water.groups).toHaveLength(18);
+    expect(water.groups.find((group) => group.value === 0.67)).toEqual({
+      value: 0.67,
+      observations: [
+        expect.objectContaining({ code: "FJ", firstYear: 2000, latestYear: 2022 }),
+        expect.objectContaining({ code: "TO", firstYear: 2000, latestYear: 2022 }),
+      ],
+    });
+    expect(renewable.groups).toHaveLength(20);
+    expect(renewable.applicable.find((observation) => observation.code === "NR")).toMatchObject({
+      firstYear: 2000,
+      latestYear: 2022,
+    });
+    expect(visibility.groups.map(({ value, observations }) => [value, observations.map(({ code }) => code)])).toEqual([
+      [6, ["PN"]],
+      [10, ["TK", "WF"]],
+      [11, ["AS", "GU", "MP"]],
+      [12, ["CK", "NU"]],
+      [13, ["NR", "TV"]],
+      [14, ["FJ", "FM", "KI", "MH", "NC", "PF", "PG", "PW", "SB", "TO", "VU", "WS"]],
+    ]);
   });
 
   it("excludes nulls from numeric summaries and reports a selected null as unavailable", () => {
@@ -64,6 +101,21 @@ describe("regional position model", () => {
     expect(water.unavailableCount).toBe(3);
     expect(water.selected).toEqual({ code: "GU", value: null, state: "unavailable" });
     expect(renewable.selected).toEqual({ code: "GU", value: 6.11, state: "available" });
+  });
+
+  it("preserves selected nulls and never turns missing values or clocks into zero", () => {
+    const pitcairn = buildRegionalPositionModel(geos, "PN");
+    const guam = buildRegionalPositionModel(geos, "GU");
+
+    expect(strip(pitcairn, "water").selected).toEqual({ code: "PN", value: null, state: "unavailable" });
+    expect(strip(pitcairn, "renewable").selected).toEqual({ code: "PN", value: null, state: "unavailable" });
+    expect(strip(pitcairn, "visibility").selected).toEqual({ code: "PN", value: 6, state: "available" });
+    expect(strip(guam, "water").selected).toEqual({ code: "GU", value: null, state: "unavailable" });
+    expect(strip(guam, "renewable").applicable.find((observation) => observation.code === "GU")).toMatchObject({
+      value: 6.11,
+      firstYear: 2000,
+      latestYear: 2022,
+    });
   });
 
   it("uses numeric median, signed padded scales, and deterministic collision lanes", () => {
@@ -89,7 +141,15 @@ describe("regional position model", () => {
     expect(water.extent).toEqual([3, 3]);
     expect(water.scaleExtent).toEqual([-0.5, 3.5]);
     expect(water.median).toBe(3);
-    expect(water.applicable).toEqual([{ code: only.code, name: only.name, value: 3, lane: 0 }]);
+    expect(water.applicable).toEqual([{
+      code: only.code,
+      name: only.name,
+      value: 3,
+      lane: 0,
+      firstYear: null,
+      latestYear: null,
+    }]);
+    expect(water.groups).toEqual([{ value: 3, observations: water.applicable }]);
   });
 
   it("is deterministic across input order and leaves source records untouched", () => {
@@ -107,6 +167,7 @@ describe("regional position model", () => {
     expect(model).toHaveLength(3);
     for (const candidate of model) {
       expect(candidate.applicable).toEqual([]);
+      expect(candidate.groups).toEqual([]);
       expect(candidate.extent).toBeNull();
       expect(candidate.scaleExtent).toBeNull();
       expect(candidate.median).toBeNull();

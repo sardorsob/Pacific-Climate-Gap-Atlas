@@ -164,7 +164,17 @@ Other places form a flat neutral field. The selected place is one crisp teal rin
 
 This direction rejects tabs, a wide comparison drawer, card grids, radar or sonar language, glowing data marks, gradients that encode evidence, and a copied posterior/distribution treatment. It also rejects a second visual identity: the accepted graphite/mineral surfaces, direct typography, flat marks, amber caveats, and crisp focus treatment remain binding. Similar evidence-profile records stay secondary and collapsed; they answer a different question and do not become the visual center.
 
-On mobile the composition does not collapse into a horizontal scroller or miniature dashboard. The existing bottom sheet keeps one vertical reading order, the strips fit its measured width, all primary actions remain at least 44px, and the selected value and caveat remain readable without hover. The approved detailed grammar and implementation limits live in `context/DESIGN_BRIEF.md`; TASK-096 through TASK-100 are the only authorized planning path.
+On mobile the composition does not collapse into a horizontal scroller or miniature dashboard. The existing bottom sheet keeps one vertical reading order, the strips fit its measured width, all primary actions remain at least 44px, and the selected value and caveat remain readable without hover. The approved detailed grammar and implementation limits live in `context/DESIGN_BRIEF.md`; TASK-096 through TASK-100 established the first implementation.
+
+### 2026-08-02 Readable Regional-Lens Refinement
+
+Owner review accepted the lens's analytical purpose but found its 9–11px hierarchy difficult to decipher. The three metrics also require two different visual arrangements: water and renewable change are continuous signed measures, while dataset visibility has only six distinct totals and a 12-place tie at `14 of 14`. TASK-106 therefore refines the existing direction rather than replacing it.
+
+The selected value becomes the entry point: plain metric title, prominent exact value or unavailable state, then a quiet metric-specific clock. Water and renewable energy retain independent dot strips with their own truthful domains, zero positions, directly bound regional-median ticks, and concise endpoints. Dataset visibility becomes a grouped tally that keeps one flat mark per place and states the 12-of-22 maximum group directly; it does not retain the redundant median-at-maximum tick.
+
+Peer detail uses one reserved inspector line instead of a floating tooltip. The line shows recorded/unavailable context by default and exact peer or exact-group detail on hover, tap, or keyboard inspection. Inspection is informational only: the chosen island, teal ring, map camera, panel path, URL, and browser history do not change. One focusable surface per metric and one full-width touch band replace dozens of tiny controls.
+
+This refinement keeps Night Watch intact. It adds no glow, dashboard cards, tabs, second drawer, ranking language, texture, data field, renderer, dependency, route, or global state. Large-screen and mobile use the same reading order; mobile compacts vertical rhythm rather than hiding evidence or creating horizontal scroll. TASK-107 through TASK-110 are the bounded implementation and QA sequence, and TASK-100 follows their accepted output as the final release gate.
 
 ## TASK-072 Transition Keyframes (Owner Approved)
 

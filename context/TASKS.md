@@ -2327,14 +2327,14 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 ## TASK-100
 - Phase: selected-place-lens-release-qa
 - Title: Verify the complete selected-place regional lens
-- Depends on: TASK-095, TASK-099, TASK-101, TASK-102, TASK-103, TASK-104
+- Depends on: TASK-095, TASK-101, TASK-102, TASK-103, TASK-104, TASK-110
 - Assigned agent: Independent scientific/UX/accessibility QA; owner final review
-- Contract refs: TASK-096, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/docs/submission-notes.md
-- Data refs: frozen production app and generated/public data after TASK-104
+- Contract refs: TASK-096, TASK-106, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/docs/submission-notes.md
+- Data refs: frozen production app and generated/public data after TASK-110
 - Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
 - User value / decision value: Proves that the place-level regional context is truthful, clear, responsive, and additive to the accepted atlas before public hosting or submission.
-- Functional notes: Freeze production and review TASK-097 through TASK-099. Reuse TASK-095/TASK-099 evidence, add source-to-render audits for all three strips, and return defects to their owning task rather than patching production inside QA. Owner visual/interaction acceptance remains required. Deployment, public-URL durability, and submission remain separate decisions.
-- Statistical notes: Reproduce all applicable/unavailable counts, metric extents, medians, selected values, fixed visibility denominator, null-versus-zero treatment, separate clocks, modeled-score separation, and JSD separation directly from generated/public data. Confirm no median-target, preparedness, quality, causal, territorial, water-condition, or local-knowledge claim entered the interface, including that no place displays an internal editorial-review marker on its political status and that the sourced provenance line from TASK-101 reads identically for all 22 places.
+- Functional notes: Freeze production and review TASK-097 through TASK-099 plus the TASK-107 through TASK-110 refinement. Reuse TASK-095/TASK-099/TASK-110 evidence, add source-to-render audits for both continuous strips and the grouped visibility tally, and return defects to their owning task rather than patching production inside QA. Owner visual/interaction acceptance remains required. Deployment, public-URL durability, and submission remain separate decisions.
+- Statistical notes: Reproduce all recorded/unavailable counts, continuous extents and medians, selected values, exact visibility groups, fixed visibility denominator, null-versus-zero treatment, per-observation clocks, modeled-score separation, and JSD separation directly from generated/public data. Confirm visibility has no redundant median-at-maximum claim and that no rank, median-target, preparedness, quality, causal, territorial, water-condition, or local-knowledge claim entered the interface, including that no place displays an internal editorial-review marker on its political status and that the sourced provenance line from TASK-101 reads identically for all 22 places.
 - Edge cases: Full guided-to-Explorer handoff; direct place URLs and history; complete/null/reported-zero/missing-row records; all panel/dialog/error states including the TASK-102 map-unavailable notice; seven viewports plus live breakpoint crossings in both directions per TASK-103; reflow; color independence; reduced motion; keyboard/focus/touch; measured bundle regression checks.
 - Files to create/modify: artifacts/design/task-100/*; artifacts/provenance/task_100_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only after a formal owning-task rejection
 - Artifacts to produce: final selected-place screenshot matrix, source-to-render trace, exact model/DOM counts, responsive/accessibility measurements, automated gates, security limitations, and owner decision
@@ -2466,3 +2466,123 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: 2026-07-31: TASK-105 moved `pending -> in-progress` after the owner approved the recommended waves direction and authorized one-pass planning, implementation, logging, review, and commit. Scope is limited to the static public asset, document-head link, source-contract test, and existing context files. Strict RED/GREEN, full build and repository gates, byte-identical publication, and quiet tab-scale rendering passed; TASK-105 moved `in-progress -> in-review` for independent accessibility/quality review. Review returned SPEC FAIL / QUALITY FAIL on task-note ownership and exact-geometry coverage; TASK-105 moved `in-review -> needs-fix -> in-progress` for attempt 2 without changing the accepted asset. Attempt 2 restored task-note ownership and mutation-tested the exact ordered paths, then passed the full gates and moved `in-progress -> in-review` for fresh acceptance. Re-review returned SPEC PASS / QUALITY PASS with no findings; TASK-105 moved `in-review -> done`.
 - Status: done
+
+## TASK-106
+- Phase: selected-place-lens-refinement-plan
+- Title: Define the readable regional-lens refinement
+- Depends on: TASK-099, TASK-104
+- Assigned agent: Orchestrator; owner design approval
+- Contract refs: context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DECISIONS.md
+- Data refs: existing generated/public `Geo.regionalStory` records; read-only distribution audit
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Converts the accepted but hard-to-read lens into a precise implementation contract before another code pass begins.
+- Functional notes: Record the owner-approved readout -> distribution -> inspector-line direction; keep peer inspection informational only; retain independent water/renewable dot strips; replace visibility with an exact-value grouped tally; preserve the Night Watch identity, current panel, and map-owned selection; and define TASK-107 through TASK-110 without a standalone plan file.
+- Statistical notes: Water has 19 recorded and 3 unavailable places with one two-place tie; renewable has 20 recorded and 2 unavailable places with no ties; visibility has 22 recorded places across six totals with group sizes 1/2/3/2/2/12 for 6/10/11/12/13/14. Visibility median equals the maximum, 14, and is intentionally omitted from its grouped rendering. Continuous medians remain descriptive and directly labeled.
+- Edge cases: Selected available/unavailable records; different peer clocks; reported zero; continuous endpoints; the water two-place tie; the 12-place visibility maximum group; long place names; desktop panel and 70vh mobile sheet; 200% reflow; touch, keyboard, screen reader, reduced motion, and color-independent selection/focus.
+- Test cases: Self-review the written contract for exact counts, contradictions, placeholders, file ownership, status legality, and alignment with the already approved no-navigation interaction decision.
+- Files to create/modify: context/DESIGN_BRIEF.md; context/ARTISTIC_REDESIGN_BRIEF.md; context/DECISIONS.md; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md
+- Artifacts to produce: one consolidated context/task package; no standalone Markdown plan, production source, generated data, dependency, or runtime artifact
+- Acceptance criteria: The approved large/mobile structural concept, hierarchy, interaction semantics, visibility grouping, exclusions, file ownership, dependencies, TDD sequence, QA matrix, and TASK-100 handoff are explicit and mutually consistent; task-status, secret, and whitespace gates pass.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Read the contract cold and confirm it answers what remains selected, what inspection changes, what stays visible without interaction, why visibility differs, and how mobile/keyboard behavior works.
+- QA notes: The owner approved the revised direction after reviewing the readout/distribution proposal and an independent critique. The documentation pass verified the current component, 400px desktop panel, 70vh mobile sheet, generated 19/20/22 record counts, the single water tie, all-unique renewable values, six visibility totals, 12-place `14 of 14` group, and visibility median-at-maximum collision. The accepted revision rejects forced cross-strip zero alignment, ranking language, floating tooltips, off-scale missing-peer controls, unexplained mobile `pp`, and byte-target-driven design.
+- Attempts: 1
+- Max attempts: 2
+- Attempt log: 2026-08-02: TASK-106 moved `pending -> in-progress` for context-only consolidation after the owner approved the revised design, then `in-progress -> in-review` for the required placeholder/consistency/status self-review. The self-review found no unresolved decision and owner authorization already supplied the design gate, so TASK-106 moved `in-review -> done`. No production code, test, generated/public data, dependency, runtime asset, route, state, or standalone task file changed.
+- Status: done
+
+## TASK-107
+- Phase: selected-place-lens-model-refinement
+- Title: Add inspectable clocks and deterministic visibility groups
+- Depends on: TASK-106
+- Assigned agent: Regional-model Builder; independent scientific/code-quality Checker
+- Contract refs: TASK-106, context/DESIGN_BRIEF.md Selected-Place Regional Position Lens
+- Data refs: existing loaded `Geo[]` and `Geo.regionalStory`; no pipeline or public-data change
+- Scientific refs: context/DATA_CARD.md, context/STORY_BRIEF.md
+- User value / decision value: Gives the renderer exact peer clocks and exact visibility groups without recomputing or inventing analytical facts in React.
+- Functional notes: Extend `RegionalPositionObservation` with nullable `firstYear` and `latestYear`. Add `RegionalPositionGroup` with `value` and code-sorted `observations`, and add ordered `groups` to each `RegionalPositionStrip`. Refactor the existing `buildStrip` value getter to return value plus clock metadata: water/renewable use their own `RegionalStoryMeasure`; visibility supplies a present-position count with null years. Preserve applicable sorting, deterministic continuous collision lanes, extents, padded independent scales, medians, selected state, denominator, input-order determinism, and source immutability. The renderer—not the model—decides to omit visibility's median.
+- Statistical notes: Pin water groups 18 unique/19 recorded, renewable groups 20 unique/20 recorded, and visibility groups `6:1`, `10:2`, `11:3`, `12:2`, `13:2`, `14:12`. Do not merge places with different continuous values, synthesize a shared clock, or convert null years/values to zero.
+- Edge cases: Fiji/Tonga water tie at +0.67; Nauru 13/14; Pitcairn 6/14 with null water/renewable; Guam null water and maximum renewable; empty input; unknown selected code; all-equal fixture; reversed input order.
+- Test cases: First extend `regionalPositionModel.test.ts` so it fails on absent per-observation clocks/groups; assert exact group membership/count order, selected/null states, separate peer clocks, deterministic lanes, unchanged scales/medians, empty-model output, and no input mutation. Then implement only the model contract and make the focused/full suites green.
+- Files to create/modify: app/src/components/panels/regionalPositionModel.ts; app/src/components/panels/regionalPositionModel.test.ts; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: pure typed model contract and focused RED/GREEN evidence
+- Acceptance criteria: Existing numerical outputs remain unchanged; every recorded observation carries source-derived clock metadata where applicable; exact-value groups are deterministic and complete; no UI, CSS, public/generated data, dependency, route, global state, or score changes; independent review passes.
+- Verification commands: npm --prefix app run test -- regionalPositionModel.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Compare NR, PN, GU, Fiji, Tonga, and the visibility group counts directly against `app/public/data/geographies.json`.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-108
+- Phase: selected-place-lens-continuous-readability
+- Title: Make the water and renewable strips readable and inspectable
+- Depends on: TASK-107
+- Assigned agent: Lens UI Builder; independent visualization/accessibility Checker
+- Contract refs: TASK-106, TASK-107, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: TASK-107 regional-position model output
+- Scientific refs: context/STORY_BRIEF.md
+- User value / decision value: Makes the selected island's exact change immediately legible and lets readers inspect regional peers without leaving that island.
+- Functional notes: Refactor the existing water/renewable rendering in `RegionalPositionLens.tsx` into a plain metric title, prominent signed selected readout or explicit unavailable state, quiet selected clock, larger continuous SVG, bare signed endpoints, metric-specific zero reference, directly bound regional-median label/tick, and one reserved inspector line. Keep each scale independent; do not force zero to the same x. Use one focusable plot surface per metric. Pointer movement inspects the nearest recorded observation without moving marks; tap may pin an observation; Left/Right cycles value-sorted observations beginning at the selected code when available; Escape/blur/new place clears inspection. Keep selected and inspection visual states distinct. Default inspector copy reports recorded/unavailable counts; inspected copy reports exact place, signed value, and that place's own years with no rank language.
+- Statistical notes: Preserve exact water/renewable values, extents, medians, clocks, and unavailable counts. The visible unit is established once as percentage-point change; compact readouts use `points`, not unexplained `pp`. Zero is a datum, not a target. Median is descriptive, not a benchmark.
+- Edge cases: Selected value at an endpoint; selected null; positive, negative, zero, and negative-zero formatting; Fiji/Tonga exact tie; long name; pointer near two close observations; mouse hover versus sticky touch; keyboard entry with unavailable selection; focus loss; selected place changes while an inspection is active.
+- Test cases: First replace the current static-label expectations with failing assertions for the readout hierarchy, exactly two continuous median/zero structures, concise endpoint units, one named focusable surface per continuous metric, default/live inspector semantics, and selected/unavailable output. Use quiet headless Chromium to prove hover, tap, Left/Right, Escape, focus, and unchanged `place=<code>`/map selection; no new DOM-test dependency is authorized.
+- Files to create/modify: app/src/components/panels/RegionalPositionLens.tsx; app/src/components/panels/RegionalPositionLens.test.tsx; app/src/styles/base.css; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: desktop and mobile continuous-strip captures plus interaction measurements for pointer, touch, and keyboard states
+- Acceptance criteria: The selected water/renewable value is the visual entry point and remains visible without interaction; peer inspection reports exact data and clock without navigation or rank language; the teal selected mark never transfers; one focus stop per strip, 44px touch band, polite inspector update, independent scales, no horizontal overflow, no new dependency/state/route, and independent review pass.
+- Verification commands: npm --prefix app run test -- RegionalPositionLens.test.tsx regionalPositionModel.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quietly exercise NR, GU, PN, SB, WS, and PG at 1440x900, 390x844, and 844x390; inspect peers with mouse, touch emulation, and keyboard; verify the island, map camera, panel, URL, and history remain fixed.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-109
+- Phase: selected-place-lens-visibility-tally
+- Title: Replace the visibility strip with an exact grouped tally
+- Depends on: TASK-108
+- Assigned agent: Lens UI Builder; independent scientific/visualization Checker
+- Contract refs: TASK-106, TASK-107, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: TASK-107 exact-value groups from existing `Geo.regionalStory.visibility`
+- Scientific refs: context/DATA_CARD.md, context/STORY_BRIEF.md
+- User value / decision value: Turns the largest overlap in the lens into a readable regional fact instead of a compressed pile of marks.
+- Functional notes: Render visibility as six ordered categorical tally groups labeled `6`, `10`, `11`, `12`, `13`, and `14`, with one neutral mark per place, a printed group count, and the selected place as the same unfilled teal ring inside its group. Keep the prominent selected readout as `N of 14`. Replace the redundant visibility median, continuous axis, fixed 0–14 plot, and collision lanes with the direct statement `12 of 22 places have all 14 reviewed datasets`. Reuse the inspector-line interaction: pointer/tap/Left/Right inspects an exact total group, visible copy names a bounded prefix plus `+N more` where needed, and the accessible full string names every place. Inspection remains group context only and never selects a peer island.
+- Statistical notes: Preserve one mark for each of 22 places and exact group counts 1/2/3/2/2/12. Equal group spacing is categorical, not a quantitative distance encoding. Dataset presence remains distinct from quality, completeness, preparedness, vulnerability, need, importance, or condition; `14 of 14` is not called best or complete.
+- Edge cases: Nauru/Tuvalu 13/14 tie; American Samoa/Guam/Northern Mariana Islands 11/14; Pitcairn 6/14 singleton; selected place in the 12-place maximum group; long full accessible list; compact visible truncation; keyboard wrap boundaries; 200% reflow and 70vh mobile vertical budget.
+- Test cases: Start with failing component assertions for six ordered groups, 22 total marks, exact group counts, selected ring membership, no visibility median tick/continuous axis, direct 12-of-22 sentence, full accessible group names, concise visible truncation, and unchanged continuous strips. Use quiet headless interaction checks for hover/tap/keyboard group inspection and selection/URL immutability.
+- Files to create/modify: app/src/components/panels/RegionalPositionLens.tsx; app/src/components/panels/RegionalPositionLens.test.tsx; app/src/styles/base.css; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: NR, PN, AS, and 14-of-14 desktop/mobile tally captures plus group-inspection evidence
+- Acceptance criteria: Visibility reads as six exact tally groups with 22 marks and truthful counts; the 12-place maximum group is legible; no redundant median, false continuous spacing, ranking, navigation, or preparedness claim remains; continuous strips keep their accepted contract; no new dependency/renderer/global state; independent review passes.
+- Verification commands: npm --prefix app run test -- RegionalPositionLens.test.tsx regionalPositionModel.test.ts; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quietly compare NR, PN, AS, GU, and one 14-of-14 place against generated JSON; inspect every group at desktop, portrait, landscape, keyboard-only, reduced motion, grayscale, and deuteranopia.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-110
+- Phase: selected-place-lens-refinement-qa
+- Title: Verify the readable regional lens and interaction contract
+- Depends on: TASK-109
+- Assigned agent: Independent scientific/UX/accessibility QA; owner visual review
+- Contract refs: TASK-106 through TASK-109, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: frozen TASK-109 production app and existing generated/public records
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Proves the refinement is easier to read, honest across both data shapes, and still behaves like one selected-island panel before the final release gate.
+- Functional notes: Freeze production after TASK-109. Audit source -> model -> DOM for both continuous strips and all six visibility groups; compare the accepted hierarchy across desktop, portrait, landscape, and effective 200% reflow; exercise pointer, sticky tap, keyboard, dismissal, selected-null, history, Back/Close, and map-failure states. Return defects to TASK-107, TASK-108, or TASK-109 rather than patching production inside QA. Owner approval is required before `done` and before TASK-100 begins.
+- Statistical notes: Reproduce water 19/3 and median +0.67; renewable 20/2 and median +0.01; visibility 22/0 with six exact groups and 12 at 14/14; exact per-place clocks; selected null versus zero; no visibility median; no rank/quality/preparedness/causal claim.
+- Edge cases: NR, PN, TK, GU, SB, WS, PG, Fiji/Tonga tie, one 14/14 place; long names; selected-value endpoints; all inspection inputs; pointer/touch modality changes; reduced motion; grayscale/deuteranopia; 360x800, 390x844, 430x932, 844x390, 1024x768, 1280x800, and 1440x900; effective 200% reflow.
+- Test cases: Reuse full frontend/build/data/status/security gates; add a quiet/headless state matrix that records selected code, URL, camera center/zoom, panel path, inspected value/group, focus target, live-region text, mark/group counts, overflow, touch-band height, and console/network errors before and after each interaction.
+- Files to create/modify: artifacts/design/task-110/*; artifacts/provenance/task_110_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only after a formal owning-task rejection
+- Artifacts to produce: reviewed large/mobile/reflow frames, exact source-to-render audit, interaction-state matrix, accessibility measurements, raw/gzip bundle deltas, and owner decision
+- Acceptance criteria: A cold reader can identify the selected value first, understand both regional arrangements, inspect peers without losing the selected island, and distinguish visibility presence from quality or preparedness; all values/groups/clocks/nulls are exact; focus/touch/live-region/contrast/overflow/history behavior passes; Night Watch and the rest of the app remain unchanged; independent and owner reviews pass.
+- Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; git diff --check
+- Manual QA: Run the full matrix quietly without opening visible external Brave or Chrome windows; compare before/after lens readability at the same panel states and obtain owner visual/interaction acceptance.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending

@@ -413,3 +413,15 @@ Treat 95,000 built CSS bytes as an internal regression target, not a Pacific Dat
 No per-task Markdown, new renderer, dependency, router, state system, dashboard shell, or parallel theme is authorized.
 
 Reason: hands-on QA found four real paths that fixed-viewport, working-WebGL automation cannot cover. Correct source claims, graceful failure, and usable controls matter more than preserving an arbitrary raw-byte number; explicit measurement still prevents accidental bloat.
+
+## 2026-08-02: Make The Selected-Place Lens Readable Before Adding More Analysis
+
+Keep the inline selected-place lens and its single question: where does this island sit within the observed Pacific record? Preserve the map as the only selector and make peer inspection informational only. Hover, tap, or keyboard inspection may reveal exact peer evidence, but it cannot change the chosen island, map camera, panel path, URL, or history.
+
+Use two visual arrangements that match the data. Water and renewable-energy change remain independent continuous dot strips with a prominent selected readout, their own clocks and domains, a truthful zero reference, and a directly labeled regional median. Dataset visibility becomes a grouped tally across its six observed totals because 12 places share `14 of 14`; omit its median because the median equals the maximum and adds a live label collision rather than useful context.
+
+Use one reserved in-flow inspector line per metric instead of a floating tooltip. It shows recorded/unavailable counts by default, exact island/value/clock detail for the two continuous measures, and exact group membership for visibility. Use one focusable plot surface and one full-width touch band per metric, with Left/Right inspection and Escape dismissal, rather than dozens of Tab stops or tiny hit targets. Keep exact values visible without interaction and avoid rank, percentile, best/worst, quality, or preparedness language.
+
+Implement through the existing `regionalPositionModel.ts`, `RegionalPositionLens.tsx`, tests, and regional-lens CSS only. No new data output, dependency, renderer, route, state system, dashboard shell, tab set, drawer, or visual identity is authorized. Preserve Night Watch and treat the 95,000-byte CSS value as a diagnostic target rather than a Challenge rule; update it transparently if the clean accessible implementation justifies a measured increase.
+
+Reason: the first lens implementation proved the analytical idea but gave every element nearly equal typographic weight and rendered a six-level bounded count as though it were the same continuous distribution as the other two measures. The revised hierarchy and grouped tally reduce decoding burden while preserving the accepted story, evidence meaning, and application architecture.

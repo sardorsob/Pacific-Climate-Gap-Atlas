@@ -148,32 +148,43 @@ The owner selected the **inline regional lens** on 2026-07-25. It extends the re
 
 The strips replace the current duplicate regional summary; they do not sit beneath it. The selected-place panel remains one native vertical reading surface. There are no Place/Compare tabs, second drawer, comparison workspace, dashboard grid, or new mode.
 
-### Strip-Plot Grammar
+### Metric Grammar
 
-- Use a deterministic observed dot/rug strip, not a histogram, density curve, posterior curve, or modeled distribution. The dataset contains 22 places and no posterior distribution.
-- Show every applicable place as a small flat neutral dot. Show the selected place as a crisp outlined teal ring whose meaning is also stated in accessible text.
-- Use deterministic collision stacking when values overlap. Do not jitter randomly or let stacking imply a third variable.
-- Show the regional median as a thin labeled reference tick and call it **regional median**. It is descriptive context, not a target, threshold, benchmark, or policy goal.
-- Keep the selected place's exact value visible without hover. Label direct axis endpoints. Use percentage points for both change strips and `of 14` for visibility.
-- Give each metric its own honest domain. Do not compare position or dot spacing across different strips as if the units were shared.
-- Keep nulls and incomplete records out of the numeric scale and report their count in an adjacent **unavailable** note. Never place missing values at zero.
-- Keep all explanatory labels, values, caveats, and sources in code-bound editable text. Concept-image values and shapes never become application data.
+The 2026-08-02 owner-approved readability refinement keeps one inline regional lens but stops rendering three different data shapes as identical strips.
+
+- Water and renewable-energy change remain deterministic observed dot/rug strips. They are continuous signed percentage-point changes with nearly unique values: water has 19 recorded places and one two-place tie; renewable energy has 20 recorded places and no ties.
+- Dataset visibility becomes a grouped tally because it is a bounded discrete count with only six observed totals. The groups are `6`, `10`, `11`, `12`, `13`, and `14` of 14; 12 of the 22 places share `14 of 14`.
+- Keep one flat neutral mark per recorded place in every metric. The selected place remains a larger unfilled teal ring. Inspection receives a separate quiet focus/cursor treatment and never inherits the selected treatment.
+- Use deterministic collision stacking only for the rare continuous-value ties. Do not jitter randomly or use collision lanes for visibility; its exact ties are the content of the grouped tally.
+- Give each metric a plain title on its own line, then a prominent selected-place readout and a quieter clock. The selected exact value or explicit unavailable state must remain visible without interaction.
+- State the unit once beside the selected readout. Continuous endpoints use bare signed numbers. Use human-readable `points` in visible compact copy rather than unexplained `pp`; accessible text may spell out `percentage points`.
+- Show zero and the **regional median** as directly bound reference ticks for water and renewable energy only. Each continuous metric keeps its own honest domain and its zero appears at its own truthful position; zero positions and scales are never forced to align across strips.
+- Omit a median from visibility. Its median equals its maximum, `14 of 14`, and a grouped distribution plus the direct sentence **12 of 22 places have all 14 reviewed datasets** communicates the record without an overlapping or redundant reference tick.
+- Keep nulls and incomplete records out of every numeric arrangement and report their count as **unavailable**. Never place missing values at zero or create off-scale peer controls solely to name missing places.
+- Keep all labels, values, clocks, group membership, caveats, and sources code-bound to existing generated data. Concept values and shapes never become application data.
 
 ### Interaction And Accessibility
 
-The map remains the place selector. The default strip marks are explanatory, not 66 new controls or tiny tap targets. The complete reading must work without hover. Optional focused detail may be added only if it is keyboard reachable, has a clear accessible name, and does not create a dense tab sequence.
+The map remains the only place selector. Peer inspection is informational only: it cannot change the selected island, move or recenter the map, replace panel content, write URL/history state, or navigate. The teal selected mark remains visible while another observation is inspected.
 
-On desktop, the strips use the current panel width and flow beneath the place identity. On portrait and landscape mobile, they remain in the existing bottom sheet, recompute to available width, and continue in native vertical flow. No strip receives horizontal scrolling. Existing collapse, Close, Back, focus restoration, 44px control targets, and `place=<code>` URL/history behavior remain unchanged.
+- Reserve one in-flow inspector line beneath each metric. Its default state reports recorded and unavailable counts. Hover, tap, or keyboard inspection temporarily replaces that text with exact peer detail; no floating tooltip, portal, overlay, or chart-driven layout shift is required.
+- Water and renewable inspection names one place, its signed change, and its own first/latest years. It adds no `best`, `worst`, `highest`, `lowest`, percentile, or policy interpretation.
+- Visibility inspection operates on an exact-value group. Visible text may truncate a long list with `+N more`, while the accessible text names every place in the group.
+- Each plot/tally is one focusable interaction surface rather than one Tab stop per mark. Left/Right steps through sorted continuous observations or ordered visibility groups. Focus begins at the selected record when available; Escape restores the default inspector line. Do not add undiscoverable shortcut keys or timers.
+- Pointer and touch use one approximately 44px-high plot band with nearest-observation or group hit testing. Tap inspection remains until Escape, focus loss, a tap elsewhere, or a new map selection; ordinary pointer leave may clear non-sticky hover inspection.
+- The interaction surface has a concise group name and keyboard instructions. The reserved inspector line is a polite atomic live region; selection and focus remain distinguishable without color, motion, or glow.
+
+Desktop and mobile have nearly the same plot width; the mobile constraint is the bottom sheet's vertical budget. Preserve the same reading order in both states, shorten spacing and plot height before removing evidence, and abbreviate only after the full unit has been established. No metric receives horizontal scrolling. Existing collapse, Close, Back, focus restoration, 44px primary controls, reduced motion, and `place=<code>` URL/history behavior remain unchanged.
 
 ### Semantic Boundaries
 
-The lens answers one question: **where does the selected place sit within the observed Pacific record?** It does not say why a value changed and does not infer preparedness, data quality, completeness, vulnerability, need, importance, environmental condition, or local knowledge. Water and renewable endpoints retain their separate clocks and descriptive/non-causal framing. Visibility remains a fixed 14-position presence count, not a score.
+The lens answers one question: **where does the selected place sit within the observed Pacific record?** It does not say why a value changed and does not infer preparedness, data quality, completeness, vulnerability, need, importance, environmental condition, or local knowledge. Water and renewable endpoints retain their separate clocks and descriptive/non-causal framing. Visibility remains a fixed 14-position presence count, not a score. Group size describes how many places share a recorded total; it is not a rank, grade, or comparison of readiness.
 
 The optional Gap, Pressure, and Capacity line remains clearly modeled and subordinate to the observed strips. JSD nearest neighbors continue to answer the different secondary question, **which official-data evidence profiles have a similar shape?** They remain panel-only, non-causal, non-geographic, and outside the regional-position strips.
 
 ### Implementation Boundary
 
-Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Build one pure regional-position model and one plain React/SVG component, then replace `RegionalRecordSummary` inside `CountryPanel`. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
+Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Extend the existing pure regional-position model and plain React/SVG component in place. The model may add per-observation clocks and deterministic exact-value groups; the component may keep small internal inspection state that never escapes the lens. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
 
 The current built CSS is 94,842 bytes and JavaScript is 1,035,371 bytes. The 95,000/1,050,000-byte values are preferred internal regression targets derived from earlier measured baselines, not Pacific DataViz Challenge rules. Delete and reuse styles when that leaves a clearer product, but do not weaken correctness, accessibility, or the approved composition to preserve a few raw bytes. If a clean change crosses a target, record raw and gzip deltas and update the checker plus active context explicitly; 97,500 CSS bytes remains the provisional review threshold, not an external ceiling. Minification tricks and obscured code are rejected.
 

@@ -2,7 +2,12 @@
 
 ## Immediate Next Step
 
-TASK-086 through TASK-094, TASK-096 through TASK-099, and TASK-101 through TASK-105 are complete and accepted at their required gates. TASK-105 adds one static waves favicon using the existing Night Watch palette and Vite public-asset seam, with no runtime or application redesign. Frozen-production TASK-095 passed automated and independent QA and remains `in-review`; the owner's live visual/interaction acceptance is the only remaining gate before done. After that acceptance, run frozen TASK-100. Current built assets are 1,035,371-byte JS and 94,842-byte CSS. Their 1,050,000/95,000-byte checker thresholds are internal regression targets rather than Challenge limits, and correctness/accessibility may justify an explicit measured update. Deployment and submission remain separate decisions.
+TASK-106 is complete and authorizes the readable regional-lens batch. Start TASK-107's pure model refinement, then run TASK-108 and TASK-109 sequentially because both touch the lens component/tests/CSS, and finish with frozen TASK-110 scientific/visual/accessibility QA plus owner review. Peer inspection must remain informational only; the island, map, panel path, URL, and history stay fixed. Frozen-production TASK-095 still awaits owner acceptance. TASK-100 begins only after TASK-095 and TASK-110 are both done. Current pre-batch assets remain 1,035,371-byte JS and 94,842-byte CSS; their thresholds are internal diagnostics rather than Challenge limits. Deployment and submission remain separate decisions.
+
+## 2026-08-02
+
+- Completed the context-only TASK-106 design and plan after owner approval. Water and renewable energy remain independent continuous strips but gain prominent selected readouts, exact peer clocks, truthful per-strip zero/median references, and one reserved inspector line. Visibility becomes six exact tally groups with one mark per place and a direct 12-of-22 at 14/14 statement; the redundant median-at-maximum tick is removed. The plan rejects cross-strip zero alignment, floating tooltips, peer navigation, rank language, off-scale missing-peer controls, new dependencies/renderers/routes/state, and byte-target-driven compromise.
+- Registered sequential TASK-107 through TASK-110 for pure model metadata/grouping, continuous readout/inspection, grouped visibility rendering, and frozen QA. TASK-100 now depends on TASK-110. No production source, tests, generated/public data, dependency, runtime asset, or standalone plan file changed.
 
 ## 2026-07-31
 

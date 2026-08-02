@@ -91,7 +91,7 @@ function inspectedLabel(observation: RegionalPositionObservation) {
 }
 
 function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip; name: string; clock: string | null }) {
-  const sectionRef = useRef<HTMLElement>(null);
+  const plotRef = useRef<SVGSVGElement>(null);
   const [inspected, setInspected] = useState<RegionalPositionObservation | null>(null);
   const [sticky, setSticky] = useState(false);
   const extent = strip.extent;
@@ -111,7 +111,7 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
 
   useEffect(() => {
     const clearOutside = (event: globalThis.PointerEvent) => {
-      if (!sectionRef.current?.contains(event.target as Node)) clearInspection();
+      if (!plotRef.current?.contains(event.target as Node)) clearInspection();
     };
     document.addEventListener("pointerdown", clearOutside, true);
     return () => document.removeEventListener("pointerdown", clearOutside, true);
@@ -140,7 +140,6 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
 
   return (
     <section
-      ref={sectionRef}
       className="regional-lens__strip regional-lens__strip--continuous"
       data-regional-strip={strip.id}
     >
@@ -160,6 +159,7 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
       </div>
       <span id={instructionsId} className="sr-only">Use Left and Right to inspect regional peers; Escape clears inspection.</span>
       {extent && scale && <svg
+        ref={plotRef}
         data-continuous-plot
         className="regional-lens__plot regional-lens__plot--continuous"
         viewBox="0 0 320 80"

@@ -132,10 +132,12 @@ describe("RegionalPositionLens", () => {
     expect(css).toMatch(/\.regional-lens__selected\s*\{[^}]*fill:\s*none;/);
   });
 
-  it("uses the existing panel-boundary token for neutral peer marks and a 44px hit band", () => {
+  it("bounds the continuous hit surface while preserving visibility overflow", () => {
     const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 
     expect(css).toMatch(/\.regional-lens__peer\s*\{[^}]*fill:\s*var\(--line\);/);
+    expect(css).toMatch(/\.regional-lens__plot\s*\{[^}]*overflow:\s*visible;/);
+    expect(css).toMatch(/\.regional-lens__plot--continuous\s*\{[^}]*max-width:\s*320px;[^}]*justify-self:\s*center;/);
     expect(renderLens("NR").match(/class="regional-lens__hit-band"[^>]*height="44" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(2);
   });
 });

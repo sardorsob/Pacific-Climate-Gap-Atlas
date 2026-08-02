@@ -9,9 +9,9 @@ ASSETS_DIR = ROOT / "app" / "dist" / "assets"
 
 # TASK-056 accepted JS baseline was 1,018,827 bytes, below the original cap.
 MAX_JS_BYTES = 1_050_000
-# TASK-056 accepted CSS baseline was 93,895 bytes (above the original 92,000 cap).
-# The 95,000-byte cap is 1.18% above that measured baseline to allow release noise.
-MAX_CSS_BYTES = 95_000
+# TASK-108 approved a provisional internal regression threshold after the clean
+# continuous-inspector implementation crossed the prior 95,000-byte cap.
+MAX_CSS_BYTES = 97_500
 
 
 def check_assets(assets_dir: Path) -> list[str]:

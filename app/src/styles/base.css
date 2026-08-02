@@ -250,7 +250,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .regional-lens__clock { float: right; }
 .regional-lens__label { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; line-height: 1.35; }
 .regional-lens__label span { color: var(--ink-soft); text-align: right; }
-.regional-lens__plot { width: 100%; height: auto; }
+.regional-lens__plot { width: 100%; height: auto; overflow: visible; }
+.regional-lens__plot--continuous { max-width: 320px; justify-self: center; }
 .regional-lens__axis { stroke: var(--line); stroke-width: 1; }
 .regional-lens__peer { fill: var(--line); }
 .regional-lens__selected { fill: none; stroke: var(--accent); stroke-width: 2; }

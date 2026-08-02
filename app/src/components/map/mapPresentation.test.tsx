@@ -138,4 +138,13 @@ describe("neutral overview presentation", () => {
     expect(baseCss).toMatch(/\.app-state\s*\{[^}]*background:\s*var\(--ocean\);[^}]*color:\s*#f3f7f8;/);
     expect(baseCss).toMatch(/\.outlook-banner\s*\{[^}]*background:\s*var\(--caveat-bg\);[^}]*color:\s*var\(--caveat-ink\);/);
   });
+
+  it("reserves the desktop panel width in the map failure state", () => {
+    const desktopSeam = baseCss.match(/@media \(min-width: 881px\) \{([\s\S]*?)\n\}/)?.[1] ?? "";
+
+    expect(desktopSeam).toMatch(
+      /\.atlas-shell--panel \.app-state\s*\{[^}]*margin-right:\s*var\(--panel-w\);[^}]*\}/,
+    );
+    expect(baseCss.match(/\.atlas-shell--panel \.app-state/g) ?? []).toHaveLength(1);
+  });
 });

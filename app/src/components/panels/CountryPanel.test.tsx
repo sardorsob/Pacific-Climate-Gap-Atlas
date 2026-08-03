@@ -150,9 +150,9 @@ describe("CountryPanel", () => {
     );
 
     expect(html).toContain("Where Nauru sits in the Pacific");
-    expect(html).toContain("Safely managed drinking-water change");
+    expect(html).toContain("Safely managed drinking water");
     expect(html).toContain("+1.92 percentage points");
-    expect(html).toContain("Renewable-energy-share change");
+    expect(html).toContain("Renewable energy share");
     expect(html).toContain("+1.75 percentage points");
     expect(html).toContain('<strong class="regional-lens__value">13 of 14</strong>');
     expect(html).toContain("Selected Nauru 13 of 14");

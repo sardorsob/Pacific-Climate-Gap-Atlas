@@ -9,9 +9,9 @@ import {
 } from "./regionalPositionModel";
 
 const METRICS = {
-  water: "Safely managed drinking-water change",
-  renewable: "Renewable-energy-share change",
-  visibility: "Reviewed datasets represented",
+  water: "Safely managed drinking water",
+  renewable: "Renewable energy share",
+  visibility: "Reviewed datasets with a record",
 } as const;
 
 function valueLabel(strip: RegionalPositionStrip, value: number) {
@@ -23,6 +23,7 @@ function position(value: number, [min, max]: [number, number]) {
 }
 
 function stripSummary(strip: RegionalPositionStrip, name: string, clock: string | null) {
+  const metric = strip.id === "visibility" ? METRICS.visibility : `${METRICS[strip.id]} change`;
   const selected = strip.selected.value === null
     ? `${name} unavailable for a comparable period in the reviewed regional series`
     : `${strip.id === "visibility" ? "Selected" : "Selected:"} ${name} ${valueLabel(strip, strip.selected.value)}`;
@@ -30,7 +31,7 @@ function stripSummary(strip: RegionalPositionStrip, name: string, clock: string 
     ? `observed range ${valueLabel(strip, strip.extent[0])} to ${valueLabel(strip, strip.extent[1])}`
     : "no observed range";
   const median = strip.median === null ? "no regional median" : `regional median ${valueLabel(strip, strip.median)}`;
-  return `${METRICS[strip.id]}. ${selected}; ${range}${clock ? `; reviewed clock ${clock}` : ""}; ${median}; ${strip.applicable.length} applicable; ${strip.unavailableCount} unavailable.`;
+  return `${metric}. ${selected}; ${range}${clock ? `; reviewed clock ${clock}` : ""}; ${median}; ${strip.applicable.length} applicable; ${strip.unavailableCount} unavailable.`;
 }
 
 function groupPosition(index: number) {
@@ -111,7 +112,7 @@ function VisibilityStrip({ strip, name }: { strip: RegionalPositionStrip; name: 
           <strong className="regional-lens__value">{strip.selected.value} of 14</strong>
         </p>
       </div>
-      <p className="regional-lens__fact">{fullVisibilityCount} of {strip.applicable.length} places have all 14 reviewed datasets</p>
+      <p className="regional-lens__fact">{fullVisibilityCount} of {strip.applicable.length} places have records in all 14 reviewed datasets</p>
       <span id={instructionsId} className="sr-only">Use Left and Right to inspect visibility groups; Escape clears inspection.</span>
       <svg
         ref={plotRef}
@@ -241,7 +242,7 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
         {selectedAvailable ? (
           <p className="regional-lens__readout">
             <strong className="regional-lens__value">{signedChange(strip.selected.value!)}</strong><span>points</span>
-            {clock && <span className="regional-lens__clock">{clock}</span>}
+            {clock && <span className="regional-lens__clock">Change · {clock.replace(" to ", "–")}</span>}
           </p>
         ) : (
           <p className="regional-lens__readout regional-lens__readout--unavailable" aria-label={extent ? undefined : summary}>
@@ -304,7 +305,7 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
         <text data-endpoint="high" x={position(extent[1], scale)} y="78" textAnchor="end" aria-hidden="true">{signedChange(extent[1])}</text>
       </svg>}
       <p id={inspectorId} className="regional-lens__meta regional-lens__inspector" aria-live="polite" aria-atomic="true">
-        {inspected ? inspectedLabel(inspected) : `${strip.applicable.length} recorded · ${strip.unavailableCount} unavailable`}
+        {inspected ? inspectedLabel(inspected) : `${strip.applicable.length} places with comparable change · ${strip.unavailableCount} unavailable`}
       </p>
     </section>
   );

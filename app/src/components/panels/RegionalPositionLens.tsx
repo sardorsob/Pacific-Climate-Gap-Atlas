@@ -140,7 +140,7 @@ function VisibilityStrip({ strip, name }: { strip: RegionalPositionStrip; name: 
           }
         }}
       >
-        <rect className="regional-lens__hit-band" x="0" y="34" width="320" height="44" fill="transparent" style={{ pointerEvents: "all" }} aria-hidden="true" />
+        <rect className="regional-lens__hit-band" x="0" y="31" width="320" height="50" fill="transparent" style={{ pointerEvents: "all" }} aria-hidden="true" />
         {inspected && <rect data-inspection-group className="regional-lens__group-cursor" x={groupPosition(strip.groups.indexOf(inspected)) - 23} y="34" width="46" height="44" rx="4" aria-hidden="true" />}
         {strip.groups.map((group, groupIndex) => (
           <g key={group.value} data-visibility-group={group.value} data-group-count={group.observations.length} aria-hidden="true">
@@ -177,11 +177,12 @@ function nearestObservation(strip: RegionalPositionStrip, x: number) {
   });
 }
 
-function inspectedLabel(observation: RegionalPositionObservation) {
+function inspectedLabel(observation: RegionalPositionObservation, selectedCode: string) {
   const clock = observation.firstYear !== null && observation.latestYear !== null
     ? `${observation.firstYear} to ${observation.latestYear}`
     : "years unavailable";
-  return `${observation.name}: ${signedChange(observation.value)} points · ${clock}`;
+  const prefix = observation.code === selectedCode ? "Selected place · " : "";
+  return `${prefix}${observation.name}: ${signedChange(observation.value)} points · ${clock}`;
 }
 
 function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip; name: string; clock: string | null }) {
@@ -278,9 +279,9 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
           }
         }}
       >
-        <rect className="regional-lens__hit-band" x="8" y="22" width="304" height="44" fill="transparent" style={{ pointerEvents: "all" }} aria-hidden="true" />
+        <rect className="regional-lens__hit-band" x="8" y="19" width="304" height="50" fill="transparent" style={{ pointerEvents: "all" }} aria-hidden="true" />
         <line className="regional-lens__axis" x1="16" x2="304" y1="44" y2="44" aria-hidden="true" />
-        <line data-zero-reference className="regional-lens__axis" x1={position(0, scale)} x2={position(0, scale)} y1="28" y2="58" aria-hidden="true" />
+        <line data-zero-reference className="regional-lens__zero" x1={position(0, scale)} x2={position(0, scale)} y1="28" y2="58" aria-hidden="true" />
         <text className="regional-lens__zero-label" x={position(0, scale)} y="24" textAnchor="middle" aria-hidden="true">0</text>
         {strip.applicable.map((observation) => (
           <circle
@@ -299,13 +300,13 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
             <text className="regional-lens__median-label" x={position(strip.median, scale)} y="13" textAnchor="middle" aria-hidden="true">regional median {signedChange(strip.median)}</text>
           </>
         )}
-        {inspected && <line data-inspection-cursor className="regional-lens__median regional-lens__cursor" x1={position(inspected.value, scale)} x2={position(inspected.value, scale)} y1="30" y2="58" aria-hidden="true" />}
+        {inspected && <line data-inspection-cursor className="regional-lens__cursor" x1={position(inspected.value, scale)} x2={position(inspected.value, scale)} y1="30" y2="58" aria-hidden="true" />}
         {selectedAvailable && <circle data-selected-mark className="regional-lens__selected" cx={position(strip.selected.value!, scale)} cy={44 - (selectedObservation?.lane ?? 0) * 3} r="5" aria-hidden="true" />}
         <text data-endpoint="low" x={position(extent[0], scale)} y="78" textAnchor="start" aria-hidden="true">{signedChange(extent[0])}</text>
         <text data-endpoint="high" x={position(extent[1], scale)} y="78" textAnchor="end" aria-hidden="true">{signedChange(extent[1])}</text>
       </svg>}
       <p id={inspectorId} className="regional-lens__meta regional-lens__inspector" aria-live="polite" aria-atomic="true">
-        {inspected ? inspectedLabel(inspected) : `${strip.applicable.length} places with comparable change · ${strip.unavailableCount} unavailable`}
+        {inspected ? inspectedLabel(inspected, strip.selected.code) : `${strip.applicable.length} places with comparable change · ${strip.unavailableCount} unavailable`}
       </p>
     </section>
   );

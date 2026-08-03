@@ -165,6 +165,27 @@ describe("RegionalPositionLens", () => {
     expect(css).toMatch(/\.regional-lens__selected\s*\{[^}]*fill:\s*none;/);
   });
 
+  it("gives zero, median, inspection, group inspection, and selection distinct paint", () => {
+    const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+    const source = readFileSync(new URL("./RegionalPositionLens.tsx", import.meta.url), "utf8");
+
+    expect(css).toMatch(/\.regional-lens__zero\s*\{[^}]*stroke-width:\s*1;[^}]*\}/);
+    expect(css).toMatch(/\.regional-lens__median\s*\{[^}]*stroke-width:\s*1;[^}]*stroke-dasharray:\s*1 3;/);
+    expect(css).toMatch(/\.regional-lens__cursor\s*\{[^}]*stroke-width:\s*1\.5;[^}]*stroke-dasharray:\s*none;/);
+    expect(css).toMatch(/\.regional-lens__group-cursor\s*\{[^}]*stroke-width:\s*1;[^}]*stroke-dasharray:\s*none;/);
+    expect(css).toMatch(/\.regional-lens__selected\s*\{[^}]*fill:\s*none;[^}]*stroke:\s*var\(--accent\);/);
+    expect(source).toContain('className="regional-lens__zero"');
+    expect(source).toContain('className="regional-lens__cursor"');
+    expect(source).not.toContain('regional-lens__median regional-lens__cursor');
+  });
+
+  it("identifies the selected place only when its own observation is inspected", () => {
+    const source = readFileSync(new URL("./RegionalPositionLens.tsx", import.meta.url), "utf8");
+
+    expect(source).toContain('observation.code === selectedCode ? "Selected place · " : ""');
+    expect(source).toContain("inspectedLabel(inspected, strip.selected.code)");
+  });
+
   it("uses one centered measure column and the approved type and spacing rhythm", () => {
     const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 
@@ -184,13 +205,17 @@ describe("RegionalPositionLens", () => {
     expect(css).not.toContain(".regional-lens__label");
   });
 
-  it("bounds the continuous hit surface while preserving visibility overflow", () => {
+  it("restores 50-unit plot hit surfaces without changing either viewBox", () => {
     const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+    const html = renderLens("NR");
 
     expect(css).toMatch(/\.regional-lens__peer\s*\{[^}]*fill:\s*var\(--line\);/);
     expect(css).toMatch(/\.regional-lens__plot\s*\{[^}]*overflow:\s*visible;/);
     expect(css).toMatch(/\.regional-lens__plot--continuous\s*\{[^}]*max-width:\s*320px;[^}]*justify-self:\s*center;/);
-    const continuous = stripHtml(renderLens("NR"), "water") + stripHtml(renderLens("NR"), "renewable");
-    expect(continuous.match(/class="regional-lens__hit-band"[^>]*height="44" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(2);
+    expect(html.match(/class="regional-lens__hit-band" x="8" y="19" width="304" height="50" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(2);
+    expect(html.match(/class="regional-lens__hit-band" x="0" y="31" width="320" height="50" fill="transparent" style="pointer-events:all"/g) ?? []).toHaveLength(1);
+    expect(html.match(/viewBox="0 0 320 80"/g) ?? []).toHaveLength(2);
+    expect(html.match(/viewBox="0 0 320 82"/g) ?? []).toHaveLength(1);
+    expect(html).not.toContain("preserveAspectRatio");
   });
 });

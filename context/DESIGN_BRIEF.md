@@ -182,11 +182,39 @@ The lens answers one question: **where does the selected place sit within the ob
 
 The optional Gap, Pressure, and Capacity line remains clearly modeled and subordinate to the observed strips. JSD nearest neighbors continue to answer the different secondary question, **which official-data evidence profiles have a similar shape?** They remain panel-only, non-causal, non-geographic, and outside the regional-position strips.
 
+### Approved Typography, Wording, And Rhythm Correction
+
+Owner review of TASK-110 accepted the lens's data, structure, plots, and informational-only interaction but did not accept its reading rhythm. Fresh desktop, portrait, landscape, and 320px measurements showed a concrete hierarchy defect: the 11px metric title sits below inherited 16px unit and clock text; the floated clock becomes detached and baseline-misaligned; complete measures have only 11px between them and 4px inside them; all SVG annotations remain 9px; the renewable +0.01 median paints only 0.068 CSS px from zero at 390px; and the nominal 44-unit SVG band renders at 39.05 CSS px when the 320px viewport leaves a 284px plot.
+
+Use the approved **Direction A+** correction. It retains one vertical, card-free lens and the 24px selected value. Every measure and the section heading use one intentional `min(100%, 320px)` centered column. Metric titles start at 12.5px serif/600; selected numbers remain 24px sans/700; units and clocks become 11px soft sans text in one wrapping, baseline-aligned flex row. Unavailable remains explicit at 13px with its explanation on a separate 10px line. Desktop rhythm is 18px between measures, 3px inside a measure, and 5px before its plot; the existing mobile media seam compacts those values to 13px, 2px, and 4px. General SVG text becomes 10px and visibility group values 11px. The visibility inspector reserves two lines so inspection never moves later content. A same-state screenshot may reduce titles once to 12px only if 12.5px competes with the 24px value, and that measured correction must be recorded in TASK-111 QA. Remove unused lens-label rules rather than adding a card, rule, breakpoint system, or layout wrapper.
+
+Use shorter, direct visible wording while preserving full scientific meaning in accessible summaries and Methods:
+
+- **Safely managed drinking water** — selected signed `points` value plus `Change · 2000–2020`-style period.
+- **Renewable energy share** — selected signed `points` value plus its independent `Change · firstYear–latestYear` period.
+- **Reviewed datasets with a record** — selected `N of 14` plus **12 of 22 places have records in all 14 reviewed datasets**.
+- Continuous default inspector: **N places with comparable change · M unavailable**.
+- Selected self-inspection: **Selected place · [name]: [signed value] points · [firstYear]–[latestYear]**.
+
+The compact visible labels do not authorize a shared clock, a level claim, or shorter caveats. Accessible summaries still say that continuous values are first-to-latest changes in percentage points and name complete year ranges. `points` remains the visible unit; unexplained `pp` stays prohibited.
+
+Use a learnable, non-color-dependent mark grammar without moving data:
+
+- zero is a thin solid reference;
+- the regional median is a sparse dashed reference;
+- active inspection is a heavier solid, non-teal cursor;
+- the visibility group cursor is a solid, non-teal outline;
+- the selected place remains the only unfilled teal ring.
+
+At the 320px application floor, preserve the existing SVG viewBoxes, visible coordinates, and plot widths. Increase only the transparent hit rectangles from 44 to 50 viewBox units, centered on the same interaction region, so their scaled CSS height remains at least 44px. Do not distort the SVG, add overflow, create an HTML overlay, add per-mark focus stops, or branch on viewport size in JavaScript. The current 39.05px band is a failure of this project's stronger 44px policy; it is not described as a Challenge rule or an automatic WCAG 2.2 AA failure.
+
+Do not adopt the rejected alternatives: reducing the selected value to 19px reverses the approved hierarchy; warning-colored unavailable text overstates ordinary record absence; dividing metrics with repeated rules or a landscape two-column grid turns the panel toward dashboard grammar. The panel-wide 808px landscape line measure is a separate possible panel-shell decision, not authority for this lens task.
+
 ### Implementation Boundary
 
-Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Extend the existing pure regional-position model and plain React/SVG component in place. The model may add per-observation clocks and deterministic exact-value groups; the component may keep small internal inspection state that never escapes the lens. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
+Reuse `Geo.regionalStory` and the already loaded `Geo[]` collection. Extend the existing pure regional-position model and plain React/SVG component in place. The model already owns per-observation clocks and deterministic exact-value groups; TASK-111 and TASK-112 do not change it. The component may keep small internal inspection state that never escapes the lens. Add no pipeline output, public-data field, API, D3/Visx dependency, renderer, router, reducer, global comparison state, or new dashboard shell.
 
-The current built CSS is 95,135 bytes and JavaScript is 1,040,365 bytes. The checker now uses 97,500/1,050,000-byte provisional internal regression thresholds, not Pacific DataViz Challenge rules. Relative to frozen TASK-107, TASK-108 adds 293 raw/72 gzip CSS bytes and 4,613 raw/1,238 gzip JavaScript bytes. Delete and reuse styles when that leaves a clearer product, but do not weaken correctness, accessibility, or the approved composition to preserve a few raw bytes. The CSS threshold update from 95,000 to 97,500 is an explicit measured allowance for the clean continuous-inspector implementation, not an external ceiling. Minification tricks and obscured code are rejected.
+The current built CSS is 95,474 bytes and JavaScript is 1,042,934 bytes. The checker uses 97,500/1,050,000-byte provisional internal regression thresholds, not Pacific DataViz Challenge rules. Delete and reuse styles when that leaves a clearer product, but do not weaken correctness, accessibility, or the approved composition to preserve a few raw bytes. The CSS threshold update from 95,000 to 97,500 remains an explicit measured allowance for the clean continuous-inspector implementation, not an external ceiling. Minification tricks and obscured code are rejected.
 
 ## Historical Implemented Direction: The Shape Of What We Know
 

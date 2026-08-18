@@ -15,7 +15,8 @@
     "headless": true,
     "visible_external_browser_tabs_opened": false,
     "case_level_evidence": true,
-    "screenshot_pixels_fresh_for_attempt_3": true
+    "screenshot_pixels_fresh_for_attempt_3": true,
+    "independent_review_evidence_correction": true
   },
   "scientific_audit": {
     "source_hashes": {
@@ -5025,7 +5026,7 @@
         "height": 844
       },
       "input_modality": "keyboard",
-      "action": "ArrowRight while selected place has null water",
+      "action": "ArrowRight while selected place has null water, after idle/two-rAF stable camera sample",
       "before": {
         "selected_code": "PN",
         "url": {
@@ -5041,17 +5042,18 @@
           "operations": []
         },
         "camera": {
-          "measurement": "direct MapLibre getters",
+          "measurement": "direct MapLibre getters after idle/two-rAF stabilization",
+          "is_moving": false,
           "center": [
-            -174.390209,
-            -28.714843
+            -128.3,
+            -24.4
           ],
           "zoom": 1.38
         },
         "selected_projected_screen_coordinate": {
-          "measurement": "rendered map accessibility target center",
-          "x": 365.594,
-          "y": 404.125
+          "measurement": "rendered map accessibility target center after idle/two-rAF stabilization",
+          "x": 195,
+          "y": 422
         },
         "panel": {
           "path": "country",
@@ -5061,12 +5063,12 @@
           "toggle_aria_expanded": "true",
           "rect": {
             "x": 0,
-            "y": 707.7738647460938,
+            "y": 253.203125,
             "width": 390,
-            "height": 590.7969360351562,
-            "top": 707.7738647460938,
+            "height": 590.796875,
+            "top": 253.203125,
             "right": 390,
-            "bottom": 1298.57080078125,
+            "bottom": 844,
             "left": 0
           }
         },
@@ -5074,7 +5076,7 @@
           "metric": null,
           "exact_value_or_group_text": null
         },
-        "focus_target": "body",
+        "focus_target": "svg.regional-lens__plot.regional-lens__plot--continuous[aria-label=\"Safely managed drinking water change. Pitcairn unavailable for a comparable period in the reviewed regional series; observed range −11.23 percentage points to +18.49 percentage points; regional median +0.67 percentage points; 19 applicable; 3 unavailable.\"]",
         "live_regions": {
           "water": "19 places with comparable change · 3 unavailable",
           "renewable": "20 places with comparable change · 2 unavailable",
@@ -5095,12 +5097,12 @@
               "metric": "water",
               "box": {
                 "x": 35,
-                "y": 985.3519897460938,
+                "y": 530.78125,
                 "width": 320,
-                "height": 80.00006103515625,
-                "top": 985.3519897460938,
+                "height": 80,
+                "top": 530.78125,
                 "right": 355,
-                "bottom": 1065.35205078125,
+                "bottom": 610.78125,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -5113,12 +5115,12 @@
               "metric": "renewable",
               "box": {
                 "x": 35,
-                "y": 1162.47705078125,
+                "y": 707.90625,
                 "width": 320,
                 "height": 80,
-                "top": 1162.47705078125,
+                "top": 707.90625,
                 "right": 355,
-                "bottom": 1242.47705078125,
+                "bottom": 787.90625,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -5131,12 +5133,12 @@
               "metric": "visibility",
               "box": {
                 "x": 35,
-                "y": 1348.60205078125,
+                "y": 894.03125,
                 "width": 320,
                 "height": 82,
-                "top": 1348.60205078125,
+                "top": 894.03125,
                 "right": 355,
-                "bottom": 1430.60205078125,
+                "bottom": 976.03125,
                 "left": 35
               },
               "view_box": "0 0 320 82",
@@ -5148,7 +5150,7 @@
               },
               "selected_center_screen": {
                 "x": 59,
-                "y": 1395.602
+                "y": 941.031
               }
             }
           ],
@@ -5170,7 +5172,7 @@
           "height": 844
         },
         "camera_expected_if_direct_unavailable": {
-          "basis": "source-derived selectedCameraForViewport; used only when direct getters unavailable",
+          "basis": "not used; direct idle MapLibre getters available",
           "center": [
             231.7,
             -24.4
@@ -5198,17 +5200,18 @@
           "operations": []
         },
         "camera": {
-          "measurement": "direct MapLibre getters",
+          "measurement": "direct MapLibre getters after idle/two-rAF stabilization",
+          "is_moving": false,
           "center": [
-            -170.22824,
-            -28.331987
+            -128.3,
+            -24.4
           ],
           "zoom": 1.38
         },
         "selected_projected_screen_coordinate": {
-          "measurement": "rendered map accessibility target center",
-          "x": 350.188,
-          "y": 405.75
+          "measurement": "rendered map accessibility target center after idle/two-rAF stabilization",
+          "x": 195,
+          "y": 422
         },
         "panel": {
           "path": "country",
@@ -5218,12 +5221,12 @@
           "toggle_aria_expanded": "true",
           "rect": {
             "x": 0,
-            "y": 551.752685546875,
+            "y": 253.203125,
             "width": 390,
             "height": 590.796875,
-            "top": 551.752685546875,
+            "top": 253.203125,
             "right": 390,
-            "bottom": 1142.549560546875,
+            "bottom": 844,
             "left": 0
           }
         },
@@ -5252,12 +5255,12 @@
               "metric": "water",
               "box": {
                 "x": 35,
-                "y": 829.330810546875,
+                "y": 530.78125,
                 "width": 320,
                 "height": 80,
-                "top": 829.330810546875,
+                "top": 530.78125,
                 "right": 355,
-                "bottom": 909.330810546875,
+                "bottom": 610.78125,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -5270,12 +5273,12 @@
               "metric": "renewable",
               "box": {
                 "x": 35,
-                "y": 1006.455810546875,
+                "y": 707.90625,
                 "width": 320,
                 "height": 80,
-                "top": 1006.455810546875,
+                "top": 707.90625,
                 "right": 355,
-                "bottom": 1086.455810546875,
+                "bottom": 787.90625,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -5288,12 +5291,12 @@
               "metric": "visibility",
               "box": {
                 "x": 35,
-                "y": 1192.580810546875,
+                "y": 894.03125,
                 "width": 320,
                 "height": 82,
-                "top": 1192.580810546875,
+                "top": 894.03125,
                 "right": 355,
-                "bottom": 1274.580810546875,
+                "bottom": 976.03125,
                 "left": 35
               },
               "view_box": "0 0 320 82",
@@ -5305,7 +5308,7 @@
               },
               "selected_center_screen": {
                 "x": 59,
-                "y": 1239.581
+                "y": 941.031
               }
             }
           ],
@@ -5327,7 +5330,7 @@
           "height": 844
         },
         "camera_expected_if_direct_unavailable": {
-          "basis": "source-derived selectedCameraForViewport; used only when direct getters unavailable",
+          "basis": "not used; direct idle MapLibre getters available",
           "center": [
             231.7,
             -24.4
@@ -5347,7 +5350,203 @@
         "replaces": 0,
         "pops": 0
       },
+      "stability_evidence": {
+        "method": "expand panel; wait for MapLibre idle when moving; assert isMoving false; wait two rAF; compare two samples 50ms apart before action; focus plot; repeat stable pre-action sample; press ArrowRight; wait two rAF; compare settled before/after and two post-action samples",
+        "tolerance": {
+          "center_absolute_degrees": 0.000001,
+          "zoom_absolute": 0.000001,
+          "selected_target_euclidean_px": 0.01
+        },
+        "after_panel_expansion": {
+          "waited_for_idle_event": true,
+          "two_animation_frames_before_first_sample": true,
+          "inter_sample_wait_ms": 50,
+          "first": {
+            "label": "after-panel-expansion-sample-1",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "second": {
+            "label": "after-panel-expansion-sample-2",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "delta": {
+            "center_longitude_degrees": 0,
+            "center_latitude_degrees": 0,
+            "zoom": 0,
+            "selected_target_x_px": 0,
+            "selected_target_y_px": 0,
+            "selected_target_euclidean_px": 0
+          },
+          "tolerance": {
+            "center_absolute_degrees": 0.000001,
+            "zoom_absolute": 0.000001,
+            "selected_target_euclidean_px": 0.01
+          }
+        },
+        "pre_action": {
+          "waited_for_idle_event": false,
+          "two_animation_frames_before_first_sample": true,
+          "inter_sample_wait_ms": 50,
+          "first": {
+            "label": "pre-action-after-focus-sample-1",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "second": {
+            "label": "pre-action-after-focus-sample-2",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "delta": {
+            "center_longitude_degrees": 0,
+            "center_latitude_degrees": 0,
+            "zoom": 0,
+            "selected_target_x_px": 0,
+            "selected_target_y_px": 0,
+            "selected_target_euclidean_px": 0
+          },
+          "tolerance": {
+            "center_absolute_degrees": 0.000001,
+            "zoom_absolute": 0.000001,
+            "selected_target_euclidean_px": 0.01
+          }
+        },
+        "post_action": {
+          "waited_for_idle_event": false,
+          "two_animation_frames_before_first_sample": true,
+          "inter_sample_wait_ms": 50,
+          "first": {
+            "label": "post-action-sample-1",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "second": {
+            "label": "post-action-sample-2",
+            "is_moving": false,
+            "center": [
+              -128.3,
+              -24.4
+            ],
+            "zoom": 1.38,
+            "selected_target": {
+              "x": 195,
+              "y": 422
+            }
+          },
+          "delta": {
+            "center_longitude_degrees": 0,
+            "center_latitude_degrees": 0,
+            "zoom": 0,
+            "selected_target_x_px": 0,
+            "selected_target_y_px": 0,
+            "selected_target_euclidean_px": 0
+          },
+          "tolerance": {
+            "center_absolute_degrees": 0.000001,
+            "zoom_absolute": 0.000001,
+            "selected_target_euclidean_px": 0.01
+          }
+        },
+        "action_absolute_deltas": {
+          "center_longitude_degrees": 0,
+          "center_latitude_degrees": 0,
+          "zoom": 0,
+          "selected_target_x_px": 0,
+          "selected_target_y_px": 0,
+          "selected_target_euclidean_px": 0
+        }
+      },
       "pass_predicates": [
+        {
+          "predicate": "pre-action camera is idle and stable across two samples after two animation frames",
+          "observed": {
+            "waited_for_idle_event": false,
+            "two_animation_frames_before_first_sample": true,
+            "inter_sample_wait_ms": 50,
+            "first": {
+              "label": "pre-action-after-focus-sample-1",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38,
+              "selected_target": {
+                "x": 195,
+                "y": 422
+              }
+            },
+            "second": {
+              "label": "pre-action-after-focus-sample-2",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38,
+              "selected_target": {
+                "x": 195,
+                "y": 422
+              }
+            },
+            "delta": {
+              "center_longitude_degrees": 0,
+              "center_latitude_degrees": 0,
+              "zoom": 0,
+              "selected_target_x_px": 0,
+              "selected_target_y_px": 0,
+              "selected_target_euclidean_px": 0
+            },
+            "tolerance": {
+              "center_absolute_degrees": 0.000001,
+              "zoom_absolute": 0.000001,
+              "selected_target_euclidean_px": 0.01
+            }
+          },
+          "pass": true
+        },
         {
           "predicate": "selected null has no continuous selected ring but plot remains inspectable",
           "observed": {
@@ -5366,7 +5565,120 @@
         },
         {
           "predicate": "zero reference remains separate from missing selected value",
-          "observed": "one zero reference, no selected continuous ring",
+          "observed": {
+            "zero_references": 1,
+            "continuous_selected_rings": 0
+          },
+          "pass": true
+        },
+        {
+          "predicate": "camera center and zoom remain equal after idle keyboard inspection within stated tolerance",
+          "observed": {
+            "before": {
+              "measurement": "direct MapLibre getters after idle/two-rAF stabilization",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38
+            },
+            "after": {
+              "measurement": "direct MapLibre getters after idle/two-rAF stabilization",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38
+            },
+            "absolute_deltas": {
+              "center_longitude_degrees": 0,
+              "center_latitude_degrees": 0,
+              "zoom": 0,
+              "selected_target_x_px": 0,
+              "selected_target_y_px": 0,
+              "selected_target_euclidean_px": 0
+            },
+            "tolerance": {
+              "center_absolute_degrees": 0.000001,
+              "zoom_absolute": 0.000001,
+              "selected_target_euclidean_px": 0.01
+            }
+          },
+          "pass": true
+        },
+        {
+          "predicate": "projected selected target remains equal after keyboard inspection within stated tolerance",
+          "observed": {
+            "before": {
+              "measurement": "rendered map accessibility target center after idle/two-rAF stabilization",
+              "x": 195,
+              "y": 422
+            },
+            "after": {
+              "measurement": "rendered map accessibility target center after idle/two-rAF stabilization",
+              "x": 195,
+              "y": 422
+            },
+            "absolute_deltas": {
+              "center_longitude_degrees": 0,
+              "center_latitude_degrees": 0,
+              "zoom": 0,
+              "selected_target_x_px": 0,
+              "selected_target_y_px": 0,
+              "selected_target_euclidean_px": 0
+            },
+            "tolerance_px": 0.01
+          },
+          "pass": true
+        },
+        {
+          "predicate": "post-action camera remains idle and stable across two samples",
+          "observed": {
+            "waited_for_idle_event": false,
+            "two_animation_frames_before_first_sample": true,
+            "inter_sample_wait_ms": 50,
+            "first": {
+              "label": "post-action-sample-1",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38,
+              "selected_target": {
+                "x": 195,
+                "y": 422
+              }
+            },
+            "second": {
+              "label": "post-action-sample-2",
+              "is_moving": false,
+              "center": [
+                -128.3,
+                -24.4
+              ],
+              "zoom": 1.38,
+              "selected_target": {
+                "x": 195,
+                "y": 422
+              }
+            },
+            "delta": {
+              "center_longitude_degrees": 0,
+              "center_latitude_degrees": 0,
+              "zoom": 0,
+              "selected_target_x_px": 0,
+              "selected_target_y_px": 0,
+              "selected_target_euclidean_px": 0
+            },
+            "tolerance": {
+              "center_absolute_degrees": 0.000001,
+              "zoom_absolute": 0.000001,
+              "selected_target_euclidean_px": 0.01
+            }
+          },
           "pass": true
         }
       ],
@@ -6732,7 +7044,7 @@
       },
       "mode": "explore",
       "place": "FJ",
-      "state": "inspected visibility portrait",
+      "state": "inspected visibility portrait with plot, exact group cursor, status, and live text in frame",
       "contrast_variant": "normal",
       "screenshot_path": "artifacts/design/task-110/inspected-visibility-fj-390x844.png",
       "snapshot": {
@@ -6750,17 +7062,18 @@
           "operations": []
         },
         "camera": {
-          "measurement": "direct MapLibre getters",
+          "measurement": "direct MapLibre getters after idle/two-rAF stabilization",
+          "is_moving": false,
           "center": [
-            -178.154762,
-            -27.382193
+            178.1,
+            -17.7
           ],
           "zoom": 1.38
         },
         "selected_projected_screen_coordinate": {
-          "measurement": "rendered map accessibility target center",
-          "x": 181.125,
-          "y": 383.125
+          "measurement": "rendered map accessibility target center after idle/two-rAF stabilization",
+          "x": 195,
+          "y": 422
         },
         "panel": {
           "path": "country",
@@ -6770,24 +7083,24 @@
           "toggle_aria_expanded": "true",
           "rect": {
             "x": 0,
-            "y": 550.3272705078125,
+            "y": 253.203125,
             "width": 390,
             "height": 590.796875,
-            "top": 550.3272705078125,
+            "top": 253.203125,
             "right": 390,
-            "bottom": 1141.1241455078125,
+            "bottom": 844,
             "left": 0
           }
         },
         "inspection": {
           "metric": "visibility",
-          "exact_value_or_group_text": "12 of 14: Cook Islands, Niue12 of 14: Cook Islands, Niue"
+          "exact_value_or_group_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa"
         },
         "focus_target": "body",
         "live_regions": {
           "water": "19 places with comparable change · 3 unavailable",
           "renewable": "20 places with comparable change · 2 unavailable",
-          "visibility": "12 of 14: Cook Islands, Niue12 of 14: Cook Islands, Niue"
+          "visibility": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa"
         },
         "counts": {
           "continuous_peer_marks": 39,
@@ -6804,12 +7117,12 @@
               "metric": "water",
               "box": {
                 "x": 35,
-                "y": 822.2491455078125,
+                "y": 31.125,
                 "width": 320,
                 "height": 80,
-                "top": 822.2491455078125,
+                "top": 31.125,
                 "right": 355,
-                "bottom": 902.2491455078125,
+                "bottom": 111.125,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -6821,19 +7134,19 @@
               },
               "selected_center_screen": {
                 "x": 168.924,
-                "y": 866.249
+                "y": 75.125
               }
             },
             {
               "metric": "renewable",
               "box": {
                 "x": 35,
-                "y": 993.7178955078125,
+                "y": 202.59375,
                 "width": 320,
                 "height": 80,
-                "top": 993.7178955078125,
+                "top": 202.59375,
                 "right": 355,
-                "bottom": 1073.7178955078125,
+                "bottom": 282.59375,
                 "left": 35
               },
               "view_box": "0 0 320 80",
@@ -6845,19 +7158,19 @@
               },
               "selected_center_screen": {
                 "x": 99.077,
-                "y": 1037.718
+                "y": 246.594
               }
             },
             {
               "metric": "visibility",
               "box": {
                 "x": 35,
-                "y": 1179.8428955078125,
+                "y": 388.71875,
                 "width": 320,
                 "height": 82,
-                "top": 1179.8428955078125,
+                "top": 388.71875,
                 "right": 355,
-                "bottom": 1261.8428955078125,
+                "bottom": 470.71875,
                 "left": 35
               },
               "view_box": "0 0 320 82",
@@ -6869,7 +7182,7 @@
               },
               "selected_center_screen": {
                 "x": 324,
-                "y": 1226.843
+                "y": 435.719
               }
             }
           ],
@@ -6891,10 +7204,10 @@
           "height": 844
         },
         "camera_expected_if_direct_unavailable": {
-          "basis": "source-derived selectedCameraForViewport; used only when direct getters unavailable",
+          "basis": "not used; direct idle MapLibre getters available",
           "center": [
-            178.1,
-            -17.7
+            231.7,
+            -24.4
           ],
           "zoom": 1.38
         },
@@ -6904,148 +7217,92 @@
           "request": []
         }
       },
-      "cold_read": {
-        "story_text": "For Fiji, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. That combination appears in 7 of the 19 complete comparisons.",
-        "story_rect": {
-          "x": 18,
-          "y": 595.4053955078125,
-          "width": 354,
-          "height": 80,
-          "top": 595.4053955078125,
-          "right": 372,
-          "bottom": 675.4053955078125,
-          "left": 18
+      "visible_inspection_evidence": {
+        "inspected_group_value": 14,
+        "cursor_svg": {
+          "x": 273,
+          "y": 34,
+          "width": 46,
+          "height": 44
         },
-        "kicker": "Regional position",
-        "heading": "Fiji in the Pacific record",
-        "heading_rect": {
-          "x": 35,
-          "y": 720.4053955078125,
-          "width": 320,
-          "height": 20.625,
-          "top": 720.4053955078125,
-          "right": 355,
-          "bottom": 741.0303955078125,
-          "left": 35
+        "visible_inspector_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more",
+        "live_region_full_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa",
+        "screen_reader_full_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa",
+        "status_text": "12 of 22 places have records in all 14 reviewed datasets",
+        "rects": {
+          "section": {
+            "x": 35,
+            "y": 324.59375,
+            "width": 320,
+            "height": 175.125,
+            "top": 324.59375,
+            "right": 355,
+            "bottom": 499.71875,
+            "left": 35
+          },
+          "body": {
+            "x": 0,
+            "y": 310.203125,
+            "width": 390,
+            "height": 533.796875,
+            "top": 310.203125,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          },
+          "fact": {
+            "x": 35,
+            "y": 369.21875,
+            "width": 320,
+            "height": 13.5,
+            "top": 369.21875,
+            "right": 355,
+            "bottom": 382.71875,
+            "left": 35
+          },
+          "plot": {
+            "x": 35,
+            "y": 388.71875,
+            "width": 320,
+            "height": 82,
+            "top": 388.71875,
+            "right": 355,
+            "bottom": 470.71875,
+            "left": 35
+          },
+          "cursor": {
+            "x": 308,
+            "y": 422.71875,
+            "width": 46,
+            "height": 44,
+            "top": 422.71875,
+            "right": 354,
+            "bottom": 466.71875,
+            "left": 308
+          },
+          "inspector": {
+            "x": 35,
+            "y": 472.71875,
+            "width": 320,
+            "height": 27,
+            "top": 472.71875,
+            "right": 355,
+            "bottom": 499.71875,
+            "left": 35
+          }
         },
-        "key": "Ring marks Fiji",
-        "key_rect": {
-          "x": 35,
-          "y": 745.0303955078125,
-          "width": 320,
-          "height": 14.75,
-          "top": 745.0303955078125,
-          "right": 355,
-          "bottom": 759.7803955078125,
-          "left": 35
+        "fully_visible": {
+          "status": true,
+          "plot": true,
+          "cursor": true,
+          "inspector": true
         }
       },
-      "styles": {
-        "heading_font": "600 16.5px / 20.625px Georgia, serif",
-        "key_font": "600 10.5px / 14.175px ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
-        "metric_font": "600 12.5px / 15.625px ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
-        "selected_value_font": "700 24px / 24px ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
-        "intro_width": "320px"
-      },
-      "selected_values": [
-        {
-          "metric": "Safely managed drinking water",
-          "value": "+0.67",
-          "rect": {
-            "x": 35,
-            "y": 791.4053955078125,
-            "width": 66.578125,
-            "height": 24,
-            "top": 791.4053955078125,
-            "right": 101.578125,
-            "bottom": 815.4053955078125,
-            "left": 35
-          }
-        },
-        {
-          "metric": "Renewable energy share",
-          "value": "−23.39",
-          "rect": {
-            "x": 35,
-            "y": 962.8741455078125,
-            "width": 82.671875,
-            "height": 24,
-            "top": 962.8741455078125,
-            "right": 117.671875,
-            "bottom": 986.8741455078125,
-            "left": 35
-          }
-        },
-        {
-          "metric": "Reviewed datasets with a record",
-          "value": "14 of 14",
-          "rect": {
-            "x": 35,
-            "y": 1134.3428955078125,
-            "width": 88.03125,
-            "height": 24,
-            "top": 1134.3428955078125,
-            "right": 123.03125,
-            "bottom": 1158.3428955078125,
-            "left": 35
-          }
-        }
-      ],
       "accessibility": {
         "plot_focus_stops": 3,
         "live_regions": 3,
         "heading_level": "H2",
         "key_ring_aria_hidden": "true"
-      },
-      "failure": {
-        "alert_text": null,
-        "eyebrow_text": null,
-        "heading_text": null,
-        "sr_text": null,
-        "legend_visible": true,
-        "rects": {
-          "legend": {
-            "x": 10,
-            "y": 568,
-            "width": 92.375,
-            "height": 44,
-            "top": 568,
-            "right": 102.375,
-            "bottom": 612,
-            "left": 10
-          },
-          "header": {
-            "x": 10,
-            "y": 10,
-            "width": 370,
-            "height": 158,
-            "top": 10,
-            "right": 380,
-            "bottom": 168,
-            "left": 10
-          },
-          "controls": {
-            "x": 10,
-            "y": 624,
-            "width": 370,
-            "height": 104,
-            "top": 624,
-            "right": 380,
-            "bottom": 728,
-            "left": 10
-          },
-          "panel": {
-            "x": 0,
-            "y": 550.3272705078125,
-            "width": 390,
-            "height": 590.796875,
-            "top": 550.3272705078125,
-            "right": 390,
-            "bottom": 1141.1241455078125,
-            "left": 0
-          },
-          "alert_heading": null
-        }
       },
       "pass_predicates": [
         {
@@ -7066,43 +7323,93 @@
           "pass": true
         },
         {
-          "predicate": "final hierarchy text present",
+          "predicate": "visibility plot, exact group cursor, status, and visible inspector are fully in frame",
           "observed": {
-            "story_text": "For Fiji, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. That combination appears in 7 of the 19 complete comparisons.",
-            "story_rect": {
-              "x": 18,
-              "y": 595.4053955078125,
-              "width": 354,
-              "height": 80,
-              "top": 595.4053955078125,
-              "right": 372,
-              "bottom": 675.4053955078125,
-              "left": 18
+            "inspected_group_value": 14,
+            "cursor_svg": {
+              "x": 273,
+              "y": 34,
+              "width": 46,
+              "height": 44
             },
-            "kicker": "Regional position",
-            "heading": "Fiji in the Pacific record",
-            "heading_rect": {
-              "x": 35,
-              "y": 720.4053955078125,
-              "width": 320,
-              "height": 20.625,
-              "top": 720.4053955078125,
-              "right": 355,
-              "bottom": 741.0303955078125,
-              "left": 35
+            "visible_inspector_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more",
+            "live_region_full_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati +9 more14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa",
+            "screen_reader_full_text": "14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa",
+            "status_text": "12 of 22 places have records in all 14 reviewed datasets",
+            "rects": {
+              "section": {
+                "x": 35,
+                "y": 324.59375,
+                "width": 320,
+                "height": 175.125,
+                "top": 324.59375,
+                "right": 355,
+                "bottom": 499.71875,
+                "left": 35
+              },
+              "body": {
+                "x": 0,
+                "y": 310.203125,
+                "width": 390,
+                "height": 533.796875,
+                "top": 310.203125,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "fact": {
+                "x": 35,
+                "y": 369.21875,
+                "width": 320,
+                "height": 13.5,
+                "top": 369.21875,
+                "right": 355,
+                "bottom": 382.71875,
+                "left": 35
+              },
+              "plot": {
+                "x": 35,
+                "y": 388.71875,
+                "width": 320,
+                "height": 82,
+                "top": 388.71875,
+                "right": 355,
+                "bottom": 470.71875,
+                "left": 35
+              },
+              "cursor": {
+                "x": 308,
+                "y": 422.71875,
+                "width": 46,
+                "height": 44,
+                "top": 422.71875,
+                "right": 354,
+                "bottom": 466.71875,
+                "left": 308
+              },
+              "inspector": {
+                "x": 35,
+                "y": 472.71875,
+                "width": 320,
+                "height": 27,
+                "top": 472.71875,
+                "right": 355,
+                "bottom": 499.71875,
+                "left": 35
+              }
             },
-            "key": "Ring marks Fiji",
-            "key_rect": {
-              "x": 35,
-              "y": 745.0303955078125,
-              "width": 320,
-              "height": 14.75,
-              "top": 745.0303955078125,
-              "right": 355,
-              "bottom": 759.7803955078125,
-              "left": 35
+            "fully_visible": {
+              "status": true,
+              "plot": true,
+              "cursor": true,
+              "inspector": true
             }
           },
+          "pass": true
+        },
+        {
+          "predicate": "visibility live region retains the exact full 14-of-14 group text",
+          "observed": "14 of 14: Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, New Caledonia, French Polynesia, Papua New Guinea, Palau, Solomon Islands, Tonga, Vanuatu, Samoa",
           "pass": true
         },
         {
@@ -7115,63 +7422,10 @@
           "pass": true
         },
         {
-          "predicate": "24px selected value priority or explicit unavailable",
-          "observed": {
-            "values": [
-              {
-                "metric": "Safely managed drinking water",
-                "value": "+0.67",
-                "rect": {
-                  "x": 35,
-                  "y": 791.4053955078125,
-                  "width": 66.578125,
-                  "height": 24,
-                  "top": 791.4053955078125,
-                  "right": 101.578125,
-                  "bottom": 815.4053955078125,
-                  "left": 35
-                }
-              },
-              {
-                "metric": "Renewable energy share",
-                "value": "−23.39",
-                "rect": {
-                  "x": 35,
-                  "y": 962.8741455078125,
-                  "width": 82.671875,
-                  "height": 24,
-                  "top": 962.8741455078125,
-                  "right": 117.671875,
-                  "bottom": 986.8741455078125,
-                  "left": 35
-                }
-              },
-              {
-                "metric": "Reviewed datasets with a record",
-                "value": "14 of 14",
-                "rect": {
-                  "x": 35,
-                  "y": 1134.3428955078125,
-                  "width": 88.03125,
-                  "height": 24,
-                  "top": 1134.3428955078125,
-                  "right": 123.03125,
-                  "bottom": 1158.3428955078125,
-                  "left": 35
-                }
-              }
-            ],
-            "font": "700 24px / 24px ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif"
-          },
-          "pass": true
-        },
-        {
           "predicate": "focus and live-region surfaces present",
           "observed": {
             "plot_focus_stops": 3,
-            "live_regions": 3,
-            "heading_level": "H2",
-            "key_ring_aria_hidden": "true"
+            "live_regions": 3
           },
           "pass": true
         }
@@ -11900,10 +12154,10 @@
     },
     {
       "file": "inspected-visibility-fj-390x844.png",
-      "sha256": "e6c9042644f5812a196471e0357ffc7febc28d569cfcde798072695752993a34",
-      "bytes": 88952,
+      "sha256": "c42f0a85de5644c12b5d7ef1343038a23ca0f3a581405ed25c5464b14fc85bc1",
+      "bytes": 69890,
       "visually_inspected": true,
-      "visual_review": "Purpose-scrolled portrait frame clearly shows the visibility group inspection and selected-ring grammar."
+      "visual_review": "Opened at original resolution after correction: the selected 14 of 14 value, 12-of-22 status, all six visibility groups, 46x44 cursor around the 14 group, and visible Fiji/Federated States of Micronesia/Kiribati +9 more inspector are all inside the 390x844 frame."
     },
     {
       "file": "inspected-water-fj-1440x900.png",
@@ -12009,6 +12263,10 @@
       "status": "pass",
       "command": "python -m json.tool artifacts/provenance/task_110_qa.json"
     },
+    "structured_schema_audit": {
+      "status": "pass",
+      "description": "counts, unique case IDs, required snapshots, corrected camera predicates/tolerances, visible-frame geometry, contrast thresholds, scientific render predicates, and frame review flags"
+    },
     "whitespace": {
       "status": "pass",
       "command": "git diff --check"
@@ -12016,8 +12274,8 @@
   },
   "scope_audit": {
     "status": "pass",
-    "comparison_head": "6a847f5",
-    "allowed_existing_task_110_surfaces_only": true,
+    "accepted_product_head": "6a847f5",
+    "correction_comparison_commit": "902144f",
     "production_source_changes": 0,
     "test_changes": 0,
     "generated_or_public_data_changes": 0,
@@ -12030,8 +12288,8 @@
       "TASK-100",
       "TASK-118"
     ],
-    "allowed_path_groups": [
-      "artifacts/design/task-110/*.png",
+    "corrected_tracked_paths_only": [
+      "artifacts/design/task-110/inspected-visibility-fj-390x844.png",
       "artifacts/provenance/task_110_qa.json",
       "context/TASKS.md",
       "context/PROJECT.md",
@@ -12049,9 +12307,11 @@
     "all_responsive_accessibility_predicates_pass": true,
     "all_contrast_thresholds_pass": true,
     "all_scientific_render_predicates_pass": true,
-    "purpose_specific_scroll_framing_reviewed": true,
-    "map_failure_alert_fully_readable": true,
-    "note": "Inspection, landscape, reduced-motion, and reflow captures intentionally retain purpose-specific panel scroll positions; separate cold-read cases verify the complete selected sentence and hierarchy."
+    "corrected_camera_idle_before_and_after": true,
+    "corrected_camera_action_deltas_zero": true,
+    "corrected_visibility_required_surfaces_fully_visible": true,
+    "corrected_frame_visually_inspected": true,
+    "initial_overclaim_corrected": true
   },
   "limitations": [
     "MapLibre camera center and zoom are direct development-build getter measurements only for normal map cases; map-failure snapshots explicitly retain source-derived expected camera values because the failed map has no live getter.",
@@ -14348,5 +14608,22 @@
       "diagnostic_limit_bytes": 97500,
       "pass": true
     }
+  },
+  "independent_review_correction": {
+    "date": "2026-08-18",
+    "lifecycle": "in-review -> needs-fix -> in-progress -> in-review",
+    "attempt_unchanged": 3,
+    "root_cause": "The prior selected-null before snapshot followed mobile panel expansion after only a fixed wait, while MapLibre easeTo was still moving; it was harness timing, not evidence of a keyboard-induced product camera change.",
+    "diagnostic_observation": "After panel expansion, isMoving remained true while longitude progressed from -176.552172834 to -128.356860829; idle then settled at [-128.3, -24.4], zoom 1.38 and repeated stable samples were equal.",
+    "corrected_case": "interaction-selected-null-keyboard",
+    "corrected_screenshot": "artifacts/design/task-110/inspected-visibility-fj-390x844.png",
+    "camera_tolerance": {
+      "center_absolute_degrees": 0.000001,
+      "zoom_absolute": 0.000001,
+      "selected_target_euclidean_px": 0.01
+    },
+    "result": "evidence corrected; no product defect reproduced; independent re-review pending",
+    "corrected_case_pass": true,
+    "corrected_frame_pass": true
   }
 }

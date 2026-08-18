@@ -149,8 +149,15 @@ describe("neutral overview presentation", () => {
   });
 
   it("hides the desktop Explore legend only beside an in-region map-failure alert", () => {
-    expect(baseCss).toMatch(
-      /@media \(min-width: 881px\) \{[\s\S]*?\.atlas-shell--explore:has\(\.map-canvas \.app-state\[role="alert"\]\) \.dock--legend\s*\{[^}]*display:\s*none;/,
-    );
+    const selector = /\.atlas-shell--explore:has\(\.map-canvas \.app-state\[role="alert"\]\) \.dock--legend\s*\{[^}]*display:\s*none;/;
+    const oldContract = /@media \(min-width: 881px\) \{[\s\S]*?\.atlas-shell--explore:has\(\.map-canvas \.app-state\[role="alert"\]\) \.dock--legend\s*\{[^}]*display:\s*none;/;
+    const movedOutsideDesktopBlock = baseCss.replace(selector, "") + "\n.atlas-shell--explore:has(.map-canvas .app-state[role=\"alert\"]) .dock--legend { display: none; }\n";
+    const movedDesktopSeam = movedOutsideDesktopBlock.match(/@media \(min-width: 881px\) \{([\s\S]*?)\n\}/)?.[1] ?? "";
+    const desktopSeam = baseCss.match(/@media \(min-width: 881px\) \{([\s\S]*?)\n\}/)?.[1] ?? "";
+
+    expect(movedOutsideDesktopBlock).toMatch(oldContract);
+    expect(movedDesktopSeam).not.toMatch(selector);
+    expect(desktopSeam).toMatch(selector);
+    expect(baseCss.match(new RegExp(selector.source, "g")) ?? []).toHaveLength(1);
   });
 });

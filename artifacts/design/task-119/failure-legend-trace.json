@@ -1711,7 +1711,9 @@
       "requests": []
     }
   ],
-  "guided": {
+  "guidedCase": {
+    "outsideExploreMatrix": true,
+    "result": "alert visually isolated with opacity 0 and zero overflow",
     "label": "guided-failure-1024x768",
     "url": "?mode=guided&scene=premise",
     "viewport": {
@@ -1767,10 +1769,10 @@
     "alertOpacity": "0"
   },
   "summary": {
-    "totalCases": 28,
-    "failedCases": 14,
-    "normalCases": 14,
-    "zeroIntersectionCases": 28,
+    "matrixCases": 28,
+    "failureStateCases": 14,
+    "normalStateCases": 14,
+    "matrixRecordsWithZeroIntersections": 28,
     "desktopFailureLegendHidden": 10,
     "desktopNormalLegendVisible": 10,
     "mobileFailureLegendVisible": 4,

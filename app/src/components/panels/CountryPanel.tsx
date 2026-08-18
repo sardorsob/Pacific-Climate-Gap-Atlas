@@ -19,9 +19,11 @@ function regionalReading(geo: Geo, geos: Geo[]) {
   if (!geo.regionalStory.completeOverlap) {
     const incompleteCount = geos.length - completeCount;
     const incompleteLabel = incompleteCount === 1 ? "One" : incompleteCount === 3 ? "Three" : String(incompleteCount);
-    const placeLabel = geos.length === 1 ? "place" : "places";
     const verb = incompleteCount === 1 ? "has" : "have";
-    return `${geo.name} is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. ${incompleteLabel} of the ${geos.length} ${placeLabel} ${verb} an incomplete comparison.`;
+    const incompleteSummary = geos.length === 1
+      ? "The one loaded place has an incomplete comparison."
+      : `${incompleteLabel} of the ${geos.length} places ${verb} an incomplete comparison.`;
+    return `${geo.name} is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. ${incompleteSummary}`;
   }
 
   const matchingCount = complete.filter(({ regionalStory }) => regionalStory.quadrant === geo.regionalStory.quadrant).length;

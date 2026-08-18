@@ -106,12 +106,23 @@ describe("CountryPanel", () => {
     expect(renderPanel(bothUp, geos)).not.toContain(geo.storyLabel);
   });
 
+  it("derives comparison counts from a deliberately non-production collection", () => {
+    const firstBothUp = regionalGeo("Alpha", "both_up");
+    const secondBothUp = regionalGeo("Bravo", "both_up");
+    const bothDown = regionalGeo("Charlie", "both_down");
+    const incomplete = regionalGeo("Delta", "missing_overlap", false);
+    const geos = [firstBothUp, secondBothUp, bothDown, incomplete];
+
+    expect(renderPanel(firstBothUp, geos)).toContain("For Alpha, both measures increased between their first and latest available records. That combination appears in 2 of the 3 complete comparisons.");
+    expect(renderPanel(incomplete, geos)).toContain("Delta is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. One of the 4 places has an incomplete comparison.");
+  });
+
   it("keeps unknown complete directions distinct from incomplete records and uses singular grammar", () => {
     const unknown = regionalGeo("Unknown", "unreviewed_direction");
     const incomplete = regionalGeo("Guam", "missing_overlap", false);
 
     expect(renderPanel(unknown, [unknown])).toContain("For Unknown, both measures have comparable first-to-latest records, but their direction combination is unavailable in this view.");
-    expect(renderPanel(incomplete, [incomplete])).toContain("Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. One of the 1 place has an incomplete comparison.");
+    expect(renderPanel(incomplete, [incomplete])).toContain("Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. The one loaded place has an incomplete comparison.");
   });
 
   it("keeps the regional reading after place identity and before the regional lens", () => {

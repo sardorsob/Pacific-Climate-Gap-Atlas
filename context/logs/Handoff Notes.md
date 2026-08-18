@@ -2,9 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-107 through TASK-109 and TASK-111 through TASK-117 plus TASK-119 are complete after independent review. TASK-119's one-rule desktop failure-only legend exclusion, desktop-block regression contract, two retained frames, and 28-case Explore plus guided trace are accepted with no remaining finding. TASK-110 remains `needs-fix` only until attempt 3 regenerates the affected frame and case-level provenance for independent and owner review. TASK-100/TASK-118 remain held; frozen-production TASK-095 also awaits owner acceptance. Deployment and submission remain separate decisions.
+TASK-107 through TASK-109 and TASK-111 through TASK-117 plus TASK-119 are complete after independent review. TASK-119's one-rule desktop failure-only legend exclusion, desktop-block regression contract, two retained frames, and 28-case Explore plus guided trace are accepted with no remaining finding. TASK-110 attempt 3 is `in-review` with ten inspected frames and 49 passing auditable cases; independent scientific/UX/accessibility review and owner visual/interaction acceptance remain. TASK-100/TASK-118 remain held; frozen-production TASK-095 also awaits owner acceptance. Deployment and submission remain separate decisions.
 
 ## 2026-08-18
+
+- TASK-110 attempt 3 moved `needs-fix -> in-progress -> in-review` against frozen accepted head `6a847f5`, without changing production, tests, data, dependencies, routes, or state. The ten-frame set is freshly regenerated and inspected; the corrected 1024x768 selected-place failure state has a fully readable alert, hidden desktop legend, and zero intersections with legend/header/controls/panel. Provenance now retains 13 complete interaction before/after records, 14 responsive/accessibility cases, 12 exact contrast checks, and 10 source-to-model-to-sentence-to-DOM cases; all 49 pass with zero runtime/request/overflow failures. Full Python 100/100, frontend 146/146, data/build/bundle/artifact/status/secret/Ruff/compile/JSON/whitespace gates pass at 1,045,015-byte JavaScript and 96,839-byte CSS. Independent and owner review own closure; TASK-095, TASK-100, and TASK-118 remain unchanged.
 
 - TASK-119 moved `in-review -> done` after independent re-review found both returned findings resolved, no new issue, spec PASS, accessibility/responsive quality Approved, and Ponytail **Lean already. Ship.** The accepted production remains one desktop Explore failure-only rule; exact test and trace evidence now protect its scope. TASK-110 attempt 3 is unblocked; TASK-100/TASK-118 stay held.
 

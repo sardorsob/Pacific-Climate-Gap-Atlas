@@ -430,9 +430,11 @@ Start after TASK-115 closes. Reuse attempt-1 evidence only for provably unaffect
 
 TASK-110 remains the only final lens QA task; do not create a duplicate QA ledger item.
 
+Attempt 2 independent review returned one production defect and one evidence-package defect. TASK-119 is the bounded implementation successor for the desktop legend/failure-alert occlusion; it is not another QA gate. After TASK-119 passes independent review, TASK-110 attempt 3 must retain a machine-readable case matrix rather than aggregate booleans. Each interaction record must identify the viewport/input, selected code, exact URL/history delta, map center/zoom, panel path, inspected value or group, focus target, live-region text, mark/group counts, touch-band and overflow measurements, console/page/request errors, and measured contrast where applicable. Regenerate the affected map-failure frame and correct the stale HANDOVER attempt label before returning TASK-110 to independent and owner review.
+
 ### TASK-100 frozen release QA
 
-Start only after TASK-095, TASK-110, and TASK-116 are done. Freeze production and run the full repository/story/Explorer/panel/data/accessibility/security matrix recorded in TASK-100. Completed design-only TASK-117 does not block this gate; TASK-118 remains a separate implementation after it. Deployment and submission are still separate owner decisions.
+Start only after TASK-095, TASK-110, TASK-116, and the TASK-119 correction are done. Freeze production and run the full repository/story/Explorer/panel/data/accessibility/security matrix recorded in TASK-100. Completed design-only TASK-117 does not block this gate; TASK-118 remains a separate implementation after it. Deployment and submission are still separate owner decisions.
 
 ## Final Batch Scope Audit
 

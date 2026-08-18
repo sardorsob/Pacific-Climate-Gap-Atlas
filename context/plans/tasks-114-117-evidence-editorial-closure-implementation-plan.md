@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` or `superpowers:executing-plans` task by task. Use `superpowers:test-driven-development` before every behavior change, `ponytail:ponytail` before widening scope, and `superpowers:verification-before-completion` before every review handoff or commit.
 
-**Goal:** Connect the accepted regional story to selected-place exploration with one evidence-bound reading, make the existing lens easy to enter and decode, conclude the guided story honestly, and preserve name-based place entry as a separate post-release host decision.
+**Goal:** Connect the accepted regional story to selected-place exploration with one evidence-bound reading, make the existing lens easy to enter and decode, conclude the guided story honestly, and preserve name-based place entry as a separate design-only host decision whose runtime implementation remains post-QA.
 
-**Architecture:** Reuse the current React/Vite application and loaded `Geo[]`. TASK-114 changes one `CountryPanel` sentence through a private deterministic helper. TASK-115 changes only the `RegionalPositionLens` entry markup and scoped CSS. TASK-116 changes one existing handoff constant. These three tasks are the release-critical implementation. TASK-117 follows release QA as a design-only gate because neutral Explore does not mount the empty `CountryPanel`; it must choose a reachable host before any name-based control can be implemented. No data export, model output, route, state machine, renderer, dependency, font payload, visualization family, or dashboard shell is added.
+**Architecture:** Reuse the current React/Vite application and loaded `Geo[]`. TASK-114 changes one `CountryPanel` sentence through a private deterministic helper. TASK-115 changes only the `RegionalPositionLens` entry markup and scoped CSS. TASK-116 changes one existing handoff constant. These three tasks are the release-critical implementation. The original plan placed design-only TASK-117 after release QA because neutral Explore does not mount the empty `CountryPanel`. The owner's later sequence completed that host decision before the held TASK-110/TASK-100 gates without shipping a name-based control; TASK-118 is the separate runtime implementation and remains after those gates. No data export, model output, route, state machine, renderer, dependency, font payload, visualization family, or dashboard shell is added.
 
 **Tech Stack:** React 18, TypeScript, Vite, Vitest, React server-rendering tests, current MapLibre shell, existing CSS/token system, cached quiet/headless browser workflow, and current Python/Node repository validators.
 
@@ -19,14 +19,23 @@ TASK-113 owner approval
 │       └── TASK-110 attempt 2 (existing owner-gated lens QA)
 └── TASK-116 guided ending
 
+Original sequence (superseded for the design gate only):
 TASK-095 owner gate + TASK-110 + TASK-116
 └── TASK-100 existing frozen release QA
-    └── TASK-117 reachable name-entry host design (optional/post-release)
+    └── TASK-117 reachable name-entry host design
+
+Later owner sequence (executed/current):
+TASK-116
+└── TASK-117 reachable name-entry host design (complete; no runtime change)
+
+TASK-095 owner gate + TASK-110
+└── TASK-100 existing frozen release QA
+    └── TASK-118 approved name-entry implementation (pending)
 ```
 
 - TASK-114 and TASK-115 are sequential because they share the panel hierarchy and `CountryPanel.test.tsx`.
 - TASK-116 is code-independent and may run in an isolated worktree in parallel with TASK-114/TASK-115 after TASK-113 owner approval. The Orchestrator must serialize task-ledger/log edits and the final commit boundary.
-- TASK-117 begins only after TASK-100 and is design-only. It does not block release and must not add a chooser to the unmounted `CountryPanel` null branch or broaden `panelOpen` without a later owner-approved implementation task.
+- The original sequence began TASK-117 only after TASK-100. The owner's later instruction superseded that timing for the design gate only: TASK-117 is complete and non-blocking, changed no runtime, and TASK-118 remains the sole implementation task after held TASK-110/TASK-100. The accepted direction may not add a chooser to the unmounted `CountryPanel` null branch or broaden `panelOpen` outside TASK-118.
 - Every task receives its own independent review and commit with no `Co-authored-by` trailer. Do not push without a separate owner request.
 
 ## Global Constraints
@@ -339,9 +348,9 @@ feat(story): TASK-116 close the regional argument
 
 ---
 
-## TASK-117: Resolve A Reachable Name-Based Place Entry (Post-Release)
+## TASK-117: Resolve A Reachable Name-Based Place Entry (Design Gate)
 
-TASK-117 is a design gate, not a production task. Do not begin it before TASK-100.
+TASK-117 is a design gate, not a production task. The original plan said not to begin it before TASK-100; the owner's later batch sequence explicitly moved this design-only decision ahead of the held TASK-110/TASK-100 gates. That override did not authorize runtime work: TASK-117 is complete, and TASK-118 remains the only implementation successor after those gates.
 
 ### Step 1: Prove the host problem against the live shell
 
@@ -386,7 +395,7 @@ Recommend the smallest truthful direction or recommend deferral. A native `<sele
 
 ### Step 4: Obtain owner decision and define any successor
 
-Update the existing design, decision, task, handoff, and progress records with the two concepts and recommendation. TASK-117 may move to `done` after the owner accepts a host or explicitly defers the feature. If a host is selected, create a separate bounded implementation task with strict TDD and independent review; TASK-117 itself changes no application source.
+Update the existing design, decision, task, handoff, and progress records with the two concepts and recommendation. The original gate required an owner host decision; the later batch instruction delegated that decision, and independent UX/accessibility review accepted the explicit **Places** action/panel. TASK-117 is therefore `done`. TASK-118 is the separate bounded implementation task with strict TDD and independent review; TASK-117 itself changes no application source.
 
 Verify the context-only gate:
 
@@ -423,7 +432,7 @@ TASK-110 remains the only final lens QA task; do not create a duplicate QA ledge
 
 ### TASK-100 frozen release QA
 
-Start only after TASK-095, TASK-110, and TASK-116 are done. Freeze production and run the full repository/story/Explorer/panel/data/accessibility/security matrix recorded in TASK-100. TASK-117 is post-release and does not block this gate. Deployment and submission are still separate owner decisions.
+Start only after TASK-095, TASK-110, and TASK-116 are done. Freeze production and run the full repository/story/Explorer/panel/data/accessibility/security matrix recorded in TASK-100. Completed design-only TASK-117 does not block this gate; TASK-118 remains a separate implementation after it. Deployment and submission are still separate owner decisions.
 
 ## Final Batch Scope Audit
 

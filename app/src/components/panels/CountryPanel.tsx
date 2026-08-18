@@ -11,6 +11,36 @@ type CountryPanelProps = {
   onOpenMethod: () => void;
 };
 
+function regionalReading(geo: Geo, geos: Geo[]) {
+  const complete = geos.filter(({ regionalStory }) => regionalStory.completeOverlap);
+  const completeCount = complete.length;
+  const comparisonLabel = completeCount === 1 ? "complete comparison" : "complete comparisons";
+
+  if (!geo.regionalStory.completeOverlap) {
+    const incompleteCount = geos.length - completeCount;
+    const incompleteLabel = incompleteCount === 1 ? "One" : incompleteCount === 3 ? "Three" : String(incompleteCount);
+    const placeLabel = geos.length === 1 ? "place" : "places";
+    const verb = incompleteCount === 1 ? "has" : "have";
+    return `${geo.name} is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. ${incompleteLabel} of the ${geos.length} ${placeLabel} ${verb} an incomplete comparison.`;
+  }
+
+  const matchingCount = complete.filter(({ regionalStory }) => regionalStory.quadrant === geo.regionalStory.quadrant).length;
+  const count = `That combination appears in ${matchingCount} of the ${completeCount} ${comparisonLabel}.`;
+
+  switch (geo.regionalStory.quadrant) {
+    case "both_up":
+      return `For ${geo.name}, both measures increased between their first and latest available records. ${count}`;
+    case "both_down":
+      return `For ${geo.name}, both measures decreased between their first and latest available records. ${count}`;
+    case "water_up_renewable_down":
+      return `For ${geo.name}, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. ${count}`;
+    case "water_down_renewable_up":
+      return `For ${geo.name}, safely managed drinking-water access decreased between its first and latest available records, while renewable-energy share increased. ${count}`;
+    default:
+      return `For ${geo.name}, both measures have comparable first-to-latest records, but their direction combination is unavailable in this view.`;
+  }
+}
+
 function PillarBar({ label, value, kind, caveat }: { label: string; value: number; kind: string; caveat?: string }) {
   return (
     <div className="pillar">
@@ -48,7 +78,7 @@ export function CountryPanel({ geo, geos, onOpenMethod }: CountryPanelProps) {
         <p className="panel__status">{geo.status}{geo.placeNote && <> · {geo.placeNote}</>}</p>
         <p className="panel__fineprint">Political status is descriptive context from cited public sources; it is not used in any score.</p>
       </div>
-      <p className="panel__story">{geo.storyLabel}</p>
+      <p className="panel__story">{regionalReading(geo, geos)}</p>
       <RegionalPositionLens geo={geo} geos={geos} />
       <div className="reporting reporting--warn">
         <p className="reporting__caveat">

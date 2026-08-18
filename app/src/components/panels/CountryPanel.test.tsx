@@ -59,7 +59,69 @@ const geo = {
 } satisfies Geo;
 const canonicalGeos = adaptGeographiesPayload(generatedGeographies);
 
+function regionalGeo(name: string, quadrant: string, completeOverlap = true): Geo {
+  return {
+    ...geo,
+    code: name.slice(0, 2).toUpperCase(),
+    name,
+    regionalStory: {
+      ...geo.regionalStory,
+      completeOverlap,
+      quadrant,
+    },
+  };
+}
+
+function renderPanel(selected: Geo, geos: Geo[]) {
+  return renderToStaticMarkup(
+    <CountryPanel geo={selected} geos={geos} onOpenMethod={() => undefined} />,
+  );
+}
+
 describe("CountryPanel", () => {
+  it("derives the selected place regional reading from loaded quadrants", () => {
+    const bothUp = regionalGeo("Nauru", "both_up");
+    const bothDown = regionalGeo("Tuvalu", "both_down");
+    const waterUpRenewableDown = regionalGeo("Kiribati", "water_up_renewable_down");
+    const waterDownRenewableUp = regionalGeo("Samoa", "water_down_renewable_up");
+    const missingOverlap = regionalGeo("Guam", "missing_overlap", false);
+    const complete = [
+      ...Array.from({ length: 6 }, () => regionalGeo("Nauru", "both_up")),
+      ...Array.from({ length: 3 }, () => regionalGeo("Tuvalu", "both_down")),
+      ...Array.from({ length: 7 }, () => regionalGeo("Kiribati", "water_up_renewable_down")),
+      ...Array.from({ length: 3 }, () => regionalGeo("Samoa", "water_down_renewable_up")),
+    ];
+    const incomplete = [
+      missingOverlap,
+      regionalGeo("Palau", "missing_overlap", false),
+      regionalGeo("Tonga", "missing_overlap", false),
+    ];
+    const geos = [...complete, ...incomplete];
+
+    expect(renderPanel(bothUp, geos)).toContain("For Nauru, both measures increased between their first and latest available records. That combination appears in 6 of the 19 complete comparisons.");
+    expect(renderPanel(bothDown, geos)).toContain("For Tuvalu, both measures decreased between their first and latest available records. That combination appears in 3 of the 19 complete comparisons.");
+    expect(renderPanel(waterUpRenewableDown, geos)).toContain("For Kiribati, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. That combination appears in 7 of the 19 complete comparisons.");
+    expect(renderPanel(waterDownRenewableUp, geos)).toContain("For Samoa, safely managed drinking-water access decreased between its first and latest available records, while renewable-energy share increased. That combination appears in 3 of the 19 complete comparisons.");
+    expect(renderPanel(missingOverlap, geos)).toContain("Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. Three of the 22 places have an incomplete comparison.");
+    expect(renderPanel(bothUp, geos)).not.toContain(geo.storyLabel);
+  });
+
+  it("keeps unknown complete directions distinct from incomplete records and uses singular grammar", () => {
+    const unknown = regionalGeo("Unknown", "unreviewed_direction");
+    const incomplete = regionalGeo("Guam", "missing_overlap", false);
+
+    expect(renderPanel(unknown, [unknown])).toContain("For Unknown, both measures have comparable first-to-latest records, but their direction combination is unavailable in this view.");
+    expect(renderPanel(incomplete, [incomplete])).toContain("Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. One of the 1 place has an incomplete comparison.");
+  });
+
+  it("keeps the regional reading after place identity and before the regional lens", () => {
+    const selected = regionalGeo("Nauru", "both_up");
+    const html = renderPanel(selected, [selected]);
+
+    expect(html.indexOf("For Nauru")).toBeGreaterThan(html.indexOf('class="panel__name"'));
+    expect(html.indexOf("For Nauru")).toBeLessThan(html.indexOf("Where Nauru sits in the Pacific"));
+  });
+
   it("keeps the visible source action at the 44px minimum target", () => {
     const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
 

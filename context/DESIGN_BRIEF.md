@@ -211,9 +211,9 @@ At the 320px application floor, preserve the existing SVG viewBoxes, visible coo
 
 Do not adopt the rejected alternatives: reducing the selected value to 19px reverses the approved hierarchy; warning-colored unavailable text overstates ordinary record absence; dividing metrics with repeated rules or a landscape two-column grid turns the panel toward dashboard grammar. The panel-wide 808px landscape line measure is a separate possible panel-shell decision, not authority for this lens task.
 
-### Evidence-Editorial Closure Contract (TASK-113; Owner Review Pending)
+### Evidence-Editorial Closure Contract (TASK-113; Owner Approved)
 
-The owner approved the direction on 2026-08-18. TASK-113 translates it into paired composition references and a binding implementation contract before production resumes:
+The owner approved the direction and paired contract on 2026-08-18. TASK-113 records the accepted composition references and binding implementation contract:
 
 - `artifacts/design/task-113/desktop-panel-concept.png`
 - `artifacts/design/task-113/mobile-panel-concept.png`

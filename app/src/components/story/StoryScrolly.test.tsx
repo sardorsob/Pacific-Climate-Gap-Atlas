@@ -130,6 +130,25 @@ describe("fullscreen story shell", () => {
     expect(failureIsolation).not.toContain("visibility: hidden");
   });
 
+  it("keeps the complete landscape handoff below the sticky story chrome", () => {
+    const landscapeStart = styles.indexOf(
+      "@media (max-width: 880px) and (orientation: landscape) {",
+    );
+    const landscapeEnd = styles.indexOf(
+      "/* ---------- premise legibility (TASK-086) ---------- */",
+      landscapeStart,
+    );
+    const landscapeRules = styles.slice(landscapeStart, landscapeEnd);
+
+    expect(landscapeRules).toMatch(
+      /\.story-handoff\s*\{[^}]*padding:\s*9rem 1rem 1\.25rem;/,
+    );
+    expect(landscapeRules).toMatch(
+      /\.story-handoff__copy\s*\{[^}]*max-width:\s*none;/,
+    );
+    expect(landscapeRules).not.toMatch(/\.story-handoff__copy\s*\{[^}]*font-size:/);
+  });
+
   it("defines low-light chrome roles while keeping the map and evidence marks flat", () => {
     const root = styles.match(/:root\s*\{([\s\S]*?)\}/)?.[1] ?? "";
     const protectedRules = (styles.match(/[^{}]+\{[^{}]*\}/g) ?? [])

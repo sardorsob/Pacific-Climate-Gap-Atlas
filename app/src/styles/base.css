@@ -523,6 +523,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 44px; }
   .dock--legend { top: 10px; right: 10px; bottom: auto; left: auto; width: calc(50% - 15px); }
   .story-scene[data-stage-mode="figure-takeover"] { padding-top: 5rem; }
+  .story-handoff { padding: 9rem 1rem 1.25rem; }
+  .story-handoff__copy { max-width: none; }
 }
 
 /* ---------- premise legibility (TASK-086) ---------- */

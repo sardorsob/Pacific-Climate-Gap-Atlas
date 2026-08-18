@@ -1,44 +1,93 @@
 {
+  "capturePath": "Direct final-scene state, then scroll the handoff into view with the sticky story chrome mounted.",
   "copy": "The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.",
-  "handoff": {
-    "x": 0,
-    "y": 0.3125,
-    "width": 1440,
-    "height": 900,
-    "top": 0.3125,
-    "right": 1440,
-    "bottom": 900.3125,
-    "left": 0
+  "rootCause": {
+    "oldCapturePath": "A premise-to-handoff jump left the story chrome unmounted and measured against the 57px map header instead of the visible 132px sticky story chrome.",
+    "oldLandscapeHandoffHeight": 449.859375,
+    "oldLandscapeMapHeaderBottom": 57,
+    "oldLandscapeEyebrowTop": 52.34375,
+    "oldLandscapeChromeBottomWhenMounted": 132,
+    "correction": "The landscape handoff reserves 9rem above its content and uses the available 812px copy width, keeping the original type size while fitting the complete conclusion and action below the sticky chrome."
   },
-  "button": {
-    "x": 72,
-    "y": 676.5625,
-    "width": 117.46875,
-    "height": 44,
-    "top": 676.5625,
-    "right": 189.46875,
-    "bottom": 720.5625,
-    "left": 72
+  "viewports": {
+    "desktop-1440x900": {
+      "screenshot": "artifacts/design/task-116/handoff-desktop-1440x900.png",
+      "chromeBottom": 132,
+      "eyebrowTop": 182.0625,
+      "chromeToEyebrow": 50.0625,
+      "copyTop": 209.0625,
+      "copyBottom": 662.5625,
+      "copyBeginningVisibleAtPoint": true,
+      "copyBeginsWith": "The records for these 22",
+      "actionTop": 676.5625,
+      "actionBottom": 720.5625,
+      "actionHeight": 44,
+      "contentFullyVisible": true,
+      "horizontalOverflow": 0
+    },
+    "portrait-390x844": {
+      "screenshot": "artifacts/design/task-116/handoff-portrait-390x844.png",
+      "chromeBottom": 132,
+      "eyebrowTop": 234.75,
+      "chromeToEyebrow": 102.75,
+      "copyTop": 261.75,
+      "copyBottom": 520.875,
+      "copyBeginningVisibleAtPoint": true,
+      "copyBeginsWith": "The records for these 22",
+      "actionTop": 534.875,
+      "actionBottom": 578.875,
+      "actionHeight": 44,
+      "contentFullyVisible": true,
+      "horizontalOverflow": 0
+    },
+    "landscape-844x390": {
+      "screenshot": "artifacts/design/task-116/handoff-landscape-844x390.png",
+      "chromeBottom": 132,
+      "eyebrowTop": 147.5,
+      "chromeToEyebrow": 15.5,
+      "copyTop": 174.5,
+      "copyBottom": 311.1875,
+      "copyBeginningVisibleAtPoint": true,
+      "copyBeginsWith": "The records for these 22",
+      "actionTop": 325.1875,
+      "actionBottom": 369.1875,
+      "actionHeight": 44,
+      "contentFullyVisible": true,
+      "horizontalOverflow": 0
+    }
   },
-  "minHeight": "44px",
-  "scrollWidth": 1440,
-  "clientWidth": 1440,
-  "guidedAlertRole": "alert",
-  "guidedAlertOpacity": "0",
-  "urlBefore": "http://127.0.0.1:5173/?scene=unequal-visibility&view=overview",
-  "historyLengthBefore": 1,
-  "keyboardOperable": true,
-  "urlAfter": "http://127.0.0.1:5173/?mode=explore&scene=unequal-visibility&view=overview",
-  "historyLengthAfter": 2,
-  "guidedVisibleAfterAction": false,
-  "neutralControlsVisible": true,
-  "selectedPanelVisible": false,
-  "outlookVisible": false,
-  "exploreAlertOpacity": "1",
-  "reducedMotion": true,
-  "directScene": {
-    "handoff": true,
-    "scene": "true",
-    "reducedMotion": true
+  "states": {
+    "guidedMapError": {
+      "role": "alert",
+      "opacity": "0",
+      "pointerEvents": "none"
+    },
+    "successfulMapSimulation": {
+      "method": "Remove the failure alert after load; handoff geometry is independent of the map renderer.",
+      "alertPresent": false,
+      "chromeBottom": 132,
+      "eyebrowTop": 147.5,
+      "chromeToEyebrow": 15.5,
+      "copyBeginningVisibleAtPoint": true,
+      "actionBottom": 369.1875,
+      "contentFullyVisible": true,
+      "horizontalOverflow": 0
+    },
+    "exploreAfterKeyboardAction": {
+      "url": "http://127.0.0.1:5186/?mode=explore&scene=unequal-visibility&view=overview",
+      "guidedVisible": false,
+      "neutralControlsVisible": true,
+      "selectedPanelVisible": false,
+      "outlookVisible": false,
+      "mapErrorOpacity": "1",
+      "mapErrorPointerEvents": "auto",
+      "keyboardOperable": true
+    },
+    "directScene": {
+      "url": "http://127.0.0.1:5186/?scene=unequal-visibility&view=overview",
+      "active": true,
+      "activeVisual": "visibility",
+      "reducedMotion": true
+    }
   }
 }

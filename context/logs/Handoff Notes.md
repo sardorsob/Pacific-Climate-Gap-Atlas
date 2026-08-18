@@ -2,7 +2,7 @@
 
 ## Immediate Next Step
 
-TASK-107 through TASK-109 and TASK-111 through TASK-113 are complete. TASK-110's first automated and independent pass remains valid evidence, but its owner gate remains `needs-fix`; attempt 2 is held until the owner returns and until the selected-place sentence and entry hierarchy under TASK-114/TASK-115 land. TASK-114 through TASK-116 are the active release-critical narrative closure. Frozen-production TASK-095 also awaits owner acceptance. TASK-100 remains held until TASK-095, TASK-110, and TASK-116 close. Per the owner's latest sequencing, TASK-117 will complete its design-only reachable-host gate now without production UI. Current verified assets are 1,043,075-byte JS and 96,047-byte CSS; their thresholds are internal diagnostics rather than Challenge limits. Deployment and submission remain separate decisions.
+TASK-107 through TASK-109 and TASK-111 through TASK-114 are complete. The selected-place regional reading now passes independent review and durable five-state source-to-render QA. TASK-110's first automated and independent pass remains valid evidence, but its owner gate remains `needs-fix`; attempt 2 is held until the owner returns and TASK-115 lands. TASK-115 and TASK-116 are the active release-critical narrative closure. Frozen-production TASK-095 also awaits owner acceptance. TASK-100 remains held until TASK-095, TASK-110, and TASK-116 close. Per the owner's latest sequencing, TASK-117 will complete its design-only reachable-host gate now without production UI. Current verified assets are 1,044,500-byte JS and 96,047-byte CSS; their thresholds are internal diagnostics rather than Challenge limits. Deployment and submission remain separate decisions.
 
 ## 2026-08-18
 

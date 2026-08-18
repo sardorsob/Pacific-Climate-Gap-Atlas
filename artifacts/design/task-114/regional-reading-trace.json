@@ -1,0 +1,50 @@
+{
+  "task": "TASK-114",
+  "capture_method": "quiet headless Brave via CDP; compact panel intentionally expanded for inspection",
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 900 },
+    { "name": "mobile", "width": 390, "height": 844 }
+  ],
+  "loaded_counts": { "places": 22, "complete_comparisons": 19, "incomplete_comparisons": 3 },
+  "captures": [
+    {
+      "source": { "code": "NR", "name": "Nauru", "quadrant": "both_up" },
+      "counts": { "complete": 19, "matching_quadrant": 6, "incomplete": 3 },
+      "sentence": "For Nauru, both measures increased between their first and latest available records. That combination appears in 6 of the 19 complete comparisons.",
+      "render": { "desktop_wrap_height": 64, "mobile_wrap_height": 64, "desktop_story_width": 347, "mobile_story_width": 354, "document_horizontal_overflow": false, "panel_horizontal_overflow": false },
+      "state": { "desktop_url": "?mode=explore&view=default&place=NR", "mobile_url": "?mode=explore&view=default&place=NR", "selected_code": "NR", "selection_url_map_and_interaction_state_unchanged": true }
+    },
+    {
+      "source": { "code": "MH", "name": "Marshall Islands", "quadrant": "both_down" },
+      "counts": { "complete": 19, "matching_quadrant": 3, "incomplete": 3 },
+      "sentence": "For Marshall Islands, both measures decreased between their first and latest available records. That combination appears in 3 of the 19 complete comparisons.",
+      "render": { "desktop_wrap_height": 64, "mobile_wrap_height": 64, "desktop_story_width": 347, "mobile_story_width": 354, "document_horizontal_overflow": false, "panel_horizontal_overflow": false },
+      "state": { "desktop_url": "?mode=explore&view=default&place=MH", "mobile_url": "?mode=explore&view=default&place=MH", "selected_code": "MH", "selection_url_map_and_interaction_state_unchanged": true }
+    },
+    {
+      "source": { "code": "FM", "name": "Federated States of Micronesia", "quadrant": "water_down_renewable_up" },
+      "counts": { "complete": 19, "matching_quadrant": 3, "incomplete": 3 },
+      "sentence": "For Federated States of Micronesia, safely managed drinking-water access decreased between its first and latest available records, while renewable-energy share increased. That combination appears in 3 of the 19 complete comparisons.",
+      "render": { "desktop_wrap_height": 96, "mobile_wrap_height": 96, "desktop_story_width": 347, "mobile_story_width": 354, "document_horizontal_overflow": false, "panel_horizontal_overflow": false },
+      "state": { "desktop_url": "?mode=explore&view=default&place=FM", "mobile_url": "?mode=explore&view=default&place=FM", "selected_code": "FM", "selection_url_map_and_interaction_state_unchanged": true }
+    },
+    {
+      "source": { "code": "FJ", "name": "Fiji", "quadrant": "water_up_renewable_down" },
+      "counts": { "complete": 19, "matching_quadrant": 7, "incomplete": 3 },
+      "sentence": "For Fiji, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. That combination appears in 7 of the 19 complete comparisons.",
+      "render": { "desktop_wrap_height": 80, "mobile_wrap_height": 80, "desktop_story_width": 347, "mobile_story_width": 354, "document_horizontal_overflow": false, "panel_horizontal_overflow": false },
+      "state": { "desktop_url": "?mode=explore&view=default&place=FJ", "mobile_url": "?mode=explore&view=default&place=FJ", "selected_code": "FJ", "selection_url_map_and_interaction_state_unchanged": true }
+    },
+    {
+      "source": { "code": "GU", "name": "Guam", "quadrant": "missing_overlap" },
+      "counts": { "complete": 19, "matching_quadrant": null, "incomplete": 3 },
+      "sentence": "Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. Three of the 22 places have an incomplete comparison.",
+      "render": { "desktop_wrap_height": 80, "mobile_wrap_height": 64, "desktop_story_width": 347, "mobile_story_width": 354, "document_horizontal_overflow": false, "panel_horizontal_overflow": false },
+      "state": { "desktop_url": "?mode=explore&view=default&place=GU", "mobile_url": "?mode=explore&view=default&place=GU", "selected_code": "GU", "selection_url_map_and_interaction_state_unchanged": true }
+    }
+  ],
+  "contact_sheets": [
+    "regional-reading-desktop-contact-sheet.png",
+    "regional-reading-mobile-contact-sheet.png"
+  ]
+}

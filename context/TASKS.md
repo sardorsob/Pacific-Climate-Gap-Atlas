@@ -2727,11 +2727,11 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The guided story ends on the regional finding and analytical boundary; action and state behavior remain unchanged; the copy is fully visible at target viewports without overflow; no scene, figure, data, dependency, route, state, or Night Watch change enters; independent review passes.
 - Verification commands: npm --prefix app run test -- scenes.test.ts StoryScrolly.test.tsx App.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
 - Manual QA: Quietly inspect the handoff at 1440x900, 390x844, and 844x390; activate **Explore the map** by pointer and keyboard and confirm neutral `view=overview`, no selection, and unchanged history behavior.
-- QA notes: Pending.
-- Attempts: 0
+- QA notes: Strict RED failed 1/26 focused assertions because `HANDOFF_COPY` still had the retired instruction; one-constant GREEN passed focused 26/26 and the story regression passed 29/29. Removing the refusal clause after the semicolon failed the exact-copy assertion, then restoration returned the suite to green. Quiet headless QA retained desktop/portrait/landscape frames and a compact DOM/state trace: exact copy, no desktop horizontal overflow, 44px intrinsic action, focusability, Explore’s neutral controls/no panel/no outlook result, direct-scene route, and reduced-motion route. The headless WebGL fallback message visually overlays the map area in the portrait/landscape frames; this is pre-existing infrastructure behavior, not a responsive change from the one-constant diff. Full frontend tests pass 142/142; build, bundle, required-artifact, secret, and whitespace checks pass.
+- Attempts: 1
 - Max attempts: 3
-- Attempt log: Pending.
-- Status: pending
+- Attempt log: 2026-08-18: TASK-116 moved `pending -> in-progress`; strict exact-copy RED failed as intended, the existing constant alone was replaced, and the refusal-clause mutation failed before restoration. Task then moved `in-progress -> in-review` with durable quiet-headless desktop/portrait/landscape frames and state trace under `artifacts/design/task-116/`; it awaits independent narrative/scientific review and is not done.
+- Status: in-review
 
 ## TASK-117
 - Phase: post-release-place-discoverability-design

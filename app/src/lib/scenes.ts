@@ -70,4 +70,4 @@ export const SCENES: Scene[] = [
 /** Stable scene ids used by the shareable URL contract. */
 export const SCENE_IDS = SCENES.map((scene) => scene.id);
 
-export const HANDOFF_COPY = "Select a place to inspect the data, sources, and gaps behind it.";
+export const HANDOFF_COPY = "The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.";

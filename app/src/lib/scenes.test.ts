@@ -38,7 +38,10 @@ describe("regional guided story", () => {
     expect(publicCopy).toContain("6");
     expect(publicCopy).toContain("277 place-and-dataset entries are present and 31 are absent");
     expect(publicCopy).not.toMatch(/Nauru|Tuvalu|pressure|capacity|rank|Adaptation Gap|fragile/i);
-    expect(HANDOFF_COPY).toBe("Select a place to inspect the data, sources, and gaps behind it.");
+    expect(HANDOFF_COPY).toBe(
+      "The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.",
+    );
+    expect(HANDOFF_COPY).not.toContain("Select a place to inspect");
     expect(SCENES.some((scene) => scene.claim === HANDOFF_COPY)).toBe(false);
   });
 

@@ -1,0 +1,41 @@
+{
+  "copy": "The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.",
+  "handoff": {
+    "x": 0,
+    "y": 0.3125,
+    "width": 1440,
+    "height": 900,
+    "top": 0.3125,
+    "right": 1440,
+    "bottom": 900.3125,
+    "left": 0
+  },
+  "button": {
+    "x": 72,
+    "y": 676.5625,
+    "width": 117.46875,
+    "height": 44,
+    "top": 676.5625,
+    "right": 189.46875,
+    "bottom": 720.5625,
+    "left": 72
+  },
+  "minHeight": "44px",
+  "scrollWidth": 1440,
+  "clientWidth": 1440,
+  "urlBefore": "http://127.0.0.1:5173/?scene=unequal-visibility&view=overview",
+  "historyLengthBefore": 1,
+  "keyboardOperable": true,
+  "urlAfter": "http://127.0.0.1:5173/?mode=explore&scene=unequal-visibility&view=overview",
+  "historyLengthAfter": 2,
+  "guidedVisibleAfterAction": false,
+  "neutralControlsVisible": true,
+  "selectedPanelVisible": false,
+  "outlookVisible": false,
+  "reducedMotion": true,
+  "directScene": {
+    "handoff": true,
+    "scene": "true",
+    "reducedMotion": true
+  }
+}

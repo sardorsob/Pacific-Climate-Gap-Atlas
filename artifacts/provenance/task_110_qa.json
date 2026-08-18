@@ -7206,8 +7206,8 @@
         "camera_expected_if_direct_unavailable": {
           "basis": "not used; direct idle MapLibre getters available",
           "center": [
-            231.7,
-            -24.4
+            178.1,
+            -17.7
           ],
           "zoom": 1.38
         },

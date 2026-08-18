@@ -1,0 +1,55 @@
+{
+  "task": "TASK-117",
+  "audit_kind": "read-only source and live-shell reachability",
+  "source_facts": [
+    {
+      "fact": "Neutral Explore does not mount the detail dock.",
+      "evidence": "app/src/App.tsx:125-133 and 479-495",
+      "detail": "panelOpen requires a selected geography or a coverage/uncertainty view; the panel section is conditional on panelOpen."
+    },
+    {
+      "fact": "The null CountryPanel branch can be constructed but is unreachable from neutral Explore.",
+      "evidence": "app/src/App.tsx:364-375",
+      "detail": "panelContent falls through to CountryPanel with selectedGeo, yet the containing dock is not mounted when selectedGeo is null in overview."
+    },
+    {
+      "fact": "Simply broadening panelOpen would expose the wrong title and reserve the existing panel footprint.",
+      "evidence": "app/src/App.tsx:479-493; app/src/styles/base.css:204-223, 366-390",
+      "detail": "A neutral fallback currently resolves to Rank ranges; desktop uses a 400px dock and mobile uses a bottom sheet up to 70vh."
+    },
+    {
+      "fact": "handleSelect is the single reusable place-selection and URL/history path.",
+      "evidence": "app/src/App.tsx:213-223",
+      "detail": "It sets selectedCode, applies the existing compact-sheet rule, and uses pushState except inside diagnostic child navigation, where it uses replaceState."
+    },
+    {
+      "fact": "Neutral Explore already exposes a persistent map-header action family.",
+      "evidence": "app/src/App.tsx:402-424; app/src/styles/base.css:152-169",
+      "detail": "Guided tour and Methods & sources are visible 44px actions in the neutral shell."
+    },
+    {
+      "fact": "Selected and diagnostic panels already have different Back, Close, and focus behavior.",
+      "evidence": "app/src/App.tsx:127-130, 256-285, 485-492; app/src/components/panels/ExplorerPanelNav.tsx:21-40",
+      "detail": "Diagnostic children expose contextual Back; terminal Close restores a map or diagnostic-control focus target and replaces URL state."
+    }
+  ],
+  "live_facts": {
+    "neutral_viewports": ["1440x900", "390x844", "844x390", "320x568"],
+    "neutral_panel_mounted": false,
+    "neutral_map_targets": 22,
+    "neutral_horizontal_overflow_px": 0,
+    "desktop_panel_width_px": 400,
+    "mobile_panel_max_height": "70vh",
+    "selected_panel_title": "Fiji",
+    "coverage_root_title": "Data coverage",
+    "diagnostic_child_title": "Nauru",
+    "diagnostic_child_has_back": true,
+    "all_panel_states_have_close": true,
+    "runtime_errors": 0,
+    "measurement_source": "live-shell-measurements.json"
+  },
+  "rejected_host": {
+    "name": "hidden empty-panel chooser",
+    "reason": "It is not mounted in neutral Explore. Making it visible would silently reserve the panel, inherit incorrect fallback navigation, and change the shell before a reader asks for place finding."
+  }
+}

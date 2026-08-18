@@ -1,0 +1,59 @@
+{
+  "task": "TASK-117",
+  "chosen_direction": "explicit Places action and panel",
+  "state_contract": [
+    {
+      "state": "neutral Explore",
+      "places_action": "Visible in the existing map-header action family; panel absent.",
+      "panel": "No desktop reservation and no mobile sheet until the action is used.",
+      "focus": "Normal map/header order; Places is a native 44px button.",
+      "history": "No URL write until the action is used."
+    },
+    {
+      "state": "Places panel open",
+      "places_action": "The trigger remains the focus-restoration target.",
+      "panel": "Title is exactly Places; native select is first meaningful field; desktop reserves 400px only while open; compact layouts expand the existing sheet.",
+      "focus": "Opening focuses the native select. Close restores the Places trigger.",
+      "history": "Opening is a disclosure state, not a new route and creates no history entry. Browser popstate closes the disclosure before hydrating canonical atlas state."
+    },
+    {
+      "state": "place chosen from Places panel",
+      "places_action": "No second selected state is created.",
+      "panel": "The same dock changes to the existing selected-place detail; compact detail returns to the existing collapsed-sheet default.",
+      "focus": "After the select change, focus moves to the existing panel Close control so the removed select cannot strand focus.",
+      "history": "Selection calls handleSelect; neutral selection therefore uses the existing place pushState path."
+    },
+    {
+      "state": "selected direct URL",
+      "places_action": "No picker interposition.",
+      "panel": "Existing selected detail and title render unchanged.",
+      "focus": "Existing direct-load behavior remains.",
+      "history": "Existing parse/hydration path remains canonical."
+    },
+    {
+      "state": "diagnostic root or child",
+      "places_action": "Hidden while a diagnostic or selected panel owns the dock; Close to neutral makes it visible again.",
+      "panel": "Existing Data coverage/Rank ranges root and contextual child Back behavior remain unchanged.",
+      "focus": "Existing diagnostic Back/Close restoration remains unchanged.",
+      "history": "Existing diagnostic replaceState path remains unchanged."
+    },
+    {
+      "state": "loading, data error, or zero loaded records",
+      "places_action": "Absent because the current app-state gate owns the viewport before the Explore shell mounts.",
+      "panel": "No empty picker or invented recovery UI.",
+      "focus": "No disabled or empty control enters the order.",
+      "history": "No change. A future distinct empty-data state may disable/omit the action, but TASK-118 must not redefine the app-wide loader."
+    }
+  ],
+  "responsive_contract": {
+    "desktop": "Keep the neutral map full width; reserve the existing 400px dock only after Places is activated.",
+    "portrait": "Use the existing expanded bottom sheet for the picker, with native select and Close visible without horizontal scrolling.",
+    "landscape": "Use the existing full-width sheet and permit body scrolling inside it; do not add a second drawer or permanent header field.",
+    "floor_320px": "Keep button/select/Close at least 44px, allow long option names to use native platform presentation, and retain zero page horizontal overflow."
+  },
+  "semantics": {
+    "ordering": "Alphabetical order is for retrieval only and has no analytical, priority, ranking, preparedness, need, readiness, or vulnerability meaning.",
+    "data": "Options come only from loaded stable Geo code/name pairs.",
+    "selection": "Every activation ends at handleSelect; no alternate selected code, URL writer, camera controller, or panel stack."
+  }
+}

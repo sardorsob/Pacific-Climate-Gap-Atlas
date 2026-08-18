@@ -1,0 +1,51 @@
+{
+  "task": "TASK-117",
+  "comparison": [
+    {
+      "direction": "visible header native select",
+      "live_host": "Existing map-header",
+      "likely_files": ["app/src/App.tsx", "app/src/styles/base.css", "app/src/App.test.tsx"],
+      "new_state": "None",
+      "new_dependency": false,
+      "measured_cost": "The concept increases the header from 160px to 241px at 1440x900, 158px to 239px at 390x844, 145px to 221px at 844x390, and 158px to 239px at 320x568.",
+      "strength": "Shortest implementation and direct native keyboard/touch operation.",
+      "loss": "A permanent utility field takes 76-81px from the map-facing header at every neutral visit and makes the atlas read more like a dashboard.",
+      "decision": "not selected"
+    },
+    {
+      "direction": "explicit Places action and existing panel",
+      "live_host": "Existing map-header action row plus existing panel dock",
+      "likely_files": ["app/src/App.tsx", "app/src/styles/base.css", "app/src/App.test.tsx"],
+      "likely_classes": ["map-header__actions", "ghost-btn", "panel-dock", "panel-nav", "panel"],
+      "new_state": "One ephemeral placesOpen boolean and one trigger ref; no URL/state-machine expansion.",
+      "new_dependency": false,
+      "measured_cost": "The neutral shell gains one 44px action; the existing 400px desktop dock or current mobile sheet appears only after activation. The matched prototype keeps zero horizontal overflow at all four measured sizes.",
+      "strength": "Lowest default visual footprint, truthful Places title, deliberate focus entry, and reuse of the mature panel shell.",
+      "loss": "More state/focus wiring than an inline select; the open compact sheet temporarily covers map controls, as existing expanded panels do.",
+      "decision": "recommended"
+    },
+    {
+      "direction": "continued map-only selection",
+      "live_host": "Existing 22 map targets",
+      "likely_files": [],
+      "new_state": "None",
+      "new_dependency": false,
+      "measured_cost": "No code or layout cost.",
+      "strength": "Purest map-first composition.",
+      "loss": "Leaves the named-place retrieval problem unsolved, especially where labels overlap or a reader knows a name but not its map position.",
+      "decision": "rejected baseline"
+    },
+    {
+      "direction": "hidden empty-panel chooser",
+      "live_host": "None in neutral Explore",
+      "likely_files": [],
+      "new_state": "Would require broadening panelOpen and repairing title/focus/history side effects.",
+      "new_dependency": false,
+      "measured_cost": "Would reserve 400px on desktop or mount a bottom sheet before the reader asks for it.",
+      "strength": "None over the explicit panel once reachability is considered.",
+      "loss": "Unreachable as proposed and misleading if made permanent.",
+      "decision": "rejected"
+    }
+  ],
+  "ponytail_ruling": "Choose the explicit Places action/panel. It is not the fewest lines, but it is the smallest product footprint that solves the actual retrieval problem. Reuse native select, the loaded Geo array, handleSelect, ExplorerPanelNav, and the existing dock; add no component library, custom combobox, search, router, panel stack, or camera behavior."
+}

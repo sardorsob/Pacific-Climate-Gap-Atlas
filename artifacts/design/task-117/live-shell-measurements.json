@@ -1,0 +1,1214 @@
+{
+  "capturedAt": "2026-08-18T20:28:54.853Z",
+  "viewports": {
+    "desktop-1440x900": {
+      "state": "neutral",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 18,
+        "y": 18,
+        "width": 332,
+        "height": 160
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 1170,
+        "y": 18,
+        "width": 252,
+        "height": 197.59
+      },
+      "legend": {
+        "x": 18,
+        "y": 699.31,
+        "width": 286,
+        "height": 160.69
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY"
+    },
+    "portrait-390x844": {
+      "state": "neutral",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 370,
+        "height": 158
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 624,
+        "width": 370,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 568,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY"
+    },
+    "landscape-844x390": {
+      "state": "neutral",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 407,
+        "height": 145
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 270,
+        "width": 824,
+        "height": 56
+      },
+      "legend": {
+        "x": 427,
+        "y": 10,
+        "width": 407,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY"
+    },
+    "floor-320x568": {
+      "state": "neutral",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 300,
+        "height": 158
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 110.78,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 154.22,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 348,
+        "width": 300,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 292,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY"
+    }
+  },
+  "states": {
+    "desktop-1440x900": {
+      "selected": {
+        "state": "selected",
+        "url": "?mode=explore&view=overview&place=FJ",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Fiji",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": false,
+        "mapHeader": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 770,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        },
+        "legend": {
+          "x": 18,
+          "y": 699.31,
+          "width": 286,
+          "height": 160.69
+        },
+        "panel": {
+          "x": 1040,
+          "y": 0,
+          "width": 400,
+          "height": 900
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "coverage-root": {
+        "state": "coverage-root",
+        "url": "?mode=explore&view=coverage",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Data coverage",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": false,
+        "mapHeader": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 770,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        },
+        "legend": {
+          "x": 18,
+          "y": 533,
+          "width": 286,
+          "height": 327
+        },
+        "panel": {
+          "x": 1040,
+          "y": 0,
+          "width": 400,
+          "height": 900
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "uncertainty-child": {
+        "state": "uncertainty-child",
+        "url": "?mode=explore&view=uncertainty&place=NR",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Nauru",
+        "backVisible": true,
+        "closeVisible": true,
+        "toggleVisible": false,
+        "mapHeader": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 770,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        },
+        "legend": {
+          "x": 18,
+          "y": 546,
+          "width": 286,
+          "height": 314
+        },
+        "panel": {
+          "x": 1040,
+          "y": 0,
+          "width": 400,
+          "height": 900
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      }
+    },
+    "portrait-390x844": {
+      "selected": {
+        "state": "selected",
+        "url": "?mode=explore&view=overview&place=FJ",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Fiji",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 158
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 590.8
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "coverage-root": {
+        "state": "coverage-root",
+        "url": "?mode=explore&view=coverage",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Data coverage",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 145
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 590.8
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "uncertainty-child": {
+        "state": "uncertainty-child",
+        "url": "?mode=explore&view=uncertainty&place=NR",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Nauru",
+        "backVisible": true,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 145
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 590.8
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      }
+    },
+    "landscape-844x390": {
+      "selected": {
+        "state": "selected",
+        "url": "?mode=explore&view=overview&place=FJ",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Fiji",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        },
+        "legend": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 334,
+          "width": 844,
+          "height": 273
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "coverage-root": {
+        "state": "coverage-root",
+        "url": "?mode=explore&view=coverage",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Data coverage",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        },
+        "legend": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 334,
+          "width": 844,
+          "height": 273
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "uncertainty-child": {
+        "state": "uncertainty-child",
+        "url": "?mode=explore&view=uncertainty&place=NR",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Nauru",
+        "backVisible": true,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 111.7,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 155.59,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        },
+        "legend": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 334,
+          "width": 844,
+          "height": 273
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      }
+    },
+    "floor-320x568": {
+      "selected": {
+        "state": "selected",
+        "url": "?mode=explore&view=overview&place=FJ",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Fiji",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 300,
+          "height": 158
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 110.78,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 154.22,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 348,
+          "width": 300,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 292,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 512,
+          "width": 320,
+          "height": 397.59
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "coverage-root": {
+        "state": "coverage-root",
+        "url": "?mode=explore&view=coverage",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Data coverage",
+        "backVisible": false,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 300,
+          "height": 158
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 110.78,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 154.22,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 348,
+          "width": 300,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 292,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 512,
+          "width": 320,
+          "height": 397.59
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      },
+      "uncertainty-child": {
+        "state": "uncertainty-child",
+        "url": "?mode=explore&view=uncertainty&place=NR",
+        "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+        "panelMounted": true,
+        "panelTitle": "Nauru",
+        "backVisible": true,
+        "closeVisible": true,
+        "toggleVisible": true,
+        "mapHeader": {
+          "x": 10,
+          "y": 10,
+          "width": 300,
+          "height": 158
+        },
+        "headerActions": [
+          {
+            "label": "Guided tour",
+            "width": 110.78,
+            "height": 44
+          },
+          {
+            "label": "Methods & sources",
+            "width": 154.22,
+            "height": 44
+          }
+        ],
+        "controls": {
+          "x": 10,
+          "y": 348,
+          "width": 300,
+          "height": 104
+        },
+        "legend": {
+          "x": 10,
+          "y": 292,
+          "width": 92.38,
+          "height": 44
+        },
+        "panel": {
+          "x": 0,
+          "y": 512,
+          "width": 320,
+          "height": 397.59
+        },
+        "mapTargets": 22,
+        "bodyOverflow": 0,
+        "activeElement": "BODY"
+      }
+    }
+  },
+  "concepts": {
+    "header-desktop-1440x900": {
+      "state": "header-entry-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 18,
+        "y": 18,
+        "width": 332,
+        "height": 241
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 1170,
+        "y": 18,
+        "width": 252,
+        "height": 197.59
+      },
+      "legend": {
+        "x": 18,
+        "y": 699.31,
+        "width": 286,
+        "height": 160.69
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY",
+      "control": {
+        "width": 302,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "panel-desktop-1440x900": {
+      "state": "places-panel-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "panelMounted": true,
+      "panelTitle": "Places",
+      "backVisible": false,
+      "closeVisible": true,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 18,
+        "y": 18,
+        "width": 332,
+        "height": 160
+      },
+      "headerActions": [
+        {
+          "label": "Places",
+          "width": 60.89,
+          "height": 44
+        },
+        {
+          "label": "Guided tour",
+          "width": 95.56,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 131.55,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 770,
+        "y": 18,
+        "width": 252,
+        "height": 197.59
+      },
+      "legend": {
+        "x": 18,
+        "y": 699.31,
+        "width": 286,
+        "height": 160.69
+      },
+      "panel": {
+        "x": 1040,
+        "y": 0,
+        "width": 400,
+        "height": 900
+      },
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "task117-panel-select",
+      "control": {
+        "width": 347,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "header-portrait-390x844": {
+      "state": "header-entry-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 370,
+        "height": 239
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 624,
+        "width": 370,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 568,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY",
+      "control": {
+        "width": 342,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "panel-portrait-390x844": {
+      "state": "places-panel-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "panelMounted": true,
+      "panelTitle": "Places",
+      "backVisible": false,
+      "closeVisible": true,
+      "toggleVisible": true,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 370,
+        "height": 209
+      },
+      "headerActions": [
+        {
+          "label": "Places",
+          "width": 60.89,
+          "height": 44
+        },
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 624,
+        "width": 370,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 568,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": {
+        "x": 0,
+        "y": 506.69,
+        "width": 390,
+        "height": 337.31
+      },
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "task117-panel-select",
+      "control": {
+        "width": 354,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "header-landscape-844x390": {
+      "state": "header-entry-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 407,
+        "height": 221
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 270,
+        "width": 824,
+        "height": 56
+      },
+      "legend": {
+        "x": 427,
+        "y": 10,
+        "width": 407,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY",
+      "control": {
+        "width": 379,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "panel-landscape-844x390": {
+      "state": "places-panel-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "panelMounted": true,
+      "panelTitle": "Places",
+      "backVisible": false,
+      "closeVisible": true,
+      "toggleVisible": true,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 407,
+        "height": 145
+      },
+      "headerActions": [
+        {
+          "label": "Places",
+          "width": 60.89,
+          "height": 44
+        },
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 270,
+        "width": 824,
+        "height": 56
+      },
+      "legend": {
+        "x": 427,
+        "y": 10,
+        "width": 407,
+        "height": 44
+      },
+      "panel": {
+        "x": 0,
+        "y": 117,
+        "width": 844,
+        "height": 273
+      },
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "task117-panel-select",
+      "control": {
+        "width": 808,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "header-floor-320x568": {
+      "state": "header-entry-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore",
+      "panelMounted": false,
+      "panelTitle": null,
+      "backVisible": false,
+      "closeVisible": false,
+      "toggleVisible": false,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 300,
+        "height": 239
+      },
+      "headerActions": [
+        {
+          "label": "Guided tour",
+          "width": 110.78,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 154.22,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 348,
+        "width": 300,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 292,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": null,
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "BODY",
+      "control": {
+        "width": 272,
+        "height": 44,
+        "options": 23
+      }
+    },
+    "panel-floor-320x568": {
+      "state": "places-panel-concept",
+      "url": "?mode=explore&view=overview",
+      "shellClass": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "panelMounted": true,
+      "panelTitle": "Places",
+      "backVisible": false,
+      "closeVisible": true,
+      "toggleVisible": true,
+      "mapHeader": {
+        "x": 10,
+        "y": 10,
+        "width": 300,
+        "height": 209
+      },
+      "headerActions": [
+        {
+          "label": "Places",
+          "width": 60.89,
+          "height": 44
+        },
+        {
+          "label": "Guided tour",
+          "width": 111.7,
+          "height": 44
+        },
+        {
+          "label": "Methods & sources",
+          "width": 155.59,
+          "height": 44
+        }
+      ],
+      "controls": {
+        "x": 10,
+        "y": 348,
+        "width": 300,
+        "height": 104
+      },
+      "legend": {
+        "x": 10,
+        "y": 292,
+        "width": 92.38,
+        "height": 44
+      },
+      "panel": {
+        "x": 0,
+        "y": 230.69,
+        "width": 320,
+        "height": 337.31
+      },
+      "mapTargets": 22,
+      "bodyOverflow": 0,
+      "activeElement": "task117-panel-select",
+      "control": {
+        "width": 284,
+        "height": 44,
+        "options": 23
+      }
+    }
+  },
+  "errors": []
+}

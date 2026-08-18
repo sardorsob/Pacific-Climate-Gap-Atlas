@@ -1,0 +1,41 @@
+{
+  "task": "TASK-117",
+  "status": "recommendation ready for independent UX/accessibility review",
+  "recommendation": "Implement one explicit Places action in the visible Explore map header. It opens the existing panel dock with title Places and one native place select. Keep the picker ephemeral and route every selection through handleSelect.",
+  "why": [
+    "The action is reachable in neutral Explore without permanently reserving map area.",
+    "The default shell remains recognizably an atlas rather than a dashboard with an always-present form field.",
+    "The existing desktop dock, mobile sheet, panel navigation, selected detail, and diagnostic behavior can be reused.",
+    "A native select gives complete keyboard/touch semantics and long-name option presentation with no dependency.",
+    "Alphabetical order can remain explicitly retrieval-only and never become an analytical ranking."
+  ],
+  "exact_visible_copy": {
+    "trigger": "Places",
+    "panel_title": "Places",
+    "eyebrow": "Place index",
+    "heading": "Open a place by name.",
+    "explanation": "The order is alphabetical for finding a place. It does not rank need, readiness, or vulnerability.",
+    "field_label": "Pacific place",
+    "placeholder": "Choose a Pacific place"
+  },
+  "successor": {
+    "task": "TASK-118",
+    "timing": "After the held TASK-110 and TASK-100 release QA gates are resolved.",
+    "scope": "Bounded native control and existing-panel implementation with strict TDD, responsive/focus/history QA, and independent review.",
+    "forbidden": ["custom combobox", "search dependency", "new route or URL parameter", "alternate selected-place state", "second drawer or panel stack", "peer navigation", "camera controller", "dashboard shell", "data or story change"]
+  },
+  "evidence": [
+    "neutral-desktop-1440x900.png",
+    "neutral-portrait-390x844.png",
+    "neutral-landscape-844x390.png",
+    "neutral-floor-320x568.png",
+    "concept-header-entry-desktop-1440x900.png",
+    "concept-header-entry-mobile-390x844.png",
+    "concept-places-panel-desktop-1440x900.png",
+    "concept-places-panel-mobile-390x844.png",
+    "live-shell-measurements.json",
+    "host-reachability-audit.json",
+    "state-focus-history-impact.json",
+    "ponytail-scope-comparison.json"
+  ]
+}

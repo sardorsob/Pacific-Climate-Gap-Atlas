@@ -1,6 +1,6 @@
 {
   "task": "TASK-117",
-  "status": "attempt-2 recommendation ready for independent UX/accessibility re-review",
+  "status": "accepted after independent UX/accessibility re-review",
   "recommendation": "Implement one explicit Places disclosure in the visible Explore map header. Its button owns aria-expanded and aria-controls=explorer-panel-dock, toggles the existing dock closed on reactivation, and opens that dock with title Places and one native place select. Keep the picker ephemeral, clear it on every canonical transition away, and route every selection through handleSelect.",
   "why": [
     "The action is reachable in neutral Explore without permanently reserving the panel dock.",

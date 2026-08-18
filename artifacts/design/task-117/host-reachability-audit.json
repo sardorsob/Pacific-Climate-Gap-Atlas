@@ -46,7 +46,19 @@
     "diagnostic_child_has_back": true,
     "all_panel_states_have_close": true,
     "runtime_errors": 0,
+    "header_height_comparison_px": {
+      "1440x900": {"baseline": 160, "permanent_select": 241, "places_action": 160},
+      "390x844": {"baseline": 158, "permanent_select": 239, "places_action": 209},
+      "844x390": {"baseline": 145, "permanent_select": 221, "places_action": 145},
+      "320x568": {"baseline": 158, "permanent_select": 239, "places_action": 209}
+    },
+    "places_action_compact_cost": "At 390x844 and 320x568 the third action wraps, adding 51px versus baseline while remaining 30px shorter than the permanent select.",
     "measurement_source": "live-shell-measurements.json"
+  },
+  "required_disclosure_semantics": {
+    "trigger": "Visible while open; aria-expanded mirrors placesOpen and aria-controls references explorer-panel-dock.",
+    "dismissal": "Trigger reactivation toggles closed and retains focus; panel Close restores trigger focus.",
+    "transition_invariant": "One local closePlaces helper clears the disclosure before every canonical transition away, including popstate before hydration."
   },
   "rejected_host": {
     "name": "hidden empty-panel chooser",

@@ -17,11 +17,11 @@
       "live_host": "Existing map-header action row plus existing panel dock",
       "likely_files": ["app/src/App.tsx", "app/src/styles/base.css", "app/src/App.test.tsx"],
       "likely_classes": ["map-header__actions", "ghost-btn", "panel-dock", "panel-nav", "panel"],
-      "new_state": "One ephemeral placesOpen boolean and one trigger ref; no URL/state-machine expansion.",
+      "new_state": "One ephemeral placesOpen boolean, one trigger ref, and one local closePlaces helper shared by disclosure dismissal and every canonical transition away; no URL/state-machine expansion.",
       "new_dependency": false,
-      "measured_cost": "The neutral shell gains one 44px action; the existing 400px desktop dock or current mobile sheet appears only after activation. The matched prototype keeps zero horizontal overflow at all four measured sizes.",
-      "strength": "Lowest default visual footprint, truthful Places title, deliberate focus entry, and reuse of the mature panel shell.",
-      "loss": "More state/focus wiring than an inline select; the open compact sheet temporarily covers map controls, as existing expanded panels do.",
+      "measured_cost": "The neutral shell gains one 44px action. Header height remains 160px at 1440x900 and 145px at 844x390, but the third action wraps portrait and 320px headers from 158px to 209px (+51px). That compact header is 30px shorter than the permanent-select concept at 239px. The existing 400px desktop dock or current mobile sheet appears only after activation; all four sizes keep zero horizontal overflow.",
+      "strength": "Lowest default visual footprint among hosts that solve retrieval, truthful Places title, deliberate focus entry, and reuse of the mature panel shell.",
+      "loss": "More state/focus wiring than an inline select; the added action costs 51px of default header height at portrait and 320px, and the open compact sheet temporarily covers map controls as existing expanded panels do.",
       "decision": "recommended"
     },
     {
@@ -47,5 +47,5 @@
       "decision": "rejected"
     }
   ],
-  "ponytail_ruling": "Choose the explicit Places action/panel. It is not the fewest lines, but it is the smallest product footprint that solves the actual retrieval problem. Reuse native select, the loaded Geo array, handleSelect, ExplorerPanelNav, and the existing dock; add no component library, custom combobox, search, router, panel stack, or camera behavior."
+  "ponytail_ruling": "Choose the explicit Places action/panel. It is not the fewest lines and it honestly costs 51px at the two compact portrait widths, but it avoids a permanent form and stays 30px shorter there while preserving desktop/landscape header height. Reuse a native select, loaded Geo array, handleSelect, ExplorerPanelNav, existing dock, and one local closePlaces helper. Add no component library, custom combobox, search, router, state machine, panel stack, or camera behavior."
 }

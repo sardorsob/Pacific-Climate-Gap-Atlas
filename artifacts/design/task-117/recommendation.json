@@ -1,14 +1,23 @@
 {
   "task": "TASK-117",
-  "status": "recommendation ready for independent UX/accessibility review",
-  "recommendation": "Implement one explicit Places action in the visible Explore map header. It opens the existing panel dock with title Places and one native place select. Keep the picker ephemeral and route every selection through handleSelect.",
+  "status": "attempt-2 recommendation ready for independent UX/accessibility re-review",
+  "recommendation": "Implement one explicit Places disclosure in the visible Explore map header. Its button owns aria-expanded and aria-controls=explorer-panel-dock, toggles the existing dock closed on reactivation, and opens that dock with title Places and one native place select. Keep the picker ephemeral, clear it on every canonical transition away, and route every selection through handleSelect.",
   "why": [
-    "The action is reachable in neutral Explore without permanently reserving map area.",
+    "The action is reachable in neutral Explore without permanently reserving the panel dock.",
     "The default shell remains recognizably an atlas rather than a dashboard with an always-present form field.",
     "The existing desktop dock, mobile sheet, panel navigation, selected detail, and diagnostic behavior can be reused.",
     "A native select gives complete keyboard/touch semantics and long-name option presentation with no dependency.",
-    "Alphabetical order can remain explicitly retrieval-only and never become an analytical ranking."
+    "Alphabetical order can remain explicitly retrieval-only and never become an analytical ranking.",
+    "The added action costs 51px where it wraps at 390x844 and 320x568, but the resulting 209px header remains 30px shorter than the permanent-select concept; desktop and landscape retain their 160px and 145px baselines."
   ],
+  "disclosure_contract": {
+    "control": "Places button: aria-expanded reflects placesOpen and aria-controls points to explorer-panel-dock.",
+    "open": "Open without a URL write, mount the existing dock, then focus the native select.",
+    "toggle_close": "Reactivating the still-visible Places button closes the dock and deterministically retains/restores focus on that button.",
+    "panel_close": "Panel Close closes the dock and restores the Places trigger.",
+    "transition_invariant": "One local closePlaces helper clears placesOpen without trigger-focus restoration before map/handleSelect, score, Data coverage, Rank ranges, 2030 stress test, Guided tour, Methods, and popstate/Back-Forward transitions. Popstate clears before canonical URL hydration.",
+    "selection_focus": "After clearing, selecting through the native field delegates to handleSelect and focuses the selected panel Close control."
+  },
   "exact_visible_copy": {
     "trigger": "Places",
     "panel_title": "Places",
@@ -21,8 +30,8 @@
   "successor": {
     "task": "TASK-118",
     "timing": "After the held TASK-110 and TASK-100 release QA gates are resolved.",
-    "scope": "Bounded native control and existing-panel implementation with strict TDD, responsive/focus/history QA, and independent review.",
-    "forbidden": ["custom combobox", "search dependency", "new route or URL parameter", "alternate selected-place state", "second drawer or panel stack", "peer navigation", "camera controller", "dashboard shell", "data or story change"]
+    "scope": "Bounded native disclosure and existing-panel implementation with one local clearing helper, strict TDD, responsive/focus/history QA, and independent review.",
+    "forbidden": ["custom combobox", "search dependency", "new route or URL parameter", "alternate selected-place state", "disclosure state machine", "second drawer or panel stack", "peer navigation", "camera controller", "dashboard shell", "data or story change"]
   },
   "evidence": [
     "neutral-desktop-1440x900.png",

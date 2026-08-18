@@ -2,7 +2,7 @@
 
 ## Status
 
-The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, `TASK-069` accepted the movement -> evidence visibility -> exploration story, and `TASK-072` through `TASK-077` implemented and verified the four-scene guided layer plus handoff. The application and its visual identity are preserved.
+The 2026-07-11 fullscreen story-stage remains the approved visual and interaction baseline. `TASK-068` completed the regional evidence test, `TASK-069` accepted the movement -> evidence visibility -> exploration story, and `TASK-072` through `TASK-077` implemented and verified the four-scene guided layer plus handoff. The application and its visual identity are preserved. `TASK-113` is the current concept gate for a bounded evidence-editorial closure; it may improve the selected-place reading and ending, but it is not permission to reskin the atlas.
 
 Owner review of the functioning `TASK-057` app found that the opening did not explain the project strongly enough and that scenes 4 and 5 rendered primary evidence too small. `TASK-058` through `TASK-064` resolved the fullscreen scale and interaction system, `TASK-072` through `TASK-077` replaced the narrative, and `TASK-079` through `TASK-082` completed the later Explorer audit. `TASK-057` repaired its separate pre-existing release findings and passed independent review.
 
@@ -174,7 +174,17 @@ The selected value becomes the entry point: plain metric title, prominent exact 
 
 Peer detail uses one reserved inspector line instead of a floating tooltip. The line shows recorded/unavailable context by default and exact peer or exact-group detail on hover, tap, or keyboard inspection. Inspection is informational only: the chosen island, teal ring, map camera, panel path, URL, and browser history do not change. One focusable surface per metric and one full-width touch band replace dozens of tiny controls.
 
-This refinement keeps Night Watch intact. It adds no glow, dashboard cards, tabs, second drawer, ranking language, texture, data field, renderer, dependency, route, or global state. Large-screen and mobile use the same reading order; mobile compacts vertical rhythm rather than hiding evidence or creating horizontal scroll. TASK-107 through TASK-110 are the bounded implementation and QA sequence, and TASK-100 follows their accepted output as the final release gate.
+This refinement keeps Night Watch intact. It adds no glow, dashboard cards, tabs, second drawer, ranking language, texture, data field, renderer, dependency, route, or global state. Large-screen and mobile use the same reading order; mobile compacts vertical rhythm rather than hiding evidence or creating horizontal scroll. TASK-107 through TASK-112 complete the metric and interaction refinement; TASK-114/TASK-115 add the required editorial entry before TASK-110 attempt 2, TASK-116 closes the guided argument, and TASK-100 follows their accepted output as the final release gate.
+
+### 2026-08-18 Evidence-Editorial Closure
+
+The remaining opportunity is not another visualization system or atmosphere pass. It is to help a reader turn the existing evidence into one coherent thought, then leave the guided sequence with a conclusion rather than an instruction.
+
+The selected-place panel therefore gains one plain regional-record sentence, a stronger but restrained lens entry, and an explicit selected-ring key. The guided handoff gains one two-sentence finding-and-boundary statement. A name-based place entry remains a useful post-release idea, but TASK-117 must first choose a genuinely visible host because the empty detail panel is not mounted in neutral Explore. Together the release-critical changes connect regional claim -> selected place -> evidence -> agency while preserving the current charts and explorer.
+
+Paired composition references live under `artifacts/design/task-113/`. They preserve the Night Watch direction—deep-ocean map, graphite chrome, mineral evidence surface, restrained teal selection, direct type—but remain schematic. The running application is the color, component, and interaction authority. No generated word, value, geography shape, typeface simulation, or pixel measurement becomes production truth.
+
+Artistic restraint is binding: no global typeface replacement during this batch, no highlighted-number cards, no chapter rail, no gaps-only duplicate figure, no new story beat for the Methods refusal list, and no decorative light on data. The distinctiveness should come from continuity and editorial confidence: one selected place is read within the same 22-place record, and the atlas ends by stating both what the record shows and what it cannot settle.
 
 ## TASK-072 Transition Keyframes (Owner Approved)
 

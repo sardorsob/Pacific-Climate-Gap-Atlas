@@ -4,7 +4,7 @@
 
 Task: `TASK-018`
 
-Status: `TASK-074` through `TASK-077` implement, verify, and owner-accept the `TASK-069` regional movement -> evidence visibility -> exploration story. The old **The Shape of What We Know** guided sequence, Adaptation Gap title/index-first opening, Nauru/Tuvalu comparison, and rank-band ending are retired. The current map, 22 equal-presence marks, fullscreen stage, palette/type/control language, selected-place panel, sources/methods, URL/history, accessibility, and Explore handoff remain the visual and behavioral authority.
+Status: `TASK-074` through `TASK-077` implement, verify, and owner-accept the `TASK-069` regional movement -> evidence visibility -> exploration story. `TASK-113` now holds the owner-review contract for a bounded evidence-editorial closure: one evidence-bound selected-place reading, a clearer regional-lens entry point, and a real concluding statement before Explore. The old **The Shape of What We Know** guided sequence, Adaptation Gap title/index-first opening, Nauru/Tuvalu comparison, and rank-band ending are retired. The current map, 22 equal-presence marks, fullscreen stage, palette/type/control language, selected-place panel, sources/methods, URL/history, accessibility, and Explore handoff remain the visual and behavioral authority.
 
 Source basis:
 
@@ -462,3 +462,20 @@ The reading path is visible and reversible:
 4. Back to the evidence view or Close to the neutral map.
 
 This coda is not a third guided act and does not assign a local verdict. It lets the reader test the regional story place by place while keeping the same caveats: different clocks, descriptive endpoints, incomplete comparisons, and presence that does not stand for quality, preparedness, need, or conditions on the ground.
+
+### Evidence-Editorial Closure
+
+The coda should first conclude the regional argument, then invite exploration. Replace the current instruction-only handoff sentence with this exact two-sentence statement:
+
+> The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.
+
+Keep the existing **Explore the map** action, eyebrow, scene state, and map return. This is a conclusion inside the existing handoff, not a fifth guided scene, a slogan, or a promoted methodology panel.
+
+When the reader selects a place, translate the already visible regional evidence once before the lens. The sentence must begin from the first and latest available records, name the two measures in ordinary words, and state how many complete comparisons share that direction combination. Examples are templates, not handcrafted place profiles:
+
+- both up: **For Nauru, both measures increased between their first and latest available records. That combination appears in 6 of the 19 complete comparisons.**
+- water up / renewable down: **For Kiribati, safely managed drinking-water access increased between its first and latest available records, while renewable-energy share decreased. That combination appears in 7 of the 19 complete comparisons.**
+- both down and water down / renewable up use the same direct grammar.
+- incomplete: **Guam is not included in the four-direction comparison because one or both measures lack comparable first-to-latest records. Three of the 22 places have an incomplete comparison.**
+
+Use **increased** and **decreased**, not arrows, good/bad language, `rose/fell` as a dramatic flourish, or a new causal verb. Say **combination**, not path, trajectory, progress, decline, trend, rank, or position. Counts are derived from the live `Geo[]`: `completeOverlap` owns the complete/incomplete denominator and the selected `Geo.regionalStory.quadrant` owns only the matching direction combination. No per-place prose table or new data field is created.

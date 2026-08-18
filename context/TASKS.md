@@ -2327,13 +2327,13 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 ## TASK-100
 - Phase: selected-place-lens-release-qa
 - Title: Verify the complete selected-place regional lens
-- Depends on: TASK-095, TASK-101, TASK-102, TASK-103, TASK-104, TASK-110
+- Depends on: TASK-095, TASK-101, TASK-102, TASK-103, TASK-104, TASK-110, TASK-116
 - Assigned agent: Independent scientific/UX/accessibility QA; owner final review
-- Contract refs: TASK-096, TASK-106, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/docs/submission-notes.md
+- Contract refs: TASK-096, TASK-106, TASK-113, TASK-116, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/docs/submission-notes.md
 - Data refs: frozen production app and generated/public data after TASK-110
 - Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
 - User value / decision value: Proves that the place-level regional context is truthful, clear, responsive, and additive to the accepted atlas before public hosting or submission.
-- Functional notes: Freeze production and review TASK-097 through TASK-099 plus the TASK-107 through TASK-110 refinement. Reuse TASK-095/TASK-099/TASK-110 evidence, add source-to-render audits for both continuous strips and the grouped visibility tally, and return defects to their owning task rather than patching production inside QA. Owner visual/interaction acceptance remains required. Deployment, public-URL durability, and submission remain separate decisions.
+- Functional notes: Freeze production and review TASK-097 through TASK-099, the TASK-107 through TASK-115 lens refinement/closure, and the TASK-116 guided ending. Reuse TASK-095/TASK-099/TASK-110 evidence only where the intervening diff cannot affect it; add fresh source-to-render and story-to-selection audits for the final state, and return defects to their owning task rather than patching production inside QA. TASK-117 is a separate post-release design gate and does not block this release. Owner visual/interaction acceptance remains required. Deployment, public-URL durability, and submission remain separate decisions.
 - Statistical notes: Reproduce all recorded/unavailable counts, continuous extents and medians, selected values, exact visibility groups, fixed visibility denominator, null-versus-zero treatment, per-observation clocks, modeled-score separation, and JSD separation directly from generated/public data. Confirm visibility has no redundant median-at-maximum claim and that no rank, median-target, preparedness, quality, causal, territorial, water-condition, or local-knowledge claim entered the interface, including that no place displays an internal editorial-review marker on its political status and that the sourced provenance line from TASK-101 reads identically for all 22 places.
 - Edge cases: Full guided-to-Explorer handoff; direct place URLs and history; complete/null/reported-zero/missing-row records; all panel/dialog/error states including the TASK-102 map-unavailable notice; seven viewports plus live breakpoint crossings in both directions per TASK-103; reflow; color independence; reduced motion; keyboard/focus/touch; measured bundle regression checks.
 - Files to create/modify: artifacts/design/task-100/*; artifacts/provenance/task_100_qa.json; context/TASKS.md; context/PROJECT.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; production/tests only after a formal owning-task rejection
@@ -2341,8 +2341,8 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: The lens answers where a selected place sits in the observed regional record; data, nulls, medians, units, caveats, scores, and JSD remain correctly separated; map/story/panel/navigation/accessibility/failure behavior remains intact; no new dependency, renderer, route, state system, API, or dashboard shell ships; all repository gates and independent review pass; owner accepts the result. Only then may public-hosting readiness be claimed separately.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; semgrep scan --config auto; osv-scanner scan source -r .; git diff --check
 - Manual QA: Run the complete quiet/headless story/Explorer/panel/accessibility/state/error matrix and obtain owner review without visible external Brave or Chrome windows.
-- QA notes: Strict RED failed 7/9 focused lens assertions while the unchanged visibility/bounds contracts and 8/8 model tests stayed green. Minimal GREEN passed 17/17 focused and 131/131 full frontend tests. Quiet cached-Chromium/SwiftShader QA passed NR, GU, PN, SB, WS, and PG at 1440x900, 390x844, and 844x390: two focus surfaces/live lines/zeroes/medians, bare endpoints, 47.71px minimum rendered hit band, zero horizontal overflow/runtime errors, hover/leave, sticky touch/outside tap, Left/Right, Escape, blur, selected-place reset, unavailable low/high entry, Fiji/Tonga tie order/clocks, and inspector URL/history/selection/camera immutability. Three bounded captures are under `artifacts/design/task-108/`. Production build passed; task-status (111), secret, and whitespace gates passed. The internal bundle diagnostic reports JS 1,040,365/1,050,000 bytes and CSS 95,049/95,000 bytes: versus frozen TASK-107, CSS is +207 raw/+54 gzip bytes and exceeds the explicitly non-product ceiling by 49 bytes. The readable existing-seam CSS was retained rather than contorting the interface around that diagnostic.
-- Attempts: 1
+- QA notes: Not run. Earlier TASK-108/TASK-110 evidence remains historical input, not TASK-100 completion evidence. The current pre-closure baseline after TASK-112 passes 138/138 frontend tests and builds to 1,043,075-byte JavaScript and 96,047-byte CSS under the internal 1,050,000/97,500 diagnostics; TASK-100 must verify the later frozen production state afresh where TASK-114 through TASK-116 can affect it.
+- Attempts: 0
 - Max attempts: 3
 - Attempt log: Pending.
 - Status: pending
@@ -2568,13 +2568,13 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 ## TASK-110
 - Phase: selected-place-lens-refinement-qa
 - Title: Verify the readable regional lens and interaction contract
-- Depends on: TASK-109
+- Depends on: TASK-109, TASK-114, TASK-115
 - Assigned agent: Independent scientific/UX/accessibility QA; owner visual review
-- Contract refs: TASK-106 through TASK-109, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
-- Data refs: frozen TASK-109 production app and existing generated/public records
+- Contract refs: TASK-106 through TASK-109, TASK-113 through TASK-115, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: frozen TASK-115 production app and existing generated/public records
 - Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md, context/docs/methodology.md
 - User value / decision value: Proves the refinement is easier to read, honest across both data shapes, and still behaves like one selected-island panel before the final release gate.
-- Functional notes: Freeze production after TASK-109. Audit source -> model -> DOM for both continuous strips and all six visibility groups; compare the accepted hierarchy across desktop, portrait, landscape, and effective 200% reflow; exercise pointer, sticky tap, keyboard, dismissal, selected-null, history, Back/Close, and map-failure states. Return defects to TASK-107, TASK-108, or TASK-109 rather than patching production inside QA. Owner approval is required before `done` and before TASK-100 begins.
+- Functional notes: Freeze production after the accepted TASK-114/TASK-115 selected-panel closure. Audit source -> model -> sentence -> DOM for the four complete direction combinations and incomplete records, both continuous strips, all six visibility groups, heading/key hierarchy, and local evidence-label role; compare the accepted hierarchy across desktop, portrait, landscape, and effective 200% reflow; exercise pointer, sticky tap, keyboard, dismissal, selected-null, history, Back/Close, and map-failure states. Return defects to the owning implementation task rather than patching production inside QA. Owner approval is required before `done` and before TASK-100 begins.
 - Statistical notes: Reproduce water 19/3 and median +0.67; renewable 20/2 and median +0.01; visibility 22/0 with six exact groups and 12 at 14/14; exact per-place clocks; selected null versus zero; no visibility median; no rank/quality/preparedness/causal claim.
 - Edge cases: NR, PN, TK, GU, SB, WS, PG, Fiji/Tonga tie, one 14/14 place; long names; selected-value endpoints; all inspection inputs; pointer/touch modality changes; reduced motion; grayscale/deuteranopia; 360x800, 390x844, 430x932, 844x390, 1024x768, 1280x800, and 1440x900; effective 200% reflow.
 - Test cases: Reuse full frontend/build/data/status/security gates; add a quiet/headless state matrix that records selected code, URL, camera center/zoom, panel path, inspected value/group, focus target, live-region text, mark/group counts, overflow, touch-band height, and console/network errors before and after each interaction.
@@ -2583,10 +2583,10 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Acceptance criteria: A cold reader can identify the selected value first, understand both regional arrangements, inspect peers without losing the selected island, and distinguish visibility presence from quality or preparedness; all values/groups/clocks/nulls are exact; focus/touch/live-region/contrast/overflow/history behavior passes; Night Watch and the rest of the app remain unchanged; independent and owner reviews pass.
 - Verification commands: python -m unittest discover -s tests -t . -v; python scripts/validate_data_contracts.py; python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; ruff check analysis scripts tests; python -m compileall -q analysis scripts tests; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; git diff --check
 - Manual QA: Run the full matrix quietly without opening visible external Brave or Chrome windows; compare before/after lens readability at the same panel states and obtain owner visual/interaction acceptance.
-- QA notes: Attempt 1 automated and independent frozen-production QA passed 802 usable assertions and 10 inspected frames, including exact source/group reproduction, all inspection inputs, seven accepted viewports, reflow, color/motion variants, history, accessibility, and the repaired TASK-102 map-failure state. Owner review did not accept the lens as finished: the data and interaction design are good, but metric labels, large values, units, clocks, SVG annotations, and between-metric spacing do not form a clear reading rhythm. Follow-up measurement reproduced the causes rather than treating the feedback as taste alone: the 11px title sits below inherited 16px unit/clock text; `float: right` disconnects and misaligns the clock; the renewable zero and +0.01 median are only 0.068 CSS px apart at 390px; inspection has no cursor-specific paint; and the nominal 44-unit SVG band renders at 39.05 CSS px when the 320px viewport leaves a 284px plot. The owner approved the bounded Direction A+ correction recorded under TASK-111 and TASK-112. TASK-110 remains the same final lens gate and will restart only after both tasks pass independent review.
+- QA notes: Attempt 1 automated and independent frozen-production QA passed 802 usable assertions and 10 inspected frames, including exact source/group reproduction, all inspection inputs, seven accepted viewports, reflow, color/motion variants, history, accessibility, and the repaired TASK-102 map-failure state. Owner review did not accept the lens as finished and returned the bounded Direction A+ correction. TASK-111 and TASK-112 have now passed independent review: the current baseline has the approved copy/rhythm, five distinct reference/inspection/selection identities, selected-self wording, and at least 44.37px bands at the 320px floor. Attempt 2 is ready but intentionally waits for TASK-114/TASK-115 so the owner evaluates the final selected-panel hierarchy once. The guided ending and post-release name-entry host decision remain outside this lens-specific gate.
 - Attempts: 1
 - Max attempts: 3
-- Attempt log: 2026-08-02: TASK-110 moved `pending -> in-progress` after TASK-109 passed independent scientific/visualization/accessibility review. Production was frozen at `83b52a1`; QA owned only bounded design/provenance evidence and active task/handoff records unless a reproduced defect was formally returned to an owning implementation task. The first pass returned one responsive map-failure defect to TASK-102. After TASK-102 attempt 3 closed at `069e811`, QA resumed without changing production, superseded the affected assertion/frame, justified reuse of unaffected evidence against the one-rule diff, passed the fresh repair/inactivity slice and full gates, and moved `in-progress -> in-review`. Owner review then returned the typography/rhythm and narrow-width interaction findings above; TASK-110 moved `in-review -> needs-fix` and delegates the approved repair to TASK-111 and TASK-112 before attempt 2.
+- Attempt log: 2026-08-02: TASK-110 moved `pending -> in-progress` after TASK-109 passed independent scientific/visualization/accessibility review. Production was frozen at `83b52a1`; QA owned only bounded design/provenance evidence and active task/handoff records unless a reproduced defect was formally returned to an owning implementation task. The first pass returned one responsive map-failure defect to TASK-102. After TASK-102 attempt 3 closed at `069e811`, QA resumed without changing production, superseded the affected assertion/frame, justified reuse of unaffected evidence against the one-rule diff, passed the fresh repair/inactivity slice and full gates, and moved `in-progress -> in-review`. Owner review then returned the typography/rhythm and narrow-width interaction findings above; TASK-110 moved `in-review -> needs-fix` and delegated the repair to TASK-111 and TASK-112. 2026-08-18: both delegated tasks are done; attempt 2 remains unstarted until TASK-114/TASK-115 land, so the legal next transition is still `needs-fix -> in-progress`.
 - Status: needs-fix
 
 ## TASK-111
@@ -2636,3 +2636,123 @@ Allowed statuses: `pending`, `in-progress`, `in-review`, `needs-fix`, `blocked`,
 - Max attempts: 3
 - Attempt log: 2026-08-02: Started attempt 1 after TASK-111 passed independent review and closed. Strict tests pinned distinct zero/median/inspection/group/selection paint, selected-self wording, exact 50-unit bands, unchanged viewBoxes/visible coordinates, and prohibited-workaround absence. Quiet RED/GREEN reproduced 39.05px and then 44.37px targets at 320px without moving visible geometry. Interaction, responsive, focused/full test, build/budget, status, secret, and whitespace gates pass. The project's deliberate 44px interaction policy remains stronger than the Pacific DataViz Challenge rules and is not represented as an automatic WCAG 2.2 AA requirement. Moved `in-progress -> in-review`; independent visualization/accessibility review returned SPEC PASS / QUALITY PASS with no finding, so TASK-112 moved `in-review -> done`.
 - Status: done
+
+## TASK-113
+- Phase: evidence-editorial-closure-design
+- Title: Lock the evidence-editorial closure contract
+- Depends on: TASK-112
+- Assigned agent: Design/story planner; owner visual review
+- Contract refs: context/STORY_BRIEF.md, context/DESIGN_BRIEF.md, context/ARTISTIC_REDESIGN_BRIEF.md, context/DECISIONS.md
+- Data refs: existing generated/public geography records only; no data or pipeline change
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Turns the approved brainstorm into one reviewable desktop/mobile composition and a bounded task sequence before deadline-sensitive production work begins.
+- Functional notes: Record the selected-place regional sentence, lens entry hierarchy, honest guided ending, and post-release name-entry question in the existing context system. Produce paired desktop/mobile concept references that preserve Night Watch and the current panel/plot grammar. Treat the boards as semantic composition studies only: no generated text, value, map label, shape, font metric, or pixel becomes runtime truth. Keep production/tests/data/dependencies/routes/state/runtime assets frozen until owner approval. Record the code-audit result that the proposed neutral empty-panel chooser is not mounted and therefore requires a later host decision.
+- Statistical notes: Concepts may illustrate only the existing four direction combinations, 19 complete comparisons, three incomplete comparisons, 22-place denominator, and current water/renewable/visibility lens. They cannot invent levels, trajectories, causes, ranks, quality, preparedness, need, vulnerability, or a shared Pacific direction.
+- Edge cases: Desktop panel over the map; portrait bottom sheet; 320px floor; long place names; incomplete comparison; selected ring without color; unchanged source/caveat reachability.
+- Test cases: Review both boards against the code-bound evidence contract and current app; validate task states, required artifacts, secret scan, context paths, and whitespace; confirm no production, generated/public data, package, or lockfile diff.
+- Files to create/modify: artifacts/design/task-113/desktop-panel-concept.png; artifacts/design/task-113/mobile-panel-concept.png; context/PROJECT.md; context/SCOPE.md; context/STORY_BRIEF.md; context/DESIGN_BRIEF.md; context/ARTISTIC_REDESIGN_BRIEF.md; context/DECISIONS.md; context/ANALYSIS_BACKLOG.md; context/STRUCTURE.md; context/TASKS.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md; context/plans/tasks-114-117-evidence-editorial-closure-implementation-plan.md
+- Artifacts to produce: One large-screen and one mobile composition reference, the written design/story contract, one consolidated implementation plan, synchronized tasks/logs/handoff, and owner decision.
+- Acceptance criteria: Owner accepts the paired concept and written contract; current Night Watch identity and existing visualizations remain authoritative; successor tasks have exact seams, copy, tests, responsive rules, dependency order, review gates, and separate commit boundaries; deferrals are explicit; no production or data change enters TASK-113.
+- Verification commands: python scripts/check_required_artifacts.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check; git diff --name-only
+- Manual QA: Compare both boards with the current application and inspect whether the sentence -> heading/key -> selected values -> caveat reading order survives desktop and mobile without implying a new dashboard or data meaning.
+- QA notes: Paired schematic boards were created after read-only story, typography, context, and code-seam audits. Desktop is 1586x992 with SHA-256 `9166623cc8860a3d39a10bc4d06662984eaac06ed8cc6049bf3a12fa6067561f`; mobile is 853x1844 with SHA-256 `c19b886fc71f1d0b0dd2473cf9435f1c51520615914b25fd482850bd062a569a`. They preserve the current dark-ocean/graphite/mineral/teal visual family and the three existing plot types. The production contract corrects the concept's teal kicker to muted ink so teal remains selected-ring meaning. The plan rejects a global font migration, duplicate gaps-only figure, promoted claims scene, handcrafted place copy, and copy-link UI. Code review also moved the unreachable neutral-panel chooser into post-release TASK-117 host design. Production remains frozen and owner visual approval is pending.
+- Attempts: 1
+- Max attempts: 3
+- Attempt log: 2026-08-18: TASK-113 moved `pending -> in-progress` after the owner approved the synthesized direction and requested full planning/design/context updates. The planner produced paired concept references, consolidated the binding contract into existing context files, registered TASK-114 through TASK-117, and moved TASK-113 `in-progress -> in-review`. No application source, test, data, dependency, route, state, or runtime asset changed.
+- Status: in-review
+
+## TASK-114
+- Phase: selected-place-regional-reading
+- Title: Replace the modeled gap sentence with a regional record reading
+- Depends on: TASK-113
+- Assigned agent: Panel copy Builder; independent scientific/content Checker
+- Contract refs: TASK-113; context/STORY_BRIEF.md Evidence-Editorial Closure; context/DESIGN_BRIEF.md Evidence-Editorial Closure Contract
+- Data refs: existing loaded `Geo[]` and `Geo.regionalStory.quadrant`; no generated/public-data change
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Lets a reader understand what the selected place's two changes mean in the regional comparison before decoding three plots.
+- Functional notes: Replace only the prominent `geo.storyLabel` use in `CountryPanel` with a small deterministic helper in the same file. Derive the complete denominator from `Geo.regionalStory.completeOverlap`; use the selected quadrant only to choose prose and count matching complete records. For the four reviewed quadrants, state the selected place's first-to-latest water and renewable directions, then state how many complete comparisons share that combination. Use **both measures increased/decreased** when both directions match and name each measure when they differ. For an incomplete comparison, state why the place is excluded and give the live incomplete count out of all loaded places. A complete record with an unknown quadrant receives a neutral unsupported-direction sentence rather than being reclassified as incomplete. Retain `Geo.storyLabel` and its adapter for other consumers. Add no prose table, data field, model module, dependency, or abstraction layer.
+- Statistical notes: Use **increased**, **decreased**, **combination**, **complete comparisons**, and **incomplete comparison**. Do not say path, trajectory, trend, progress, decline, cause, rank, typical, better/worse, preparedness, need, vulnerability, or shared clock. The sentence does not repeat the 14-position visibility count because the existing lens already shows it.
+- Edge cases: All four quadrant values; complete record with an unknown quadrant; one or both measures unavailable; one complete or one incomplete record for singular grammar; long place names; changed geography order.
+- Test cases: Begin with focused failures for all four exact sentence templates, the incomplete template, an unknown-complete fallback, and singular-count grammar; verify live `completeOverlap`/quadrant/incomplete counts, first-to-latest framing, and absence of the stale modeled story sentence. Mutate one quadrant count and one direction verb to prove the assertions are meaning-bearing. Keep existing panel order, caveats, lens, score, trace, JSD, and source-action tests green.
+- Files to create/modify: app/src/components/panels/CountryPanel.tsx; app/src/components/panels/CountryPanel.test.tsx; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: Exact sentence matrix for all four complete quadrants plus one incomplete record; source-to-render count trace; matched desktop/mobile selected-panel captures.
+- Acceptance criteria: Every selected place receives one truthful, human, deterministic regional reading; counts update from the loaded records; incomplete values remain explicit; no causal/ranking/evaluative claim enters; old `storyLabel` is no longer the prominent panel sentence; panel structure, plots, data, state, URL/history, map, dependencies, and Night Watch remain unchanged; independent review passes.
+- Verification commands: npm --prefix app run test -- CountryPanel.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quietly inspect one place from each quadrant plus Guam or Pitcairn at 1440x900 and 390x844; compare the rendered sentence with the loaded records and confirm no layout, state, or interaction change.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-115
+- Phase: selected-place-editorial-entry
+- Title: Give the regional lens an editorial entry point
+- Depends on: TASK-114
+- Assigned agent: Lens UI Builder; independent visualization/accessibility Checker
+- Contract refs: TASK-113; context/DESIGN_BRIEF.md Evidence-Editorial Closure Contract; context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: frozen TASK-114 output and existing regional-position model; no data change
+- Scientific refs: context/STORY_BRIEF.md, context/DATA_CARD.md
+- User value / decision value: Makes the panel's central question and selected-mark grammar clear before the reader meets the distributions.
+- Functional notes: Replace **Where [place] sits in the Pacific** with a small `--ink-soft` kicker **Regional position**, one semantic h2 **[place] in the Pacific record**, and a visible unfilled-ring key **Ring marks [place]**. The ring is decorative and `aria-hidden`; the adjacent text carries the meaning. Constrain the complete intro to the same centered `min(100%, 320px)` column as the measures. Keep the ring attached to **Ring marks** when a long place name wraps. Move only the three metric titles to semibold system sans as evidence labels while keeping selected values 24px sans and the existing annotation hierarchy. Teal belongs only to the ring in this intro. Use scoped existing-token CSS; do not change global font variables, load a font, highlight values, add a badge/rail/card/background/divider, recolor the data, or move/resize any plot mark.
+- Statistical notes: **Pacific record** describes this reviewed regional evidence set, not a comprehensive Pacific census or official peer boundary. The ring means selected place only; it does not encode value, quality, direction, rank, or emphasis.
+- Edge cases: Federated States of Micronesia and other long names; incomplete water/renewable values; 320x568; 360x800; 390x844; 844x390; 1024x768; 1440x900; effective 200% reflow; keyboard focus; grayscale/deuteranopia; panel scrolling.
+- Test cases: Start with focused failures for the exact kicker, h2, visible ring key, decorative-ring semantics, centered 320px intro-column contract, wrapping key grammar, semibold sans metric-label role, and absence of the retired heading. Pin the muted kicker and teal-only ring, 24px value, current plot viewBoxes/visible coordinates, distinct mark grammar, current panel order, and no global-font/font-face/highlight/card/rail/divider additions. Mutate the key or heading to prove the tests fail.
+- Files to create/modify: app/src/components/panels/RegionalPositionLens.tsx; app/src/components/panels/RegionalPositionLens.test.tsx; app/src/components/panels/CountryPanel.test.tsx; app/src/styles/base.css; artifacts/design/task-115/*; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: Matched Nauru and long-name desktop/portrait/landscape/320px frames; computed heading/key/metric/value styles; wrapping, contrast, overflow, and plot-geometry measurements.
+- Acceptance criteria: A cold reader sees the selected-place sentence, understands that the lens is regional, knows what the teal ring marks, and reaches the unchanged 24px values next; hierarchy survives all target layouts without clipping or extra scrolling systems; exact data/plots/interactions/state/URL/history/map/palette remain unchanged; independent review passes.
+- Verification commands: npm --prefix app run test -- RegionalPositionLens.test.tsx CountryPanel.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quietly compare TASK-113's semantic hierarchy with the live panel at 1440x900, 390x844, 844x390, and 320x568; measure type, contrast, wrapping, key visibility, plot geometry, 44px bands, and zero horizontal overflow.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-116
+- Phase: guided-story-conclusion
+- Title: End the guided story with the finding and its boundary
+- Depends on: TASK-113
+- Assigned agent: Story copy Builder; independent narrative/scientific Checker
+- Contract refs: TASK-113; context/STORY_BRIEF.md Evidence-Editorial Closure; context/ARTISTIC_REDESIGN_BRIEF.md
+- Data refs: existing fixed 22-place guided evidence; no data or scene-state change
+- Scientific refs: context/DATA_CARD.md, context/docs/methodology.md
+- User value / decision value: Gives the guided experience a memorable, defensible conclusion before asking the reader to explore.
+- Functional notes: Replace only `HANDOFF_COPY` with: **The records for these 22 places do not show one shared direction of change, and they do not cover every place evenly. This atlas compares official records; it does not rank need, readiness, or vulnerability.** Keep the existing handoff eyebrow, **Explore the map** action, scene count/order/IDs, observer, animation, map return, and neutral state reset. Add no scene, graph, claims list, slogan, quote, or control.
+- Statistical notes: The conclusion is supported by the four observed direction combinations and uneven 14-position coverage. It does not claim causality, completeness, current conditions, local knowledge, or a ranking of places.
+- Edge cases: Direct handoff URL; desktop, portrait, and landscape wraps; reduced motion; keyboard activation; guided-to-Explore state reset; source/caveat visibility.
+- Test cases: Start with an exact-copy RED in `app/src/lib/scenes.test.ts`; assert the former instruction-only sentence is absent and all four scene IDs remain exact. Keep `StoryScrolly.test.tsx` on prop rendering and the unchanged **Explore the map** action, and keep `App.test.tsx` on the existing callback/state reset. Add only a bounded wrap/overflow contract if live QA reproduces a problem.
+- Files to create/modify: app/src/lib/scenes.ts; app/src/lib/scenes.test.ts; app/src/components/story/StoryScrolly.test.tsx only if its unchanged action contract needs strengthening; context/TASKS.md; context/logs/Progress Log.md
+- Artifacts to produce: Desktop, portrait, and landscape handoff frames plus exact copy and unchanged Explore-state evidence.
+- Acceptance criteria: The guided story ends on the regional finding and analytical boundary; action and state behavior remain unchanged; the copy is fully visible at target viewports without overflow; no scene, figure, data, dependency, route, state, or Night Watch change enters; independent review passes.
+- Verification commands: npm --prefix app run test -- scenes.test.ts StoryScrolly.test.tsx App.test.tsx; npm --prefix app run test; npm --prefix app run build; python scripts/check_app_bundle_budget.py; python scripts/validate_task_statuses.py; python scripts/check_secrets.py; git diff --check
+- Manual QA: Quietly inspect the handoff at 1440x900, 390x844, and 844x390; activate **Explore the map** by pointer and keyboard and confirm neutral `view=overview`, no selection, and unchanged history behavior.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending
+
+## TASK-117
+- Phase: post-release-place-discoverability-design
+- Title: Resolve a reachable name-based place entry
+- Depends on: TASK-100
+- Assigned agent: Explorer UX planner; owner design review
+- Contract refs: TASK-113; context/DESIGN_BRIEF.md Name-Based Place Entry; context/DECISIONS.md 2026-08-18 closure decision
+- Data refs: existing loaded `Geo[]`; no generated/public-data change
+- Scientific refs: context/STORY_BRIEF.md coda; no analytical computation
+- User value / decision value: Preserves the useful A–Z place-finding idea without pretending that the current neutral panel is visible or silently widening the release-critical Explorer shell.
+- Functional notes: Begin with the verified code fact that `panelOpen` is false in neutral Explore, so the `CountryPanel` null branch is not a live chooser host. Do not add a select there or broaden `panelOpen` inside this task. After TASK-100, compare only reachable existing-seam options: a compact place control within an already visible Explore surface, an explicit Places action that opens a correctly titled/focused neutral panel, or continued map-only selection with a clearer visible place index. Each option must reuse `handleSelect` after activation and must account for desktop panel reservation, mobile sheet, title, focus, URL/history, Back/Close, and map prominence. This is a design/host gate only; production implementation requires owner selection and a successor task.
+- Statistical notes: Alphabetical order carries no analytical meaning. Any later list must use loaded stable codes and reviewed place names without inventing grouping, priority, rank, or recommended islands.
+- Edge cases: Neutral Explore at desktop and mobile; selected and diagnostic states; long names; keyboard and touch; 320px; panel title/focus; direct place URL; Back/Close; zero or failed data load.
+- Test cases: Read-only trace `panelOpen`, `panelContent`, panel-nav title/focus, `handleSelect`, MapHeader/overview surfaces, responsive shell rules, and current map accessibility paths. Produce matched desktop/mobile concepts for the smallest two viable hosts and explicitly record why the third was rejected. No production RED/GREEN begins in TASK-117.
+- Files to create/modify: artifacts/design/task-117/*; context/DESIGN_BRIEF.md; context/DECISIONS.md; context/TASKS.md; context/HANDOVER.md; context/logs/Progress Log.md; context/logs/Handoff Notes.md
+- Artifacts to produce: Reachability/source audit, two matched desktop/mobile host concepts, state/focus/history impact table, Ponytail scope comparison, and owner decision.
+- Acceptance criteria: The chosen host is actually rendered in neutral Explore, preserves map prominence, has a complete desktop/mobile/focus/history contract, and can reuse `handleSelect` without hidden parallel state; or the owner explicitly defers the feature. No production, test, data, dependency, route, state, or runtime asset changes during TASK-117.
+- Verification commands: python scripts/validate_task_statuses.py; python scripts/check_required_artifacts.py; python scripts/check_secrets.py; git diff --check; git diff --name-only
+- Manual QA: Quietly inspect the real neutral/selected/diagnostic shell at desktop, portrait, landscape, and 320px before drawing concepts; confirm every proposed control has a live mount point and a visible recovery path.
+- QA notes: Pending.
+- Attempts: 0
+- Max attempts: 3
+- Attempt log: Pending.
+- Status: pending

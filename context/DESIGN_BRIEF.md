@@ -139,12 +139,13 @@ The owner selected the **inline regional lens** on 2026-07-25. It extends the re
 ### Reading Order
 
 1. Place name, status, and the existing blunt reviewed place note.
-2. **Where [place] sits in the Pacific.**
-3. Three compact observed-record strips: safely managed drinking-water change, renewable-energy-share change, and reviewed datasets represented.
-4. The existing different-clocks and presence-is-not-quality/preparedness caveats beside the strips.
-5. One quiet, unboxed score line: Gap · Pressure · Capacity.
-6. Existing rank range, score-input presence, monitoring status, and source trace.
-7. Existing **Records with a similar shape** evidence-profile comparison, secondary and collapsed by default.
+2. One evidence-bound sentence that translates the selected place's four-direction combination or incomplete comparison and gives the live regional denominator.
+3. A quiet **Regional position** kicker, the sentence-case heading **[place] in the Pacific record**, and a visible **Ring marks [place]** key.
+4. Three compact observed-record strips: safely managed drinking-water change, renewable-energy-share change, and reviewed datasets represented.
+5. The existing different-clocks and presence-is-not-quality/preparedness caveats beside the strips.
+6. One quiet, unboxed score line: Gap · Pressure · Capacity.
+7. Existing rank range, score-input presence, monitoring status, and source trace.
+8. Existing **Records with a similar shape** evidence-profile comparison, secondary and collapsed by default.
 
 The strips replace the current duplicate regional summary; they do not sit beneath it. The selected-place panel remains one native vertical reading surface. There are no Place/Compare tabs, second drawer, comparison workspace, dashboard grid, or new mode.
 
@@ -165,7 +166,7 @@ The 2026-08-02 owner-approved readability refinement keeps one inline regional l
 
 ### Interaction And Accessibility
 
-The map remains the only place selector. Peer inspection is informational only: it cannot change the selected island, move or recenter the map, replace panel content, write URL/history state, or navigate. The teal selected mark remains visible while another observation is inspected.
+The map remains the place selector in the release-critical experience. Peer inspection is informational only: it cannot change the selected island, move or recenter the map, replace panel content, write URL/history state, or navigate. The teal selected mark remains visible while another observation is inspected. A later name-based entry must first pass TASK-117's live-host design gate; the empty `CountryPanel` is not currently mounted in neutral Explore and is therefore not a valid hidden chooser host.
 
 - Reserve one in-flow inspector line beneath each metric. Its default state reports recorded and unavailable counts. Hover, tap, or keyboard inspection temporarily replaces that text with exact peer detail; no floating tooltip, portal, overlay, or chart-driven layout shift is required.
 - Water and renewable inspection names one place, its signed change, and its own first/latest years. It adds no `best`, `worst`, `highest`, `lowest`, percentile, or policy interpretation.
@@ -209,6 +210,29 @@ Use a learnable, non-color-dependent mark grammar without moving data:
 At the 320px application floor, preserve the existing SVG viewBoxes, visible coordinates, and plot widths. Increase only the transparent hit rectangles from 44 to 50 viewBox units, centered on the same interaction region, so their scaled CSS height remains at least 44px. Do not distort the SVG, add overflow, create an HTML overlay, add per-mark focus stops, or branch on viewport size in JavaScript. The current 39.05px band is a failure of this project's stronger 44px policy; it is not described as a Challenge rule or an automatic WCAG 2.2 AA failure.
 
 Do not adopt the rejected alternatives: reducing the selected value to 19px reverses the approved hierarchy; warning-colored unavailable text overstates ordinary record absence; dividing metrics with repeated rules or a landscape two-column grid turns the panel toward dashboard grammar. The panel-wide 808px landscape line measure is a separate possible panel-shell decision, not authority for this lens task.
+
+### Evidence-Editorial Closure Contract (TASK-113; Owner Review Pending)
+
+The owner approved the direction on 2026-08-18. TASK-113 translates it into paired composition references and a binding implementation contract before production resumes:
+
+- `artifacts/design/task-113/desktop-panel-concept.png`
+- `artifacts/design/task-113/mobile-panel-concept.png`
+
+The boards show hierarchy and reading order, not final pixels. Their generated names, values, land shapes, map labels, exact type metrics, spacing, and visible row slices are schematic. They are not runtime assets and no text or number may be copied from them without the code-bound contract below. The current application remains the authority for Night Watch color, map treatment, controls, surfaces, evidence plots, panel behavior, and accessibility.
+
+**Narrative hierarchy.** Replace the generic modeled `storyLabel` prominence with one deterministic regional-record reading. It states first-to-latest direction, not a continuous trajectory or cause, and derives its complete denominator from loaded `completeOverlap` values and its matching count from the selected quadrant. The lens then begins with the small `--ink-soft` sans kicker **Regional position**, followed by the restrained serif heading **[place] in the Pacific record**. A compact visible key—an unfilled teal ring plus **Ring marks [place]**—makes the selected-mark grammar understandable without hover. The sentence is the interpretation; the heading is orientation; the three existing readouts remain the numeric center. Teal belongs only to the ring in this intro, not the kicker or heading.
+
+**Typography and emphasis.** Keep the current system-sans and Georgia roles. Serif is reserved here for the place name and editorial lens heading; metric labels move locally to semibold system sans, and values, clocks, key, annotations, and interaction text remain system sans with tabular numerals. Do not introduce a global font, webfont request, self-hosted font bundle, text highlighter, badge, left chapter rail, colored number, or new surface. Teal continues to mean interaction/selection and appears in the ring, not as an evaluative highlight on the place name or values. Selected values remain 24px sans and no global type token changes.
+
+**Responsive composition.** Desktop keeps one native vertical panel, and the complete intro joins the existing centered `min(100%, 320px)` measure column. Portrait and the 320px floor keep the same semantic order; they may compact gaps but may not remove the sentence, heading, key, selected values, caveat, or sources. Long names may wrap naturally; keep the ring attached to **Ring marks** on the first key line rather than stranding it above a wrapped name. The mobile board is a vertical composition study, not a requirement to fit all content in one viewport. Landscape remains one column and native page flow; no two-column dashboard grid or nested lens scroller is authorized.
+
+**Guided ending.** The existing handoff must end with the two-sentence finding and boundary recorded in `context/STORY_BRIEF.md`, followed by the unchanged **Explore the map** action. Keep its eyebrow, state reset, composition, and behavior. Add no scene, quote, slogan, claims carousel, or new figure.
+
+#### Name-Based Place Entry (Post-Release Design Gate)
+
+The A–Z idea addresses a real map-hunting problem, but the initially proposed empty-panel host is not live: `panelOpen` is false in neutral Explore, so `CountryPanel geo={null}` is not rendered. TASK-117 begins after release QA and compares only reachable hosts, including an already visible Explore surface or an explicit, correctly titled/focused Places panel. It may not silently keep the desktop panel open, inherit the current `Rank ranges` fallback title, or add a select inside unreachable markup. Any later implementation must reuse `handleSelect` and preserve URL/history/Back/Close behavior, but requires owner selection and its own task.
+
+**Locked versus flexible.** Locked: current palette and surfaces; selected-ring meaning; exact data and plot grammar; one-panel reading order; sentence/heading/key/ending wording; semibold system-sans metric labels; URL/history behavior; no global font or new figure. Flexible after measured review: local gaps, line wraps, exact kicker letter spacing, and a 16–17px local heading size. Any flexible choice must preserve the 24px value as the first numeric read and pass the existing 320px, portrait, landscape, reflow, contrast, focus, touch, and overflow gates. Name-based entry is outside this production lock until TASK-117 resolves a reachable host.
 
 ### Implementation Boundary
 

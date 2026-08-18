@@ -6,7 +6,19 @@ This file records the EDA and GIS lanes that built the atlas evidence base and r
 
 ## Current Status
 
-All planned analysis lanes are complete. `TASK-065` through `TASK-068` acquired, processed, and tested the candidate evidence, and `TASK-069` accepted the regional movement -> evidence visibility -> exploration story. The next work is application design/data wiring under `TASK-072` through `TASK-077`; no additional EDA or notebook lane is planned.
+All planned analysis lanes are complete. `TASK-065` through `TASK-068` acquired, processed, and tested the candidate evidence, and `TASK-069` accepted the regional movement -> evidence visibility -> exploration story. `TASK-072` through `TASK-077` implemented that story, and the selected-place lens now consumes the accepted endpoint and visibility fields. The TASK-113 through TASK-116 release closure and post-release TASK-117 host design need no additional EDA, notebook, model, or data export.
+
+## Deferred Product Ideas After TASK-113 Review
+
+These ideas were considered during the evidence-editorial brainstorm and are deliberately outside the deadline closure batch:
+
+- **Matched self-hosted font family.** Potentially useful for cross-platform consistency, but it would reopen every measured wrap, SVG label, panel height, and responsive frame. Reconsider only with time for a full typography and layout regression pass.
+- **Gaps-only figure.** The current 22-by-14 visibility matrix already shows all 308 possible entries, including the 31 absent cells, with a stronger denominator than a second isolated view. Consider only if later cold-read evidence shows the existing matrix fails to communicate absence.
+- **Promoted claims-refusal scene.** The Methods refusal list is distinctive, but the approved handoff can state the core boundary in one sentence without adding a fifth scene. Keep the full list in Methods unless a later narrative test proves a separate beat is necessary.
+- **Copy-link control.** URL state already serializes the current view. A clipboard affordance would add permission/error/live-region behavior and is not required for the core story; revisit after release QA.
+- **Handwritten place profiles.** Reject. The selected-place sentence must stay deterministic, count-derived, and maintainable across all records rather than becoming 22 unreviewed editorial strings.
+
+Name-based place entry remains a useful post-release question under TASK-117. The initial empty-panel host is not mounted in neutral Explore, so TASK-117 first selects a reachable host and does not authorize production implementation or analytical expansion.
 
 ## Principles
 

@@ -8,6 +8,8 @@
 - Preserve the completed regional EDA evidence gate: distributions, cross-current comparisons, separate condition/visibility heatmaps, dependency-aware relationships, rejected cluster stability, and centroid-map small multiples.
 - Implement the accepted movement -> evidence visibility -> exploration story by reusing the existing fullscreen MapLibre application and the same 22 equal-presence evidence marks.
 - Extend selected-place detail with a compact observed-record lens showing where that place sits in the regional water-change, renewable-share-change, and 14-position visibility records, while keeping the existing map and single-panel flow.
+- Complete that lens with one deterministic, evidence-bound sentence that translates the selected place's four-direction combination or incomplete comparison into plain language, plus a clearer regional entry heading and visible selected-ring key.
+- End the guided story with the regional finding and its limits before the existing **Explore the map** action, without adding a scene or changing the handoff behavior.
 - Export only the minimum traceable water/renewable endpoint-change and 14-position visibility fields required by the guided story; keep the measures separate and preserve missingness.
 - Produce a reproducible Python pipeline for dataset profiling, normalization, index construction, and app-ready exports.
 - Create a transparent Adaptation Gap Index with visible missingness and caveats.
@@ -23,6 +25,10 @@
 - Heavy supervised ML without a defensible target label and split strategy.
 - Claims that divergence or similarity proves shared vulnerability, shared policy need, causal mechanisms, or natural clusters.
 - A replacement map engine, dashboard shell, router, state manager, animation library, chart framework, or speculative component system for the narrative retrofit.
+- A global or self-hosted font replacement during the deadline closure batch; the current system-sans and restrained serif roles remain in place unless a later full-layout QA budget is approved.
+- A second gaps-only figure, a new story scene for the full claims list, or a duplicate visibility encoding; the existing 22-by-14 field remains the complete evidence-visibility view.
+- A new search library, command palette, comparison workspace, copy-link/clipboard flow, or parallel place-selection state.
+- A release-critical A–Z chooser before its live host is designed. Neutral Explore does not currently mount the empty detail panel; TASK-117 is a post-release host/design gate, not authority to open a persistent panel or add parallel state.
 - A new movement, visibility, readiness, vulnerability, or evidence-quality score.
 - A single-island protagonist, stable regional cluster labels, or a Pacific-wide progress/decline trajectory.
 - Real-time data updates unless a simple cached static refresh is enough.

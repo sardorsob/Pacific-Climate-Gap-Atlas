@@ -437,3 +437,20 @@ Give zero, median, inspection, group inspection, and selected place distinct exi
 Reject smaller 19px selected values, warning-colored unavailable states, repeated divider rules, a landscape two-column lens, SVG distortion, horizontal overflow, per-mark focus stops, new viewport JavaScript, and a panel-wide typography redesign. Implement sequential TASK-111 and TASK-112 through the existing component/tests/CSS seams, then restart TASK-110 owner-gated QA. Add no standalone plan file, data output, dependency, renderer, route, state system, card grid, or visual identity.
 
 Reason: the remaining problem is neither the data nor the visualization family. It is a verified hierarchy inversion and weak grouping rhythm, compounded by overlapping reference paint and one minimum-width interaction measurement. The bounded correction improves comprehension without discarding the accepted lens or relitigating the application design.
+
+## 2026-08-18: Close The Evidence Story Before Adding More Visual Systems
+
+Accept a four-part evidence-editorial closure after TASK-111 and TASK-112:
+
+1. Replace the selected panel's generic modeled story-label prominence with one deterministic sentence derived from the selected place's existing four-direction combination, with `completeOverlap` owning the live complete/incomplete denominator.
+2. Give the existing lens a restrained editorial entry: **Regional position**, **[place] in the Pacific record**, and a visible **Ring marks [place]** key before the unchanged measures.
+3. Replace the guided handoff's instruction-only sentence with the exact regional finding and refusal recorded in `context/STORY_BRIEF.md`, while preserving **Explore the map** and its state behavior.
+4. Preserve name-based place entry as a post-release design question. The initially proposed empty-panel chooser is unreachable because neutral Explore does not mount `CountryPanel`; TASK-117 must first select a genuinely visible host before any implementation is authorized.
+
+Keep the current system-sans/Georgia roles, Night Watch palette and surfaces, 24px selected values, three plot structures, map, panel, Methods, sources, controls, URL/history, and one-state-path architecture. The local metric labels move to semibold system sans as an evidence-label role; no global type tokens or font assets change. Counts come from loaded records, not hardcoded place prose or a new data export. A later name-based control is a discoverability affordance, not peer navigation or a second explorer, and it cannot ship through unreachable markup.
+
+Use TASK-113 as the paired desktop/mobile concept and contract gate. After owner approval, implement the release-critical core as TASK-114 through TASK-116. Restart TASK-110 attempt 2 only after the selected-place sentence and entry hierarchy land, then run TASK-100 after TASK-095, TASK-110, and TASK-116 are accepted. TASK-117 follows TASK-100 as a separate reachable-host concept gate and does not block the competition release.
+
+Defer a global matched-font family, self-hosted webfont assets, a second gaps-only figure, a new story scene for the claims-refusal list, and copy-link/clipboard UI. The existing 22-by-14 visibility field already makes 277 present and 31 absent entries visible; duplicating only the holes adds a figure without adding evidence. The current shareable URL works even though a copy affordance does not yet exist.
+
+Reason: the current application already has the artistic identity and evidence structures. The remaining weakness is connective tissue: the panel asks readers to synthesize numbers themselves, the lens begins like utility chrome, and the story stops on an instruction. One bounded sentence, one learnable entry hierarchy, and one honest ending create more narrative value than a high-risk font migration or another chart. Name-based entry addresses a real map-hunting problem, but the code audit showed that it has no small live host today; deferring its host decision is safer than silently opening a permanent panel or shipping an unreachable select.

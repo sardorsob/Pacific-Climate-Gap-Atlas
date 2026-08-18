@@ -25,7 +25,7 @@
 - `context/ANALYSIS_BRIEF.md`: living summary of EDA outputs, early signals, and caveats.
 - `context/STORY_BRIEF.md`: approved regional movement -> evidence visibility -> exploration narrative, historical story decisions, and caveat contract.
 - `context/DESIGN_BRIEF.md`: map-first visual and interaction contract, protected application boundary, and regional retrofit layer inventory.
-- `context/ARTISTIC_REDESIGN_BRIEF.md`: active storyboard, copy, evidence, motion, responsive, ethical, and implementation contract for `TASK-072` through `TASK-077`.
+- `context/ARTISTIC_REDESIGN_BRIEF.md`: active storyboard, copy, evidence, motion, responsive, ethical, Night Watch, regional-lens, and evidence-editorial closure contract.
 - `context/DATAVIZ_INSPIRATION_AUDIT.md`: live reference audit for map, climate, environmental, selected-geography, evidence-strip, and guided-tour interaction patterns.
 - `context/WINNER_SCROLL_TOUR_AUDIT.md`: Pacific Dataviz winner audit and scroll-led hybrid recommendation.
 - `context/INFORMATION_DIVERGENCE_PLAN.md`: analysis-ready JSD evidence-fingerprint layer scope and interface notes.
@@ -34,7 +34,7 @@
 - `context/ASSUMPTIONS.md`: modeling/index assumptions.
 - `context/DECISIONS.md`: durable decision log.
 - `context/HANDOVER.md`: run and continuation notes.
-- `context/plans/`: completed implementation and analysis plans retained for traceability. The active `TASK-072` through `TASK-077` retrofit plan lives directly in `context/TASKS.md`; do not add per-task Markdown.
+- `context/plans/`: consolidated implementation and analysis batch plans retained for traceability. The active closure plan is `tasks-114-117-evidence-editorial-closure-implementation-plan.md`; do not add one Markdown file per task.
 
 ## Analysis
 
@@ -64,6 +64,7 @@
 - `data/contracts/`: generated JSON source, coverage, and schema contracts for priority official datasets.
 - `artifacts/`: figures, tables, run bundles, and provenance.
 - `artifacts/design/task-058/`: Elastic Stage, Tidal Chapters, and One Constellation composition boards; generated content is visual reference only, never app data.
+- `artifacts/design/task-113/`: paired desktop/mobile evidence-editorial closure concepts; generated content is semantic composition reference only, never app data or final pixel authority.
 - `artifacts/tables/dataset_profile.csv`: generated official dataset profile table.
 - `artifacts/tables/adaptation_gap_index.csv`: geography-level draft Adaptation Gap Index baseline.
 - `artifacts/tables/adaptation_gap_indicator_trace.csv`: latest-observation trace table behind each score.

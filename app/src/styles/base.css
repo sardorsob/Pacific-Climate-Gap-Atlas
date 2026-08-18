@@ -388,6 +388,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
   .dock--controls { transition: right 0.25s ease; }
   .atlas-shell--panel .dock--controls { right: calc(var(--panel-w) + 18px); }
   .atlas-shell--panel .app-state { margin-right: var(--panel-w); }
+  .atlas-shell--explore:has(.map-canvas .app-state[role="alert"]) .dock--legend { display: none; }
 }
 
 /* ================= native document-scroll story ================= */

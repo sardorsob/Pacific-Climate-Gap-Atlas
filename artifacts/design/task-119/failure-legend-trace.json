@@ -1,0 +1,1781 @@
+{
+  "task": "TASK-119",
+  "method": "quiet headless Playwright with local Chromium headless shell; no visible browser",
+  "matrix": [
+    {
+      "label": "unselected-normal-881x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 881,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 611,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-881x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 881,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 225.17,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 611,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-881x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 881,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 211,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 481,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-881x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 881,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 32,
+          "y": 391.47,
+          "width": 417,
+          "height": 54
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 211,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 481,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-1024x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 754,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-1024x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 296.67,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 754,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-1024x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 354,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 624,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-1024x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 96.67,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 354,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 624,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-1229x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1229,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 959,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-1229x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1229,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 399.17,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 959,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-1229x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1229,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 559,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 829,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-1229x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1229,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 199.17,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 559,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 829,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-1230x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1230,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 960,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-1230x768",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1230,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 399.67,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 960,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-1230x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1230,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 567.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 560,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 830,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-1230x768",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1230,
+        "height": 768
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 199.67,
+          "y": 404.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 560,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 830,
+          "y": 0,
+          "width": 400,
+          "height": 768
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-1440x900",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 699.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 1170,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-1440x900",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 504.67,
+          "y": 470.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 1170,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-1440x900",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 699.31,
+          "width": 286,
+          "height": 160.69
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 770,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 1040,
+          "y": 0,
+          "width": 400,
+          "height": 900
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-1440x900",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 304.67,
+          "y": 470.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": false,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 18,
+          "y": 18,
+          "width": 332,
+          "height": 160
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 770,
+          "y": 18,
+          "width": 252,
+          "height": 197.59
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 1040,
+          "y": 0,
+          "width": 400,
+          "height": 900
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-390x844",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 158
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-390x844",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 32,
+          "y": 429.47,
+          "width": 326,
+          "height": 54
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 158
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-390x844",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 158
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 590.8
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-390x844",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 32,
+          "y": 429.47,
+          "width": 326,
+          "height": 54
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 568,
+          "width": 92.38,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 370,
+          "height": 158
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 624,
+          "width": 370,
+          "height": 104
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 788,
+          "width": 390,
+          "height": 590.8
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-normal-844x390",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "unselected-failure-844x390",
+      "url": "?mode=explore&view=overview",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "shell": "atlas-shell atlas-shell--explore",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 206.67,
+          "y": 215.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        }
+      },
+      "panel": {
+        "visible": false,
+        "rect": null
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-normal-844x390",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": false,
+        "heading": null,
+        "headingInViewport": false
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 334,
+          "width": 844,
+          "height": 273
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 22,
+      "mapCanvas": 1,
+      "errors": [],
+      "requests": []
+    },
+    {
+      "label": "selected-failure-844x390",
+      "url": "?mode=explore&view=overview&place=NR",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "shell": "atlas-shell atlas-shell--explore atlas-shell--panel",
+      "alert": {
+        "visible": true,
+        "heading": {
+          "x": 206.67,
+          "y": 215.97,
+          "width": 430.66,
+          "height": 27
+        },
+        "headingInViewport": true
+      },
+      "legend": {
+        "visible": true,
+        "rect": {
+          "x": 427,
+          "y": 10,
+          "width": 407,
+          "height": 44
+        }
+      },
+      "header": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 407,
+          "height": 145
+        }
+      },
+      "controls": {
+        "visible": true,
+        "rect": {
+          "x": 10,
+          "y": 270,
+          "width": 824,
+          "height": 56
+        }
+      },
+      "panel": {
+        "visible": true,
+        "rect": {
+          "x": 0,
+          "y": 334,
+          "width": 844,
+          "height": 273
+        }
+      },
+      "intersections": {
+        "legend": 0,
+        "header": 0,
+        "controls": 0,
+        "panel": 0
+      },
+      "overflow": 0,
+      "mapTargets": 0,
+      "mapCanvas": 0,
+      "errors": [],
+      "requests": []
+    }
+  ],
+  "guided": {
+    "label": "guided-failure-1024x768",
+    "url": "?mode=guided&scene=premise",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "shell": "atlas-shell atlas-shell--guided",
+    "alert": {
+      "visible": false,
+      "heading": {
+        "x": 296.67,
+        "y": 404.97,
+        "width": 430.66,
+        "height": 27
+      },
+      "headingInViewport": true
+    },
+    "legend": {
+      "visible": false,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    "header": {
+      "visible": true,
+      "rect": {
+        "x": 18,
+        "y": 18,
+        "width": 244.42,
+        "height": 49
+      }
+    },
+    "controls": {
+      "visible": false,
+      "rect": null
+    },
+    "panel": {
+      "visible": false,
+      "rect": null
+    },
+    "intersections": {
+      "legend": 0,
+      "header": 0,
+      "controls": 0,
+      "panel": 0
+    },
+    "overflow": 0,
+    "mapTargets": 0,
+    "mapCanvas": 0,
+    "alertOpacity": "0"
+  },
+  "summary": {
+    "totalCases": 28,
+    "failedCases": 14,
+    "normalCases": 14,
+    "zeroIntersectionCases": 28,
+    "desktopFailureLegendHidden": 10,
+    "desktopNormalLegendVisible": 10,
+    "mobileFailureLegendVisible": 4,
+    "overflowFailures": 0,
+    "runtimeErrors": 0,
+    "requestErrors": 0
+  }
+}

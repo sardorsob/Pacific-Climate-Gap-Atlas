@@ -147,4 +147,10 @@ describe("neutral overview presentation", () => {
     );
     expect(baseCss.match(/\.atlas-shell--panel \.app-state/g) ?? []).toHaveLength(1);
   });
+
+  it("hides the desktop Explore legend only beside an in-region map-failure alert", () => {
+    expect(baseCss).toMatch(
+      /@media \(min-width: 881px\) \{[\s\S]*?\.atlas-shell--explore:has\(\.map-canvas \.app-state\[role="alert"\]\) \.dock--legend\s*\{[^}]*display:\s*none;/,
+    );
+  });
 });

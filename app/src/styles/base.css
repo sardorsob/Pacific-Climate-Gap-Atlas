@@ -403,6 +403,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .atlas-shell--guided .map-header { left: 18px; right: auto; max-width: 300px; }
 .atlas-shell--guided .map-header__layer { display: none; }
 .atlas-shell--guided .map-note { display: none; }
+.atlas-shell--guided:has(.app-state[role="alert"]) .app-state { opacity: 0; pointer-events: none; }
 .ghost-btn--accent { background: var(--accent); border-color: var(--accent); color: #fff; }
 .ghost-btn--accent:hover { color: #fff; filter: brightness(1.06); }
 

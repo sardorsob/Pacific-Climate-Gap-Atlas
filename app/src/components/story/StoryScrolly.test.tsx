@@ -119,6 +119,17 @@ describe("fullscreen story shell", () => {
     expect(styles).toMatch(/\.atlas-shell\s*\{[^}]*overflow-x:\s*clip;/);
   });
 
+  it("isolates the map failure alert behind the guided story until Explore restores it", () => {
+    const failureIsolation = styles.match(
+      /\.atlas-shell--guided:has\(\.app-state\[role="alert"\]\) \.app-state\s*\{[^}]*\}/,
+    )?.[0] ?? "";
+
+    expect(failureIsolation).toContain("opacity: 0;");
+    expect(failureIsolation).toContain("pointer-events: none;");
+    expect(failureIsolation).not.toContain("display: none");
+    expect(failureIsolation).not.toContain("visibility: hidden");
+  });
+
   it("defines low-light chrome roles while keeping the map and evidence marks flat", () => {
     const root = styles.match(/:root\s*\{([\s\S]*?)\}/)?.[1] ?? "";
     const protectedRules = (styles.match(/[^{}]+\{[^{}]*\}/g) ?? [])

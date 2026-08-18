@@ -23,6 +23,8 @@
   "minHeight": "44px",
   "scrollWidth": 1440,
   "clientWidth": 1440,
+  "guidedAlertRole": "alert",
+  "guidedAlertOpacity": "0",
   "urlBefore": "http://127.0.0.1:5173/?scene=unequal-visibility&view=overview",
   "historyLengthBefore": 1,
   "keyboardOperable": true,
@@ -32,6 +34,7 @@
   "neutralControlsVisible": true,
   "selectedPanelVisible": false,
   "outlookVisible": false,
+  "exploreAlertOpacity": "1",
   "reducedMotion": true,
   "directScene": {
     "handoff": true,

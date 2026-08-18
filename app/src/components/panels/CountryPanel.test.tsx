@@ -119,7 +119,10 @@ describe("CountryPanel", () => {
     const html = renderPanel(selected, [selected]);
 
     expect(html.indexOf("For Nauru")).toBeGreaterThan(html.indexOf('class="panel__name"'));
-    expect(html.indexOf("For Nauru")).toBeLessThan(html.indexOf("Where Nauru sits in the Pacific"));
+    expect(html.indexOf("For Nauru")).toBeLessThan(html.indexOf("Regional position"));
+    expect(html.indexOf("Regional position")).toBeLessThan(html.indexOf("Nauru in the Pacific record"));
+    expect(html.indexOf("Nauru in the Pacific record")).toBeLessThan(html.indexOf("Ring marks"));
+    expect(html.indexOf("Ring marks")).toBeLessThan(html.indexOf("Safely managed drinking water"));
   });
 
   it("keeps the visible source action at the 44px minimum target", () => {
@@ -211,7 +214,8 @@ describe("CountryPanel", () => {
       <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
     );
 
-    expect(html).toContain("Where Nauru sits in the Pacific");
+    expect(html).toContain("Nauru in the Pacific record");
+    expect(html).toContain("Ring marks</span> Nauru");
     expect(html).toContain("Safely managed drinking water");
     expect(html).toContain("+1.92 percentage points");
     expect(html).toContain("Renewable energy share");
@@ -219,7 +223,8 @@ describe("CountryPanel", () => {
     expect(html).toContain('<strong class="regional-lens__value">13 of 14</strong>');
     expect(html).toContain("Selected Nauru 13 of 14");
     expect(html).toContain("Gap 89 · Pressure 62 · Capacity 27");
-    expect(html.indexOf("Where Nauru sits in the Pacific")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
+    expect(html.indexOf("Nauru in the Pacific record")).toBeLessThan(html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
+    expect(html).not.toContain("Where Nauru sits in the Pacific");
   });
 
   it("places the existing source action immediately after the regional caveat", () => {
@@ -334,7 +339,7 @@ describe("CountryPanel", () => {
     const html = renderToStaticMarkup(
       <CountryPanel geo={geo} geos={[geo]} onOpenMethod={() => undefined} />,
     );
-    const record = html.slice(html.indexOf("Where Nauru sits in the Pacific"), html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
+    const record = html.slice(html.indexOf("Nauru in the Pacific record"), html.indexOf("Gap 89 · Pressure 62 · Capacity 27"));
 
     expect(record).toContain("measures can use different clocks");
     expect(record).toContain("not causal claims");

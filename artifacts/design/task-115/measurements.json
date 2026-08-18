@@ -1,0 +1,5289 @@
+{
+  "task": "TASK-115",
+  "capturedAt": "2026-08-18T19:55:44.823Z",
+  "captureMethod": "quiet headless Brave via raw Chrome DevTools Protocol; compact panel intentionally expanded and scrolled to the lens; no visible browser tabs",
+  "browser": {
+    "product": "Chrome/149.0.7827.201",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36",
+    "protocolVersion": "1.3"
+  },
+  "reflowMethod": "640x400 CSS viewport represents 1280x800 at effective 200% reflow",
+  "cases": [
+    {
+      "place": {
+        "code": "NR",
+        "slug": "nauru",
+        "name": "Nauru"
+      },
+      "viewport": {
+        "id": "desktop-1440x900",
+        "width": 1440,
+        "height": 900,
+        "purpose": "desktop"
+      },
+      "screenshot": "artifacts/design/task-115/nauru-desktop-1440x900.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=NR",
+      "selectedPlace": "Nauru",
+      "document": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "clientHeight": 900,
+        "scrollHeight": 900
+      },
+      "panel": {
+        "x": 1040,
+        "y": 0,
+        "width": 400,
+        "height": 900,
+        "right": 1440,
+        "bottom": 900,
+        "clientWidth": 399,
+        "scrollWidth": 399,
+        "clientHeight": 900,
+        "scrollHeight": 900,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 1041,
+        "y": -140,
+        "width": 399,
+        "height": 1477.33,
+        "right": 1440,
+        "bottom": 1337.33,
+        "clientWidth": 399,
+        "scrollWidth": 399
+      },
+      "lens": {
+        "x": 1067,
+        "y": 73.08,
+        "width": 347,
+        "height": 624.44,
+        "right": 1414,
+        "bottom": 697.52,
+        "clientWidth": 347,
+        "scrollWidth": 347
+      },
+      "intro": {
+        "x": 1080.5,
+        "y": 86.08,
+        "width": 320,
+        "height": 55.38,
+        "right": 1400.5,
+        "bottom": 141.45,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 1080.5,
+          "y": 86.08,
+          "width": 320,
+          "height": 12,
+          "right": 1400.5,
+          "bottom": 98.08
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Nauru in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 1080.5,
+          "y": 102.08,
+          "width": 320,
+          "height": 20.63,
+          "right": 1400.5,
+          "bottom": 122.7
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Nauru",
+        "box": {
+          "x": 1080.5,
+          "y": 126.7,
+          "width": 320,
+          "height": 14.75,
+          "right": 1400.5,
+          "bottom": 141.45
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 1080.5,
+          "y": 126.7,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 1153.03,
+          "bottom": 140.88
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 1080.5,
+          "y": 129.28,
+          "width": 9,
+          "height": 9,
+          "right": 1089.5,
+          "bottom": 138.28
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 1080.5,
+            "y": 159.45,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 175.08
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 1080.5,
+            "y": 338.92,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 354.55
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 1080.5,
+            "y": 518.39,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 534.02
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "+1.92",
+          "box": {
+            "x": 1080.5,
+            "y": 178.08,
+            "width": 63.17,
+            "height": 24,
+            "right": 1143.67,
+            "bottom": 202.08
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+1.75",
+          "box": {
+            "x": 1080.5,
+            "y": 357.55,
+            "width": 61.58,
+            "height": 24,
+            "right": 1142.08,
+            "bottom": 381.55
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "13 of 14",
+          "box": {
+            "x": 1080.5,
+            "y": 537.02,
+            "width": 87.61,
+            "height": 24,
+            "right": 1168.11,
+            "bottom": 561.02
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 1080.5,
+            "y": 210.92,
+            "width": 320,
+            "height": 80,
+            "right": 1400.5,
+            "bottom": 290.92
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "144.9357641013092",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1225.44,
+              "y": 254.92
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 1080.5,
+            "y": 390.39,
+            "width": 320,
+            "height": 80,
+            "right": 1400.5,
+            "bottom": 470.39
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "257.3840608730476",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1337.88,
+              "y": 434.39
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 1080.5,
+            "y": 585.52,
+            "width": 320,
+            "height": 82,
+            "right": 1400.5,
+            "bottom": 667.52
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "238.1",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1318.6,
+              "y": 632.52
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 86.08
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 102.08
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 126.7
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 159.45
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 338.92
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 518.39
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "NR",
+        "slug": "nauru",
+        "name": "Nauru"
+      },
+      "viewport": {
+        "id": "portrait-390x844",
+        "width": 390,
+        "height": 844,
+        "purpose": "portrait"
+      },
+      "screenshot": "artifacts/design/task-115/nauru-portrait-390x844.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=NR",
+      "selectedPlace": "Nauru",
+      "document": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "clientHeight": 844,
+        "scrollHeight": 844
+      },
+      "panel": {
+        "x": 0,
+        "y": 253.2,
+        "width": 390,
+        "height": 590.8,
+        "right": 390,
+        "bottom": 844,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "clientHeight": 590,
+        "scrollHeight": 685,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 120.2,
+        "width": 390,
+        "height": 1436.33,
+        "right": 390,
+        "bottom": 1556.53,
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      "lens": {
+        "x": 18,
+        "y": 325.28,
+        "width": 354,
+        "height": 599.44,
+        "right": 372,
+        "bottom": 924.72,
+        "clientWidth": 354,
+        "scrollWidth": 354
+      },
+      "intro": {
+        "x": 35,
+        "y": 338.28,
+        "width": 320,
+        "height": 55.38,
+        "right": 355,
+        "bottom": 393.66,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 35,
+          "y": 338.28,
+          "width": 320,
+          "height": 12,
+          "right": 355,
+          "bottom": 350.28
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Nauru in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 35,
+          "y": 354.28,
+          "width": 320,
+          "height": 20.63,
+          "right": 355,
+          "bottom": 374.91
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Nauru",
+        "box": {
+          "x": 35,
+          "y": 378.91,
+          "width": 320,
+          "height": 14.75,
+          "right": 355,
+          "bottom": 393.66
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 35,
+          "y": 378.91,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 107.53,
+          "bottom": 393.08
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 35,
+          "y": 381.48,
+          "width": 9,
+          "height": 9,
+          "right": 44,
+          "bottom": 390.48
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 35,
+            "y": 406.66,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 422.28
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 35,
+            "y": 578.13,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 593.75
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 35,
+            "y": 749.59,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 765.22
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "+1.92",
+          "box": {
+            "x": 35,
+            "y": 425.28,
+            "width": 63.17,
+            "height": 24,
+            "right": 98.17,
+            "bottom": 449.28
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+1.75",
+          "box": {
+            "x": 35,
+            "y": 596.75,
+            "width": 61.58,
+            "height": 24,
+            "right": 96.58,
+            "bottom": 620.75
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "13 of 14",
+          "box": {
+            "x": 35,
+            "y": 768.22,
+            "width": 87.61,
+            "height": 24,
+            "right": 122.61,
+            "bottom": 792.22
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 35,
+            "y": 456.13,
+            "width": 320,
+            "height": 80,
+            "right": 355,
+            "bottom": 536.13
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "144.9357641013092",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 179.94,
+              "y": 500.13
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 35,
+            "y": 627.59,
+            "width": 320,
+            "height": 80,
+            "right": 355,
+            "bottom": 707.59
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "257.3840608730476",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 292.38,
+              "y": 671.59
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 35,
+            "y": 813.72,
+            "width": 320,
+            "height": 82,
+            "right": 355,
+            "bottom": 895.72
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "238.1",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 273.1,
+              "y": 860.72
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 338.28
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 354.28
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 378.91
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 406.66
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 578.13
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 749.59
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Nauru panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "NR",
+        "slug": "nauru",
+        "name": "Nauru"
+      },
+      "viewport": {
+        "id": "landscape-844x390",
+        "width": 844,
+        "height": 390,
+        "purpose": "landscape"
+      },
+      "screenshot": "artifacts/design/task-115/nauru-landscape-844x390.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=NR",
+      "selectedPlace": "Nauru",
+      "document": {
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "clientHeight": 390,
+        "scrollHeight": 390
+      },
+      "panel": {
+        "x": 0,
+        "y": 117,
+        "width": 844,
+        "height": 273,
+        "right": 844,
+        "bottom": 390,
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "clientHeight": 272,
+        "scrollHeight": 639,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 31,
+        "width": 844,
+        "height": 1275.98,
+        "right": 844,
+        "bottom": 1306.98,
+        "clientWidth": 844,
+        "scrollWidth": 844
+      },
+      "lens": {
+        "x": 18,
+        "y": 189.23,
+        "width": 808,
+        "height": 599.44,
+        "right": 826,
+        "bottom": 788.67,
+        "clientWidth": 808,
+        "scrollWidth": 808
+      },
+      "intro": {
+        "x": 262,
+        "y": 202.23,
+        "width": 320,
+        "height": 55.38,
+        "right": 582,
+        "bottom": 257.61,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 262,
+          "y": 202.23,
+          "width": 320,
+          "height": 12,
+          "right": 582,
+          "bottom": 214.23
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Nauru in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 262,
+          "y": 218.23,
+          "width": 320,
+          "height": 20.63,
+          "right": 582,
+          "bottom": 238.86
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Nauru",
+        "box": {
+          "x": 262,
+          "y": 242.86,
+          "width": 320,
+          "height": 14.75,
+          "right": 582,
+          "bottom": 257.61
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 262,
+          "y": 242.86,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 334.53,
+          "bottom": 257.03
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 262,
+          "y": 245.44,
+          "width": 9,
+          "height": 9,
+          "right": 271,
+          "bottom": 254.44
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 262,
+            "y": 270.61,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 286.23
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 262,
+            "y": 442.08,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 457.7
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 262,
+            "y": 613.55,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 629.17
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "+1.92",
+          "box": {
+            "x": 262,
+            "y": 289.23,
+            "width": 63.17,
+            "height": 24,
+            "right": 325.17,
+            "bottom": 313.23
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+1.75",
+          "box": {
+            "x": 262,
+            "y": 460.7,
+            "width": 61.58,
+            "height": 24,
+            "right": 323.58,
+            "bottom": 484.7
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "13 of 14",
+          "box": {
+            "x": 262,
+            "y": 632.17,
+            "width": 87.61,
+            "height": 24,
+            "right": 349.61,
+            "bottom": 656.17
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 262,
+            "y": 320.08,
+            "width": 320,
+            "height": 80,
+            "right": 582,
+            "bottom": 400.08
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "144.9357641013092",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 406.94,
+              "y": 364.08
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 262,
+            "y": 491.55,
+            "width": 320,
+            "height": 80,
+            "right": 582,
+            "bottom": 571.55
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "257.3840608730476",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 519.38,
+              "y": 535.55
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 262,
+            "y": 677.67,
+            "width": 320,
+            "height": 82,
+            "right": 582,
+            "bottom": 759.67
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "238.1",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 500.1,
+              "y": 724.67
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 202.23
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 218.23
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 242.86
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 270.61
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 442.08
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 613.55
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Nauru panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "NR",
+        "slug": "nauru",
+        "name": "Nauru"
+      },
+      "viewport": {
+        "id": "floor-320x568",
+        "width": 320,
+        "height": 568,
+        "purpose": "320px floor"
+      },
+      "screenshot": "artifacts/design/task-115/nauru-floor-320x568.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=NR",
+      "selectedPlace": "Nauru",
+      "document": {
+        "clientWidth": 320,
+        "scrollWidth": 320,
+        "clientHeight": 568,
+        "scrollHeight": 568
+      },
+      "panel": {
+        "x": 0,
+        "y": 170.41,
+        "width": 320,
+        "height": 397.59,
+        "right": 320,
+        "bottom": 568,
+        "clientWidth": 320,
+        "scrollWidth": 320,
+        "clientHeight": 397,
+        "scrollHeight": 683,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 21.41,
+        "width": 320,
+        "height": 1513.31,
+        "right": 320,
+        "bottom": 1534.72,
+        "clientWidth": 320,
+        "scrollWidth": 320
+      },
+      "lens": {
+        "x": 18,
+        "y": 242.48,
+        "width": 284,
+        "height": 572.2,
+        "right": 302,
+        "bottom": 814.69,
+        "clientWidth": 284,
+        "scrollWidth": 284
+      },
+      "intro": {
+        "x": 18,
+        "y": 255.48,
+        "width": 284,
+        "height": 55.38,
+        "right": 302,
+        "bottom": 310.86,
+        "widthRule": "284px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 18,
+          "y": 255.48,
+          "width": 284,
+          "height": 12,
+          "right": 302,
+          "bottom": 267.48
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Nauru in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 18,
+          "y": 271.48,
+          "width": 284,
+          "height": 20.63,
+          "right": 302,
+          "bottom": 292.11
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Nauru",
+        "box": {
+          "x": 18,
+          "y": 296.11,
+          "width": 284,
+          "height": 14.75,
+          "right": 302,
+          "bottom": 310.86
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 18,
+          "y": 296.11,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 90.53,
+          "bottom": 310.28
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 18,
+          "y": 298.69,
+          "width": 9,
+          "height": 9,
+          "right": 27,
+          "bottom": 307.69
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 18,
+            "y": 323.86,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 339.48
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 18,
+            "y": 486.33,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 501.95
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 18,
+            "y": 648.8,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 664.42
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "+1.92",
+          "box": {
+            "x": 18,
+            "y": 342.48,
+            "width": 63.17,
+            "height": 24,
+            "right": 81.17,
+            "bottom": 366.48
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+1.75",
+          "box": {
+            "x": 18,
+            "y": 504.95,
+            "width": 61.58,
+            "height": 24,
+            "right": 79.58,
+            "bottom": 528.95
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "13 of 14",
+          "box": {
+            "x": 18,
+            "y": 667.42,
+            "width": 87.61,
+            "height": 24,
+            "right": 105.61,
+            "bottom": 691.42
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 18,
+            "y": 373.33,
+            "width": 284,
+            "height": 71,
+            "right": 302,
+            "bottom": 444.33
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 44.38
+          },
+          "selected": {
+            "cx": "144.9357641013092",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 146.63,
+              "y": 412.38
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 18,
+            "y": 535.8,
+            "width": 284,
+            "height": 71,
+            "right": 302,
+            "bottom": 606.8
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 44.38
+          },
+          "selected": {
+            "cx": "257.3840608730476",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 246.43,
+              "y": 574.85
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 18,
+            "y": 712.92,
+            "width": 284,
+            "height": 72.77,
+            "right": 302,
+            "bottom": 785.69
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 44.37
+          },
+          "selected": {
+            "cx": "238.1",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 229.31,
+              "y": 754.63
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 255.48
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 271.48
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 296.11
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 323.86
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 486.33
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 648.8
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Nauru panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "NR",
+        "slug": "nauru",
+        "name": "Nauru"
+      },
+      "viewport": {
+        "id": "reflow-200pct-640x400",
+        "width": 640,
+        "height": 400,
+        "purpose": "effective 200% reflow of 1280x800"
+      },
+      "screenshot": "artifacts/design/task-115/nauru-reflow-200pct-640x400.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=NR",
+      "selectedPlace": "Nauru",
+      "document": {
+        "clientWidth": 640,
+        "scrollWidth": 640,
+        "clientHeight": 400,
+        "scrollHeight": 400
+      },
+      "panel": {
+        "x": 0,
+        "y": 120,
+        "width": 640,
+        "height": 280,
+        "right": 640,
+        "bottom": 400,
+        "clientWidth": 640,
+        "scrollWidth": 640,
+        "clientHeight": 279,
+        "scrollHeight": 639,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 34,
+        "width": 640,
+        "height": 1326.36,
+        "right": 640,
+        "bottom": 1360.36,
+        "clientWidth": 640,
+        "scrollWidth": 640
+      },
+      "lens": {
+        "x": 18,
+        "y": 192.23,
+        "width": 604,
+        "height": 599.44,
+        "right": 622,
+        "bottom": 791.67,
+        "clientWidth": 604,
+        "scrollWidth": 604
+      },
+      "intro": {
+        "x": 160,
+        "y": 205.23,
+        "width": 320,
+        "height": 55.38,
+        "right": 480,
+        "bottom": 260.61,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 160,
+          "y": 205.23,
+          "width": 320,
+          "height": 12,
+          "right": 480,
+          "bottom": 217.23
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Nauru in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 160,
+          "y": 221.23,
+          "width": 320,
+          "height": 20.63,
+          "right": 480,
+          "bottom": 241.86
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Nauru",
+        "box": {
+          "x": 160,
+          "y": 245.86,
+          "width": 320,
+          "height": 14.75,
+          "right": 480,
+          "bottom": 260.61
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 160,
+          "y": 245.86,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 232.53,
+          "bottom": 260.03
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 160,
+          "y": 248.44,
+          "width": 9,
+          "height": 9,
+          "right": 169,
+          "bottom": 257.44
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 160,
+            "y": 273.61,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 289.23
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 160,
+            "y": 445.08,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 460.7
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 160,
+            "y": 616.55,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 632.17
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "+1.92",
+          "box": {
+            "x": 160,
+            "y": 292.23,
+            "width": 63.17,
+            "height": 24,
+            "right": 223.17,
+            "bottom": 316.23
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+1.75",
+          "box": {
+            "x": 160,
+            "y": 463.7,
+            "width": 61.58,
+            "height": 24,
+            "right": 221.58,
+            "bottom": 487.7
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "13 of 14",
+          "box": {
+            "x": 160,
+            "y": 635.17,
+            "width": 87.61,
+            "height": 24,
+            "right": 247.61,
+            "bottom": 659.17
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 160,
+            "y": 323.08,
+            "width": 320,
+            "height": 80,
+            "right": 480,
+            "bottom": 403.08
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "144.9357641013092",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 304.94,
+              "y": 367.08
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 160,
+            "y": 494.55,
+            "width": 320,
+            "height": 80,
+            "right": 480,
+            "bottom": 574.55
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "257.3840608730476",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 417.38,
+              "y": 538.55
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 160,
+            "y": 680.67,
+            "width": 320,
+            "height": 82,
+            "right": 480,
+            "bottom": 762.67
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "238.1",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 398.1,
+              "y": 727.67
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 205.23
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 221.23
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 245.86
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 273.61
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 445.08
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 616.55
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Nauru panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "FM",
+        "slug": "federated-states-of-micronesia",
+        "name": "Federated States of Micronesia"
+      },
+      "viewport": {
+        "id": "desktop-1440x900",
+        "width": 1440,
+        "height": 900,
+        "purpose": "desktop"
+      },
+      "screenshot": "artifacts/design/task-115/federated-states-of-micronesia-desktop-1440x900.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=FM",
+      "selectedPlace": "Federated States of Micronesia",
+      "document": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "clientHeight": 900,
+        "scrollHeight": 900
+      },
+      "panel": {
+        "x": 1040,
+        "y": 0,
+        "width": 400,
+        "height": 900,
+        "right": 1440,
+        "bottom": 900,
+        "clientWidth": 399,
+        "scrollWidth": 399,
+        "clientHeight": 900,
+        "scrollHeight": 900,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 1041,
+        "y": -216,
+        "width": 399,
+        "height": 1574.34,
+        "right": 1440,
+        "bottom": 1358.34,
+        "clientWidth": 399,
+        "scrollWidth": 399
+      },
+      "lens": {
+        "x": 1067,
+        "y": 73.47,
+        "width": 347,
+        "height": 645.06,
+        "right": 1414,
+        "bottom": 718.53,
+        "clientWidth": 347,
+        "scrollWidth": 347
+      },
+      "intro": {
+        "x": 1080.5,
+        "y": 86.47,
+        "width": 320,
+        "height": 76,
+        "right": 1400.5,
+        "bottom": 162.47,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 1080.5,
+          "y": 86.47,
+          "width": 320,
+          "height": 12,
+          "right": 1400.5,
+          "bottom": 98.47
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Federated States of Micronesia in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 1080.5,
+          "y": 102.47,
+          "width": 320,
+          "height": 41.25,
+          "right": 1400.5,
+          "bottom": 143.72
+        },
+        "lines": 2,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Federated States of Micronesia",
+        "box": {
+          "x": 1080.5,
+          "y": 147.72,
+          "width": 320,
+          "height": 14.75,
+          "right": 1400.5,
+          "bottom": 162.47
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 1080.5,
+          "y": 147.72,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 1153.03,
+          "bottom": 161.89
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 1080.5,
+          "y": 150.3,
+          "width": 9,
+          "height": 9,
+          "right": 1089.5,
+          "bottom": 159.3
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 1080.5,
+            "y": 180.47,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 196.09
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 1080.5,
+            "y": 359.94,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 375.56
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 1080.5,
+            "y": 539.41,
+            "width": 320,
+            "height": 15.63,
+            "right": 1400.5,
+            "bottom": 555.03
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "−0.98",
+          "box": {
+            "x": 1080.5,
+            "y": 199.09,
+            "width": 68.69,
+            "height": 24,
+            "right": 1149.19,
+            "bottom": 223.09
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+0.78",
+          "box": {
+            "x": 1080.5,
+            "y": 378.56,
+            "width": 66.47,
+            "height": 24,
+            "right": 1146.97,
+            "bottom": 402.56
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "14 of 14",
+          "box": {
+            "x": 1080.5,
+            "y": 558.03,
+            "width": 88.03,
+            "height": 24,
+            "right": 1168.53,
+            "bottom": 582.03
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 1080.5,
+            "y": 231.94,
+            "width": 320,
+            "height": 80,
+            "right": 1400.5,
+            "bottom": 311.94
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "119.38822953627799",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1199.89,
+              "y": 275.94
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 1080.5,
+            "y": 411.41,
+            "width": 320,
+            "height": 80,
+            "right": 1400.5,
+            "bottom": 491.41
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "249.92551061273525",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1330.43,
+              "y": 455.41
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 1080.5,
+            "y": 606.53,
+            "width": 320,
+            "height": 82,
+            "right": 1400.5,
+            "bottom": 688.53
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "296",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 1376.5,
+              "y": 653.53
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 86.47
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 102.47
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 147.72
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 180.47
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 359.94
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 539.41
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "FM",
+        "slug": "federated-states-of-micronesia",
+        "name": "Federated States of Micronesia"
+      },
+      "viewport": {
+        "id": "portrait-390x844",
+        "width": 390,
+        "height": 844,
+        "purpose": "portrait"
+      },
+      "screenshot": "artifacts/design/task-115/federated-states-of-micronesia-portrait-390x844.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=FM",
+      "selectedPlace": "Federated States of Micronesia",
+      "document": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "clientHeight": 844,
+        "scrollHeight": 844
+      },
+      "panel": {
+        "x": 0,
+        "y": 253.2,
+        "width": 390,
+        "height": 590.8,
+        "right": 390,
+        "bottom": 844,
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "clientHeight": 590,
+        "scrollHeight": 782,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 44.2,
+        "width": 390,
+        "height": 1533.34,
+        "right": 390,
+        "bottom": 1577.55,
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      "lens": {
+        "x": 18,
+        "y": 325.67,
+        "width": 354,
+        "height": 620.06,
+        "right": 372,
+        "bottom": 945.73,
+        "clientWidth": 354,
+        "scrollWidth": 354
+      },
+      "intro": {
+        "x": 35,
+        "y": 338.67,
+        "width": 320,
+        "height": 76,
+        "right": 355,
+        "bottom": 414.67,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 35,
+          "y": 338.67,
+          "width": 320,
+          "height": 12,
+          "right": 355,
+          "bottom": 350.67
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Federated States of Micronesia in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 35,
+          "y": 354.67,
+          "width": 320,
+          "height": 41.25,
+          "right": 355,
+          "bottom": 395.92
+        },
+        "lines": 2,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Federated States of Micronesia",
+        "box": {
+          "x": 35,
+          "y": 399.92,
+          "width": 320,
+          "height": 14.75,
+          "right": 355,
+          "bottom": 414.67
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 35,
+          "y": 399.92,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 107.53,
+          "bottom": 414.09
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 35,
+          "y": 402.5,
+          "width": 9,
+          "height": 9,
+          "right": 44,
+          "bottom": 411.5
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 35,
+            "y": 427.67,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 443.3
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 35,
+            "y": 599.14,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 614.77
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 35,
+            "y": 770.61,
+            "width": 320,
+            "height": 15.63,
+            "right": 355,
+            "bottom": 786.23
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "−0.98",
+          "box": {
+            "x": 35,
+            "y": 446.3,
+            "width": 68.69,
+            "height": 24,
+            "right": 103.69,
+            "bottom": 470.3
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+0.78",
+          "box": {
+            "x": 35,
+            "y": 617.77,
+            "width": 66.47,
+            "height": 24,
+            "right": 101.47,
+            "bottom": 641.77
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "14 of 14",
+          "box": {
+            "x": 35,
+            "y": 789.23,
+            "width": 88.03,
+            "height": 24,
+            "right": 123.03,
+            "bottom": 813.23
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 35,
+            "y": 477.14,
+            "width": 320,
+            "height": 80,
+            "right": 355,
+            "bottom": 557.14
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "119.38822953627799",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 154.39,
+              "y": 521.14
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 35,
+            "y": 648.61,
+            "width": 320,
+            "height": 80,
+            "right": 355,
+            "bottom": 728.61
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "249.92551061273525",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 284.93,
+              "y": 692.61
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 35,
+            "y": 834.73,
+            "width": 320,
+            "height": 82,
+            "right": 355,
+            "bottom": 916.73
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "296",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 331,
+              "y": 881.73
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 338.67
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 354.67
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 399.92
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 427.67
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 599.14
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 770.61
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Federated States of Micronesia panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "FM",
+        "slug": "federated-states-of-micronesia",
+        "name": "Federated States of Micronesia"
+      },
+      "viewport": {
+        "id": "landscape-844x390",
+        "width": 844,
+        "height": 390,
+        "purpose": "landscape"
+      },
+      "screenshot": "artifacts/design/task-115/federated-states-of-micronesia-landscape-844x390.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=FM",
+      "selectedPlace": "Federated States of Micronesia",
+      "document": {
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "clientHeight": 390,
+        "scrollHeight": 390
+      },
+      "panel": {
+        "x": 0,
+        "y": 117,
+        "width": 844,
+        "height": 273,
+        "right": 844,
+        "bottom": 390,
+        "clientWidth": 844,
+        "scrollWidth": 844,
+        "clientHeight": 272,
+        "scrollHeight": 675,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 15,
+        "width": 844,
+        "height": 1312.61,
+        "right": 844,
+        "bottom": 1327.61,
+        "clientWidth": 844,
+        "scrollWidth": 844
+      },
+      "lens": {
+        "x": 18,
+        "y": 189.23,
+        "width": 808,
+        "height": 620.06,
+        "right": 826,
+        "bottom": 809.3,
+        "clientWidth": 808,
+        "scrollWidth": 808
+      },
+      "intro": {
+        "x": 262,
+        "y": 202.23,
+        "width": 320,
+        "height": 76,
+        "right": 582,
+        "bottom": 278.23,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 262,
+          "y": 202.23,
+          "width": 320,
+          "height": 12,
+          "right": 582,
+          "bottom": 214.23
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Federated States of Micronesia in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 262,
+          "y": 218.23,
+          "width": 320,
+          "height": 41.25,
+          "right": 582,
+          "bottom": 259.48
+        },
+        "lines": 2,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Federated States of Micronesia",
+        "box": {
+          "x": 262,
+          "y": 263.48,
+          "width": 320,
+          "height": 14.75,
+          "right": 582,
+          "bottom": 278.23
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 262,
+          "y": 263.48,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 334.53,
+          "bottom": 277.66
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 262,
+          "y": 266.06,
+          "width": 9,
+          "height": 9,
+          "right": 271,
+          "bottom": 275.06
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 262,
+            "y": 291.23,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 306.86
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 262,
+            "y": 462.7,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 478.33
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 262,
+            "y": 634.17,
+            "width": 320,
+            "height": 15.63,
+            "right": 582,
+            "bottom": 649.8
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "−0.98",
+          "box": {
+            "x": 262,
+            "y": 309.86,
+            "width": 68.69,
+            "height": 24,
+            "right": 330.69,
+            "bottom": 333.86
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+0.78",
+          "box": {
+            "x": 262,
+            "y": 481.33,
+            "width": 66.47,
+            "height": 24,
+            "right": 328.47,
+            "bottom": 505.33
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "14 of 14",
+          "box": {
+            "x": 262,
+            "y": 652.8,
+            "width": 88.03,
+            "height": 24,
+            "right": 350.03,
+            "bottom": 676.8
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 262,
+            "y": 340.7,
+            "width": 320,
+            "height": 80,
+            "right": 582,
+            "bottom": 420.7
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "119.38822953627799",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 381.39,
+              "y": 384.7
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 262,
+            "y": 512.17,
+            "width": 320,
+            "height": 80,
+            "right": 582,
+            "bottom": 592.17
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "249.92551061273525",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 511.93,
+              "y": 556.17
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 262,
+            "y": 698.3,
+            "width": 320,
+            "height": 82,
+            "right": 582,
+            "bottom": 780.3
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "296",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 558,
+              "y": 745.3
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 202.23
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 218.23
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 263.48
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 291.23
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 462.7
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 634.17
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Federated States of Micronesia panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "FM",
+        "slug": "federated-states-of-micronesia",
+        "name": "Federated States of Micronesia"
+      },
+      "viewport": {
+        "id": "floor-320x568",
+        "width": 320,
+        "height": 568,
+        "purpose": "320px floor"
+      },
+      "screenshot": "artifacts/design/task-115/federated-states-of-micronesia-floor-320x568.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=FM",
+      "selectedPlace": "Federated States of Micronesia",
+      "document": {
+        "clientWidth": 320,
+        "scrollWidth": 320,
+        "clientHeight": 568,
+        "scrollHeight": 568
+      },
+      "panel": {
+        "x": 0,
+        "y": 170.41,
+        "width": 320,
+        "height": 397.59,
+        "right": 320,
+        "bottom": 568,
+        "clientWidth": 320,
+        "scrollWidth": 320,
+        "clientHeight": 397,
+        "scrollHeight": 795,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": -69.59,
+        "width": 320,
+        "height": 1609.23,
+        "right": 320,
+        "bottom": 1539.64,
+        "clientWidth": 320,
+        "scrollWidth": 320
+      },
+      "lens": {
+        "x": 18,
+        "y": 242.88,
+        "width": 284,
+        "height": 592.83,
+        "right": 302,
+        "bottom": 835.7,
+        "clientWidth": 284,
+        "scrollWidth": 284
+      },
+      "intro": {
+        "x": 18,
+        "y": 255.88,
+        "width": 284,
+        "height": 76,
+        "right": 302,
+        "bottom": 331.88,
+        "widthRule": "284px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 18,
+          "y": 255.88,
+          "width": 284,
+          "height": 12,
+          "right": 302,
+          "bottom": 267.88
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Federated States of Micronesia in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 18,
+          "y": 271.88,
+          "width": 284,
+          "height": 41.25,
+          "right": 302,
+          "bottom": 313.13
+        },
+        "lines": 2,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Federated States of Micronesia",
+        "box": {
+          "x": 18,
+          "y": 317.13,
+          "width": 284,
+          "height": 14.75,
+          "right": 302,
+          "bottom": 331.88
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 18,
+          "y": 317.13,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 90.53,
+          "bottom": 331.3
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 18,
+          "y": 319.7,
+          "width": 9,
+          "height": 9,
+          "right": 27,
+          "bottom": 328.7
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 18,
+            "y": 344.88,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 360.5
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 18,
+            "y": 507.34,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 522.97
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 18,
+            "y": 669.81,
+            "width": 284,
+            "height": 15.63,
+            "right": 302,
+            "bottom": 685.44
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "−0.98",
+          "box": {
+            "x": 18,
+            "y": 363.5,
+            "width": 68.69,
+            "height": 24,
+            "right": 86.69,
+            "bottom": 387.5
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+0.78",
+          "box": {
+            "x": 18,
+            "y": 525.97,
+            "width": 66.47,
+            "height": 24,
+            "right": 84.47,
+            "bottom": 549.97
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "14 of 14",
+          "box": {
+            "x": 18,
+            "y": 688.44,
+            "width": 88.03,
+            "height": 24,
+            "right": 106.03,
+            "bottom": 712.44
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 18,
+            "y": 394.34,
+            "width": 284,
+            "height": 71,
+            "right": 302,
+            "bottom": 465.34
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 44.38
+          },
+          "selected": {
+            "cx": "119.38822953627799",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 123.96,
+              "y": 433.4
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 18,
+            "y": 556.81,
+            "width": 284,
+            "height": 71,
+            "right": 302,
+            "bottom": 627.81
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 44.38
+          },
+          "selected": {
+            "cx": "249.92551061273525",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 239.81,
+              "y": 595.86
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 18,
+            "y": 733.94,
+            "width": 284,
+            "height": 72.77,
+            "right": 302,
+            "bottom": 806.7
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 44.37
+          },
+          "selected": {
+            "cx": "296",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 280.69,
+              "y": 775.64
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 255.88
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 271.88
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 317.13
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 344.88
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 507.34
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 669.81
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Federated States of Micronesia panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    },
+    {
+      "place": {
+        "code": "FM",
+        "slug": "federated-states-of-micronesia",
+        "name": "Federated States of Micronesia"
+      },
+      "viewport": {
+        "id": "reflow-200pct-640x400",
+        "width": 640,
+        "height": 400,
+        "purpose": "effective 200% reflow of 1280x800"
+      },
+      "screenshot": "artifacts/design/task-115/federated-states-of-micronesia-reflow-200pct-640x400.png",
+      "runtimeErrors": [],
+      "vision": {
+        "achromatopsia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        },
+        "deuteranopia": {
+          "keyVisible": true,
+          "ringVisibleAsBorder": true,
+          "selectedRingsUnfilled": true,
+          "selectedRingCount": 3
+        }
+      },
+      "url": "http://127.0.0.1:4173/?mode=explore&view=default&place=FM",
+      "selectedPlace": "Federated States of Micronesia",
+      "document": {
+        "clientWidth": 640,
+        "scrollWidth": 640,
+        "clientHeight": 400,
+        "scrollHeight": 400
+      },
+      "panel": {
+        "x": 0,
+        "y": 120,
+        "width": 640,
+        "height": 280,
+        "right": 640,
+        "bottom": 400,
+        "clientWidth": 640,
+        "scrollWidth": 640,
+        "clientHeight": 279,
+        "scrollHeight": 690,
+        "scrollTop": 0
+      },
+      "panelBody": {
+        "x": 0,
+        "y": 3,
+        "width": 640,
+        "height": 1377.98,
+        "right": 640,
+        "bottom": 1380.98,
+        "clientWidth": 640,
+        "scrollWidth": 640
+      },
+      "lens": {
+        "x": 18,
+        "y": 192.23,
+        "width": 604,
+        "height": 620.06,
+        "right": 622,
+        "bottom": 812.3,
+        "clientWidth": 604,
+        "scrollWidth": 604
+      },
+      "intro": {
+        "x": 160,
+        "y": 205.23,
+        "width": 320,
+        "height": 76,
+        "right": 480,
+        "bottom": 281.23,
+        "widthRule": "320px"
+      },
+      "kicker": {
+        "text": "Regional position",
+        "box": {
+          "x": 160,
+          "y": 205.23,
+          "width": 320,
+          "height": 12,
+          "right": 480,
+          "bottom": 217.23
+        },
+        "lines": null,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "0.5px",
+          "textTransform": "uppercase",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87
+      },
+      "heading": {
+        "text": "Federated States of Micronesia in the Pacific record",
+        "id": "regional-position-heading",
+        "tag": "h2",
+        "box": {
+          "x": 160,
+          "y": 221.23,
+          "width": 320,
+          "height": 41.25,
+          "right": 480,
+          "bottom": 262.48
+        },
+        "lines": 2,
+        "style": {
+          "color": "rgb(11, 27, 34)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "16.5px",
+          "fontWeight": "600",
+          "lineHeight": "20.625px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 15.98
+      },
+      "key": {
+        "text": "Ring marks Federated States of Micronesia",
+        "box": {
+          "x": 160,
+          "y": 266.48,
+          "width": 320,
+          "height": 14.75,
+          "right": 480,
+          "bottom": 281.23
+        },
+        "lines": 1,
+        "style": {
+          "color": "rgb(75, 98, 105)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+          "fontSize": "10.5px",
+          "fontWeight": "600",
+          "lineHeight": "14.175px",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "textOverflow": "clip",
+          "whiteSpace": "normal",
+          "overflow": "visible",
+          "display": "block"
+        },
+        "contrast": 5.87,
+        "leadBox": {
+          "x": 160,
+          "y": 266.48,
+          "width": 72.53,
+          "height": 14.17,
+          "right": 232.53,
+          "bottom": 280.66
+        }
+      },
+      "keyRing": {
+        "ariaHidden": "true",
+        "box": {
+          "x": 160,
+          "y": 269.06,
+          "width": 9,
+          "height": 9,
+          "right": 169,
+          "bottom": 278.06
+        },
+        "border": "2px solid rgb(11, 105, 112)",
+        "borderRadius": "50%",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "metricTitles": [
+        {
+          "text": "Safely managed drinking water",
+          "box": {
+            "x": 160,
+            "y": 294.23,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 309.86
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Renewable energy share",
+          "box": {
+            "x": 160,
+            "y": 465.7,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 481.33
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "Reviewed datasets with a record",
+          "box": {
+            "x": 160,
+            "y": 637.17,
+            "width": 320,
+            "height": 15.63,
+            "right": 480,
+            "bottom": 652.8
+          },
+          "lines": 1,
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "12.5px",
+            "fontWeight": "600",
+            "lineHeight": "15.625px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "selectedValues": [
+        {
+          "text": "−0.98",
+          "box": {
+            "x": 160,
+            "y": 312.86,
+            "width": 68.69,
+            "height": 24,
+            "right": 228.69,
+            "bottom": 336.86
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "+0.78",
+          "box": {
+            "x": 160,
+            "y": 484.33,
+            "width": 66.47,
+            "height": 24,
+            "right": 226.47,
+            "bottom": 508.33
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        },
+        {
+          "text": "14 of 14",
+          "box": {
+            "x": 160,
+            "y": 655.8,
+            "width": 88.03,
+            "height": 24,
+            "right": 248.03,
+            "bottom": 679.8
+          },
+          "style": {
+            "color": "rgb(11, 27, 34)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "fontFamily": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Arial, sans-serif",
+            "fontSize": "24px",
+            "fontWeight": "700",
+            "lineHeight": "24px",
+            "letterSpacing": "normal",
+            "textTransform": "none",
+            "textOverflow": "clip",
+            "whiteSpace": "normal",
+            "overflow": "visible",
+            "display": "block"
+          }
+        }
+      ],
+      "plots": [
+        {
+          "kind": "water",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 160,
+            "y": 343.7,
+            "width": 320,
+            "height": 80,
+            "right": 480,
+            "bottom": 423.7
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "119.38822953627799",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 279.39,
+              "y": 387.7
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 19,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "renewable",
+          "viewBox": "0 0 320 80",
+          "box": {
+            "x": 160,
+            "y": 515.17,
+            "width": 320,
+            "height": 80,
+            "right": 480,
+            "bottom": 595.17
+          },
+          "hitBand": {
+            "x": "8",
+            "y": "19",
+            "width": "304",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "249.92551061273525",
+            "cy": "44",
+            "radius": "5",
+            "screenCenter": {
+              "x": 409.93,
+              "y": 559.17
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 20,
+          "medians": 1,
+          "zeroes": 1,
+          "cursors": 0
+        },
+        {
+          "kind": "visibility",
+          "viewBox": "0 0 320 82",
+          "box": {
+            "x": 160,
+            "y": 701.3,
+            "width": 320,
+            "height": 82,
+            "right": 480,
+            "bottom": 783.3
+          },
+          "hitBand": {
+            "x": "0",
+            "y": "31",
+            "width": "320",
+            "height": "50",
+            "renderedHeight": 50
+          },
+          "selected": {
+            "cx": "296",
+            "cy": "47",
+            "radius": "5",
+            "screenCenter": {
+              "x": 456,
+              "y": 748.3
+            },
+            "fill": "none",
+            "stroke": "rgb(11, 105, 112)"
+          },
+          "peerMarks": 22,
+          "medians": 0,
+          "zeroes": 0,
+          "cursors": 0
+        }
+      ],
+      "order": [
+        {
+          "selector": ".regional-lens__kicker",
+          "y": 205.23
+        },
+        {
+          "selector": ".regional-lens__heading",
+          "y": 221.23
+        },
+        {
+          "selector": ".regional-lens__key",
+          "y": 266.48
+        },
+        {
+          "selector": "[data-regional-strip=\"water\"]",
+          "y": 294.23
+        },
+        {
+          "selector": "[data-regional-strip=\"renewable\"]",
+          "y": 465.7
+        },
+        {
+          "selector": "[data-regional-strip=\"visibility\"]",
+          "y": 637.17
+        }
+      ],
+      "focusOrder": [
+        {
+          "tag": "button",
+          "className": "panel-nav__toggle",
+          "text": "Toggle Federated States of Micronesia panel",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "panel-nav__close",
+          "text": "Close",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.67−11.23+18.49",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--continuous",
+          "text": "0regional median +0.01−27.94+6.11",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "svg",
+          "className": "regional-lens__plot regional-lens__plot--visibility",
+          "text": "61 place102 places113 places122 places132 places1412 places",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        },
+        {
+          "tag": "button",
+          "className": "link-btn",
+          "text": "Methodology & sources",
+          "active": true,
+          "outline": "rgb(0, 131, 134) solid 3px"
+        }
+      ],
+      "semantics": {
+        "labelledBy": "regional-position-heading",
+        "h2Count": 1,
+        "decorativeRingCount": 1,
+        "retiredHeadingPresent": false
+      },
+      "nonColor": {
+        "keyTextVisible": true,
+        "ringHasSolidShape": true,
+        "ringIsUnfilled": true,
+        "selectedRingsUnfilled": true
+      }
+    }
+  ],
+  "assertions": {
+    "cases": 10,
+    "noRuntimeErrors": true,
+    "noHorizontalOverflow": true,
+    "exactIntroWidth": true,
+    "semanticEntry": true,
+    "headingAtLeast16px": true,
+    "longNamesWrapWithoutTruncation": true,
+    "keyLeadStaysTogether": true,
+    "kickerMutedAndRingOnlyAccent": true,
+    "typeRoles": true,
+    "unchangedViewBoxes": true,
+    "unchangedMarkCounts": true,
+    "unchangedReferences": true,
+    "bandsAtLeast44px": true,
+    "selectedGeometryPresent": true,
+    "nonColorRecognition": true,
+    "focusOrderStable": true,
+    "minimumMutedTextContrast": 5.87
+  }
+}

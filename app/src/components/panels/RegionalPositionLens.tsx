@@ -315,7 +315,15 @@ function ContinuousStrip({ strip, name, clock }: { strip: RegionalPositionStrip;
 export function RegionalPositionLens({ geo, geos }: { geo: Geo; geos: Geo[] }) {
   return (
     <section className="regional-lens" aria-labelledby="regional-position-heading">
-      <h2 className="panel__h" id="regional-position-heading">Where {geo.name} sits in the Pacific</h2>
+      <header className="regional-lens__intro">
+        <p className="regional-lens__kicker">Regional position</p>
+        <h2 className="regional-lens__heading" id="regional-position-heading">
+          {geo.name} in the Pacific record
+        </h2>
+        <p className="regional-lens__key">
+          <span><span className="regional-lens__key-ring" aria-hidden="true" />Ring marks</span>{" "}{geo.name}
+        </p>
+      </header>
       {buildRegionalPositionModel(geos, geo.code).map((strip) => {
         const measure = strip.id === "visibility" ? null : geo.regionalStory[strip.id];
         const clock = measure && measure.firstYear !== null && measure.latestYear !== null

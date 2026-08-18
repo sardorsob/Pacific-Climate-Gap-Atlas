@@ -21,6 +21,21 @@ function stripHtml(html: string, id: string) {
 }
 
 describe("RegionalPositionLens", () => {
+  it("introduces the regional record and selected-ring grammar before every metric", () => {
+    const html = renderLens("FM");
+    const heading = "Federated States of Micronesia in the Pacific record";
+
+    expect(html).toContain('<p class="regional-lens__kicker">Regional position</p>');
+    expect(html).toContain(`<h2 class="regional-lens__heading" id="regional-position-heading">${heading}</h2>`);
+    expect(html).toContain('<span class="regional-lens__key-ring" aria-hidden="true"></span>Ring marks');
+    expect(html).toContain("Ring marks</span> Federated States of Micronesia</p>");
+    expect(html.match(/<h2/g) ?? []).toHaveLength(1);
+    expect(html.match(/class="regional-lens__key-ring" aria-hidden="true"/g) ?? []).toHaveLength(1);
+    expect(html.indexOf(heading)).toBeLessThan(html.indexOf("Ring marks"));
+    expect(html.indexOf("Ring marks")).toBeLessThan(html.indexOf("Safely managed drinking water"));
+    expect(html).not.toContain("Where Federated States of Micronesia sits in the Pacific");
+  });
+
   it("makes each continuous selected value the entry point with its unit and own clock", () => {
     const html = renderLens("NR");
     const water = stripHtml(html, "water");
@@ -188,12 +203,21 @@ describe("RegionalPositionLens", () => {
 
   it("uses one centered measure column and the approved type and spacing rhythm", () => {
     const css = readFileSync(new URL("../../styles/base.css", import.meta.url), "utf8");
+    const introCss = css.slice(css.indexOf(".regional-lens__intro"), css.indexOf(".regional-lens__strip { display"));
 
     expect(css).toMatch(/\.regional-lens\s*\{[^}]*gap:\s*18px;[^}]*\}/);
-    expect(css).toMatch(/\.regional-lens\s*>\s*\.panel__h,\s*\.regional-lens__strip\s*\{[^}]*width:\s*min\(100%,\s*320px\);[^}]*justify-self:\s*center;/);
+    expect(css).toMatch(/\.regional-lens__intro,\s*\.regional-lens__strip\s*\{[^}]*width:\s*min\(100%,\s*320px\);[^}]*justify-self:\s*center;/);
+    expect(css).toMatch(/\.regional-lens__intro\s*\{[^}]*display:\s*grid;[^}]*gap:\s*4px;/);
+    expect(css).toMatch(/\.regional-lens__kicker\s*\{[^}]*color:\s*var\(--ink-soft\);[^}]*font:\s*800\s+10px\s+var\(--font-sans\);[^}]*text-transform:\s*uppercase;[^}]*letter-spacing:\s*0\.05em;/);
+    expect(css).toMatch(/\.regional-lens__heading\s*\{[^}]*font:\s*600\s+16\.5px\s+Georgia,\s*serif;[^}]*line-height:\s*1\.25;/);
+    expect(css).toMatch(/\.regional-lens__key\s*\{[^}]*color:\s*var\(--ink-soft\);[^}]*font:\s*600\s+10\.5px\s+var\(--font-sans\);[^}]*line-height:\s*1\.35;/);
+    expect(css).toMatch(/\.regional-lens__key\s*>\s*span\s*\{[^}]*display:\s*inline-flex;[^}]*align-items:\s*center;[^}]*gap:\s*5px;/);
+    expect(css).toMatch(/\.regional-lens__key-ring\s*\{[^}]*width:\s*9px;[^}]*height:\s*9px;[^}]*flex:\s*0 0 auto;[^}]*border:\s*2px solid var\(--accent\);[^}]*border-radius:\s*50%;/);
+    expect(introCss.match(/var\(--accent\)/g) ?? []).toHaveLength(1);
+    expect(introCss).not.toMatch(/box-shadow|animation|text-overflow|white-space:\s*nowrap/);
     expect(css).toMatch(/\.regional-lens__strip\s*\{[^}]*gap:\s*3px;/);
     expect(css).toMatch(/\.regional-lens__head\s*\{[^}]*display:\s*grid;[^}]*gap:\s*3px;/);
-    expect(css).toMatch(/\.regional-lens__title\s*\{[^}]*font:\s*600\s+12\.5px\s+Georgia,\s*serif;/);
+    expect(css).toMatch(/\.regional-lens__title\s*\{[^}]*font:\s*600\s+12\.5px\s+var\(--font-sans\);/);
     expect(css).toMatch(/\.regional-lens__readout\s*\{[^}]*display:\s*flex;[^}]*align-items:\s*baseline;[^}]*flex-wrap:\s*wrap;/);
     expect(css).toMatch(/\.regional-lens__value\s*\{[^}]*font:\s*700\s+24px\s+var\(--font-sans\);/);
     expect(css).toMatch(/\.regional-lens__readout\s*>\s*span\s*\{[^}]*font-size:\s*11px;/);
@@ -203,6 +227,7 @@ describe("RegionalPositionLens", () => {
     expect(css).toMatch(/\.regional-lens__inspector\s*\{[^}]*min-height:\s*2\.7em;/);
     expect(css).not.toMatch(/\.regional-lens__clock\s*\{[^}]*float:/);
     expect(css).not.toContain(".regional-lens__label");
+    expect(css).not.toContain("@font-face");
   });
 
   it("restores 50-unit plot hit surfaces without changing either viewBox", () => {

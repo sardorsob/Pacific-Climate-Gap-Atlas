@@ -1,122 +1,121 @@
 {
   "task": "TASK-110",
+  "attempt": 2,
   "status": "in-review",
-  "tested_from_head": "069e811",
-  "production_commit": "bf5ebfa",
+  "tested_from_head": "9086443",
+  "production_commit": "9086443",
   "reviewed_commits": {
-    "TASK-107": ["09c7cc0", "648503b"],
-    "TASK-108": ["fccc0d7", "e449619", "d57c54d"],
-    "TASK-109": ["1502a99", "83b52a1"],
-    "TASK-102_attempt_3": ["bf5ebfa", "069e811"]
+    "TASK-114": ["4d2a827", "ce82223"],
+    "TASK-115": ["303a14f"],
+    "TASK-112": ["66ea0d5"]
   },
   "production_freeze": {
     "task_110_product_test_data_dependency_changes": 0,
-    "returned_defect": "TASK-102 desktop selected-place map-failure layout",
-    "repair_owned_outside_task_110": true
+    "returned_defect": null,
+    "repair_owned_outside_task_110": false
   },
   "method": {
-    "date": "2026-08-02",
-    "runner": "Playwright with cached Chromium headless shell",
+    "date": "2026-08-18",
+    "runner": "Playwright 1.58.2 with freshly installed cached Chromium",
     "headless": true,
     "quiet": true,
     "visible_browser_opened": false,
-    "usable_assertions": {
-      "reused_unchanged_scope": 721,
-      "fresh_after_task_102_repair": 81,
-      "total": 802,
-      "failed": 0,
-      "superseded_original_failure_assertion": 1
-    },
-    "cases": {
-      "original_place_viewport_cases": 63,
-      "fresh_repair_and_inactivity_cases": 16
-    },
+    "fresh_attempt_2_pixels": true,
+    "historical_attempt_1_pixels_reused": false,
+    "browser_assertions": 53,
+    "console_errors": 0,
+    "page_errors": 0,
+    "failed_requests": 0,
     "screenshots": {
       "directory": "artifacts/design/task-110",
       "count": 10,
-      "reused_unchanged": 9,
-      "fresh_corrected_failure": 1,
+      "all_regenerated_against_task_114_115_hierarchy": true,
       "all_visually_inspected": true
-    },
-    "console_errors": 0,
-    "page_errors": 0,
-    "failed_requests": 0
+    }
   },
-  "reuse_justification": "The only production diff after the original frozen pass is TASK-102's one-rule desktop .app-state margin reservation. The reused 721 assertions and nine frames contain no failure-state .app-state surface; seven fresh normal-map cases also prove the selector is absent and inactive.",
   "source_audit": {
     "geographies_sha256": "d431884e6f7c61c59a5fa276bb66bde644dfaead47d4f867314f41882e461377",
     "country_details_sha256": "1d1107d2343187386f062a3e7534962c26c1777738f410c2d8229e45a067d58d",
     "land_context_sha256": "07584700c159316c5b7c451013b36cb9bdd513f347a1373cc7e270924f497b61",
     "processed_public_pairs_byte_identical": true,
     "places": 22,
+    "complete_direction_groups": {
+      "both_up": ["AS", "MP", "NC", "NR", "PW", "TV"],
+      "water_up_renewable_down": ["CK", "FJ", "KI", "PG", "TO", "VU", "WS"],
+      "water_down_renewable_up": ["FM", "NU", "PF"],
+      "both_down": ["MH", "SB", "WF"],
+      "incomplete": ["GU", "PN", "TK"]
+    },
     "water": {
       "recorded": 19,
       "unavailable": 3,
       "median": 0.67,
       "range": [-11.23, 18.49],
-      "fiji_tonga_tie": 0.67
+      "fiji_tonga_tie": 0.67,
+      "exact_clocks": "AS 2000-2021; CK/FJ/KI/MP/NC/NU/PF/PG/PW/TO/TV/VU/WF/WS 2000-2022; FM/NR 2000-2020; MH 2001-2022; SB 2000-2021; GU/PN/TK unavailable"
     },
     "renewable": {
       "recorded": 20,
       "unavailable": 2,
       "median_display": 0.01,
-      "range": [-27.94, 6.11]
+      "range": [-27.94, 6.11],
+      "exact_clocks": "PF 2000-2023; AS/CK/FJ/FM/GU/KI/MH/MP/NC/NR/NU/PG/PW/SB/TO/TV/VU/WF/WS 2000-2022; PN/TK unavailable"
     },
-    "visibility_groups": {
-      "6": ["PN"],
-      "10": ["TK", "WF"],
-      "11": ["AS", "GU", "MP"],
-      "12": ["CK", "NU"],
-      "13": ["NR", "TV"],
-      "14": ["FJ", "FM", "KI", "MH", "NC", "PF", "PG", "PW", "SB", "TO", "VU", "WS"]
+    "visibility": {
+      "recorded": 22,
+      "unavailable": 0,
+      "median": null,
+      "groups": {"6": 1, "10": 2, "11": 3, "12": 2, "13": 2, "14": 12},
+      "marks": 22,
+      "all_14": 12
     },
-    "representative_source_to_dom": {
-      "NR": "water +1.92 (2000 to 2020); renewable +1.75 (2000 to 2022); visibility 13 of 14",
-      "PN": "water unavailable; renewable unavailable; visibility 6 of 14",
-      "GU": "water unavailable; renewable +6.11 (2000 to 2022); visibility 11 of 14",
-      "FJ": "water +0.67 (2000 to 2022); renewable -23.39 (2000 to 2022); visibility 14 of 14",
-      "TO": "water +0.67 (2000 to 2022); renewable -0.40 (2000 to 2022); visibility 14 of 14"
+    "source_model_sentence_dom": {
+      "NR": "both up; exact DOM count 6 of 19; water +1.92 (2000-2020), renewable +1.75 (2000-2022), visibility 13 of 14",
+      "FJ": "water up/renewable down; exact DOM count 7 of 19; water +0.67 (2000-2022), renewable -23.39 (2000-2022), visibility 14 of 14",
+      "FM": "water down/renewable up; exact DOM count 3 of 19; water -0.98 (2000-2020), renewable +0.78 (2000-2022), visibility 14 of 14",
+      "SB": "both down; exact DOM count 3 of 19; water -11.23 (2000-2021), renewable -5.18 (2000-2022), visibility 14 of 14",
+      "PN": "incomplete; exact DOM count 3 of 22; water and renewable unavailable, visibility 6 of 14",
+      "TK": "incomplete; water and renewable unavailable, visibility 10 of 14",
+      "GU": "incomplete; water unavailable, renewable +6.11 (2000-2022), visibility 11 of 14",
+      "WS": "water +11.98 (2000-2022), renewable -27.94 (2000-2022), visibility 14 of 14",
+      "PG": "water +18.49 (2000-2022), renewable -15.60 (2000-2022), visibility 14 of 14",
+      "TO": "water +0.67 (2000-2022) exact Fiji tie, renewable -0.40 (2000-2022), visibility 14 of 14",
+      "FM_long_name": "Federated States of Micronesia in the Pacific record wraps naturally"
     }
   },
+  "final_hierarchy": {
+    "order": ["selected directional/incomplete sentence", "Regional position", "[place] in the Pacific record", "Ring marks [place]", "water", "renewable", "visibility"],
+    "selected_values_order": ["water", "renewable", "visibility"],
+    "kicker": "Regional position",
+    "ring_key": "Ring marks [place]",
+    "selected_value_font_px": 24,
+    "intro_measure_column": "min(100%, 320px)"
+  },
+  "interaction_accessibility": {
+    "inputs": ["pointer hover", "sticky touch", "ArrowLeft/ArrowRight", "Escape", "blur", "outside pointer", "new selection", "Back", "Close"],
+    "all_passed": true,
+    "peer_inspection_informational_only": true,
+    "selection_url_history_stable_during_peer_inspection": true,
+    "close_returns_focus_to_selected_map_target": true,
+    "live_regions": ["water-inspector", "renewable-inspector", "visibility-inspector"],
+    "mark_grammar": "zero thin solid; median sparse dashed; continuous cursor heavier solid non-teal; visibility cursor solid non-teal outline; selected place unfilled teal ring only",
+    "selected_null_distinct_from_zero": true,
+    "view_boxes": ["0 0 320 80", "0 0 320 80", "0 0 320 82"],
+    "touch_band_px_at_320": 44.375,
+    "overflow_failures": 0
+  },
   "matrix": {
-    "places": ["NR", "PN", "TK", "GU", "SB", "WS", "PG", "FJ", "TO"],
-    "viewports": ["360x800", "390x844", "430x932", "844x390", "1024x768", "1280x800", "1440x900"],
-    "interactions": ["pointer hover", "sticky touch", "keyboard arrows", "Escape", "blur", "outside pointer", "new selection", "Back", "Close"],
-    "states": ["selected values", "selected null", "ties", "200% reflow", "reduced motion", "grayscale", "deuteranopia", "map failure"],
-    "selection_url_history_projection_unchanged": true
-  },
-  "accessibility_and_visual": {
-    "selected_readout_first": true,
-    "independent_continuous_zero_and_median_references": true,
-    "visibility_groups_and_marks": "6 groups / 22 marks",
-    "visibility_median_omitted": true,
-    "inspection_live_regions": 3,
-    "touch_and_keyboard_bands_px": 44,
-    "overflow_failures": 0,
-    "contrast_reused_from_unchanged_tokens": {
-      "peer_boundary": 3.09,
-      "chrome": 13.93,
-      "mineral_text": 15.98
-    },
-    "color_and_motion_independence": true
-  },
-  "task_102_repair_verification": {
-    "selected_desktop_widths": [881, 1024, 1229, 1230, 1440],
-    "no_panel_widths": [1024, 1440],
-    "mobile_viewports": ["390x844", "844x390"],
-    "heading_panel_overlap_px": 0,
-    "centering_tolerance_px": 1,
-    "desktop_selected_margin_right_px": 400,
-    "mobile_margin_right_px": 0,
-    "corrected_frame_sha256": "326249de76da71543a010a3447a245426079b28dd9dc11dc5389ffd0197bc1ad"
+    "viewports": ["320x568", "360x800", "390x844", "430x932", "720x800 effective 200% reflow", "844x390", "1024x768", "1280x800", "1440x900"],
+    "states": ["selected values", "selected null", "ties", "long name", "reduced motion", "grayscale", "deuteranopia simulation", "keyboard focus", "touch", "map failure"],
+    "map_failure": "canvas getContext null injection retained an in-region Map unavailable alert with no overflow"
   },
   "bundle": {
     "gzip_command": "gzip -c",
-    "javascript_raw_bytes": 1042934,
-    "javascript_gzip_bytes": 292425,
+    "javascript_raw_bytes": 1045015,
+    "javascript_gzip_bytes": 292956,
     "javascript_limit_bytes": 1050000,
-    "css_raw_bytes": 95474,
-    "css_gzip_bytes": 15787,
+    "css_raw_bytes": 96750,
+    "css_gzip_bytes": 16026,
     "css_limit_bytes": 97500,
     "limits_are_internal_regression_guards": true
   },
@@ -124,38 +123,33 @@
     "python -m unittest discover -s tests -t . -v": "100/100 passed",
     "python scripts/validate_data_contracts.py": "pass",
     "python scripts/check_required_artifacts.py": "78 paths passed",
-    "python scripts/validate_task_statuses.py": "111 statuses passed",
+    "python scripts/validate_task_statuses.py": "119 statuses passed before attempt-2 ledger transition",
     "python scripts/check_secrets.py": "pass",
     "ruff check analysis scripts tests": "pass",
     "python -m compileall -q analysis scripts tests": "pass",
-    "npm --prefix app run test": "135/135 passed",
+    "npm --prefix app run test": "145/145 passed",
     "npm --prefix app run build": "pass",
     "python scripts/check_app_bundle_budget.py": "pass",
     "git diff --check": "pass"
   },
   "security_review": {
     "command": "Semgrep MCP semgrep_scan",
-    "scope": ["CountryPanel.tsx", "RegionalPositionLens.tsx", "regionalPositionModel.ts", "base.css", "CountryPanel.test.tsx", "RegionalPositionLens.test.tsx", "regionalPositionModel.test.ts", "mapPresentation.test.tsx"],
+    "scope": ["App.tsx", "CountryPanel.tsx", "CountryPanel.test.tsx", "RegionalPositionLens.tsx", "RegionalPositionLens.test.tsx", "regionalPositionModel.ts", "regionalPositionModel.test.ts", "base.css"],
     "version": "1.168.0",
     "findings": 0,
     "errors": 0,
     "skipped_rules": 0
   },
-  "limitations": [
-    "Current source has no exactly-zero selected continuous observation; null-versus-zero remains covered by synthetic model/component tests and the full frontend suite.",
-    "MapLibre does not expose an application camera readout; all 22 projected positions plus stable selection, URL, and history are used as the camera-behavior proxy.",
-    "Grayscale and deuteranopia checks are CSS simulations, not assistive hardware tests.",
-    "Map failure is induced by returning null from canvas getContext; TASK-102 separately covers mid-session context loss.",
-    "Owner visual and interaction acceptance remains required; deployment and submission are not claimed."
-  ],
-  "independent_review": {
-    "scientific": "pass",
-    "visualization": "pass",
-    "responsive": "pass",
-    "interaction": "pass",
-    "accessibility": "pass",
-    "remaining_product_defects": 0,
-    "disposition": "ready for owner review"
+  "self_review": {
+    "visual": "Fresh desktop, mobile, landscape, reflow, color/motion, inspection, and map-failure pixels show the required cold-read order without clipping or horizontal overflow.",
+    "scope": "Only TASK-110 evidence/provenance/context/report records changed; production, tests, data, dependencies, routes, state, and TASK-100/TASK-118 status remain frozen.",
+    "defects_reproduced": 0
   },
+  "limitations": [
+    "No currently selected continuous observation is exactly zero; selected-null versus zero is covered by model/component tests and renderer grammar inspection.",
+    "The deuteranopia and grayscale checks are browser CSS simulations, not assistive-hardware tests.",
+    "The map-failure state is induced by null canvas context; it is not a live network outage.",
+    "Independent scientific/UX/accessibility review and owner visual/interaction acceptance still determine final quality and done status."
+  ],
   "owner_review": "pending"
 }

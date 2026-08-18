@@ -65,7 +65,7 @@ Official records across 22 Pacific geographies show no single shared path in saf
 | Artistic story rebuild | done | `TASK-049` through `TASK-055` cover concept approval, native scroll, five scenes, evidence marks, editorial figures, rank-band motion, and quieter exploration |
 | Simplification and readiness | done | `TASK-057` has zero Ruff, Semgrep, and OSV findings and passed independent Checker review |
 | Shareable URL state | verified locally | `mode`, `scene`, `layer`, `view`, `place`, and `outlook` parse/serialize safely with guarded history updates, app-owned reload scroll restoration, and no router |
-| App bundle regression guard | verified locally | JS 1,043,075 bytes; CSS 96,047 bytes after TASK-112. The 1,050,000/97,500-byte checker limits are provisional internal uncompressed-asset regression targets, not Pacific DataViz Challenge rules; TASK-108 records the explicit measured CSS limit update. |
+| App bundle regression guard | verified locally | JS 1,045,015 bytes; CSS 96,750 bytes after TASK-116. The 1,050,000/97,500-byte checker limits are provisional internal uncompressed-asset regression targets, not Pacific DataViz Challenge rules; TASK-108 records the explicit measured CSS limit update. |
 
 ## Last Session Notes
 

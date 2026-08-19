@@ -53,6 +53,8 @@ describe("fullscreen story shell", () => {
     const action = html.match(/<button[^>]*story-handoff__action[^>]*>[\s\S]*?<\/button>/)?.[0] ?? "";
 
     expect(action).toContain("Explore the map");
+    expect(action).toContain('class="lucide lucide-map"');
+    expect(action).toContain('aria-hidden="true"');
     expect(action).not.toContain("Explore freely");
   });
 
@@ -147,6 +149,22 @@ describe("fullscreen story shell", () => {
       /\.story-handoff__copy\s*\{[^}]*max-width:\s*none;/,
     );
     expect(landscapeRules).not.toMatch(/\.story-handoff__copy\s*\{[^}]*font-size:/);
+  });
+
+  it("clears the taller opening action header at compact viewports", () => {
+    const storyStart = styles.indexOf(
+      "/* ================= native document-scroll story ================= */",
+    );
+    const mobileStart = styles.indexOf("@media (max-width: 880px) {", storyStart);
+    const landscapeStart = styles.indexOf(
+      "@media (max-width: 880px) and (orientation: landscape) {",
+      mobileStart,
+    );
+    const mobileRules = styles.slice(mobileStart, landscapeStart);
+
+    expect(mobileRules).toMatch(
+      /\.story-scrolly\[data-active-visual="premise"\] \.story-scene:first-child\s*\{[^}]*padding-top:\s*8rem;/,
+    );
   });
 
   it("defines low-light chrome roles while keeping the map and evidence marks flat", () => {

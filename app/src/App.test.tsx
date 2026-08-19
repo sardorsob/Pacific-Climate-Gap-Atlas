@@ -97,6 +97,24 @@ describe("regional story integration", () => {
     expect(documentShell).toContain("<title>Pacific Climate Evidence Atlas</title>");
   });
 
+  it("offers direct map and repository actions from the guided opening", () => {
+    const mapHeader = appSource.match(/<header className="map-header">[\s\S]*?<\/header>/)?.[0] ?? "";
+    const guidedActions = mapHeader.match(
+      /\{mode === "guided"[\s\S]*?(?=\{mode === "explore")/,
+    )?.[0] ?? "";
+
+    expect(mapHeader).toMatch(
+      /<p className="map-header__wordmark">\s*<Map aria-hidden="true" size=\{15\} \/> Pacific Climate Evidence Atlas/,
+    );
+    expect(guidedActions).toContain('className="map-header__actions"');
+    expect(guidedActions).toMatch(
+      /<button[\s\S]*?onClick=\{handleExplore\}[\s\S]*?<Map aria-hidden="true" size=\{14\} \/> View map/,
+    );
+    expect(guidedActions).toMatch(
+      /<a[\s\S]*?href="https:\/\/github\.com\/sardorsob\/Pacific-Climate-Gap-Atlas"[\s\S]*?target="_blank"[\s\S]*?rel="noopener noreferrer"[\s\S]*?<Github aria-hidden="true" size=\{14\} \/> View GitHub/,
+    );
+  });
+
   it("exposes the approved static Night Watch favicon before React starts", () => {
     expect(documentShell).toContain('<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
 

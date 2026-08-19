@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-107 through TASK-117 plus TASK-119 are complete after independent review. TASK-119's one-rule desktop failure-only legend exclusion, desktop-block regression contract, two retained frames, and 28-case Explore plus guided trace are accepted with no remaining finding. TASK-110 is done with ten inspected frames, 49 passing auditable cases, Spec PASS / quality Approved, and 2026-08-18 owner acceptance. TASK-100 now waits only for frozen-production TASK-095's separate owner gate; TASK-118 remains deferred. Deployment and submission remain separate decisions.
+TASK-120 is done with strict RED/GREEN, collision debugging, compact-clearance correction, four-view hidden-browser inspection, 148 frontend tests, 100 Python tests, and all repository gates passing. TASK-107 through TASK-117 plus TASK-119 are complete after independent review. TASK-119's one-rule desktop failure-only legend exclusion, desktop-block regression contract, two retained frames, and 28-case Explore plus guided trace are accepted with no remaining finding. TASK-110 is done with ten inspected frames, 49 passing auditable cases, Spec PASS / quality Approved, and 2026-08-18 owner acceptance. TASK-100 now waits only for frozen-production TASK-095's separate owner gate; TASK-118 remains deferred. Deployment and submission remain separate decisions.
+
+## 2026-08-19
+
+- Completed TASK-120 after owner-approved planning, context-first registration, strict RED/GREEN, and one responsive correction. **View map** reuses `handleExplore`; **View GitHub** uses the exact public repository URL with `_blank` plus opener isolation; the opening title/map entrances and repository action use Lucide map/GitHub marks. An initial Lucide/native `Map` collision was fixed at its import source with an icon alias. Hidden Scrapling sessions exposed and then verified the active-premise-only 8rem compact clearance at desktop, 390x844, 320x568, and 844x390 without visible tabs. Final frontend 148/148, Python 100/100, build/bundle/data/status/artifact/secret/Ruff/compile/whitespace gates pass at 1,046,533-byte JavaScript and 96,945-byte CSS; TASK-120 is done.
 
 ## 2026-08-18
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BookOpen, Compass, Layers } from "lucide-react";
+import { BookOpen, Compass, Github, Layers, Map } from "lucide-react";
 import { AtlasMap } from "./components/map/AtlasMap";
 import { MapLegend } from "./components/map/MapLegend";
 import { LayerControls } from "./components/controls/LayerControls";
@@ -401,12 +401,27 @@ export function App() {
 
         <header className="map-header">
           <p className="map-header__wordmark">
-            <Compass aria-hidden="true" size={15} /> Pacific Climate Evidence Atlas
+            <Map aria-hidden="true" size={15} /> Pacific Climate Evidence Atlas
           </p>
           <p className="map-header__layer">
             {meta.title}
             <span className="map-header__caveat">{meta.caveat}</span>
           </p>
+          {mode === "guided" && (
+            <div className="map-header__actions">
+              <button type="button" className="ghost-btn" onClick={handleExplore}>
+                <Map aria-hidden="true" size={14} /> View map
+              </button>
+              <a
+                className="ghost-btn"
+                href="https://github.com/sardorsob/Pacific-Climate-Gap-Atlas"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github aria-hidden="true" size={14} /> View GitHub
+              </a>
+            </div>
+          )}
           {mode === "explore" && (
             <div className="map-header__actions">
               <button

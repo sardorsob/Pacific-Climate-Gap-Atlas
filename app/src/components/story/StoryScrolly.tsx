@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { KeyboardEvent, ReactNode } from "react";
-import { BookOpen, Compass } from "lucide-react";
+import { BookOpen, Compass, Map as MapIcon } from "lucide-react";
 import type { Scene } from "../../lib/scenes";
 import { pickActiveScene, requestedSceneIndexAfterKey } from "../../lib/sceneState";
 import { SceneProgress } from "./SceneProgress";
@@ -147,7 +147,7 @@ export function StoryScrolly({
           className="ghost-btn ghost-btn--accent story-handoff__action"
           onClick={onExplore}
         >
-          Explore the map
+          <MapIcon aria-hidden="true" size={14} /> Explore the map
         </button>
       </section>
     </main>

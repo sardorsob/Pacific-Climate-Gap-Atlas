@@ -1,7 +1,7 @@
 {
   "task": "TASK-110",
   "attempt": 3,
-  "status": "in-review",
+  "status": "done",
   "tested_from_head": "6a847f5",
   "production_freeze": {
     "accepted_product_head": "6a847f5",
@@ -12319,10 +12319,9 @@
     "Grayscale and deuteranopia are CSS simulations, not assistive-hardware tests.",
     "The 720 CSS-pixel case is the project’s effective-200%-reflow proxy, not an operating-system zoom measurement.",
     "Map failure is induced with a null canvas context, not a live network outage.",
-    "No current selected continuous source observation equals exactly zero; null-versus-zero is verified through PN null rendering, retained zero references, and the frontend model/component suite.",
-    "Independent scientific/UX/accessibility review and owner visual/interaction acceptance remain required before done."
+    "No current selected continuous source observation equals exactly zero; null-versus-zero is verified through PN null rendering, retained zero references, and the frontend model/component suite."
   ],
-  "owner_review": "pending",
+  "owner_review": "accepted 2026-08-18",
   "scientific_render_cases": [
     {
       "case_id": "scientific-source-model-sentence-dom-nr",
@@ -14622,7 +14621,7 @@
       "zoom_absolute": 0.000001,
       "selected_target_euclidean_px": 0.01
     },
-    "result": "evidence corrected; no product defect reproduced; independent re-review pending",
+    "result": "evidence corrected; no product defect reproduced; independent re-review passed; owner accepted",
     "corrected_case_pass": true,
     "corrected_frame_pass": true
   }

@@ -115,6 +115,22 @@ describe("regional story integration", () => {
     );
   });
 
+  it("mounts the opening header above the guided-map stacking context", () => {
+    const topLayerHeader = appSource.match(
+      /<\/div>\s*<\/div>\s*\{\(mode === "explore" \|\| sceneIndex === 0\) && \(\s*<header className="map-header">[\s\S]*?<\/header>\s*\)\}/,
+    )?.[0] ?? "";
+
+    expect(topLayerHeader).toContain("Pacific Climate Evidence Atlas");
+    expect(topLayerHeader).toContain('onClick={handleExplore}');
+    expect(topLayerHeader).toContain("View GitHub");
+  });
+
+  it("keeps the guided opening header above the storyboard hit plane", () => {
+    expect(baseCss).toMatch(
+      /\.atlas-shell--guided \.map-header\s*\{[^}]*z-index:\s*13;/,
+    );
+  });
+
   it("exposes the approved static Night Watch favicon before React starts", () => {
     expect(documentShell).toContain('<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
 

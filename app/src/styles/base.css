@@ -401,7 +401,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0
 .guided-map .atlas-map-region { position: absolute; inset: 0; }
 .atlas-shell--explore .guided-map { position: absolute; inset: 0; height: 100vh; }
 .atlas-shell--guided .dock--legend { display: none; }
-.atlas-shell--guided .map-header { left: 18px; right: auto; max-width: 300px; }
+.atlas-shell--guided .map-header { left: 18px; right: auto; z-index: 13; max-width: 300px; }
 .atlas-shell--guided .map-header__layer { display: none; }
 .atlas-shell--guided .map-note { display: none; }
 .atlas-shell--guided:has(.app-state[role="alert"]) .app-state { opacity: 0; pointer-events: none; }

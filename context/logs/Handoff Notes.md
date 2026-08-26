@@ -2,7 +2,11 @@
 
 ## Immediate Next Step
 
-TASK-120 is done with strict RED/GREEN, collision debugging, compact-clearance correction, four-view hidden-browser inspection, 148 frontend tests, 100 Python tests, and all repository gates passing. TASK-107 through TASK-117 plus TASK-119 are complete after independent review. TASK-119's one-rule desktop failure-only legend exclusion, desktop-block regression contract, two retained frames, and 28-case Explore plus guided trace are accepted with no remaining finding. TASK-110 is done with ten inspected frames, 49 passing auditable cases, Spec PASS / quality Approved, and 2026-08-18 owner acceptance. TASK-100 now waits only for frozen-production TASK-095's separate owner gate; TASK-118 remains deferred. Deployment and submission remain separate decisions.
+TASK-121 is done: the opening header is now a true top-layer sibling of the map, with all four viewport hit targets, mouse/keyboard/touch Explore transitions, exact GitHub popup, later-scene removal, Explore header behavior, 150 frontend tests, 100 Python tests, and full repository gates verified. TASK-107 through TASK-117 plus TASK-119/TASK-120 remain complete. TASK-100 now waits only for frozen-production TASK-095's separate owner gate; TASK-118 remains deferred. Deployment and submission remain separate decisions.
+
+## 2026-08-26
+
+- Completed TASK-121 after exact browser reproduction: both opening controls were visible and 44px tall, yet `document.elementFromPoint` resolved their centers to `SECTION.story-scene`; **View map** timed out and Guided state remained. Strict RED failed 2/17. Moving the unchanged header outside `.guided-map` and adding one guided stacking declaration returned focused 29/29 GREEN. Four-view center hits now return the actual button/link; mouse, keyboard, touch, exact GitHub popup, later-scene removal, and Explore header behavior pass. Final frontend 150/150, Python 100/100, build/bundle/data/status/artifact/secret/Ruff/compile/whitespace gates pass at 1,046,558-byte JavaScript and 96,956-byte CSS; TASK-121 is done.
 
 ## 2026-08-19
 

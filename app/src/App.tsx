@@ -399,45 +399,6 @@ export function App() {
               sceneVisual={mode === "guided" ? SCENES[sceneIndex].visual : null}
             />
 
-        <header className="map-header">
-          <p className="map-header__wordmark">
-            <Map aria-hidden="true" size={15} /> Pacific Climate Evidence Atlas
-          </p>
-          <p className="map-header__layer">
-            {meta.title}
-            <span className="map-header__caveat">{meta.caveat}</span>
-          </p>
-          {mode === "guided" && (
-            <div className="map-header__actions">
-              <button type="button" className="ghost-btn" onClick={handleExplore}>
-                <Map aria-hidden="true" size={14} /> View map
-              </button>
-              <a
-                className="ghost-btn"
-                href="https://github.com/sardorsob/Pacific-Climate-Gap-Atlas"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github aria-hidden="true" size={14} /> View GitHub
-              </a>
-            </div>
-          )}
-          {mode === "explore" && (
-            <div className="map-header__actions">
-              <button
-                type="button"
-                className="ghost-btn"
-                onClick={handleGuidedTour}
-              >
-                <Compass aria-hidden="true" size={14} /> Guided tour
-              </button>
-              <button type="button" className="ghost-btn" onClick={() => setDrawerOpen(true)}>
-                <BookOpen aria-hidden="true" size={14} /> Methods &amp; sources
-              </button>
-            </div>
-          )}
-        </header>
-
         {controlsVisible && (
           <div className="dock dock--controls">
             <LayerControls
@@ -476,6 +437,47 @@ export function App() {
 
           </div>
         </div>
+
+        {(mode === "explore" || sceneIndex === 0) && (
+          <header className="map-header">
+            <p className="map-header__wordmark">
+              <Map aria-hidden="true" size={15} /> Pacific Climate Evidence Atlas
+            </p>
+            <p className="map-header__layer">
+              {meta.title}
+              <span className="map-header__caveat">{meta.caveat}</span>
+            </p>
+            {mode === "guided" && (
+              <div className="map-header__actions">
+                <button type="button" className="ghost-btn" onClick={handleExplore}>
+                  <Map aria-hidden="true" size={14} /> View map
+                </button>
+                <a
+                  className="ghost-btn"
+                  href="https://github.com/sardorsob/Pacific-Climate-Gap-Atlas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github aria-hidden="true" size={14} /> View GitHub
+                </a>
+              </div>
+            )}
+            {mode === "explore" && (
+              <div className="map-header__actions">
+                <button
+                  type="button"
+                  className="ghost-btn"
+                  onClick={handleGuidedTour}
+                >
+                  <Compass aria-hidden="true" size={14} /> Guided tour
+                </button>
+                <button type="button" className="ghost-btn" onClick={() => setDrawerOpen(true)}>
+                  <BookOpen aria-hidden="true" size={14} /> Methods &amp; sources
+                </button>
+              </div>
+            )}
+          </header>
+        )}
 
         {mode === "guided" && (
           <StoryScrolly
